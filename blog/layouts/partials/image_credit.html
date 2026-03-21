@@ -1,0 +1,11 @@
+{{- with .Params.image_credit_name }}
+<p class="image-credit">
+  Photo by <a href="{{ $.Params.image_credit_url }}" target="_blank" rel="noopener noreferrer">{{ . }}</a>
+  on
+  {{- if eq $.Params.image_credit_source "unsplash" }}
+  <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer">Unsplash</a>
+  {{- else }}
+  <a href="https://www.pexels.com" target="_blank" rel="noopener noreferrer">Pexels</a>
+  {{- end }}
+</p>
+{{- end }}

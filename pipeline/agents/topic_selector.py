@@ -1,0 +1,23 @@
+from crewai import Agent
+from langchain_anthropic import ChatAnthropic
+
+
+def build_topic_selector() -> Agent:
+    return Agent(
+        role="Topic Selector",
+        goal=(
+            "Choose exactly 2 topics from the research briefing that maximize trending relevance, "
+            "uniqueness versus recent posts, and thematic differentiation between the two picks."
+        ),
+        backstory=(
+            "You are an editorial director with a sharp instinct for what will resonate with "
+            "business and finance readers. You study the research briefing and the publication's "
+            "recent post history to avoid repetition, then choose two distinct angles that "
+            "together cover the breadth of today's most important AI/Finance developments. "
+            "You output strict JSON — no prose, no explanations."
+        ),
+        tools=[],
+        llm=ChatAnthropic(model="claude-haiku-4-5-20251001", max_tokens=1000),
+        verbose=True,
+        allow_delegation=False,
+    )

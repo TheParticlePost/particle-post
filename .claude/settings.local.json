@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(hugo version:*)",
+      "Bash(winget --version)",
+      "Bash(winget install:*)",
+      "Bash(export PATH=\"$PATH:/c/Users/William/AppData/Local/Microsoft/WinGet/Packages/Hugo.Hugo.Extended_Microsoft.Winget.Source_8wekyb3d8bbwe\")",
+      "Bash(/c/Users/William/AppData/Local/Microsoft/WinGet/Links/hugo.exe version:*)",
+      "Bash(export PATH=\"$PATH:/c/Users/William/AppData/Local/Microsoft/WinGet/Links\")",
+      "Bash(hugo new:*)",
+      "Bash(HUGO=\"/c/Users/William/AppData/Local/Microsoft/WinGet/Links/hugo.exe\")",
+      "Bash(\"$HUGO\" new:*)",
+      "Bash(HUGO=\"/c/Users/William/AppData/Local/Microsoft/WinGet/Packages/Hugo.Hugo.Extended_Microsoft.Winget.Source_8wekyb3d8bbwe/hugo.exe\")",
+      "Bash(\"$HUGO\" --source blog/ --destination ../public/ --minify)"
+    ]
+  }
+}

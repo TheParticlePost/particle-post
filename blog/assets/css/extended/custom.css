@@ -1,0 +1,183 @@
+/* =============================================
+   PARTICLE POST — Brand Identity Overrides
+   PaperMod CSS variable overrides only.
+   Never edit themes/PaperMod directly.
+   ============================================= */
+
+/* --- Dark mode palette --- */
+.dark {
+  --theme: #0D1117;
+  --entry: #161B22;
+  --primary: #F6F8FA;
+  --secondary: #8B949E;
+  --tertiary: #21262D;
+  --content: #C9D1D9;
+  --hljs-bg: #161B22;
+  --code-bg: #21262D;
+  --border: #30363D;
+}
+
+/* --- Light mode palette --- */
+:root {
+  --theme: #FFFFFF;
+  --entry: #F6F8FA;
+  --primary: #0D1117;
+  --secondary: #57606A;
+  --tertiary: #EAEEF2;
+  --content: #24292F;
+  --hljs-bg: #F6F8FA;
+  --code-bg: #EAEEF2;
+  --border: #D0D7DE;
+}
+
+/* --- Accent colours --- */
+:root {
+  --accent-blue: #2563EB;
+  --accent-amber: #F59E0B;
+}
+
+/* --- Logo / site name --- */
+.logo a,
+#site-header .logo a {
+  font-family: ui-monospace, "Cascadia Code", "Fira Code", monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+/* --- Links --- */
+a {
+  color: var(--accent-blue);
+}
+a:hover {
+  color: var(--accent-amber);
+}
+
+/* --- Post title links --- */
+.post-title a,
+h1.post-title,
+.entry-header h2 a {
+  color: var(--primary);
+}
+.post-title a:hover,
+.entry-header h2 a:hover {
+  color: var(--accent-blue);
+}
+
+/* --- Headings inside article --- */
+.post-content h2,
+.post-content h3,
+.post-content h4 {
+  color: var(--primary);
+  border-left: 3px solid var(--accent-blue);
+  padding-left: 0.6rem;
+  margin-left: -0.75rem;
+}
+
+/* --- Key Takeaway / blockquote --- */
+.post-content blockquote {
+  border-left: 4px solid var(--accent-blue);
+  background: var(--entry);
+  padding: 1rem 1.25rem;
+  border-radius: 0 6px 6px 0;
+  font-style: italic;
+  color: var(--content);
+}
+
+/* --- Stat box shortcode --- */
+.stat-box {
+  border: 1px solid var(--accent-blue);
+  border-left: 4px solid var(--accent-blue);
+  background: var(--entry);
+  border-radius: 6px;
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+}
+.stat-box .stat-number {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent-amber);
+  display: block;
+  line-height: 1.1;
+}
+.stat-box .stat-label {
+  font-size: 0.875rem;
+  color: var(--secondary);
+  margin-top: 0.25rem;
+  display: block;
+}
+.stat-box .stat-source {
+  font-size: 0.75rem;
+  color: var(--secondary);
+  margin-top: 0.5rem;
+  display: block;
+  font-style: italic;
+}
+
+/* --- Image credit line --- */
+.image-credit {
+  font-size: 0.72rem;
+  color: var(--secondary);
+  text-align: center;
+  margin-top: -0.5rem;
+  margin-bottom: 1.5rem;
+}
+.image-credit a {
+  color: var(--secondary);
+  text-decoration: underline;
+}
+
+/* --- Post meta (date, reading time) --- */
+.post-meta {
+  font-size: 0.8rem;
+  color: var(--secondary);
+}
+
+/* --- Home page hero --- */
+.home-info-container {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1.5rem;
+  margin-bottom: 2rem;
+}
+.home-info-container h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* --- Tags --- */
+.post-tags a {
+  background: var(--tertiary);
+  color: var(--secondary);
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  text-decoration: none;
+  border: 1px solid var(--border);
+}
+.post-tags a:hover {
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+}
+
+/* --- Table of Contents --- */
+.toc {
+  background: var(--entry);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1rem;
+}
+
+/* --- Responsive typography --- */
+.post-content {
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+@media (max-width: 768px) {
+  .post-content {
+    font-size: 1rem;
+  }
+}
