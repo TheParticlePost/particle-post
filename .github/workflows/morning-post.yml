@@ -53,7 +53,7 @@ jobs:
           if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
             DRY_RUN_FLAG="--dry-run"
           fi
-          python pipeline/run.py --slot morning $DRY_RUN_FLAG
+          python -m pipeline.run --slot morning $DRY_RUN_FLAG
 
       - name: Build Hugo site
         if: ${{ github.event.inputs.dry_run != 'true' }}
@@ -74,4 +74,4 @@ jobs:
         with:
           github_token: ${{ secrets.GH_PAT }}
           publish_dir: ./public
-          cname: particlepost.com
+          cname: theparticlepost.com
