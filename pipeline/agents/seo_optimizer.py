@@ -1,6 +1,5 @@
 from pathlib import Path
-from crewai import Agent
-from langchain_anthropic import ChatAnthropic
+from crewai import Agent, LLM
 from pipeline.tools.tavily_search import TavilySearchTool
 
 _BACKSTORY = (Path(__file__).parents[1] / "prompts" / "seo_backstory.txt").read_text()
@@ -16,7 +15,7 @@ def build_seo_optimizer() -> Agent:
         ),
         backstory=_BACKSTORY,
         tools=[TavilySearchTool()],
-        llm=ChatAnthropic(model="claude-haiku-4-5-20251001", max_tokens=800),
+        llm=LLM(model="anthropic/claude-haiku-4-5-20251001", max_tokens=800),
         verbose=True,
         allow_delegation=False,
     )

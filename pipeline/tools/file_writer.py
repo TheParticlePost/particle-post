@@ -1,34 +1,54 @@
 import json
-import os
 from datetime import datetime, timezone
 from pathlib import Path
 from crewai.tools import BaseTool
+from pydantic import BaseModel, Field
 
 # Paths relative to repo root
 POSTS_DIR = Path(__file__).parents[2] / "blog" / "content" / "posts"
 HISTORY_FILE = Path(__file__).parents[2] / "blog" / "data" / "topics_history.json"
 
 
+class FileWriterToolSchema(BaseModel):
+    filename: str = Field(
+        ...,
+        description="The .md filename for the post, e.g. '2026-03-21-ai-agents-enterprise.md'",
+    )
+    content: str = Field(
+        ...,
+        description="The complete Hugo markdown content, starting with --- (YAML frontmatter).",
+    )
+    title: str = Field(
+        ...,
+        description="The article title, used for history tracking.",
+    )
+    slug: str = Field(
+        ...,
+        description="The URL slug, e.g. 'ai-agents-enterprise-computing'.",
+    )
+    tags: str = Field(
+        default="[]",
+        description="JSON array of tag strings, e.g. '[\"AI\", \"Finance\", \"Agents\"]'.",
+    )
+
+
 class FileWriterTool(BaseTool):
     name: str = "file_writer"
     description: str = (
-        "Write the final Hugo markdown post to disk and update topics history. "
-        "Input must be a JSON string with keys: 'filename' (str), 'content' (str), "
-        "'title' (str), 'slug' (str), 'tags' (list of str). "
+        "Write the final Hugo markdown post to disk and update the topics history. "
+        "Pass each field as a separate named argument: filename, content, title, slug, tags. "
         "Returns the path of the written file on success."
     )
+    args_schema: type[BaseModel] = FileWriterToolSchema
 
-    def _run(self, input_json: str) -> str:
-        try:
-            data = json.loads(input_json)
-            filename: str = data["filename"]
-            content: str = data["content"]
-            title: str = data["title"]
-            slug: str = data["slug"]
-            tags: list = data.get("tags", [])
-        except (json.JSONDecodeError, KeyError) as e:
-            return f"file_writer error — invalid input JSON: {e}"
-
+    def _run(
+        self,
+        filename: str,
+        content: str,
+        title: str,
+        slug: str,
+        tags: str = "[]",
+    ) -> str:
         # Ensure filename ends with .md
         if not filename.endswith(".md"):
             filename += ".md"
@@ -38,8 +58,14 @@ class FileWriterTool(BaseTool):
 
         post_path.write_text(content, encoding="utf-8")
 
+        # Parse tags safely
+        try:
+            parsed_tags: list = json.loads(tags)
+        except (json.JSONDecodeError, TypeError):
+            parsed_tags = []
+
         # Update topics history
-        _update_history(title=title, slug=slug, tags=tags, filename=filename)
+        _update_history(title=title, slug=slug, tags=parsed_tags, filename=filename)
 
         return f"Post written to: {post_path}"
 

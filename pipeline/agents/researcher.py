@@ -1,6 +1,5 @@
 from pathlib import Path
-from crewai import Agent
-from langchain_anthropic import ChatAnthropic
+from crewai import Agent, LLM
 from pipeline.tools.tavily_search import TavilySearchTool
 from pipeline.tools.google_trends import GoogleTrendsTool
 from pipeline.tools.newsapi_fetch import NewsApiFetchTool
@@ -17,7 +16,7 @@ def build_researcher() -> Agent:
         ),
         backstory=_BACKSTORY,
         tools=[TavilySearchTool(), GoogleTrendsTool(), NewsApiFetchTool()],
-        llm=ChatAnthropic(model="claude-haiku-4-5-20251001", max_tokens=2000),
+        llm=LLM(model="anthropic/claude-haiku-4-5-20251001", max_tokens=2000),
         verbose=True,
         allow_delegation=False,
     )

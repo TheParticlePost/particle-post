@@ -1,5 +1,4 @@
-from crewai import Agent
-from langchain_anthropic import ChatAnthropic
+from crewai import Agent, LLM
 
 
 def build_topic_selector() -> Agent:
@@ -17,7 +16,7 @@ def build_topic_selector() -> Agent:
             "You output strict JSON — no prose, no explanations."
         ),
         tools=[],
-        llm=ChatAnthropic(model="claude-haiku-4-5-20251001", max_tokens=1000),
+        llm=LLM(model="anthropic/claude-haiku-4-5-20251001", max_tokens=1000),
         verbose=True,
         allow_delegation=False,
     )

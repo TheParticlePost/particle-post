@@ -1,5 +1,4 @@
-from crewai import Agent
-from langchain_anthropic import ChatAnthropic
+from crewai import Agent, LLM
 
 
 def build_formatter() -> Agent:
@@ -24,7 +23,7 @@ def build_formatter() -> Agent:
             "\nOutput only the complete .md file content — no explanations, no code fences."
         ),
         tools=[],
-        llm=ChatAnthropic(model="claude-haiku-4-5-20251001", max_tokens=4500),
+        llm=LLM(model="anthropic/claude-haiku-4-5-20251001", max_tokens=4500),
         verbose=True,
         allow_delegation=False,
     )

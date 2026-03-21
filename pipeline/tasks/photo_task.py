@@ -12,8 +12,12 @@ def build_photo_task(agent: Agent, editing_task: Task, seo_task: Task) -> Task:
             "   Bad concepts: generic words like 'technology', 'business', 'finance' alone.\n"
             "2. Try pexels_image with each concept (3 separate tool calls).\n"
             "3. If all Pexels queries fail or return no suitable image, "
-            "try unsplash_image with the primary keyword.\n"
-            "4. Pick the best result: landscape orientation preferred, "
+            "try pixabay_image with the primary keyword.\n"
+            "4. If ALL image API calls fail, return a fallback placeholder:\n"
+            "   image_url: 'https://picsum.photos/1600/900', "
+            "   photographer_name: 'Picsum Photos', "
+            "   photographer_url: 'https://picsum.photos', source: 'placeholder'\n"
+            "5. Pick the best result: landscape orientation preferred, "
             "no visible text burned into the image.\n\n"
             "Output only valid JSON:\n"
             "{\n"
@@ -21,7 +25,7 @@ def build_photo_task(agent: Agent, editing_task: Task, seo_task: Task) -> Task:
             '  "alt_text": "Descriptive alt text for the image",\n'
             '  "photographer_name": "Name",\n'
             '  "photographer_url": "https://...",\n'
-            '  "source": "pexels" or "unsplash"\n'
+            '  "source": "pexels", "pixabay", or "placeholder"\n'
             "}"
         ),
         expected_output=(

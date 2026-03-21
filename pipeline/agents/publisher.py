@@ -1,5 +1,4 @@
-from crewai import Agent
-from langchain_anthropic import ChatAnthropic
+from crewai import Agent, LLM
 from pipeline.tools.file_writer import FileWriterTool
 
 
@@ -17,7 +16,7 @@ def build_publisher() -> Agent:
             "the tool. You confirm success by reporting the file path written."
         ),
         tools=[FileWriterTool()],
-        llm=ChatAnthropic(model="claude-haiku-4-5-20251001", max_tokens=400),
+        llm=LLM(model="anthropic/claude-haiku-4-5-20251001", max_tokens=400),
         verbose=True,
         allow_delegation=False,
     )

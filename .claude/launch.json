@@ -1,0 +1,23 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "Hugo Dev Server",
+      "runtimeExecutable": "hugo",
+      "runtimeArgs": ["server", "--source", "blog", "--buildDrafts", "--disableFastRender"],
+      "port": 1313
+    },
+    {
+      "name": "Pipeline — Morning Post",
+      "runtimeExecutable": "py",
+      "runtimeArgs": ["-3.11", "-m", "pipeline.run", "--slot", "morning"],
+      "port": 0
+    },
+    {
+      "name": "Pipeline — Evening Post",
+      "runtimeExecutable": "py",
+      "runtimeArgs": ["-3.11", "-m", "pipeline.run", "--slot", "evening"],
+      "port": 0
+    }
+  ]
+}

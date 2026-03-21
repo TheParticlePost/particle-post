@@ -1,6 +1,5 @@
 from pathlib import Path
-from crewai import Agent
-from langchain_anthropic import ChatAnthropic
+from crewai import Agent, LLM
 from pipeline.tools.tavily_search import TavilySearchTool
 
 _BACKSTORY = (Path(__file__).parents[1] / "prompts" / "writer_backstory.txt").read_text()
@@ -15,7 +14,7 @@ def build_writer() -> Agent:
         ),
         backstory=_BACKSTORY,
         tools=[TavilySearchTool()],
-        llm=ChatAnthropic(model="claude-sonnet-4-6", max_tokens=3500),
+        llm=LLM(model="anthropic/claude-sonnet-4-6", max_tokens=3500),
         verbose=True,
         allow_delegation=False,
     )

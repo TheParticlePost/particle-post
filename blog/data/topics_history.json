@@ -1,3 +1,17 @@
 {
-  "posts": []
+  "posts": [
+    {
+      "title": "AI as Core Fintech Infrastructure: 80% of Companies Go All-In",
+      "slug": "fintech-ai-infrastructure-investment",
+      "tags": [
+        "Generative AI",
+        "Financial Services",
+        "Digital Transformation",
+        "Fraud Detection",
+        "Financial Infrastructure"
+      ],
+      "filename": "2026-03-21-fintech-ai-infrastructure-investment.md",
+      "published_at": "2026-03-21T19:40:27.697477+00:00"
+    }
+  ]
 }

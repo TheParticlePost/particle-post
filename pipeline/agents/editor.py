@@ -1,6 +1,5 @@
 from pathlib import Path
-from crewai import Agent
-from langchain_anthropic import ChatAnthropic
+from crewai import Agent, LLM
 
 _BACKSTORY = (Path(__file__).parents[1] / "prompts" / "editor_backstory.txt").read_text()
 
@@ -15,7 +14,7 @@ def build_editor() -> Agent:
         ),
         backstory=_BACKSTORY,
         tools=[],
-        llm=ChatAnthropic(model="claude-sonnet-4-6", max_tokens=4000),
+        llm=LLM(model="anthropic/claude-sonnet-4-6", max_tokens=4000),
         verbose=True,
         allow_delegation=False,
     )

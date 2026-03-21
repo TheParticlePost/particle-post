@@ -7,7 +7,6 @@ from pipeline.agents.editor import build_editor
 from pipeline.agents.seo_optimizer import build_seo_optimizer
 from pipeline.agents.photo_finder import build_photo_finder
 from pipeline.agents.formatter import build_formatter
-from pipeline.agents.publisher import build_publisher
 
 from pipeline.tasks.research_task import build_research_task
 from pipeline.tasks.selection_task import build_selection_task
@@ -16,16 +15,17 @@ from pipeline.tasks.editing_task import build_editing_task
 from pipeline.tasks.seo_task import build_seo_task
 from pipeline.tasks.photo_task import build_photo_task
 from pipeline.tasks.formatting_task import build_formatting_task
-from pipeline.tasks.publishing_task import build_publishing_task
 
 
 def build_crew(slot: str) -> Crew:
     """
-    Build the full Particle Post publishing crew for a given slot.
+    Build the Particle Post publishing crew for a given slot.
+    The crew runs 7 agents sequentially; run.py handles the actual
+    file write from the Formatter's output (more reliable than
+    passing large markdown strings through tool calls).
 
     Args:
-        slot: "morning" or "evening" — determines which of the two daily
-              topics is selected from the research briefing.
+        slot: "morning" or "evening"
 
     Returns:
         A configured CrewAI Crew ready to kick off.
@@ -38,7 +38,6 @@ def build_crew(slot: str) -> Crew:
     seo_optimizer = build_seo_optimizer()
     photo_finder = build_photo_finder()
     formatter = build_formatter()
-    publisher = build_publisher()
 
     # --- Tasks (order matters — sequential process) ---
     research_task = build_research_task(researcher)
@@ -50,9 +49,6 @@ def build_crew(slot: str) -> Crew:
     formatting_task = build_formatting_task(
         formatter, editing_task, seo_task, photo_task, selection_task
     )
-    publishing_task = build_publishing_task(
-        publisher, formatting_task, seo_task, selection_task
-    )
 
     return Crew(
         agents=[
@@ -63,7 +59,6 @@ def build_crew(slot: str) -> Crew:
             seo_optimizer,
             photo_finder,
             formatter,
-            publisher,
         ],
         tasks=[
             research_task,
@@ -73,7 +68,6 @@ def build_crew(slot: str) -> Crew:
             seo_task,
             photo_task,
             formatting_task,
-            publishing_task,
         ],
         process=Process.sequential,
         verbose=True,
