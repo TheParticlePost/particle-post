@@ -19,7 +19,7 @@ def build_formatter() -> Agent:
             "- The 'Key Takeaway' section becomes a markdown blockquote (> prefix)\n"
             "- Source list at bottom under ## Sources heading\n"
             "- No extra blank lines between frontmatter and first paragraph\n"
-            "- The stat-box shortcode syntax: {{< stat-box number='X' label='Y' source='Z' >}}\n"
+            "- The stat-box shortcode syntax uses double quotes: {{< stat-box number=\"X\" label=\"Y\" source=\"Z\" >}}\n"
             "\nOutput only the complete .md file content — no explanations, no code fences."
         ),
         tools=[],
