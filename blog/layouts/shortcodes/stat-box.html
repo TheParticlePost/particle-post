@@ -1,5 +1,5 @@
-<div class="stat-box">
+﻿<div class="stat-box">
   <span class="stat-number">{{ .Get "number" }}</span>
   <span class="stat-label">{{ .Get "label" }}</span>
-  {{ with .Get "source" }}<span class="stat-source">Source: {{ . }}</span>{{ end }}
+  <span class="stat-source">— {{ .Get "source" }}</span>
 </div>

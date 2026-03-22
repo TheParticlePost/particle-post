@@ -36,7 +36,7 @@ The economics have changed. Generative AI spending across enterprises hit $37 bi
 
 For most of the past decade, financial firms treated AI as an enhancement layered on top of existing systems — smarter search, better dashboards, faster reporting. That framing is now operationally obsolete. AI has migrated into the core stack: underwriting engines, fraud detection pipelines, compliance monitoring, and back-office reconciliation. The distinction matters for capital allocation. Infrastructure spending carries different justification logic, different depreciation schedules, and different competitive consequences than feature development.
 
-Broadridge's 2025 Digital Transformation Study, which surveyed more than 900 financial services executives globally, found that 80% of firms are making moderate-to-large AI investments overall, with asset managers planning to increase AI spending by 28% from current levels. {{< stat-box number='68%' label='use AI in market and investment research' source='Broadridge Financial Solutions' >}} Sixty-two percent use it for meeting summarization and note-taking; 58% apply it to analysis and data visualization. These are not pilot programs. They are embedded workflows.
+Broadridge's 2025 Digital Transformation Study, which surveyed more than 900 financial services executives globally, found that 80% of firms are making moderate-to-large AI investments overall, with asset managers planning to increase AI spending by 28% from current levels. {{< stat-box number="68%" label="use AI in market and investment research" source="Broadridge Financial Solutions" >}} Sixty-two percent use it for meeting summarization and note-taking; 58% apply it to analysis and data visualization. These are not pilot programs. They are embedded workflows.
 
 ## Fraud Detection: The Clearest ROI Signal
 
@@ -50,7 +50,7 @@ The generative AI in fintech market — valued across fraud detection, underwrit
 
 ## Underwriting: Speed as a Strategic Asset
 
-Upstart Holdings (NASDAQ: UPST) offers the most detailed public data on what full AI integration looks like in underwriting. In 2024, {{< stat-box number='91%' label='of loans fully automated with no human involvement' source='Upstart Holdings' >}} and 93% of instant approvals converted to funded loans, according to Upstart's annual results. In Q2 2025, originations surged 154% year over year to $2.8 billion, with conversion rates reaching 23.9%.
+Upstart Holdings (NASDAQ: UPST) offers the most detailed public data on what full AI integration looks like in underwriting. In 2024, {{< stat-box number="91%" label="of loans fully automated with no human involvement" source="Upstart Holdings" >}} and 93% of instant approvals converted to funded loans, according to Upstart's annual results. In Q2 2025, originations surged 154% year over year to $2.8 billion, with conversion rates reaching 23.9%.
 
 The mechanism is straightforward. Upstart's neural network models evaluate creditworthiness using far more data inputs than traditional FICO-based underwriting, which relies on seven primary variables. The result is faster decisions, lower default rates, and an ability to approve borrowers that legacy models would reject. Traditional lenders relying on manual underwriting workflows cannot replicate that cycle time or approval accuracy without replacing the underlying system architecture.
 
@@ -58,7 +58,7 @@ Traditional lenders competing with AI-native firms face a clear timeline pressur
 
 ## Back-Office Operations: Where the Savings Accumulate
 
-The fraud and underwriting cases attract attention, but back-office automation is where AI delivers the most consistent cost reduction. Gartner's 2025 finance AI survey found that {{< stat-box number='59%' label='of finance functions use AI in some capacity' source='Gartner' >}} with organizations further along in deployment more than twice as likely to report moderate impact and nearly three times as likely to report high impact. The returns compound with depth of integration, not breadth of experimentation.
+The fraud and underwriting cases attract attention, but back-office automation is where AI delivers the most consistent cost reduction. Gartner's 2025 finance AI survey found that {{< stat-box number="59%" label="of finance functions use AI in some capacity" source="Gartner" >}} with organizations further along in deployment more than twice as likely to report moderate impact and nearly three times as likely to report high impact. The returns compound with depth of integration, not breadth of experimentation.
 
 Morgan Stanley has deployed AI-driven tools that give its financial advisors real-time access to the firm's research library, compressing hours of document retrieval into seconds. The firm has framed this not as a productivity perk but as a client-service infrastructure requirement — a signal that AI-augmented advisor capability is now a baseline expectation in wealth management, not a differentiator.
 
