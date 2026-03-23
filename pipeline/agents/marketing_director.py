@@ -133,7 +133,7 @@ def build_marketing_director() -> Agent:
             GoogleTrendsTool(),
             TavilySearchTool(),
         ],
-        llm=LLM(model="claude-sonnet-4-6", max_tokens=4000),
+        llm=LLM(model="anthropic/claude-sonnet-4-6", max_tokens=4000),
         verbose=True,
         allow_delegation=False,
     )
