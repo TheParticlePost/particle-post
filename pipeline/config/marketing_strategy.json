@@ -32,5 +32,12 @@
     "avg_position": 0,
     "top_queries": []
   },
-  "decision_history": []
+  "decision_history": [
+    {
+      "date": "2026-03-23",
+      "decision": "KEEP",
+      "rationale": "Output parse failed — keeping existing strategy unchanged.",
+      "plan_summary": "Initial strategy — establish content presence and baseline organic metrics"
+    }
+  ]
 }
