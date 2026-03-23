@@ -23,7 +23,9 @@ class SearchConsoleTool(BaseTool):
         "  'top_queries'    — top 25 clicked search queries with impressions, CTR, avg position (28 days)\n"
         "  'top_pages'      — top 20 clicked pages with impression data (28 days)\n"
         "  'opportunities'  — queries ranking position 5-20 with 50+ impressions: "
-        "highest-leverage targets for content optimization"
+        "highest-leverage targets for content optimization\n"
+        "  'inspect_url:{url}' — inspect indexing status of a specific URL, "
+        "e.g. 'inspect_url:https://theparticlepost.com/posts/slug/'"
     )
 
     def _run(self, query_type: str = "top_queries") -> str:  # noqa: C901
@@ -36,19 +38,19 @@ class SearchConsoleTool(BaseTool):
             return "[GSC] google-api-python-client not installed. Run: pip install google-api-python-client google-auth"
 
         try:
+            # Use full webmasters scope (required for URL Inspection API)
+            _scopes = ["https://www.googleapis.com/auth/webmasters"]
             if creds_json:
                 # Local dev: explicit service account JSON in env var
                 from google.oauth2.service_account import Credentials
                 creds = Credentials.from_service_account_info(
                     json.loads(creds_json),
-                    scopes=["https://www.googleapis.com/auth/webmasters.readonly"],
+                    scopes=_scopes,
                 )
             else:
                 # GitHub Actions (WIF): use Application Default Credentials
                 import google.auth
-                creds, _ = google.auth.default(
-                    scopes=["https://www.googleapis.com/auth/webmasters.readonly"]
-                )
+                creds, _ = google.auth.default(scopes=_scopes)
             service = build("searchconsole", "v1", credentials=creds, cache_discovery=False)
 
             end_date   = datetime.now().strftime("%Y-%m-%d")
@@ -143,8 +145,43 @@ class SearchConsoleTool(BaseTool):
                     lines.append(f"  {page}  |  {cl} clicks  |  {imp} impr  |  avg pos {pos:.1f}")
                 return "\n".join(lines)
 
+            # ── inspect_url ───────────────────────────────────────────────
+            elif query_type.startswith("inspect_url:"):
+                inspect_url = query_type[len("inspect_url:"):].strip()
+                if not inspect_url:
+                    return "[GSC] inspect_url requires a URL, e.g. 'inspect_url:https://theparticlepost.com/posts/slug/'"
+                try:
+                    result = (
+                        service.urlInspection()
+                        .index()
+                        .inspect(body={"inspectionUrl": inspect_url, "siteUrl": site_url})
+                        .execute()
+                    )
+                    insp = result.get("inspectionResult", {})
+                    index_status = insp.get("indexStatusResult", {})
+                    coverage     = index_status.get("coverageState", "UNKNOWN")
+                    verdict      = index_status.get("verdict", "UNKNOWN")
+                    last_crawl   = index_status.get("lastCrawlTime", "never")
+                    robot_ok     = index_status.get("robotsTxtState", "UNKNOWN")
+                    lines = [
+                        f"═══ GSC URL Inspection: {inspect_url} ═══\n",
+                        f"  Verdict       : {verdict}",
+                        f"  Coverage state: {coverage}",
+                        f"  Last crawled  : {last_crawl}",
+                        f"  Robots.txt    : {robot_ok}",
+                    ]
+                    rich_results = insp.get("richResultsResult", {})
+                    if rich_results:
+                        lines.append(f"  Rich results  : {rich_results.get('verdict', 'UNKNOWN')}")
+                    return "\n".join(lines)
+                except Exception as exc:
+                    return f"[GSC] URL Inspection error: {exc}"
+
             else:
-                return f"[GSC] Unknown query_type '{query_type}'. Use: top_queries, top_pages, opportunities"
+                return (
+                    f"[GSC] Unknown query_type '{query_type}'. "
+                    "Use: top_queries, top_pages, opportunities, or inspect_url:{{url}}"
+                )
 
         except Exception as exc:
             return f"[GSC] Error: {exc}"

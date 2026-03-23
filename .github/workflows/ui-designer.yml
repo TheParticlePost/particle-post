@@ -1,0 +1,50 @@
+name: UI Designer (1pm ET)
+
+on:
+  schedule:
+    - cron: "0 17 * * *"   # 1pm EDT (UTC-4). Winter EST: 12pm ET — acceptable.
+  workflow_dispatch: {}    # manual trigger for testing
+
+permissions:
+  contents: write
+
+jobs:
+  design:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          token: ${{ github.token }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run UI Designer
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python -m pipeline.ui_run
+
+      - name: Commit UI changes
+        run: |
+          git config user.name "Particle Post Bot"
+          git config user.email "bot@particlepost.com"
+          git remote set-url origin "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git"
+          git add \
+            blog/assets/css/extended/custom.css \
+            blog/layouts/partials/header.html \
+            blog/layouts/partials/home_info.html \
+            blog/layouts/_default/list.html \
+            blog/layouts/partials/footer.html \
+            pipeline/config/ui_change_history.json
+          git diff --staged --quiet || git commit -m "auto: ui design update $(date -u +%Y-%m-%d)"
+          git push

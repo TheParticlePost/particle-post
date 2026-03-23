@@ -30,11 +30,12 @@ if sys.platform == "win32":
 _REPO_ROOT = Path(__file__).resolve().parent.parent
 load_dotenv(dotenv_path=_REPO_ROOT / ".env", override=True)
 
-_CONFIG_DIR    = _REPO_ROOT / "pipeline" / "config"
-_LOGS_DIR      = _REPO_ROOT / "pipeline" / "logs" / "marketing"
-_STRATEGY_FILE = _CONFIG_DIR / "marketing_strategy.json"
-_SEO_FILE      = _CONFIG_DIR / "seo_guidelines.md"
-_EDITORIAL_FILE = _CONFIG_DIR / "editorial_guidelines.md"
+_CONFIG_DIR       = _REPO_ROOT / "pipeline" / "config"
+_LOGS_DIR         = _REPO_ROOT / "pipeline" / "logs" / "marketing"
+_STRATEGY_FILE    = _CONFIG_DIR / "marketing_strategy.json"
+_SEO_FILE         = _CONFIG_DIR / "seo_guidelines.md"
+_EDITORIAL_FILE   = _CONFIG_DIR / "editorial_guidelines.md"
+_UI_DIRECTIVES_FILE = _CONFIG_DIR / "ui_directives.json"
 
 
 # ──────────────────────────────────────────────────────────────────────────────
@@ -167,6 +168,21 @@ def _write_editorial_guidelines(output: dict) -> None:
     print(f"  Editorial guidelines updated ({len(content)} chars)")
 
 
+def _write_ui_directives(output: dict) -> None:
+    """Write ui_directives.json if the Marketing Director issued new UI directives."""
+    directives = output.get("ui_directives")
+    if not directives or not directives.get("directives"):
+        print("  UI directives: none issued today.")
+        return
+    _CONFIG_DIR.mkdir(parents=True, exist_ok=True)
+    directives["generated_date"] = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    _UI_DIRECTIVES_FILE.write_text(
+        json.dumps(directives, indent=2, ensure_ascii=False), encoding="utf-8"
+    )
+    count = len(directives["directives"])
+    print(f"  UI directives written ({count} directive(s) for UI Designer)")
+
+
 def _write_daily_report(output: dict) -> None:
     report = output.get("daily_report", "")
     if not report:
@@ -226,6 +242,7 @@ def main() -> None:
     _update_strategy_file(output)
     _write_seo_guidelines(output)
     _write_editorial_guidelines(output)
+    _write_ui_directives(output)
     _write_daily_report(output)
 
     print(f"\n{'='*60}")

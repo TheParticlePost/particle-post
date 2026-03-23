@@ -12,7 +12,7 @@ permissions:
 jobs:
   analyze:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
 
     steps:
       - name: Checkout repository
@@ -53,6 +53,7 @@ jobs:
             pipeline/config/seo_guidelines.md \
             pipeline/config/marketing_strategy.json \
             pipeline/config/editorial_guidelines.md \
+            pipeline/config/ui_directives.json \
             "pipeline/logs/marketing/"
           git diff --staged --quiet || git commit -m "auto: marketing analysis $(date -u +%Y-%m-%d)"
           git push

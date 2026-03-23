@@ -94,7 +94,34 @@ def build_marketing_analysis_task(agent: Agent) -> Task:
             "  - Top 3 action items for the content team\n"
             "  - What to watch this week\n\n"
 
-            "═══ STEP 5: OUTPUT JSON ═══\n\n"
+            "═══ STEP 5: UI DIRECTIVES ANALYSIS (CONDITIONAL) ═══\n\n"
+
+            "Review the GA4 engagement metrics collected in Step 1:\n\n"
+            "THRESHOLDS THAT TRIGGER UI DIRECTIVES:\n"
+            "  • avg_session_duration < 60s  → readability or layout problem\n"
+            "  • bounce_rate > 75%           → hero section or CTA problem\n"
+            "  • pages_per_session < 1.5     → navigation or related-content problem\n\n"
+            "RULES:\n"
+            "  1. Only generate directives if AT LEAST ONE threshold is breached\n"
+            "  2. Check the UI Experiment History in your context — do NOT target any "
+            "     component/property changed within the last 7 days (7-day cooldown)\n"
+            "  3. If metrics are healthy, data is too sparse (< 50 sessions), or all relevant "
+            "     components are in cooldown — set ui_directives to null\n"
+            "  4. Maximum 2 directives per day (keep changes small and measurable)\n\n"
+            "TARGETABLE COMPONENTS:\n"
+            "  post-card  : property '--gap' (current: 24px), 'card-image-height' (196px), "
+            "'border-radius' (12px)\n"
+            "  hero       : property 'cta-text', 'stats-labels', 'subtitle-text', 'badge-text'\n"
+            "  navigation : property 'subscribe-button-size'\n"
+            "  footer     : property 'tagline-text'\n"
+            "  typography : property 'body-font-size' (range: 0.95rem–1.1rem), "
+            "'line-height' (range: 1.7–1.9)\n\n"
+            "If generating directives, use this exact structure for each directive:\n"
+            '  {"component": "post-card", "change_type": "css_var", '
+            '"property": "--gap", "rationale": "bounce rate 82% exceeds 75% threshold — '
+            'more whitespace reduces cognitive load"}\n\n'
+
+            "═══ STEP 6: OUTPUT JSON ═══\n\n"
 
             "Output ONLY this JSON object — no prose before or after, no markdown code fences:\n\n"
             "{\n"
@@ -110,8 +137,18 @@ def build_marketing_analysis_task(agent: Agent) -> Task:
             '  "seo_guidelines": "FULL MARKDOWN for seo_guidelines.md — all 10 sections above",\n'
             '  "update_editorial_guidelines": false,\n'
             '  "editorial_guidelines": null,\n'
-            '  "daily_report": "FULL MARKDOWN for the daily log — all sections above"\n'
+            '  "daily_report": "FULL MARKDOWN for the daily log — all sections above",\n'
+            '  "ui_directives": null\n'
             "}\n\n"
+            "If UI directives were warranted (Step 5), replace the ui_directives null with:\n"
+            '  "ui_directives": {\n'
+            '    "trigger_metric": "avg_session_duration",\n'
+            '    "trigger_value": "45s (below 60s threshold)",\n'
+            '    "target_metric": "avg_session_duration",\n'
+            '    "directives": [{...}, {...}],\n'
+            '    "constraints": ["do not change brand colors", "maintain dark mode compatibility"],\n'
+            '    "evaluation_period_days": 7\n'
+            "  }\n\n"
 
             "IMPORTANT NOTES:\n"
             "  • Set update_editorial_guidelines to true ONLY if you are making a NEW plan "
@@ -120,13 +157,15 @@ def build_marketing_analysis_task(agent: Agent) -> Task:
             "    in editorial_guidelines (otherwise leave null)\n"
             "  • The seo_guidelines and daily_report fields must contain the FULL markdown text — "
             "    do not truncate or summarize them\n"
-            "  • Escape any double quotes inside the JSON string values with a backslash"
+            "  • Escape any double quotes inside the JSON string values with a backslash\n"
+            "  • ui_directives must be null unless a metric threshold was clearly breached"
         ),
         expected_output=(
             "A single JSON object with: decision (KEEP/ADJUST/NEW), rationale, strategy_update "
             "(keywords and pillar focus), seo_guidelines (full markdown), "
             "update_editorial_guidelines (bool), editorial_guidelines (markdown or null), "
-            "and daily_report (full markdown). No prose outside the JSON."
+            "daily_report (full markdown), and ui_directives (null or directive object). "
+            "No prose outside the JSON."
         ),
         agent=agent,
     )

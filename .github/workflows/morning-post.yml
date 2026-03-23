@@ -48,6 +48,7 @@ jobs:
           NEWS_API_KEY: ${{ secrets.NEWSAPI }}
           PEXELS_API_KEY: ${{ secrets.PEXELS }}
           UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
         run: |
           DRY_RUN_FLAG=""
           if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then

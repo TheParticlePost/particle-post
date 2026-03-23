@@ -196,6 +196,26 @@ def _write_rejection_log(
 # Post writing
 # ──────────────────────────────────────────────────────────────────────────────
 
+def _submit_to_search_engines(url: str) -> None:
+    """
+    Submit a newly published article URL to Google and Bing/Edge/Yandex.
+    Non-fatal — logs warnings on failure but never raises.
+    """
+    print(f"\n  Submitting to search engines: {url}")
+    for label, module_path, class_name in [
+        ("Google Indexing API", "pipeline.tools.google_indexing", "GoogleIndexingTool"),
+        ("IndexNow (Bing/Edge/Yandex)", "pipeline.tools.indexnow", "IndexNowTool"),
+    ]:
+        try:
+            import importlib
+            mod  = importlib.import_module(module_path)
+            tool = getattr(mod, class_name)()
+            result = tool._run(url)
+            print(f"  [{label}] {result}")
+        except Exception as exc:
+            print(f"  [WARN] {label} submission failed: {exc}")
+
+
 def _write_post(content: str, dry_run: bool) -> None:
     """Extract metadata from frontmatter and write the post to disk."""
     slug  = _extract_frontmatter_field(content, "slug")
@@ -222,6 +242,10 @@ def _write_post(content: str, dry_run: bool) -> None:
     print(f"\nPost written to: {post_path}")
 
     _update_history(title=title, slug=slug, tags=tags, filename=filename)
+
+    # Submit to search engines for immediate indexing
+    article_url = f"https://theparticlepost.com/posts/{slug}/"
+    _submit_to_search_engines(article_url)
 
 
 def _update_history(title: str, slug: str, tags: list, filename: str) -> None:

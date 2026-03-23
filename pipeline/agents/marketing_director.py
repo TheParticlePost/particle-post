@@ -13,6 +13,7 @@ _DATA_DIR        = Path(__file__).resolve().parent.parent.parent / "blog" / "dat
 _STRATEGY_PATH   = _CONFIG_DIR / "marketing_strategy.json"
 _GUIDELINES_PATH = _CONFIG_DIR / "editorial_guidelines.md"
 _HISTORY_PATH    = _DATA_DIR / "topics_history.json"
+_UI_HISTORY_PATH = _CONFIG_DIR / "ui_change_history.json"
 
 
 def _load_current_strategy() -> str:
@@ -75,6 +76,39 @@ def _load_editorial_guidelines() -> str:
     return "(Editorial guidelines file not found.)"
 
 
+def _load_ui_change_history() -> str:
+    """Load recent UI changes so Marketing Director can track experiments and cooldowns."""
+    if not _UI_HISTORY_PATH.exists():
+        return "(No UI change history yet — no experiments in progress.)"
+    try:
+        data    = json.loads(_UI_HISTORY_PATH.read_text(encoding="utf-8"))
+        changes = data.get("changes", [])
+        if not changes:
+            return "(No UI changes recorded yet.)"
+        recent = changes[-5:]
+        lines  = [f"RECENT UI EXPERIMENTS (last {len(recent)} runs):"]
+        for entry in recent:
+            date_str = entry.get("date", "?")
+            applied  = entry.get("changes_applied", [])
+            summary  = entry.get("summary", "")
+            if applied:
+                for c in applied:
+                    lines.append(
+                        f"  [{date_str}] {c.get('component', '?')} — "
+                        f"{c.get('property', '?')}: "
+                        f"{c.get('old_value', '?')} → {c.get('new_value', '?')}"
+                    )
+            else:
+                lines.append(f"  [{date_str}] No changes applied — {summary}")
+        lines.append(
+            "\nNOTE: When generating UI directives, respect the 7-day cooldown. "
+            "Do not target components/properties changed within the last 7 days."
+        )
+        return "\n".join(lines)
+    except Exception as exc:
+        return f"(Could not load UI change history: {exc})"
+
+
 def build_marketing_director() -> Agent:
     """
     Build the Marketing Director agent.
@@ -91,39 +125,56 @@ def build_marketing_director() -> Agent:
     current_strategy  = _load_current_strategy()
     recent_articles   = _load_recent_articles()
     editorial_guide   = _load_editorial_guidelines()
+    ui_history        = _load_ui_change_history()
 
     return Agent(
         role="Marketing Director",
         goal=(
             "Analyze Particle Post's performance data, evaluate the current content strategy, "
-            "and produce updated SEO guidance and a strategic decision (KEEP / ADJUST / NEW). "
-            "The SEO guidelines you write will be read by the Production Director on every article run, "
-            "so they must be specific and actionable."
+            "produce updated SEO guidance, issue UI change directives when engagement metrics "
+            "signal a layout/readability problem, and make a strategic decision (KEEP / ADJUST / NEW). "
+            "The SEO guidelines you write are read by the Production Director on every article run."
         ),
         backstory=(
             "You are the Marketing Director at Particle Post. You report to the owner and "
-            "manage the content strategy, SEO, and audience growth.\n\n"
-            "Your mandate: grow organic search traffic, improve keyword rankings, and build "
-            "topical authority in AI × Business × Finance. You use real performance data — "
-            "not gut feeling — to make decisions.\n\n"
+            "manage the content strategy, SEO, audience growth, and site UX improvements.\n\n"
+            "Your mandate: grow organic search traffic, improve keyword rankings, build "
+            "topical authority in AI × Business × Finance, and improve engagement metrics "
+            "(time on page, bounce rate, pages per session). You use real data — not gut feeling.\n\n"
             "You analyze every data point available:\n"
-            "  • GA4 traffic (which articles get sessions, traffic sources, bounce rate)\n"
-            "  • Google Search Console (which queries we rank for, CTR, position, opportunities)\n"
-            "  • Google Trends (what topics are trending right now)\n"
+            "  • GA4 traffic (sessions, bounce rate, avg session duration, pages/session, top pages)\n"
+            "  • Google Search Console (queries, rankings, CTR, position, opportunities)\n"
+            "  • Google Trends (trending AI/finance topics right now)\n"
             "  • Competitor research via Tavily\n\n"
-            "Based on the data, you make one of three decisions:\n"
+            "Based on the data, you make one of three content strategy decisions:\n"
             "  KEEP   — strategy is working or too new to evaluate (< 5 days old)\n"
             "  ADJUST — specific elements need tuning (swap 1-2 keywords, shift pillar weighting)\n"
             "  NEW    — metrics are stagnant (7+ days with no improvement) or a clearly better "
             "           opportunity exists that requires a full pivot\n\n"
-            "After every analysis, you also write updated SEO guidelines with concrete, "
-            "actionable H1/H2/H3 patterns, keyword targets, and internal linking recommendations "
-            "that the Production Director uses when evaluating each article.\n\n"
+            "═══ UI COMMANDING ═══\n\n"
+            "You also analyze GA4 engagement metrics for layout and UX problems. "
+            "When you identify a clear metric-backed issue, you issue UI directives that "
+            "the UI Designer agent implements at 1pm ET.\n\n"
+            "Engagement thresholds that trigger UI directives:\n"
+            "  • avg_session_duration < 60s  → readability or layout problem\n"
+            "  • bounce_rate > 75%           → hero section or CTA problem\n"
+            "  • pages_per_session < 1.5     → navigation or related-content problem\n\n"
+            "Targetable UI components (what the UI Designer can change):\n"
+            "  post-card  : --gap (24px), card image height (196px), border-radius (12px)\n"
+            "  hero       : CTA button text, hero-stats labels, subtitle text, badge text\n"
+            "  navigation : subscribe button padding/size\n"
+            "  footer     : tagline text\n"
+            "  typography : body font-size (0.95rem–1.1rem range), line-height (1.7–1.9 range)\n\n"
+            "IMPORTANT: Only issue directives when a threshold is breached. "
+            "Respect the 7-day cooldown — do not target components changed within the last 7 days. "
+            "If metrics are healthy or data is too sparse, set ui_directives to null.\n\n"
             "You output strict JSON only — no prose before or after it.\n\n"
             "─── CURRENT MARKETING STRATEGY ───\n\n"
             f"{current_strategy}\n\n"
             "─── RECENT PUBLISHED ARTICLES ───\n\n"
             f"{recent_articles}\n\n"
+            "─── UI EXPERIMENT HISTORY ───\n\n"
+            f"{ui_history}\n\n"
             "─── EDITORIAL GUIDELINES (context) ───\n\n"
             f"{editorial_guide}"
         ),

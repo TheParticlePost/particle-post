@@ -1,0 +1,12 @@
+{
+  "generated_date": null,
+  "trigger_metric": null,
+  "trigger_value": null,
+  "target_metric": null,
+  "directives": [],
+  "constraints": [
+    "do not change brand colors",
+    "maintain dark mode compatibility"
+  ],
+  "evaluation_period_days": 7
+}
