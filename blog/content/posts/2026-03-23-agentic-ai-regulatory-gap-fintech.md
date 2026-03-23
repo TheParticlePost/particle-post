@@ -20,7 +20,7 @@ categories:
   - "Fintech Regulation"
   - "AI Risk Management"
 cover:
-  image: "https://picsum.photos/1600/900"
+  image: "https://picsum.photos/seed/agentic-ai-regulatory-gap/1600/900"
   alt: "Abstract visualization of autonomous AI systems and financial regulatory compliance"
   caption: ""
 image_credit_name: "Picsum Photos"

@@ -20,7 +20,7 @@ categories:
   - AI in Finance
   - Enterprise Technology
 cover:
-  image: "https://picsum.photos/1600/900"
+  image: "https://picsum.photos/seed/fintech-ai-infrastructure/1600/900"
   alt: "Abstract digital visualization of AI infrastructure and financial data processing in fintech systems"
   caption: ""
 image_credit_name: "Picsum Photos"
