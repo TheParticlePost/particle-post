@@ -30,10 +30,11 @@ if sys.platform == "win32":
 _REPO_ROOT = Path(__file__).resolve().parent.parent
 load_dotenv(dotenv_path=_REPO_ROOT / ".env", override=True)
 
-POSTS_DIR      = _REPO_ROOT / "blog" / "content" / "posts"
-HISTORY_FILE   = _REPO_ROOT / "blog" / "data" / "topics_history.json"
-REJECTIONS_DIR = _REPO_ROOT / "pipeline" / "logs" / "rejections"
-FEEDBACK_FILE  = _REPO_ROOT / "pipeline" / "data" / "writer_feedback.json"
+POSTS_DIR       = _REPO_ROOT / "blog" / "content" / "posts"
+HISTORY_FILE    = _REPO_ROOT / "blog" / "data" / "topics_history.json"
+REJECTIONS_DIR  = _REPO_ROOT / "pipeline" / "logs" / "rejections"
+FEEDBACK_FILE   = _REPO_ROOT / "pipeline" / "data" / "writer_feedback.json"
+POST_INDEX_FILE = _REPO_ROOT / "pipeline" / "config" / "post_index.json"
 
 MAX_ATTEMPTS = 2
 
@@ -216,7 +217,7 @@ def _submit_to_search_engines(url: str) -> None:
             print(f"  [WARN] {label} submission failed: {exc}")
 
 
-def _write_post(content: str, dry_run: bool) -> None:
+def _write_post(content: str, dry_run: bool, funnel_type: str = "???") -> None:
     """Extract metadata from frontmatter and write the post to disk."""
     slug  = _extract_frontmatter_field(content, "slug")
     title = _extract_frontmatter_field(content, "title")
@@ -231,9 +232,10 @@ def _write_post(content: str, dry_run: bool) -> None:
 
     if dry_run:
         print(f"\n[DRY RUN] Would write: {post_path}")
-        print(f"  Title : {title}")
-        print(f"  Slug  : {slug}")
-        print(f"  Tags  : {tags}")
+        print(f"  Title      : {title}")
+        print(f"  Slug       : {slug}")
+        print(f"  Funnel type: {funnel_type}")
+        print(f"  Tags       : {tags}")
         print(f"\nContent preview (first 400 chars):\n{content[:400]}\n")
         return
 
@@ -242,10 +244,47 @@ def _write_post(content: str, dry_run: bool) -> None:
     print(f"\nPost written to: {post_path}")
 
     _update_history(title=title, slug=slug, tags=tags, filename=filename)
+    _update_post_index(title=title, slug=slug, funnel_type=funnel_type, date_str=date_str)
 
     # Submit to search engines for immediate indexing
     article_url = f"https://theparticlepost.com/posts/{slug}/"
     _submit_to_search_engines(article_url)
+
+
+def _update_post_index(title: str, slug: str, funnel_type: str, date_str: str) -> None:
+    """
+    Maintain a compact post index for the writer's internal linking context.
+
+    Format (one entry per post, kept sorted newest-first, max 100 posts):
+      {"posts": [{"slug": "...", "title": "...", "funnel_type": "TOF", "date": "YYYY-MM-DD"}, ...]}
+
+    The writing_task loads this and formats it as pipe-separated lines (~85 chars each)
+    so the writer can see the full archive in ~2,000 tokens regardless of size.
+    """
+    POST_INDEX_FILE.parent.mkdir(parents=True, exist_ok=True)
+    if POST_INDEX_FILE.exists():
+        try:
+            index = json.loads(POST_INDEX_FILE.read_text(encoding="utf-8"))
+        except Exception:
+            index = {"posts": []}
+    else:
+        index = {"posts": []}
+
+    # Avoid duplicates (same slug on retry)
+    index["posts"] = [p for p in index["posts"] if p.get("slug") != slug]
+    index["posts"].append({
+        "slug":        slug,
+        "title":       title,
+        "funnel_type": funnel_type,
+        "date":        date_str,
+    })
+    # Newest first, keep last 100
+    index["posts"] = sorted(index["posts"], key=lambda p: p.get("date", ""), reverse=True)[:100]
+
+    POST_INDEX_FILE.write_text(
+        json.dumps(index, indent=2, ensure_ascii=False), encoding="utf-8"
+    )
+    print(f"  Post index updated ({len(index['posts'])} entries).")
 
 
 def _update_history(title: str, slug: str, tags: list, filename: str) -> None:
@@ -340,7 +379,15 @@ def main() -> None:
         _save_coaching_notes(verdict, args.slot)
 
         if decision == "APPROVE":
-            _write_post(content=formatter_content, dry_run=args.dry_run)
+            # Extract funnel_type from the selection task output (index 1)
+            funnel_type = "???"
+            try:
+                sel_raw = result.tasks_output[1].raw or ""
+                sel_json = json.loads(_strip_code_fences(sel_raw))
+                funnel_type = sel_json.get("funnel_type", "???")
+            except Exception:
+                pass
+            _write_post(content=formatter_content, dry_run=args.dry_run, funnel_type=funnel_type)
             return  # success
 
         # REJECT path

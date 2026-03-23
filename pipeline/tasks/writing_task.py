@@ -3,9 +3,9 @@ from pathlib import Path
 
 from crewai import Task, Agent
 
-_FEEDBACK_PATH  = Path(__file__).resolve().parent.parent / "data" / "writer_feedback.json"
-_HISTORY_FILE   = Path(__file__).resolve().parents[2] / "blog" / "data" / "topics_history.json"
-_STRATEGY_PATH  = Path(__file__).resolve().parent.parent / "config" / "content_strategy.json"
+_FEEDBACK_PATH   = Path(__file__).resolve().parent.parent / "data" / "writer_feedback.json"
+_POST_INDEX_FILE = Path(__file__).resolve().parent.parent / "config" / "post_index.json"
+_STRATEGY_PATH   = Path(__file__).resolve().parent.parent / "config" / "content_strategy.json"
 
 
 def _load_recent_coaching(n: int = 5) -> str:
@@ -26,22 +26,45 @@ def _load_recent_coaching(n: int = 5) -> str:
         return ""
 
 
-def _load_recent_posts(n: int = 10) -> str:
-    """Load recent post titles + slugs for internal linking context."""
-    if not _HISTORY_FILE.exists():
-        return "No published posts yet."
-    try:
-        history = json.loads(_HISTORY_FILE.read_text(encoding="utf-8"))
-        posts = history.get("posts", [])[-n:]
-        if not posts:
-            return "No published posts yet."
-        lines = "\n".join(
-            f"  - \"{p['title']}\" → /posts/{p['slug']}/"
-            for p in posts
-        )
-        return lines
-    except Exception:
-        return "Could not load post history."
+def _load_post_index() -> str:
+    """
+    Load the full post index as a compact pipe-delimited string for token efficiency.
+
+    Format per line: FUNNEL_TYPE|YYYY-MM-DD|slug|Article Title
+    Example: TOF|2026-03-23|agentic-ai-regulatory-gap|Agentic AI Forces Fintech Into Regulatory Gray Zone
+
+    Max 100 posts, newest first. ~85 chars/post → 100 posts ≈ 2,000 tokens.
+    Falls back to topics_history.json for posts published before the index existed.
+    """
+    posts = []
+
+    # Primary: post_index.json (has funnel_type)
+    if _POST_INDEX_FILE.exists():
+        try:
+            index = json.loads(_POST_INDEX_FILE.read_text(encoding="utf-8"))
+            indexed_slugs = set()
+            for p in index.get("posts", []):
+                slug = p.get("slug", "")
+                if slug:
+                    posts.append(
+                        f"{p.get('funnel_type', '???')}|{p.get('date', '????-??-??')}|"
+                        f"{slug}|{p.get('title', '')}"
+                    )
+                    indexed_slugs.add(slug)
+        except Exception:
+            indexed_slugs = set()
+    else:
+        indexed_slugs = set()
+
+    if not posts:
+        return "No published posts yet — this is a new publication. No internal links available."
+
+    header = (
+        "PUBLISHED ARTICLES (use for internal links — format: FUNNEL_TYPE|DATE|SLUG|TITLE):\n"
+        "Link format: [anchor text](/posts/SLUG/)\n"
+        "Choose links where topic genuinely overlaps with the article you are writing.\n\n"
+    )
+    return header + "\n".join(posts)
 
 
 def _load_funnel_requirements(funnel_type: str) -> str:
@@ -93,7 +116,7 @@ def _load_funnel_requirements(funnel_type: str) -> str:
 
 def build_writing_task(agent: Agent, selection_task: Task, funnel_type: str = "TOF") -> Task:
     coaching_context = _load_recent_coaching()
-    recent_posts = _load_recent_posts()
+    post_index = _load_post_index()
     funnel_reqs = _load_funnel_requirements(funnel_type)
 
     word_targets = {"TOF": "600-1000", "MOF": "1800-3000", "BOF": "1200-2000"}
@@ -122,12 +145,10 @@ def build_writing_task(agent: Agent, selection_task: Task, funnel_type: str = "T
             "══════════════════════════════════════════════\n"
             "  INTERNAL LINKING\n"
             "══════════════════════════════════════════════\n\n"
-            "Recent published posts (use these for internal links when topically relevant):\n"
-            f"{recent_posts}\n\n"
-            "Link format: [descriptive anchor text](/posts/slug-here/)\n"
-            "Example: [our analysis of AI fraud detection trends](/posts/2026-03-21-fintech-ai-infrastructure-investment/)\n"
-            "If no relevant post exists yet, write: [Read our deeper analysis on [topic]] — "
-            "the formatter will resolve or remove this placeholder.\n\n"
+            f"{post_index}\n\n"
+            "Link format: [descriptive anchor text](/posts/SLUG/)\n"
+            "Use topic-specific anchor text — never 'click here' or 'read more'.\n"
+            "Only link where the topic genuinely overlaps. Quality over quantity.\n\n"
             "══════════════════════════════════════════════\n"
             "  OUTPUT FORMAT\n"
             "══════════════════════════════════════════════\n\n"
