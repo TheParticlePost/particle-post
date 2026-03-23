@@ -36,6 +36,7 @@ _STRATEGY_FILE    = _CONFIG_DIR / "marketing_strategy.json"
 _SEO_FILE         = _CONFIG_DIR / "seo_guidelines.md"
 _EDITORIAL_FILE   = _CONFIG_DIR / "editorial_guidelines.md"
 _UI_DIRECTIVES_FILE = _CONFIG_DIR / "ui_directives.json"
+_CONTENT_STRATEGY_FILE = _CONFIG_DIR / "content_strategy.json"
 
 
 # ──────────────────────────────────────────────────────────────────────────────
@@ -236,6 +237,91 @@ def _write_daily_report(output: dict) -> None:
     print(f"  Daily report written → {log_path}")
 
 
+def _apply_content_strategy_changes(output: dict) -> None:
+    """Apply Marketing Director's proposed changes to content_strategy.json.
+
+    Changes are applied one at a time using dot-notation field paths.
+    Protected fields are never modified. Changes are logged to change_log.
+    """
+    changes = output.get("strategy_changes", [])
+    if not changes:
+        print("  Content strategy: no changes proposed.")
+        return
+
+    if not _CONTENT_STRATEGY_FILE.exists():
+        print("  [WARN] content_strategy.json not found — skipping strategy changes.")
+        return
+
+    try:
+        strategy = json.loads(_CONTENT_STRATEGY_FILE.read_text(encoding="utf-8"))
+    except Exception as e:
+        print(f"  [WARN] Could not read content_strategy.json: {e}")
+        return
+
+    # Protected fields that can never be changed via Marketing Director
+    protected = {
+        "funnel_types.TOF.mandatory_sections",
+        "funnel_types.MOF.mandatory_sections",
+        "funnel_types.BOF.mandatory_sections",
+        "internal_linking_strategy.goal",
+        "ai_tells_to_avoid",
+        "evolution_rules",
+    }
+
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    applied = 0
+
+    for change in changes[:2]:  # max 2 changes
+        field_path = change.get("field_path", "")
+        new_value  = change.get("new_value")
+        rationale  = change.get("rationale", "")
+
+        if not field_path or new_value is None:
+            print(f"  [WARN] Skipping invalid change (missing field_path or new_value): {change}")
+            continue
+
+        if any(field_path.startswith(p) for p in protected):
+            print(f"  [WARN] Skipping protected field: {field_path}")
+            continue
+
+        # Navigate the dot-notation path and apply the change
+        keys = field_path.split(".")
+        node = strategy
+        try:
+            for key in keys[:-1]:
+                node = node[key]
+            old_value = node.get(keys[-1])
+            node[keys[-1]] = new_value
+            print(f"  Strategy change applied: {field_path}: {old_value!r} → {new_value!r}")
+            print(f"    Rationale: {rationale}")
+
+            # Log the change
+            strategy.setdefault("change_log", []).append({
+                "date": today,
+                "field_path": field_path,
+                "old_value": old_value,
+                "new_value": new_value,
+                "rationale": rationale,
+                "metric_to_watch": change.get("metric_to_watch", ""),
+                "rollback_trigger": change.get("rollback_trigger", ""),
+            })
+            # Keep last 50 changes in log
+            strategy["change_log"] = strategy["change_log"][-50:]
+            applied += 1
+        except (KeyError, TypeError) as e:
+            print(f"  [WARN] Could not apply change to {field_path}: {e}")
+
+    if applied > 0:
+        strategy["last_updated"] = today
+        strategy["version"] = strategy.get("version", "2.1.0")
+        _CONTENT_STRATEGY_FILE.write_text(
+            json.dumps(strategy, indent=2, ensure_ascii=False), encoding="utf-8"
+        )
+        print(f"  Content strategy updated ({applied} change(s) applied) → {_CONTENT_STRATEGY_FILE.name}")
+    else:
+        print("  Content strategy: no valid changes applied.")
+
+
 # ──────────────────────────────────────────────────────────────────────────────
 # Main
 # ──────────────────────────────────────────────────────────────────────────────
@@ -285,6 +371,7 @@ def main() -> None:
     _write_seo_guidelines(output)
     _write_editorial_guidelines(output)
     _write_ui_directives(output)
+    _apply_content_strategy_changes(output)
     _write_daily_report(output)
 
     print(f"\n{'='*60}")

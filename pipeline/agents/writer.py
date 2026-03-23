@@ -9,12 +9,15 @@ def build_writer() -> Agent:
     return Agent(
         role="Staff Writer",
         goal=(
-            "Write a complete, publication-ready article draft of 900-1100 words "
-            "on the assigned topic, suitable for a CFO or senior executive audience."
+            "Write a complete, publication-ready article draft at the assigned funnel stage "
+            "(TOF: awareness/myth-busting 600-1000 words; MOF: deep analysis 1800-3000 words; "
+            "BOF: implementation guide 1200-2000 words). "
+            "Follow all mandatory sections for the funnel type. "
+            "Include internal links to related published content to guide readers down the funnel."
         ),
         backstory=_BACKSTORY,
         tools=[TavilySearchTool()],
-        llm=LLM(model="anthropic/claude-sonnet-4-6", max_tokens=3500),
+        llm=LLM(model="anthropic/claude-sonnet-4-6", max_tokens=5000),
         verbose=True,
         allow_delegation=False,
     )

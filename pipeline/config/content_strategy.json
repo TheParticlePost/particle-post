@@ -1,0 +1,145 @@
+{
+  "version": "2.1.0",
+  "last_updated": "2026-03-23",
+  "strategy_notes": "Funnel-based content strategy (TOF/MOF/BOF). Marketing Director may propose max 2 field changes per run with rationale. Changes are applied slowly to measure isolated metric impact.",
+  "change_log": [],
+
+  "schedule": {
+    "Monday":    {"morning": "MOF", "evening": "TOF"},
+    "Tuesday":   {"morning": "TOF", "evening": "TOF"},
+    "Wednesday": {"morning": "MOF", "evening": "BOF"},
+    "Thursday":  {"morning": "TOF", "evening": "TOF"},
+    "Friday":    {"morning": "MOF", "evening": "BOF"},
+    "Saturday":  {"morning": "TOF", "evening": "TOF"},
+    "Sunday":    {"morning": "MOF", "evening": "BOF"}
+  },
+
+  "funnel_types": {
+    "TOF": {
+      "name": "Top of Funnel — Awareness & Myth-Busting",
+      "purpose": "Challenge AI myths, build traffic via searchable questions, drive readers toward MOF content.",
+      "audience": "Early-stage decision-maker, scanning, skeptical. 3-5 min read.",
+      "word_count": {"min": 600, "max": 1000, "target": 750},
+      "h1_format": "Question-focused: 'Does X?', 'Can X?', 'Should X?', 'Is X really?'",
+      "seo_intent": "High-volume question keywords",
+      "mandatory_sections": [
+        "H1 (question-focused, searchable)",
+        "The Most Common Misconception (the myth being challenged)",
+        "What Research Actually Shows (findings in plain language)",
+        "Where This Narrative Breaks (1-2 real scenarios where myth fails)",
+        "What You Should Actually Do (clear, actionable recommendation)",
+        "Clear Verdict (Believe the hype? Ignore it? When it matters?)"
+      ],
+      "internal_links": {
+        "to_MOF": {"min": 2, "max": 3, "required": true, "purpose": "Drive reader to deeper analysis"},
+        "to_BOF": {"min": 0, "max": 1, "required": false, "purpose": "Only if directly relevant"},
+        "anchor_text_examples": [
+          "Read the full research breakdown on [topic]",
+          "See how this plays out in real implementations",
+          "Dive deeper into [topic]"
+        ]
+      },
+      "forbidden": [
+        "Detailed study methodology sections (too technical for awareness stage)",
+        "Function-by-function mapping (save for MOF)",
+        "Implementation friction details (save for BOF)",
+        "More than 2 real-world scenarios"
+      ],
+      "tone": "Conversational, direct verdict, myth-busting energy. Simple answer approach."
+    },
+    "MOF": {
+      "name": "Middle of Funnel — Deep Analysis & Decision Support",
+      "purpose": "Translate research for decision-makers, reduce decision risk, establish authority through nuanced analysis.",
+      "audience": "Director/VP with budget authority, 10-15 min read, evaluating $500K+ decision.",
+      "word_count": {"min": 1800, "max": 3000, "target": 2250},
+      "h1_format": "Claim or decision-focused: 'Why X fails in real companies', 'What research shows about X (and where it fails)'",
+      "seo_intent": "Long-tail decision keywords: ROI, implementation, risks, benefits",
+      "mandatory_sections": [
+        "H1 (claim or question, specific, decision-focused)",
+        "What the Study Actually Tested (research question, sample, timeframe, key limitations)",
+        "What the Results Show (main finding + business translation, including negatives)",
+        "Why These Results Are Often Misused (named misuse patterns, challenge popular narratives)",
+        "What the Study Does NOT Prove (3-5 explicit non-claims with explanations)",
+        "Where This Breaks in Real Organizations (3-5 specific friction scenarios)",
+        "What This Means for [Specific Business Functions] (2-3 functions: applicability, changes, risks)",
+        "Clear Judgment (when works, when doesn't, why cautious — no hedging)"
+      ],
+      "internal_links": {
+        "to_TOF": {"min": 1, "required": true, "purpose": "Ground in myth correction"},
+        "to_BOF": {"min": 1, "required": true, "purpose": "Direct reader to implementation guidance"},
+        "to_MOF": {"min": 1, "required": true, "purpose": "Related analysis"},
+        "total": {"min": 2, "max": 4},
+        "anchor_text_examples": [
+          "Common misconception about [topic]",
+          "How to implement [topic] without the common failures",
+          "Our analysis of [related topic]"
+        ]
+      },
+      "forbidden": [
+        "Hedged verdicts ('it depends' without specific conditions)",
+        "Vendor hype language",
+        "Academic jargon without plain-language explanation"
+      ],
+      "tone": "Expert, balanced, credible. Challenges narratives. Explicit conclusions. No hedging."
+    },
+    "BOF": {
+      "name": "Bottom of Funnel — Implementation & Action Guide",
+      "purpose": "Reduce implementation risk, enable success, capture ready-to-decide audience.",
+      "audience": "Project manager or C-suite leading implementation, 15-20 min read, already committed to investing.",
+      "word_count": {"min": 1200, "max": 2000, "target": 1600},
+      "h1_format": "Action-focused: 'How to implement X without Y', '7 implementation risks for X', 'Step-by-step guide to X'",
+      "seo_intent": "How-to and implementation keywords: 'how to', 'step-by-step', 'avoid', 'prevent'",
+      "mandatory_sections": [
+        "H1 (implementation-focused, not theoretical)",
+        "What You Need to Be True First (3-5 preconditions with explanations)",
+        "Step-by-Step Implementation (5-7 numbered steps: what-to-do, why it matters, watch-for)",
+        "Where This Fails (3-5 specific failure scenarios from real implementations)",
+        "Success Metrics (primary metric + 2-3 secondary, leading vs lagging indicators)",
+        "Decision Checkpoint (3-4 explicit go/no-go criteria before full rollout)",
+        "Clear Verdict (Proceed / Proceed cautiously / Wait — explicit, not hedged)"
+      ],
+      "internal_links": {
+        "to_MOF": {"min": 1, "required": true, "purpose": "Research foundation for this implementation"},
+        "to_TOF": {"min": 1, "required": true, "purpose": "Myth correction relevant to implementation"},
+        "total": {"min": 2, "max": 3},
+        "anchor_text_examples": [
+          "Our research breakdown on [topic]",
+          "The common misconception about [topic]"
+        ]
+      },
+      "forbidden": [
+        "Theoretical discussion without actionable steps",
+        "Vague verdicts like 'it depends' without conditions",
+        "No go/no-go gates",
+        "No failure scenarios"
+      ],
+      "tone": "Practical, action-oriented, risk-aware. 'Here is how to do this right' energy."
+    }
+  },
+
+  "internal_linking_strategy": {
+    "goal": "Drive visitors progressively down the funnel: TOF (awareness) → MOF (evaluation) → BOF (implementation). Each stage pulls the reader toward conversion and ad engagement.",
+    "principle": "TOF articles send readers deeper. MOF articles bridge awareness and action. BOF articles close with confidence.",
+    "link_format": "Use descriptive anchor text. Never 'click here' or 'read more'. Use topic-specific text: 'our analysis of AI productivity ROI' not 'read more here'.",
+    "recent_post_linking": "Writer receives the 10 most recent post titles and slugs. Link to them when topically relevant using relative Hugo paths: /posts/slug-here/"
+  },
+
+  "ai_tells_to_avoid": [
+    "delve", "game-changing", "transformative", "revolutionary", "groundbreaking",
+    "unprecedented", "disruptive", "utilize", "seamlessly", "leverage (as metaphor)",
+    "it is worth noting", "it is important to note", "in today's rapidly evolving landscape",
+    "em dash overuse — used as stylistic connector more than once per paragraph is a strong AI signal",
+    "furthermore", "moreover", "in conclusion", "in summary",
+    "it is important to", "one must consider", "as we can see",
+    "this is a testament to", "a myriad of", "at the end of the day",
+    "rest assured", "the fact of the matter is", "needless to say"
+  ],
+
+  "evolution_rules": {
+    "max_changes_per_run": 2,
+    "required_fields_per_change": ["field_path", "old_value", "new_value", "rationale", "metric_to_watch", "rollback_trigger"],
+    "protected_fields": ["funnel_types.TOF.mandatory_sections", "funnel_types.MOF.mandatory_sections", "funnel_types.BOF.mandatory_sections", "internal_linking_strategy.goal", "ai_tells_to_avoid"],
+    "change_frequency_days": 7,
+    "rollback_rule": "If metric_to_watch worsens by more than 10% after 14 days, revert the change and log it."
+  }
+}

@@ -122,7 +122,29 @@ def build_marketing_analysis_task(agent: Agent) -> Task:
             '"property": "--gap", "rationale": "bounce rate 82% exceeds 75% threshold — '
             'more whitespace reduces cognitive load"}\n\n'
 
-            "═══ STEP 6: OUTPUT ═══\n\n"
+            "═══ STEP 6: CONTENT STRATEGY EVOLUTION (OPTIONAL) ═══\n\n"
+
+            "Review the current content_strategy.json (your context includes the funnel schedule, "
+            "word counts, and distribution). You may propose 1-2 small changes if data clearly supports it.\n\n"
+
+            "RULES FOR PROPOSING CHANGES:\n"
+            "  1. Maximum 2 changes per run\n"
+            "  2. Only propose if GA4/GSC data clearly shows a specific metric problem tied to the strategy\n"
+            "  3. Never change mandatory_sections, internal_linking_strategy.goal, or ai_tells_to_avoid\n"
+            "  4. Wait at least 7 days between changes to the same field\n"
+            "  5. If metrics are healthy or data is sparse (< 100 sessions), set strategy_changes to []\n\n"
+
+            "EXAMPLES OF VALID CHANGES:\n"
+            "  - Adjust schedule (e.g., move BOF from Sunday to Saturday if Sunday shows low session duration)\n"
+            "  - Adjust word count targets within the funnel type ranges\n"
+            "  - Update tone guidance for a specific funnel type\n\n"
+
+            "EXAMPLES OF INVALID CHANGES:\n"
+            "  - Removing mandatory sections from any funnel type\n"
+            "  - Changing internal linking minimums to 0\n"
+            "  - Changing ai_tells_to_avoid list\n\n"
+
+            "═══ STEP 7: OUTPUT ═══\n\n"
 
             "Output the following four blocks IN ORDER, with NO prose between them.\n\n"
 
@@ -140,8 +162,20 @@ def build_marketing_analysis_task(agent: Agent) -> Task:
             '    "description": "One sentence describing what this plan is doing"\n'
             "  },\n"
             '  "update_editorial_guidelines": false,\n'
-            '  "ui_directives": null\n'
+            '  "ui_directives": null,\n'
+            '  "strategy_changes": []\n'
             "}\n\n"
+            "If strategy changes were warranted (Step 6), replace strategy_changes [] with:\n"
+            '  "strategy_changes": [\n'
+            '    {\n'
+            '      "field_path": "schedule.Sunday.morning",\n'
+            '      "old_value": "MOF",\n'
+            '      "new_value": "TOF",\n'
+            '      "rationale": "Sunday morning GA4 data shows avg session duration 35s — awareness content performs better",\n'
+            '      "metric_to_watch": "avg_session_duration",\n'
+            '      "rollback_trigger": "avg_session_duration drops >10% over 14 days"\n'
+            '    }\n'
+            '  ]\n\n'
             "If UI directives were warranted (Step 5), replace ui_directives null with:\n"
             '  "ui_directives": {\n'
             '    "trigger_metric": "avg_session_duration",\n'
@@ -177,7 +211,7 @@ def build_marketing_analysis_task(agent: Agent) -> Task:
         ),
         expected_output=(
             "Block 1: valid JSON (decision, rationale, strategy_update, update_editorial_guidelines, "
-            "ui_directives). "
+            "ui_directives, strategy_changes). "
             "Block 2: ===SEO_GUIDELINES=== delimiter followed by full seo_guidelines.md markdown. "
             "Block 3: ===DAILY_REPORT=== delimiter followed by full daily report markdown. "
             "Block 4 (optional): ===EDITORIAL_GUIDELINES=== delimiter followed by full editorial "
