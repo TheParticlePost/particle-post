@@ -1,1 +1,19 @@
-{"notes": []}
+{
+  "notes": [
+    {
+      "text": "The H1 title does not contain any of this week's primary SEO keywords (e.g. 'fintech AI', 'AI risk management finance', 'AI trading algorithms'). Retitle to something like 'Fintech AI Regulatory Gap: How Agentic Systems Are Outpacing Compliance Frameworks in 2026' to capture target keyword traffic without sacrificing editorial voice.",
+      "slot": "morning",
+      "date": "2026-03-23T17:25:40.040793+00:00"
+    },
+    {
+      "text": "The Sources section lists only two URLs (Taylor Wessing and FinTech Futures), but the article body cites at least five named sources — FinRegLab, Debevoise & Plimpton, Hogan Lovells, Braithwaite, and Klarna company filings. Every inline citation must have a corresponding URL in the Sources section; missing links undermine credibility and prevent editors from verifying claims.",
+      "slot": "morning",
+      "date": "2026-03-23T17:25:40.040793+00:00"
+    },
+    {
+      "text": "The stat-box citing Forbes contributor Zenon Kapron ('5% of intraday liquidity buffers... by year-end 2025') is a single-contributor Forbes piece, not a primary research source. For a statistic this specific and consequential, cite the underlying research report directly, or add a qualifying phrase such as 'per Forbes contributor Zenon Kapron, citing [underlying source]' to flag its secondary-source nature to readers.",
+      "slot": "morning",
+      "date": "2026-03-23T17:25:40.040793+00:00"
+    }
+  ]
+}
