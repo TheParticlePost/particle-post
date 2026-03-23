@@ -1,0 +1,51 @@
+name: Marketing Director (noon ET)
+
+on:
+  schedule:
+    - cron: "0 16 * * *"   # noon EDT (UTC-4). In winter EST: 11am ET — acceptable.
+  workflow_dispatch: {}    # manual trigger for testing
+
+permissions:
+  contents: write
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          token: ${{ secrets.GIT_TOKEN_EXP_21_MAY }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run Marketing Director analysis
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          TAVILY_API_KEY: ${{ secrets.TAVILY }}
+          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+          GA4_PROPERTY_ID: ${{ secrets.GA4_PROPERTY_ID }}
+          GSC_SITE_URL: ${{ secrets.GSC_SITE_URL }}
+        run: python -m pipeline.marketing_run
+
+      - name: Commit updated strategy files
+        run: |
+          git config user.name "Particle Post Bot"
+          git config user.email "bot@particlepost.com"
+          git add \
+            pipeline/config/seo_guidelines.md \
+            pipeline/config/marketing_strategy.json \
+            pipeline/config/editorial_guidelines.md \
+            pipeline/logs/marketing/
+          git diff --staged --quiet || git commit -m "auto: marketing analysis $(date -u +%Y-%m-%d)"
+          git push

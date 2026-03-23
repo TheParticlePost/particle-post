@@ -1,0 +1,36 @@
+{
+  "current_plan": {
+    "type": "NEW",
+    "started": "2026-03-22",
+    "description": "Initial strategy — establish content presence and baseline organic metrics",
+    "content_pillar_focus": "AI in Finance Operations",
+    "target_keywords": [
+      "AI in finance",
+      "artificial intelligence banking",
+      "fintech AI",
+      "AI investment strategy",
+      "machine learning financial services",
+      "AI trading algorithms",
+      "AI risk management finance"
+    ],
+    "long_tail_keywords": [
+      "how AI is changing investment banking 2026",
+      "AI fraud detection banks",
+      "artificial intelligence risk management finance",
+      "machine learning credit scoring banks",
+      "AI compliance financial services"
+    ],
+    "evaluation_date": "2026-03-29",
+    "rationale": "Initial setup — no performance data available yet. Focusing on the highest-value content pillar (AI in Finance Operations) to build topical authority fastest."
+  },
+  "metrics_baseline": {
+    "date": "2026-03-22",
+    "sessions_7d": 0,
+    "sessions_30d": 0,
+    "total_clicks_28d": 0,
+    "total_impressions_28d": 0,
+    "avg_position": 0,
+    "top_queries": []
+  },
+  "decision_history": []
+}
