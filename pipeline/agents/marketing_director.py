@@ -5,6 +5,7 @@ from crewai import Agent, LLM
 
 from pipeline.tools.ga4_analytics import GA4AnalyticsTool
 from pipeline.tools.google_trends import GoogleTrendsTool
+from pipeline.tools.hostinger import HostingerTool
 from pipeline.tools.search_console import SearchConsoleTool
 from pipeline.tools.tavily_search import TavilySearchTool
 
@@ -183,6 +184,7 @@ def build_marketing_director() -> Agent:
             SearchConsoleTool(),
             GoogleTrendsTool(),
             TavilySearchTool(),
+            HostingerTool(),
         ],
         llm=LLM(model="anthropic/claude-sonnet-4-6", max_tokens=4000),
         verbose=True,
