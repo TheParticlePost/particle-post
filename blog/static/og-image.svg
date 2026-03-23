@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#FFFFFF"/>
+  <!-- Left blue accent bar -->
+  <rect width="8" height="630" fill="#2563EB"/>
+  <!-- Bottom strip -->
+  <rect y="594" width="1200" height="36" fill="#F8FAFC"/>
+  <rect y="594" width="1200" height="3" fill="#2563EB"/>
+  <!-- Decorative circles -->
+  <circle cx="1050" cy="180" r="220" fill="#EFF6FF"/>
+  <circle cx="1100" cy="480" r="120" fill="#DBEAFE"/>
+  <!-- Logo wordmark -->
+  <text x="80" y="268" font-family="system-ui,-apple-system,sans-serif" font-size="80"
+        font-weight="900" letter-spacing="6" fill="#111827">PARTICLE</text>
+  <rect x="80" y="280" width="620" height="7" rx="3.5" fill="#2563EB"/>
+  <text x="80" y="358" font-family="system-ui,-apple-system,sans-serif" font-size="80"
+        font-weight="900" letter-spacing="6" fill="#2563EB">POST</text>
+  <!-- Tagline -->
+  <text x="80" y="430" font-family="system-ui,-apple-system,sans-serif" font-size="26"
+        font-weight="400" fill="#6B7280">AI in Business &amp; Finance &nbsp;·&nbsp; Twice Daily</text>
+  <!-- Domain -->
+  <text x="80" y="612" font-family="system-ui,-apple-system,sans-serif" font-size="18"
+        font-weight="600" fill="#2563EB">theparticlepost.com</text>
+</svg>

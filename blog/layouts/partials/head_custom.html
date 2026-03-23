@@ -1,3 +1,8 @@
+<!-- Google Fonts: Inter (body) + Plus Jakarta Sans (headings) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+
 {{- if .IsPage }}
 <script type="application/ld+json">
 {
@@ -21,7 +26,7 @@
     "@type": "WebPage",
     "@id": {{ .Permalink | jsonify }}
   }
-  {{- with .Params.image }},
+  {{- with .Params.cover.image }},
   "image": {{ . | jsonify }}
   {{- end }}
 }

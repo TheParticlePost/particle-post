@@ -1,183 +1,552 @@
-/* =============================================
-   PARTICLE POST — Brand Identity Overrides
-   PaperMod CSS variable overrides only.
-   Never edit themes/PaperMod directly.
-   ============================================= */
+/* ============================================================
+   Particle Post — Custom Design System
+   Clean Modern Light theme (Stratechery/Morning Brew style)
+   ============================================================ */
 
-/* --- Dark mode palette --- */
-.dark {
-  --theme: #0D1117;
-  --entry: #161B22;
-  --primary: #F6F8FA;
-  --secondary: #8B949E;
-  --tertiary: #21262D;
-  --content: #C9D1D9;
-  --hljs-bg: #161B22;
-  --code-bg: #21262D;
-  --border: #30363D;
-}
-
-/* --- Light mode palette --- */
+/* ------------------------------------------------------------
+   1. CSS Variables & Typography Tokens
+   ------------------------------------------------------------ */
 :root {
-  --theme: #FFFFFF;
-  --entry: #F6F8FA;
-  --primary: #0D1117;
-  --secondary: #57606A;
-  --tertiary: #EAEEF2;
-  --content: #24292F;
-  --hljs-bg: #F6F8FA;
-  --code-bg: #EAEEF2;
-  --border: #D0D7DE;
-}
+  /* Light mode palette */
+  --theme:    #FFFFFF;
+  --entry:    #F8FAFC;
+  --primary:  #111827;
+  --secondary:#6B7280;
+  --tertiary: #F1F5F9;
+  --content:  #374151;
+  --hljs-bg:  #F8FAFC;
+  --code-bg:  #F1F5F9;
+  --border:   #E5E7EB;
 
-/* --- Accent colours --- */
-:root {
-  --accent-blue: #2563EB;
+  /* Brand accents */
+  --accent-blue:  #2563EB;
   --accent-amber: #F59E0B;
+
+  /* Typography */
+  --font-body:    'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-heading: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-mono:    ui-monospace, 'Cascadia Code', 'Fira Code', monospace;
+
+  /* Layout */
+  --nav-width:  1100px;
+  --gap:        24px;
 }
 
-/* --- Logo / site name --- */
-.logo a,
-#site-header .logo a {
-  font-family: ui-monospace, "Cascadia Code", "Fira Code", monospace;
-  font-size: 1rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
+/* Dark mode — fix dead .dark {} selector; PaperMod uses [data-theme="dark"] */
+[data-theme="dark"] {
+  --theme:    #0D1117;
+  --entry:    #161B22;
+  --primary:  #F6F8FA;
+  --secondary:#8B949E;
+  --tertiary: #21262D;
+  --content:  #C9D1D9;
+  --hljs-bg:  #161B22;
+  --code-bg:  #21262D;
+  --border:   #30363D;
+}
+
+/* ------------------------------------------------------------
+   2. Global Typography
+   ------------------------------------------------------------ */
+body {
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+/* ------------------------------------------------------------
+   3. Logo Wordmark
+   ------------------------------------------------------------ */
+.logo-wordmark {
+  display: inline-flex;
+  flex-direction: column;
+  line-height: 1;
+  gap: 3px;
+  text-decoration: none;
+}
+
+.logo-particle {
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: var(--primary);
   text-transform: uppercase;
-  color: var(--primary);
 }
 
-/* --- Links --- */
-a {
+.logo-rule {
+  display: block;
+  height: 2px;
+  background: var(--accent-blue);
+  width: 100%;
+  border-radius: 1px;
+}
+
+.logo-post {
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: var(--accent-blue);
+  text-transform: uppercase;
+}
+
+/* ------------------------------------------------------------
+   4. Navigation
+   ------------------------------------------------------------ */
+.nav {
+  max-width: calc(var(--nav-width) + var(--gap) * 2);
+}
+
+/* Subscribe pill button */
+.nav-subscribe-btn {
+  background: var(--accent-blue);
+  color: #fff !important;
+  border-radius: 6px;
+  padding: 0 14px;
+  line-height: 34px;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  display: inline-block;
+  text-decoration: none !important;
+  transition: background 0.15s ease;
+  margin: auto 0;
+}
+
+.nav-subscribe-btn:hover {
+  background: #1d4ed8;
+  color: #fff !important;
+}
+
+/* ------------------------------------------------------------
+   5. Homepage Hero
+   ------------------------------------------------------------ */
+.home-info .entry-header h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.home-info .entry-content {
+  font-size: 1.125rem;
+  color: var(--secondary);
+  line-height: 1.7;
+  max-width: 560px;
+  -webkit-line-clamp: unset !important;
+  display: block !important;
+  overflow: visible !important;
+  margin-bottom: 2rem;
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 0.875rem;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 0.25rem;
+}
+
+.btn-primary {
+  display: inline-block;
+  background: var(--accent-blue);
+  color: #fff;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  padding: 0.625rem 1.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.btn-primary:hover {
+  background: #1d4ed8;
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--secondary);
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.9375rem;
+  text-decoration: none;
+  border: 1px solid var(--border);
+  padding: 0.625rem 1.25rem;
+  border-radius: 6px;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent-blue);
   color: var(--accent-blue);
 }
-a:hover {
-  color: var(--accent-amber);
+
+/* PaperMod's first-entry home-info overrides */
+.first-entry.home-info {
+  min-height: unset;
+  border-bottom: none;
+  margin: 0;
+  padding: 3rem 0 2.5rem;
 }
 
-/* --- Post title links --- */
-.post-title a,
-h1.post-title,
-.entry-header h2 a {
-  color: var(--primary);
+/* ------------------------------------------------------------
+   6. Post Card Grid (2-column layout)
+   ------------------------------------------------------------ */
+/* Widen the list page to fit 2 columns */
+.list .main {
+  max-width: calc(880px + var(--gap) * 2);
 }
-.post-title a:hover,
-.entry-header h2 a:hover {
+
+/* Grid wrapper injected by list.html override */
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--gap);
+}
+
+@media (max-width: 640px) {
+  .posts-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Card base styling */
+.post-entry {
+  background: var(--theme);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  padding: 0;
+  transition: box-shadow 0.2s ease, transform 0.15s ease;
+  position: relative;
+}
+
+.post-entry:hover {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+[data-theme="dark"] .post-entry:hover {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* Cover image fills card top edge-to-edge */
+.post-entry .entry-cover {
+  margin: 0;
+  border-radius: 0;
+}
+
+.post-entry .entry-cover img {
+  border-radius: 0;
+  width: 100%;
+  height: 196px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Card body padding */
+.post-entry .entry-header {
+  padding: 0.875rem 1.25rem 0;
+}
+
+.post-entry .entry-content {
+  padding: 0 1.25rem;
+  margin-top: 0.375rem;
+}
+
+.post-entry .entry-footer {
+  padding: 0.5rem 1.25rem 1.125rem;
+}
+
+/* Card title */
+.post-entry .entry-header h2 {
+  font-family: var(--font-heading);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--primary);
+  margin: 0;
+}
+
+.post-entry:hover .entry-header h2 {
   color: var(--accent-blue);
 }
 
-/* --- Headings inside article --- */
-.post-content h2,
-.post-content h3,
-.post-content h4 {
-  color: var(--primary);
-  border-left: 3px solid var(--accent-blue);
-  padding-left: 0.6rem;
-  margin-left: -0.75rem;
+/* Card excerpt */
+.post-entry .entry-content p {
+  font-size: 0.875rem;
+  color: var(--secondary);
+  line-height: 1.6;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-/* --- Key Takeaway / blockquote --- */
-.post-content blockquote {
-  border-left: 4px solid var(--accent-blue);
-  background: var(--entry);
-  padding: 1rem 1.25rem;
-  border-radius: 0 6px 6px 0;
-  font-style: italic;
+/* Category pill */
+.category-pill {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--accent-blue);
+  background: #EFF6FF;
+  border-radius: 4px;
+  padding: 2px 8px;
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+}
+
+[data-theme="dark"] .category-pill {
+  background: rgba(37, 99, 235, 0.15);
+  color: #93c5fd;
+}
+
+.category-pill:hover {
+  background: #DBEAFE;
+  text-decoration: none;
+}
+
+/* ------------------------------------------------------------
+   7. Article / Single Post Page
+   ------------------------------------------------------------ */
+.post-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+  color: var(--primary);
+}
+
+.post-single .entry-cover {
+  margin-bottom: 0.375rem;
+}
+
+.post-single .entry-cover img {
+  width: 100%;
+  max-height: 480px;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+}
+
+.post-content {
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.8;
   color: var(--content);
 }
 
-/* --- Stat box shortcode --- */
+/* Headings with blue left accent */
+.post-content h2 {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary);
+  border-left: 3px solid var(--accent-blue);
+  padding-left: 0.75rem;
+  margin-left: 0;
+  margin-top: 2.25rem;
+  line-height: 1.3;
+}
+
+.post-content h3 {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--primary);
+  border-left: 2px solid var(--accent-blue);
+  padding-left: 0.6rem;
+  margin-left: 0;
+  margin-top: 1.75rem;
+}
+
+.post-content h4 {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-top: 1.5rem;
+}
+
+/* Blockquotes */
+.post-content blockquote {
+  border-left: 4px solid var(--accent-blue);
+  background: var(--entry);
+  border-radius: 0 8px 8px 0;
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: var(--secondary);
+}
+
+.post-content a {
+  color: var(--accent-blue);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.post-content a:hover {
+  color: #1d4ed8;
+}
+
+/* ------------------------------------------------------------
+   8. Stat Box Shortcode
+   ------------------------------------------------------------ */
 .stat-box {
   border: 1px solid var(--accent-blue);
   border-left: 4px solid var(--accent-blue);
   background: var(--entry);
-  border-radius: 6px;
-  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
   margin: 1.5rem 0;
 }
-.stat-box .stat-number {
-  font-size: 2rem;
-  font-weight: 700;
+
+.stat-number {
+  font-family: var(--font-heading);
+  font-size: 2.25rem;
+  font-weight: 800;
   color: var(--accent-amber);
+  line-height: 1;
   display: block;
-  line-height: 1.1;
-}
-.stat-box .stat-label {
-  font-size: 0.875rem;
-  color: var(--secondary);
-  margin-top: 0.25rem;
-  display: block;
-}
-.stat-box .stat-source {
-  font-size: 0.75rem;
-  color: var(--secondary);
-  margin-top: 0.5rem;
-  display: block;
-  font-style: italic;
+  margin-bottom: 0.35rem;
 }
 
-/* --- Image credit line --- */
+.stat-label {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  color: var(--content);
+  line-height: 1.5;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.stat-source {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--secondary);
+  font-style: italic;
+  display: block;
+}
+
+/* ------------------------------------------------------------
+   9. Table of Contents
+   ------------------------------------------------------------ */
+.toc {
+  background: var(--entry);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+}
+
+.toc .details summary {
+  font-family: var(--font-heading);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--secondary);
+  cursor: pointer;
+}
+
+.toc a {
+  color: var(--secondary);
+  text-decoration: none;
+}
+
+.toc a:hover {
+  color: var(--accent-blue);
+}
+
+/* ------------------------------------------------------------
+   10. Image Credit
+   ------------------------------------------------------------ */
 .image-credit {
   font-size: 0.72rem;
   color: var(--secondary);
   text-align: center;
-  margin-top: -0.5rem;
-  margin-bottom: 1.5rem;
+  margin-top: -0.25rem;
+  margin-bottom: 1.25rem;
 }
+
 .image-credit a {
   color: var(--secondary);
   text-decoration: underline;
 }
 
-/* --- Post meta (date, reading time) --- */
-.post-meta {
-  font-size: 0.8rem;
-  color: var(--secondary);
-}
-
-/* --- Home page hero --- */
-.home-info-container {
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 1.5rem;
-  margin-bottom: 2rem;
-}
-.home-info-container h1 {
-  font-size: 1.75rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-}
-
-/* --- Tags --- */
-.post-tags a {
+/* ------------------------------------------------------------
+   11. Tags / Badges
+   ------------------------------------------------------------ */
+.post-tags a,
+.terms-tags a {
   background: var(--tertiary);
   color: var(--secondary);
-  border-radius: 4px;
-  padding: 2px 8px;
-  font-size: 0.75rem;
-  text-decoration: none;
   border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-family: var(--font-body);
+  padding: 3px 10px;
+  text-decoration: none;
+  transition: border-color 0.15s, color 0.15s;
 }
-.post-tags a:hover {
+
+.post-tags a:hover,
+.terms-tags a:hover {
   border-color: var(--accent-blue);
   color: var(--accent-blue);
 }
 
-/* --- Table of Contents --- */
-.toc {
-  background: var(--entry);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 1rem;
+/* ------------------------------------------------------------
+   12. Post Meta
+   ------------------------------------------------------------ */
+.post-meta {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  color: var(--secondary);
 }
 
-/* --- Responsive typography --- */
-.post-content {
-  font-size: 1.05rem;
-  line-height: 1.75;
+/* ------------------------------------------------------------
+   13. Footer
+   ------------------------------------------------------------ */
+.footer {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
 }
 
+/* ------------------------------------------------------------
+   14. Responsive Adjustments
+   ------------------------------------------------------------ */
 @media (max-width: 768px) {
   .post-content {
     font-size: 1rem;
+    line-height: 1.75;
+  }
+
+  .post-entry .entry-cover img {
+    height: 160px;
+  }
+
+  .home-info .entry-header h1 {
+    font-size: 1.75rem;
   }
 }

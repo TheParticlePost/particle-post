@@ -4,8 +4,12 @@
   on
   {{- if eq $.Params.image_credit_source "unsplash" }}
   <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer">Unsplash</a>
-  {{- else }}
+  {{- else if eq $.Params.image_credit_source "pixabay" }}
+  <a href="https://pixabay.com" target="_blank" rel="noopener noreferrer">Pixabay</a>
+  {{- else if eq $.Params.image_credit_source "pexels" }}
   <a href="https://www.pexels.com" target="_blank" rel="noopener noreferrer">Pexels</a>
+  {{- else }}
+  <a href="{{ $.Params.image_credit_url }}" target="_blank" rel="noopener noreferrer">{{ $.Params.image_credit_source }}</a>
   {{- end }}
 </p>
 {{- end }}

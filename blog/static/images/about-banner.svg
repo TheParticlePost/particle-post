@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" width="1200" height="300">
+  <rect width="1200" height="300" fill="#0D1117"/>
+  <!-- Blue left border -->
+  <rect width="5" height="300" fill="#2563EB"/>
+  <!-- Decorative shapes -->
+  <circle cx="950" cy="80" r="80" fill="#2563EB" opacity="0.06"/>
+  <circle cx="1080" cy="200" r="110" fill="#2563EB" opacity="0.04"/>
+  <circle cx="1170" cy="50" r="50" fill="#F59E0B" opacity="0.05"/>
+  <!-- Wordmark -->
+  <text x="60" y="130" font-family="system-ui,-apple-system,sans-serif" font-size="54"
+        font-weight="900" letter-spacing="4" fill="#F6F8FA">PARTICLE POST</text>
+  <rect x="60" y="143" width="390" height="4" rx="2" fill="#2563EB"/>
+  <!-- Tagline -->
+  <text x="60" y="195" font-family="system-ui,-apple-system,sans-serif" font-size="20"
+        font-weight="400" fill="#8B949E">Authoritative AI in Business &amp; Finance analysis, twice daily.</text>
+  <!-- Domain -->
+  <text x="60" y="248" font-family="system-ui,-apple-system,sans-serif" font-size="16"
+        font-weight="500" fill="#2563EB">theparticlepost.com</text>
+</svg>

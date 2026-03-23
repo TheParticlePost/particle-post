@@ -19,8 +19,10 @@ tags:
 categories:
   - AI in Finance
   - Enterprise Technology
-image: https://picsum.photos/1600/900
-image_alt: "Abstract digital visualization of AI infrastructure and financial data processing in fintech systems"
+cover:
+  image: "https://picsum.photos/1600/900"
+  alt: "Abstract digital visualization of AI infrastructure and financial data processing in fintech systems"
+  caption: ""
 image_credit_name: "Picsum Photos"
 image_credit_url: "https://picsum.photos"
 image_credit_source: "placeholder"
