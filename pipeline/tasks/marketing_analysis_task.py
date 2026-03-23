@@ -8,7 +8,8 @@ def build_marketing_analysis_task(agent: Agent) -> Task:
     Build the Marketing Director's daily analysis task.
 
     The agent collects performance data, evaluates strategy, and outputs
-    a single JSON object that marketing_run.py parses to update all config files.
+    a structured document with a small JSON block + delimited markdown sections.
+    This avoids JSON-escaping failures on large markdown strings.
     """
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
@@ -121,51 +122,66 @@ def build_marketing_analysis_task(agent: Agent) -> Task:
             '"property": "--gap", "rationale": "bounce rate 82% exceeds 75% threshold — '
             'more whitespace reduces cognitive load"}\n\n'
 
-            "═══ STEP 6: OUTPUT JSON ═══\n\n"
+            "═══ STEP 6: OUTPUT ═══\n\n"
 
-            "Output ONLY this JSON object — no prose before or after, no markdown code fences:\n\n"
+            "Output the following four blocks IN ORDER, with NO prose between them.\n\n"
+
+            "─── BLOCK 1: JSON (small — no markdown inside) ───\n\n"
+            "Output this JSON object first. All values must be simple strings, numbers, "
+            "booleans, arrays, or null — NO multiline text, NO markdown:\n\n"
             "{\n"
             '  "decision": "KEEP" | "ADJUST" | "NEW",\n'
-            '  "rationale": "2-3 sentence explanation — be specific about the data that drove the decision",\n'
+            '  "rationale": "2-3 sentence explanation — specific data that drove the decision",\n'
             '  "strategy_update": {\n'
             '    "content_pillar_focus": "e.g. AI in Finance Operations",\n'
-            '    "target_keywords": ["keyword1", "...", "up to 8 max"],\n'
-            '    "long_tail_keywords": ["phrase 1", "...", "up to 6 max"],\n'
+            '    "target_keywords": ["keyword1", "up to 8 max"],\n'
+            '    "long_tail_keywords": ["phrase 1", "up to 6 max"],\n'
             f'    "evaluation_date": "YYYY-MM-DD (7 days from {today})",\n'
             '    "description": "One sentence describing what this plan is doing"\n'
             "  },\n"
-            '  "seo_guidelines": "FULL MARKDOWN for seo_guidelines.md — all 10 sections above",\n'
             '  "update_editorial_guidelines": false,\n'
-            '  "editorial_guidelines": null,\n'
-            '  "daily_report": "FULL MARKDOWN for the daily log — all sections above",\n'
             '  "ui_directives": null\n'
             "}\n\n"
-            "If UI directives were warranted (Step 5), replace the ui_directives null with:\n"
+            "If UI directives were warranted (Step 5), replace ui_directives null with:\n"
             '  "ui_directives": {\n'
             '    "trigger_metric": "avg_session_duration",\n'
             '    "trigger_value": "45s (below 60s threshold)",\n'
             '    "target_metric": "avg_session_duration",\n'
-            '    "directives": [{...}, {...}],\n'
+            '    "directives": [{"component": "...", "change_type": "css_var", '
+            '"property": "...", "rationale": "..."}],\n'
             '    "constraints": ["do not change brand colors", "maintain dark mode compatibility"],\n'
             '    "evaluation_period_days": 7\n'
             "  }\n\n"
 
-            "IMPORTANT NOTES:\n"
-            "  • Set update_editorial_guidelines to true ONLY if you are making a NEW plan "
-            "    that requires significantly different editorial direction\n"
-            "  • If update_editorial_guidelines is true, provide the full replacement content "
-            "    in editorial_guidelines (otherwise leave null)\n"
-            "  • The seo_guidelines and daily_report fields must contain the FULL markdown text — "
-            "    do not truncate or summarize them\n"
-            "  • Escape any double quotes inside the JSON string values with a backslash\n"
+            "─── BLOCK 2: SEO GUIDELINES ───\n\n"
+            "Output this exact delimiter on its own line, then the full markdown:\n\n"
+            "===SEO_GUIDELINES===\n"
+            "(full markdown content of seo_guidelines.md — all 10 sections from Step 3)\n\n"
+
+            "─── BLOCK 3: DAILY REPORT ───\n\n"
+            "Output this exact delimiter on its own line, then the full markdown:\n\n"
+            "===DAILY_REPORT===\n"
+            "(full markdown content of the daily report — all sections from Step 4)\n\n"
+
+            "─── BLOCK 4: EDITORIAL GUIDELINES (conditional) ───\n\n"
+            "Only include this block if update_editorial_guidelines is true in Block 1.\n"
+            "Output this exact delimiter on its own line, then the full replacement markdown:\n\n"
+            "===EDITORIAL_GUIDELINES===\n"
+            "(full replacement content for editorial_guidelines.md)\n\n"
+
+            "RULES:\n"
+            "  • Block 1 JSON must be valid — no prose before it, no markdown code fences\n"
+            "  • The === delimiters must be on their own line with nothing else on that line\n"
+            "  • Do not truncate the SEO guidelines or daily report — write them in full\n"
             "  • ui_directives must be null unless a metric threshold was clearly breached"
         ),
         expected_output=(
-            "A single JSON object with: decision (KEEP/ADJUST/NEW), rationale, strategy_update "
-            "(keywords and pillar focus), seo_guidelines (full markdown), "
-            "update_editorial_guidelines (bool), editorial_guidelines (markdown or null), "
-            "daily_report (full markdown), and ui_directives (null or directive object). "
-            "No prose outside the JSON."
+            "Block 1: valid JSON (decision, rationale, strategy_update, update_editorial_guidelines, "
+            "ui_directives). "
+            "Block 2: ===SEO_GUIDELINES=== delimiter followed by full seo_guidelines.md markdown. "
+            "Block 3: ===DAILY_REPORT=== delimiter followed by full daily report markdown. "
+            "Block 4 (optional): ===EDITORIAL_GUIDELINES=== delimiter followed by full editorial "
+            "guidelines markdown. No prose between blocks."
         ),
         agent=agent,
     )

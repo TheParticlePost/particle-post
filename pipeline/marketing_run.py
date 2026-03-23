@@ -55,49 +55,91 @@ def _strip_code_fences(text: str) -> str:
     return text.strip()
 
 
-def _parse_json_output(raw: str) -> dict:
+def _extract_section(raw: str, delimiter: str) -> str | None:
+    """Extract the content after a ===DELIMITER=== marker until the next === or end of string."""
+    pattern = rf"==={re.escape(delimiter)}===\s*\n(.*?)(?====[A-Z_]+=====|\Z)"
+    match = re.search(pattern, raw, re.DOTALL)
+    return match.group(1).strip() if match else None
+
+
+def _parse_output(raw: str) -> dict:
     """
-    Robustly extract the Marketing Director's JSON output.
-    Three-tier extraction with a safe fallback.
+    Parse the Marketing Director's structured output.
+
+    Expected format:
+      { small JSON block — no embedded markdown }
+      ===SEO_GUIDELINES===
+      (markdown)
+      ===DAILY_REPORT===
+      (markdown)
+      ===EDITORIAL_GUIDELINES===   ← optional
+      (markdown)
+
+    Falls back gracefully if JSON is missing or malformed.
     """
-    cleaned = _strip_code_fences(raw)
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+
+    # ── Extract JSON block (everything before the first ===) ──────────────────
+    json_part = raw
+    first_delim = re.search(r"^===\w+===", raw, re.MULTILINE)
+    if first_delim:
+        json_part = raw[:first_delim.start()]
+
+    json_part = _strip_code_fences(json_part.strip())
+
+    data: dict = {}
 
     # Tier 1: direct parse
     try:
-        return json.loads(cleaned)
+        data = json.loads(json_part)
     except (json.JSONDecodeError, ValueError):
         pass
 
-    # Tier 2: find first { ... } block containing "decision"
-    match = re.search(r'\{[^{}]*"decision"[^{}]*\}', cleaned, re.DOTALL)
-    if match:
-        try:
-            return json.loads(match.group(0))
-        except (json.JSONDecodeError, ValueError):
-            pass
+    # Tier 2: outermost braces in json_part
+    if not data:
+        start = json_part.find("{")
+        end   = json_part.rfind("}")
+        if start != -1 and end > start:
+            try:
+                data = json.loads(json_part[start: end + 1])
+            except (json.JSONDecodeError, ValueError):
+                pass
 
-    # Tier 3: outermost braces
-    start = cleaned.find("{")
-    end   = cleaned.rfind("}")
-    if start != -1 and end > start:
-        try:
-            return json.loads(cleaned[start: end + 1])
-        except (json.JSONDecodeError, ValueError):
-            pass
+    # Tier 3: scan full raw for any {...} containing "decision"
+    if not data:
+        match = re.search(r'\{[^{}]*"decision"[^{}]*\}', raw, re.DOTALL)
+        if match:
+            try:
+                data = json.loads(match.group(0))
+            except (json.JSONDecodeError, ValueError):
+                pass
 
-    # Fallback — log and return minimal KEEP so we don't destroy existing strategy
-    print("\n[WARN] Marketing Director output could not be parsed as JSON.")
-    print(f"  Raw (first 500 chars):\n  {raw[:500]}")
-    return {
-        "decision": "KEEP",
-        "rationale": "Output parse failed — keeping existing strategy unchanged.",
-        "strategy_update": {},
-        "seo_guidelines": None,
-        "update_editorial_guidelines": False,
-        "editorial_guidelines": None,
-        "daily_report": f"# Marketing Analysis {datetime.now(timezone.utc).strftime('%Y-%m-%d')}\n\n"
-                        "⚠️ Analysis failed — JSON output could not be parsed. Check logs.",
-    }
+    if not data:
+        print("\n[WARN] Marketing Director JSON block could not be parsed.")
+        print(f"  JSON part (first 500 chars):\n  {json_part[:500]}")
+        data = {
+            "decision": "KEEP",
+            "rationale": "Output parse failed — keeping existing strategy unchanged.",
+            "strategy_update": {},
+            "update_editorial_guidelines": False,
+            "ui_directives": None,
+        }
+
+    # ── Extract markdown sections ─────────────────────────────────────────────
+    data["seo_guidelines"]       = _extract_section(raw, "SEO_GUIDELINES")
+    data["daily_report"]         = _extract_section(raw, "DAILY_REPORT")
+    data["editorial_guidelines"] = _extract_section(raw, "EDITORIAL_GUIDELINES")
+
+    if not data["seo_guidelines"]:
+        print("  [WARN] ===SEO_GUIDELINES=== section not found in output.")
+    if not data["daily_report"]:
+        print("  [WARN] ===DAILY_REPORT=== section not found — using fallback.")
+        data["daily_report"] = (
+            f"# Marketing Analysis {today}\n\n"
+            "⚠️ Daily report section missing from agent output."
+        )
+
+    return data
 
 
 def _update_strategy_file(output: dict) -> None:
@@ -231,7 +273,7 @@ def main() -> None:
     print("  PARSING MARKETING DIRECTOR OUTPUT")
     print(f"{'='*60}\n")
 
-    output   = _parse_json_output(raw)
+    output   = _parse_output(raw)
     decision = output.get("decision", "KEEP")
     rationale = output.get("rationale", "")
 
