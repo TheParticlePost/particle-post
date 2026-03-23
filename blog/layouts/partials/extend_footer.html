@@ -1,0 +1,55 @@
+{{- with site.Params.googleAnalyticsID }}
+{{- if ne . "G-XXXXXXXXXX" }}
+<!-- Cookie Consent Banner -->
+<div id="cookie-banner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie consent">
+  <div class="cookie-banner-inner">
+    <div class="cookie-banner-text">
+      <strong>We use cookies</strong>
+      <p>We use Google Analytics to understand how visitors interact with Particle Post. By accepting, you help us improve. <a href="/cookies/">Learn more</a></p>
+    </div>
+    <div class="cookie-banner-actions">
+      <button id="cookie-decline" class="cookie-btn cookie-btn-secondary" type="button">Decline</button>
+      <button id="cookie-accept" class="cookie-btn cookie-btn-primary" type="button">Accept Analytics</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var GA_ID = '{{ . }}';
+  var banner  = document.getElementById('cookie-banner');
+  var consent = localStorage.getItem('ppCookieConsent');
+
+  function loadGA() {
+    var s = document.createElement('script');
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    s.async = true;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', GA_ID, { anonymize_ip: true });
+  }
+
+  if (consent === 'accepted') {
+    loadGA();
+  } else if (consent !== 'declined') {
+    // Slight delay so the page renders first
+    setTimeout(function() { banner.classList.add('visible'); }, 800);
+  }
+
+  document.getElementById('cookie-accept').addEventListener('click', function() {
+    localStorage.setItem('ppCookieConsent', 'accepted');
+    banner.classList.remove('visible');
+    loadGA();
+  });
+
+  document.getElementById('cookie-decline').addEventListener('click', function() {
+    localStorage.setItem('ppCookieConsent', 'declined');
+    banner.classList.remove('visible');
+  });
+})();
+</script>
+{{- end }}
+{{- end }}

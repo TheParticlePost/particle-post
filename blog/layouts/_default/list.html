@@ -53,7 +53,17 @@
 
 {{- $term := .Data.Term }}
 
-<div class="posts-grid">
+{{/* Category filter tabs — home page only */}}
+{{- if .IsHome }}
+<div class="filter-tabs" id="filterTabs" role="tablist" aria-label="Filter articles by category">
+  <button class="filter-tab active" data-filter="all" role="tab" aria-selected="true">All</button>
+  {{- range site.Taxonomies.categories.ByCount }}
+  <button class="filter-tab" data-filter="{{ .Page.Title | urlize }}" role="tab" aria-selected="false">{{ .Page.Title }}</button>
+  {{- end }}
+</div>
+{{- end }}
+
+<div class="posts-grid" id="postsGrid">
 {{- range $index, $page := $paginator.Pages }}
 
 {{- $class := "post-entry" }}
@@ -65,12 +75,16 @@
 {{- $class = "post-entry tag-entry" }}
 {{- end }}
 
-<article class="{{ $class }}">
+{{/* Build data-category from first category */}}
+{{- $cat := "" }}
+{{- $cats := $page.GetTerms "categories" }}
+{{- with index $cats 0 }}{{ $cat = .LinkTitle | urlize }}{{ end }}
+
+<article class="{{ $class }}" data-category="{{ $cat }}">
   {{- $isHidden := (.Param "cover.hiddenInList") | default (.Param "cover.hidden") | default false }}
   {{- partial "cover.html" (dict "cxt" . "IsSingle" false "isHidden" $isHidden) }}
   <header class="entry-header">
     {{/* Category pill — first category if present */}}
-    {{- $cats := .GetTerms "categories" }}
     {{- with index $cats 0 }}
     <a href="{{ .Permalink }}" class="category-pill">{{ .LinkTitle }}</a>
     {{- end }}
@@ -79,8 +93,7 @@
       {{- if .Draft }}
       <span class="entry-hint" title="Draft">
         <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">
-          <path
-            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+          <path d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
         </svg>
       </span>
       {{- end }}
@@ -122,6 +135,45 @@
     {{- end }}
   </nav>
 </footer>
+{{- end }}
+
+{{/* Filter tabs JavaScript — home page only */}}
+{{- if .IsHome }}
+<script>
+(function() {
+  var tabs = document.querySelectorAll('.filter-tab');
+  var cards = document.querySelectorAll('#postsGrid article');
+  if (!tabs.length || !cards.length) return;
+
+  tabs.forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      // Update active tab
+      tabs.forEach(function(t) {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+
+      var filter = tab.dataset.filter;
+      var visibleCount = 0;
+
+      cards.forEach(function(card) {
+        var show = filter === 'all' || card.dataset.category === filter;
+        card.style.display = show ? '' : 'none';
+        if (show) visibleCount++;
+      });
+
+      // Show empty state if no cards match
+      var emptyState = document.getElementById('filterEmpty');
+      if (emptyState) {
+        emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
+      }
+    });
+  });
+})();
+</script>
+<p id="filterEmpty" style="display:none;text-align:center;color:var(--secondary);padding:2rem 0;">No articles in this category yet.</p>
 {{- end }}
 
 {{- end }}{{/* end profileMode */}}

@@ -1,0 +1,51 @@
+<footer class="footer-pro">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="{{ "" | absLangURL }}" class="logo-link" aria-label="{{ site.Title }}">
+        <span class="logo-wordmark">
+          <span class="logo-particle">Particle</span>
+          <span class="logo-rule"></span>
+          <span class="logo-post">Post</span>
+        </span>
+      </a>
+      <p class="footer-tagline">Authoritative analysis of AI in Business &amp; Finance.<br>Published twice daily.</p>
+      <a href="/index.xml" class="footer-rss" aria-label="Subscribe via RSS">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/>
+        </svg>
+        Subscribe via RSS
+      </a>
+    </div>
+
+    <div class="footer-links">
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/search/">Search</a></li>
+          <li><a href="/categories/">Categories</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          {{- range site.Menus.footer }}
+          {{- if or (eq .Name "Privacy Policy") (eq .Name "Terms of Service") (eq .Name "Cookie Policy") }}
+          <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+          {{- end }}
+          {{- end }}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>© {{ now.Year }} Particle Post. All rights reserved.</span>
+    <span class="footer-bottom-links">
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/cookies/">Cookies</a>
+    </span>
+  </div>
+</footer>

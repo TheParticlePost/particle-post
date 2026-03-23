@@ -1,6 +1,10 @@
 {{- with site.Params.homeInfoParams }}
 <article class="first-entry home-info">
   <header class="entry-header">
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      Published twice daily
+    </div>
     <h1>{{ .Title | markdownify }}</h1>
   </header>
   <div class="entry-content">
@@ -17,6 +21,13 @@
       </svg>
       Subscribe via RSS
     </a>
+  </div>
+  <div class="hero-stats">
+    <span>🤖 AI-researched</span>
+    <span class="hero-stat-sep">·</span>
+    <span>📈 Finance &amp; Business</span>
+    <span class="hero-stat-sep">·</span>
+    <span>⚡ No hype, just signal</span>
   </div>
 </article>
 {{- end -}}
