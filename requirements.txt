@@ -1,7 +1,7 @@
 crewai==1.11.0
 langchain-anthropic==0.3.12
 tavily-python==0.5.1
-python-dotenv==1.1.0
+python-dotenv==1.1.1
 google-analytics-data>=0.18.0
 google-api-python-client>=2.100.0
 google-auth>=2.23.0
