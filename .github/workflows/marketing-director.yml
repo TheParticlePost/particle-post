@@ -45,16 +45,14 @@ jobs:
         run: python -m pipeline.marketing_run
 
       - name: Commit updated strategy files
-        env:
-          GH_TOKEN: ${{ secrets.GIT_TOKEN_EXP_21_MAY }}
         run: |
           git config user.name "Particle Post Bot"
           git config user.email "bot@particlepost.com"
-          git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git
+          git remote set-url origin "https://x-access-token:${{ secrets.GIT_TOKEN_EXP_21_MAY }}@github.com/${{ github.repository }}.git"
           git add \
             pipeline/config/seo_guidelines.md \
             pipeline/config/marketing_strategy.json \
             pipeline/config/editorial_guidelines.md \
-            pipeline/logs/marketing/
+            "pipeline/logs/marketing/"
           git diff --staged --quiet || git commit -m "auto: marketing analysis $(date -u +%Y-%m-%d)"
           git push
