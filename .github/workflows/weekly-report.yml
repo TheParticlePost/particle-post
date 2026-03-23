@@ -1,0 +1,32 @@
+name: Weekly Report (Friday 8pm ET)
+
+on:
+  schedule:
+    - cron: "0 0 * * 6"   # Saturday 00:00 UTC = Friday 8pm EDT (UTC-4)
+  workflow_dispatch:        # manual trigger for testing
+
+permissions:
+  contents: read
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Send weekly report
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+        run: python -m pipeline.weekly_report_run
