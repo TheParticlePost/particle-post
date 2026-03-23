@@ -60,7 +60,7 @@ def build_production_director() -> Agent:
             f"{seo_guide}"
         ),
         tools=[TavilySearchTool()],
-        llm=LLM(model="claude-sonnet-4-6", max_tokens=1500),
+        llm=LLM(model="anthropic/claude-sonnet-4-6", max_tokens=1500),
         verbose=True,
         allow_delegation=False,
     )
