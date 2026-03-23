@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: write
+  id-token: write   # required for Workload Identity Federation
 
 jobs:
   analyze:
@@ -19,6 +20,12 @@ jobs:
         with:
           submodules: recursive
           token: ${{ secrets.GIT_TOKEN_EXP_21_MAY }}
+
+      - name: Authenticate to Google Cloud (WIF)
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.WIF_PROVIDER }}
+          service_account: ${{ secrets.WIF_SERVICE_ACCOUNT }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -33,7 +40,6 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           TAVILY_API_KEY: ${{ secrets.TAVILY }}
-          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
           GA4_PROPERTY_ID: ${{ secrets.GA4_PROPERTY_ID }}
           GSC_SITE_URL: ${{ secrets.GSC_SITE_URL }}
         run: python -m pipeline.marketing_run

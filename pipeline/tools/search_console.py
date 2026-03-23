@@ -30,24 +30,25 @@ class SearchConsoleTool(BaseTool):
         creds_json = os.environ.get("GOOGLE_CREDENTIALS", "")
         site_url   = os.environ.get("GSC_SITE_URL", "https://theparticlepost.com")
 
-        if not creds_json:
-            return (
-                "[GSC] Not configured — set GOOGLE_CREDENTIALS secret. "
-                "Proceeding with Trends and Tavily data only."
-            )
-
         try:
-            from google.oauth2.service_account import Credentials
             from googleapiclient.discovery import build
         except ImportError:
             return "[GSC] google-api-python-client not installed. Run: pip install google-api-python-client google-auth"
 
         try:
-            creds_dict = json.loads(creds_json)
-            creds = Credentials.from_service_account_info(
-                creds_dict,
-                scopes=["https://www.googleapis.com/auth/webmasters.readonly"],
-            )
+            if creds_json:
+                # Local dev: explicit service account JSON in env var
+                from google.oauth2.service_account import Credentials
+                creds = Credentials.from_service_account_info(
+                    json.loads(creds_json),
+                    scopes=["https://www.googleapis.com/auth/webmasters.readonly"],
+                )
+            else:
+                # GitHub Actions (WIF): use Application Default Credentials
+                import google.auth
+                creds, _ = google.auth.default(
+                    scopes=["https://www.googleapis.com/auth/webmasters.readonly"]
+                )
             service = build("searchconsole", "v1", credentials=creds, cache_discovery=False)
 
             end_date   = datetime.now().strftime("%Y-%m-%d")

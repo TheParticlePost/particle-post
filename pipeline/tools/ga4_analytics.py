@@ -27,10 +27,9 @@ class GA4AnalyticsTool(BaseTool):
         creds_json = os.environ.get("GOOGLE_CREDENTIALS", "")
         property_id = os.environ.get("GA4_PROPERTY_ID", "")
 
-        if not creds_json or not property_id:
+        if not property_id:
             return (
-                "[GA4] Not configured — set GOOGLE_CREDENTIALS and GA4_PROPERTY_ID secrets. "
-                "Proceeding with Trends and Search Console data only."
+                "[GA4] GA4_PROPERTY_ID not set. Proceeding with Trends and Search Console data only."
             )
 
         try:
@@ -42,16 +41,23 @@ class GA4AnalyticsTool(BaseTool):
                 OrderBy,
                 RunReportRequest,
             )
-            from google.oauth2.service_account import Credentials
         except ImportError:
             return "[GA4] google-analytics-data package not installed. Run: pip install google-analytics-data"
 
         try:
-            creds_dict = json.loads(creds_json)
-            creds = Credentials.from_service_account_info(
-                creds_dict,
-                scopes=["https://www.googleapis.com/auth/analytics.readonly"],
-            )
+            if creds_json:
+                # Local dev: explicit service account JSON in env var
+                from google.oauth2.service_account import Credentials
+                creds = Credentials.from_service_account_info(
+                    json.loads(creds_json),
+                    scopes=["https://www.googleapis.com/auth/analytics.readonly"],
+                )
+            else:
+                # GitHub Actions (WIF): use Application Default Credentials
+                import google.auth
+                creds, _ = google.auth.default(
+                    scopes=["https://www.googleapis.com/auth/analytics.readonly"]
+                )
             client = BetaAnalyticsDataClient(credentials=creds)
             days = "7" if period == "7d" else "30"
             prop = f"properties/{property_id}"
