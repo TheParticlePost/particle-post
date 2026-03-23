@@ -21,7 +21,7 @@ def build_formatting_task(
             "   photographer_url, source.\n"
             "3. Extract the [REVISED ARTICLE] section from the editor's output "
             "   (everything between [REVISED ARTICLE] and [EDIT LOG]).\n"
-            "4. Build the filename: {date_str}-{{slug}}.md\n"
+            f"4. Build the filename: {date_str}-<slug>.md\n"
             "5. Build YAML frontmatter with ALL of these fields:\n"
             "   title, date (ISO 8601 UTC), slug, description, keywords (list), "
             "   author, tags (list), categories (list),\n"
