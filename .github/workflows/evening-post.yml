@@ -1,8 +1,8 @@
-name: Evening Post (6pm UTC)
+name: Evening Post (5pm ET)
 
 on:
   schedule:
-    - cron: "0 18 * * *"
+    - cron: "0 21 * * *"
   workflow_dispatch:
     inputs:
       dry_run:
@@ -17,7 +17,7 @@ permissions:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 35
 
     steps:
       - name: Checkout repository
@@ -64,7 +64,7 @@ jobs:
         run: |
           git config user.name "Particle Post Bot"
           git config user.email "bot@particlepost.com"
-          git add blog/content/posts/ blog/data/topics_history.json
+          git add blog/content/posts/ blog/data/topics_history.json pipeline/data/writer_feedback.json
           git diff --staged --quiet || git commit -m "auto: evening post $(date -u +%Y-%m-%d)"
           git push
 

@@ -23,7 +23,10 @@ def build_editing_task(agent: Agent, writing_task: Task) -> Task:
             "[EDIT LOG]\n"
             "- Change 1: description\n"
             "- Change 2: description\n"
-            "(3-5 bullet points)"
+            "(3-5 bullet points)\n\n"
+            "PREVIOUS REJECTION FEEDBACK (blank on first run — if present, the Production Director "
+            "found specific issues. Address all of them before returning the revised article):\n"
+            "{rejection_feedback}"
         ),
         expected_output=(
             "The revised article text under [REVISED ARTICLE], followed by "
