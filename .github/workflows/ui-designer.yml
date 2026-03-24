@@ -12,6 +12,8 @@ jobs:
   design:
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    env:
+      CREWAI_TRACING_ENABLED: "false"
 
     steps:
       - name: Checkout repository
