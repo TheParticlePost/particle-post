@@ -1,10 +1,12 @@
 from crewai import Task, Agent
 
 
-def build_editing_task(agent: Agent, writing_task: Task) -> Task:
+def build_editing_task(agent: Agent, seo_gso_task: Task) -> Task:
     return Task(
         description=(
-            "Edit and improve the article draft. Apply the full Particle Post style guide:\n\n"
+            "Edit and improve the GSO-restructured article draft. "
+            "Read the article from the [RESTRUCTURED ARTICLE]...[END RESTRUCTURED ARTICLE] block "
+            "in the SEO/GSO Specialist's output. Apply the full Particle Post style guide:\n\n"
             "1. Remove all AI-tell phrases: delve, it's worth noting, game-changing, "
             "transformative, landscape, groundbreaking, revolutionary, unprecedented, "
             "robust, leverage (metaphorical), utilize, facilitate, seamlessly.\n"
@@ -33,5 +35,5 @@ def build_editing_task(agent: Agent, writing_task: Task) -> Task:
             "3-5 bullet points under [EDIT LOG] describing what was changed and why."
         ),
         agent=agent,
-        context=[writing_task],
+        context=[seo_gso_task],
     )

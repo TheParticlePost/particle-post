@@ -4,7 +4,7 @@ from crewai import Task, Agent
 def build_validation_task(
     agent: Agent,
     formatting_task: Task,
-    seo_task: Task,
+    seo_gso_task: Task,
     selection_task: Task,
 ) -> Task:
     """
@@ -12,7 +12,7 @@ def build_validation_task(
 
     Context provided:
     - formatting_task: the complete Hugo .md article
-    - seo_task: SEO package JSON with primary_keyword and meta_description
+    - seo_gso_task: SEO/GSO package JSON with primary_keyword, meta_description, has_faq, faq_questions
     - selection_task: original topic JSON including funnel_type and source_urls
     """
     return Task(
@@ -20,12 +20,12 @@ def build_validation_task(
             "Audit the completed Particle Post article before publication.\n\n"
             "You have access to:\n"
             "  • The complete formatted .md article (from the Formatter)\n"
-            "  • The SEO package JSON with primary_keyword and meta_description (from SEO Strategist)\n"
+            "  • The SEO/GSO package JSON with primary_keyword, meta_description, has_faq (from SEO/GSO Specialist)\n"
             "  • The original topic selection JSON with funnel_type and source_urls (from Topic Selector)\n\n"
 
             "═══ PART 1: EVALUATION ═══\n\n"
 
-            "Apply the following 8-point checklist. Start at 100 and deduct points for each failure.\n\n"
+            "Apply the following 10-point checklist. Start at 100 and deduct points for each failure.\n\n"
 
             "1. WORD COUNT — Count words in the article body only (exclude YAML frontmatter). "
             "Check the funnel_type from the selection JSON:\n"
@@ -69,6 +69,19 @@ def build_validation_task(
             "Should contain at least 1 internal markdown link.\n"
             "   Penalty for missing funnel structure: −10 points\n\n"
 
+            "9. ANSWER-FIRST STRUCTURE — Check the first H2 section body:\n"
+            "   The paragraph immediately after the first ## heading must be a direct "
+            "declarative answer (40-60 words). Deduct 5 pts if the first H2 body starts "
+            "with a question, a transition phrase ('In today's...', 'As we explore...'), "
+            "or a generic setup paragraph rather than a direct answer.\n"
+            "   Penalty: −5 points\n\n"
+
+            "10. FAQ SECTION — Only check if has_faq=true in the SEO/GSO package:\n"
+            "    If has_faq is true, the article must contain a '## Frequently Asked Questions' "
+            "section with at least 3 Q+A pairs (formatted as '### Q:' headers or similar).\n"
+            "    Penalty if has_faq=true but FAQ section is missing or has fewer than 3 pairs: −5 points\n"
+            "    If has_faq=false or not set, skip this check (no penalty).\n\n"
+
             "DECISION RULE: If final score ≥ 65 → APPROVE. If below 65 → REJECT.\n\n"
 
             "IMPORTANT: You are an editorial coach, not a nitpick machine. Use tavily_search "
@@ -84,7 +97,8 @@ def build_validation_task(
             "  ✓ 'This is a TOF article but runs 1,400 words — TOF should be 600-1000 for scannability'\n"
             "  ✓ 'MOF article is missing the \"What the Study Does NOT Prove\" section — this is mandatory'\n"
             "  ✓ 'BOF article has no go/no-go decision checkpoint — readers need explicit criteria'\n"
-            "  ✓ 'No internal links to related content — add at least 2 links pointing down the funnel'\n\n"
+            "  ✓ 'No internal links to related content — add at least 2 links pointing down the funnel'\n"
+            "  ✓ 'First H2 starts with a question instead of a direct answer — GSO answer-first structure required'\n\n"
 
             "═══ REQUIRED OUTPUT FORMAT ═══\n\n"
 
@@ -106,5 +120,5 @@ def build_validation_task(
             "No article content embedded. No prose outside the JSON."
         ),
         agent=agent,
-        context=[formatting_task, seo_task, selection_task],
+        context=[formatting_task, seo_gso_task, selection_task],
     )

@@ -1,0 +1,23 @@
+{
+  "last_updated": null,
+  "schema_coverage": {
+    "Article": 0,
+    "FAQPage": 0,
+    "HowTo": 0,
+    "NewsArticle": 0
+  },
+  "keyword_targets": [],
+  "content_gap_priorities": [],
+  "schema_priority": "FAQPage",
+  "avoid_cannibalization": [],
+  "keyword_performance": [],
+  "ai_citation_audit": {
+    "last_audit_date": null,
+    "chatgpt_citations": [],
+    "perplexity_citations": [],
+    "google_aio_citations": [],
+    "notes": ""
+  },
+  "content_gaps": [],
+  "gso_article_log": []
+}

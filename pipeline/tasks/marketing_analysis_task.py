@@ -209,11 +209,28 @@ def build_marketing_analysis_task(agent: Agent) -> Task:
             "===EDITORIAL_GUIDELINES===\n"
             "(full replacement content for editorial_guidelines.md)\n\n"
 
+            "─── BLOCK 5: GSO HANDOFF (always include) ───\n\n"
+            "Output this exact delimiter on its own line, then a JSON object for the SEO/GSO Specialist:\n\n"
+            "===GSO_HANDOFF===\n"
+            "{\n"
+            '  "top_keyword_opportunities": ["keyword 1", "keyword 2", "keyword 3", "keyword 4", "keyword 5"],\n'
+            '  "content_gap_priorities": ["gap topic 1", "gap topic 2", "gap topic 3"],\n'
+            '  "trending_angles": ["trending topic 1", "trending topic 2"],\n'
+            '  "avoid_cannibalization": ["slug-already-covering-topic-1", "slug-2"],\n'
+            '  "schema_priority": "FAQPage"\n'
+            "}\n\n"
+            "  • top_keyword_opportunities: from GSC opportunity queries (pos 5-20) + Trends data\n"
+            "  • content_gap_priorities: specific article ideas not yet covered\n"
+            "  • trending_angles: from Google Trends data collected today\n"
+            "  • avoid_cannibalization: slugs of recent articles on similar topics (from recent articles context)\n"
+            "  • schema_priority: 'FAQPage' for informational, 'HowTo' for step-by-step, 'Article' default\n\n"
+
             "RULES:\n"
             "  • Block 1 JSON must be valid — no prose before it, no markdown code fences\n"
             "  • The === delimiters must be on their own line with nothing else on that line\n"
             "  • Do not truncate the SEO guidelines or daily report — write them in full\n"
-            "  • ui_directives must be null unless a metric threshold was clearly breached"
+            "  • ui_directives must be null unless a metric threshold was clearly breached\n"
+            "  • Block 5 GSO_HANDOFF JSON must always be included — use empty arrays if no data"
         ),
         expected_output=(
             "Block 1: valid JSON (decision, rationale, strategy_update, update_editorial_guidelines, "
@@ -221,7 +238,9 @@ def build_marketing_analysis_task(agent: Agent) -> Task:
             "Block 2: ===SEO_GUIDELINES=== delimiter followed by full seo_guidelines.md markdown. "
             "Block 3: ===DAILY_REPORT=== delimiter followed by full daily report markdown. "
             "Block 4 (optional): ===EDITORIAL_GUIDELINES=== delimiter followed by full editorial "
-            "guidelines markdown. No prose between blocks."
+            "guidelines markdown. "
+            "Block 5: ===GSO_HANDOFF=== delimiter followed by JSON with keyword opportunities, "
+            "content gaps, trending angles, cannibalization slugs, and schema priority."
         ),
         agent=agent,
     )

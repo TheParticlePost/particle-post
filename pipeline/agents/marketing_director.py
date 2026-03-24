@@ -16,6 +16,7 @@ _STRATEGY_PATH   = _CONFIG_DIR / "marketing_strategy.json"
 _GUIDELINES_PATH = _CONFIG_DIR / "editorial_guidelines.md"
 _HISTORY_PATH    = _DATA_DIR / "topics_history.json"
 _UI_HISTORY_PATH = _CONFIG_DIR / "ui_change_history.json"
+_GSO_CONFIG_PATH = _CONFIG_DIR / "seo_gso_config.json"
 
 
 def _load_current_strategy() -> str:
@@ -111,6 +112,34 @@ def _load_ui_change_history() -> str:
         return f"(Could not load UI change history: {exc})"
 
 
+def _load_gso_state() -> str:
+    """Load GSO performance state for Marketing Director context."""
+    if not _GSO_CONFIG_PATH.exists():
+        return "(No GSO data yet — seo_gso_config.json not found.)"
+    try:
+        data     = json.loads(_GSO_CONFIG_PATH.read_text(encoding="utf-8"))
+        coverage = data.get("schema_coverage", {})
+        log      = data.get("gso_article_log", [])
+        targets  = data.get("keyword_targets", [])
+        gaps     = data.get("content_gap_priorities", [])
+        audit    = data.get("ai_citation_audit", {})
+        lines    = []
+        if any(coverage.values()):
+            cov_str = " | ".join(f"{k}:{v}" for k, v in coverage.items() if v)
+            lines.append(f"Schema coverage to date: {cov_str}")
+        lines.append(f"Articles logged: {len(log)}")
+        if targets:
+            lines.append(f"Current keyword targets: {', '.join(targets)}")
+        if gaps:
+            lines.append(f"Content gap priorities: {', '.join(gaps)}")
+        if audit.get("last_audit_date"):
+            p_count = len(audit.get("perplexity_citations", []))
+            lines.append(f"Last AI citation audit: {audit['last_audit_date']} — {p_count} Perplexity citations")
+        return "\n".join(lines) if lines else "(GSO config present but empty.)"
+    except Exception as exc:
+        return f"(Could not load GSO state: {exc})"
+
+
 def build_marketing_director() -> Agent:
     """
     Build the Marketing Director agent.
@@ -128,6 +157,7 @@ def build_marketing_director() -> Agent:
     recent_articles   = _load_recent_articles()
     editorial_guide   = _load_editorial_guidelines()
     ui_history        = _load_ui_change_history()
+    gso_state         = _load_gso_state()
 
     return Agent(
         role="Marketing Director",
@@ -175,6 +205,14 @@ def build_marketing_director() -> Agent:
             "Respect the 7-day cooldown — do not target components changed within the last 7 days. "
             "If metrics are healthy or data is too sparse, set ui_directives to null.\n\n"
             "You output strict JSON only — no prose before or after it.\n\n"
+            "═══ SEO/GSO COLLABORATION ═══\n\n"
+            "You work directly with the SEO/GSO Specialist every day at noon. "
+            "Your analysis feeds into their keyword targeting and content gap strategy. "
+            "They run immediately after you and convert your findings into actionable SEO directives. "
+            "At the end of your output, include a ===GSO_HANDOFF=== section (see Step 7) "
+            "with structured keyword and content gap data for the SEO agent.\n\n"
+            "─── GSO PERFORMANCE STATE ───\n\n"
+            f"{gso_state}\n\n"
             "─── CURRENT MARKETING STRATEGY ───\n\n"
             f"{current_strategy}\n\n"
             "─── RECENT PUBLISHED ARTICLES ───\n\n"

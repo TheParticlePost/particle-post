@@ -56,6 +56,7 @@ jobs:
             pipeline/config/marketing_strategy.json \
             pipeline/config/editorial_guidelines.md \
             pipeline/config/ui_directives.json \
+            pipeline/config/seo_gso_config.json \
             "pipeline/logs/marketing/"
           git diff --staged --quiet || git commit -m "auto: marketing analysis $(date -u +%Y-%m-%d)"
           git push

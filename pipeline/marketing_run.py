@@ -30,13 +30,14 @@ if sys.platform == "win32":
 _REPO_ROOT = Path(__file__).resolve().parent.parent
 load_dotenv(dotenv_path=_REPO_ROOT / ".env", override=True)
 
-_CONFIG_DIR       = _REPO_ROOT / "pipeline" / "config"
-_LOGS_DIR         = _REPO_ROOT / "pipeline" / "logs" / "marketing"
-_STRATEGY_FILE    = _CONFIG_DIR / "marketing_strategy.json"
-_SEO_FILE         = _CONFIG_DIR / "seo_guidelines.md"
-_EDITORIAL_FILE   = _CONFIG_DIR / "editorial_guidelines.md"
-_UI_DIRECTIVES_FILE = _CONFIG_DIR / "ui_directives.json"
+_CONFIG_DIR            = _REPO_ROOT / "pipeline" / "config"
+_LOGS_DIR              = _REPO_ROOT / "pipeline" / "logs" / "marketing"
+_STRATEGY_FILE         = _CONFIG_DIR / "marketing_strategy.json"
+_SEO_FILE              = _CONFIG_DIR / "seo_guidelines.md"
+_EDITORIAL_FILE        = _CONFIG_DIR / "editorial_guidelines.md"
+_UI_DIRECTIVES_FILE    = _CONFIG_DIR / "ui_directives.json"
 _CONTENT_STRATEGY_FILE = _CONFIG_DIR / "content_strategy.json"
+_GSO_CONFIG_FILE       = _CONFIG_DIR / "seo_gso_config.json"
 
 
 # ──────────────────────────────────────────────────────────────────────────────
@@ -226,6 +227,50 @@ def _write_ui_directives(output: dict) -> None:
     print(f"  UI directives written ({count} directive(s) for UI Designer)")
 
 
+def _write_gso_directives(raw: str) -> None:
+    """
+    Extract ===GSO_DIRECTIVES=== section from the SEO/GSO noon task output
+    and merge into seo_gso_config.json.
+    """
+    # Handle both marker styles
+    pattern = r"===GSO_DIRECTIVES===\s*\n(.*?)(?:===END_GSO_DIRECTIVES===|\Z)"
+    match   = re.search(pattern, raw, re.DOTALL)
+    if not match:
+        print("  GSO directives: none found in SEO noon task output.")
+        return
+
+    section = match.group(1).strip()
+    try:
+        directives = json.loads(section)
+    except json.JSONDecodeError:
+        print(f"  [WARN] GSO directives JSON malformed — skipping. First 200 chars: {section[:200]}")
+        return
+
+    _CONFIG_DIR.mkdir(parents=True, exist_ok=True)
+    if _GSO_CONFIG_FILE.exists():
+        try:
+            config = json.loads(_GSO_CONFIG_FILE.read_text(encoding="utf-8"))
+        except Exception:
+            config = {}
+    else:
+        config = {}
+
+    # Merge directives (preserve schema_coverage and gso_article_log)
+    for key, val in directives.items():
+        if key == "ai_citation_audit" and val is not None:
+            config["ai_citation_audit"] = val
+        elif key not in ("schema_coverage", "gso_article_log"):
+            config[key] = val
+
+    config["last_updated"] = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+
+    _GSO_CONFIG_FILE.write_text(
+        json.dumps(config, indent=2, ensure_ascii=False), encoding="utf-8"
+    )
+    kw_count = len(directives.get("keyword_targets", []))
+    print(f"  GSO directives written ({kw_count} keyword targets).")
+
+
 def _write_daily_report(output: dict) -> None:
     report = output.get("daily_report", "")
     if not report:
@@ -340,27 +385,36 @@ def main() -> None:
 
     from crewai import Crew, Process
     from pipeline.agents.marketing_director import build_marketing_director
+    from pipeline.agents.seo_gso_specialist import build_seo_gso_specialist
     from pipeline.tasks.marketing_analysis_task import build_marketing_analysis_task
+    from pipeline.tasks.seo_noon_task import build_seo_noon_task
 
-    director = build_marketing_director()
-    task     = build_marketing_analysis_task(director)
+    director       = build_marketing_director()
+    seo_specialist = build_seo_gso_specialist()
+
+    marketing_task = build_marketing_analysis_task(director)
+    seo_task       = build_seo_noon_task(seo_specialist, marketing_task)
 
     crew = Crew(
-        agents=[director],
-        tasks=[task],
+        agents=[director, seo_specialist],
+        tasks=[marketing_task, seo_task],
         process=Process.sequential,
         verbose=True,
     )
 
     result = crew.kickoff()
-    raw    = result.raw if result.raw else ""
+
+    # Marketing Director output is the first task
+    md_raw  = result.tasks_output[0].raw if result.tasks_output else ""
+    # SEO noon task output is the second task
+    seo_raw = result.tasks_output[1].raw if len(result.tasks_output) > 1 else ""
 
     print(f"\n{'='*60}")
     print("  PARSING MARKETING DIRECTOR OUTPUT")
     print(f"{'='*60}\n")
 
-    output   = _parse_output(raw)
-    decision = output.get("decision", "KEEP")
+    output    = _parse_output(md_raw)
+    decision  = output.get("decision", "KEEP")
     rationale = output.get("rationale", "")
 
     print(f"  Decision: {decision}")
@@ -373,6 +427,12 @@ def main() -> None:
     _write_ui_directives(output)
     _apply_content_strategy_changes(output)
     _write_daily_report(output)
+
+    # Write SEO/GSO directives from the noon collaboration task
+    print(f"\n{'='*60}")
+    print("  PARSING SEO/GSO SPECIALIST OUTPUT")
+    print(f"{'='*60}\n")
+    _write_gso_directives(seo_raw)
 
     print(f"\n{'='*60}")
     print("  MARKETING ANALYSIS COMPLETE")

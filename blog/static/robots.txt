@@ -1,4 +1,30 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://particlepost.com/sitemap.xml
+# AI retrieval bots (allow — citation traffic)
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+# AI training crawlers (block — no benefit to site)
+User-agent: GPTBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+Sitemap: https://theparticlepost.com/sitemap.xml

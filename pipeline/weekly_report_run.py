@@ -193,6 +193,36 @@ def collect_strategy(week_start: str, week_end: str) -> dict:
     return result
 
 
+def collect_gso_metrics() -> dict:
+    """Collect GSO performance metrics from seo_gso_config.json."""
+    result = {
+        "faq_articles":     0,
+        "schema_breakdown": {},
+        "articles_logged":  0,
+        "last_audit":       None,
+        "citation_count":   0,
+        "keyword_targets":  [],
+        "content_gaps":     [],
+    }
+    gso_file = _CONFIG_DIR / "seo_gso_config.json"
+    if not gso_file.exists():
+        return result
+    try:
+        data = json.loads(gso_file.read_text(encoding="utf-8"))
+        coverage = data.get("schema_coverage", {})
+        result["schema_breakdown"] = coverage
+        result["faq_articles"]     = coverage.get("FAQPage", 0)
+        result["articles_logged"]  = len(data.get("gso_article_log", []))
+        result["keyword_targets"]  = data.get("keyword_targets", [])[:5]
+        result["content_gaps"]     = data.get("content_gap_priorities", [])[:3]
+        audit = data.get("ai_citation_audit", {})
+        result["last_audit"]      = audit.get("last_audit_date")
+        result["citation_count"]  = len(audit.get("perplexity_citations", []))
+    except Exception:
+        pass
+    return result
+
+
 def collect_daily_reports(week_start: str, week_end: str) -> list[str]:
     """Return list of daily marketing report dates generated this week."""
     reports_dir = _LOGS_DIR / "marketing"
@@ -217,6 +247,7 @@ def build_html_report(
     coaching: list[str],
     strategy: dict,
     report_dates: list[str],
+    gso: dict | None = None,
 ) -> str:
     today = datetime.now(timezone.utc).strftime("%B %d, %Y")
     approval_rate = 0
@@ -276,6 +307,49 @@ def build_html_report(
         daily_reports_html = "Daily marketing reports generated: " + ", ".join(report_dates)
     else:
         daily_reports_html = "No daily marketing reports this week."
+
+    # GSO section
+    gso = gso or {}
+    schema_bd = gso.get("schema_breakdown", {})
+    schema_str = " | ".join(f"{k}: {v}" for k, v in schema_bd.items() if v) or "No data yet"
+    kw_html = ""
+    for kw in gso.get("keyword_targets", []):
+        kw_html += f'<li style="margin:3px 0;font-size:13px;color:#374151;">{kw}</li>'
+    if not kw_html:
+        kw_html = '<li style="color:#9CA3AF;font-style:italic;">No targets set yet.</li>'
+    gap_html = ""
+    for gap in gso.get("content_gaps", []):
+        gap_html += f'<li style="margin:3px 0;font-size:13px;color:#374151;">{gap}</li>'
+    if not gap_html:
+        gap_html = '<li style="color:#9CA3AF;font-style:italic;">No gaps identified yet.</li>'
+    audit_line = (
+        f"Last audit: {gso['last_audit']} — {gso.get('citation_count', 0)} Perplexity citations"
+        if gso.get("last_audit") else "No AI citation audit run yet."
+    )
+    gso_html = f"""
+    <h2 style="margin:28px 0 8px;font-size:16px;font-weight:700;color:#111827;">GSO Performance</h2>
+    <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:12px;">
+      <tr>
+        <td style="padding:5px 0;font-size:13px;color:#6B7280;width:180px;">FAQ articles published</td>
+        <td style="padding:5px 0;font-size:13px;color:#374151;font-weight:600;">{gso.get('faq_articles', 0)}</td>
+      </tr>
+      <tr>
+        <td style="padding:5px 0;font-size:13px;color:#6B7280;">Schema breakdown</td>
+        <td style="padding:5px 0;font-size:13px;color:#374151;">{schema_str}</td>
+      </tr>
+      <tr>
+        <td style="padding:5px 0;font-size:13px;color:#6B7280;">Total articles logged</td>
+        <td style="padding:5px 0;font-size:13px;color:#374151;">{gso.get('articles_logged', 0)}</td>
+      </tr>
+      <tr>
+        <td style="padding:5px 0;font-size:13px;color:#6B7280;">AI citation audit</td>
+        <td style="padding:5px 0;font-size:13px;color:#374151;">{audit_line}</td>
+      </tr>
+    </table>
+    <p style="margin:0 0 6px;font-size:13px;font-weight:600;color:#374151;">Current keyword targets:</p>
+    <ul style="margin:0 0 12px;padding-left:20px;">{kw_html}</ul>
+    <p style="margin:0 0 6px;font-size:13px;font-weight:600;color:#374151;">Content gap priorities:</p>
+    <ul style="margin:0 0 28px;padding-left:20px;">{gap_html}</ul>"""
 
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -383,6 +457,9 @@ def build_html_report(
     <h2 style="margin:28px 0 8px;font-size:16px;font-weight:700;color:#111827;">Daily Marketing Reports</h2>
     <p style="margin:0 0 28px;font-size:13px;color:#6B7280;">{daily_reports_html}</p>
 
+    <!-- GSO Performance -->
+    {gso_html}
+
   </td></tr>
 
   <!-- Footer -->
@@ -476,6 +553,11 @@ def main() -> None:
     print("  Collecting daily reports...")
     report_dates = collect_daily_reports(week_start, week_end)
 
+    print("  Collecting GSO metrics...")
+    gso = collect_gso_metrics()
+    print(f"    FAQ articles: {gso['faq_articles']} | Logged: {gso['articles_logged']} | "
+          f"Citations: {gso['citation_count']}")
+
     print("  Building HTML report...")
     html = build_html_report(
         week_start=week_start,
@@ -485,6 +567,7 @@ def main() -> None:
         coaching=coaching,
         strategy=strategy,
         report_dates=report_dates,
+        gso=gso,
     )
 
     subject = f"Particle Post Weekly Report — {week_start} to {week_end}"

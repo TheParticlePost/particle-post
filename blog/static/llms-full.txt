@@ -1,0 +1,10 @@
+# Particle Post
+
+> AI × Business × Finance news and analysis for executives and investors.
+> theparticlepost.com
+
+## Posts
+
+- [Big Tech](https://theparticlepost.com/posts/ai-data-center-energy-costs/): Hyperscalers spending $690B on AI infrastructure strains power grids and carbon markets. How energy constraints reshape ESG finance and utility stocks.
+- [Agentic AI Forces Fintech Into Regulatory Gray Zone](https://theparticlepost.com/posts/agentic-ai-regulatory-gap-fintech/): Fintech firms deploy autonomous AI faster than regulators can enforce. Discover the accountability vacuum, cross-border enforcement gaps, and hidden liability risks.
+- [AI as Core Fintech Infrastructure: 80% of Companies Go All-In](https://theparticlepost.com/posts/fintech-ai-infrastructure-investment/): 80% of financial firms now embed AI into core operations. Discover why AI shifted from feature to essential infrastructure—and what CFOs must budget for in 2026.

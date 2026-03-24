@@ -30,11 +30,14 @@ if sys.platform == "win32":
 _REPO_ROOT = Path(__file__).resolve().parent.parent
 load_dotenv(dotenv_path=_REPO_ROOT / ".env", override=True)
 
-POSTS_DIR       = _REPO_ROOT / "blog" / "content" / "posts"
-HISTORY_FILE    = _REPO_ROOT / "blog" / "data" / "topics_history.json"
-REJECTIONS_DIR  = _REPO_ROOT / "pipeline" / "logs" / "rejections"
-FEEDBACK_FILE   = _REPO_ROOT / "pipeline" / "data" / "writer_feedback.json"
-POST_INDEX_FILE = _REPO_ROOT / "pipeline" / "config" / "post_index.json"
+POSTS_DIR        = _REPO_ROOT / "blog" / "content" / "posts"
+HISTORY_FILE     = _REPO_ROOT / "blog" / "data" / "topics_history.json"
+REJECTIONS_DIR   = _REPO_ROOT / "pipeline" / "logs" / "rejections"
+FEEDBACK_FILE    = _REPO_ROOT / "pipeline" / "data" / "writer_feedback.json"
+POST_INDEX_FILE  = _REPO_ROOT / "pipeline" / "config" / "post_index.json"
+GSO_CONFIG_FILE  = _REPO_ROOT / "pipeline" / "config" / "seo_gso_config.json"
+LLMS_TXT_FILE    = _REPO_ROOT / "blog" / "static" / "llms.txt"
+LLMS_FULL_FILE   = _REPO_ROOT / "blog" / "static" / "llms-full.txt"
 
 MAX_ATTEMPTS = 2
 
@@ -196,6 +199,132 @@ def _write_rejection_log(
 # ──────────────────────────────────────────────────────────────────────────────
 # Post writing
 # ──────────────────────────────────────────────────────────────────────────────
+
+def _parse_seo_json(raw: str) -> dict:
+    """
+    Extract the SEO/GSO JSON package from the specialist's mixed output.
+
+    The seo_gso_task output format is:
+      [RESTRUCTURED ARTICLE]...[END RESTRUCTURED ARTICLE]
+      {"primary_keyword": ..., "has_faq": ..., ...}
+
+    Three-tier extraction (mirrors _parse_director_verdict robustness).
+    """
+    # Strip the [RESTRUCTURED ARTICLE] block first
+    cleaned = re.sub(
+        r'\[RESTRUCTURED ARTICLE\].*?\[END RESTRUCTURED ARTICLE\]',
+        '', raw, flags=re.DOTALL
+    ).strip()
+    cleaned = _strip_code_fences(cleaned)
+
+    # Tier 1: direct parse of remaining text
+    try:
+        return json.loads(cleaned)
+    except (json.JSONDecodeError, ValueError):
+        pass
+
+    # Tier 2: extract first {...} containing "primary_keyword"
+    match = re.search(r'\{[^{}]*"primary_keyword"[^{}]*\}', cleaned, re.DOTALL)
+    if match:
+        try:
+            return json.loads(match.group(0))
+        except (json.JSONDecodeError, ValueError):
+            pass
+
+    # Tier 3: outermost braces
+    start = cleaned.find("{")
+    end   = cleaned.rfind("}")
+    if start != -1 and end > start:
+        try:
+            return json.loads(cleaned[start: end + 1])
+        except (json.JSONDecodeError, ValueError):
+            pass
+
+    return {}
+
+
+def _update_gso_state(seo_data: dict, slug: str, date_str: str) -> None:
+    """Update seo_gso_config.json after a successful article publish."""
+    if not seo_data:
+        return
+
+    GSO_CONFIG_FILE.parent.mkdir(parents=True, exist_ok=True)
+    if GSO_CONFIG_FILE.exists():
+        try:
+            config = json.loads(GSO_CONFIG_FILE.read_text(encoding="utf-8"))
+        except Exception:
+            config = {}
+    else:
+        config = {}
+
+    # Increment schema coverage counter
+    schema_type = seo_data.get("schema_type", "Article")
+    coverage    = config.setdefault("schema_coverage", {"Article": 0, "FAQPage": 0, "HowTo": 0, "NewsArticle": 0})
+    coverage[schema_type] = coverage.get(schema_type, 0) + 1
+
+    # Append to GSO article log (keeps last 90)
+    log_entry = {
+        "date":           date_str,
+        "slug":           slug,
+        "primary_keyword": seo_data.get("primary_keyword", ""),
+        "schema_type":    schema_type,
+        "has_faq":        seo_data.get("has_faq", False),
+        "search_intent":  seo_data.get("search_intent", ""),
+    }
+    log = config.setdefault("gso_article_log", [])
+    log.append(log_entry)
+    config["gso_article_log"] = log[-90:]
+    config["last_updated"] = date_str
+
+    GSO_CONFIG_FILE.write_text(
+        json.dumps(config, indent=2, ensure_ascii=False), encoding="utf-8"
+    )
+    print(f"  GSO state updated (schema: {schema_type}, has_faq: {seo_data.get('has_faq', False)}).")
+
+
+def _generate_llms_txt() -> None:
+    """
+    Generate AI discoverability files from the published post archive.
+
+    llms.txt      — compact index (title + URL + one-line description)
+    llms-full.txt — same with full meta_description per post
+    """
+    posts = sorted(POSTS_DIR.glob("*.md"), key=lambda p: p.name, reverse=True)
+    if not posts:
+        return
+
+    entries = []
+    for post_path in posts[:100]:
+        try:
+            content = post_path.read_text(encoding="utf-8")
+        except Exception:
+            continue
+        title = _extract_frontmatter_field(content, "title")
+        slug  = _extract_frontmatter_field(content, "slug")
+        desc  = _extract_frontmatter_field(content, "description")
+        if not title or not slug:
+            continue
+        url = f"https://theparticlepost.com/posts/{slug}/"
+        entries.append({"title": title, "url": url, "description": desc})
+
+    if not entries:
+        return
+
+    header = (
+        "# Particle Post\n\n"
+        "> AI × Business × Finance news and analysis for executives and investors.\n"
+        "> theparticlepost.com\n\n"
+        "## Posts\n\n"
+    )
+
+    compact_lines = [f"- [{e['title']}]({e['url']})" for e in entries]
+    full_lines    = [f"- [{e['title']}]({e['url']}): {e['description']}" for e in entries if e["description"]]
+
+    LLMS_TXT_FILE.parent.mkdir(parents=True, exist_ok=True)
+    LLMS_TXT_FILE.write_text(header + "\n".join(compact_lines) + "\n", encoding="utf-8")
+    LLMS_FULL_FILE.write_text(header + "\n".join(full_lines) + "\n", encoding="utf-8")
+    print(f"  llms.txt updated ({len(entries)} posts).")
+
 
 def _submit_to_search_engines(url: str) -> None:
     """
@@ -382,12 +511,28 @@ def main() -> None:
             # Extract funnel_type from the selection task output (index 1)
             funnel_type = "???"
             try:
-                sel_raw = result.tasks_output[1].raw or ""
+                sel_raw  = result.tasks_output[1].raw or ""
                 sel_json = json.loads(_strip_code_fences(sel_raw))
                 funnel_type = sel_json.get("funnel_type", "???")
             except Exception:
                 pass
+
+            # Extract SEO/GSO data from task index 3 (seo_gso_task — new position)
+            seo_data: dict = {}
+            try:
+                seo_raw  = result.tasks_output[3].raw or ""
+                seo_data = _parse_seo_json(seo_raw)
+            except Exception:
+                pass
+
+            date_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
             _write_post(content=formatter_content, dry_run=args.dry_run, funnel_type=funnel_type)
+
+            if not args.dry_run:
+                slug = _extract_frontmatter_field(formatter_content, "slug")
+                _update_gso_state(seo_data, slug, date_str)
+                _generate_llms_txt()
+
             return  # success
 
         # REJECT path

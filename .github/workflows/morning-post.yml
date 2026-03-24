@@ -66,7 +66,7 @@ jobs:
         run: |
           git config user.name "Particle Post Bot"
           git config user.email "bot@particlepost.com"
-          git add blog/content/posts/ blog/data/topics_history.json pipeline/data/writer_feedback.json pipeline/config/post_index.json
+          git add blog/content/posts/ blog/data/topics_history.json pipeline/data/writer_feedback.json pipeline/config/post_index.json pipeline/config/seo_gso_config.json blog/static/llms.txt blog/static/llms-full.txt
           git diff --staged --quiet || git commit -m "auto: morning post $(date -u +%Y-%m-%d)"
           git push
 
