@@ -436,7 +436,9 @@ def send_email(subject: str, html: str) -> None:
             print(f"  Email sent successfully. Response: {body}")
     except urllib.error.HTTPError as e:
         error_body = e.read().decode("utf-8")
-        print(f"[ERROR] Resend API returned {e.code}: {error_body}")
+        print(f"[ERROR] Resend API returned {e.code}")
+        print(f"[ERROR] Headers: {dict(e.headers)}")
+        print(f"[ERROR] Body: {error_body[:500]}")
         sys.exit(1)
     except Exception as e:
         print(f"[ERROR] Failed to send email: {e}")
