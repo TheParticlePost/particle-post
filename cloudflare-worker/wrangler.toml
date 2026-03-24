@@ -1,0 +1,9 @@
+name            = "particle-post-dispatcher"
+main            = "worker.js"
+compatibility_date = "2024-01-01"
+
+# account_id is set via CLOUDFLARE_ACCOUNT_ID env var at deploy time
+# No routes needed — the worker uses its workers.dev subdomain
+
+[observability]
+enabled = true
