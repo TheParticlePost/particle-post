@@ -59,6 +59,21 @@
       "text": "Internal link path format: Both internal links use full domain URLs (https://theparticlepost.com/...) rather than the relative slug paths specified in the SEO guidelines (e.g., /posts/fintech-ai-infrastructure-investment/). Relative paths are more resilient to domain changes and are the format the cross-link map specifies. Switch to relative markdown links for all future articles.",
       "slot": "morning",
       "date": "2026-03-24T13:08:41.469773+00:00"
+    },
+    {
+      "text": "Em dash discipline: The FINRA/NASCUS paragraph in 'What Research Actually Shows' uses two em dashes as stylistic connectors within the same paragraph. Editorial guidelines flag repeated em dash use as an AI-generation signal. Restructure one of those clauses — make it its own sentence or use a colon — so no paragraph contains more than one em dash. This is the only stylistic issue holding the article back from a clean score.",
+      "slot": "morning",
+      "date": "2026-03-24T16:45:37.705865+00:00"
+    },
+    {
+      "text": "The final FAQ answer is truncated mid-sentence ('The programme runs'). This appears to be a copy/paste artifact from the draft pipeline. Before publication, complete the fourth FAQ answer so it closes fully — readers and search crawlers both see the FAQ, and an unfinished answer undermines credibility on a piece that is otherwise tight and well-sourced.",
+      "slot": "morning",
+      "date": "2026-03-24T16:45:37.705865+00:00"
+    },
+    {
+      "text": "Strong TOF execution overall: the H1 question format, 'Clear Verdict' section, answer-first structure under the first H2, and two internal links pointing down the funnel all meet spec cleanly. For your next TOF piece, consider whether the 'What Research Actually Shows' section title could be made more specific — something like 'What Visa's Pilot Data Actually Proves' would better signal topical authority and align more precisely with the long-tail SEO patterns in our H2 guidelines (Template A or B format).",
+      "slot": "morning",
+      "date": "2026-03-24T16:45:37.705865+00:00"
     }
   ]
 }
