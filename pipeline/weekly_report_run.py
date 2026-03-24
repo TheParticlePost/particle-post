@@ -411,6 +411,7 @@ def send_email(subject: str, html: str) -> None:
     if not api_key:
         print("[ERROR] RESEND_API_KEY environment variable not set.")
         sys.exit(1)
+    print(f"  RESEND_API_KEY: prefix={api_key[:8]}... length={len(api_key)}")
 
     payload = json.dumps({
         "from":    FROM_EMAIL,
