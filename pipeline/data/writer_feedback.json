@@ -44,6 +44,21 @@
       "text": "The article covers three distinct financial audiences — CFOs managing ESG-linked debt, utility sector investors, and AI infrastructure planners — but the conclusion addresses all three at once without differentiation. Consider flagging audience-specific takeaways with a brief label (e.g., 'For CFOs:' / 'For utility investors:') to make the piece more forwardable to a specific colleague, which is a key behavior for our C-suite readership.",
       "slot": "morning",
       "date": "2026-03-23T20:47:59.325748+00:00"
+    },
+    {
+      "text": "TOF word count discipline: This article ran ~1,050–1,100 words against a hard ceiling of 1,000 for TOF. The 'What Specific Results Has Explainable AI Compliance Produced?' section largely restates points made in 'What Research Actually Shows' — consolidate or cut that section entirely to land inside the limit without losing substance. TOF readers need a tight, scannable brief, not a full case study.",
+      "slot": "morning",
+      "date": "2026-03-24T13:08:41.469773+00:00"
+    },
+    {
+      "text": "Complete the FAQ render in the article body: The third FAQ pair ('What is the FCA Mills Review and when will it affect fintech firms?') is truncated mid-answer in the published body. The frontmatter pair is fully written — ensure the formatter pulls all three pairs through to the rendered section. Two FAQs against a declared has_faq=true is a reader-facing gap and a missed featured-snippet opportunity.",
+      "slot": "morning",
+      "date": "2026-03-24T13:08:41.469773+00:00"
+    },
+    {
+      "text": "Internal link path format: Both internal links use full domain URLs (https://theparticlepost.com/...) rather than the relative slug paths specified in the SEO guidelines (e.g., /posts/fintech-ai-infrastructure-investment/). Relative paths are more resilient to domain changes and are the format the cross-link map specifies. Switch to relative markdown links for all future articles.",
+      "slot": "morning",
+      "date": "2026-03-24T13:08:41.469773+00:00"
     }
   ]
 }

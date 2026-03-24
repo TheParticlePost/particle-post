@@ -1,6 +1,12 @@
 {
   "posts": [
     {
+      "slug": "explainable-ai-capital-problem-fca",
+      "title": "Explainable AI Is a Capital Problem, Not a Technical One — and the FCA Is About to Prove It",
+      "funnel_type": "TOF",
+      "date": "2026-03-24"
+    },
+    {
       "slug": "2026-03-23-ai-data-center-energy-costs",
       "title": "AI Data Center Energy Costs",
       "funnel_type": "???",
