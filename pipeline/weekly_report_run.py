@@ -411,7 +411,6 @@ def send_email(subject: str, html: str) -> None:
     if not api_key:
         print("[ERROR] RESEND_API_KEY environment variable not set.")
         sys.exit(1)
-    print(f"  RESEND_API_KEY: prefix={api_key[:8]}... length={len(api_key)}")
 
     payload = json.dumps({
         "from":    FROM_EMAIL,
@@ -437,9 +436,7 @@ def send_email(subject: str, html: str) -> None:
             print(f"  Email sent successfully. Response: {body}")
     except urllib.error.HTTPError as e:
         error_body = e.read().decode("utf-8")
-        print(f"[ERROR] Resend API returned {e.code}")
-        print(f"[ERROR] Headers: {dict(e.headers)}")
-        print(f"[ERROR] Body: {error_body[:500]}")
+        print(f"[ERROR] Resend API returned {e.code}: {error_body[:500]}")
         sys.exit(1)
     except Exception as e:
         print(f"[ERROR] Failed to send email: {e}")
