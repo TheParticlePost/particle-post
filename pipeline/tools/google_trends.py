@@ -4,7 +4,7 @@ from urllib.error import URLError
 from crewai.tools import BaseTool
 
 
-TRENDS_RSS_URL = "https://trends.google.com/trends/trendingsearches/daily/rss?geo=US"
+TRENDS_RSS_URL = "https://trends.google.com/trending/rss?geo=US"
 
 
 class GoogleTrendsTool(BaseTool):
