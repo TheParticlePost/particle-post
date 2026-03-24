@@ -1,23 +1,33 @@
 {
-  "last_updated": null,
+  "last_updated": "2026-03-24",
   "schema_coverage": {
     "Article": 0,
     "FAQPage": 0,
     "HowTo": 0,
     "NewsArticle": 0
   },
-  "keyword_targets": [],
-  "content_gap_priorities": [],
+  "keyword_targets": [
+    "AI fraud detection banks",
+    "machine learning credit scoring banks",
+    "agentic AI regulatory compliance fintech",
+    "AI compliance financial services",
+    "AI trading algorithms hedge funds"
+  ],
+  "content_gap_priorities": [
+    "AI fraud detection in banking — named bank results (Visa, JPMorgan, Mastercard) with specific fraud reduction metrics; target long-tail 'AI fraud detection banks'",
+    "Machine learning credit scoring — lender case study (Upstart, Goldman Sachs Marcus, or EU bank) with loan approval rate or default reduction data; target 'machine learning credit scoring banks'",
+    "AI compliance automation — EU AI Act financial services provisions effective 2026, post-Basel III angle; target 'AI compliance financial services'"
+  ],
   "schema_priority": "FAQPage",
-  "avoid_cannibalization": [],
+  "avoid_cannibalization": [
+    "explainable-ai-capital-problem-fca",
+    "ai-agents-corporate-payments-infrastructure-readiness",
+    "2026-03-23-agentic-ai-regulatory-gap-fintech",
+    "2026-03-21-fintech-ai-infrastructure-investment",
+    "2026-03-23-ai-data-center-energy-costs"
+  ],
   "keyword_performance": [],
-  "ai_citation_audit": {
-    "last_audit_date": null,
-    "chatgpt_citations": [],
-    "perplexity_citations": [],
-    "google_aio_citations": [],
-    "notes": ""
-  },
+  "ai_citation_audit": null,
   "content_gaps": [],
   "gso_article_log": []
 }

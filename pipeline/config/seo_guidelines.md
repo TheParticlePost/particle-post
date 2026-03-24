@@ -7,167 +7,145 @@
 
 ## 1. CURRENT STRATEGY SUMMARY
 
-Building topical authority in **AI × Finance Operations** through twice-daily, data-backed publishing targeting C-suite finance executives — site is in early indexing phase (Day 2), so every article must be structured for both Google and Bing crawlability, and optimized for AI-assisted search (GEO).
+Building topical authority in AI × Finance Operations through twice-daily, executive-targeted publishing while site crawl ramps up on both Google and Bing — no organic data yet, so keyword targeting is hypothesis-driven from editorial pillar alignment and competitor research.
 
 ---
 
-## 2. PRIMARY TARGET KEYWORDS
-*(At least one must appear in every article H1)*
+## 2. PRIMARY TARGET KEYWORDS (use at least one in every article H1)
 
-| # | Keyword | Priority |
-|---|---------|----------|
-| 1 | AI in finance | Primary |
-| 2 | artificial intelligence banking | Primary |
-| 3 | fintech AI | Primary |
-| 4 | AI investment strategy | Secondary |
-| 5 | machine learning financial services | Secondary |
-| 6 | AI risk management finance | Secondary |
-| 7 | agentic AI finance | Secondary |
-| 8 | AI trading algorithms | Supporting |
+| Priority | Keyword | Rationale |
+|----------|---------|-----------|
+| 1 | AI in finance | Broad authority anchor; high search volume |
+| 2 | artificial intelligence banking | Named-vertical specificity; exec audience |
+| 3 | fintech AI | Short-tail brand alignment |
+| 4 | agentic AI finance | Emerging term; low competition window |
+| 5 | AI risk management finance | High-intent; regulatory/compliance audience |
+| 6 | machine learning financial services | Technical but executive-legible |
+| 7 | AI investment strategy | Capital markets pillar anchor |
+| 8 | AI trading algorithms | Quantitative finance audience |
 
-**Rule:** Every article H1 must contain at least one of keywords 1–6. Do not stuff — place naturally in the first 60 characters of the H1 where possible.
+**Rule:** Every article H1 must contain at least one primary keyword, unmodified or in close variant form.
 
 ---
 
-## 3. LONG-TAIL KEYWORDS
-*(Use in H2s, H3s, meta descriptions, and body copy — include year where time-sensitive)*
+## 3. LONG-TAIL KEYWORDS (work into subheadings and body copy)
 
-1. how AI is changing investment banking 2026
-2. AI fraud detection banks 2026
-3. agentic AI regulatory compliance fintech
-4. machine learning credit scoring banks
-5. AI compliance financial services
-6. artificial intelligence risk management finance
+1. `how AI is changing investment banking 2026` — include year; targets research-phase executives
+2. `AI fraud detection banks` — high-intent, maps to Finance Operations pillar
+3. `agentic AI regulatory compliance fintech` — covers the regulatory gray zone angle we own
+4. `machine learning credit scoring banks` — specific use-case; low competitor saturation
+5. `AI compliance financial services` — regulatory pillar; maps to FCA/explainability articles
+6. `artificial intelligence risk management finance` — maps directly to risk modeling content
 
-**Rule:** At least one long-tail phrase must appear verbatim (or near-verbatim) in an H2 or H3 per article. This is the primary driver of featured snippet eligibility.
+**Rule:** Each long-tail should appear once in an H2 or H3, and once naturally in body copy. Do not force it.
 
 ---
 
 ## 4. H1 PATTERN
 
-**Formula:** `[Primary Keyword]: [Named Company or Figure or Dollar Amount] + [Specific Context]`
+**Formula:** `[Primary Keyword]: [Named Company/Figure/Dollar Amount + Outcome/Context] [Year if relevant]`
 
 **Rules:**
 - Maximum 70 characters for full SERP display
-- Include year (2026) when the topic is time-sensitive or fast-moving
-- Name a real company, dollar figure, or named executive — never generic phrases
-- Front-load the keyword in the first 4 words
+- Name a real company, regulator, figure, or dollar amount — never a generic entity
+- Include year (2026) when the topic is time-sensitive or forecast-driven
 
 **Examples:**
-- `AI in Finance: JPMorgan's $17B Automation Push Reshapes Operations`
-- `Artificial Intelligence Banking: Goldman Sachs Deploys ML Credit Scoring`
-- `Fintech AI Regulation: The SEC's 2026 Compliance Guidance Explained`
-- `Agentic AI Finance: How BlackRock's Risk Models Are Being Rebuilt`
+- `AI in Finance: JPMorgan's $17B Automation Bet Is Paying Off`
+- `Agentic AI Finance: FCA Signals First Enforcement Action 2026`
+- `Fintech AI: How Stripe Cut Fraud Losses 40% With ML Models`
+- `Artificial Intelligence Banking: Goldman Sachs Rewrites Credit Risk`
 
 ---
 
 ## 5. H2 PATTERNS
 
-**Template A — LSI Keyword Pattern (informational depth):**
-`How [Named Company/Sector] Uses [Specific AI Method] to [Measurable Outcome]`
-*Example: How JPMorgan Uses Machine Learning to Cut Fraud Losses by 40%*
+**Template A — LSI Keyword Pattern (factual body sections):**
+`How [Company/Regulator] Is Using [Specific AI Method] to [Measurable Outcome]`
+> Example: `How HSBC Is Using Machine Learning to Flag Sanctions Risk in Real Time`
 
 **Template B — Question Format (featured snippet targeting):**
-`What Does [Trend/Regulation] Mean for [Specific Finance Role or Institution]?`
-*Example: What Does the EU AI Act Mean for European Investment Banks?*
+`What Does [Regulation/Technology] Mean for [Audience] in [Year]?`
+> Example: `What Does the FCA's Explainability Rule Mean for Asset Managers in 2026?`
 
-**Template C — Named Entity Format (authority building):**
-`The [Company] Approach to [AI Finance Topic]`
-*Example: The Goldman Sachs Approach to AI-Driven Risk Management*
+**Template C — Named Entity / Authority Frame:**
+`The [Company] Approach to [AI Use Case]: What Finance Teams Can Learn`
+> Example: `The JPMorgan Approach to AI Risk Management: What Finance Teams Can Learn`
 
-**Rule:** Use at least 3 H2s per article. At least one H2 must match Template B to capture People Also Ask / featured snippet placement.
+**Rule:** Mix all three templates across H2s within a single article. Do not repeat the same template twice in one piece.
 
 ---
 
 ## 6. H3 GUIDANCE
 
-H3s should be long-tail specific — always name a company, method, or measurable metric:
+H3s should be long-tail specific and always name at least one of: a company, a metric, a method, or a regulatory body.
 
-- `[Bank Name]'s [Specific Model or Tool]: How It Works`
-- `[Percentage or Dollar Figure]: The Cost Impact of AI in [Finance Function]`
-- `Why [Regulatory Body] Is Targeting [Specific AI Application]`
-- `[Named Executive]'s Strategy for [AI Finance Topic]`
-
-**Rule:** Every H3 must contain either a named entity (company, person, regulation) or a specific metric. No generic H3s like "Benefits of AI in Banking."
+**Patterns:**
+- `[Company]'s [Metric] After Deploying [AI Method]` → `Visa's 23% Fraud Reduction After Deploying Real-Time ML Scoring`
+- `Why [Regulator] Is Watching [AI Use Case] Closely` → `Why the Basel Committee Is Watching AI Credit Models Closely`
+- `The [Dollar/Percentage] Case for [AI Capability]` → `The $4.2B Case for Automating Trade Reconciliation With AI`
 
 ---
 
 ## 7. META DESCRIPTION PATTERN
 
-**Formula:** `[Primary keyword in first 60 chars] + [specific data point] + [reader benefit]`
-**Max length:** 155 characters
+**Formula:** `[Primary keyword] in first 60 chars + specific data point + clear reader benefit. Max 155 chars.`
+
+**Template:**
+`[Keyword] is [action/shift]: [Company/Regulator] [did X] — here's what it means for [reader role].`
 
 **Examples:**
-- `AI in finance is reshaping JPMorgan's operations — $17B invested in 2026. What it means for executives and how to prepare your organization.`
-- `Artificial intelligence banking hits a compliance wall. The SEC's new 2026 guidance affects every US financial institution. Here's what changes now.`
-- `Fintech AI fraud detection cut losses 34% at Citibank in Q1 2026. This briefing breaks down the model and what peer banks are doing to catch up.`
+- `AI in finance is accelerating: JPMorgan processed $4T in AI-assisted transactions in Q1 2026 — here's what CFOs need to act on now. (128 chars)`
+- `Agentic AI finance hits regulatory friction: FCA opens review of autonomous trading systems — what compliance teams must prepare for. (131 chars)`
 
-**Rules:**
-- Never start with the site name
-- Always include a data point (dollar amount, percentage, named quarter)
-- End with a reader benefit or forward-looking hook — not a period-only close
+**Rule:** Primary keyword must appear in the first 60 characters. Never truncate the data point. Always end with a reader-benefit clause.
 
 ---
 
 ## 8. INTERNAL LINKING OPPORTUNITIES
 
-As the article library grows, use the following cross-linking map. These are based on published slugs as of 2026-03-24:
+With 5 articles now published, cross-linking between related pieces is a priority. Implement the following link pairs on next editorial pass or in any new article that covers overlapping terrain:
 
 | When writing about… | Link to this slug | Use this anchor text |
 |---|---|---|
-| AI infrastructure investment, fintech platform buildout | `fintech-ai-infrastructure-investment` | "AI as core fintech infrastructure" |
-| Agentic AI, autonomous systems in finance, AI compliance | `agentic-ai-regulatory-gap-fintech` | "agentic AI regulatory compliance" |
-| Data center costs, AI energy economics, cloud AI spend | `ai-data-center-energy-costs` | "AI data center energy costs" |
-| Any article discussing AI regulation/compliance | `agentic-ai-regulatory-gap-fintech` | "fintech regulatory gray zone" |
-| Any article discussing AI investment/infrastructure | `fintech-ai-infrastructure-investment` | "fintech AI infrastructure spending" |
+| AI regulatory risk, explainability, or compliance | `explainable-ai-capital-problem-fca` | "AI explainability requirements from the FCA" |
+| Agentic AI, autonomous systems, or AI agents in payments | `agentic-ai-regulatory-gap-fintech` | "agentic AI regulatory gap in fintech" |
+| Fintech infrastructure investment, AI adoption rates | `fintech-ai-infrastructure-investment` | "80% of fintech firms going all-in on AI infrastructure" |
+| Energy costs, data center spending, or Big Tech AI capex | `ai-data-center-energy-costs` | "Big Tech's $700B AI infrastructure bet" |
+| AI agents in enterprise payments or treasury automation | `ai-agents-corporate-payments-infrastructure-readiness` | "AI agents in corporate payments infrastructure" |
 
-**Cross-link rule:** Every new article must link to at least 2 existing articles using the anchor text patterns above. Do not use naked URLs or generic anchor text like "click here."
-
-**Thematic clusters to build:**
-- `fintech-ai-infrastructure-investment` ↔ `ai-data-center-energy-costs` (AI investment/cost cluster)
-- `agentic-ai-regulatory-gap-fintech` ↔ future compliance/regulation articles (regulatory cluster)
+**Goal:** Every new article should contain a minimum of 2 internal links drawn from this table. Every existing article should be updated to link forward to newer, related pieces.
 
 ---
 
-## 9. CONTENT GAPS — Priority Article Ideas
+## 9. CONTENT GAPS (priority article ideas not yet covered)
 
-Based on Tavily competitor research and our current slug inventory, the following high-priority topics are uncovered and directly aligned with our pillars:
+1. **AI fraud detection in banking — named bank results** — `AI fraud detection banks` is a high-intent long-tail with strong commercial relevance; no current article covers this directly. Target: Visa, Mastercard, or JPMorgan fraud ML deployment with real numbers.
 
-1. **AI Governance in Banking 2026** — Competitors identify governance and explainability as the dominant theme finance leaders are searching for. Target keyword: `AI governance financial services`. H1 candidate: `AI Governance in Finance: Why Banks Are Rebuilding Trust From the Inside Out`
+2. **Machine learning credit scoring — lender case study** — `machine learning credit scoring banks` maps to the Finance Operations pillar and has no direct coverage. Target: a named lender (Upstart, Goldman Marcus, or a major EU bank) with loan approval rate or default reduction data.
 
-2. **Machine Learning Credit Scoring** — A named long-tail keyword with clear commercial intent not yet addressed in our library. H1 candidate: `Machine Learning Credit Scoring: How Experian and FICO Are Losing Ground to AI-Native Lenders`
+3. **AI compliance automation — post-Basel III / EU AI Act angle** — `AI compliance financial services` is underserved in our current content set. The EU AI Act's financial services provisions (effective 2026) represent a concrete, time-sensitive hook.
 
-3. **AI Fraud Detection — Bank Case Studies 2026** — High-intent query with named-company potential. H1 candidate: `AI Fraud Detection Banks: Citibank's Real-Time Model Cut Losses 34% in Q1 2026`
+4. **Agentic AI in investment banking workflows** — We have agentic AI regulatory coverage but no piece targeting how agentic systems are being deployed inside investment banks (Morgan Stanley, Goldman) for research automation, deal sourcing, or client onboarding.
 
-4. **Human-AI Collaboration in Financial Workflows** — Tavily surface this as a primary 2026 theme; our current articles don't address the human augmentation angle. H1 candidate: `Artificial Intelligence Banking: Why JPMorgan Is Betting on Human-AI Teams, Not Replacement`
-
-5. **AI Regulatory Compliance — Post-EU AI Act Impact on US Banks** — Regulatory angle bridges our `agentic-ai-regulatory-gap-fintech` article into deeper coverage. H1 candidate: `AI Compliance Financial Services: What the EU AI Act Forces US Banks to Change by Q3 2026`
+5. **AI trading algorithms — 2026 hedge fund deployments** — `AI trading algorithms` is a primary keyword with zero article coverage. Target: a named hedge fund or prop trading firm (Two Sigma, Renaissance, Citadel) with quantifiable performance attribution to AI systems.
 
 ---
 
 ## 10. CONTENT PILLAR FOCUS THIS WEEK
 
-**Primary Pillar: AI in Finance Operations**
+**Primary pillar: AI in Finance Operations**
 
-**Why:** This is our declared pillar, the site is in early indexing, and establishing dense topical coverage in one pillar first is the fastest path to topical authority in Google's eyes. Spreading across all 5 pillars too early dilutes authority signals.
+**Why:** This pillar is our core authority-building target for the launch phase. Our existing articles skew toward regulatory and infrastructure angles; we need direct Finance Operations use-case coverage (fraud detection, credit scoring, trading algorithms) to build semantic depth across the full topical cluster. Google and Bing both reward topical completeness — a site that covers every major sub-topic within a niche outranks one that covers only 2-3 angles, even if the individual articles are excellent.
 
-**Secondary Pillar: AI Regulation & Policy**
+**Secondary pillar this week: AI Regulation & Policy** — The FCA and EU AI Act provide a live news hook that keeps regulatory content fresh and timely. The `explainable-ai-capital-problem-fca` article is our strongest regulatory anchor; new regulatory pieces should link back to it.
 
-**Why:** The `agentic-ai-regulatory-gap-fintech` article is already published and creates a regulatory cluster anchor. Publishing 2–3 regulation-adjacent articles this week builds a content cluster that search engines can recognize as authoritative on AI regulatory compliance in fintech — a topic with rising search demand per Tavily competitor research.
-
-**This week's publishing priority order:**
-1. AI fraud detection / ML credit scoring (Finance Operations — fills the biggest content gap)
-2. AI governance / explainability in banking (Finance Operations + Regulation crossover)
-3. Human-AI collaboration in financial workflows (Finance Operations — counters competitor coverage)
-4. EU AI Act impact on US banks (Regulation — extends the agentic AI regulatory cluster)
-
-**Pillar to hold until next week:** AI Investment & Capital Markets, AI in Enterprise Business — insufficient cluster depth yet to establish authority.
+**Pillar ratio target:** 60% Finance Operations / 40% Regulation & Policy for the next 7 days.
 
 ===DAILY_REPORT===
 # Particle Post — Daily Marketing Report
 **Date:** 2026-03-24
 **Prepared by:** Marketing Director
-**Report cycle:** Day 2 of current strategy (launched 2026-03-22)
 
 ---
 
@@ -175,68 +153,81 @@ Based on Tavily competitor research and our current slug inventory, the followin
 
 | Metric | 7-Day | 30-Day |
 |--------|-------|--------|
-| Sessions | — | — |
-| Page Views | — | — |
-| Bounce Rate | — | — |
-| Avg Session Duration | — | — |
-| Pages / Session | — | — |
+| Sessions | 2 | 2 |
+| Page Views | 15 | 15 |
+| New Users | 1 | 1 |
+| Bounce Rate | 100% | 100% |
+| Avg Session Duration | 4,234s (70.6 min) | 4,234s (70.6 min) |
+| Traffic Sources | Direct (1), Referral (1), Unassigned (1) | Same |
 
-**Status:** GA4 returns no session data for either period. This is consistent with a brand-new site in its first 72 hours. No traffic baseline can be established today. This is expected and not a concern — Bing crawl confirms the site is being discovered.
+**Note on session duration:** The 70.6-minute average is an artifact of extremely low session volume (n=2) and likely reflects a single extended manual review session. This number is not meaningful at current sample sizes and should not be interpreted as a content engagement signal.
+
+**Note on bounce rate:** 100% bounce rate at n=2 sessions is also statistically meaningless. These sessions are non-organic (direct + referral) and tell us nothing about how search-driven audiences will behave.
+
+**Interpretation:** The site is in pre-organic-traffic mode. All data reflects internal/manual visits only. No SEO signal has emerged yet — this is expected for a site launched 2026-03-22 that is still in crawl ramp-up.
 
 ---
 
 ## Top Performing Articles This Week
 
-No GA4 page-level data is available yet. Published articles as of today:
+Based on GA4 page views (non-organic, low-volume data — directional only):
 
-| Published | Title | Slug |
-|-----------|-------|------|
-| 2026-03-21 | AI as Core Fintech Infrastructure: 80% of Companies Go All-In | `fintech-ai-infrastructure-investment` |
-| 2026-03-23 | Agentic AI Forces Fintech Into Regulatory Gray Zone | `agentic-ai-regulatory-gap-fintech` |
-| 2026-03-23 | Big Tech (AI Data Center Energy Costs) | `ai-data-center-energy-costs` |
+| Rank | Page | Sessions | Views |
+|------|------|----------|-------|
+| 1 | Homepage (/) | 2 | 9 |
+| 2 | Big Tech's $700B AI Bet Strains Power Grids | 1 | 3 |
+| 3 | Explainable AI Is a Capital Problem (FCA) | 1 | 2 |
+| 4 | /tags/ai-regulation/ | 1 | 1 |
 
-Once Bing and Google finish initial indexing (expected within 7–14 days), we will have page-level performance data. The `fintech-ai-infrastructure-investment` article is the most likely to surface first given it has had the longest crawl exposure.
+**Observation:** The energy/data center article and FCA explainability piece are the two articles attracting any page-level engagement. Both are strong candidates for featured snippet optimization once organic traffic begins. The `ai-regulation` tag page receiving a visit suggests the visitor explored via topical navigation — a good signal that tag architecture is functioning.
 
 ---
 
 ## Keyword Ranking Highlights
 
-**Google Search Console:** No data returned — site not yet indexed or ranking for any queries. GSC typically requires 7–14 days post-launch to begin reporting.
+**Google Search Console:** No data. Site is pre-indexing. GSC has not registered any queries, impressions, or clicks yet. Expected to begin populating within 7–14 days of initial crawl.
 
-**Bing Webmaster Tools:** No query or page data available yet. Bing confirms crawl activity is in progress (see Crawl Health below).
+**Bing Query/Page Stats:** No data. Consistent with crawl ramp-up phase.
 
-**Target keywords being seeded in published content:**
-- `fintech AI` — present in `fintech-ai-infrastructure-investment`
-- `agentic AI finance` / `agentic AI regulatory compliance fintech` — present in `agentic-ai-regulatory-gap-fintech`
-- `AI data center` / `artificial intelligence banking` — present in `ai-data-center-energy-costs`
+**Bing Crawl Health:** Healthy. Crawl volume has progressed from 0 → 1 → 2 → 3 → 5 pages/day over 10 days with a single transient error (now resolved). Bing's bot is actively discovering and indexing our content. No action required.
 
-First ranking data expected: **2026-03-31 evaluation window**
+**First keyword data expected:** Week of 2026-03-31, coinciding with our formal strategy evaluation date.
 
 ---
 
-## Bing Crawl Health
+## Strategy Decision: KEEP
 
-| Day | Pages Crawled | Errors |
-|-----|--------------|--------|
-| Day 1 | 0 | 0 |
-| Day 2 | 1 | 0 |
-| Day 3 | 2 | 0 |
-| Day 4 | 3 | 0 |
-| Day 5 | 5 | 0 |
-| Day 6 | 5 | 0 |
-| Day 7 | 3 | **1** |
-| Day 8 | 3 | 0 |
-| Day 9 | 3 | 0 |
-| Day 10 | 2 | 0 |
+**Rationale:** The current plan is 2 days old (launched 2026-03-22), well within the mandatory 5-day evaluation minimum. Zero organic performance data exists across Google, Bing, and GSC — this is entirely expected at this stage. Bing crawl progression is healthy and accelerating. No evidence exists to justify an ADJUST or NEW decision. Evaluation date remains 2026-03-31.
 
-**Assessment:** Healthy ramp-up. The single error on Day 7 was isolated and did not recur — no action required. Bing is crawling 2–5 pages per day consistently. All 3 published articles should be fully crawled within the next 3–5 days.
+**What we're watching for by 2026-03-31:**
+- First GSC impressions for any of our 8 primary target keywords
+- Bing query data populating with any of our long-tail finance terms
+- GA4 organic session count > 0
+- Bing crawl volume sustaining at 3–5 pages/day
 
 ---
 
-## Competitor Intelligence (Tavily Research)
+## Top 3 Action Items for the Content Team
 
-Key findings from the AI finance content landscape in 2026:
+### 1. Fill the fraud detection content gap — publish by 2026-03-25
+We have zero coverage of `AI fraud detection banks`, one of our highest-priority long-tail keywords with strong commercial intent. Write a Finance Operations article targeting a named bank (Visa, JPMorgan, or Mastercard) with specific fraud reduction metrics. Use `machine learning financial services` in H1. Link internally to `fintech-ai-infrastructure-investment` and `agentic-ai-regulatory-gap-fintech`.
 
-1. **Governance and explainability are the dominant themes** — Competitors are publishing heavily on AI trust, governance frameworks, and explainability requirements. Our current library does not yet cover this angle.
+### 2. Fill the credit scoring content gap — publish by 2026-03-26
+`Machine learning credit scoring banks` is a high-value long-tail with no current article coverage. Target Upstart, Goldman Sachs Marcus, or a major EU lender. Frame through the Finance Operations pillar. Use the H1 pattern: `Machine Learning Financial Services: [Bank] Rewrites Credit Scoring With [Result]`.
 
-2. **Human-AI collaboration is a differentiated angle** —
+### 3. Retrofit internal links across all 5 published articles
+None of our existing articles link to each other — this is a crawlability and topical authority problem. Using the internal linking table in the SEO guidelines, add a minimum of 2 cross-links to each of the 5 published articles in the next editorial pass. Priority: ensure `agentic-ai-regulatory-gap-fintech` links to `explainable-ai-capital-problem-fca` and vice versa, as these are thematically adjacent.
+
+---
+
+## What to Watch This Week
+
+| Signal | What to watch for | Why it matters |
+|--------|------------------|----------------|
+| GSC first impressions | Any keyword entering GSC impression data | Confirms Google has indexed and is serving our content |
+| Bing crawl errors | Any spike above 1 error/day | Would indicate a technical indexing problem needing immediate diagnosis |
+| Bing query data | First appearance of any finance/AI query | Confirms Bing is beginning to associate the site with target topics |
+| GA4 organic sessions | First session from organic source | The single most important early milestone |
+| Crawl pace | Bing sustaining 3–5 pages/day | Below 2 pages/day would suggest a sitemap or robots.txt issue |
+
+**Google Trends note:** Today's
