@@ -3,6 +3,7 @@ from pathlib import Path
 
 from crewai import Agent, LLM
 
+from pipeline.tools.bing_webmaster import BingCrawlStatsTool, BingPageStatsTool, BingQueryStatsTool
 from pipeline.tools.ga4_analytics import GA4AnalyticsTool
 from pipeline.tools.google_trends import GoogleTrendsTool
 from pipeline.tools.hostinger import HostingerTool
@@ -145,8 +146,12 @@ def build_marketing_director() -> Agent:
             "You analyze every data point available:\n"
             "  • GA4 traffic (sessions, bounce rate, avg session duration, pages/session, top pages)\n"
             "  • Google Search Console (queries, rankings, CTR, position, opportunities)\n"
+            "  • Bing Webmaster Tools (Bing/Edge search queries, impressions, clicks, CTR, avg position)\n"
             "  • Google Trends (trending AI/finance topics right now)\n"
             "  • Competitor research via Tavily\n\n"
+            "Bing accounts for ~30% of desktop search. Compare Bing vs Google performance — "
+            "if a keyword ranks well on Google but poorly on Bing, that signals a content or "
+            "authority gap worth addressing. Use bing_query_stats and bing_page_stats every run.\n\n"
             "Based on the data, you make one of three content strategy decisions:\n"
             "  KEEP   — strategy is working or too new to evaluate (< 5 days old)\n"
             "  ADJUST — specific elements need tuning (swap 1-2 keywords, shift pillar weighting)\n"
@@ -182,6 +187,9 @@ def build_marketing_director() -> Agent:
         tools=[
             GA4AnalyticsTool(),
             SearchConsoleTool(),
+            BingQueryStatsTool(),
+            BingPageStatsTool(),
+            BingCrawlStatsTool(),
             GoogleTrendsTool(),
             TavilySearchTool(),
             HostingerTool(),
