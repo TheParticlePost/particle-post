@@ -136,7 +136,17 @@ class BingCrawlStatsTool(BaseTool):
             return "[Bing Crawl Stats] No crawl data available."
 
         lines = ["Bing crawl stats:"]
-        for key, val in stats.items():
-            if key not in ("__type",):
-                lines.append(f"  {key}: {val}")
+        if isinstance(stats, dict):
+            for key, val in stats.items():
+                if key not in ("__type",):
+                    lines.append(f"  {key}: {val}")
+        elif isinstance(stats, list):
+            for item in stats[:10]:
+                if isinstance(item, dict):
+                    date = item.get("Date", item.get("date", "?"))
+                    crawled = item.get("CrawledPages", item.get("crawledPages", "?"))
+                    errors  = item.get("CrawlErrors", item.get("crawlErrors", "?"))
+                    lines.append(f"  {date}: {crawled} pages crawled, {errors} errors")
+                else:
+                    lines.append(f"  {item}")
         return "\n".join(lines)
