@@ -1,6 +1,12 @@
 {
   "posts": [
     {
+      "slug": "ai-fraud-detection-roi-40-billion",
+      "title": "AI Fraud Detection ROI: Why Banks Can",
+      "funnel_type": "MOF",
+      "date": "2026-03-25"
+    },
+    {
       "slug": "explainable-ai-capital-problem-fca",
       "title": "Explainable AI Is a Capital Problem, Not a Technical One — and the FCA Is About to Prove It",
       "funnel_type": "TOF",

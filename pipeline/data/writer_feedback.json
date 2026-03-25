@@ -74,6 +74,21 @@
       "text": "Strong TOF execution overall: the H1 question format, 'Clear Verdict' section, answer-first structure under the first H2, and two internal links pointing down the funnel all meet spec cleanly. For your next TOF piece, consider whether the 'What Research Actually Shows' section title could be made more specific — something like 'What Visa's Pilot Data Actually Proves' would better signal topical authority and align more precisely with the long-tail SEO patterns in our H2 guidelines (Template A or B format).",
       "slot": "morning",
       "date": "2026-03-24T16:45:37.705865+00:00"
+    },
+    {
+      "text": "INTERNAL LINKS ARE MISSING — THIS IS THE MOST URGENT FIX: As a MOF article, you must include a minimum of 2 internal markdown links: at least one pointing to a TOF article and one pointing to a BOF article. Per the SEO guidelines internal linking table, this article on AI fraud detection should link to 'fintech-ai-infrastructure-investment' using anchor text '80% of fintech firms going all-in on AI infrastructure' and to 'agentic-ai-regulatory-gap-fintech' using anchor text 'agentic AI regulatory gap in fintech'. Add these as natural inline links within the body — e.g., in the context paragraph where you discuss AI infrastructure investment or in the regulatory risk section.",
+      "slot": "morning",
+      "date": "2026-03-25T03:06:07.605794+00:00"
+    },
+    {
+      "text": "H1 MUST CONTAIN A PRIMARY SEO KEYWORD FROM THE MASTER LIST: Your H1 ('What AI Fraud Detection ROI Actually Proves — and Where the Business Case Breaks Down') does not include any of the 8 primary target keywords from the SEO guidelines (e.g., 'machine learning financial services', 'AI in finance', 'artificial intelligence banking'). Rewrite the H1 to lead with a primary keyword per the SEO H1 formula — for example: 'Machine Learning Financial Services: What Visa's $40B Fraud ROI Actually Proves'. This is the single highest-leverage SEO fix you can make.",
+      "slot": "morning",
+      "date": "2026-03-25T03:06:07.605794+00:00"
+    },
+    {
+      "text": "THE SOURCING AND SUBSTANCE ARE GENUINELY STRONG — PROTECT THAT CREDIBILITY WITH TIGHTER ATTRIBUTION ON THE JPMORGAN FIGURE: Your Visa and Mastercard citations are well-verified and the methodological critique (no control groups, self-reported data, period selection flattering results) is exactly the kind of analysis Particle Post readers need. However, the JPMorgan $1.5 billion figure is sourced via Modernize.io citing a LinkedIn post — not a primary source. For a claim of this magnitude, trace it to JPMorgan's own earnings call transcript, annual report, or an investor relations disclosure. A Bloomberg or Reuters report citing JPMorgan directly would also meet the standard. Modernize.io via LinkedIn does not.",
+      "slot": "morning",
+      "date": "2026-03-25T03:06:07.605794+00:00"
     }
   ]
 }
