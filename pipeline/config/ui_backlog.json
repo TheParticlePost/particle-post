@@ -134,6 +134,33 @@
       "status": "pending",
       "source": "audit",
       "created": "2026-03-25"
+    },
+    {
+      "id": "UI-016",
+      "component": "post-content-h2",
+      "description": "H2 headings in article body use 1.5rem (24px) — consider increasing to 1.75rem (28px) for better visual hierarchy and readability on desktop; mobile H2 should remain fluid",
+      "priority": "high",
+      "status": "pending",
+      "source": "audit",
+      "created": "2026-03-25"
+    },
+    {
+      "id": "UI-017",
+      "component": "post-card-excerpt",
+      "description": "Card excerpts truncate at 3 lines (via -webkit-line-clamp: 3) — on 375px screens, this creates inconsistent card heights; consider 2-line clamp on mobile",
+      "priority": "high",
+      "status": "pending",
+      "source": "audit",
+      "created": "2026-03-25"
+    },
+    {
+      "id": "UI-018",
+      "component": "footer-mobile-layout",
+      "description": "Footer grid switches to 1-column on 768px, but gap reduces from 3rem to 2rem — consider more aggressive mobile footer restructuring (logo + RSS on top, then links grid below)",
+      "priority": "medium",
+      "status": "pending",
+      "source": "audit",
+      "created": "2026-03-25"
     }
   ],
   "completed": []
