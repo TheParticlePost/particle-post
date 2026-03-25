@@ -53,23 +53,13 @@
 
 {{- $term := .Data.Term }}
 
-{{/* Category filter tabs — home page only, top 6 + "More" dropdown */}}
+{{/* Category filter tabs — home page only */}}
 {{- if .IsHome }}
 {{- $cats := site.Taxonomies.categories.ByCount }}
 <div class="filter-tabs" id="filterTabs" role="tablist" aria-label="Filter articles by category">
   <button class="filter-tab active" data-filter="all" role="tab" aria-selected="true">All</button>
-  {{- range first 6 $cats }}
+  {{- range $cats }}
   <button class="filter-tab" data-filter="{{ .Page.Title | urlize }}" role="tab" aria-selected="false">{{ .Page.Title }}</button>
-  {{- end }}
-  {{- if gt (len $cats) 6 }}
-  <div class="filter-more-wrapper">
-    <button class="filter-tab filter-more-btn" id="filterMoreBtn" aria-expanded="false">More <span class="more-arrow">&#9662;</span></button>
-    <div class="filter-more-dropdown" id="filterMoreDropdown" hidden>
-      {{- range after 6 $cats }}
-      <button class="filter-tab" data-filter="{{ .Page.Title | urlize }}" role="tab" aria-selected="false">{{ .Page.Title }}</button>
-      {{- end }}
-    </div>
-  </div>
   {{- end }}
 </div>
 {{- end }}
@@ -152,48 +142,21 @@
 {{- if .IsHome }}
 <script>
 (function() {
-  var tabs = document.querySelectorAll('.filter-tab:not(.filter-more-btn)');
-  var allTabs = document.querySelectorAll('.filter-tab');
+  var tabs = document.querySelectorAll('.filter-tab');
   var cards = document.querySelectorAll('#postsGrid article');
-  var moreBtn = document.getElementById('filterMoreBtn');
-  var moreDropdown = document.getElementById('filterMoreDropdown');
+  if (!tabs.length || !cards.length) return;
 
-  if (!allTabs.length || !cards.length) return;
-
-  /* "More" dropdown toggle */
-  if (moreBtn && moreDropdown) {
-    moreBtn.addEventListener('click', function(e) {
-      e.stopPropagation();
-      var open = moreDropdown.hidden;
-      moreDropdown.hidden = !open;
-      moreBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
-    document.addEventListener('click', function() {
-      moreDropdown.hidden = true;
-      moreBtn.setAttribute('aria-expanded', 'false');
-    });
-    moreDropdown.addEventListener('click', function(e) { e.stopPropagation(); });
-  }
-
-  /* Category filter logic */
   tabs.forEach(function(tab) {
     tab.addEventListener('click', function() {
-      allTabs.forEach(function(t) {
+      tabs.forEach(function(t) {
         t.classList.remove('active');
         t.setAttribute('aria-selected', 'false');
       });
       tab.classList.add('active');
       tab.setAttribute('aria-selected', 'true');
 
-      /* Close dropdown after selection */
-      if (moreDropdown) {
-        moreDropdown.hidden = true;
-        moreBtn.setAttribute('aria-expanded', 'false');
-      }
-
       var filter = tab.dataset.filter;
       var visibleCount = 0;
-
       cards.forEach(function(card) {
         var show = filter === 'all' || card.dataset.category === filter;
         card.style.display = show ? '' : 'none';

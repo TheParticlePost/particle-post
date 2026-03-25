@@ -16,9 +16,7 @@ tags:
   - Digital Transformation
   - Fraud Detection
   - Financial Infrastructure
-categories:
-  - AI in Finance
-  - Enterprise Technology
+categories: ["AI & Finance"]
 cover:
   image: "https://images.pexels.com/photos/6770610/pexels-photo-6770610.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200"
   alt: "Stock market trading screen displaying financial growth charts and data"

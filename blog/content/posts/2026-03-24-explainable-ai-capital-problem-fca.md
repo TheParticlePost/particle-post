@@ -6,7 +6,7 @@ description: "The FCA's mandate for explainable AI in financial decision-making 
 keywords: ["explainable AI fintech", "FCA AI regulation", "interpretability financial services", "AI compliance costs", "regulatory moat fintech"]
 author: "Particle"
 tags: ["AI Regulation", "Fintech Compliance", "Explainable AI"]
-categories: ["Regulatory Analysis", "Fintech Infrastructure"]
+categories: ["Risk & Compliance"]
 cover:
   image: "https://images.pexels.com/photos/7561314/pexels-photo-7561314.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200"
   alt: "Regulatory compliance audit trail and documentation systems"

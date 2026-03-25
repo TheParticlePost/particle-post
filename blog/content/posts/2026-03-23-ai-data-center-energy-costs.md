@@ -18,9 +18,7 @@ tags:
   - "Carbon Markets"
   - "Utility Sector"
   - "Hyperscaler Investment"
-categories:
-  - "AI in Finance"
-  - "Energy & Sustainability"
+categories: ["Energy & ESG"]
 cover:
   image: "https://images.pexels.com/photos/5480781/pexels-photo-5480781.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200"
   alt: "Data center power grid infrastructure with electrical systems and energy distribution"

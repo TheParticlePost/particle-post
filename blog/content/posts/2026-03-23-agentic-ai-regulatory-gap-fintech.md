@@ -16,9 +16,7 @@ tags:
   - "Fintech Risk"
   - "Autonomous Systems"
   - "Financial Regulation"
-categories:
-  - "Fintech Regulation"
-  - "AI Risk Management"
+categories: ["Risk & Compliance"]
 cover:
   image: "https://images.pexels.com/photos/5673479/pexels-photo-5673479.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200"
   alt: "Professional working at desk with laptop and gavel representing AI regulation and compliance"

@@ -622,43 +622,6 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
 }
 
-/* "More" dropdown for overflow categories */
-.filter-more-wrapper {
-  position: relative;
-  display: inline-flex;
-}
-
-.filter-more-btn .more-arrow {
-  font-size: 0.7em;
-  margin-left: 0.15rem;
-}
-
-.filter-more-dropdown {
-  position: absolute;
-  top: calc(100% + 0.35rem);
-  left: 0;
-  z-index: 10;
-  background: var(--theme);
-  border: 1px solid var(--border);
-  border-radius: 0.5rem;
-  padding: 0.4rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  min-width: 200px;
-}
-
-.filter-more-dropdown .filter-tab {
-  width: 100%;
-  text-align: left;
-  border: none;
-  border-radius: 0.35rem;
-}
-
-.filter-more-dropdown .filter-tab:hover {
-  background: var(--code-bg);
-}
 
 /* ------------------------------------------------------------
    15. Professional Footer
