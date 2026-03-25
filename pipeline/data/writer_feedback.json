@@ -1,21 +1,6 @@
 {
   "notes": [
     {
-      "text": "The H1 ('Morgan Stanley's 2026 AI Breakthrough: What It Means for Tech Valuations') contains neither the required primary keyword nor follows the SEO H1 formula ([Primary Keyword]: [Named Entity] + [Specific Context]). The closest applicable primary keyword would be 'AI investment strategy' — the H1 should read something like 'AI Investment Strategy 2026: Morgan Stanley's Compute-vs-Software Forecast.' Always open the SEO guidelines and match the H1 to a keyword from Section 2 before finalizing the headline.",
-      "slot": "morning",
-      "date": "2026-03-23T20:44:13.878760+00:00"
-    },
-    {
-      "text": "The Sources section lists five entries without URLs (Yahoo Finance, RBC Analysis, TradingView, Capital Group, Software Equity Group). Editorial standards require all URLs used in research to be listed at the bottom. Partial citations erode reader trust and make fact-checking impossible. Either find and include the direct URL, or restructure the inline citation to name the publication and report title precisely enough that a reader could locate it independently — e.g., 'Software Equity Group 2026 Annual SaaS Report, published March 2026.'",
-      "slot": "morning",
-      "date": "2026-03-23T20:44:13.878760+00:00"
-    },
-    {
-      "text": "The H1 ('Big Tech's $700B AI Bet Strains Power Grids and Carbon Markets') is strong editorially but does not contain the primary SEO keyword 'AI data center energy costs' as required by the Marketing Director's H1 formula. On your next article, fit the target keyword into the H1 naturally — for example: 'AI Data Center Energy Costs: How Big Tech's $690B Bet Is Straining Power Grids and Carbon Markets.' You lose nothing in clarity and gain the SEO signal.",
-      "slot": "morning",
-      "date": "2026-03-23T20:47:59.325748+00:00"
-    },
-    {
       "text": "The internal link to 'fintech AI infrastructure investment' uses a placeholder URL (https://example.com/fintech-ai-infrastructure-investment) instead of the real published slug. Before submission, always replace placeholder hrefs with the actual relative slug paths defined in the SEO guidelines — in this case, /fintech-ai-infrastructure-investment. A broken internal link erodes both SEO equity and reader trust.",
       "slot": "morning",
       "date": "2026-03-23T20:47:59.325748+00:00"
@@ -149,6 +134,21 @@
       "text": "Em dash discipline: The article uses em dashes as stylistic connectors in multiple consecutive sentences within single paragraphs (especially in the lede and the 'What This Means for Three Finance Functions' section). The editorial guidelines flag this explicitly as an AI-generation tell when used more than once per paragraph. Do a final pass before submission: replace em dashes with periods, commas, or restructured clauses. One per paragraph is the hard ceiling.",
       "slot": "morning",
       "date": "2026-03-25T18:41:27.258144+00:00"
+    },
+    {
+      "text": "Em dash discipline is the clearest remaining AI-generation signal in this piece. You used em dashes as connectors in multiple sentences across several paragraphs — the editorial guidelines flag this explicitly as an AI tell when it appears more than once per paragraph. In your next draft, do a find-replace pass on every em dash and ask whether a period, a colon, or a comma serves the sentence better. Reserve the em dash for genuine parenthetical asides, used once per paragraph maximum.",
+      "slot": "morning",
+      "date": "2026-03-25T19:27:05.606509+00:00"
+    },
+    {
+      "text": "The MOF 'what the evidence does NOT prove' requirement is structurally present in your 'What Neither Approach Has Proven at Scale' section, but it reads as a continuation of the vendor comparison rather than a standalone analytical checkpoint. For your next MOF article, make this a dedicated labeled section that explicitly names the claims vendors are making and then specifically rebuts or qualifies each one with sourced evidence — or an honest acknowledgment that no independent data yet exists. This signals editorial rigor to your executive reader.",
+      "slot": "morning",
+      "date": "2026-03-25T19:27:05.606509+00:00"
+    },
+    {
+      "text": "The H1 does not contain a clean primary keyword match from the SEO target list. 'Agentic AI finance' is a Priority 4 target keyword — your H1 has 'agentic' and 'finance' separated by other words, which may not satisfy SERP matching. A revision like 'Agentic AI Finance: Oracle's 22 Fusion Apps vs. Zalos — Which Fits Your Stack' would bring it into compliance without sacrificing the comparison framing that makes this piece useful.",
+      "slot": "morning",
+      "date": "2026-03-25T19:27:05.606509+00:00"
     }
   ]
 }
