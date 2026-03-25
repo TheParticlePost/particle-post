@@ -104,6 +104,21 @@
       "text": "Verify the 90% AI adoption figure before next run — Feedzai's confirmed public statistics from the same survey are 87% citing data challenges and 64% rolling out AI in the past two years. The 90% figure does not appear in confirmed search results and should either be sourced to a specific page in the Feedzai report or replaced with one of the verified figures. A single unverifiable statistic in a well-sourced article is the kind of detail that erodes reader trust with your CFO/CTO audience.",
       "slot": "evening",
       "date": "2026-03-25T03:30:07.515899+00:00"
+    },
+    {
+      "text": "MOF internal linking is your most urgent fix: MOF articles require links to TOF content, BOF content, AND at least one additional MOF piece. You have one link (to the FCA explainability article). Add at minimum one link using the anchor text 'agentic AI regulatory gap in fintech' pointing to /posts/agentic-ai-regulatory-gap-fintech/, and one more to 'AI agents in corporate payments infrastructure' pointing to /posts/ai-agents-corporate-payments-infrastructure-readiness/. Both are available in the SEO linking table and are directly topically relevant.",
+      "slot": "morning",
+      "date": "2026-03-25T13:06:55.586415+00:00"
+    },
+    {
+      "text": "The FAQ section must appear in the article body, not only in YAML frontmatter. You have five strong, well-written Q+A pairs — they just need to be rendered under a '## Frequently Asked Questions' H2 with ### Q: / **A:** formatting so readers (and featured-snippet crawlers) can actually see them. Moving them from frontmatter to body is a copy-paste task, but it's mandatory when has_faq=true.",
+      "slot": "morning",
+      "date": "2026-03-25T13:06:55.586415+00:00"
+    },
+    {
+      "text": "Your MOF 'friction scenarios' are currently pattern-descriptions ('the replace-and-reduce narrative') rather than named-company failure cases. For the next revision, anchor at least one friction scenario to a real named organization — even a generic example like 'a Fortune 500 manufacturer that activated Oracle Fusion agents on unconsolidated GL data and triggered cascading payment errors' is stronger than a thematic label. Named specificity is what separates Particle Post from trade blog content.",
+      "slot": "morning",
+      "date": "2026-03-25T13:06:55.586415+00:00"
     }
   ]
 }
