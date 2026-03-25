@@ -19,6 +19,7 @@ import json
 import os
 import re
 import sys
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -39,6 +40,26 @@ _CONFIG_DIR      = _REPO_ROOT / "pipeline" / "config"
 _DIRECTIVES_FILE = _CONFIG_DIR / "ui_directives.json"
 _HISTORY_FILE    = _CONFIG_DIR / "ui_change_history.json"
 _BACKLOG_FILE    = _CONFIG_DIR / "ui_backlog.json"
+
+
+# ──────────────────────────────────────────────────────────────────────────────
+# Rate-limit retry wrapper
+# ──────────────────────────────────────────────────────────────────────────────
+
+def _kickoff_with_retry(crew, max_retries: int = 3):
+    """Run crew.kickoff() with automatic retry on 429 rate limit errors."""
+    for attempt in range(1, max_retries + 1):
+        try:
+            return crew.kickoff()
+        except Exception as exc:
+            if "429" in str(exc) or "rate_limit" in str(exc).lower():
+                wait = 60 * attempt  # 60s, 120s, 180s
+                print(f"  [RATE LIMIT] Hit API rate limit. Waiting {wait}s before retry {attempt}/{max_retries}...")
+                time.sleep(wait)
+                if attempt == max_retries:
+                    raise
+            else:
+                raise
 
 
 # ──────────────────────────────────────────────────────────────────────────────
@@ -233,7 +254,7 @@ def _run_directive_mode() -> None:
         verbose=True,
     )
 
-    result = crew.kickoff()
+    result = _kickoff_with_retry(crew)
     raw    = result.raw if result.raw else ""
 
     output = _parse_json_output(raw)
@@ -261,7 +282,7 @@ def _run_audit_mode() -> None:
         verbose=True,
     )
 
-    result = crew.kickoff()
+    result = _kickoff_with_retry(crew)
     raw    = result.raw if result.raw else ""
 
     output = _parse_json_output(raw)

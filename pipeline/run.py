@@ -13,6 +13,7 @@ import json
 import os
 import re
 import sys
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -494,7 +495,21 @@ def main() -> None:
         print(f"\n─── Pipeline attempt {attempt} of {MAX_ATTEMPTS} ───\n")
 
         crew = build_crew(slot=args.slot)
-        result = crew.kickoff(inputs={"rejection_feedback": rejection_feedback})
+
+        # Retry on rate limit (429) errors — wait and try again
+        for rate_retry in range(1, 4):
+            try:
+                result = crew.kickoff(inputs={"rejection_feedback": rejection_feedback})
+                break
+            except Exception as exc:
+                if "429" in str(exc) or "rate_limit" in str(exc).lower():
+                    wait = 60 * rate_retry  # 60s, 120s, 180s
+                    print(f"  [RATE LIMIT] Hit API rate limit. Waiting {wait}s before retry {rate_retry}/3...")
+                    time.sleep(wait)
+                    if rate_retry == 3:
+                        raise
+                else:
+                    raise
 
         # Formatter output = second-to-last task (index -2)
         if result.tasks_output and len(result.tasks_output) >= 2:

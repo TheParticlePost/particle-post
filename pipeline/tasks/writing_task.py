@@ -29,12 +29,12 @@ def _load_recent_coaching(n: int = 5) -> str:
 
 def _load_post_index() -> str:
     """
-    Load the full post index as a compact pipe-delimited string for token efficiency.
+    Load the post index as a compact pipe-delimited string for token efficiency.
 
     Format per line: FUNNEL_TYPE|YYYY-MM-DD|slug|Article Title
     Example: TOF|2026-03-23|agentic-ai-regulatory-gap|Agentic AI Forces Fintech Into Regulatory Gray Zone
 
-    Max 100 posts, newest first. ~85 chars/post → 100 posts ≈ 2,000 tokens.
+    Max 20 posts, newest first. ~85 chars/post → 20 posts ≈ 400 tokens.
     Falls back to topics_history.json for posts published before the index existed.
     """
     posts = []

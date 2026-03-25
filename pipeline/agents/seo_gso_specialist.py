@@ -98,7 +98,7 @@ def build_seo_gso_specialist() -> Agent:
             + post_index
         ),
         tools=[TavilySearchTool()],
-        llm=LLM(model="anthropic/claude-sonnet-4-6", max_tokens=1800),
+        llm=LLM(model="anthropic/claude-sonnet-4-6", max_tokens=4000),
         verbose=True,
         allow_delegation=False,
     )

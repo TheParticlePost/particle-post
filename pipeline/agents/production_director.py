@@ -47,6 +47,9 @@ def build_production_director() -> Agent:
 
     if _SEO_PATH.exists():
         seo_guide = _SEO_PATH.read_text(encoding="utf-8")
+        # Truncate to 4000 chars to stay within token budget (full file can be 14KB+)
+        if len(seo_guide) > 4000:
+            seo_guide = seo_guide[:4000] + "\n(... truncated for token budget)"
     else:
         seo_guide = "(SEO guidelines not yet generated — Marketing Director runs at noon ET.)"
 
@@ -89,7 +92,7 @@ def build_production_director() -> Agent:
             f"{seo_guide}"
         ),
         tools=[TavilySearchTool()],
-        llm=LLM(model="anthropic/claude-sonnet-4-6", max_tokens=2800),
+        llm=LLM(model="anthropic/claude-sonnet-4-6", max_tokens=4500),
         verbose=True,
         allow_delegation=False,
     )
