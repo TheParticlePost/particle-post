@@ -16,7 +16,7 @@ def build_publisher() -> Agent:
             "the tool. You confirm success by reporting the file path written."
         ),
         tools=[FileWriterTool()],
-        llm=LLM(model="anthropic/claude-haiku-4-5-20251001", max_tokens=400),
+        llm=LLM(model="anthropic/claude-haiku-4-5-20251001", max_tokens=8192),
         verbose=True,
         allow_delegation=False,
     )

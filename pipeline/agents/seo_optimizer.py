@@ -15,7 +15,7 @@ def build_seo_optimizer() -> Agent:
         ),
         backstory=_BACKSTORY,
         tools=[TavilySearchTool()],
-        llm=LLM(model="anthropic/claude-haiku-4-5-20251001", max_tokens=800),
+        llm=LLM(model="anthropic/claude-haiku-4-5-20251001", max_tokens=8192),
         verbose=True,
         allow_delegation=False,
     )

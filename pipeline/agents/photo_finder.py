@@ -24,7 +24,7 @@ def build_photo_finder() -> Agent:
             "Output strict JSON only — no prose."
         ),
         tools=[PexelsImageTool(), PixabayImageTool()],
-        llm=LLM(model="anthropic/claude-haiku-4-5-20251001", max_tokens=600),
+        llm=LLM(model="anthropic/claude-haiku-4-5-20251001", max_tokens=8192),
         verbose=True,
         allow_delegation=False,
     )

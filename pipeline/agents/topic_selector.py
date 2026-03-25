@@ -16,7 +16,7 @@ def build_topic_selector() -> Agent:
             "You output strict JSON — no prose, no explanations."
         ),
         tools=[],
-        llm=LLM(model="anthropic/claude-haiku-4-5-20251001", max_tokens=1000),
+        llm=LLM(model="anthropic/claude-haiku-4-5-20251001", max_tokens=8192),
         verbose=True,
         allow_delegation=False,
     )

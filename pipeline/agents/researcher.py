@@ -50,7 +50,7 @@ def build_researcher() -> Agent:
         ),
         backstory=backstory,
         tools=[TavilySearchTool(), GoogleTrendsTool(), NewsApiFetchTool()],
-        llm=LLM(model="anthropic/claude-haiku-4-5-20251001", max_tokens=2000),
+        llm=LLM(model="anthropic/claude-haiku-4-5-20251001", max_tokens=8192),
         verbose=True,
         allow_delegation=False,
     )
