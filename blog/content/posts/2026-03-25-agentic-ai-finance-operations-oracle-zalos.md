@@ -17,7 +17,7 @@ tags:
   - "ERP Automation"
   - "Finance Operations"
   - "CFO Technology"
-categories: ["Enterprise Tech"]
+categories: ["Enterprise Tech", "Agentic AI", "ERP Automation"]
 cover:
   image: "https://images.pexels.com/photos/5717797/pexels-photo-5717797.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200"
   alt: "Professional analyzing financial data and workflow automation on computer dashboard"

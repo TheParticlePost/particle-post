@@ -17,15 +17,14 @@ tags:
   - "Agentic AI"
   - "Finance Operations"
   - "Implementation Guide"
-categories:
-  - "Finance Operations"
+categories: ["Enterprise Tech", "Finance Operations", "AP Automation"]
 cover:
-  image: "https://pixabay.com/get/gb1fb2214ce85391eedd9a66db629e0da04753b13beb0d7dbaec7536a11168048ea2b85830fc34284c537d96812bfef26b292198939deda980a75877b097bad32_1280.jpg"
-  alt: "Abstract financial data visualization with glowing digital elements representing AI-powered accounts payable automation and invoice processing workflow"
+  image: "https://images.pexels.com/photos/7681091/pexels-photo-7681091.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200"
+  alt: "Finance professional reviewing automated invoice processing dashboard on laptop"
   caption: ""
-image_credit_name: "falco"
-image_credit_url: "https://pixabay.com/users/falco-81448"
-image_credit_source: "Pixabay"
+image_credit_name: "Tima Miroshnichenko"
+image_credit_url: "https://www.pexels.com/@tima-miroshnichenko"
+image_credit_source: "Pexels"
 schema_type: "FAQPage"
 has_faq: true
 faq_pairs:

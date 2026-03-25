@@ -16,7 +16,7 @@ tags:
   - "Financial Services"
   - "ROI"
   - "Banking Technology"
-categories: ["AI & Finance"]
+categories: ["AI & Finance", "Fraud Detection", "Banking Technology"]
 cover:
   image: "https://images.pexels.com/photos/5497951/pexels-photo-5497951.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200"
   alt: "Banking security technology and fraud detection systems"

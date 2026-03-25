@@ -18,7 +18,7 @@ tags:
   - "AI & Automation"
   - "ERP Strategy"
   - "Finance Technology"
-categories: ["Enterprise Tech"]
+categories: ["Enterprise Tech", "ERP Strategy", "CFO Technology"]
 cover:
   image: "https://images.pexels.com/photos/36598855/pexels-photo-36598855.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200"
   alt: "Enterprise ERP software and business technology modernization"

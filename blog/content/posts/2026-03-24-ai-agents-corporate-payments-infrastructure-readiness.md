@@ -16,7 +16,7 @@ tags:
   - "Payments"
   - "Compliance"
   - "Enterprise Finance"
-categories: ["AI & Finance"]
+categories: ["AI & Finance", "Payments", "Fintech Infrastructure"]
 cover:
   image: "https://images.pexels.com/photos/7793102/pexels-photo-7793102.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200"
   alt: "Abstract digital visualization of artificial intelligence and autonomous financial transactions with interconnected nodes and data flow"

@@ -17,7 +17,7 @@ tags:
   - "Banking Risk Management"
   - "Model Governance"
   - "Regulatory Compliance"
-categories: ["Enterprise Tech"]
+categories: ["Enterprise Tech", "Fraud Detection", "Risk Management"]
 cover:
   image: "https://images.pexels.com/photos/6266311/pexels-photo-6266311.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200"
   alt: "Digital visualization of AI fraud detection system with financial data streams and security monitoring interface"

@@ -53,14 +53,14 @@
 
 {{- $term := .Data.Term }}
 
-{{/* Category filter tabs — home page only */}}
+{{/* Category filter tabs — home page only, curated primary categories */}}
 {{- if .IsHome }}
-{{- $cats := site.Taxonomies.categories.ByCount }}
 <div class="filter-tabs" id="filterTabs" role="tablist" aria-label="Filter articles by category">
   <button class="filter-tab active" data-filter="all" role="tab" aria-selected="true">All</button>
-  {{- range $cats }}
-  <button class="filter-tab" data-filter="{{ .Page.Title | urlize }}" role="tab" aria-selected="false">{{ .Page.Title }}</button>
-  {{- end }}
+  <button class="filter-tab" data-filter="ai-finance" role="tab" aria-selected="false">AI &amp; Finance</button>
+  <button class="filter-tab" data-filter="risk-compliance" role="tab" aria-selected="false">Risk &amp; Compliance</button>
+  <button class="filter-tab" data-filter="enterprise-tech" role="tab" aria-selected="false">Enterprise Tech</button>
+  <button class="filter-tab" data-filter="energy-esg" role="tab" aria-selected="false">Energy &amp; ESG</button>
 </div>
 {{- end }}
 

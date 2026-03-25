@@ -18,7 +18,7 @@ tags:
   - "Risk Management"
   - "Synthetic Identity Fraud"
   - "Deepfake Fraud"
-categories: ["Risk & Compliance"]
+categories: ["Risk & Compliance", "Fraud Detection", "Financial Crime"]
 cover:
   image: "https://images.pexels.com/photos/5474034/pexels-photo-5474034.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200"
   alt: "Artificial intelligence security and digital fraud prevention systems"
