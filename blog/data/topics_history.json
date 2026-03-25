@@ -72,6 +72,18 @@
       ],
       "filename": "2026-03-25-ai-fraud-detection-roi-40-billion.md",
       "published_at": "2026-03-25T03:06:07.614479+00:00"
+    },
+    {
+      "title": "How to Deploy AI Fraud Detection: 5 Implementation Pitfalls and Go/No-Go Checkpoints",
+      "slug": "ai-fraud-detection-deployment-implementation",
+      "tags": [
+        "AI Fraud Detection",
+        "Banking Risk Management",
+        "Model Governance",
+        "Regulatory Compliance"
+      ],
+      "filename": "2026-03-25-ai-fraud-detection-deployment-implementation.md",
+      "published_at": "2026-03-25T03:30:07.589070+00:00"
     }
   ]
 }

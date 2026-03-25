@@ -89,6 +89,21 @@
       "text": "THE SOURCING AND SUBSTANCE ARE GENUINELY STRONG — PROTECT THAT CREDIBILITY WITH TIGHTER ATTRIBUTION ON THE JPMORGAN FIGURE: Your Visa and Mastercard citations are well-verified and the methodological critique (no control groups, self-reported data, period selection flattering results) is exactly the kind of analysis Particle Post readers need. However, the JPMorgan $1.5 billion figure is sourced via Modernize.io citing a LinkedIn post — not a primary source. For a claim of this magnitude, trace it to JPMorgan's own earnings call transcript, annual report, or an investor relations disclosure. A Bloomberg or Reuters report citing JPMorgan directly would also meet the standard. Modernize.io via LinkedIn does not.",
       "slot": "morning",
       "date": "2026-03-25T03:06:07.605794+00:00"
+    },
+    {
+      "text": "BOF Go/No-Go section is missing — this is a mandatory BOF structural element and your title explicitly promises it. Add a clearly labeled '## Go/No-Go Checkpoint' section with explicit binary pass/fail criteria (e.g., 'If labeled transaction data spans fewer than 18 months → NO-GO. If compliance team has not signed off on explainability layer → NO-GO'). Readers at the bottom of the funnel need this decision scaffold — it's what separates a BOF guide from a MOF explainer.",
+      "slot": "evening",
+      "date": "2026-03-25T03:30:07.515899+00:00"
+    },
+    {
+      "text": "The H1 must contain a primary SEO keyword per guidelines. Your current H1 ('How to Deploy AI Fraud Detection Without Derailing Customer Experience or Failing a Regulatory Audit') contains none of the 8 target keywords. Rewrite to match the H1 formula: try 'AI in Finance: How to Deploy Fraud Detection Without Failing a Regulatory Audit 2026' or 'Machine Learning Financial Services: AI Fraud Detection Deployment Playbook 2026' — keep it under 70 characters for full SERP display.",
+      "slot": "evening",
+      "date": "2026-03-25T03:30:07.515899+00:00"
+    },
+    {
+      "text": "Verify the 90% AI adoption figure before next run — Feedzai's confirmed public statistics from the same survey are 87% citing data challenges and 64% rolling out AI in the past two years. The 90% figure does not appear in confirmed search results and should either be sourced to a specific page in the Feedzai report or replaced with one of the verified figures. A single unverifiable statistic in a well-sourced article is the kind of detail that erodes reader trust with your CFO/CTO audience.",
+      "slot": "evening",
+      "date": "2026-03-25T03:30:07.515899+00:00"
     }
   ]
 }

@@ -6,6 +6,7 @@
 ## Posts
 
 - [AI Fraud Detection ROI: Why Banks Can](https://theparticlepost.com/posts/ai-fraud-detection-roi-40-billion/): Visa
+- [How to Deploy AI Fraud Detection: 5 Implementation Pitfalls and Go/No-Go Checkpoints](https://theparticlepost.com/posts/ai-fraud-detection-deployment-implementation/): Step-by-step implementation guide for deploying AI fraud detection systems in banking and fintech. Covers model selection, data integration, threshold calibration, and operational handoff with explicit go/no-go criteria before production rollout.
 - [Explainable AI Is a Capital Problem, Not a Technical One — and the FCA Is About to Prove It](https://theparticlepost.com/posts/explainable-ai-capital-problem-fca/): The FCA
 - [Can AI Agents Actually Handle Your Company](https://theparticlepost.com/posts/ai-agents-corporate-payments-infrastructure-readiness/): Visa
 - [Big Tech](https://theparticlepost.com/posts/ai-data-center-energy-costs/): Hyperscalers spending $690B on AI infrastructure strains power grids and carbon markets. How energy constraints reshape ESG finance and utility stocks.
