@@ -27,7 +27,7 @@ def build_formatting_task(
             "   If not found, fall back to the [RESTRUCTURED ARTICLE] block from seo_gso_task.\n"
             f"4. Build the filename: {date_str}-<slug>.md\n"
             "5. Build YAML frontmatter with ALL of these fields:\n"
-            "   title, date (use the exact publish timestamp provided above e.g. {timestamp_iso} — NOT midnight T00:00:00Z), slug, description, keywords (list), "
+            f"   title, date (use the exact publish timestamp provided above: {timestamp_iso} — NOT midnight T00:00:00Z), slug, description, keywords (list), "
             "   author, tags (list), categories (list),\n"
             "   cover (nested YAML block with keys: image, alt, caption),\n"
             "   image_credit_name, image_credit_url, image_credit_source,\n"
