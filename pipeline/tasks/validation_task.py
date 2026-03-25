@@ -45,9 +45,14 @@ def build_validation_task(
             "   Penalty if fewer than 3: −20 points\n\n"
 
             "5. AI-TELL PHRASES — Search for: delve, game-changing, transformative, groundbreaking, "
-            "unprecedented, utilize, seamlessly, furthermore, moreover, em dash used more than once "
-            "per paragraph (— used repeatedly), needless to say, rest assured.\n"
+            "unprecedented, utilize, seamlessly, furthermore, moreover, needless to say, rest assured.\n"
             "   Penalty: −10 per phrase found, maximum −20 points total\n\n"
+
+            "13. EM-DASH BAN — The article must contain ZERO em-dash characters (\u2014).\n"
+            "    Search the entire article body AND frontmatter for the \u2014 character.\n"
+            "    Em-dashes are completely banned in all Particle Post content.\n"
+            "    Replacements: use commas, colons, semicolons, periods, or parentheses instead.\n"
+            "    Penalty: −15 points per em-dash found, maximum −30 points\n\n"
 
             "6. ARTICLE STRUCTURE — Must contain at least 2 H2 headings (lines beginning '## ').\n"
             "   Penalty if fewer than 2: −10 points\n\n"

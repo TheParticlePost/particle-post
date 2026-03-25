@@ -266,29 +266,75 @@ def _run_directive_mode() -> None:
 # Mode: Audit (proactive — always runs)
 # ──────────────────────────────────────────────────────────────────────────────
 
+def _start_hugo_server():
+    """Start Hugo dev server for visual inspection. Returns process or None."""
+    import subprocess
+    blog_dir = _REPO_ROOT / "blog"
+    try:
+        proc = subprocess.Popen(
+            ["hugo", "server", "--port", "1314", "--disableLiveReload", "--noHTTPCache"],
+            cwd=str(blog_dir),
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+        )
+        # Wait for server ready
+        import urllib.request
+        for _ in range(20):
+            time.sleep(0.5)
+            try:
+                urllib.request.urlopen("http://localhost:1314/", timeout=2)
+                print("  Hugo dev server started on :1314")
+                return proc
+            except Exception:
+                continue
+        print("  Hugo server started but readiness check timed out — visual tools may work")
+        return proc
+    except FileNotFoundError:
+        print("  Hugo not found — visual inspection will be skipped")
+        return None
+
+
+def _stop_hugo_server(proc):
+    """Gracefully stop Hugo dev server."""
+    if proc is None:
+        return
+    try:
+        proc.terminate()
+        proc.wait(timeout=5)
+        print("  Hugo dev server stopped")
+    except Exception:
+        proc.kill()
+
+
 def _run_audit_mode() -> None:
     """Run UI Auditor in proactive mode — always runs, picks from backlog."""
     from crewai import Crew, Process
     from pipeline.agents.ui_designer import build_ui_auditor
     from pipeline.tasks.ui_audit_task import build_ui_audit_task
 
-    auditor = build_ui_auditor()
-    task    = build_ui_audit_task(auditor)
+    # Start Hugo server for visual inspection tools
+    hugo_proc = _start_hugo_server()
 
-    crew = Crew(
-        agents=[auditor],
-        tasks=[task],
-        process=Process.sequential,
-        verbose=True,
-    )
+    try:
+        auditor = build_ui_auditor()
+        task    = build_ui_audit_task(auditor)
 
-    result = _kickoff_with_retry(crew)
-    raw    = result.raw if result.raw else ""
+        crew = Crew(
+            agents=[auditor],
+            tasks=[task],
+            process=Process.sequential,
+            verbose=True,
+        )
 
-    output = _parse_json_output(raw)
-    _print_results(output)
-    _write_change_log(output)
-    _update_backlog(output)
+        result = _kickoff_with_retry(crew)
+        raw    = result.raw if result.raw else ""
+
+        output = _parse_json_output(raw)
+        _print_results(output)
+        _write_change_log(output)
+        _update_backlog(output)
+    finally:
+        _stop_hugo_server(hugo_proc)
 
 
 # ──────────────────────────────────────────────────────────────────────────────

@@ -109,7 +109,7 @@ Every article must have:
 ## What to Avoid
 
 - **Hype language**: game-changing, transformative, revolutionary, groundbreaking, unprecedented, disruptive (use sparingly and only with specific evidence)
-- **AI-generation tells**: delve, it's worth noting, it's important to note, in today's rapidly evolving landscape, seamlessly, leverage (as metaphor), utilize, facilitate, furthermore, moreover, needless to say, rest assured, at the end of the day, a myriad of, this is a testament to, in conclusion, in summary — and **em dash overuse** (— used as a stylistic connector more than once per paragraph is a strong AI signal — avoid entirely as a stylistic device)
+- **AI-generation tells**: delve, it's worth noting, it's important to note, in today's rapidly evolving landscape, seamlessly, leverage (as metaphor), utilize, facilitate, furthermore, moreover, needless to say, rest assured, at the end of the day, a myriad of, this is a testament to, in conclusion, in summary — and **em-dashes (—) are COMPLETELY BANNED** — never use em-dashes in any text, titles, or descriptions. Use commas, colons, semicolons, periods, or parentheses instead. Any em-dash in an article triggers an automatic penalty
 - **Vague ledes**: "In recent years, artificial intelligence has been changing the business world..." — This tells the reader nothing and wastes their time
 - **Unattributed statistics**: "Studies show..." — Which studies? Who conducted them?
 - **Passive voice**: "Decisions are being made by AI systems..." — Who is making the decision?

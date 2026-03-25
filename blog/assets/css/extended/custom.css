@@ -622,6 +622,44 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
 }
 
+/* "More" dropdown for overflow categories */
+.filter-more-wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+.filter-more-btn .more-arrow {
+  font-size: 0.7em;
+  margin-left: 0.15rem;
+}
+
+.filter-more-dropdown {
+  position: absolute;
+  top: calc(100% + 0.35rem);
+  left: 0;
+  z-index: 10;
+  background: var(--theme);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  padding: 0.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  min-width: 200px;
+}
+
+.filter-more-dropdown .filter-tab {
+  width: 100%;
+  text-align: left;
+  border: none;
+  border-radius: 0.35rem;
+}
+
+.filter-more-dropdown .filter-tab:hover {
+  background: var(--code-bg);
+}
+
 /* ------------------------------------------------------------
    15. Professional Footer
    ------------------------------------------------------------ */
@@ -934,4 +972,118 @@ body:has(.footer-pro) .footer {
     flex: 1;
     text-align: center;
   }
+}
+
+/* ------------------------------------------------------------
+   Bar Chart Shortcode
+   ------------------------------------------------------------ */
+.bar-chart-container {
+  margin: 1.5rem 0;
+  padding: 1.25rem;
+  background: var(--code-bg);
+  border-radius: 0.5rem;
+  border-left: 3px solid var(--accent-blue);
+}
+
+.bar-chart-title {
+  margin: 0 0 1rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.bar-chart-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.bar-chart-label {
+  flex: 0 0 120px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--secondary);
+  text-align: right;
+}
+
+.bar-chart-track {
+  flex: 1;
+  height: 1.5rem;
+  background: var(--border);
+  border-radius: 0.25rem;
+  overflow: hidden;
+}
+
+.bar-chart-fill {
+  height: 100%;
+  background: var(--accent-blue);
+  border-radius: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 0.5rem;
+  min-width: 2.5rem;
+  transition: width 0.4s ease;
+}
+
+.bar-chart-value {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.bar-chart-source {
+  display: block;
+  margin-top: 0.75rem;
+  font-size: 0.6875rem;
+  color: var(--secondary);
+  font-style: italic;
+}
+
+/* ------------------------------------------------------------
+   Comparison Table Shortcode
+   ------------------------------------------------------------ */
+.comparison-table-container {
+  margin: 1.5rem 0;
+  overflow-x: auto;
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.comparison-table th {
+  background: var(--accent-blue);
+  color: #fff;
+  font-weight: 700;
+  padding: 0.625rem 0.75rem;
+  text-align: left;
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.comparison-table td {
+  padding: 0.625rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--primary);
+}
+
+.comparison-table tr:nth-child(even) td {
+  background: var(--code-bg);
+}
+
+.comparison-table tr:hover td {
+  background: rgba(37, 99, 235, 0.04);
+}
+
+.comparison-table-source {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.6875rem;
+  color: var(--secondary);
+  font-style: italic;
 }

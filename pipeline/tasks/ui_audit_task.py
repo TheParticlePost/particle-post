@@ -20,38 +20,63 @@ def build_ui_audit_task(agent: Agent) -> Task:
         description=(
             f"Proactive UI audit and improvement for {today}.\n\n"
 
-            "═══ STEP 1: READ CURRENT STATE ═══\n\n"
+            "═══ STEP 1: VISUAL INSPECTION ═══\n\n"
 
-            "Call these tools to understand the current site state:\n"
+            "Use visual tools to SEE the rendered website (if available):\n"
+            "1. visual_screenshot({\"path\": \"/\", \"width\": 1280})  — homepage desktop\n"
+            "2. visual_screenshot({\"path\": \"/\", \"width\": 375})   — homepage mobile\n"
+            "3. image_checker({\"path\": \"/\"})  — check all images loaded\n"
+            "4. link_checker({\"path\": \"/\"})   — check internal links\n"
+            "5. layout_checker({\"path\": \"/\", \"width\": 375})  — mobile layout issues\n"
+            "6. accessibility_checker({\"path\": \"/\"})  — alt text, headings, aria-labels\n\n"
+            "If visual tools error (Playwright not installed), log it and skip to Step 3.\n\n"
+
+            "═══ STEP 2: VISUAL ANALYSIS ═══\n\n"
+
+            "Review visual inspection results. Flag critical issues:\n"
+            "- Broken images (naturalWidth=0) — HIGH priority\n"
+            "- Dead internal links (status != 200) — HIGH priority\n"
+            "- Layout overflow on mobile — HIGH priority\n"
+            "- Missing alt text or heading skips — MEDIUM priority\n"
+            "- These visual findings override backlog priorities.\n\n"
+
+            "═══ STEP 3: READ CSS/TEMPLATES ═══\n\n"
+
+            "Call these tools to understand the current code state:\n"
             "1. css_reader('')          — read full custom.css\n"
             "2. template_reader('home_info')  — read hero section\n"
             "3. template_reader('list')       — read post grid\n\n"
-            "Review what you see. Identify areas that need improvement.\n\n"
 
-            "═══ STEP 2: PICK BACKLOG ITEMS ═══\n\n"
+            "═══ STEP 4: PICK ISSUE TO FIX ═══\n\n"
 
-            "From your UI IMPROVEMENT BACKLOG context, pick 1-2 items:\n"
-            "- Prefer HIGH priority items first\n"
-            "- Check RECENT UI CHANGE HISTORY — skip items whose component "
-            "was changed within the last 7 days (cooldown)\n"
-            "- If no suitable backlog items, identify a new improvement from your CSS/template audit\n\n"
+            "Priority order:\n"
+            "1. Critical visual issues from Step 2 (broken images, dead links, overflow)\n"
+            "2. HIGH-priority backlog items\n"
+            "3. Accessibility issues from visual inspection\n"
+            "4. New improvements identified from CSS/template audit\n\n"
+            "Check RECENT UI CHANGE HISTORY — skip items changed within 7 days.\n\n"
 
-            "═══ STEP 3: IMPLEMENT CHANGES ═══\n\n"
+            "═══ STEP 5: IMPLEMENT CHANGES ═══\n\n"
 
             "For each picked item:\n"
-            "1. Find the exact current string in the file (from Step 1)\n"
+            "1. Find the exact current string in the file (from Step 3)\n"
             "2. Plan the improvement (one targeted change)\n"
             "3. Call css_editor or template_editor with find/replace/rationale\n"
             "4. Re-read the file to confirm the change was applied\n"
             "5. If editing CSS, verify dark mode is not broken\n\n"
             "Maximum 2 changes per run. Quality over quantity.\n\n"
 
-            "═══ STEP 4: DISCOVER NEW ITEMS ═══\n\n"
+            "═══ STEP 6: VERIFY (if visual tools available) ═══\n\n"
 
-            "Based on your audit in Step 1, identify 2-3 NEW improvement opportunities "
-            "that are NOT already in the backlog. These become new backlog items.\n\n"
+            "Re-take screenshots at the same breakpoints as Step 1.\n"
+            "Confirm the fix is visible and no regressions were introduced.\n\n"
 
-            "═══ STEP 5: OUTPUT JSON ═══\n\n"
+            "═══ STEP 7: DISCOVER NEW ITEMS ═══\n\n"
+
+            "Based on visual inspection AND CSS/template audit, identify 2-3 NEW "
+            "improvement opportunities not already in the backlog.\n\n"
+
+            "═══ STEP 8: OUTPUT JSON ═══\n\n"
 
             "Output ONLY this JSON — no prose before or after, no code fences:\n\n"
             "{\n"
@@ -81,8 +106,18 @@ def build_ui_audit_task(agent: Agent) -> Task:
             '    }\n'
             '  ],\n'
             '  "files_modified": ["blog/assets/css/extended/custom.css"],\n'
+            '  "visual_check": {\n'
+            '    "screenshots_taken": true,\n'
+            '    "broken_images": 0,\n'
+            '    "broken_links": 0,\n'
+            '    "layout_issues": 0,\n'
+            '    "accessibility_score": 100,\n'
+            '    "notes": "All images loaded. No layout overflow at 375px."\n'
+            '  },\n'
             '  "summary": "Improved stat-box padding for better readability. Discovered 2 new improvement areas."\n'
             "}\n\n"
+            "If visual tools were not available, set visual_check.screenshots_taken to false "
+            "and notes to 'Playwright not available — visual inspection skipped'.\n\n"
 
             "If no changes were possible (all on cooldown), output empty changes_applied "
             "but still include new_backlog_items from your audit."

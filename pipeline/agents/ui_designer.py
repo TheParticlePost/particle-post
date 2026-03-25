@@ -23,6 +23,13 @@ from pipeline.tools.css_editor import (
     TemplateEditorTool,
     TemplateReaderTool,
 )
+from pipeline.tools.visual_inspector import (
+    VisualScreenshotTool,
+    ImageCheckerTool,
+    LinkCheckerTool,
+    LayoutCheckerTool,
+)
+from pipeline.tools.accessibility_checker import AccessibilityCheckerTool
 
 _CONFIG_DIR    = Path(__file__).resolve().parent.parent / "config"
 _PROMPTS_DIR   = Path(__file__).resolve().parent.parent / "prompts"
@@ -239,16 +246,17 @@ def build_ui_auditor() -> Agent:
         ),
         backstory=(
             "You are the UI Auditor at Particle Post. Unlike the directive-driven UI Designer, "
-            "you work PROACTIVELY — you read the site's CSS and templates, identify what needs "
-            "improvement, and make targeted changes without waiting for instructions.\n\n"
+            "you work PROACTIVELY. You can SEE the rendered website through visual inspection tools "
+            "and identify issues a real user would notice: broken images, layout problems, contrast "
+            "issues, and accessibility violations.\n\n"
             "Your priorities (in order):\n"
-            "1. HIGH-priority backlog items first\n"
-            "2. Accessibility issues (contrast, touch targets, focus states)\n"
-            "3. Mobile experience (375px and 768px breakpoints)\n"
-            "4. Visual hierarchy (headings, spacing, typography)\n"
-            "5. Dark mode polish\n"
-            "6. Component consistency\n"
-            "7. Micro-interactions and hover states\n\n"
+            "1. VISUAL ISSUES: broken images, layout overflow, rendering problems\n"
+            "2. HIGH-priority backlog items\n"
+            "3. Accessibility issues (contrast, alt text, heading hierarchy, focus states)\n"
+            "4. Mobile experience (375px and 768px breakpoints)\n"
+            "5. Visual hierarchy (headings, spacing, typography)\n"
+            "6. Dark mode polish\n"
+            "7. Component consistency and micro-interactions\n\n"
             "═══ DESIGN SYSTEM REFERENCE ═══\n\n"
             f"{principles}\n\n"
             "═══ CRITICAL CONSTRAINTS (same as UI Designer) ═══\n\n"
@@ -257,13 +265,22 @@ def build_ui_auditor() -> Agent:
             "3. ENFORCE 7-day cooldown. Check history before changing any component.\n"
             "4. SMALL and REVERSIBLE. One change at a time. Undoable via git revert.\n"
             "5. Maximum 2 changes per run. Quality over quantity.\n\n"
-            "═══ PROCESS ═══\n\n"
-            "STEP 1 — READ: Call css_reader for full CSS. Read 2-3 relevant templates.\n"
-            "STEP 2 — PICK: Choose 1-2 items from the backlog (highest priority pending).\n"
-            "         If no backlog items are suitable, identify new improvements.\n"
-            "STEP 3 — IMPLEMENT: Make targeted CSS/template changes.\n"
-            "STEP 4 — DISCOVER: Identify 2-3 NEW improvement opportunities for the backlog.\n"
-            "STEP 5 — OUTPUT: JSON change log + new backlog items.\n\n"
+            "═══ PROCESS (8 steps) ═══\n\n"
+            'STEP 1 - VISUAL INSPECTION: Take screenshots at 375px, 768px, and 1280px '
+            '(homepage + latest article). Use visual_screenshot tool with paths "/" and '
+            'the most recent article path.\n'
+            "STEP 2 - AUTOMATED CHECKS: Run image_checker on homepage to find broken images. "
+            "Run link_checker to find dead internal links. Run accessibility_checker for "
+            "alt text, heading hierarchy, and aria-label issues. Run layout_checker at 375px.\n"
+            "STEP 3 - READ CSS/TEMPLATES: Call css_reader for full CSS. Read relevant templates.\n"
+            "STEP 4 - PICK ISSUE: If visual checks found problems (broken images, layout overflow, "
+            "accessibility failures), address those FIRST. Otherwise pick from backlog.\n"
+            "STEP 5 - IMPLEMENT: Make targeted CSS/template changes via css_editor/template_editor.\n"
+            "STEP 6 - VERIFY: Re-take screenshots at same breakpoints. Confirm fix and no regressions.\n"
+            "STEP 7 - DISCOVER: Identify 2-3 NEW improvement opportunities from visual inspection.\n"
+            "STEP 8 - OUTPUT: JSON change log + new backlog items + visual check summary.\n\n"
+            "NOTE: If visual tools (Playwright) are not available, fall back to CSS/template-only "
+            "audit (Steps 3-5, 7-8). Log that visual inspection was skipped.\n\n"
             "═══ UI IMPROVEMENT BACKLOG ═══\n\n"
             f"{backlog}\n\n"
             "═══ RECENT UI CHANGE HISTORY ═══\n\n"
@@ -274,6 +291,11 @@ def build_ui_auditor() -> Agent:
             CSSEditorTool(),
             TemplateReaderTool(),
             TemplateEditorTool(),
+            VisualScreenshotTool(),
+            ImageCheckerTool(),
+            LinkCheckerTool(),
+            LayoutCheckerTool(),
+            AccessibilityCheckerTool(),
         ],
         llm=LLM(model="anthropic/claude-haiku-4-5-20251001", max_tokens=8192),
         verbose=True,

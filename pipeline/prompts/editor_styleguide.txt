@@ -9,7 +9,8 @@ cutting-edge, state-of-the-art, best-in-class, paradigm shift, synergy,
 furthermore (rewrite as transitional sentence), moreover (same), in conclusion (just end it),
 needless to say, it is important to note, going forward, deep dive, holistic,
 rest assured, at the end of the day, it goes without saying, in today's rapidly evolving,
-the fact that, it should be noted, in light of, moving forward, take a closer look.
+the fact that, it should be noted, in light of, moving forward, take a closer look,
+em-dash (—) — COMPLETELY BANNED. Replace every em-dash with a comma, colon, semicolon, period, or parentheses. Zero em-dashes allowed in any text.
 
 STRUCTURAL RULES:
 1. Sentences: max 35 words. Rewrite any sentence longer than 35 words.

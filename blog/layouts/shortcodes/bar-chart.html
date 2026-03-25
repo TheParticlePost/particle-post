@@ -1,0 +1,21 @@
+<div class="bar-chart-container">
+  {{ with .Get "title" }}<h4 class="bar-chart-title">{{ . }}</h4>{{ end }}
+  <div class="bar-chart-bars">
+    {{ $dataStr := .Get "data" }}
+    {{ $items := split $dataStr "," }}
+    {{ range $items }}
+      {{ $parts := split . ":" }}
+      {{ $label := index $parts 0 }}
+      {{ $value := index $parts 1 }}
+      <div class="bar-chart-row">
+        <span class="bar-chart-label">{{ $label }}</span>
+        <div class="bar-chart-track">
+          <div class="bar-chart-fill" style="width: {{ $value }}">
+            <span class="bar-chart-value">{{ $value }}</span>
+          </div>
+        </div>
+      </div>
+    {{ end }}
+  </div>
+  {{ with .Get "source" }}<span class="bar-chart-source">Source: {{ . }}</span>{{ end }}
+</div>
