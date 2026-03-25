@@ -1,11 +1,6 @@
 {
   "notes": [
     {
-      "text": "The H1 title does not contain any of this week's primary SEO keywords (e.g. 'fintech AI', 'AI risk management finance', 'AI trading algorithms'). Retitle to something like 'Fintech AI Regulatory Gap: How Agentic Systems Are Outpacing Compliance Frameworks in 2026' to capture target keyword traffic without sacrificing editorial voice.",
-      "slot": "morning",
-      "date": "2026-03-23T17:25:40.040793+00:00"
-    },
-    {
       "text": "The Sources section lists only two URLs (Taylor Wessing and FinTech Futures), but the article body cites at least five named sources — FinRegLab, Debevoise & Plimpton, Hogan Lovells, Braithwaite, and Klarna company filings. Every inline citation must have a corresponding URL in the Sources section; missing links undermine credibility and prevent editors from verifying claims.",
       "slot": "morning",
       "date": "2026-03-23T17:25:40.040793+00:00"
@@ -139,6 +134,21 @@
       "text": "[WEEKLY AUDIT] Cover image uses picsum.photos placeholder — found in 1/7 articles this week. Fix this pattern in future articles.",
       "slot": "audit",
       "date": "2026-03-25T16:55:49.810724+00:00"
+    },
+    {
+      "text": "The H1 — 'The AI Fraud Arms Race: What the Research Shows About Detection ROI — and Where It Breaks' — does not contain any of the eight designated primary keywords from the SEO guidelines. Per the SEO rules, every H1 must contain at least one primary keyword unmodified or in close variant. Revise to something like: 'AI Fraud Detection ROI: What the Research Shows — and Where It Breaks' or 'AI Risk Management Finance: The Fraud Arms Race Banks Can't Afford to Lose 2026'. This is the single highest-priority fix before the next submission.",
+      "slot": "morning",
+      "date": "2026-03-25T18:11:18.499174+00:00"
+    },
+    {
+      "text": "Clean up the submission pipeline: the article arrived with both a YAML-fronted formatted version and a second '[RESTRUCTURED ARTICLE]' plain-text duplicate below the sources cut-off. The formatter should deliver exactly one version. Having two versions risks the wrong one going to publish and creates confusion in the CMS. Enforce a single clean output handoff from the formatter.",
+      "slot": "morning",
+      "date": "2026-03-25T18:11:18.499174+00:00"
+    },
+    {
+      "text": "The stat-box visual elements are rendered as 'STAT: $12.5B | label | source' plain-text markers rather than the '{{< stat-box number=... >}}' shortcode syntax required for the CMS to render them as styled callouts. Strong editorial instinct on placement and frequency — both stat-boxes land at exactly the right moments in the narrative. Just convert the syntax before publication so readers see formatted callouts, not raw marker strings.",
+      "slot": "morning",
+      "date": "2026-03-25T18:11:18.499174+00:00"
     }
   ]
 }
