@@ -61,4 +61,8 @@ jobs:
             pipeline/config/seo_gso_config.json \
             "pipeline/logs/marketing/"
           git diff --staged --quiet || git commit -m "auto: marketing analysis $(date -u +%Y-%m-%d)"
-          git push
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push && break
+            echo "Push attempt $i failed, retrying in 10s..."
+            sleep 10
+          done

@@ -71,7 +71,11 @@ jobs:
           git remote set-url origin "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git"
           git add blog/content/posts/ blog/data/topics_history.json pipeline/data/writer_feedback.json pipeline/config/post_index.json pipeline/config/seo_gso_config.json blog/static/llms.txt blog/static/llms-full.txt
           git diff --staged --quiet || git commit -m "auto: morning post $(date -u +%Y-%m-%d)"
-          git push
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push && break
+            echo "Push attempt $i failed, retrying in 10s..."
+            sleep 10
+          done
 
       - name: Deploy to GitHub Pages
         if: ${{ github.event.inputs.dry_run != 'true' }}
