@@ -15,6 +15,8 @@
  *   0 23 * * *    → ui-proactive.yml      (7 PM ET — UI audit #3)
  *   0 0 * * 6     → weekly-report.yml     (Friday 8 PM ET = Saturday 00:00 UTC)
  *   0 14 * * 1    → content-audit.yml     (Monday 10 AM ET)
+ *   0 5 * * *     → security-audit.yml   (Midnight ET — daily security scan)
+ *   0 2 * * 6     → security-report.yml  (Friday 9 PM ET — weekly security report)
  */
 
 const REPO  = 'TheParticlePost/particle-post';
@@ -32,6 +34,8 @@ const CRON_MAP = {
   '0 23 * * *': 'ui-proactive.yml',
   '0 0 * * 6':  'weekly-report.yml',
   '0 14 * * 1': 'content-audit.yml',
+  '0 5 * * *':  'security-audit.yml',
+  '0 2 * * 6':  'security-report.yml',
 };
 
 export default {

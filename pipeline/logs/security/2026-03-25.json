@@ -1,0 +1,66 @@
+{
+  "date": "2026-03-25",
+  "scan_duration_seconds": 10.7,
+  "summary": {
+    "critical": 0,
+    "high": 3,
+    "medium": 0,
+    "low": 1,
+    "auto_fixed": 0
+  },
+  "findings": [
+    {
+      "severity": "LOW",
+      "category": "workflow",
+      "title": "Missing timeout-minutes in fix-articles.yml job 'fix'",
+      "detail": "Without a timeout, a hung workflow can consume Actions minutes indefinitely.",
+      "file_path": ".github\\workflows\\fix-articles.yml",
+      "line_number": 0,
+      "auto_fixable": false,
+      "fix_prompt": "In .github\\workflows\\fix-articles.yml, add 'timeout-minutes: 30' to job 'fix'.",
+      "fixed": false
+    },
+    {
+      "severity": "HIGH",
+      "category": "config",
+      "title": "'*.pem' not in .gitignore",
+      "detail": "SSL/TLS private keys could be accidentally committed.",
+      "file_path": ".gitignore",
+      "line_number": 0,
+      "auto_fixable": false,
+      "fix_prompt": "Add '*.pem' to .gitignore to prevent accidental commit of ssl/tls private keys.",
+      "fixed": false
+    },
+    {
+      "severity": "HIGH",
+      "category": "config",
+      "title": "'*.key' not in .gitignore",
+      "detail": "Private key files could be accidentally committed.",
+      "file_path": ".gitignore",
+      "line_number": 0,
+      "auto_fixable": false,
+      "fix_prompt": "Add '*.key' to .gitignore to prevent accidental commit of private key files.",
+      "fixed": false
+    },
+    {
+      "severity": "HIGH",
+      "category": "config",
+      "title": "'credentials.json' not in .gitignore",
+      "detail": "Google Cloud credentials could be accidentally committed.",
+      "file_path": ".gitignore",
+      "line_number": 0,
+      "auto_fixable": false,
+      "fix_prompt": "Add 'credentials.json' to .gitignore to prevent accidental commit of google cloud credentials.",
+      "fixed": false
+    }
+  ],
+  "scans_completed": [
+    "dependency",
+    "code",
+    "secret",
+    "workflow",
+    "config",
+    "content",
+    "key_rotation"
+  ]
+}

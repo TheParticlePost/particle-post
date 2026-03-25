@@ -20,4 +20,6 @@ crons = [
   "0 23 * * *",   # ui-proactive.yml      (7 PM ET — UI audit #3)
   "0 0 * * 6",    # weekly-report.yml     (Fri 8 PM ET)
   "0 14 * * 1",   # content-audit.yml     (Mon 10 AM ET)
+  "0 5 * * *",    # security-audit.yml   (Midnight ET — daily scan)
+  "0 2 * * 6",    # security-report.yml  (Fri 9 PM ET — weekly report)
 ]

@@ -1,0 +1,55 @@
+{
+  "key_rotation_dates": {
+    "ANTHROPIC_API_KEY": "2026-03-01",
+    "TAVILY_API_KEY": "2026-03-01",
+    "PEXELS_API_KEY": "2026-02-15",
+    "PIXABAY_API_KEY": "2026-02-15",
+    "NEWS_API_KEY": "2026-03-01",
+    "RESEND_API_KEY": "2026-03-01",
+    "INDEXNOW_KEY": "2026-03-01",
+    "GH_PAT": "2026-03-01",
+    "UNSPLASH_ACCESS_KEY": "2026-01-10"
+  },
+  "rotation_thresholds": {
+    "warn_days": 90,
+    "critical_days": 180
+  },
+  "scan_settings": {
+    "content_url_timeout_seconds": 5,
+    "max_articles_to_scan": 30,
+    "secret_patterns": [
+      "sk-ant-[a-zA-Z0-9_-]{20,}",
+      "sk-[a-zA-Z0-9]{20,}",
+      "ghp_[a-zA-Z0-9]{36}",
+      "gho_[a-zA-Z0-9]{36}",
+      "AKIA[0-9A-Z]{16}",
+      "tvly-[a-zA-Z0-9_-]{20,}",
+      "(?i)(api[_-]?key|secret[_-]?key|access[_-]?token|password)\\s*[=:]\\s*['\"][A-Za-z0-9+/=_-]{16,}['\"]"
+    ],
+    "excluded_paths": [
+      ".env",
+      ".env.example",
+      "node_modules/",
+      ".git/",
+      "__pycache__/",
+      "TODO/"
+    ],
+    "bandit_confidence_level": "HIGH"
+  },
+  "severity_rules": {
+    "dependency_cvss_critical": 9.0,
+    "dependency_cvss_high": 7.0,
+    "dependency_cvss_medium": 4.0
+  },
+  "last_scan": "2026-03-25",
+  "scan_history": [
+    {
+      "date": "2026-03-25",
+      "critical": 0,
+      "high": 3,
+      "medium": 0,
+      "low": 1,
+      "auto_fixed": 0
+    }
+  ]
+}

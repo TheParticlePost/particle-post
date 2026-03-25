@@ -1,0 +1,50 @@
+name: Security Audit (Daily Midnight ET)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      CREWAI_TRACING_ENABLED: "false"
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install pip-audit bandit
+
+      - name: Run security scan
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          GH_PAT: ${{ secrets.GH_PAT }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS }}
+          PIXABAY_API_KEY: ${{ secrets.PIXABAY_KEY }}
+        run: python -m pipeline.security_run
+        continue-on-error: true
+
+      - name: Commit security logs and auto-fixes
+        run: |
+          git config user.name "Particle Post Bot"
+          git config user.email "bot@particlepost.com"
+          git add pipeline/logs/security/ pipeline/config/security_config.json blog/content/posts/
+          git diff --staged --quiet || git commit -m "security: daily scan $(date -u +%Y-%m-%d)"
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push && break
+            echo "Push attempt $i failed, retrying in 10s..."
+            sleep 10
+          done
