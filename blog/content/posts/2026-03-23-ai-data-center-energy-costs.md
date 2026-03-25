@@ -1,6 +1,6 @@
 ---
 title: "Big Tech's $700B AI Bet Strains Power Grids and Carbon Markets"
-date: 2026-03-23T00:00:00Z
+date: 2026-03-23T21:00:00Z
 slug: "ai-data-center-energy-costs"
 description: "Hyperscalers spending $690B on AI infrastructure strains power grids and carbon markets. How energy constraints reshape ESG finance and utility stocks."
 keywords:

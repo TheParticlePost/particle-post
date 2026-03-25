@@ -1,6 +1,6 @@
 ---
 title: "Can AI Agents Actually Handle Your Company's Money?"
-date: 2026-03-24T00:00:00Z
+date: 2026-03-24T13:00:00Z
 slug: "ai-agents-corporate-payments-infrastructure-readiness"
 description: "Visa's AI agent payment pilots are real, but enterprise infrastructure for autonomous financial decisions remains under construction. What businesses actually need to know before deploying agentic payment systems."
 keywords:

@@ -38,7 +38,7 @@ def build_validation_task(
             "   Penalty if any missing: −20 points\n\n"
 
             "3. COVER IMAGE — The cover.image URL must NOT contain 'picsum.photos'.\n"
-            "   Penalty if picsum found: −15 points\n\n"
+            "   Penalty if picsum found: −25 points\n\n"
 
             "4. SOURCE ATTRIBUTION — At least 3 inline citations: "
             "'according to [Source]', 'per [Source]', '[Source] reported', etc.\n"

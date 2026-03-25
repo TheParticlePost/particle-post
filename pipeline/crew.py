@@ -14,7 +14,7 @@ from pipeline.agents.formatter import build_formatter
 from pipeline.agents.production_director import build_production_director
 
 from pipeline.tasks.research_task import build_research_task
-from pipeline.tasks.selection_task import build_selection_task, _get_funnel_type
+from pipeline.tasks.selection_task import build_selection_task, _get_schedule_info
 from pipeline.tasks.writing_task import build_writing_task
 from pipeline.tasks.seo_gso_task import build_seo_gso_task
 from pipeline.tasks.editing_task import build_editing_task
@@ -40,9 +40,9 @@ def build_crew(slot: str) -> Crew:
     Funnel type (TOF/MOF/BOF) is determined from content_strategy.json schedule
     at crew build time and injected into selection and writing tasks.
     """
-    # Determine funnel type for this slot from the schedule
-    funnel_type = _get_funnel_type(slot)
-    print(f"\n  [Crew] Funnel type for {slot} slot: {funnel_type}")
+    # Determine funnel type and content type for this slot from the schedule
+    funnel_type, content_type = _get_schedule_info(slot)
+    print(f"\n  [Crew] Funnel type for {slot} slot: {funnel_type} | Content type: {content_type}")
 
     # --- Agents ---
     researcher          = build_researcher()
@@ -55,7 +55,7 @@ def build_crew(slot: str) -> Crew:
     production_director = build_production_director()
 
     # --- Tasks (order matters — sequential process) ---
-    research_task   = build_research_task(researcher)
+    research_task   = build_research_task(researcher, content_type=content_type)
     selection_task  = build_selection_task(topic_selector, research_task, slot)
     writing_task    = build_writing_task(writer, selection_task, funnel_type)
     seo_gso_task    = build_seo_gso_task(seo_gso_specialist, writing_task, selection_task)

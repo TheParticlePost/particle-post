@@ -1,6 +1,6 @@
 ---
 title: "AI as Core Fintech Infrastructure: 80% of Companies Go All-In"
-date: 2026-03-21T00:00:00Z
+date: 2026-03-21T13:00:00Z
 slug: fintech-ai-infrastructure-investment
 description: "80% of financial firms now embed AI into core operations. Discover why AI shifted from feature to essential infrastructure—and what CFOs must budget for in 2026."
 keywords:
@@ -20,12 +20,12 @@ categories:
   - AI in Finance
   - Enterprise Technology
 cover:
-  image: "https://picsum.photos/seed/fintech-ai-infrastructure/1600/900"
-  alt: "Abstract digital visualization of AI infrastructure and financial data processing in fintech systems"
+  image: "https://images.pexels.com/photos/6770610/pexels-photo-6770610.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200"
+  alt: "Stock market trading screen displaying financial growth charts and data"
   caption: ""
-image_credit_name: "Picsum Photos"
-image_credit_url: "https://picsum.photos"
-image_credit_source: "placeholder"
+image_credit_name: "Alesia Kozik"
+image_credit_url: "https://www.pexels.com/@alesiakozik"
+image_credit_source: "Pexels"
 ShowToc: true
 TocOpen: false
 draft: false

@@ -1,5 +1,5 @@
 from crewai import Task, Agent
-from pipeline.utils.date_helpers import utc_date_str
+from pipeline.utils.date_helpers import utc_date_str, utc_now_iso
 
 
 def build_formatting_task(
@@ -10,10 +10,12 @@ def build_formatting_task(
     selection_task: Task,
 ) -> Task:
     date_str = utc_date_str()
+    timestamp_iso = utc_now_iso()
     return Task(
         description=(
             f"Assemble the final Hugo markdown file from all previous outputs.\n\n"
-            f"Today's date: {date_str}\n\n"
+            f"Publish timestamp: {timestamp_iso}\n"
+            f"Filename date: {date_str}\n\n"
             "Steps:\n"
             "1. Parse the SEO/GSO package JSON from the seo_gso_task context to get: "
             "   slug, meta_title, meta_description, primary_keyword, tags, categories, "
@@ -25,7 +27,7 @@ def build_formatting_task(
             "   If not found, fall back to the [RESTRUCTURED ARTICLE] block from seo_gso_task.\n"
             f"4. Build the filename: {date_str}-<slug>.md\n"
             "5. Build YAML frontmatter with ALL of these fields:\n"
-            "   title, date (ISO 8601 UTC), slug, description, keywords (list), "
+            "   title, date (use the exact publish timestamp provided above e.g. {timestamp_iso} — NOT midnight T00:00:00Z), slug, description, keywords (list), "
             "   author, tags (list), categories (list),\n"
             "   cover (nested YAML block with keys: image, alt, caption),\n"
             "   image_credit_name, image_credit_url, image_credit_source,\n"

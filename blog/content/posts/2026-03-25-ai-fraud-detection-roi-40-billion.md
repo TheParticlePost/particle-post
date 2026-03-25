@@ -1,6 +1,6 @@
 ---
 title: "AI Fraud Detection ROI: Why Banks Can't Ignore $40B in Savings"
-date: 2026-03-25T00:00:00Z
+date: 2026-03-25T13:00:00Z
 slug: "ai-fraud-detection-roi-40-billion"
 description: "Visa's $40 billion in prevented fraud and Mastercard's 42% issuer savings benchmark prove AI fraud detection delivers measurable ROI. Learn what these figures actually measure, where results break down, and how to translate vendor claims into real budget decisions."
 keywords:

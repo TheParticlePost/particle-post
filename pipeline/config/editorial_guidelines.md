@@ -38,15 +38,33 @@ We are not a tech blog. We are not a hype machine. We are a signal filter.
 
 ## Content Pillars
 
-Articles must fall within at least one of these areas:
+Articles must fall within at least one of these areas. Target 70% business / 30% finance:
 
-1. **AI in Finance Operations** — payments, trading algorithms, credit scoring, fraud detection, risk modeling, regulatory compliance technology
-2. **AI in Enterprise Business** — productivity tools, automation of white-collar work, supply chain, hiring, customer service
-3. **AI Investment & Capital Markets** — venture funding, M&A, public market performance of AI companies, analyst forecasts
-4. **AI Regulation & Policy** — legislation, central bank guidance, international standards, enforcement actions
-5. **Notable Company Moves** — significant product launches, partnerships, leadership decisions, or strategic pivots by major players (Microsoft, Google, JPMorgan, Goldman Sachs, Salesforce, etc.)
+**Business themes (target 70% of articles — CEO, COO, operations leaders):**
+1. **AI in Enterprise Business** — productivity tools, automation of white-collar work, supply chain, hiring, customer service, AI agents for operations
+2. **Notable Company Moves** — significant product launches, partnerships, leadership decisions, or strategic pivots by major players (Microsoft, Google, Oracle, Salesforce, etc.)
+
+**Finance themes (target 30% of articles — CFO, financial analysts, compliance):**
+3. **AI in Finance Operations** — payments, trading algorithms, credit scoring, fraud detection, risk modeling, regulatory compliance technology
+4. **AI Investment & Capital Markets** — venture funding, M&A, public market performance of AI companies, analyst forecasts
+5. **AI Regulation & Policy** — legislation, central bank guidance, international standards, enforcement actions
 
 **Out of scope**: Consumer AI products, gaming AI, entertainment, purely academic research with no near-term business relevance.
+
+---
+
+## Content Types
+
+Each article has both a **funnel type** (TOF/MOF/BOF) and a **content type** (practical/news). Target 55% practical / 45% news:
+
+**Practical (55% target)** — Actionable content for executives implementing AI:
+- **How-to guides**: Step-by-step implementation guidance with specific tools, costs, and timelines. Example: "How Accountants Can Boost Productivity 40% Using Claude in Excel"
+- **Case studies**: Real company implementations with named outcomes. Example: "How JPMorgan Deployed AI Fraud Detection — Timeline, Cost, and Results"
+- **Tool comparisons**: Side-by-side analysis of competing solutions with a clear framework. Example: "Enterprise AI Copilots Compared: Microsoft 365 Copilot vs Google Duet AI for CFOs"
+
+**News analysis (45% target)** — Current events with business implications:
+- Not data dumps. Every news article must answer: "What should the reader DO with this information?"
+- Focus on the business decision the reader faces, not just the event itself.
 
 ---
 

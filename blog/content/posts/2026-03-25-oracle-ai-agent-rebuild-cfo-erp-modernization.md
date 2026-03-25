@@ -1,6 +1,6 @@
 ---
 title: "Oracle's AI Agent Rebuild: Why CFOs Must Act Now on ERP Modernization"
-date: 2026-03-25T00:00:00Z
+date: 2026-03-25T21:00:00Z
 slug: "oracle-ai-agent-rebuild-cfo-erp-modernization"
 description: "Oracle's March 2026 Fusion rebuild around autonomous AI agents and Zalos's $3.6M seed round signal an inflection point for CFOs. Analyze what agentic ERP means for your technology stack, infrastructure readiness requirements, and competitive threats from AI-native platforms."
 keywords:

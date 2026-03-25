@@ -1,6 +1,6 @@
 ---
 title: "Explainable AI Is a Capital Problem, Not a Technical One — and the FCA Is About to Prove It"
-date: 2026-03-24T00:00:00Z
+date: 2026-03-24T21:00:00Z
 slug: "explainable-ai-capital-problem-fca"
 description: "The FCA's mandate for explainable AI in financial decision-making forces fintech firms to build interpretability as permanent infrastructure, not as a one-time technical fix. Learn why compliance is reshaping competitive advantage in retail financial services."
 keywords: ["explainable AI fintech", "FCA AI regulation", "interpretability financial services", "AI compliance costs", "regulatory moat fintech"]

@@ -170,6 +170,24 @@
       "status": "pending",
       "source": "audit",
       "created": "2026-03-25"
+    },
+    {
+      "id": "UI-022",
+      "component": "post-images",
+      "description": "Scan all published posts for picsum.photos placeholder images and flag them for manual replacement with real Pexels/Pixabay images",
+      "priority": "high",
+      "status": "pending",
+      "source": "user-feedback",
+      "created": "2026-03-25"
+    },
+    {
+      "id": "UI-023",
+      "component": "post-content-integrity",
+      "description": "Verify recent posts have non-midnight timestamps (T00:00:00Z indicates broken formatter) and real cover images (not picsum.photos)",
+      "priority": "medium",
+      "status": "pending",
+      "source": "user-feedback",
+      "created": "2026-03-25"
     }
   ],
   "completed": [

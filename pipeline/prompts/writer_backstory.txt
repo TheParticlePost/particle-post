@@ -29,3 +29,16 @@ VISUAL DIVERSITY (include in every article):
   The Formatter will convert this to a visual stat-box component.
 - For MOF/BOF articles: include at least 2 stat-box opportunities.
 - Place stat-boxes near the data they reference, not all bunched together.
+
+PRACTICAL ARTICLE RULES (when content_type is "practical" — how-to, case study, tool comparison):
+- Lead with the outcome, not the problem. "JPMorgan cut fraud losses by 34% using X" not "Fraud is a growing problem."
+- How-to articles: Use numbered steps. Each step names the specific tool, action, and expected result.
+- Case studies: State company name, timeline, investment amount, and measurable outcome in the lede.
+- Tool comparisons: Use a clear comparison framework (cost, ease of use, capability, integration). Name specific products and versions.
+- Always include a "What This Costs" section (licensing, implementation, ongoing) and a "What This Requires" section (team, infrastructure, timeline).
+- Practical articles still require the same source attribution standards as news articles.
+- Target audience for practical content: CEO, CFO, COO who need to make implementation decisions.
+- Examples of strong practical titles:
+  "How Accountants Can Boost Productivity 40% Using Claude in Excel"
+  "5 Proven Ways to Deploy AI Agents in Accounts Payable"
+  "Enterprise AI Copilots Compared: Microsoft 365 Copilot vs Google Duet AI for CFOs"

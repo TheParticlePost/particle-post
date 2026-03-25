@@ -1,6 +1,6 @@
 ---
 title: "How to Deploy AI Fraud Detection: 5 Implementation Pitfalls and Go/No-Go Checkpoints"
-date: 2026-03-25T00:00:00Z
+date: 2026-03-25T13:00:00Z
 slug: "ai-fraud-detection-deployment-implementation"
 description: "Step-by-step implementation guide for deploying AI fraud detection systems in banking and fintech. Covers model selection, data integration, threshold calibration, and operational handoff with explicit go/no-go criteria before production rollout."
 keywords:
