@@ -297,6 +297,12 @@ h1, h2, h3, h4, h5, h6 {
   overflow: hidden;
 }
 
+@media (max-width: 375px) {
+  .post-entry .entry-content p {
+    -webkit-line-clamp: 2;
+  }
+}
+
 /* Category pill */
 .category-pill {
   display: inline-block;
@@ -361,7 +367,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Headings with blue left accent */
 .post-content h2 {
   font-family: var(--font-heading);
-  font-size: 1.5rem;
+  font-size: clamp(1.5rem, 3.5vw, 1.75rem);
   font-weight: 700;
   color: var(--primary);
   border-left: 3px solid var(--accent-blue);

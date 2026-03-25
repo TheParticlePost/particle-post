@@ -36,6 +36,50 @@
       ],
       "files_modified": [],
       "summary": "Audit completed. No CSS changes applied due to tool limitations with find/replace in selectors containing brand-color variables. Identified 3 new high/medium-priority improvements: H2 hierarchy, mobile card excerpt clamping, and footer mobile layout. Recommend future changes isolate non-brand values in find/replace strings."
+    },
+    {
+      "date": "2026-03-25",
+      "mode": "audit",
+      "changes_applied": [
+        {
+          "backlog_id": "UI-016",
+          "component": "post-content-h2",
+          "property": "font-size",
+          "old_value": "1.5rem",
+          "new_value": "clamp(1.5rem, 3.5vw, 1.75rem)",
+          "rationale": "Increase post h2 from fixed 1.5rem to fluid clamp(1.5rem, 3.5vw, 1.75rem) for better visual hierarchy on desktop while maintaining readability on mobile"
+        },
+        {
+          "backlog_id": "UI-017",
+          "component": "post-entry-excerpt",
+          "property": "-webkit-line-clamp mobile override",
+          "old_value": "3 (all screens)",
+          "new_value": "2 (375px screens), 3 (desktop)",
+          "rationale": "Reduce card excerpt to 2-line clamp on mobile (375px) to prevent inconsistent card heights and improve visual consistency on small screens"
+        }
+      ],
+      "changes_skipped": [],
+      "new_backlog_items": [
+        {
+          "component": "post-card-category-pill",
+          "description": "Category pill text can overflow on narrow mobile screens (320px+); consider adding flex-wrap or reducing max-width dynamically",
+          "priority": "medium"
+        },
+        {
+          "component": "article-h3",
+          "description": "H3 headings (1.2rem) could benefit from responsive scaling similar to H2; currently fixed size may appear cramped on mobile",
+          "priority": "medium"
+        },
+        {
+          "component": "stat-box-dark-mode",
+          "description": "Stat box border and shadow contrast needs verification in dark mode; border color uses --accent-blue which may not have sufficient contrast against dark backgrounds",
+          "priority": "high"
+        }
+      ],
+      "files_modified": [
+        "blog/assets/css/extended/custom.css"
+      ],
+      "summary": "Completed two HIGH-priority backlog items: (1) Improved post h2 visual hierarchy with fluid font-size clamping (1.5rem → 1.75rem) for better readability on desktop; (2) Reduced card excerpt line-clamp to 2 lines on 375px screens to prevent inconsistent card heights. Verified dark mode compatibility. Identified 3 new improvement opportunities: category pill overflow handling, H3 responsive scaling, and stat-box dark mode contrast verification."
     }
   ]
 }
