@@ -102,6 +102,10 @@ def build_validation_task(
 
             "═══ REQUIRED OUTPUT FORMAT ═══\n\n"
 
+            "CRITICAL: The VERY FIRST CHARACTER of your response must be '{'. "
+            "Do ALL analysis internally (in your head). "
+            "Do NOT write any prose, commentary, or step-by-step notes before the JSON.\n\n"
+
             "Output ONLY the following JSON — no prose before or after it, no markdown code fences:\n\n"
             "{\n"
             '  "decision": "APPROVE" or "REJECT",\n'

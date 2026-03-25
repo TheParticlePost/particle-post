@@ -1,8 +1,8 @@
 name: Evening Post (5pm ET)
 
 on:
-  schedule:
-    - cron: "0 21 * * *"
+  # Cron scheduling handled by cron-job.org (job ID 7411450, 21:00 UTC daily)
+  # GitHub Actions built-in schedule removed to prevent double-triggers
   workflow_dispatch:
     inputs:
       dry_run:

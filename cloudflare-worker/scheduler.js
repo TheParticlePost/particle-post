@@ -1,0 +1,72 @@
+/**
+ * Particle Post — Cloudflare Worker Scheduler
+ *
+ * Triggers GitHub Actions workflows on a reliable cron schedule.
+ * Replaces the unreliable GitHub Actions built-in scheduler (which can
+ * delay 1-4 hours on free repos under high load).
+ *
+ * Cron triggers (all UTC):
+ *   0 13 * * *  → morning-post.yml      (9 AM ET / 10 AM EDT)
+ *   0 17 * * *  → marketing-director.yml (noon EDT / 1 PM EST — shifted 1h later for reliability)
+ *   0 21 * * *  → evening-post.yml       (5 PM ET / 6 PM EDT)
+ *   0 0 * * 6   → weekly-report.yml      (Friday 8 PM EDT = Saturday 00:00 UTC)
+ */
+
+const REPO  = 'TheParticlePost/particle-post';
+const BASE  = `https://api.github.com/repos/${REPO}/actions/workflows`;
+const AGENT = 'particle-post-cloudflare-scheduler/1.0';
+
+// Map cron expression → workflow filename
+const CRON_MAP = {
+  '0 13 * * *': 'morning-post.yml',
+  '0 17 * * *': 'marketing-director.yml',
+  '0 21 * * *': 'evening-post.yml',
+  '0 0 * * 6':  'weekly-report.yml',
+};
+
+export default {
+  async scheduled(event, env, ctx) {
+    const workflow = CRON_MAP[event.cron];
+
+    if (!workflow) {
+      console.error(`[particle-post] Unknown cron expression: "${event.cron}"`);
+      return;
+    }
+
+    console.log(`[particle-post] Dispatching ${workflow} (cron: ${event.cron})`);
+
+    const resp = await fetch(`${BASE}/${workflow}/dispatches`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${env.GH_DISPATCH_PAT}`,
+        'Accept':        'application/vnd.github.v3+json',
+        'Content-Type':  'application/json',
+        'User-Agent':    AGENT,
+      },
+      body: JSON.stringify({ ref: 'main' }),
+    });
+
+    if (!resp.ok) {
+      const body = await resp.text();
+      console.error(`[particle-post] GitHub API error ${resp.status} for ${workflow}: ${body}`);
+      // Re-throw so Cloudflare retries the cron
+      throw new Error(`GitHub dispatch failed: ${resp.status}`);
+    }
+
+    console.log(`[particle-post] Successfully dispatched ${workflow}`);
+  },
+
+  // HTTP handler — returns status page for manual checks
+  async fetch(request, env, ctx) {
+    const url  = new URL(request.url);
+    const body = JSON.stringify({
+      service: 'particle-post-scheduler',
+      repo:    REPO,
+      schedules: Object.entries(CRON_MAP).map(([cron, wf]) => ({ cron, workflow: wf })),
+    }, null, 2);
+
+    return new Response(body, {
+      headers: { 'Content-Type': 'application/json' },
+    });
+  },
+};

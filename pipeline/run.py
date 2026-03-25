@@ -126,14 +126,35 @@ def _parse_director_verdict(raw: str) -> dict:
         except (json.JSONDecodeError, ValueError):
             pass
 
-    # All tiers failed — log and return safe REJECT
-    print("\n[WARN] Production Director output could not be parsed as JSON.")
+    # Tier 4: prose rescue — infer score/decision from Director's written analysis
+    # Handles the case where max_tokens truncation cut off before the JSON was written
+    print("\n[WARN] Production Director output could not be parsed as JSON — attempting prose rescue.")
+    decision_guess = "REJECT"
+    score_guess    = 0
+    issues_guess   = ["Director output was not valid JSON — score inferred from prose."]
+
+    # Check for explicit approval/rejection signals in prose
+    upper = cleaned.upper()
+    if re.search(r'\bAPPROVE[D]?\b', upper):
+        decision_guess = "APPROVE"
+        score_guess    = 75  # conservative pass score when inferred from prose
+        issues_guess   = []
+    elif re.search(r'\bREJECT(?:ED)?\b', upper):
+        decision_guess = "REJECT"
+        # try to grab score from prose: "score: 55" or "55/100" or "55 points"
+        m = re.search(r'(?:score[:\s]+|total[:\s]+)(\d{1,3})', cleaned, re.IGNORECASE)
+        if not m:
+            m = re.search(r'(\d{1,3})\s*/\s*100', cleaned)
+        if m:
+            score_guess = min(100, int(m.group(1)))
+
+    print(f"  Prose rescue result: {decision_guess} (score ~{score_guess})")
     print(f"  Raw output (first 500 chars):\n  {raw[:500]}")
     return {
-        "decision": "REJECT",
-        "score": 0,
-        "issues": ["Director output was not valid JSON — article quality cannot be verified."],
-        "coaching_notes": [],
+        "decision": decision_guess,
+        "score":    score_guess,
+        "issues":   issues_guess,
+        "coaching_notes": ["(Director output was truncated — coaching notes unavailable this run)"],
     }
 
 

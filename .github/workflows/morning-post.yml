@@ -1,8 +1,8 @@
 name: Morning Post (9am ET)
 
 on:
-  schedule:
-    - cron: "0 13 * * *"
+  # Cron scheduling handled by cron-job.org (job ID 7411448, 13:00 UTC daily)
+  # GitHub Actions built-in schedule removed to prevent double-triggers
   workflow_dispatch:
     inputs:
       dry_run:
