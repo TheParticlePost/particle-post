@@ -99,11 +99,19 @@ def _load_ui_change_history() -> str:
         return f"(Error loading change history: {exc})"
 
 
-def _load_design_principles() -> str:
-    """Load the design system reference from the shared principles file."""
+def _load_design_principles(max_chars: int = 0) -> str:
+    """Load the design system reference from the shared principles file.
+
+    Args:
+        max_chars: If > 0, truncate to this many characters (for rate-limit safety).
+                   0 means return the full file (used by directive mode on Sonnet).
+    """
     if not _DESIGN_PRINCIPLES.exists():
         return "(Design principles file not found — apply general CSS best practices.)"
-    return _DESIGN_PRINCIPLES.read_text(encoding="utf-8")
+    content = _DESIGN_PRINCIPLES.read_text(encoding="utf-8")
+    if max_chars and len(content) > max_chars:
+        content = content[:max_chars] + "\n(... truncated for token budget)"
+    return content
 
 
 def _load_ui_backlog() -> str:
@@ -214,9 +222,10 @@ def build_ui_auditor() -> Agent:
     Reads CSS + templates, picks items from the UI backlog (or identifies
     new improvements), implements 1-2 changes per run, and updates the backlog.
 
-    Uses claude-sonnet-4-6 for strong reasoning about design decisions.
+    Uses Haiku 4.5 to stay within API rate limits (30K tokens/min on Sonnet).
+    The auditor's job is read → pick → small edit — Haiku handles this well.
     """
-    principles = _load_design_principles()
+    principles = _load_design_principles(max_chars=1500)  # trimmed for token budget
     history    = _load_ui_change_history()
     backlog    = _load_ui_backlog()
 
@@ -266,7 +275,7 @@ def build_ui_auditor() -> Agent:
             TemplateReaderTool(),
             TemplateEditorTool(),
         ],
-        llm=LLM(model="anthropic/claude-sonnet-4-6", max_tokens=4000),
+        llm=LLM(model="anthropic/claude-haiku-4-5-20251001", max_tokens=4000),
         verbose=True,
         allow_delegation=False,
     )
