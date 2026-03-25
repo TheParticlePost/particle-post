@@ -119,6 +119,26 @@
       "text": "Your MOF 'friction scenarios' are currently pattern-descriptions ('the replace-and-reduce narrative') rather than named-company failure cases. For the next revision, anchor at least one friction scenario to a real named organization — even a generic example like 'a Fortune 500 manufacturer that activated Oracle Fusion agents on unconsolidated GL data and triggered cascading payment errors' is stronger than a thematic label. Named specificity is what separates Particle Post from trade blog content.",
       "slot": "morning",
       "date": "2026-03-25T13:06:55.586415+00:00"
+    },
+    {
+      "text": "[WEEKLY AUDIT] Missing frontmatter: categories — found in 6/7 articles this week. Fix this pattern in future articles.",
+      "slot": "audit",
+      "date": "2026-03-25T16:55:49.810724+00:00"
+    },
+    {
+      "text": "[WEEKLY AUDIT] has_faq=true but FAQ section missing — found in 4/7 articles this week. Fix this pattern in future articles.",
+      "slot": "audit",
+      "date": "2026-03-25T16:55:49.810724+00:00"
+    },
+    {
+      "text": "[WEEKLY AUDIT] No internal links to other posts — found in 3/7 articles this week. Fix this pattern in future articles.",
+      "slot": "audit",
+      "date": "2026-03-25T16:55:49.810724+00:00"
+    },
+    {
+      "text": "[WEEKLY AUDIT] Cover image uses picsum.photos placeholder — found in 1/7 articles this week. Fix this pattern in future articles.",
+      "slot": "audit",
+      "date": "2026-03-25T16:55:49.810724+00:00"
     }
   ]
 }
