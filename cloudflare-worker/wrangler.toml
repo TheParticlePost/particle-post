@@ -7,3 +7,17 @@ compatibility_date = "2024-01-01"
 
 [observability]
 enabled = true
+
+# Cron triggers — Cloudflare invokes the scheduled() handler at these times (UTC)
+[triggers]
+crons = [
+  "0 13 * * *",   # morning-post.yml      (9 AM ET)
+  "0 15 * * *",   # ui-proactive.yml      (11 AM ET — UI audit #1)
+  "0 17 * * *",   # marketing-director.yml (noon ET)
+  "0 18 * * *",   # ui-designer.yml       (1 PM ET — directive mode)
+  "0 19 * * *",   # ui-proactive.yml      (3 PM ET — UI audit #2)
+  "0 21 * * *",   # evening-post.yml      (5 PM ET)
+  "0 23 * * *",   # ui-proactive.yml      (7 PM ET — UI audit #3)
+  "0 0 * * 6",    # weekly-report.yml     (Fri 8 PM ET)
+  "0 14 * * 1",   # content-audit.yml     (Mon 10 AM ET)
+]

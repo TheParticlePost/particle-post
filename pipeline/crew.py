@@ -59,7 +59,7 @@ def build_crew(slot: str) -> Crew:
     selection_task  = build_selection_task(topic_selector, research_task, slot)
     writing_task    = build_writing_task(writer, selection_task, funnel_type)
     seo_gso_task    = build_seo_gso_task(seo_gso_specialist, writing_task, selection_task)
-    editing_task    = build_editing_task(editor, seo_gso_task)   # ← now receives SEO-restructured article
+    editing_task    = build_editing_task(editor, seo_gso_task, selection_task)   # ← SEO-restructured + funnel type context
     photo_task      = build_photo_task(photo_finder, editing_task, seo_gso_task)
     formatting_task = build_formatting_task(
         formatter, editing_task, seo_gso_task, photo_task, selection_task

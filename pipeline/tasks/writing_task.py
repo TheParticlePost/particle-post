@@ -3,9 +3,10 @@ from pathlib import Path
 
 from crewai import Task, Agent
 
-_FEEDBACK_PATH   = Path(__file__).resolve().parent.parent / "data" / "writer_feedback.json"
-_POST_INDEX_FILE = Path(__file__).resolve().parent.parent / "config" / "post_index.json"
-_STRATEGY_PATH   = Path(__file__).resolve().parent.parent / "config" / "content_strategy.json"
+_FEEDBACK_PATH       = Path(__file__).resolve().parent.parent / "data" / "writer_feedback.json"
+_POST_INDEX_FILE     = Path(__file__).resolve().parent.parent / "config" / "post_index.json"
+_STRATEGY_PATH       = Path(__file__).resolve().parent.parent / "config" / "content_strategy.json"
+_SEO_GUIDELINES_PATH = Path(__file__).resolve().parent.parent / "config" / "seo_guidelines.md"
 
 
 def _load_recent_coaching(n: int = 5) -> str:
@@ -114,10 +115,30 @@ def _load_funnel_requirements(funnel_type: str) -> str:
         return f"(Could not load funnel requirements: {e})"
 
 
+def _load_seo_guidelines() -> str:
+    """Load the Marketing Director's SEO guidelines for keyword awareness."""
+    if not _SEO_GUIDELINES_PATH.exists():
+        return ""
+    try:
+        content = _SEO_GUIDELINES_PATH.read_text(encoding="utf-8")
+        # Truncate to keep token budget reasonable (first 2000 chars)
+        if len(content) > 2000:
+            content = content[:2000] + "\n(... truncated for token budget)"
+        return (
+            "\n══════════════════════════════════════════════\n"
+            "  SEO GUIDELINES (from Marketing Director)\n"
+            "══════════════════════════════════════════════\n\n"
+            f"{content}\n"
+        )
+    except Exception:
+        return ""
+
+
 def build_writing_task(agent: Agent, selection_task: Task, funnel_type: str = "TOF") -> Task:
     coaching_context = _load_recent_coaching()
     post_index = _load_post_index()
     funnel_reqs = _load_funnel_requirements(funnel_type)
+    seo_guidelines = _load_seo_guidelines()
 
     word_targets = {"TOF": "600-1000", "MOF": "1800-3000", "BOF": "1200-2000"}
     word_range = word_targets.get(funnel_type, "900-1100")
@@ -149,6 +170,7 @@ def build_writing_task(agent: Agent, selection_task: Task, funnel_type: str = "T
             "Link format: [descriptive anchor text](/posts/SLUG/)\n"
             "Use topic-specific anchor text — never 'click here' or 'read more'.\n"
             "Only link where the topic genuinely overlaps. Quality over quantity.\n\n"
+            f"{seo_guidelines}"
             "══════════════════════════════════════════════\n"
             "  OUTPUT FORMAT\n"
             "══════════════════════════════════════════════\n\n"

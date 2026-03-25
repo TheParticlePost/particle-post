@@ -6,10 +6,15 @@
  * delay 1-4 hours on free repos under high load).
  *
  * Cron triggers (all UTC):
- *   0 13 * * *  → morning-post.yml      (9 AM ET / 10 AM EDT)
- *   0 17 * * *  → marketing-director.yml (noon EDT / 1 PM EST — shifted 1h later for reliability)
- *   0 21 * * *  → evening-post.yml       (5 PM ET / 6 PM EDT)
- *   0 0 * * 6   → weekly-report.yml      (Friday 8 PM EDT = Saturday 00:00 UTC)
+ *   0 13 * * *    → morning-post.yml      (9 AM ET)
+ *   0 15 * * *    → ui-proactive.yml      (11 AM ET — UI audit #1)
+ *   0 17 * * *    → marketing-director.yml (noon ET)
+ *   0 18 * * *    → ui-designer.yml       (1 PM ET — directive mode after marketing)
+ *   0 19 * * *    → ui-proactive.yml      (3 PM ET — UI audit #2)
+ *   0 21 * * *    → evening-post.yml      (5 PM ET)
+ *   0 23 * * *    → ui-proactive.yml      (7 PM ET — UI audit #3)
+ *   0 0 * * 6     → weekly-report.yml     (Friday 8 PM ET = Saturday 00:00 UTC)
+ *   0 14 * * 1    → content-audit.yml     (Monday 10 AM ET)
  */
 
 const REPO  = 'TheParticlePost/particle-post';
@@ -19,9 +24,14 @@ const AGENT = 'particle-post-cloudflare-scheduler/1.0';
 // Map cron expression → workflow filename
 const CRON_MAP = {
   '0 13 * * *': 'morning-post.yml',
+  '0 15 * * *': 'ui-proactive.yml',
   '0 17 * * *': 'marketing-director.yml',
+  '0 18 * * *': 'ui-designer.yml',
+  '0 19 * * *': 'ui-proactive.yml',
   '0 21 * * *': 'evening-post.yml',
+  '0 23 * * *': 'ui-proactive.yml',
   '0 0 * * 6':  'weekly-report.yml',
+  '0 14 * * 1': 'content-audit.yml',
 };
 
 export default {

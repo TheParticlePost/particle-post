@@ -1,0 +1,140 @@
+{
+  "backlog": [
+    {
+      "id": "UI-001",
+      "component": "stat-box",
+      "description": "Improve stat-box visual design — needs more polish, better spacing, subtle background, shadow refinement",
+      "priority": "high",
+      "status": "pending",
+      "source": "user-feedback",
+      "created": "2026-03-25"
+    },
+    {
+      "id": "UI-002",
+      "component": "article-body",
+      "description": "Add visual diversity — improve blockquote/callout styling for Key Takeaway sections",
+      "priority": "high",
+      "status": "pending",
+      "source": "user-feedback",
+      "created": "2026-03-25"
+    },
+    {
+      "id": "UI-003",
+      "component": "post-card",
+      "description": "Mobile card layout needs spacing fixes — category pills overflow on small screens",
+      "priority": "high",
+      "status": "pending",
+      "source": "user-feedback",
+      "created": "2026-03-25"
+    },
+    {
+      "id": "UI-004",
+      "component": "article-h2",
+      "description": "H2 headings need stronger visual hierarchy — consider larger size or weight adjustment",
+      "priority": "high",
+      "status": "pending",
+      "source": "user-feedback",
+      "created": "2026-03-25"
+    },
+    {
+      "id": "UI-005",
+      "component": "dark-mode",
+      "description": "Dark mode contrast audit — verify all components meet WCAG AA 4.5:1 ratio",
+      "priority": "high",
+      "status": "pending",
+      "source": "user-feedback",
+      "created": "2026-03-25"
+    },
+    {
+      "id": "UI-006",
+      "component": "footer",
+      "description": "Footer layout needs polish — improve spacing, link grouping, visual balance",
+      "priority": "medium",
+      "status": "pending",
+      "source": "audit",
+      "created": "2026-03-25"
+    },
+    {
+      "id": "UI-007",
+      "component": "toc",
+      "description": "Table of contents styling improvements — better indentation, active state, scroll behavior",
+      "priority": "medium",
+      "status": "pending",
+      "source": "audit",
+      "created": "2026-03-25"
+    },
+    {
+      "id": "UI-008",
+      "component": "breadcrumb",
+      "description": "Breadcrumb visual design — improve separator, spacing, and hover states",
+      "priority": "medium",
+      "status": "pending",
+      "source": "audit",
+      "created": "2026-03-25"
+    },
+    {
+      "id": "UI-009",
+      "component": "subscribe-form",
+      "description": "Newsletter subscription form styling — improve input field and button design",
+      "priority": "medium",
+      "status": "pending",
+      "source": "audit",
+      "created": "2026-03-25"
+    },
+    {
+      "id": "UI-010",
+      "component": "cookie-banner",
+      "description": "Cookie banner polish — improve visual integration with site design",
+      "priority": "medium",
+      "status": "pending",
+      "source": "audit",
+      "created": "2026-03-25"
+    },
+    {
+      "id": "UI-011",
+      "component": "hero",
+      "description": "Home hero section — improve engagement with better typography and CTA visibility",
+      "priority": "medium",
+      "status": "pending",
+      "source": "audit",
+      "created": "2026-03-25"
+    },
+    {
+      "id": "UI-012",
+      "component": "filter-tabs",
+      "description": "Category filter tab styling — improve active state indicator and spacing",
+      "priority": "low",
+      "status": "pending",
+      "source": "audit",
+      "created": "2026-03-25"
+    },
+    {
+      "id": "UI-013",
+      "component": "code-blocks",
+      "description": "Code block syntax highlighting and styling improvements",
+      "priority": "low",
+      "status": "pending",
+      "source": "audit",
+      "created": "2026-03-25"
+    },
+    {
+      "id": "UI-014",
+      "component": "responsive",
+      "description": "375px phone breakpoint audit — verify all components render properly on small screens",
+      "priority": "medium",
+      "status": "pending",
+      "source": "audit",
+      "created": "2026-03-25"
+    },
+    {
+      "id": "UI-015",
+      "component": "loading",
+      "description": "Page load performance — verify image lazy loading, optimize CSS delivery",
+      "priority": "medium",
+      "status": "pending",
+      "source": "audit",
+      "created": "2026-03-25"
+    }
+  ],
+  "completed": []
+}

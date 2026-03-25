@@ -1,18 +1,20 @@
 #!/usr/bin/env python3
 """
-Particle Post — UI Designer Daily Run
+Particle Post — UI Designer Runner (Two Modes)
 
-Runs at 1pm ET via GitHub Actions (cron: 0 17 * * *).
-Reads ui_directives.json (written by Marketing Director at noon),
-executes CSS/template changes, and writes a change log entry.
+Supports two modes:
+  --mode directive : (default for ui-designer.yml) Reads ui_directives.json from Marketing Director.
+                     Exits cleanly if no directives pending.
+  --mode audit     : (default for ui-proactive.yml) Proactive self-auditing mode.
+                     Always runs — picks from UI backlog or discovers improvements.
 
 Usage:
-    python -m pipeline.ui_run
-
-Exits cleanly (code 0) if no directives are pending — the GitHub Actions
-workflow uses `git diff --staged --quiet` to skip commits on no-op days.
+    python -m pipeline.ui_run --mode directive
+    python -m pipeline.ui_run --mode audit
+    python -m pipeline.ui_run                    # defaults to audit mode
 """
 
+import argparse
 import json
 import os
 import re
@@ -36,6 +38,7 @@ load_dotenv(dotenv_path=_REPO_ROOT / ".env", override=True)
 _CONFIG_DIR      = _REPO_ROOT / "pipeline" / "config"
 _DIRECTIVES_FILE = _CONFIG_DIR / "ui_directives.json"
 _HISTORY_FILE    = _CONFIG_DIR / "ui_change_history.json"
+_BACKLOG_FILE    = _CONFIG_DIR / "ui_backlog.json"
 
 
 # ──────────────────────────────────────────────────────────────────────────────
@@ -47,7 +50,7 @@ def _check_env() -> list[str]:
     return [v for v in required if not os.environ.get(v)]
 
 
-def _check_should_run() -> bool:
+def _check_should_run_directive() -> bool:
     """Return False if no directives are pending (clean exit, no agent call)."""
     if not _DIRECTIVES_FILE.exists():
         print("  ui_directives.json not found — nothing to do.")
@@ -74,7 +77,7 @@ def _strip_code_fences(text: str) -> str:
 
 def _parse_json_output(raw: str) -> dict:
     """
-    Robustly extract the UI Designer's JSON change log.
+    Robustly extract the UI Designer/Auditor JSON change log.
     Three-tier extraction with a safe fallback.
     """
     cleaned = _strip_code_fences(raw)
@@ -104,7 +107,7 @@ def _parse_json_output(raw: str) -> dict:
 
     # Fallback
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-    print(f"\n[WARN] UI Designer output could not be parsed as JSON.")
+    print(f"\n[WARN] UI output could not be parsed as JSON.")
     print(f"  Raw (first 500 chars):\n  {raw[:500]}")
     return {
         "date": today,
@@ -116,7 +119,7 @@ def _parse_json_output(raw: str) -> dict:
 
 
 def _write_change_log(output: dict) -> None:
-    """Append today's change log to ui_change_history.json (keep last 90 entries)."""
+    """Append change log to ui_change_history.json (keep last 90 entries)."""
     _CONFIG_DIR.mkdir(parents=True, exist_ok=True)
 
     if _HISTORY_FILE.exists():
@@ -136,25 +139,83 @@ def _write_change_log(output: dict) -> None:
     print(f"  Change log written to ui_change_history.json")
 
 
-# ──────────────────────────────────────────────────────────────────────────────
-# Main
-# ──────────────────────────────────────────────────────────────────────────────
+def _update_backlog(output: dict) -> None:
+    """
+    Update ui_backlog.json after an audit run:
+    - Mark completed backlog items
+    - Add new backlog items discovered during audit
+    """
+    _CONFIG_DIR.mkdir(parents=True, exist_ok=True)
 
-def main() -> None:
+    if _BACKLOG_FILE.exists():
+        try:
+            data = json.loads(_BACKLOG_FILE.read_text(encoding="utf-8"))
+        except Exception:
+            data = {"backlog": [], "completed": []}
+    else:
+        data = {"backlog": [], "completed": []}
+
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-    print(f"\n{'='*60}")
-    print(f"  PARTICLE POST — UI DESIGNER")
-    print(f"  {today}")
-    print(f"{'='*60}\n")
 
-    missing = _check_env()
-    if missing:
-        print(f"ERROR: Missing required environment variables: {', '.join(missing)}")
-        sys.exit(1)
+    # Mark applied backlog items as completed
+    applied_ids = {
+        c.get("backlog_id")
+        for c in output.get("changes_applied", [])
+        if c.get("backlog_id")
+    }
+    remaining = []
+    for item in data.get("backlog", []):
+        if item.get("id") in applied_ids:
+            item["status"] = "completed"
+            item["completed_date"] = today
+            data.setdefault("completed", []).append(item)
+        else:
+            remaining.append(item)
+    data["backlog"] = remaining
 
-    if not _check_should_run():
+    # Add new backlog items
+    existing_ids = {item.get("id") for item in data["backlog"]}
+    existing_ids.update(item.get("id") for item in data.get("completed", []))
+    max_id = 0
+    for item in data["backlog"] + data.get("completed", []):
+        item_id = item.get("id", "UI-000")
+        try:
+            num = int(item_id.split("-")[1])
+            max_id = max(max_id, num)
+        except (IndexError, ValueError):
+            pass
+
+    for new_item in output.get("new_backlog_items", []):
+        max_id += 1
+        new_entry = {
+            "id": f"UI-{max_id:03d}",
+            "component": new_item.get("component", "unknown"),
+            "description": new_item.get("description", ""),
+            "priority": new_item.get("priority", "medium"),
+            "status": "pending",
+            "source": "audit",
+            "created": today,
+        }
+        data["backlog"].append(new_entry)
+
+    # Keep completed list to last 50
+    data["completed"] = data.get("completed", [])[-50:]
+
+    _BACKLOG_FILE.write_text(
+        json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8"
+    )
+    print(f"  Backlog updated: {len(data['backlog'])} pending, {len(data.get('completed', []))} completed")
+
+
+# ──────────────────────────────────────────────────────────────────────────────
+# Mode: Directive (existing behavior)
+# ──────────────────────────────────────────────────────────────────────────────
+
+def _run_directive_mode() -> None:
+    """Run UI Designer in directive mode — reads Marketing Director directives."""
+    if not _check_should_run_directive():
         print(f"\n{'='*60}")
-        print("  UI DESIGNER: Nothing to do today.")
+        print("  UI DESIGNER (Directive): Nothing to do today.")
         print(f"{'='*60}\n")
         sys.exit(0)
 
@@ -175,15 +236,52 @@ def main() -> None:
     result = crew.kickoff()
     raw    = result.raw if result.raw else ""
 
-    print(f"\n{'='*60}")
-    print("  PARSING UI DESIGNER OUTPUT")
-    print(f"{'='*60}\n")
+    output = _parse_json_output(raw)
+    _print_results(output)
+    _write_change_log(output)
+
+
+# ──────────────────────────────────────────────────────────────────────────────
+# Mode: Audit (proactive — always runs)
+# ──────────────────────────────────────────────────────────────────────────────
+
+def _run_audit_mode() -> None:
+    """Run UI Auditor in proactive mode — always runs, picks from backlog."""
+    from crewai import Crew, Process
+    from pipeline.agents.ui_designer import build_ui_auditor
+    from pipeline.tasks.ui_audit_task import build_ui_audit_task
+
+    auditor = build_ui_auditor()
+    task    = build_ui_audit_task(auditor)
+
+    crew = Crew(
+        agents=[auditor],
+        tasks=[task],
+        process=Process.sequential,
+        verbose=True,
+    )
+
+    result = crew.kickoff()
+    raw    = result.raw if result.raw else ""
 
     output = _parse_json_output(raw)
+    _print_results(output)
+    _write_change_log(output)
+    _update_backlog(output)
 
+
+# ──────────────────────────────────────────────────────────────────────────────
+# Shared output
+# ──────────────────────────────────────────────────────────────────────────────
+
+def _print_results(output: dict) -> None:
     applied = output.get("changes_applied", [])
     skipped = output.get("changes_skipped", [])
     summary = output.get("summary", "")
+
+    print(f"\n{'='*60}")
+    print("  PARSING UI OUTPUT")
+    print(f"{'='*60}\n")
 
     print(f"  Changes applied : {len(applied)}")
     print(f"  Changes skipped : {len(skipped)}")
@@ -192,18 +290,56 @@ def main() -> None:
     if applied:
         print("\n  Applied changes:")
         for c in applied:
-            print(f"    • {c.get('component')} / {c.get('property')}: "
-                  f"{c.get('old_value')} → {c.get('new_value')}")
+            print(f"    - {c.get('component')} / {c.get('property')}: "
+                  f"{c.get('old_value')} -> {c.get('new_value')}")
 
     if skipped:
-        print("\n  Skipped directives:")
+        print("\n  Skipped:")
         for s in skipped:
-            print(f"    • {s.get('component')} / {s.get('property')}: {s.get('reason')}")
+            bid = s.get("backlog_id", s.get("component", "?"))
+            print(f"    - {bid}: {s.get('reason')}")
 
-    _write_change_log(output)
+    new_items = output.get("new_backlog_items", [])
+    if new_items:
+        print(f"\n  New backlog items discovered: {len(new_items)}")
+        for item in new_items:
+            print(f"    + {item.get('component')}: {item.get('description')}")
+
+
+# ──────────────────────────────────────────────────────────────────────────────
+# Main
+# ──────────────────────────────────────────────────────────────────────────────
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description="Particle Post UI Designer/Auditor")
+    parser.add_argument(
+        "--mode",
+        choices=["directive", "audit"],
+        default="audit",
+        help="directive = Marketing Director directives; audit = proactive self-audit (default)"
+    )
+    args = parser.parse_args()
+
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    mode_label = "DIRECTIVE" if args.mode == "directive" else "PROACTIVE AUDIT"
 
     print(f"\n{'='*60}")
-    print(f"  UI DESIGNER COMPLETE — {len(applied)} change(s) applied")
+    print(f"  PARTICLE POST — UI DESIGNER ({mode_label})")
+    print(f"  {today}")
+    print(f"{'='*60}\n")
+
+    missing = _check_env()
+    if missing:
+        print(f"ERROR: Missing required environment variables: {', '.join(missing)}")
+        sys.exit(1)
+
+    if args.mode == "directive":
+        _run_directive_mode()
+    else:
+        _run_audit_mode()
+
+    print(f"\n{'='*60}")
+    print(f"  UI DESIGNER ({mode_label}) COMPLETE")
     print(f"{'='*60}\n")
 
 

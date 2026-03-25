@@ -82,6 +82,19 @@ def build_validation_task(
             "    Penalty if has_faq=true but FAQ section is missing or has fewer than 3 pairs: −5 points\n"
             "    If has_faq=false or not set, skip this check (no penalty).\n\n"
 
+            "11. H2 QUALITY — Read each ## heading in the article.\n"
+            "    Flag any H2 that is generic: 'Background', 'Analysis', 'Discussion', 'Overview', "
+            "'Key Developments', 'Market Analysis', 'Introduction', 'Context', 'Summary'.\n"
+            "    Each H2 should be specific enough to understand the section without reading the body.\n"
+            "    A good H2 names an entity, number, or action: 'Apple's $3.4B AI Chip Investment Reshapes Supply Chain'\n"
+            "    Penalty for 2+ generic H2s: −10 points\n\n"
+
+            "12. VISUAL DIVERSITY — Check for visual elements:\n"
+            "    - At least 1 stat-box shortcode ({{< stat-box ... >}} or STAT: marker)\n"
+            "    - At least 1 blockquote (> **Key Takeaway:** or similar callout)\n"
+            "    For MOF/BOF articles (check funnel_type from selection JSON): require at least 2 stat-boxes.\n"
+            "    Penalty for missing visual elements: −5 points\n\n"
+
             "DECISION RULE: If final score ≥ 65 → APPROVE. If below 65 → REJECT.\n\n"
 
             "IMPORTANT: You are an editorial coach, not a nitpick machine. Use tavily_search "

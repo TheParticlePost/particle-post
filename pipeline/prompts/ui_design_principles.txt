@@ -1,0 +1,97 @@
+PARTICLE POST DESIGN SYSTEM
+Aesthetic: Stratechery / Morning Brew / Bloomberg — editorial, high information density
+Audience: CFOs, analysts, institutional investors
+Stack: Hugo + PaperMod theme, custom CSS via blog/assets/css/extended/custom.css
+
+PROTECTED BRAND COLORS (NEVER modify — enforced at tool level):
+  --accent-blue:  #2563EB   (primary CTA, links, heading accents, logo)
+  --accent-amber: #F59E0B   (stat-box numbers and data highlights ONLY)
+
+CSS TOKENS — LIGHT MODE:
+  --theme: #FFFFFF       (page background)
+  --entry: #F8FAFC       (card/component background)
+  --primary: #111827     (headings, primary text)
+  --secondary: #6B7280   (meta text, timestamps, captions)
+  --tertiary: #F1F5F9    (subtle backgrounds, hover states)
+  --content: #374151     (article body text)
+  --border: #E5E7EB      (borders, dividers)
+
+CSS TOKENS — DARK MODE [data-theme="dark"]:
+  --theme: #0D1117       (page background)
+  --entry: #161B22       (card background)
+  --primary: #F6F8FA     (headings)
+  --secondary: #8B949E   (meta text)
+  --tertiary: #21262D    (subtle backgrounds)
+  --content: #C9D1D9     (body text)
+  --border: #30363D      (borders)
+
+TYPOGRAPHY (do not introduce new font families):
+  --font-body:    'Inter', ui-sans-serif, system-ui, -apple-system
+  --font-heading: 'Plus Jakarta Sans', ui-sans-serif, system-ui
+  --font-mono:    ui-monospace, 'Cascadia Code', 'Fira Code'
+
+  Post title:     clamp(1.75rem, 4vw, 2.5rem) — fluid, never flatten to px
+  Home hero H1:   clamp(2rem, 5vw, 2.75rem)
+  Article body:   1.0625rem desktop / 1rem mobile
+  Card title:     1.0625rem | Card excerpt: 0.875rem
+  Meta/captions:  0.8125rem | Stat number: 2.25rem
+  Line height:    1.8 body | 1.15-1.35 headings | 1.5-1.65 UI
+
+LAYOUT:
+  --nav-width: 1100px | --gap: 24px
+  Post grid: repeat(2, 1fr), gap: var(--gap) — collapses at 640px
+  Footer: 260px + 1fr — collapses at 768px
+  Border radius: 4px pills | 6px buttons | 8px cards | 10px images | 12px post cards | 999px filter tabs
+
+BRAND-CRITICAL ELEMENTS (preserve always):
+  H2 left border: border-left: 3px solid var(--accent-blue)
+  .stat-number color: var(--accent-amber) — never change
+  .category-pill color: var(--accent-blue) — never change
+
+ACCESSIBILITY (WCAG AA):
+  Minimum contrast: 4.5:1 normal text | 3:1 large text | 3:1 UI
+  Known passing pairs:
+    #111827 on #FFFFFF: ~16:1
+    #2563EB on #FFFFFF: ~5.9:1
+    #6B7280 on #FFFFFF: ~4.6:1 (borderline — do not lighten)
+  Danger zone: .category-pill (#2563EB on #EFF6FF) — verify any change
+  Touch targets: 44x44px minimum
+  Animation: must include prefers-reduced-motion override
+
+RESPONSIVE BREAKPOINTS:
+  640px: post grid 2-col to 1-col
+  768px: major mobile breakpoint — body, cards, footer, hero all change
+  Rules: no new breakpoints between 640-768px, desktop-first pattern
+
+CHANGE TAXONOMY:
+  SMALL/REVERSIBLE (agent can do):
+    Spacing, padding, margin adjustments
+    Font size tweaks within established scale
+    Border radius changes (not on brand elements)
+    Background color changes using tokens
+    Hover state refinements
+
+  FORBIDDEN (agent must never do):
+    Change --accent-blue or --accent-amber
+    Introduce new font families
+    Remove the 2-column grid structure
+    Add !important declarations
+    Remove focus indicators without replacement
+    Flatten clamp() to fixed px values
+
+DARK MODE PROTOCOL:
+  After ANY light-mode CSS change, check if [data-theme="dark"] block needs parallel update.
+  The dark mode block must always maintain adequate contrast.
+
+TOOL PROTOCOL:
+  1. css_reader('') → read full current CSS
+  2. Evaluate: does proposed change use tokens? maintain contrast? both modes?
+  3. css_editor({'find': 'exact old', 'replace': 'new', 'rationale': 'why'})
+  4. css_reader('') → verify change applied correctly
+  For templates: template_reader('name') → template_editor({'find','replace','rationale'})
+
+DECISION RULES:
+  APPLY — passes cooldown + constraint + rationale checks
+  SKIP_COOLDOWN — component changed within last 7 days
+  SKIP_CONSTRAINT — violates brand color or dark mode rules
+  SKIP_NO_RATIONALE — no clear metric-backed or audit-backed reason

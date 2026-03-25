@@ -1,17 +1,16 @@
-name: UI Designer — Directive Mode (1pm ET)
+name: Content Quality Audit (Monday 10am ET)
 
 on:
-  # Scheduling handled by cron-job.org + Cloudflare Worker (18:00 UTC daily)
-  # GitHub Actions built-in schedule removed to prevent double-triggers
-  workflow_dispatch: {}    # manual trigger for testing
+  # Scheduling handled by cron-job.org + Cloudflare Worker (Mon 14:00 UTC)
+  workflow_dispatch: {}   # manual trigger for testing
 
 permissions:
   contents: write
 
 jobs:
-  design:
+  audit:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 10
     env:
       CREWAI_TRACING_ENABLED: "false"
 
@@ -31,24 +30,16 @@ jobs:
       - name: Install Python dependencies
         run: pip install -r requirements.txt
 
-      - name: Run UI Designer (directive mode)
-        env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-        run: python -m pipeline.ui_run --mode directive
+      - name: Run content quality audit
+        run: python -m pipeline.content_audit_run
 
-      - name: Commit UI changes
+      - name: Commit audit results
         run: |
           git config user.name "Particle Post Bot"
           git config user.email "bot@particlepost.com"
           git remote set-url origin "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git"
-          git add \
-            blog/assets/css/extended/custom.css \
-            blog/layouts/partials/header.html \
-            blog/layouts/partials/home_info.html \
-            blog/layouts/_default/list.html \
-            blog/layouts/partials/footer.html \
-            pipeline/config/ui_change_history.json
-          git diff --staged --quiet || git commit -m "auto: ui design update $(date -u +%Y-%m-%d)"
+          git add pipeline/data/writer_feedback.json
+          git diff --staged --quiet || git commit -m "auto: content quality audit $(date -u +%Y-%m-%d)"
           for i in 1 2 3; do
             git pull --rebase origin main && git push && break
             echo "Push attempt $i failed, retrying in 10s..."

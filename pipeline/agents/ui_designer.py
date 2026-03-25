@@ -25,8 +25,11 @@ from pipeline.tools.css_editor import (
 )
 
 _CONFIG_DIR    = Path(__file__).resolve().parent.parent / "config"
+_PROMPTS_DIR   = Path(__file__).resolve().parent.parent / "prompts"
 _DIRECTIVES    = _CONFIG_DIR / "ui_directives.json"
 _HISTORY       = _CONFIG_DIR / "ui_change_history.json"
+_BACKLOG       = _CONFIG_DIR / "ui_backlog.json"
+_DESIGN_PRINCIPLES = _PROMPTS_DIR / "ui_design_principles.txt"
 
 
 def _load_ui_directives() -> str:
@@ -96,6 +99,36 @@ def _load_ui_change_history() -> str:
         return f"(Error loading change history: {exc})"
 
 
+def _load_design_principles() -> str:
+    """Load the design system reference from the shared principles file."""
+    if not _DESIGN_PRINCIPLES.exists():
+        return "(Design principles file not found — apply general CSS best practices.)"
+    return _DESIGN_PRINCIPLES.read_text(encoding="utf-8")
+
+
+def _load_ui_backlog() -> str:
+    """Load the UI improvement backlog for proactive audit mode."""
+    if not _BACKLOG.exists():
+        return "(No UI backlog found — identify improvements from CSS/template audit.)"
+    try:
+        data = json.loads(_BACKLOG.read_text(encoding="utf-8"))
+        pending = [item for item in data.get("backlog", []) if item.get("status") == "pending"]
+        if not pending:
+            return "(All backlog items completed — identify new improvements from audit.)"
+        lines = [f"UI BACKLOG ({len(pending)} pending items, sorted by priority):"]
+        # Sort: high first, then medium, then low
+        priority_order = {"high": 0, "medium": 1, "low": 2}
+        pending.sort(key=lambda x: priority_order.get(x.get("priority", "low"), 3))
+        for item in pending[:10]:
+            lines.append(
+                f"  [{item.get('id', '?')}] {item.get('component', '?')} — "
+                f"{item.get('description', '?')} (priority: {item.get('priority', '?')})"
+            )
+        return "\n".join(lines)
+    except Exception as exc:
+        return f"(Error loading backlog: {exc})"
+
+
 def build_ui_designer() -> Agent:
     """
     Build the UI Designer agent.
@@ -108,6 +141,7 @@ def build_ui_designer() -> Agent:
     """
     directives = _load_ui_directives()
     history    = _load_ui_change_history()
+    principles = _load_design_principles()
 
     return Agent(
         role="UI Designer",
@@ -120,6 +154,8 @@ def build_ui_designer() -> Agent:
             "You are the UI Designer at Particle Post. You receive data-driven directives "
             "from the Marketing Director and implement specific CSS and template changes "
             "to improve engagement metrics like time on page, bounce rate, and navigation depth.\n\n"
+            "═══ DESIGN SYSTEM REFERENCE ═══\n\n"
+            f"{principles}\n\n"
             "═══ CRITICAL CONSTRAINTS (enforce always) ═══\n\n"
             "1. NEVER modify --accent-blue (#2563EB) or --accent-amber (#F59E0B). "
             "   These are protected brand colors. The css_editor tool will block attempts, "
@@ -155,6 +191,72 @@ def build_ui_designer() -> Agent:
             "  Output ONLY the JSON object described in the task.\n\n"
             "═══ CURRENT UI DIRECTIVES ═══\n\n"
             f"{directives}\n\n"
+            "═══ RECENT UI CHANGE HISTORY ═══\n\n"
+            f"{history}"
+        ),
+        tools=[
+            CSSReaderTool(),
+            CSSEditorTool(),
+            TemplateReaderTool(),
+            TemplateEditorTool(),
+        ],
+        llm=LLM(model="anthropic/claude-sonnet-4-6", max_tokens=4000),
+        verbose=True,
+        allow_delegation=False,
+    )
+
+
+def build_ui_auditor() -> Agent:
+    """
+    Build the UI Auditor agent — proactive mode.
+
+    Runs 3x/day independently of the Marketing Director.
+    Reads CSS + templates, picks items from the UI backlog (or identifies
+    new improvements), implements 1-2 changes per run, and updates the backlog.
+
+    Uses claude-sonnet-4-6 for strong reasoning about design decisions.
+    """
+    principles = _load_design_principles()
+    history    = _load_ui_change_history()
+    backlog    = _load_ui_backlog()
+
+    return Agent(
+        role="UI Auditor",
+        goal=(
+            "Proactively improve the Particle Post website by auditing CSS and templates, "
+            "picking the highest-impact improvement from the backlog (or identifying new ones), "
+            "and implementing 1-2 targeted, reversible changes per run. "
+            "After making changes, add 2-3 new backlog items you identified during audit."
+        ),
+        backstory=(
+            "You are the UI Auditor at Particle Post. Unlike the directive-driven UI Designer, "
+            "you work PROACTIVELY — you read the site's CSS and templates, identify what needs "
+            "improvement, and make targeted changes without waiting for instructions.\n\n"
+            "Your priorities (in order):\n"
+            "1. HIGH-priority backlog items first\n"
+            "2. Accessibility issues (contrast, touch targets, focus states)\n"
+            "3. Mobile experience (375px and 768px breakpoints)\n"
+            "4. Visual hierarchy (headings, spacing, typography)\n"
+            "5. Dark mode polish\n"
+            "6. Component consistency\n"
+            "7. Micro-interactions and hover states\n\n"
+            "═══ DESIGN SYSTEM REFERENCE ═══\n\n"
+            f"{principles}\n\n"
+            "═══ CRITICAL CONSTRAINTS (same as UI Designer) ═══\n\n"
+            "1. NEVER modify --accent-blue (#2563EB) or --accent-amber (#F59E0B).\n"
+            "2. NEVER break dark mode. Verify [data-theme='dark'] after any change.\n"
+            "3. ENFORCE 7-day cooldown. Check history before changing any component.\n"
+            "4. SMALL and REVERSIBLE. One change at a time. Undoable via git revert.\n"
+            "5. Maximum 2 changes per run. Quality over quantity.\n\n"
+            "═══ PROCESS ═══\n\n"
+            "STEP 1 — READ: Call css_reader for full CSS. Read 2-3 relevant templates.\n"
+            "STEP 2 — PICK: Choose 1-2 items from the backlog (highest priority pending).\n"
+            "         If no backlog items are suitable, identify new improvements.\n"
+            "STEP 3 — IMPLEMENT: Make targeted CSS/template changes.\n"
+            "STEP 4 — DISCOVER: Identify 2-3 NEW improvement opportunities for the backlog.\n"
+            "STEP 5 — OUTPUT: JSON change log + new backlog items.\n\n"
+            "═══ UI IMPROVEMENT BACKLOG ═══\n\n"
+            f"{backlog}\n\n"
             "═══ RECENT UI CHANGE HISTORY ═══\n\n"
             f"{history}"
         ),

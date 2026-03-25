@@ -1,15 +1,14 @@
-name: UI Designer — Directive Mode (1pm ET)
+name: UI Proactive Audit
 
 on:
-  # Scheduling handled by cron-job.org + Cloudflare Worker (18:00 UTC daily)
-  # GitHub Actions built-in schedule removed to prevent double-triggers
-  workflow_dispatch: {}    # manual trigger for testing
+  # Scheduling handled by cron-job.org + Cloudflare Worker (3x/day: 15:00, 19:00, 23:00 UTC)
+  workflow_dispatch: {}   # manual trigger for testing
 
 permissions:
   contents: write
 
 jobs:
-  design:
+  audit:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     env:
@@ -31,10 +30,10 @@ jobs:
       - name: Install Python dependencies
         run: pip install -r requirements.txt
 
-      - name: Run UI Designer (directive mode)
+      - name: Run UI Auditor (proactive mode)
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-        run: python -m pipeline.ui_run --mode directive
+        run: python -m pipeline.ui_run --mode audit
 
       - name: Commit UI changes
         run: |
@@ -43,12 +42,10 @@ jobs:
           git remote set-url origin "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git"
           git add \
             blog/assets/css/extended/custom.css \
-            blog/layouts/partials/header.html \
-            blog/layouts/partials/home_info.html \
-            blog/layouts/_default/list.html \
-            blog/layouts/partials/footer.html \
-            pipeline/config/ui_change_history.json
-          git diff --staged --quiet || git commit -m "auto: ui design update $(date -u +%Y-%m-%d)"
+            blog/layouts/ \
+            pipeline/config/ui_change_history.json \
+            pipeline/config/ui_backlog.json
+          git diff --staged --quiet || git commit -m "auto: ui audit $(date -u +%Y-%m-%d-%H%M)"
           for i in 1 2 3; do
             git pull --rebase origin main && git push && break
             echo "Push attempt $i failed, retrying in 10s..."

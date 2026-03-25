@@ -193,6 +193,74 @@ def collect_strategy(week_start: str, week_end: str) -> dict:
     return result
 
 
+def collect_ui_audit_metrics(week_start: str, week_end: str) -> dict:
+    """Collect UI audit/proactive metrics for the week."""
+    result = {
+        "total_changes": 0,
+        "audit_runs": 0,
+        "directive_runs": 0,
+        "changes_detail": [],
+        "backlog_pending": 0,
+        "backlog_completed_this_week": 0,
+    }
+
+    # UI change history
+    ui_history_file = _CONFIG_DIR / "ui_change_history.json"
+    if ui_history_file.exists():
+        try:
+            data = json.loads(ui_history_file.read_text(encoding="utf-8"))
+            for entry in data.get("changes", []):
+                if _is_this_week(entry.get("date", ""), week_start, week_end):
+                    applied = entry.get("changes_applied", [])
+                    result["total_changes"] += len(applied)
+                    result["audit_runs"] += 1
+                    for c in applied[:3]:
+                        result["changes_detail"].append(
+                            f"{c.get('component', '?')}/{c.get('property', '?')}"
+                        )
+        except Exception:
+            pass
+
+    # UI backlog
+    backlog_file = _CONFIG_DIR / "ui_backlog.json"
+    if backlog_file.exists():
+        try:
+            data = json.loads(backlog_file.read_text(encoding="utf-8"))
+            result["backlog_pending"] = len(data.get("backlog", []))
+            for item in data.get("completed", []):
+                if _is_this_week(item.get("completed_date", ""), week_start, week_end):
+                    result["backlog_completed_this_week"] += 1
+        except Exception:
+            pass
+
+    return result
+
+
+def collect_content_audit() -> dict:
+    """Collect latest content quality audit results from writer_feedback.json."""
+    result = {
+        "audit_notes": [],
+        "last_audit_date": None,
+    }
+    feedback_file = _DATA_DIR / "writer_feedback.json"
+    if not feedback_file.exists():
+        return result
+    try:
+        data = json.loads(feedback_file.read_text(encoding="utf-8"))
+        audit_notes = [
+            n for n in data.get("notes", [])
+            if n.get("slot") == "audit"
+        ]
+        if audit_notes:
+            result["last_audit_date"] = audit_notes[-1].get("date", "")[:10]
+            result["audit_notes"] = [
+                n.get("text", "") for n in audit_notes[-5:]
+            ]
+    except Exception:
+        pass
+    return result
+
+
 def collect_gso_metrics() -> dict:
     """Collect GSO performance metrics from seo_gso_config.json."""
     result = {
@@ -248,6 +316,8 @@ def build_html_report(
     strategy: dict,
     report_dates: list[str],
     gso: dict | None = None,
+    ui_audit: dict | None = None,
+    content_audit: dict | None = None,
 ) -> str:
     today = datetime.now(timezone.utc).strftime("%B %d, %Y")
     approval_rate = 0
@@ -350,6 +420,55 @@ def build_html_report(
     <ul style="margin:0 0 12px;padding-left:20px;">{kw_html}</ul>
     <p style="margin:0 0 6px;font-size:13px;font-weight:600;color:#374151;">Content gap priorities:</p>
     <ul style="margin:0 0 28px;padding-left:20px;">{gap_html}</ul>"""
+
+    # UI Audit section
+    ui_audit = ui_audit or {}
+    ui_changes_detail = ui_audit.get("changes_detail", [])
+    ui_detail_html = ""
+    for detail in ui_changes_detail[:8]:
+        ui_detail_html += f'<li style="margin:3px 0;font-size:13px;color:#374151;">{detail}</li>'
+    if not ui_detail_html:
+        ui_detail_html = '<li style="color:#9CA3AF;font-style:italic;">No UI changes this week.</li>'
+
+    ui_audit_html = f"""
+    <h2 style="margin:28px 0 8px;font-size:16px;font-weight:700;color:#111827;">UI Audit &amp; Design</h2>
+    <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:12px;">
+      <tr>
+        <td style="padding:5px 0;font-size:13px;color:#6B7280;width:180px;">Audit runs this week</td>
+        <td style="padding:5px 0;font-size:13px;color:#374151;font-weight:600;">{ui_audit.get('audit_runs', 0)}</td>
+      </tr>
+      <tr>
+        <td style="padding:5px 0;font-size:13px;color:#6B7280;">Total changes applied</td>
+        <td style="padding:5px 0;font-size:13px;color:#374151;font-weight:600;">{ui_audit.get('total_changes', 0)}</td>
+      </tr>
+      <tr>
+        <td style="padding:5px 0;font-size:13px;color:#6B7280;">Backlog completed</td>
+        <td style="padding:5px 0;font-size:13px;color:#374151;font-weight:600;">{ui_audit.get('backlog_completed_this_week', 0)}</td>
+      </tr>
+      <tr>
+        <td style="padding:5px 0;font-size:13px;color:#6B7280;">Backlog remaining</td>
+        <td style="padding:5px 0;font-size:13px;color:#374151;font-weight:600;">{ui_audit.get('backlog_pending', 0)}</td>
+      </tr>
+    </table>
+    <p style="margin:0 0 6px;font-size:13px;font-weight:600;color:#374151;">Changes applied:</p>
+    <ul style="margin:0 0 28px;padding-left:20px;">{ui_detail_html}</ul>"""
+
+    # Content Quality Audit section
+    content_audit = content_audit or {}
+    audit_notes = content_audit.get("audit_notes", [])
+    audit_notes_html = ""
+    for note in audit_notes:
+        audit_notes_html += f'<li style="margin:4px 0;font-size:13px;color:#374151;">{note}</li>'
+    if not audit_notes_html:
+        audit_notes_html = '<li style="color:#9CA3AF;font-style:italic;">No content audit data yet.</li>'
+
+    content_audit_html = f"""
+    <h2 style="margin:28px 0 8px;font-size:16px;font-weight:700;color:#111827;">Content Quality Audit</h2>
+    <p style="margin:0 0 6px;font-size:13px;color:#6B7280;">
+      Last audit: {content_audit.get('last_audit_date') or 'Not yet run'}
+    </p>
+    <p style="margin:0 0 6px;font-size:13px;font-weight:600;color:#374151;">Top recurring issues:</p>
+    <ul style="margin:0 0 28px;padding-left:20px;">{audit_notes_html}</ul>"""
 
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -460,6 +579,12 @@ def build_html_report(
     <!-- GSO Performance -->
     {gso_html}
 
+    <!-- UI Audit & Design -->
+    {ui_audit_html}
+
+    <!-- Content Quality Audit -->
+    {content_audit_html}
+
   </td></tr>
 
   <!-- Footer -->
@@ -558,6 +683,16 @@ def main() -> None:
     print(f"    FAQ articles: {gso['faq_articles']} | Logged: {gso['articles_logged']} | "
           f"Citations: {gso['citation_count']}")
 
+    print("  Collecting UI audit metrics...")
+    ui_audit = collect_ui_audit_metrics(week_start, week_end)
+    print(f"    {ui_audit['total_changes']} changes | {ui_audit['audit_runs']} runs | "
+          f"Backlog: {ui_audit['backlog_pending']} pending, {ui_audit['backlog_completed_this_week']} completed")
+
+    print("  Collecting content audit data...")
+    content_audit = collect_content_audit()
+    print(f"    Last audit: {content_audit['last_audit_date'] or 'not yet run'} | "
+          f"{len(content_audit['audit_notes'])} notes")
+
     print("  Building HTML report...")
     html = build_html_report(
         week_start=week_start,
@@ -568,6 +703,8 @@ def main() -> None:
         strategy=strategy,
         report_dates=report_dates,
         gso=gso,
+        ui_audit=ui_audit,
+        content_audit=content_audit,
     )
 
     subject = f"Particle Post Weekly Report — {week_start} to {week_end}"
