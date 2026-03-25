@@ -9,6 +9,7 @@
 - [The AI Fraud Arms Race: What the Research Shows About Detection ROI — and Where It Breaks](https://theparticlepost.com/posts/ai-fraud-detection-roi-arms-race/)
 - [AI Fraud Detection ROI: Why Banks Can](https://theparticlepost.com/posts/ai-fraud-detection-roi-40-billion/)
 - [How to Deploy AI Fraud Detection: 5 Implementation Pitfalls and Go/No-Go Checkpoints](https://theparticlepost.com/posts/ai-fraud-detection-deployment-implementation/)
+- [Agentic AI Finance Operations: What Oracle & Zalos Prove](https://theparticlepost.com/posts/agentic-ai-finance-operations-oracle-zalos/)
 - [Explainable AI Is a Capital Problem, Not a Technical One — and the FCA Is About to Prove It](https://theparticlepost.com/posts/explainable-ai-capital-problem-fca/)
 - [Can AI Agents Actually Handle Your Company](https://theparticlepost.com/posts/ai-agents-corporate-payments-infrastructure-readiness/)
 - [Big Tech](https://theparticlepost.com/posts/ai-data-center-energy-costs/)

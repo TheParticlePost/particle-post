@@ -1,21 +1,6 @@
 {
   "notes": [
     {
-      "text": "The Sources section lists only two URLs (Taylor Wessing and FinTech Futures), but the article body cites at least five named sources — FinRegLab, Debevoise & Plimpton, Hogan Lovells, Braithwaite, and Klarna company filings. Every inline citation must have a corresponding URL in the Sources section; missing links undermine credibility and prevent editors from verifying claims.",
-      "slot": "morning",
-      "date": "2026-03-23T17:25:40.040793+00:00"
-    },
-    {
-      "text": "The stat-box citing Forbes contributor Zenon Kapron ('5% of intraday liquidity buffers... by year-end 2025') is a single-contributor Forbes piece, not a primary research source. For a statistic this specific and consequential, cite the underlying research report directly, or add a qualifying phrase such as 'per Forbes contributor Zenon Kapron, citing [underlying source]' to flag its secondary-source nature to readers.",
-      "slot": "morning",
-      "date": "2026-03-23T17:25:40.040793+00:00"
-    },
-    {
-      "text": "This article covers AI Investment Strategy / Capital Markets, which the Marketing Director has explicitly flagged as off-limits this week ('we do not yet have enough domain authority to compete in those SERPs — focus depth over breadth'). Before writing, always check the 'Content Pillar Focus This Week' section of the SEO guidelines. This week's assignment is AI in Finance Operations: fraud detection, credit scoring, and compliance automation. An otherwise well-written article was rejected solely because it targeted the wrong pillar at the wrong time.",
-      "slot": "morning",
-      "date": "2026-03-23T20:44:13.878760+00:00"
-    },
-    {
       "text": "The H1 ('Morgan Stanley's 2026 AI Breakthrough: What It Means for Tech Valuations') contains neither the required primary keyword nor follows the SEO H1 formula ([Primary Keyword]: [Named Entity] + [Specific Context]). The closest applicable primary keyword would be 'AI investment strategy' — the H1 should read something like 'AI Investment Strategy 2026: Morgan Stanley's Compute-vs-Software Forecast.' Always open the SEO guidelines and match the H1 to a keyword from Section 2 before finalizing the headline.",
       "slot": "morning",
       "date": "2026-03-23T20:44:13.878760+00:00"
@@ -149,6 +134,21 @@
       "text": "The stat-box visual elements are rendered as 'STAT: $12.5B | label | source' plain-text markers rather than the '{{< stat-box number=... >}}' shortcode syntax required for the CMS to render them as styled callouts. Strong editorial instinct on placement and frequency — both stat-boxes land at exactly the right moments in the narrative. Just convert the syntax before publication so readers see formatted callouts, not raw marker strings.",
       "slot": "morning",
       "date": "2026-03-25T18:11:18.499174+00:00"
+    },
+    {
+      "text": "Source URL completeness: You cite KPMG, ChatFin, RITS Center, and Snowflake inline with specific statistics, but none of these appear in the Sources section URLs. Every inline citation must have a corresponding URL at the bottom of the article. If you cannot locate a live, verifiable URL for a statistic, reframe it as context or remove it. This is your highest-priority fix for the next run — a Bloomberg editor would send this back immediately for missing source links.",
+      "slot": "morning",
+      "date": "2026-03-25T18:41:27.258144+00:00"
+    },
+    {
+      "text": "H1 character count: The restructured H1 ('Agentic AI in Finance Operations: What the Oracle and Zalos Deployments Actually Prove — and Where the ROI Math Breaks') runs approximately 100 characters — well above the 70-character SERP display maximum in the SEO guidelines. Trim to a tighter formula: 'Agentic AI Finance Operations: What Oracle and Zalos Actually Prove' (67 chars) retains the primary keyword and named entities within the display window.",
+      "slot": "morning",
+      "date": "2026-03-25T18:41:27.258144+00:00"
+    },
+    {
+      "text": "Em dash discipline: The article uses em dashes as stylistic connectors in multiple consecutive sentences within single paragraphs (especially in the lede and the 'What This Means for Three Finance Functions' section). The editorial guidelines flag this explicitly as an AI-generation tell when used more than once per paragraph. Do a final pass before submission: replace em dashes with periods, commas, or restructured clauses. One per paragraph is the hard ceiling.",
+      "slot": "morning",
+      "date": "2026-03-25T18:41:27.258144+00:00"
     }
   ]
 }
