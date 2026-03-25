@@ -1,21 +1,6 @@
 {
   "notes": [
     {
-      "text": "The internal link to 'fintech AI infrastructure investment' uses a placeholder URL (https://example.com/fintech-ai-infrastructure-investment) instead of the real published slug. Before submission, always replace placeholder hrefs with the actual relative slug paths defined in the SEO guidelines — in this case, /fintech-ai-infrastructure-investment. A broken internal link erodes both SEO equity and reader trust.",
-      "slot": "morning",
-      "date": "2026-03-23T20:47:59.325748+00:00"
-    },
-    {
-      "text": "The article covers three distinct financial audiences — CFOs managing ESG-linked debt, utility sector investors, and AI infrastructure planners — but the conclusion addresses all three at once without differentiation. Consider flagging audience-specific takeaways with a brief label (e.g., 'For CFOs:' / 'For utility investors:') to make the piece more forwardable to a specific colleague, which is a key behavior for our C-suite readership.",
-      "slot": "morning",
-      "date": "2026-03-23T20:47:59.325748+00:00"
-    },
-    {
-      "text": "TOF word count discipline: This article ran ~1,050–1,100 words against a hard ceiling of 1,000 for TOF. The 'What Specific Results Has Explainable AI Compliance Produced?' section largely restates points made in 'What Research Actually Shows' — consolidate or cut that section entirely to land inside the limit without losing substance. TOF readers need a tight, scannable brief, not a full case study.",
-      "slot": "morning",
-      "date": "2026-03-24T13:08:41.469773+00:00"
-    },
-    {
       "text": "Complete the FAQ render in the article body: The third FAQ pair ('What is the FCA Mills Review and when will it affect fintech firms?') is truncated mid-answer in the published body. The frontmatter pair is fully written — ensure the formatter pulls all three pairs through to the rendered section. Two FAQs against a declared has_faq=true is a reader-facing gap and a missed featured-snippet opportunity.",
       "slot": "morning",
       "date": "2026-03-24T13:08:41.469773+00:00"
@@ -149,6 +134,21 @@
       "text": "The H1 does not contain a clean primary keyword match from the SEO target list. 'Agentic AI finance' is a Priority 4 target keyword — your H1 has 'agentic' and 'finance' separated by other words, which may not satisfy SERP matching. A revision like 'Agentic AI Finance: Oracle's 22 Fusion Apps vs. Zalos — Which Fits Your Stack' would bring it into compliance without sacrificing the comparison framing that makes this piece useful.",
       "slot": "morning",
       "date": "2026-03-25T19:27:05.606509+00:00"
+    },
+    {
+      "text": "EM-DASH BAN: This is your most urgent fix. Em-dashes appear at least four times in the article body and FAQ section — e.g., 'agentic AI — covering autonomous exception handling...' and 'per Snowfox.ai — these must be resolved before go-live.' Every single em-dash must be replaced before the next submission. Use a comma, colon, semicolon, or parentheses instead. The ban is absolute and carries a 15-point penalty per instance. Run a find-and-replace for the '—' character before submitting any article.",
+      "slot": "evening",
+      "date": "2026-03-25T21:10:33.479585+00:00"
+    },
+    {
+      "text": "H1 KEYWORD ALIGNMENT: Your restructured body H1 reads 'How to Deploy AI Agents for Accounts Payable: 4-Step Implementation Roadmap' but the primary target keyword is 'AI accounts payable automation.' Google indexes the body H1, not the frontmatter title. Align the two so the H1 in the article body matches the frontmatter title: 'AI Accounts Payable Automation: 7-Step Implementation Guide' works perfectly and follows the SEO H1 formula. Never let the body H1 and frontmatter title diverge.",
+      "slot": "evening",
+      "date": "2026-03-25T21:10:33.479585+00:00"
+    },
+    {
+      "text": "BOF FUNNEL COMPLIANCE — STRONG EXECUTION: This article correctly includes numbered implementation steps (7 steps), names four specific failure scenarios, and has a clearly labeled go/no-go decision checkpoint section with four explicit criteria. The two internal links pointing to deeper content are present. The FAQ section has five well-sourced Q+A pairs. This is a well-structured BOF piece — the em-dash issue is the only meaningful barrier to a clean submission.",
+      "slot": "evening",
+      "date": "2026-03-25T21:10:33.479585+00:00"
     }
   ]
 }
