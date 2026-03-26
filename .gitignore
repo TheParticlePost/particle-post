@@ -18,6 +18,13 @@ public/
 resources/
 .hugo_build.lock
 
+# Next.js
+.next/
+out/
+node_modules/
+.env.local
+.env.production.local
+
 # OS
 .DS_Store
 Thumbs.db
