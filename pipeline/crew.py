@@ -23,7 +23,7 @@ from pipeline.tasks.formatting_task import build_formatting_task
 from pipeline.tasks.validation_task import build_validation_task
 
 
-def build_crew(slot: str) -> Crew:
+def build_crew(slot: str, topic_override: str | None = None) -> Crew:
     """
     Build the Particle Post publishing crew for a given slot.
 
@@ -55,8 +55,8 @@ def build_crew(slot: str) -> Crew:
     production_director = build_production_director()
 
     # --- Tasks (order matters — sequential process) ---
-    research_task   = build_research_task(researcher, content_type=content_type)
-    selection_task  = build_selection_task(topic_selector, research_task, slot)
+    research_task   = build_research_task(researcher, content_type=content_type, topic_override=topic_override)
+    selection_task  = build_selection_task(topic_selector, research_task, slot, topic_override=topic_override)
     writing_task    = build_writing_task(writer, selection_task, funnel_type)
     seo_gso_task    = build_seo_gso_task(seo_gso_specialist, writing_task, selection_task)
     editing_task    = build_editing_task(editor, seo_gso_task, selection_task)   # ← SEO-restructured + funnel type context

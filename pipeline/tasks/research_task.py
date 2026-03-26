@@ -2,7 +2,7 @@ from crewai import Task
 from crewai import Agent
 
 
-def build_research_task(agent: Agent, content_type: str = "news") -> Task:
+def build_research_task(agent: Agent, content_type: str = "news", topic_override: str | None = None) -> Task:
     # Base search queries for all runs
     base_steps = (
         "1. Use google_trends tool to get current US trending topics.\n"
@@ -38,9 +38,21 @@ def build_research_task(agent: Agent, content_type: str = "news") -> Task:
             "business implications. Each topic must answer: 'What should a CEO/CFO do with this?'\n\n"
         )
 
+    topic_directive = ""
+    if topic_override:
+        topic_directive = (
+            f"MANDATORY TOPIC DIRECTIVE: The editor has requested coverage of this specific topic:\n"
+            f'"{topic_override}"\n\n'
+            f"You MUST include this topic as the #1 item in your research briefing. "
+            f"Research it thoroughly using tavily_search with queries related to the topic. "
+            f"Find recent news articles, technical details, expert analysis, and implications. "
+            f"Still include 4-5 other trending topics, but the directed topic MUST be first and most detailed.\n\n"
+        )
+
     return Task(
         description=(
             "Research trending AI, Business, and Finance topics from the last 24 hours.\n\n"
+            f"{topic_directive}"
             f"{content_guidance}"
             "THEME PREFERENCE: 70% of topics should be business-themed (enterprise AI, productivity, "
             "company strategy) and 30% finance-themed (banking, trading, compliance, capital markets).\n\n"

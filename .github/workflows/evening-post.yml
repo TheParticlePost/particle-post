@@ -10,6 +10,11 @@ on:
         required: false
         default: "false"
         type: boolean
+      topic:
+        description: "Topic directive — force the pipeline to write about this topic"
+        required: false
+        default: ""
+        type: string
 
 permissions:
   contents: write
@@ -50,7 +55,11 @@ jobs:
           if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
             DRY_RUN_FLAG="--dry-run"
           fi
-          python -m pipeline.run --slot evening $DRY_RUN_FLAG
+          TOPIC_FLAG=""
+          if [ -n "${{ github.event.inputs.topic }}" ]; then
+            TOPIC_FLAG="--topic \"${{ github.event.inputs.topic }}\""
+          fi
+          python -m pipeline.run --slot evening $DRY_RUN_FLAG $TOPIC_FLAG
 
       - name: Commit new post
         if: ${{ github.event.inputs.dry_run != 'true' }}

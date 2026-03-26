@@ -552,6 +552,12 @@ def main() -> None:
         action="store_true",
         help="Run the full pipeline but skip writing the file to disk.",
     )
+    parser.add_argument(
+        "--topic",
+        type=str,
+        default=None,
+        help="Override topic directive — the pipeline will write about this specific topic.",
+    )
     args = parser.parse_args()
 
     missing = _check_env()
@@ -561,6 +567,8 @@ def main() -> None:
 
     print(f"\n{'='*60}")
     print(f"  PARTICLE POST — {args.slot.upper()} PIPELINE")
+    if args.topic:
+        print(f"  TOPIC OVERRIDE: {args.topic}")
     print(f"{'='*60}\n")
 
     from pipeline.crew import build_crew
@@ -572,7 +580,7 @@ def main() -> None:
     for attempt in range(1, MAX_ATTEMPTS + 1):
         print(f"\n─── Pipeline attempt {attempt} of {MAX_ATTEMPTS} ───\n")
 
-        crew = build_crew(slot=args.slot)
+        crew = build_crew(slot=args.slot, topic_override=args.topic)
 
         # Retry on rate limit (429) errors — wait and try again
         for rate_retry in range(1, 4):

@@ -30,7 +30,7 @@ def _get_schedule_info(slot: str) -> tuple:
 _get_funnel_type = lambda slot: _get_schedule_info(slot)[0]
 
 
-def build_selection_task(agent: Agent, research_task: Task, slot: str) -> Task:
+def build_selection_task(agent: Agent, research_task: Task, slot: str, topic_override: str | None = None) -> Task:
     # Load recent post titles to inject into prompt
     recent_titles = []
     if HISTORY_FILE.exists():
@@ -65,9 +65,20 @@ def build_selection_task(agent: Agent, research_task: Task, slot: str) -> Task:
         ),
     }
 
+    topic_directive = ""
+    if topic_override:
+        topic_directive = (
+            f"MANDATORY TOPIC OVERRIDE: The editor has directed that today's article MUST cover:\n"
+            f'"{topic_override}"\n\n'
+            f"Select the research briefing entry that best matches this directive. "
+            f"If no entry matches closely, use the directive itself as the topic and find the best angle for it. "
+            f"This is non-negotiable — the selected topic MUST align with this directive.\n\n"
+        )
+
     return Task(
         description=(
             f"Select the best topic for the {slot_label} post from the research briefing.\n\n"
+            f"{topic_directive}"
             f"TODAY'S FUNNEL TYPE: {funnel_type}\n"
             f"Description: {funnel_descriptions[funnel_type]}\n\n"
             f"TODAY'S CONTENT TYPE: {content_type}\n"
