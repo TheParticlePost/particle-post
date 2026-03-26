@@ -104,7 +104,7 @@ class AnthropicSkillTool(BaseTool):
             },
             method="POST",
         )
-        with urlopen(req, timeout=120) as resp:
+        with urlopen(req, timeout=300) as resp:
             return json.loads(resp.read())
 
 
