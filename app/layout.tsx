@@ -7,6 +7,7 @@ import { ScrollToTop } from "@/components/ui/scroll-to-top";
 import { GoogleAnalytics } from "@/components/analytics/google-analytics";
 import { CookieConsent } from "@/components/analytics/cookie-consent";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -60,6 +61,7 @@ export default function RootLayout({
           </div>
           <GoogleAnalytics />
           <Analytics />
+          <SpeedInsights />
         </ThemeProvider>
       </body>
     </html>
