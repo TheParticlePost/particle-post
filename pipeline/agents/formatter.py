@@ -37,7 +37,7 @@ def build_formatter() -> Agent:
         ),
         backstory=backstory,
         tools=[],
-        llm=LLM(model="anthropic/claude-sonnet-4-6", max_tokens=8192),
+        llm=LLM(model="anthropic/claude-haiku-4-5-20251001", max_tokens=8192),
         verbose=True,
         allow_delegation=False,
     )
