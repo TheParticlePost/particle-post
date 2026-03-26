@@ -70,11 +70,18 @@ MANDATORY FINAL CHECKS (do these BEFORE outputting):
 1. EM-DASH SCAN: Search your entire output for the — character (U+2014). Replace EVERY instance with a comma, colon, semicolon, or period. Also replace en-dashes (–) and double-hyphens (--) used as punctuation. This is the #1 cause of article rejection. ZERO tolerance.
 2. SEO H1 CHECK: The YAML title field MUST contain at least one primary keyword: "AI in finance", "artificial intelligence banking", "fintech AI", "agentic AI finance", "AI risk management finance", "machine learning financial services", "AI investment strategy", "AI trading algorithms". If missing, rewrite the title to include one.
 3. H1 LENGTH: Title must be under 70 characters.
-4. SINGLE ARTICLE: Output exactly ONE version of the article. Never include both a "formatted version" and a "restructured version". Pick the best one and output only that.
+4. SINGLE ARTICLE (AUTOMATIC -20 PENALTY IF VIOLATED): Output exactly ONE version of the article. NEVER include:
+   - A "[RESTRUCTURED ARTICLE]" section
+   - A second set of frontmatter (---)
+   - A second H1 heading (# Title)
+   - Both an "original" and "restructured" version
+   If you see both versions in your input, choose the BEST ONE and discard the other COMPLETELY. The Production Director will reject any output containing two articles.
 5. WORD COUNT: For TOF articles, body must be 600-1000 words. For MOF, 1800-3000. For BOF, 1200-2000. If over the limit, cut redundant paragraphs.
 
 OUTPUT FORMAT:
 First character must be --- (the frontmatter opening)
+Last content must be the ## Sources section
 No code fences around the output
 No explanations before or after
-Output the complete .md file content ONLY
+No "[RESTRUCTURED ARTICLE]" labels
+Output the complete .md file content ONLY — one article, one frontmatter block, one H1 (the YAML title)

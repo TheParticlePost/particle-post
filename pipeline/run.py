@@ -94,6 +94,7 @@ def _sanitize_article(content: str) -> str:
     """
     Programmatic post-processing of the formatter's output.
     Fixes issues that LLM agents consistently fail to self-correct:
+      0. Duplicate article stripping (two articles stacked back-to-back)
       1. Em-dash removal (replace with comma or period)
       2. En-dash cleanup
       3. Double-hyphen cleanup
@@ -104,6 +105,30 @@ def _sanitize_article(content: str) -> str:
 
     original = content
     fixes_applied = []
+
+    # 0. Strip duplicate articles — formatter sometimes outputs two versions
+    #    Patterns: "[RESTRUCTURED ARTICLE]", "---\ntitle:" appearing twice,
+    #    or a second H1 (# Title) after the article body
+    restructured_match = re.search(
+        r'\n\s*\[RESTRUCTURED\s+ARTICLE\].*', content, re.DOTALL | re.IGNORECASE
+    )
+    if restructured_match:
+        content = content[:restructured_match.start()].rstrip()
+        fixes_applied.append("Stripped [RESTRUCTURED ARTICLE] duplicate block")
+
+    # Also catch a second frontmatter block (---\ntitle:) appearing mid-content
+    frontmatter_blocks = list(re.finditer(r'^---\s*\n', content, re.MULTILINE))
+    if len(frontmatter_blocks) > 2:
+        # Keep only content up to the third --- (start of second frontmatter)
+        content = content[:frontmatter_blocks[2].start()].rstrip()
+        fixes_applied.append("Stripped duplicate frontmatter/article block")
+
+    # Catch a second H1 (# Title) appearing after the first article body
+    h1_matches = list(re.finditer(r'^# [^\n]+', content, re.MULTILINE))
+    if len(h1_matches) > 1:
+        # Keep only content up to the second H1
+        content = content[:h1_matches[1].start()].rstrip()
+        fixes_applied.append("Stripped duplicate article (second H1 detected)")
 
     # 1. Replace em-dashes (U+2014) with context-aware punctuation
     #    Pattern: " -- " or " --- " surrounded by words -> ", " or ". "
