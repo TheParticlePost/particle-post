@@ -76,4 +76,10 @@ jobs:
             sleep 10
           done
 
-      # Vercel auto-deploys on push to main — no explicit deploy step needed
+      - name: Trigger Vercel deploy
+        if: ${{ github.event.inputs.dry_run != 'true' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # github.token pushes don't trigger other workflows, so trigger deploy explicitly
+          gh workflow run deploy.yml --ref main || echo "Deploy trigger failed (non-fatal)"
