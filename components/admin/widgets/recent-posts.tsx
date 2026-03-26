@@ -1,5 +1,5 @@
-import { cn } from "@/lib/utils";
-import { formatDateShort } from "@/lib/utils";
+import Link from "next/link";
+import { cn, formatDateShort } from "@/lib/utils";
 
 interface PostItem {
   title: string;
@@ -50,7 +50,7 @@ export function RecentPosts({ posts }: RecentPostsProps) {
         <li key={post.slug} className="py-3 first:pt-0 last:pb-0">
           <div className="flex items-start justify-between gap-3">
             <div className="min-w-0 flex-1">
-              <a
+              <Link
                 href={`/posts/${post.slug}/`}
                 className={cn(
                   "text-body-sm font-medium text-foreground",
@@ -59,7 +59,7 @@ export function RecentPosts({ posts }: RecentPostsProps) {
                 )}
               >
                 {post.title}
-              </a>
+              </Link>
               <p className="text-body-xs text-foreground-muted mt-0.5">
                 {formatDateShort(post.date)}
               </p>

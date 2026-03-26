@@ -60,13 +60,14 @@ export default async function AdminLayout({
     redirect("/");
   }
 
-  // Check admin role from user metadata
-  const isAdmin =
-    user.app_metadata?.role === "admin" ||
-    user.user_metadata?.role === "admin" ||
-    user.email === process.env.ADMIN_EMAIL;
+  // Check admin role from profiles table (single source of truth)
+  const { data: profile } = await supabase
+    .from("profiles")
+    .select("role")
+    .eq("id", user.id)
+    .maybeSingle();
 
-  if (!isAdmin) {
+  if (!profile || profile.role !== "admin") {
     redirect("/");
   }
 

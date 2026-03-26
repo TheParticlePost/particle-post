@@ -57,8 +57,12 @@ export function UserMenu({ user }: UserMenuProps) {
   }, [open, close]);
 
   const handleSignOut = async () => {
-    const supabase = createClient();
-    await supabase.auth.signOut();
+    try {
+      const supabase = createClient();
+      await supabase.auth.signOut();
+    } catch {
+      // Sign out failed — continue with redirect anyway
+    }
     close();
     router.push("/");
     router.refresh();

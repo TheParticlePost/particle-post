@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/button";
+import { validatePassword } from "@/lib/validate-password";
 import { cn } from "@/lib/utils";
 
 const inputStyles = cn(
@@ -24,13 +25,9 @@ export function ResetPasswordForm() {
     e.preventDefault();
     setError(null);
 
-    if (password !== confirmPassword) {
-      setError("Passwords do not match.");
-      return;
-    }
-
-    if (password.length < 6) {
-      setError("Password must be at least 6 characters.");
+    const pwError = validatePassword(password, confirmPassword);
+    if (pwError) {
+      setError(pwError);
       return;
     }
 

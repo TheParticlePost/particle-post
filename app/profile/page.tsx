@@ -22,14 +22,14 @@ export default async function ProfilePage() {
     .from("profiles")
     .select("id, email, full_name, avatar_url, role, created_at")
     .eq("id", user.id)
-    .single();
+    .maybeSingle();
 
   const profileData = profile ?? {
     id: user.id,
     email: user.email ?? "",
     full_name: user.user_metadata?.full_name ?? null,
     avatar_url: user.user_metadata?.avatar_url ?? null,
-    role: null,
+    role: "user",
     created_at: user.created_at,
   };
 

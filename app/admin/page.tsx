@@ -115,12 +115,16 @@ function buildCategoryBreakdown(
 }
 
 export default async function AdminDashboard() {
-  const [posts, topics, subscriberCount, subscribersByDay] = await Promise.all([
+  const results = await Promise.allSettled([
     getPostIndex(),
     getTopicsHistory(),
     getSubscriberCount(),
     getSubscribersByDay(),
   ]);
+  const posts = results[0].status === "fulfilled" ? results[0].value : [];
+  const topics = results[1].status === "fulfilled" ? results[1].value : [];
+  const subscriberCount = results[2].status === "fulfilled" ? results[2].value : 0;
+  const subscribersByDay = results[3].status === "fulfilled" ? results[3].value : [];
 
   const now = new Date();
   const currentMonth = now.getMonth();
