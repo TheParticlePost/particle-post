@@ -5,6 +5,7 @@
 
 ## Posts
 
+- [AI Risk Management Finance: Stop Nation-State Breaches](https://theparticlepost.com/posts/enterprise-cybersecurity-nation-state-defense-framework/): Nation-state actors dwelled 18 months inside US telecoms undetected. IBM data shows zero-trust cuts breach costs $1.76M. Here is your 5-step defense framework.
 - [Oracle](https://theparticlepost.com/posts/oracle-ai-agent-rebuild-cfo-erp-modernization/): Oracle
 - [The AI Fraud Arms Race: What the Research Shows About Detection ROI, and Where It Breaks](https://theparticlepost.com/posts/ai-fraud-detection-roi-arms-race/): AI fraud detection saves banks millions, but AI-enabled fraud surged 1,210% since 2023. Here
 - [AI Fraud Detection ROI: Why Banks Can](https://theparticlepost.com/posts/ai-fraud-detection-roi-40-billion/): Visa

@@ -1,21 +1,6 @@
 {
   "notes": [
     {
-      "text": "Complete the FAQ render in the article body: The third FAQ pair ('What is the FCA Mills Review and when will it affect fintech firms?') is truncated mid-answer in the published body. The frontmatter pair is fully written — ensure the formatter pulls all three pairs through to the rendered section. Two FAQs against a declared has_faq=true is a reader-facing gap and a missed featured-snippet opportunity.",
-      "slot": "morning",
-      "date": "2026-03-24T13:08:41.469773+00:00"
-    },
-    {
-      "text": "Internal link path format: Both internal links use full domain URLs (https://theparticlepost.com/...) rather than the relative slug paths specified in the SEO guidelines (e.g., /posts/fintech-ai-infrastructure-investment/). Relative paths are more resilient to domain changes and are the format the cross-link map specifies. Switch to relative markdown links for all future articles.",
-      "slot": "morning",
-      "date": "2026-03-24T13:08:41.469773+00:00"
-    },
-    {
-      "text": "Em dash discipline: The FINRA/NASCUS paragraph in 'What Research Actually Shows' uses two em dashes as stylistic connectors within the same paragraph. Editorial guidelines flag repeated em dash use as an AI-generation signal. Restructure one of those clauses — make it its own sentence or use a colon — so no paragraph contains more than one em dash. This is the only stylistic issue holding the article back from a clean score.",
-      "slot": "morning",
-      "date": "2026-03-24T16:45:37.705865+00:00"
-    },
-    {
       "text": "The final FAQ answer is truncated mid-sentence ('The programme runs'). This appears to be a copy/paste artifact from the draft pipeline. Before publication, complete the fourth FAQ answer so it closes fully — readers and search crawlers both see the FAQ, and an unfinished answer undermines credibility on a piece that is otherwise tight and well-sourced.",
       "slot": "morning",
       "date": "2026-03-24T16:45:37.705865+00:00"
@@ -149,6 +134,21 @@
       "text": "BOF FUNNEL COMPLIANCE — STRONG EXECUTION: This article correctly includes numbered implementation steps (7 steps), names four specific failure scenarios, and has a clearly labeled go/no-go decision checkpoint section with four explicit criteria. The two internal links pointing to deeper content are present. The FAQ section has five well-sourced Q+A pairs. This is a well-structured BOF piece — the em-dash issue is the only meaningful barrier to a clean submission.",
       "slot": "evening",
       "date": "2026-03-25T21:10:33.479585+00:00"
+    },
+    {
+      "text": "TOF word count discipline: This article runs approximately 1,050-1,100 words against a TOF ceiling of 1,000. Trim the 'Three Consistent Failure Modes' section and the 'Three Actions' section by combining related sentences. Target 900 words — enough for substance, with clear headroom below the limit. Word count violations are automatic -20 deductions regardless of content quality.",
+      "slot": "evening",
+      "date": "2026-03-26T13:45:45.518947+00:00"
+    },
+    {
+      "text": "TOF H1 must be a question: The formatter published 'AI Risk Management Finance: Stop Nation-State Breaches' as the title — a declarative statement. TOF funnel requires a question-format H1 ('Can Your Security Stack Stop Nation-State Breaches?' or 'Does Your Enterprise Firewall Survive a Nation-State Attack?'). The question-format title existed in your working draft but did not make it into the final formatter output. Confirm the formatter receives and preserves the correct H1 every run.",
+      "slot": "evening",
+      "date": "2026-03-26T13:45:45.518947+00:00"
+    },
+    {
+      "text": "FAQ section missing from published article: has_faq is set to true in the SEO/GSO package and the FAQ pairs are fully written in the frontmatter, but the '## Frequently Asked Questions' section with its Q+A pairs was not included in the formatter article body. This costs -5 points and, more importantly, loses the FAQPage schema markup and featured snippet eligibility that the schema_type: FAQPage declaration promises. Ensure the FAQ block is appended to the article body before the Sources section on every run where has_faq=true.",
+      "slot": "evening",
+      "date": "2026-03-26T13:45:45.518947+00:00"
     }
   ]
 }

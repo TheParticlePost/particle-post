@@ -5,6 +5,7 @@
 
 ## Posts
 
+- [AI Risk Management Finance: Stop Nation-State Breaches](https://theparticlepost.com/posts/enterprise-cybersecurity-nation-state-defense-framework/)
 - [Oracle](https://theparticlepost.com/posts/oracle-ai-agent-rebuild-cfo-erp-modernization/)
 - [The AI Fraud Arms Race: What the Research Shows About Detection ROI, and Where It Breaks](https://theparticlepost.com/posts/ai-fraud-detection-roi-arms-race/)
 - [AI Fraud Detection ROI: Why Banks Can](https://theparticlepost.com/posts/ai-fraud-detection-roi-40-billion/)

@@ -1,6 +1,12 @@
 {
   "posts": [
     {
+      "slug": "enterprise-cybersecurity-nation-state-defense-framework",
+      "title": "AI Risk Management Finance: Stop Nation-State Breaches",
+      "funnel_type": "TOF",
+      "date": "2026-03-26"
+    },
+    {
       "slug": "ai-fraud-detection-roi-40-billion",
       "title": "AI Fraud Detection ROI: Why Banks Can",
       "funnel_type": "MOF",
