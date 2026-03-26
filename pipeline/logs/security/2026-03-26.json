@@ -1,0 +1,99 @@
+{
+  "date": "2026-03-26",
+  "scan_duration_seconds": 22.1,
+  "summary": {
+    "critical": 0,
+    "high": 6,
+    "medium": 0,
+    "low": 1,
+    "auto_fixed": 0
+  },
+  "findings": [
+    {
+      "severity": "HIGH",
+      "category": "dependency",
+      "title": "langchain-core 0.3.83 has vulnerability CVE-2026-26013",
+      "detail": "## Server-Side Request Forgery (SSRF) in ChatOpenAI Image Token Counting  ### Summary The `ChatOpenAI.get_num_tokens_from_messages()` method fetches arbitrary `image_url` values without validation when computing token counts for vision-enabled models. This allows attackers to trigger Server-Side Req. Fix available: 1.2.11",
+      "file_path": "requirements.txt",
+      "line_number": 0,
+      "auto_fixable": false,
+      "fix_prompt": "Update langchain-core from 0.3.83 to 1.2.11 in requirements.txt to fix CVE-2026-26013. Then run: pip install -r requirements.txt && python -m pipeline.run --slot morning --dry-run",
+      "fixed": false
+    },
+    {
+      "severity": "HIGH",
+      "category": "dependency",
+      "title": "pygments 2.19.2 has vulnerability CVE-2026-4539",
+      "detail": "A security flaw has been discovered in pygments up to 2.19.2. The impacted element is the function AdlLexer of the file pygments/lexers/archetype.py. The manipulation results in inefficient regular expression complexity. The attack is only possible with local access. The exploit has been released to. Fix available: no fix available",
+      "file_path": "requirements.txt",
+      "line_number": 0,
+      "auto_fixable": false,
+      "fix_prompt": "Update pygments from 2.19.2 to no fix available in requirements.txt to fix CVE-2026-4539. Then run: pip install -r requirements.txt && python -m pipeline.run --slot morning --dry-run",
+      "fixed": false
+    },
+    {
+      "severity": "HIGH",
+      "category": "dependency",
+      "title": "diskcache 5.6.3 has vulnerability CVE-2025-69872",
+      "detail": "DiskCache (python-diskcache) through 5.6.3 uses Python pickle for serialization by default. An attacker with write access to the cache directory can achieve arbitrary code execution when a victim application reads from the cache.. Fix available: no fix available",
+      "file_path": "requirements.txt",
+      "line_number": 0,
+      "auto_fixable": false,
+      "fix_prompt": "Update diskcache from 5.6.3 to no fix available in requirements.txt to fix CVE-2025-69872. Then run: pip install -r requirements.txt && python -m pipeline.run --slot morning --dry-run",
+      "fixed": false
+    },
+    {
+      "severity": "LOW",
+      "category": "workflow",
+      "title": "Missing timeout-minutes in fix-articles.yml job 'fix'",
+      "detail": "Without a timeout, a hung workflow can consume Actions minutes indefinitely.",
+      "file_path": ".github/workflows/fix-articles.yml",
+      "line_number": 0,
+      "auto_fixable": false,
+      "fix_prompt": "In .github/workflows/fix-articles.yml, add 'timeout-minutes: 30' to job 'fix'.",
+      "fixed": false
+    },
+    {
+      "severity": "HIGH",
+      "category": "config",
+      "title": "'*.pem' not in .gitignore",
+      "detail": "SSL/TLS private keys could be accidentally committed.",
+      "file_path": ".gitignore",
+      "line_number": 0,
+      "auto_fixable": false,
+      "fix_prompt": "Add '*.pem' to .gitignore to prevent accidental commit of ssl/tls private keys.",
+      "fixed": false
+    },
+    {
+      "severity": "HIGH",
+      "category": "config",
+      "title": "'*.key' not in .gitignore",
+      "detail": "Private key files could be accidentally committed.",
+      "file_path": ".gitignore",
+      "line_number": 0,
+      "auto_fixable": false,
+      "fix_prompt": "Add '*.key' to .gitignore to prevent accidental commit of private key files.",
+      "fixed": false
+    },
+    {
+      "severity": "HIGH",
+      "category": "config",
+      "title": "'credentials.json' not in .gitignore",
+      "detail": "Google Cloud credentials could be accidentally committed.",
+      "file_path": ".gitignore",
+      "line_number": 0,
+      "auto_fixable": false,
+      "fix_prompt": "Add 'credentials.json' to .gitignore to prevent accidental commit of google cloud credentials.",
+      "fixed": false
+    }
+  ],
+  "scans_completed": [
+    "dependency",
+    "code",
+    "secret",
+    "workflow",
+    "config",
+    "content",
+    "key_rotation"
+  ]
+}
