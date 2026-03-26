@@ -50,7 +50,6 @@ class AnthropicSkillTool(BaseTool):
         body = {
             "model": self.model,
             "max_tokens": 16000,
-            "betas": BETAS,
             "container": {"skills": skills},
             "messages": [{"role": "user", "content": prompt}],
             "tools": [{"type": "code_execution_20250825", "name": "code_execution"}],
