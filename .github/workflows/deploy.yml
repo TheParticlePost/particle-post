@@ -1,17 +1,19 @@
-name: Deploy Hugo Site
+name: Deploy to Vercel
 
 on:
   push:
     branches: ["main"]
     paths:
-      - "blog/**"
-      - ".github/workflows/deploy.yml"
+      - "app/**"
+      - "components/**"
+      - "lib/**"
+      - "styles/**"
+      - "blog/content/**"
+      - "public/**"
+      - "next.config.ts"
+      - "tailwind.config.ts"
+      - "package.json"
   workflow_dispatch:
-
-permissions:
-  contents: write
-  pages: write
-  id-token: write
 
 jobs:
   deploy:
@@ -21,21 +23,20 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          submodules: recursive
 
-      - name: Set up Hugo
-        uses: peaceiris/actions-hugo@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          hugo-version: "latest"
-          extended: true
+          node-version: "20"
+          cache: "npm"
 
-      - name: Build Hugo site
-        run: hugo --source blog/ --destination ../public/ --minify
+      - name: Install dependencies
+        run: npm ci
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
-          cname: theparticlepost.com
+      - name: Install Vercel CLI
+        run: npm i -g vercel
+
+      - name: Deploy to Vercel
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: vercel --prod --yes --token "$VERCEL_TOKEN"

@@ -25,7 +25,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          submodules: recursive
           token: ${{ github.token }}
 
       - name: Set up Python
@@ -36,12 +35,6 @@ jobs:
 
       - name: Install Python dependencies
         run: pip install -r requirements.txt
-
-      - name: Set up Hugo
-        uses: peaceiris/actions-hugo@v3
-        with:
-          hugo-version: "latest"
-          extended: true
 
       - name: Run evening pipeline
         env:
@@ -59,10 +52,6 @@ jobs:
           fi
           python -m pipeline.run --slot evening $DRY_RUN_FLAG
 
-      - name: Build Hugo site
-        if: ${{ github.event.inputs.dry_run != 'true' }}
-        run: hugo --source blog/ --destination ../public/ --minify
-
       - name: Commit new post
         if: ${{ github.event.inputs.dry_run != 'true' }}
         run: |
@@ -77,10 +66,4 @@ jobs:
             sleep 10
           done
 
-      - name: Deploy to GitHub Pages
-        if: ${{ github.event.inputs.dry_run != 'true' }}
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ github.token }}
-          publish_dir: ./public
-          cname: theparticlepost.com
+      # Vercel auto-deploys on push to main — no explicit deploy step needed
