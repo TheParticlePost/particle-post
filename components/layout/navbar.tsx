@@ -104,18 +104,18 @@ export function Navbar() {
                 <UserMenu user={user} />
               </div>
             ) : (
-              <Button
-                variant="primary"
-                size="sm"
-                className="hidden sm:inline-flex"
-                onClick={() => {
-                  const el = document.getElementById("newsletter-cta");
-                  if (el) el.scrollIntoView({ behavior: "smooth" });
-                  else window.location.href = "/#newsletter-cta";
-                }}
-              >
-                Subscribe
-              </Button>
+              <div className="hidden sm:flex items-center gap-2">
+                <Link href="/login">
+                  <Button variant="ghost" size="sm">
+                    Log in
+                  </Button>
+                </Link>
+                <Link href="/signup">
+                  <Button variant="primary" size="sm">
+                    Sign up
+                  </Button>
+                </Link>
+              </div>
             )}
 
             {/* Mobile hamburger */}
