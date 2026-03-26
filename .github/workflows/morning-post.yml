@@ -51,15 +51,16 @@ jobs:
           UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
           INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
         run: |
-          DRY_RUN_FLAG=""
+          ARGS="--slot morning"
           if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
-            DRY_RUN_FLAG="--dry-run"
+            ARGS="$ARGS --dry-run"
           fi
-          TOPIC_FLAG=""
-          if [ -n "${{ github.event.inputs.topic }}" ]; then
-            TOPIC_FLAG="--topic \"${{ github.event.inputs.topic }}\""
+          TOPIC="${{ github.event.inputs.topic }}"
+          if [ -n "$TOPIC" ]; then
+            python -m pipeline.run $ARGS --topic "$TOPIC"
+          else
+            python -m pipeline.run $ARGS
           fi
-          python -m pipeline.run --slot morning $DRY_RUN_FLAG $TOPIC_FLAG
 
       - name: Commit new post
         if: ${{ github.event.inputs.dry_run != 'true' }}
