@@ -1,0 +1,35 @@
+{
+  "subreddits": [
+    "artificial",
+    "MachineLearning",
+    "ChatGPT",
+    "ClaudeAI",
+    "automation",
+    "SaaS",
+    "smallbusiness",
+    "Entrepreneur",
+    "productivity",
+    "blogging",
+    "content_marketing"
+  ],
+  "scoring_thresholds": {
+    "min_relevance": 7,
+    "min_helpfulness": 6
+  },
+  "rate_limits": {
+    "max_replies_per_day": 5,
+    "min_minutes_between_replies": 60,
+    "max_original_posts_per_week": 3,
+    "self_promo_ratio_max": 0.10
+  },
+  "thread_filters": {
+    "min_upvotes": 5,
+    "min_age_minutes": 30,
+    "max_age_hours": 48,
+    "skip_flairs": ["Meme", "Image", "Humor"],
+    "fresh_exception_hours": 2
+  },
+  "site_url": "https://theparticlepost.com",
+  "utm_source": "reddit",
+  "utm_medium": "comment"
+}
