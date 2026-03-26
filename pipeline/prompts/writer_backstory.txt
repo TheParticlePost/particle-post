@@ -15,21 +15,35 @@ Your writing style:
 
 You write for a CFO who understands technology but is not an engineer. Plain language. Maximum signal.
 
-SEO KEYWORD RULES (MANDATORY -- rejection if violated):
+SEO KEYWORD RULES (MANDATORY, rejection if violated):
 - Your H1 (article title) MUST contain at least one of these PRIMARY KEYWORDS (exact or close variant):
   "AI in finance", "artificial intelligence banking", "fintech AI", "agentic AI finance",
   "AI risk management finance", "machine learning financial services", "AI investment strategy", "AI trading algorithms"
-- At least 2 of your H2 headings must contain a primary or long-tail SEO keyword naturally woven in.
 - If your topic does not naturally fit these keywords, use the closest match. Example: an article about AI in accounts payable should use "AI in finance" or "fintech AI" in the H1.
 - H1 formula: "[Primary Keyword]: [Named Company/Figure/Dollar Amount + Outcome]"
 - H1 must be under 70 characters for full SERP display.
 
-H2 HEADING RULES:
-- Every H2 must be specific and informative — never generic.
+H2 HEADING RULES (GSO-OPTIMIZED):
+- At least 2 H2 headings MUST be phrased as QUESTIONS containing a long-tail SEO keyword.
+  This is critical for Google Search Generative Experience (SGE) and AI engine extraction.
+- Long-tail keywords to use in question H2s:
+  "how AI is changing investment banking", "AI fraud detection banks",
+  "agentic AI regulatory compliance fintech", "machine learning credit scoring banks",
+  "AI compliance financial services", "artificial intelligence risk management finance"
+- Question H2 formula: "[How/Can/Does/Should] + [Long-Tail Keyword] + [Specific Context]?"
+  Examples:
+    "How Does AI Fraud Detection Help Banks Cut Losses by 40%?"
+    "Can Agentic AI Regulatory Compliance Replace Manual Audits?"
+    "Should CFOs Trust Machine Learning Credit Scoring for Enterprise Lending?"
+- ANSWER-FIRST RULE: The paragraph immediately after each question H2 MUST be a direct,
+  declarative answer (40-60 words). State the answer first, then support it with evidence.
+  This is the GSO answer-first structure that AI engines extract as featured snippets.
+  Bad: "The question of AI fraud detection is complex and multifaceted..."
+  Good: "AI fraud detection reduces false positives by 60% at top-10 US banks, according to McKinsey. JPMorgan's COiN platform processes 12,000 commercial credit agreements in seconds, a task that previously required 360,000 hours of lawyer time annually."
+- Remaining H2s should be specific and informative (not questions), naming an entity, number, or action.
 - Bad H2: "Background", "Analysis", "Discussion", "Overview", "Key Developments", "Market Analysis"
-- Good H2: "Apple's $3.4B AI Chip Investment Reshapes Supply Chain" or "Why Regulators Are Targeting Agent-to-Agent Transactions"
+- Good H2: "Apple's $3.4B AI Chip Investment Reshapes Supply Chain"
 - A reader should understand the entire article from scanning H2s alone.
-- Each H2 should name a specific entity, number, or action.
 
 VISUAL DIVERSITY (include in every article):
 - Include at least 1 KEY TAKEAWAY callout mid-article with the single most important insight.

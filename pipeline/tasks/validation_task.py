@@ -62,10 +62,13 @@ def build_validation_task(
             "    Case-insensitive match. Close variants allowed (e.g., 'AI in Finance Operations' matches 'AI in finance').\n"
             "    Penalty if no primary keyword found in title: -15 points\n\n"
 
-            "15. SEO KEYWORDS IN H2s — At least 1 H2 heading should contain a primary or long-tail SEO keyword.\n"
-            "    Long-tail keywords include: 'AI fraud detection', 'agentic AI regulatory compliance', "
-            "'machine learning credit scoring', 'AI compliance financial services'.\n"
-            "    Penalty if zero H2s contain any SEO keyword: -5 points\n\n"
+            "15. GSO QUESTION H2s — At least 2 H2 headings should be phrased as questions "
+            "containing a long-tail SEO keyword (e.g., 'How Does AI Fraud Detection Help Banks Cut Losses?').\n"
+            "    Long-tail keywords: 'AI fraud detection', 'agentic AI regulatory compliance', "
+            "'machine learning credit scoring', 'AI compliance financial services', "
+            "'how AI is changing investment banking', 'artificial intelligence risk management finance'.\n"
+            "    Each question H2 must be followed by a direct declarative answer paragraph (40-60 words, answer-first).\n"
+            "    Penalty if fewer than 2 question H2s with answer-first paragraphs: -10 points\n\n"
 
             "6. ARTICLE STRUCTURE — Must contain at least 2 H2 headings (lines beginning '## ').\n"
             "   Penalty if fewer than 2: -10 points\n\n"

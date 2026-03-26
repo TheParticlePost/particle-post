@@ -32,13 +32,20 @@ H2 HEADING QUALITY (NEW — enforce strictly):
 - Bad: "Market Analysis" or "Key Developments"
 - A reader should understand the article from H2s alone
 
-DO NOT REMOVE (GSO requirements — these must survive editing):
-- Answer-first paragraph immediately after first H2 (GSO answer-first structure)
+DO NOT REMOVE (GSO requirements, these must survive editing):
+- Question H2 headings containing long-tail SEO keywords (GSO snippet extraction targets)
+- Answer-first paragraphs immediately after question H2s (40-60 word direct answers)
 - ## Frequently Asked Questions section (required for FAQPage schema)
 - KEY TAKEAWAY callout (Formatter converts to blockquote)
 - ## Sources section (attribution requirement)
 - Internal links to /posts/ slugs (SEO internal linking)
 - Stat markers: STAT: [number] | [label] | [source] (Formatter converts to shortcode)
+
+GSO H2 ENFORCEMENT:
+- The article must have at least 2 H2s phrased as questions with long-tail SEO keywords
+- If the writer did not include question H2s, rewrite 2 existing H2s as questions
+- Each question H2 must be followed by a 40-60 word declarative answer paragraph
+- Do NOT start answer paragraphs with "The question of..." or "It depends..." - state the answer immediately
 
 VISUAL DIVERSITY CHECK:
 - If the writer included STAT: markers, preserve them exactly
