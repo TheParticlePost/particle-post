@@ -30,10 +30,9 @@ export function Navbar() {
   useEffect(() => {
     if (!isSupabaseConfigured()) return;
     const supabase = createClient();
-    if (!supabase) return;
 
     async function getUser() {
-      const { data: { user: authUser } } = await supabase!.auth.getUser();
+      const { data: { user: authUser } } = await supabase.auth.getUser();
       if (!authUser) {
         setUser(null);
         return;
@@ -54,7 +53,7 @@ export function Navbar() {
 
     getUser();
 
-    const { data: { subscription } } = supabase!.auth.onAuthStateChange(() => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(() => {
       getUser();
     });
 
