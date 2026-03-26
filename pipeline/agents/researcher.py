@@ -4,7 +4,6 @@ from crewai import Agent, LLM
 from pipeline.tools.tavily_search import TavilySearchTool
 from pipeline.tools.google_trends import GoogleTrendsTool
 from pipeline.tools.newsapi_fetch import NewsApiFetchTool
-from pipeline.tools.anthropic_skill import make_skill_tool
 
 _BACKSTORY = (Path(__file__).parents[1] / "prompts" / "researcher_backstory.txt").read_text()
 _GSO_CONFIG = Path(__file__).parents[1] / "config" / "seo_gso_config.json"
@@ -50,21 +49,7 @@ def build_researcher() -> Agent:
             "from the last 24 hours, with context and source URLs for each."
         ),
         backstory=backstory,
-        tools=[
-            TavilySearchTool(),
-            GoogleTrendsTool(),
-            NewsApiFetchTool(),
-            make_skill_tool(
-                name="keyword_research",
-                description=(
-                    "Research keywords for a topic. Returns high-value keyword opportunities, "
-                    "search intent clusters, and content gap analysis. "
-                    "Input: a topic or niche description string."
-                ),
-                skill_ids=["skill_01AoLZLUBe2QaRMwPFXCyFdi"],
-                model="claude-haiku-4-5-20251001",
-            ),
-        ],
+        tools=[TavilySearchTool(), GoogleTrendsTool(), NewsApiFetchTool()],
         llm=LLM(model="anthropic/claude-haiku-4-5-20251001", max_tokens=8192),
         verbose=True,
         allow_delegation=False,

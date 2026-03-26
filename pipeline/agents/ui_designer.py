@@ -30,6 +30,7 @@ from pipeline.tools.visual_inspector import (
     LayoutCheckerTool,
 )
 from pipeline.tools.accessibility_checker import AccessibilityCheckerTool
+from pipeline.tools.anthropic_skill import make_skill_tool
 
 _CONFIG_DIR    = Path(__file__).resolve().parent.parent / "config"
 _PROMPTS_DIR   = Path(__file__).resolve().parent.parent / "prompts"
@@ -214,6 +215,15 @@ def build_ui_designer() -> Agent:
             CSSEditorTool(),
             TemplateReaderTool(),
             TemplateEditorTool(),
+            make_skill_tool(
+                name="frontend_design",
+                description=(
+                    "Generate production-grade HTML/CSS designs, landing page layouts, "
+                    "and styled components. Use sparingly — may take 1-2 minutes. "
+                    "Input: a description of what to design."
+                ),
+                skill_ids=["skill_01S1ashxYPfovWtYVUdS8iUZ"],
+            ),
         ],
         llm=LLM(model="anthropic/claude-sonnet-4-6", max_tokens=8192),
         verbose=True,
