@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { MobileNav } from "@/components/layout/mobile-nav";
 import { SearchTrigger } from "@/components/search/search-trigger";
 import { UserMenu } from "@/components/auth/user-menu";
-import { createClient } from "@/lib/supabase/client";
+import { createClient, isSupabaseConfigured } from "@/lib/supabase/client";
 import { cn } from "@/lib/utils";
 
 const NAV_LINKS = [
@@ -28,10 +28,12 @@ export function Navbar() {
   const [user, setUser] = useState<UserProfile | null>(null);
 
   useEffect(() => {
+    if (!isSupabaseConfigured()) return;
     const supabase = createClient();
+    if (!supabase) return;
 
     async function getUser() {
-      const { data: { user: authUser } } = await supabase.auth.getUser();
+      const { data: { user: authUser } } = await supabase!.auth.getUser();
       if (!authUser) {
         setUser(null);
         return;
@@ -52,7 +54,7 @@ export function Navbar() {
 
     getUser();
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(() => {
+    const { data: { subscription } } = supabase!.auth.onAuthStateChange(() => {
       getUser();
     });
 
