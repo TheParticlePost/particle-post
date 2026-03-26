@@ -1,14 +1,9 @@
 import os
 import json
-from pathlib import Path
 from urllib.request import urlopen, Request
 from urllib.parse import urlencode
 from urllib.error import URLError
 from crewai.tools import BaseTool
-
-
-# Directory for locally-saved Pixabay images (Pixabay /get/ URLs expire)
-_IMAGES_DIR = Path(__file__).resolve().parents[2] / "blog" / "public" / "images" / "posts"
 
 
 class PixabayImageTool(BaseTool):
@@ -16,8 +11,7 @@ class PixabayImageTool(BaseTool):
     description: str = (
         "Search for a royalty-free image on Pixabay (fallback when Pexels has no results). "
         "No API review required. Input should be a descriptive keyword string. "
-        "Returns image URL, alt text, and attribution. "
-        "Images are downloaded locally because Pixabay URLs expire."
+        "Returns a direct CDN image URL, alt text, and attribution."
     )
 
     def _run(self, query: str) -> str:
@@ -44,15 +38,12 @@ class PixabayImageTool(BaseTool):
             if not hits:
                 return json.dumps({"error": f"No Pixabay results for '{query}'"})
             photo = hits[0]
-            source_url = photo.get("largeImageURL", photo.get("webformatURL", ""))
 
-            # Download image locally since Pixabay /get/ URLs expire
-            local_path = self._download_image(source_url, photo.get("id", "unknown"))
-            if local_path:
-                image_url = f"/images/posts/{local_path.name}"
-            else:
-                # Fallback: use API URL directly (may expire)
-                image_url = source_url
+            # Use webformatURL — stable Pixabay CDN URL that does NOT expire.
+            # largeImageURL uses /get/ redirects that expire after a few hours.
+            image_url = photo.get("webformatURL", "")
+            if not image_url:
+                image_url = photo.get("largeImageURL", "")
 
             return json.dumps({
                 "image_url": image_url,
@@ -65,22 +56,3 @@ class PixabayImageTool(BaseTool):
             return json.dumps({"error": f"Pixabay fetch error: {str(e)}"})
         except (json.JSONDecodeError, KeyError) as e:
             return json.dumps({"error": f"Pixabay parse error: {str(e)}"})
-
-    def _download_image(self, url: str, image_id) -> Path | None:
-        """Download image to local public directory. Returns path or None on failure."""
-        if not url:
-            return None
-        try:
-            _IMAGES_DIR.mkdir(parents=True, exist_ok=True)
-            ext = ".jpg"
-            if ".png" in url.lower():
-                ext = ".png"
-            local_file = _IMAGES_DIR / f"pixabay-{image_id}{ext}"
-            if local_file.exists():
-                return local_file
-            req = Request(url, headers={"User-Agent": "ParticlePost/1.0"})
-            with urlopen(req, timeout=30) as resp:
-                local_file.write_bytes(resp.read())
-            return local_file
-        except Exception:
-            return None
