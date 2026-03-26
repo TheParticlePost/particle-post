@@ -23,6 +23,23 @@ def build_validation_task(
             "  • The SEO/GSO package JSON with primary_keyword, meta_description, has_faq (from SEO/GSO Specialist)\n"
             "  • The original topic selection JSON with funnel_type and source_urls (from Topic Selector)\n\n"
 
+            "╔══════════════════════════════════════════════════════════════╗\n"
+            "║  CRITICAL: WHICH CONTENT TO EVALUATE                       ║\n"
+            "║                                                            ║\n"
+            "║  Evaluate ONLY the Formatter's output (the complete .md    ║\n"
+            "║  file with YAML frontmatter). The SEO/GSO Specialist's    ║\n"
+            "║  context may contain a '[RESTRUCTURED ARTICLE]' section   ║\n"
+            "║  or alternative article versions — these are WORKING      ║\n"
+            "║  DRAFTS from an earlier pipeline stage, NOT part of the   ║\n"
+            "║  final article. IGNORE any article-like content from the  ║\n"
+            "║  SEO/GSO task. Only use the SEO/GSO task for its JSON     ║\n"
+            "║  data (primary_keyword, meta_description, has_faq).       ║\n"
+            "║                                                            ║\n"
+            "║  The Formatter's output is the ONLY article. If you see   ║\n"
+            "║  one YAML frontmatter block (---) and one H1 (# Title)   ║\n"
+            "║  in the Formatter's output, the article is NOT duplicated.║\n"
+            "╚══════════════════════════════════════════════════════════════╝\n\n"
+
             "═══ PART 1: EVALUATION ═══\n\n"
 
             "Apply the following checklist. Start at 100 and deduct points for each failure.\n\n"
