@@ -1,0 +1,166 @@
+import { redirect } from "next/navigation";
+import { createClient } from "@/lib/supabase/server";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
+
+export const metadata = {
+  title: "Admin Dashboard",
+  robots: { index: false, follow: false },
+};
+
+const NAV_ITEMS = [
+  {
+    label: "Overview",
+    href: "/admin",
+    icon: (
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="3" y="3" width="7" height="7" />
+        <rect x="14" y="3" width="7" height="7" />
+        <rect x="3" y="14" width="7" height="7" />
+        <rect x="14" y="14" width="7" height="7" />
+      </svg>
+    ),
+  },
+  {
+    label: "Posts",
+    href: "/admin/posts",
+    icon: (
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 20h9" />
+        <path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z" />
+      </svg>
+    ),
+  },
+  {
+    label: "Subscribers",
+    href: "/admin/subscribers",
+    icon: (
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2" />
+        <circle cx="9" cy="7" r="4" />
+        <path d="M23 21v-2a4 4 0 00-3-3.87" />
+        <path d="M16 3.13a4 4 0 010 7.75" />
+      </svg>
+    ),
+  },
+];
+
+export default async function AdminLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  // Defense-in-depth: verify admin role server-side
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) {
+    redirect("/");
+  }
+
+  // Check admin role from user metadata
+  const isAdmin =
+    user.app_metadata?.role === "admin" ||
+    user.user_metadata?.role === "admin" ||
+    user.email === process.env.ADMIN_EMAIL;
+
+  if (!isAdmin) {
+    redirect("/");
+  }
+
+  return (
+    <div className="min-h-screen flex flex-col lg:flex-row bg-bg-primary">
+      {/* Mobile top nav */}
+      <nav
+        className={cn(
+          "lg:hidden flex items-center gap-1 px-4 py-3 overflow-x-auto scrollbar-hide",
+          "border-b border-[var(--border)]",
+          "bg-[var(--bg-secondary)]"
+        )}
+      >
+        <span className="font-display text-body-md text-accent mr-3 shrink-0">
+          Admin
+        </span>
+        {NAV_ITEMS.map((item) => (
+          <Link
+            key={item.href}
+            href={item.href}
+            className={cn(
+              "flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-body-sm font-medium whitespace-nowrap",
+              "text-foreground-secondary hover:text-foreground hover:bg-[var(--bg-tertiary)]",
+              "transition-colors duration-200"
+            )}
+          >
+            {item.icon}
+            {item.label}
+          </Link>
+        ))}
+      </nav>
+
+      {/* Desktop sidebar */}
+      <aside
+        className={cn(
+          "hidden lg:flex lg:flex-col lg:w-60 lg:shrink-0",
+          "border-r border-[var(--border)]",
+          "bg-[var(--bg-secondary)]"
+        )}
+      >
+        {/* Sidebar header */}
+        <div className="px-5 py-6 border-b border-[var(--border)]">
+          <Link href="/admin" className="flex items-center gap-2">
+            <div className="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center">
+              <div className="w-3 h-3 rounded-full bg-accent" />
+            </div>
+            <div>
+              <p className="font-display text-body-md text-foreground leading-none">
+                Particle Post
+              </p>
+              <p className="text-body-xs text-foreground-muted mt-0.5">
+                Admin Dashboard
+              </p>
+            </div>
+          </Link>
+        </div>
+
+        {/* Nav links */}
+        <nav className="flex-1 px-3 py-4 space-y-1">
+          {NAV_ITEMS.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={cn(
+                "flex items-center gap-3 px-3 py-2.5 rounded-lg text-body-sm font-medium",
+                "text-foreground-secondary hover:text-foreground hover:bg-[var(--bg-tertiary)]",
+                "transition-colors duration-200"
+              )}
+            >
+              {item.icon}
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+
+        {/* Sidebar footer */}
+        <div className="px-5 py-4 border-t border-[var(--border)]">
+          <div className="flex items-center gap-2">
+            <div className="w-7 h-7 rounded-full bg-accent/20 flex items-center justify-center text-body-xs text-accent font-medium">
+              {user.email?.charAt(0).toUpperCase()}
+            </div>
+            <span className="text-body-xs text-foreground-muted truncate">
+              {user.email}
+            </span>
+          </div>
+        </div>
+      </aside>
+
+      {/* Main content */}
+      <main className="flex-1 min-w-0">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-8">
+          {children}
+        </div>
+      </main>
+    </div>
+  );
+}

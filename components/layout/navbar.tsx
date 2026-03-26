@@ -1,11 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { Button } from "@/components/ui/button";
 import { MobileNav } from "@/components/layout/mobile-nav";
 import { SearchTrigger } from "@/components/search/search-trigger";
+import { UserMenu } from "@/components/auth/user-menu";
+import { createClient } from "@/lib/supabase/client";
 import { cn } from "@/lib/utils";
 
 const NAV_LINKS = [
@@ -14,8 +16,48 @@ const NAV_LINKS = [
   { href: "/about/", label: "About" },
 ];
 
+interface UserProfile {
+  email: string;
+  full_name: string | null;
+  avatar_url: string | null;
+  role: string;
+}
+
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [user, setUser] = useState<UserProfile | null>(null);
+
+  useEffect(() => {
+    const supabase = createClient();
+
+    async function getUser() {
+      const { data: { user: authUser } } = await supabase.auth.getUser();
+      if (!authUser) {
+        setUser(null);
+        return;
+      }
+      const { data: profile } = await supabase
+        .from("profiles")
+        .select("email, full_name, avatar_url, role")
+        .eq("id", authUser.id)
+        .single();
+
+      setUser(profile || {
+        email: authUser.email || "",
+        full_name: authUser.user_metadata?.full_name || null,
+        avatar_url: authUser.user_metadata?.avatar_url || null,
+        role: "user",
+      });
+    }
+
+    getUser();
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(() => {
+      getUser();
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
 
   return (
     <>
@@ -56,18 +98,24 @@ export function Navbar() {
 
             <ThemeToggle />
 
-            <Button
-              variant="primary"
-              size="sm"
-              className="hidden sm:inline-flex"
-              onClick={() => {
-                const el = document.getElementById("newsletter-cta");
-                if (el) el.scrollIntoView({ behavior: "smooth" });
-                else window.location.href = "/#newsletter-cta";
-              }}
-            >
-              Subscribe
-            </Button>
+            {user ? (
+              <div className="hidden sm:block">
+                <UserMenu user={user} />
+              </div>
+            ) : (
+              <Button
+                variant="primary"
+                size="sm"
+                className="hidden sm:inline-flex"
+                onClick={() => {
+                  const el = document.getElementById("newsletter-cta");
+                  if (el) el.scrollIntoView({ behavior: "smooth" });
+                  else window.location.href = "/#newsletter-cta";
+                }}
+              >
+                Subscribe
+              </Button>
+            )}
 
             {/* Mobile hamburger */}
             <button
