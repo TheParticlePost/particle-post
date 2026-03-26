@@ -29,7 +29,18 @@ function autoLinkUrls(content: string): string {
   });
 }
 
-export function convertHugoShortcodes(content: string): string {
+/**
+ * Strip the ## Frequently Asked Questions section from markdown body
+ * when faq_pairs exist in frontmatter (to avoid duplicate rendering).
+ */
+function stripFaqSection(content: string): string {
+  return content.replace(/## Frequently Asked Questions[\s\S]*?(?=\n## (?!#)|$)/, '');
+}
+
+export function convertHugoShortcodes(content: string, hasFaqPairs = false): string {
+  if (hasFaqPairs) {
+    content = stripFaqSection(content);
+  }
   let processed = content.replace(SHORTCODE_RE, (_match, name: string, params: string) => {
     const componentName = kebabToPascal(name);
     // params already contains key="value" pairs which are valid JSX

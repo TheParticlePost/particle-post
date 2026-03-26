@@ -105,7 +105,7 @@ export default async function PostPage({ params }: PageProps) {
         <div className="max-w-3xl mx-auto flex-1 min-w-0">
           <div className="prose">
             <MDXRemote
-              source={convertHugoShortcodes(post.content)}
+              source={convertHugoShortcodes(post.content, !!(post.faq_pairs && post.faq_pairs.length > 0))}
               components={mdxComponents}
             />
           </div>
