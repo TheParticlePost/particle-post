@@ -1,21 +1,6 @@
 {
   "notes": [
     {
-      "text": "THE SOURCING AND SUBSTANCE ARE GENUINELY STRONG — PROTECT THAT CREDIBILITY WITH TIGHTER ATTRIBUTION ON THE JPMORGAN FIGURE: Your Visa and Mastercard citations are well-verified and the methodological critique (no control groups, self-reported data, period selection flattering results) is exactly the kind of analysis Particle Post readers need. However, the JPMorgan $1.5 billion figure is sourced via Modernize.io citing a LinkedIn post — not a primary source. For a claim of this magnitude, trace it to JPMorgan's own earnings call transcript, annual report, or an investor relations disclosure. A Bloomberg or Reuters report citing JPMorgan directly would also meet the standard. Modernize.io via LinkedIn does not.",
-      "slot": "morning",
-      "date": "2026-03-25T03:06:07.605794+00:00"
-    },
-    {
-      "text": "BOF Go/No-Go section is missing — this is a mandatory BOF structural element and your title explicitly promises it. Add a clearly labeled '## Go/No-Go Checkpoint' section with explicit binary pass/fail criteria (e.g., 'If labeled transaction data spans fewer than 18 months → NO-GO. If compliance team has not signed off on explainability layer → NO-GO'). Readers at the bottom of the funnel need this decision scaffold — it's what separates a BOF guide from a MOF explainer.",
-      "slot": "evening",
-      "date": "2026-03-25T03:30:07.515899+00:00"
-    },
-    {
-      "text": "The H1 must contain a primary SEO keyword per guidelines. Your current H1 ('How to Deploy AI Fraud Detection Without Derailing Customer Experience or Failing a Regulatory Audit') contains none of the 8 target keywords. Rewrite to match the H1 formula: try 'AI in Finance: How to Deploy Fraud Detection Without Failing a Regulatory Audit 2026' or 'Machine Learning Financial Services: AI Fraud Detection Deployment Playbook 2026' — keep it under 70 characters for full SERP display.",
-      "slot": "evening",
-      "date": "2026-03-25T03:30:07.515899+00:00"
-    },
-    {
       "text": "Verify the 90% AI adoption figure before next run — Feedzai's confirmed public statistics from the same survey are 87% citing data challenges and 64% rolling out AI in the past two years. The 90% figure does not appear in confirmed search results and should either be sourced to a specific page in the Feedzai report or replaced with one of the verified figures. A single unverifiable statistic in a well-sourced article is the kind of detail that erodes reader trust with your CFO/CTO audience.",
       "slot": "evening",
       "date": "2026-03-25T03:30:07.515899+00:00"
@@ -149,6 +134,21 @@
       "text": "Add a second genuine question H2 to hit the GSO requirement: Only one H2 is phrased as a question ('Does AI Risk Management in Finance Require a Standalone C-Suite Role?'). The guidelines require at least two question H2s each followed by a 40-60 word answer-first paragraph. Consider converting 'How AI Is Changing Investment Banking Organizational Structures at Scale' into a proper question format, e.g., 'How Is AI Changing Investment Banking Organizational Structures in 2026?' — and ensure the immediately following paragraph opens with a direct declarative answer, not context-setting.",
       "slot": "morning",
       "date": "2026-03-26T15:10:47.306971+00:00"
+    },
+    {
+      "text": "TOF lede must open with a concrete fact, not a generalization. The current opener ('Most finance executives assume...') is a setup paragraph, not a lede. Restructure the first two sentences to lead with the most striking data point: 'According to Gartner, 60% of AI deployment failures stem from insufficient pre-production validation — a gap that costs finance teams weeks of remediation and exposes them to regulatory risk.' Put the number first, then build the argument.",
+      "slot": "evening",
+      "date": "2026-03-26T21:16:45.244474+00:00"
+    },
+    {
+      "text": "TOF funnel compliance requires a question-format H1 and a clearly labeled 'Clear Verdict' section. The current H1 is declarative and the verdict section is labeled 'Verdict: Validate First, Deploy Second.' Rename it '## Clear Verdict' to satisfy the funnel structure check, and consider whether the H1 can be reframed as a question (e.g., 'AI Risk Management Finance: Is Your Model Ready for Live Deployment?') without sacrificing the SEO keyword.",
+      "slot": "evening",
+      "date": "2026-03-26T21:16:45.244474+00:00"
+    },
+    {
+      "text": "The MIT Sloan Management Review source ('An AI Reckoning for HR') is an HR-focused article being used to support a finance compliance claim. This is a sourcing mismatch that a skeptical reader or editor will flag. Either find a directly relevant MIT Sloan or equivalent source on AI validation in financial services, or remove the specific attribution and reframe the sentence as industry-observed pattern rather than citing research that does not directly apply.",
+      "slot": "evening",
+      "date": "2026-03-26T21:16:45.244474+00:00"
     }
   ]
 }
