@@ -56,7 +56,16 @@ export function Navbar() {
 
             <ThemeToggle />
 
-            <Button variant="primary" size="sm" className="hidden sm:inline-flex">
+            <Button
+              variant="primary"
+              size="sm"
+              className="hidden sm:inline-flex"
+              onClick={() => {
+                const el = document.getElementById("newsletter-cta");
+                if (el) el.scrollIntoView({ behavior: "smooth" });
+                else window.location.href = "/#newsletter-cta";
+              }}
+            >
               Subscribe
             </Button>
 

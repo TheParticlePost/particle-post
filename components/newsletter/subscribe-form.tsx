@@ -64,7 +64,7 @@ export function SubscribeForm({ compact = false, className }: SubscribeFormProps
     <form
       onSubmit={handleSubmit}
       className={cn(
-        "flex gap-2",
+        "relative flex gap-2",
         compact ? "flex-row" : "flex-col sm:flex-row",
         className
       )}
@@ -74,6 +74,7 @@ export function SubscribeForm({ compact = false, className }: SubscribeFormProps
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         placeholder="Enter your email"
+        aria-label="Email address"
         required
         className={cn(
           "flex-1 px-4 py-2.5 rounded-lg bg-bg-tertiary/50 border border-[var(--border)]",

@@ -37,7 +37,7 @@ export function Footer() {
             <h4 className="text-body-xs font-semibold uppercase tracking-widest text-foreground-muted mb-4">
               Navigate
             </h4>
-            <nav className="flex flex-col gap-2">
+            <nav aria-label="Site navigation" className="flex flex-col gap-2">
               {NAV_LINKS.map((link) => (
                 <Link
                   key={link.href}
@@ -55,7 +55,7 @@ export function Footer() {
             <h4 className="text-body-xs font-semibold uppercase tracking-widest text-foreground-muted mb-4">
               Legal
             </h4>
-            <nav className="flex flex-col gap-2">
+            <nav aria-label="Legal" className="flex flex-col gap-2">
               {LEGAL_LINKS.map((link) => (
                 <Link
                   key={link.href}

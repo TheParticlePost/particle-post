@@ -2,7 +2,7 @@ import { SubscribeForm } from "@/components/newsletter/subscribe-form";
 
 export function NewsletterCta() {
   return (
-    <section className="relative overflow-hidden rounded-2xl border border-[var(--border)] p-8 sm:p-12 my-16">
+    <section id="newsletter-cta" className="relative overflow-hidden rounded-2xl border border-[var(--border)] p-8 sm:p-12 my-16">
       {/* Background mesh */}
       <div className="absolute inset-0 mesh-gradient opacity-50" />
 

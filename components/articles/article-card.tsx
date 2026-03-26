@@ -69,7 +69,7 @@ export function ArticleCard({
         <h3
           className={cn(
             "font-display leading-snug group-hover:text-accent transition-colors duration-200",
-            featured ? "text-display-sm" : "text-display-sm text-[1.25rem]"
+            featured ? "text-display-sm" : "text-[1.25rem]"
           )}
         >
           <span className="line-clamp-2">{title}</span>

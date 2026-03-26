@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, useCallback } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Fuse from "fuse.js";
 import { cn, formatDateShort } from "@/lib/utils";
@@ -18,6 +19,7 @@ export function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
   const fuseRef = useRef<Fuse<SearchIndexItem> | null>(null);
+  const router = useRouter();
 
   // Load search index
   useEffect(() => {
@@ -84,7 +86,7 @@ export function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
         setActiveIndex((i) => Math.max(i - 1, 0));
       }
       if (e.key === "Enter" && results[activeIndex]) {
-        window.location.href = `/posts/${results[activeIndex].slug}/`;
+        router.push(`/posts/${results[activeIndex].slug}/`);
         onClose();
       }
     };
@@ -100,10 +102,18 @@ export function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
       <div
         className="absolute inset-0 bg-bg-primary/80 backdrop-blur-sm"
         onClick={onClose}
+        role="button"
+        aria-label="Close search"
+        tabIndex={-1}
       />
 
       {/* Modal */}
-      <div className="relative w-full max-w-xl mx-4 glass-card shadow-card-hover animate-fade-in">
+      <div
+        className="relative w-full max-w-xl mx-4 glass-card shadow-card-hover animate-fade-in"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Search articles"
+      >
         {/* Search input */}
         <div className="flex items-center gap-3 px-5 py-4 border-b border-[var(--border)]">
           <svg className="w-5 h-5 text-foreground-muted shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -116,6 +126,9 @@ export function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
             value={query}
             onChange={(e) => search(e.target.value)}
             placeholder="Search articles..."
+            aria-label="Search articles"
+            aria-autocomplete="list"
+            aria-controls="search-results"
             className="flex-1 bg-transparent text-body-md text-foreground placeholder:text-foreground-muted outline-none"
           />
           <kbd className="hidden sm:inline-flex px-2 py-0.5 text-body-xs text-foreground-muted border border-[var(--border)] rounded">
@@ -125,9 +138,9 @@ export function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
 
         {/* Results */}
         {results.length > 0 && (
-          <ul className="max-h-80 overflow-y-auto py-2">
+          <ul id="search-results" role="listbox" className="max-h-80 overflow-y-auto py-2">
             {results.map((item, i) => (
-              <li key={item.slug}>
+              <li key={item.slug} role="option" aria-selected={i === activeIndex}>
                 <Link
                   href={`/posts/${item.slug}/`}
                   onClick={onClose}
