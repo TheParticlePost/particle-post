@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -21,6 +22,7 @@ export function SignupForm() {
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -86,11 +88,24 @@ export function SignupForm() {
             Click the link to activate your account.
           </p>
         </div>
-        <Link href="/login" className="w-full">
-          <Button variant="secondary" size="md" className="w-full">
+        <div className="w-full flex flex-col gap-2">
+          <Button
+            variant="primary"
+            size="md"
+            className="w-full"
+            onClick={() => router.push("/")}
+          >
+            Go to Homepage
+          </Button>
+          <Button
+            variant="secondary"
+            size="md"
+            className="w-full"
+            onClick={() => router.push("/login")}
+          >
             Back to Log In
           </Button>
-        </Link>
+        </div>
       </div>
     );
   }
