@@ -58,6 +58,14 @@
       "medium": 0,
       "low": 1,
       "auto_fixed": 0
+    },
+    {
+      "date": "2026-03-26",
+      "critical": 0,
+      "high": 6,
+      "medium": 0,
+      "low": 1,
+      "auto_fixed": 0
     }
   ]
 }
