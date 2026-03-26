@@ -25,13 +25,14 @@ def build_validation_task(
 
             "═══ PART 1: EVALUATION ═══\n\n"
 
-            "Apply the following 10-point checklist. Start at 100 and deduct points for each failure.\n\n"
+            "Apply the following checklist. Start at 100 and deduct points for each failure.\n\n"
 
             "1. WORD COUNT — Count words in the article body only (exclude YAML frontmatter). "
             "Check the funnel_type from the selection JSON:\n"
-            "   TOF: minimum 600 words | MOF: minimum 1800 words | BOF: minimum 1200 words\n"
-            "   Also flag if TOF exceeds 1000 words (too long for awareness stage).\n"
-            "   Penalty if below minimum: −20 points\n\n"
+            "   TOF: minimum 600, maximum 1000 words | MOF: minimum 1800, maximum 3000 words | BOF: minimum 1200, maximum 2000 words\n"
+            "   Penalty if below minimum OR above maximum: -20 points\n"
+            "   ALSO CHECK: The formatter must output exactly ONE version of the article. "
+            "If you see duplicate content (two versions stacked), that is an automatic -20.\n\n"
 
             "2. FRONTMATTER COMPLETENESS — All of the following must be present and non-empty: "
             "title, date, slug, description, categories, cover.image\n"
@@ -54,8 +55,20 @@ def build_validation_task(
             "    Replacements: use commas, colons, semicolons, periods, or parentheses instead.\n"
             "    Penalty: −15 points per em-dash found, maximum −30 points\n\n"
 
+            "14. SEO KEYWORD IN H1 — The YAML title (H1) MUST contain at least one of these primary keywords "
+            "(exact phrase or close variant): 'AI in finance', 'artificial intelligence banking', 'fintech AI', "
+            "'agentic AI finance', 'AI risk management finance', 'machine learning financial services', "
+            "'AI investment strategy', 'AI trading algorithms'.\n"
+            "    Case-insensitive match. Close variants allowed (e.g., 'AI in Finance Operations' matches 'AI in finance').\n"
+            "    Penalty if no primary keyword found in title: -15 points\n\n"
+
+            "15. SEO KEYWORDS IN H2s — At least 1 H2 heading should contain a primary or long-tail SEO keyword.\n"
+            "    Long-tail keywords include: 'AI fraud detection', 'agentic AI regulatory compliance', "
+            "'machine learning credit scoring', 'AI compliance financial services'.\n"
+            "    Penalty if zero H2s contain any SEO keyword: -5 points\n\n"
+
             "6. ARTICLE STRUCTURE — Must contain at least 2 H2 headings (lines beginning '## ').\n"
-            "   Penalty if fewer than 2: −10 points\n\n"
+            "   Penalty if fewer than 2: -10 points\n\n"
 
             "7. LEDE QUALITY — First 1-2 sentences must name a specific company, person, "
             "dollar amount, or date. Vague openers are unacceptable.\n"

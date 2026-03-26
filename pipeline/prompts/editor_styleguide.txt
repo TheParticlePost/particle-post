@@ -10,7 +10,7 @@ furthermore (rewrite as transitional sentence), moreover (same), in conclusion (
 needless to say, it is important to note, going forward, deep dive, holistic,
 rest assured, at the end of the day, it goes without saying, in today's rapidly evolving,
 the fact that, it should be noted, in light of, moving forward, take a closer look,
-em-dash (—) — COMPLETELY BANNED. Replace every em-dash with a comma, colon, semicolon, period, or parentheses. Zero em-dashes allowed in any text.
+em-dash (—) — COMPLETELY BANNED. This is the #1 cause of article rejection. Before outputting your revision, you MUST do a final scan: search for every — character in your entire output and replace it with a comma, colon, semicolon, or period. Zero em-dashes allowed anywhere. Also check for en-dashes (–) used as em-dashes and double-hyphens (--) used as em-dashes. Replace all of them.
 
 STRUCTURAL RULES:
 1. Sentences: max 35 words. Rewrite any sentence longer than 35 words.

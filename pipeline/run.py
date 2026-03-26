@@ -40,7 +40,7 @@ GSO_CONFIG_FILE  = _REPO_ROOT / "pipeline" / "config" / "seo_gso_config.json"
 LLMS_TXT_FILE    = _REPO_ROOT / "blog" / "static" / "llms.txt"
 LLMS_FULL_FILE   = _REPO_ROOT / "blog" / "static" / "llms-full.txt"
 
-MAX_ATTEMPTS = 2
+MAX_ATTEMPTS = 3
 
 
 # ──────────────────────────────────────────────────────────────────────────────
@@ -84,6 +84,59 @@ def _strip_code_fences(text: str) -> str:
         text = re.sub(r"^```[^\n]*\n?", "", text)
         text = re.sub(r"\n?```$", "", text.strip())
     return text.strip()
+
+
+# ──────────────────────────────────────────────────────────────────────────────
+# Post-processing: mechanical sanitization (runs BEFORE Production Director)
+# ──────────────────────────────────────────────────────────────────────────────
+
+def _sanitize_article(content: str) -> str:
+    """
+    Programmatic post-processing of the formatter's output.
+    Fixes issues that LLM agents consistently fail to self-correct:
+      1. Em-dash removal (replace with comma or period)
+      2. En-dash cleanup
+      3. Double-hyphen cleanup
+    This runs AFTER the formatter but BEFORE the Production Director scores.
+    """
+    if not content:
+        return content
+
+    original = content
+    fixes_applied = []
+
+    # 1. Replace em-dashes (U+2014) with context-aware punctuation
+    #    Pattern: " -- " or " --- " surrounded by words -> ", " or ". "
+    em_dash_count = content.count("\u2014")
+    if em_dash_count > 0:
+        # Replace " --- " or " -- " (spaced em-dash used as parenthetical) with comma
+        content = re.sub(r'\s*\u2014\s*', ', ', content)
+        # Clean up double commas or comma-period combos
+        content = re.sub(r',\s*,', ',', content)
+        content = re.sub(r',\s*\.', '.', content)
+        # Clean up comma at start of line (from em-dash after newline)
+        content = re.sub(r'\n,\s*', '\n', content)
+        fixes_applied.append(f"Replaced {em_dash_count} em-dash(es)")
+
+    # 2. Replace en-dashes (U+2013) used as em-dashes (not in number ranges)
+    #    Keep en-dashes in ranges like "2020-2026" or "$1M-$5M"
+    en_dash_count = len(re.findall(r'(?<!\d)\u2013(?!\d)', content))
+    if en_dash_count > 0:
+        content = re.sub(r'(?<!\d)\u2013(?!\d)', ',', content)
+        fixes_applied.append(f"Replaced {en_dash_count} en-dash(es)")
+
+    # 3. Replace double-hyphens used as em-dashes
+    double_hyphen_count = len(re.findall(r'(?<!\-)\-\-(?!\-)', content))
+    if double_hyphen_count > 0:
+        content = re.sub(r'\s*(?<!\-)--(?!\-)\s*', ', ', content)
+        fixes_applied.append(f"Replaced {double_hyphen_count} double-hyphen(s)")
+
+    if fixes_applied:
+        print(f"\n  [SANITIZER] {'; '.join(fixes_applied)}")
+    else:
+        print(f"\n  [SANITIZER] Article clean, no fixes needed.")
+
+    return content
 
 
 # ──────────────────────────────────────────────────────────────────────────────
@@ -516,7 +569,7 @@ def main() -> None:
             formatter_raw = result.tasks_output[-2].raw or ""
         else:
             formatter_raw = ""
-        formatter_content = _strip_code_fences(formatter_raw)
+        formatter_content = _sanitize_article(_strip_code_fences(formatter_raw))
 
         # Production Director verdict = last task (index -1)
         director_raw = result.tasks_output[-1].raw if result.tasks_output else ""
