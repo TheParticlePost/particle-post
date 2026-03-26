@@ -1,5 +1,5 @@
 name            = "particle-post-dispatcher"
-main            = "worker.js"
+main            = "scheduler.js"
 compatibility_date = "2024-01-01"
 
 # account_id is set via CLOUDFLARE_ACCOUNT_ID env var at deploy time
@@ -9,17 +9,7 @@ compatibility_date = "2024-01-01"
 enabled = true
 
 # Cron triggers — Cloudflare invokes the scheduled() handler at these times (UTC)
+# Single hourly cron — worker checks UTC hour + day to dispatch the right workflow
+# Free plan limit is 5 cron triggers; this uses only 1
 [triggers]
-crons = [
-  "0 13 * * *",   # morning-post.yml      (9 AM ET)
-  "0 15 * * *",   # ui-proactive.yml      (11 AM ET — UI audit #1)
-  "0 17 * * *",   # marketing-director.yml (noon ET)
-  "0 18 * * *",   # ui-designer.yml       (1 PM ET — directive mode)
-  "0 19 * * *",   # ui-proactive.yml      (3 PM ET — UI audit #2)
-  "0 21 * * *",   # evening-post.yml      (5 PM ET)
-  "0 23 * * *",   # ui-proactive.yml      (7 PM ET — UI audit #3)
-  "0 0 * * 6",    # weekly-report.yml     (Fri 8 PM ET)
-  "0 14 * * 1",   # content-audit.yml     (Mon 10 AM ET)
-  "0 5 * * *",    # security-audit.yml   (Midnight ET — daily scan)
-  "0 2 * * 6",    # security-report.yml  (Fri 9 PM ET — weekly report)
-]
+crons = ["0 * * * *"]
