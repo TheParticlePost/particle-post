@@ -2,7 +2,7 @@
   "last_updated": "2026-03-26",
   "schema_coverage": {
     "Article": 0,
-    "FAQPage": 4,
+    "FAQPage": 5,
     "HowTo": 0,
     "NewsArticle": 0
   },
@@ -58,6 +58,14 @@
       "date": "2026-03-26",
       "slug": "enterprise-cybersecurity-nation-state-defense-framework",
       "primary_keyword": "enterprise cybersecurity framework",
+      "schema_type": "FAQPage",
+      "has_faq": true,
+      "search_intent": "informational"
+    },
+    {
+      "date": "2026-03-26",
+      "slug": "chief-ai-officer-banking-governance",
+      "primary_keyword": "Chief AI Officer banking",
       "schema_type": "FAQPage",
       "has_faq": true,
       "search_intent": "informational"
