@@ -40,7 +40,12 @@ function parsePost(filename: string): Post | null {
     readingTime: calculateReadingTime(content),
     coverImage: parseCoverImage(data),
     draft: false,
-    faq_pairs: data.faq_pairs || undefined,
+    faq_pairs: Array.isArray(data.faq_pairs)
+      ? data.faq_pairs.map((f: Record<string, string>) => ({
+          question: f.q || f.question || "",
+          answer: f.a || f.answer || "",
+        }))
+      : undefined,
     schema_type: data.schema_type || "Article",
     keywords: Array.isArray(data.keywords) ? data.keywords : [],
     author: data.author || "Particle Post",
