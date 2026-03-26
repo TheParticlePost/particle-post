@@ -19,12 +19,12 @@ tags:
 categories:
   - "AI Risk Management"
 cover:
-  image: "/images/posts/pixabay-767776.jpg"
+  image: "https://images.pexels.com/photos/7567443/pexels-photo-7567443.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200"
   alt: "Financial data analysis with AI dashboard visualization"
   caption: ""
-image_credit_name: "Lalmch"
-image_credit_url: "https://pixabay.com/users/Lalmch-1026205"
-image_credit_source: "Pixabay"
+image_credit_name: "Tima Miroshnichenko"
+image_credit_url: "https://www.pexels.com/@tima-miroshnichenko"
+image_credit_source: "Pexels"
 schema_type: "FAQPage"
 has_faq: true
 ShowToc: true
