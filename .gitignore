@@ -35,3 +35,8 @@ Thumbs.db
 *.swp
 
 .vercel
+
+# Security — prevent accidental commit of keys/certs
+*.pem
+*.key
+credentials.json
