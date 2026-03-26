@@ -19,12 +19,12 @@ tags:
 categories:
   - "AI in Finance"
 cover:
-  image: "https://pixabay.com/get/g295625b3887cef0dd9af27da65f389e8a58808d428ebf17b2212690b1c5f3340cd7daf3b79b7c9dcb86d295cb50d3afd6be0459ef9b939956c3d5933ede14e2e_1280.jpg"
-  alt: "Abstract digital visualization of banking AI governance structure with interconnected nodes and data flows"
+  image: "https://images.pexels.com/photos/7679559/pexels-photo-7679559.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+  alt: "Banking executive reviewing AI governance strategy on digital display"
   caption: ""
-image_credit_name: "nattanan23"
-image_credit_url: "https://pixabay.com/users/nattanan23-6312362"
-image_credit_source: "pixabay"
+image_credit_name: "Mikhail Nilov"
+image_credit_url: "https://www.pexels.com/@mikhail-nilov"
+image_credit_source: "Pexels"
 schema_type: "FAQPage"
 has_faq: true
 faq_pairs:

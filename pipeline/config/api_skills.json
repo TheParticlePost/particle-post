@@ -1,0 +1,85 @@
+{
+  "_comment": "Anthropic API Skill IDs — uploaded 2026-03-26",
+  "skills": {
+    "frontend_design": {
+      "id": "skill_01S1ashxYPfovWtYVUdS8iUZ",
+      "source": "anthropics/skills",
+      "description": "Creates web interfaces, landing pages, email templates, styled HTML"
+    },
+    "canvas_design": {
+      "id": "skill_01JEyXE3yxUqzhbc8sRXv3XZ",
+      "source": "anthropics/skills",
+      "description": "Creates visual art, posters, static designs in PNG/PDF"
+    },
+    "skill_creator": {
+      "id": "skill_01EwQ6tyFtUuJ6YgxQinuYUK",
+      "source": "anthropics/skills",
+      "description": "Guides creation of new custom skills with validation"
+    },
+    "seo_content_writer": {
+      "id": "skill_01Yao5a7bQFtPRydJXM3wnqy",
+      "source": "seo-geo-claude-skills",
+      "description": "Writes SEO-optimized blog posts using CORE-EEAT framework"
+    },
+    "keyword_research": {
+      "id": "skill_01AoLZLUBe2QaRMwPFXCyFdi",
+      "source": "seo-geo-claude-skills",
+      "description": "Keyword discovery, clustering, intent analysis, content gap mapping"
+    },
+    "content_quality_auditor": {
+      "id": "skill_01WR6KJsiHVuBoTguex7GwBY",
+      "source": "seo-geo-claude-skills",
+      "description": "Audits content against Google E-E-A-T rubric with scoring"
+    },
+    "on_page_seo_auditor": {
+      "id": "skill_01Vfz4w2KDBGugoUXP5YJHVP",
+      "source": "seo-geo-claude-skills",
+      "description": "Audits title tags, meta, heading hierarchy, keyword density, schema"
+    },
+    "content_refresher": {
+      "id": "skill_01HY4ELaNg1HxhDeefiBzwCN",
+      "source": "seo-geo-claude-skills",
+      "description": "Updates stale posts with fresh stats, examples, structure improvements"
+    },
+    "geo_content_optimizer": {
+      "id": "skill_017b8yDSqwFwQE91UneDmHjv",
+      "source": "seo-geo-claude-skills",
+      "description": "Optimizes for AI search engines using CITE framework"
+    },
+    "content_creator": {
+      "id": "skill_015j2M5Gow8VVgxwe6RTa34h",
+      "source": "alirezarezvani/claude-skills",
+      "description": "General blog content, marketing copy, long-form with SEO awareness"
+    },
+    "copywriting": {
+      "id": "skill_01QSXDAu8UJC34uAsEvXQrtY",
+      "source": "alirezarezvani/claude-skills",
+      "description": "Conversion copy using AIDA/PAS/BAB frameworks"
+    },
+    "x_twitter_growth": {
+      "id": "skill_015BMHeYa1FZdUY8DkXNiz1B",
+      "source": "alirezarezvani/claude-skills",
+      "description": "X/Twitter growth strategy, thread creation, engagement optimization"
+    },
+    "email_sequence": {
+      "id": "skill_019qGJg6R5CFrCAXfSGEw2bG",
+      "source": "alirezarezvani/claude-skills",
+      "description": "Email drip campaigns, welcome sequences, nurture flows"
+    },
+    "seo_audit": {
+      "id": "skill_015w4V6AC2iFkPhvkg7dhCjV",
+      "source": "alirezarezvani/claude-skills",
+      "description": "Quick SEO audit — keyword optimization, readability, internal linking"
+    },
+    "claude_seo_suite": {
+      "id": "skill_01AC331fmx3HAdrFysHqu1jV",
+      "source": "AgriciDaniel/claude-seo",
+      "description": "Full 13-sub-skill SEO suite: technical, E-E-A-T, schema, GEO/AEO"
+    },
+    "twitter_algorithm_optimizer": {
+      "id": "skill_01L4cZugxaFCV6qyzD5f1ktr",
+      "source": "ComposioHQ/awesome-claude-skills",
+      "description": "Optimizes posts for X/Twitter algorithm reach and engagement"
+    }
+  }
+}

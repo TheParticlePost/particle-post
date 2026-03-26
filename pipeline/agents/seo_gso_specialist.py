@@ -3,6 +3,7 @@ from pathlib import Path
 
 from crewai import Agent, LLM
 from pipeline.tools.tavily_search import TavilySearchTool
+from pipeline.tools.anthropic_skill import make_skill_tool
 
 _BACKSTORY_PATH = Path(__file__).parents[1] / "prompts" / "seo_gso_backstory.txt"
 _CONFIG_PATH    = Path(__file__).parents[1] / "config" / "seo_gso_config.json"
@@ -97,7 +98,27 @@ def build_seo_gso_specialist() -> Agent:
             + "\n\n━━━ POST INDEX ━━━\n\n"
             + post_index
         ),
-        tools=[TavilySearchTool()],
+        tools=[
+            TavilySearchTool(),
+            make_skill_tool(
+                name="on_page_seo_audit",
+                description=(
+                    "Run an on-page SEO audit on article content. Checks title tags, meta, "
+                    "heading hierarchy, keyword density, schema markup. Input: article text."
+                ),
+                skill_ids=["skill_01Vfz4w2KDBGugoUXP5YJHVP"],
+                model="claude-haiku-4-5-20251001",
+            ),
+            make_skill_tool(
+                name="geo_content_optimizer",
+                description=(
+                    "Optimize content for AI search engines (Google AI Overviews, ChatGPT, "
+                    "Perplexity) using the CITE framework. Input: article text."
+                ),
+                skill_ids=["skill_017b8yDSqwFwQE91UneDmHjv"],
+                model="claude-haiku-4-5-20251001",
+            ),
+        ],
         llm=LLM(model="anthropic/claude-sonnet-4-6", max_tokens=8192),
         verbose=True,
         allow_delegation=False,

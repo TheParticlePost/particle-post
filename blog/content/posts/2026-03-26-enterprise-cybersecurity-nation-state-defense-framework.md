@@ -20,12 +20,12 @@ tags:
 categories:
   - "AI Risk Management"
 cover:
-  image: "https://pixabay.com/get/g97b6e41515dac7f9f7b877d272b760917b321b38ac56cb3e815d8f9342a33243f894af1e3a44b69174c2a54c3b7a032a647c83ae9949aedf1e8769582ab323bc_1280.jpg"
-  alt: "Abstract cybersecurity threat detection data visualization with digital network nodes and security monitoring interface"
+  image: "https://images.pexels.com/photos/5380618/pexels-photo-5380618.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+  alt: "Cybersecurity monitoring interface with network security threat detection visualization"
   caption: ""
-image_credit_name: "dominickide"
-image_credit_url: "https://pixabay.com/users/dominickide-6236073"
-image_credit_source: "Pixabay"
+image_credit_name: "Tima Miroshnichenko"
+image_credit_url: "https://www.pexels.com/@tima-miroshnichenko"
+image_credit_source: "Pexels"
 schema_type: "FAQPage"
 has_faq: true
 faq_pairs:
