@@ -188,6 +188,33 @@
       "status": "pending",
       "source": "user-feedback",
       "created": "2026-03-25"
+    },
+    {
+      "id": "UI-024",
+      "component": "footer-heading-hierarchy",
+      "description": "Footer h4 headings should be h3 to fix h2→h3 progression; Navigate heading changed successfully to h3, but Legal heading still h4 due to template formatting quirk",
+      "priority": "high",
+      "status": "pending",
+      "source": "audit",
+      "created": "2026-03-26"
+    },
+    {
+      "id": "UI-025",
+      "component": "stat-box-dark-mode",
+      "description": "Verify stat-box tertiary background contrast against dark theme background (#0D1117); ensure --tertiary (#21262D) provides sufficient visual distinction",
+      "priority": "high",
+      "status": "pending",
+      "source": "audit",
+      "created": "2026-03-26"
+    },
+    {
+      "id": "UI-026",
+      "component": "footer-accessibility",
+      "description": "Footer section heading (h2) should precede footer columns; currently missing h2 wrapper before footer-links div, causing h2→h3 skip in accessibility tree",
+      "priority": "medium",
+      "status": "pending",
+      "source": "audit",
+      "created": "2026-03-26"
     }
   ],
   "completed": [
