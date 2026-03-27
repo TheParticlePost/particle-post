@@ -48,9 +48,13 @@ code, pre, kbd, samp {
   color: var(--text-primary);
 }
 
+.prose h2, .prose h3, .prose h4 {
+  font-family: var(--font-body), system-ui, sans-serif;
+}
+
 .prose h2 {
   font-size: 1.75rem;
-  font-weight: 600;
+  font-weight: 700;
   margin-top: 3rem;
   margin-bottom: 1.25rem;
   padding-bottom: 0.5rem;
@@ -59,14 +63,14 @@ code, pre, kbd, samp {
 
 .prose h3 {
   font-size: 1.375rem;
-  font-weight: 600;
+  font-weight: 700;
   margin-top: 2rem;
   margin-bottom: 1rem;
 }
 
 .prose h4 {
   font-size: 1.1875rem;
-  font-weight: 600;
+  font-weight: 700;
   margin-top: 1.5rem;
   margin-bottom: 0.75rem;
 }
