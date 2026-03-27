@@ -37,11 +37,15 @@ export function Navbar() {
         setUser(null);
         return;
       }
-      const { data: profile } = await supabase
+      const { data: profile, error: profileError } = await supabase
         .from("profiles")
         .select("email, full_name, avatar_url, role")
         .eq("id", authUser.id)
-        .single();
+        .maybeSingle();
+
+      if (profileError) {
+        console.warn("[Navbar] Profile fetch error:", profileError.message);
+      }
 
       setUser(profile || {
         email: authUser.email || "",
