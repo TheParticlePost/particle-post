@@ -4,7 +4,6 @@ const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "/categories/", label: "Categories" },
   { href: "/about/", label: "About" },
-  { href: "/feed.xml/", label: "RSS" },
 ];
 
 const LEGAL_LINKS = [
