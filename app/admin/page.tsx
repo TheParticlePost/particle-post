@@ -130,8 +130,10 @@ export default async function AdminDashboard() {
   const currentMonth = now.getMonth();
   const currentYear = now.getFullYear();
   const postsThisMonth = posts.filter((p) => {
-    const d = new Date(p.date);
-    return d.getMonth() === currentMonth && d.getFullYear() === currentYear;
+    // Normalize date-only strings to noon UTC to avoid timezone shift
+    const dateStr = /^\d{4}-\d{2}-\d{2}$/.test(p.date) ? p.date + "T12:00:00Z" : p.date;
+    const d = new Date(dateStr);
+    return d.getUTCMonth() === currentMonth && d.getUTCFullYear() === currentYear;
   }).length;
 
   // Sort posts by date descending for recent list

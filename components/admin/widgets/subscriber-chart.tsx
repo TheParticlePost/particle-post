@@ -37,7 +37,7 @@ export function SubscriberChart({ data }: SubscriberChartProps) {
       <div className="flex items-end gap-1 h-32">
         {data.map((point) => {
           const heightPercent = (point.count / maxCount) * 100;
-          const dateLabel = new Date(point.date + "T00:00:00").toLocaleDateString(
+          const dateLabel = new Date(point.date + "T12:00:00Z").toLocaleDateString(
             "en-US",
             { month: "short", day: "numeric" }
           );

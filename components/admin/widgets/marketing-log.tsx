@@ -165,7 +165,7 @@ function renderMarkdown(content: string): React.ReactNode {
 
 function formatLogDate(dateStr: string): string {
   try {
-    const date = new Date(dateStr + "T00:00:00");
+    const date = new Date(dateStr + "T12:00:00Z");
     return date.toLocaleDateString("en-US", {
       weekday: "long",
       year: "numeric",

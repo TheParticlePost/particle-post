@@ -5,8 +5,21 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+/**
+ * Parse a date string safely. Date-only strings ("2026-03-26") are treated
+ * as UTC midnight by JS, which shifts them back one day in timezones behind
+ * UTC. We normalize these to noon UTC so they never cross day boundaries.
+ */
+function parseDate(dateString: string): Date {
+  // Date-only format: YYYY-MM-DD (exactly 10 chars, no T)
+  if (/^\d{4}-\d{2}-\d{2}$/.test(dateString)) {
+    return new Date(dateString + "T12:00:00Z");
+  }
+  return new Date(dateString);
+}
+
 export function formatDate(dateString: string): string {
-  const date = new Date(dateString);
+  const date = parseDate(dateString);
   return date.toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
@@ -15,7 +28,7 @@ export function formatDate(dateString: string): string {
 }
 
 export function formatDateShort(dateString: string): string {
-  const date = new Date(dateString);
+  const date = parseDate(dateString);
   return date.toLocaleDateString("en-US", {
     month: "short",
     day: "numeric",
