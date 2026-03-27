@@ -143,6 +143,16 @@ def _sanitize_article(content: str) -> str:
         content = re.sub(r'\n,\s*', '\n', content)
         fixes_applied.append(f"Replaced {em_dash_count} em-dash(es)")
 
+    # 1b. Replace temporary Pixabay /get/ URLs with Pexels fallback
+    pixabay_get_match = re.search(r'image:\s*"(https://pixabay\.com/get/[^"]+)"', content)
+    if pixabay_get_match:
+        # Replace with a reliable Pexels placeholder — the /get/ URL will expire
+        content = content.replace(
+            pixabay_get_match.group(1),
+            "https://images.pexels.com/photos/7567443/pexels-photo-7567443.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200"
+        )
+        fixes_applied.append("Replaced expiring Pixabay /get/ URL with Pexels fallback")
+
     # 2. Replace en-dashes (U+2013) used as em-dashes (not in number ranges)
     #    Keep en-dashes in ranges like "2020-2026" or "$1M-$5M"
     en_dash_count = len(re.findall(r'(?<!\d)\u2013(?!\d)', content))

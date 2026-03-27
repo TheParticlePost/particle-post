@@ -19,12 +19,12 @@ tags:
 categories:
   - "AI in Finance"
 cover:
-  image: "https://pixabay.com/get/g20c673bacff72fdd11752282cfd220b003ea5c865e68a584732e6a804d59c8a7b235a690f5ea85a14159e05df8e5b09d411cea2d07d5e1ef4919bf3f775e6476_640.jpg"
+  image: "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200"
   alt: "Abstract visualization of AI machine learning algorithms and financial data analysis with neural network patterns"
   caption: ""
-image_credit_name: "TierraMallorca"
-image_credit_url: "https://pixabay.com/users/TierraMallorca-13743214"
-image_credit_source: "Pixabay"
+image_credit_name: "Tara Winstead"
+image_credit_url: "https://www.pexels.com/@tara-winstead"
+image_credit_source: "Pexels"
 schema_type: "FAQPage"
 has_faq: true
 faq_pairs:

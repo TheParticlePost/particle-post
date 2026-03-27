@@ -40,10 +40,13 @@ class PixabayImageTool(BaseTool):
             photo = hits[0]
 
             # Use webformatURL — stable Pixabay CDN URL that does NOT expire.
-            # largeImageURL uses /get/ redirects that expire after a few hours.
+            # largeImageURL and /get/ URLs are temporary and expire after hours.
             image_url = photo.get("webformatURL", "")
-            if not image_url:
-                image_url = photo.get("largeImageURL", "")
+            if not image_url or "pixabay.com/get/" in image_url:
+                image_url = photo.get("previewURL", "")
+            # Final safety: reject any /get/ URL — these always expire
+            if "pixabay.com/get/" in image_url:
+                return json.dumps({"error": "Pixabay returned only temporary URLs — use Pexels instead"})
 
             return json.dumps({
                 "image_url": image_url,
