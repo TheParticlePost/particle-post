@@ -1,21 +1,6 @@
 {
   "notes": [
     {
-      "text": "Verify the 90% AI adoption figure before next run — Feedzai's confirmed public statistics from the same survey are 87% citing data challenges and 64% rolling out AI in the past two years. The 90% figure does not appear in confirmed search results and should either be sourced to a specific page in the Feedzai report or replaced with one of the verified figures. A single unverifiable statistic in a well-sourced article is the kind of detail that erodes reader trust with your CFO/CTO audience.",
-      "slot": "evening",
-      "date": "2026-03-25T03:30:07.515899+00:00"
-    },
-    {
-      "text": "MOF internal linking is your most urgent fix: MOF articles require links to TOF content, BOF content, AND at least one additional MOF piece. You have one link (to the FCA explainability article). Add at minimum one link using the anchor text 'agentic AI regulatory gap in fintech' pointing to /posts/agentic-ai-regulatory-gap-fintech/, and one more to 'AI agents in corporate payments infrastructure' pointing to /posts/ai-agents-corporate-payments-infrastructure-readiness/. Both are available in the SEO linking table and are directly topically relevant.",
-      "slot": "morning",
-      "date": "2026-03-25T13:06:55.586415+00:00"
-    },
-    {
-      "text": "The FAQ section must appear in the article body, not only in YAML frontmatter. You have five strong, well-written Q+A pairs — they just need to be rendered under a '## Frequently Asked Questions' H2 with ### Q: / **A:** formatting so readers (and featured-snippet crawlers) can actually see them. Moving them from frontmatter to body is a copy-paste task, but it's mandatory when has_faq=true.",
-      "slot": "morning",
-      "date": "2026-03-25T13:06:55.586415+00:00"
-    },
-    {
       "text": "Your MOF 'friction scenarios' are currently pattern-descriptions ('the replace-and-reduce narrative') rather than named-company failure cases. For the next revision, anchor at least one friction scenario to a real named organization — even a generic example like 'a Fortune 500 manufacturer that activated Oracle Fusion agents on unconsolidated GL data and triggered cascading payment errors' is stronger than a thematic label. Named specificity is what separates Particle Post from trade blog content.",
       "slot": "morning",
       "date": "2026-03-25T13:06:55.586415+00:00"
@@ -149,6 +134,21 @@
       "text": "The MIT Sloan Management Review source ('An AI Reckoning for HR') is an HR-focused article being used to support a finance compliance claim. This is a sourcing mismatch that a skeptical reader or editor will flag. Either find a directly relevant MIT Sloan or equivalent source on AI validation in financial services, or remove the specific attribution and reframe the sentence as industry-observed pattern rather than citing research that does not directly apply.",
       "slot": "evening",
       "date": "2026-03-26T21:16:45.244474+00:00"
+    },
+    {
+      "text": "The 'Midwest lender reducing manual review queues by 28%' claim cites 'AWS Bedrock customer documentation from Q4 2025' without a direct URL or institution name. In future articles, either name the institution, label it explicitly as an anonymized AWS case study, or link directly to the source document. Vague case study citations weaken credibility with a CFO audience that will try to verify claims.",
+      "slot": "morning",
+      "date": "2026-03-27T13:27:39.186997+00:00"
+    },
+    {
+      "text": "The internal link anchor text in two places reads 'our analysis of the FCA's explainability requirements covers this compliance risk in depth at [how explainable AI creates capital risk under FCA rules]' — the phrasing is slightly awkward because the bracketed link text duplicates context already stated. Tighten to a cleaner in-line reference: 'The compliance exposure is substantial (see [How Explainable AI Creates Capital Risk Under FCA Rules])' so the anchor stands on its own for scanners who skip body copy.",
+      "slot": "morning",
+      "date": "2026-03-27T13:27:39.186997+00:00"
+    },
+    {
+      "text": "The H2 'What This Means for Finance Operations, Customer Service, and HR Automation' handles three distinct use cases in a single section with no H3 sub-breaks. Add H3s for each sub-topic (e.g., '### Finance Operations: The Case for Fine-Tuned Open-Source at Scale') to improve scannability, give each use case its own GSO answer target, and help time-pressed executives jump directly to their relevant vertical.",
+      "slot": "morning",
+      "date": "2026-03-27T13:27:39.186997+00:00"
     }
   ]
 }
