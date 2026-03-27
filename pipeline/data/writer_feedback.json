@@ -1,21 +1,6 @@
 {
   "notes": [
     {
-      "text": "Your MOF 'friction scenarios' are currently pattern-descriptions ('the replace-and-reduce narrative') rather than named-company failure cases. For the next revision, anchor at least one friction scenario to a real named organization — even a generic example like 'a Fortune 500 manufacturer that activated Oracle Fusion agents on unconsolidated GL data and triggered cascading payment errors' is stronger than a thematic label. Named specificity is what separates Particle Post from trade blog content.",
-      "slot": "morning",
-      "date": "2026-03-25T13:06:55.586415+00:00"
-    },
-    {
-      "text": "[WEEKLY AUDIT] Missing frontmatter: categories — found in 6/7 articles this week. Fix this pattern in future articles.",
-      "slot": "audit",
-      "date": "2026-03-25T16:55:49.810724+00:00"
-    },
-    {
-      "text": "[WEEKLY AUDIT] has_faq=true but FAQ section missing — found in 4/7 articles this week. Fix this pattern in future articles.",
-      "slot": "audit",
-      "date": "2026-03-25T16:55:49.810724+00:00"
-    },
-    {
       "text": "[WEEKLY AUDIT] No internal links to other posts — found in 3/7 articles this week. Fix this pattern in future articles.",
       "slot": "audit",
       "date": "2026-03-25T16:55:49.810724+00:00"
@@ -149,6 +134,21 @@
       "text": "The H2 'What This Means for Finance Operations, Customer Service, and HR Automation' handles three distinct use cases in a single section with no H3 sub-breaks. Add H3s for each sub-topic (e.g., '### Finance Operations: The Case for Fine-Tuned Open-Source at Scale') to improve scannability, give each use case its own GSO answer target, and help time-pressed executives jump directly to their relevant vertical.",
       "slot": "morning",
       "date": "2026-03-27T13:27:39.186997+00:00"
+    },
+    {
+      "text": "FAQ rendering gap — fix before next run: When has_faq=true, the Formatter must output a '## Frequently Asked Questions' section in the article body with all Q+A pairs rendered as '### Q:' and '**A:**' pairs. Storing them only in YAML frontmatter means readers never see them, the FAQPage schema has no on-page content to match, and the GSO featured-snippet benefit is lost entirely.",
+      "slot": "evening",
+      "date": "2026-03-27T21:25:53.516887+00:00"
+    },
+    {
+      "text": "Generic H2s undercut an otherwise strong BOF structure: 'Success Metrics' and 'Decision Checkpoint' are the two weakest headings in the piece. BOF readers skim for decision-support anchors — give them specifics in the heading itself. Rewrite to name a number or action: 'Three Metrics That Confirm AI Roadmap Recalibration Is Working' and 'Go/No-Go Checkpoint: Four Criteria for Reallocating AI Budget Now'. This also improves H2-level SERP appearance.",
+      "slot": "evening",
+      "date": "2026-03-27T21:25:53.516887+00:00"
+    },
+    {
+      "text": "First H2 answer-first compliance: The 'Five Conditions' section opens with a framing sentence rather than a direct answer. For BOF articles targeting executives who skim, the first sentence after any H2 must deliver the answer, not announce that an answer is coming. Try opening with the most decisive condition first: 'Your AI investment map must be documented before any restructuring signal can be applied — without a function-level spend inventory, you cannot distinguish redundancy from capability.'",
+      "slot": "evening",
+      "date": "2026-03-27T21:25:53.516887+00:00"
     }
   ]
 }
