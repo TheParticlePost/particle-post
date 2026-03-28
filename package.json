@@ -25,11 +25,16 @@
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "reading-time": "^1.5.0",
+    "recharts": "^3.8.1",
     "rss": "^1.2.2",
     "server-only": "^0.0.1",
     "tailwind-merge": "^2.5.0"
   },
   "devDependencies": {
+    "@fontsource-variable/dm-sans": "^5.2.8",
+    "@fontsource/dm-sans": "^5.2.8",
+    "@fontsource/ibm-plex-mono": "^5.2.7",
+    "@fontsource/sora": "^5.2.8",
     "@types/node": "^22.0.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",

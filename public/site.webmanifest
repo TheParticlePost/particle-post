@@ -1,0 +1,16 @@
+{
+  "name": "Particle Post",
+  "short_name": "Particle Post",
+  "description": "AI-powered insights at the intersection of finance, technology, and energy.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#141414",
+  "theme_color": "#E8552E",
+  "icons": [
+    {
+      "src": "/logos/monogram-dark.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
