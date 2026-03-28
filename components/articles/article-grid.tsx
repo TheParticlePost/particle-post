@@ -13,16 +13,18 @@ interface ArticleMeta {
 interface ArticleGridProps {
   articles: ArticleMeta[];
   featureFirst?: boolean;
+  columns?: 2 | 3;
 }
 
 export function ArticleGrid({
   articles,
   featureFirst = true,
+  columns = 2,
 }: ArticleGridProps) {
   if (articles.length === 0) {
     return (
       <div className="text-center py-16">
-        <p className="text-foreground-secondary text-body-lg">
+        <p className="text-text-secondary text-body-lg">
           No articles found.
         </p>
       </div>
@@ -30,7 +32,13 @@ export function ArticleGrid({
   }
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div
+      className={
+        columns === 3
+          ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          : "grid grid-cols-1 md:grid-cols-2 gap-6"
+      }
+    >
       {articles.map((article, i) => (
         <ArticleCard
           key={article.slug}

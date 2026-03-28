@@ -12,7 +12,6 @@ interface MobileNavProps {
 }
 
 export function MobileNav({ isOpen, onClose, links }: MobileNavProps) {
-  // Lock body scroll when open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -24,7 +23,6 @@ export function MobileNav({ isOpen, onClose, links }: MobileNavProps) {
     };
   }, [isOpen]);
 
-  // Close on Escape
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -43,16 +41,16 @@ export function MobileNav({ isOpen, onClose, links }: MobileNavProps) {
       {/* Backdrop */}
       <div
         className={cn(
-          "absolute inset-0 bg-bg-primary/80 backdrop-blur-sm transition-opacity duration-300",
+          "absolute inset-0 bg-bg-base/80 backdrop-blur-sm transition-opacity duration-300",
           isOpen ? "opacity-100" : "opacity-0"
         )}
         onClick={onClose}
       />
 
-      {/* Panel */}
+      {/* Panel — Onyx bg */}
       <div
         className={cn(
-          "absolute inset-y-0 right-0 w-72 bg-bg-secondary border-l border-[var(--border)]",
+          "absolute inset-y-0 right-0 w-72 bg-bg-container border-l border-border-ghost",
           "flex flex-col p-6 transition-transform duration-300",
           isOpen ? "translate-x-0" : "translate-x-full"
         )}
@@ -62,8 +60,8 @@ export function MobileNav({ isOpen, onClose, links }: MobileNavProps) {
           <button
             onClick={onClose}
             className="w-10 h-10 rounded-lg flex items-center justify-center
-                       text-foreground-secondary hover:text-foreground
-                       hover:bg-bg-tertiary/50 transition-all duration-200"
+                       text-text-secondary hover:text-text-primary
+                       hover:bg-bg-high/50 transition-colors duration-[180ms] ease-kinetic"
             aria-label="Close menu"
           >
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -80,8 +78,8 @@ export function MobileNav({ isOpen, onClose, links }: MobileNavProps) {
               href={link.href}
               onClick={onClose}
               className={cn(
-                "px-4 py-3 rounded-lg text-body-lg text-foreground-secondary",
-                "hover:text-foreground hover:bg-bg-tertiary/50 transition-all duration-200",
+                "px-4 py-3 rounded-lg text-body-lg text-text-body",
+                "hover:text-accent hover:bg-bg-high/50 transition-colors duration-[180ms] ease-kinetic",
                 isOpen && "animate-slide-up"
               )}
               style={{ animationDelay: `${i * 50 + 100}ms`, animationFillMode: "both" }}
@@ -92,10 +90,12 @@ export function MobileNav({ isOpen, onClose, links }: MobileNavProps) {
         </nav>
 
         {/* CTA */}
-        <div className="mt-auto pt-6 border-t border-[var(--border)]">
-          <Button variant="primary" size="lg" className="w-full" onClick={onClose}>
-            Subscribe
-          </Button>
+        <div className="mt-auto pt-6">
+          <Link href="/subscribe" onClick={onClose}>
+            <Button variant="primary" size="default" className="w-full">
+              Subscribe
+            </Button>
+          </Link>
         </div>
       </div>
     </div>

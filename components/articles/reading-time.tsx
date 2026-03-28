@@ -9,7 +9,7 @@ export function ReadingTime({ minutes, className }: ReadingTimeProps) {
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-1.5 text-body-xs text-foreground-muted",
+        "inline-flex items-center gap-1.5 font-mono text-data tabular-nums text-text-muted",
         className
       )}
     >

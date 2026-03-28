@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Badge } from "@/components/ui/badge";
+import { OverlineLabel } from "@/components/ui/overline-label";
+import { DataText } from "@/components/ui/data-text";
 import { ReadingTime } from "@/components/articles/reading-time";
 import { formatDateShort } from "@/lib/utils";
 import { cn } from "@/lib/utils";
@@ -30,10 +31,9 @@ export function ArticleCard({
     <Link
       href={`/posts/${slug}/`}
       className={cn(
-        "group block glass-card overflow-hidden",
-        "hover:border-[var(--border-hover)] hover:shadow-card-hover",
-        "transition-all duration-300",
-        featured && "md:col-span-2"
+        "group block bg-bg-container border border-border-ghost rounded-lg overflow-hidden",
+        "hover:border-border-hover transition-colors duration-[180ms] ease-kinetic",
+        featured && "editorial-stripe md:col-span-2"
       )}
     >
       {/* Image */}
@@ -49,41 +49,39 @@ export function ArticleCard({
             alt={title}
             fill
             sizes={featured ? "(max-width: 768px) 100vw, 66vw" : "(max-width: 768px) 100vw, 33vw"}
-            className="object-cover group-hover:scale-[1.03] transition-transform duration-500"
+            className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-bg-primary/60 to-transparent" />
         </div>
       )}
 
       {/* Content */}
       <div className="p-5 space-y-3">
-        {/* Category + Date */}
+        {/* Category overline + Date */}
         <div className="flex items-center gap-3">
-          {categories[0] && <Badge category={categories[0]} />}
-          <span className="text-body-xs text-foreground-muted">
-            {formatDateShort(date)}
-          </span>
+          {categories[0] && <OverlineLabel>{categories[0]}</OverlineLabel>}
+          <DataText as="time">{formatDateShort(date)}</DataText>
         </div>
 
-        {/* Title */}
+        {/* Title — Sora headline */}
         <h3
           className={cn(
-            "font-display leading-snug group-hover:text-accent transition-colors duration-200",
-            featured ? "text-display-sm" : "text-[1.25rem]"
+            "font-display font-bold leading-snug text-text-primary",
+            "group-hover:text-accent transition-colors duration-[180ms] ease-kinetic",
+            featured ? "text-display-sm" : "text-[1.25rem] tracking-[-0.01em]"
           )}
         >
           <span className="line-clamp-2">{title}</span>
         </h3>
 
-        {/* Excerpt */}
-        <p className="text-body-sm text-foreground-secondary line-clamp-2">
+        {/* Excerpt — DM Sans */}
+        <p className="text-body-sm text-text-secondary line-clamp-2">
           {description}
         </p>
 
-        {/* Footer */}
+        {/* Footer — IBM Plex Mono metadata */}
         <div className="flex items-center justify-between pt-1">
           <ReadingTime minutes={readingTime} />
-          <span className="text-body-xs text-accent opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+          <span className="text-caption text-accent opacity-0 group-hover:opacity-100 transition-opacity duration-[180ms]">
             Read more &rarr;
           </span>
         </div>

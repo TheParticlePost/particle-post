@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { Button } from "@/components/ui/button";
@@ -11,9 +12,10 @@ import { createClient, isSupabaseConfigured } from "@/lib/supabase/client";
 import { cn } from "@/lib/utils";
 
 const NAV_LINKS = [
-  { href: "/", label: "Home" },
-  { href: "/categories/", label: "Categories" },
-  { href: "/about/", label: "About" },
+  { href: "/", label: "Briefings" },
+  { href: "/categories/", label: "Deep Dives" },
+  { href: "/categories/ai-finance/", label: "Markets" },
+  { href: "/about/", label: "Archive" },
 ];
 
 interface UserProfile {
@@ -25,7 +27,15 @@ interface UserProfile {
 
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const [user, setUser] = useState<UserProfile | null>(null);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 0);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     if (!isSupabaseConfigured()) return;
@@ -69,30 +79,40 @@ export function Navbar() {
       <header
         className={cn(
           "fixed top-0 left-0 right-0 z-50 h-16",
-          "glass-card rounded-none border-t-0 border-x-0",
-          "border-b border-[var(--glass-border)]"
+          "transition-all duration-[180ms] ease-kinetic",
+          scrolled
+            ? "bg-[var(--glass-bg)] backdrop-blur-[12px] border-b border-border-ghost"
+            : "bg-transparent border-b border-transparent"
         )}
       >
-        <nav className="max-w-6xl mx-auto h-full px-4 sm:px-6 flex items-center justify-between">
-          {/* Logo */}
+        <nav className="max-w-container mx-auto h-full px-4 sm:px-6 flex items-center justify-between">
+          {/* Logo — monogram dot + wordmark */}
           <Link href="/" className="flex items-center gap-2 group">
             <span className="w-2 h-2 rounded-full bg-accent animate-pulse-dot" />
-            <span className="font-display text-xl tracking-tight">
+            <span className="font-display text-lg font-bold uppercase tracking-[-0.02em] text-accent">
               Particle Post
             </span>
           </Link>
 
-          {/* Desktop links */}
+          {/* Desktop nav links — DM Sans 14px/500 */}
           <div className="hidden md:flex items-center gap-8">
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-body-sm text-foreground-secondary hover:text-foreground transition-colors duration-200"
-              >
-                {link.label}
-              </Link>
-            ))}
+            {NAV_LINKS.map((link) => {
+              const isActive = pathname === link.href || pathname.startsWith(link.href + "/");
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={cn(
+                    "text-body-sm font-medium transition-colors duration-[180ms] ease-kinetic",
+                    isActive
+                      ? "text-accent border-b-2 border-accent pb-0.5"
+                      : "text-text-body hover:text-accent"
+                  )}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
           </div>
 
           {/* Right side */}
@@ -110,13 +130,13 @@ export function Navbar() {
             ) : (
               <div className="hidden sm:flex items-center gap-2">
                 <Link href="/login">
-                  <Button variant="ghost" size="sm">
+                  <Button variant="ghost" size="compact">
                     Log in
                   </Button>
                 </Link>
-                <Link href="/signup">
-                  <Button variant="primary" size="sm">
-                    Sign up
+                <Link href="/subscribe">
+                  <Button variant="primary" size="compact">
+                    Subscribe
                   </Button>
                 </Link>
               </div>
@@ -126,8 +146,8 @@ export function Navbar() {
             <button
               onClick={() => setMobileOpen(true)}
               className="md:hidden w-10 h-10 rounded-lg flex items-center justify-center
-                         text-foreground-secondary hover:text-foreground
-                         hover:bg-bg-tertiary/50 transition-all duration-200"
+                         text-text-secondary hover:text-text-primary
+                         hover:bg-bg-high/50 transition-colors duration-[180ms] ease-kinetic"
               aria-label="Open menu"
             >
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

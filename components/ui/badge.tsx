@@ -12,14 +12,14 @@ export function Badge({ category, size = "sm", className }: BadgeProps) {
     (c) => c.name.toLowerCase() === category.toLowerCase() || c.slug === category
   );
 
-  const color = categoryData?.color ?? "#9CA3AF";
+  const color = categoryData?.color ?? "var(--text-secondary)";
   const label = categoryData?.name ?? category;
 
   return (
     <span
       className={cn(
-        "inline-flex items-center font-medium rounded-full border whitespace-nowrap",
-        size === "sm" ? "px-2.5 py-0.5 text-body-xs" : "px-3 py-1 text-body-sm",
+        "inline-flex items-center font-medium rounded-lg border whitespace-nowrap",
+        size === "sm" ? "px-2.5 py-0.5 text-caption" : "px-3 py-1 text-body-sm",
         className
       )}
       style={{

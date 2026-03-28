@@ -15,8 +15,8 @@ export function ThemeToggle() {
     return (
       <button
         className="w-10 h-10 rounded-lg flex items-center justify-center
-                   bg-bg-tertiary/50 border border-[var(--border)]
-                   transition-all duration-200"
+                   bg-bg-high/50 border border-border-ghost
+                   transition-colors duration-[180ms] ease-kinetic"
         aria-label="Toggle theme"
       >
         <span className="w-5 h-5" />
@@ -30,9 +30,9 @@ export function ThemeToggle() {
     <button
       onClick={() => setTheme(isDark ? "light" : "dark")}
       className="w-10 h-10 rounded-lg flex items-center justify-center
-                 bg-bg-tertiary/50 border border-[var(--border)]
-                 hover:border-[var(--border-hover)] hover:bg-bg-tertiary
-                 transition-all duration-200 group"
+                 bg-bg-high/50 border border-border-ghost
+                 hover:border-border-hover hover:bg-bg-high
+                 transition-colors duration-[180ms] ease-kinetic group"
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
     >
       {isDark ? (
@@ -44,7 +44,7 @@ export function ThemeToggle() {
           strokeWidth={2}
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="w-5 h-5 text-foreground-secondary group-hover:text-accent transition-colors"
+          className="w-5 h-5 text-text-secondary group-hover:text-accent transition-colors"
         >
           <circle cx="12" cy="12" r="4" />
           <path d="M12 2v2" />
@@ -65,7 +65,7 @@ export function ThemeToggle() {
           strokeWidth={2}
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="w-5 h-5 text-foreground-secondary group-hover:text-accent transition-colors"
+          className="w-5 h-5 text-text-secondary group-hover:text-accent transition-colors"
         >
           <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
         </svg>

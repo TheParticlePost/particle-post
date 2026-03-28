@@ -3,6 +3,8 @@
 import { useState, useMemo } from "react";
 import { CategoryTabs } from "@/components/articles/category-tabs";
 import { ArticleGrid } from "@/components/articles/article-grid";
+import { OverlineLabel } from "@/components/ui/overline-label";
+import { DataText } from "@/components/ui/data-text";
 import { slugify } from "@/lib/utils";
 import type { PostMeta } from "@/lib/types";
 
@@ -21,22 +23,23 @@ export function HomeContent({ articles }: HomeContentProps) {
   }, [articles, activeCategory]);
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6">
-      {/* Hero */}
-      <section className="py-16 sm:py-24 text-center">
-        <div className="flex items-center justify-center gap-3 mb-4">
+    <div className="max-w-container mx-auto px-4 sm:px-6">
+      {/* Hero — left-aligned per DESIGN.md */}
+      <section className="py-16 sm:py-24">
+        <div className="flex items-center gap-3 mb-4">
           <div className="w-2.5 h-2.5 rounded-full bg-accent animate-pulse-dot" />
-          <p className="text-body-sm font-mono text-accent uppercase tracking-widest">
-            Live Feed
-          </p>
+          <OverlineLabel>Live Feed</OverlineLabel>
         </div>
-        <h1 className="font-display text-display-xl mb-4">
+        <h1 className="font-display text-display-hero text-text-primary mb-4 max-w-3xl">
           Particle Post
         </h1>
-        <p className="text-foreground-secondary text-body-lg max-w-lg mx-auto">
+        <p className="text-text-secondary text-body-lg max-w-xl">
           AI-powered insights at the intersection of finance, technology, and
           energy.
         </p>
+        <DataText as="p" className="mt-6 uppercase tracking-widest text-text-muted">
+          Join 12,000+ leaders. Free. Twice daily.
+        </DataText>
       </section>
 
       {/* Filters */}
