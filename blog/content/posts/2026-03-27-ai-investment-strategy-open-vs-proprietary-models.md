@@ -14,10 +14,9 @@ tags:
   - "AI Strategy"
   - "Enterprise AI"
   - "Machine Learning"
-  - "Fintech"
+  - "Operations & Finance"
   - "CFO"
-categories:
-  - "AI in Finance"
+categories: ["AI Strategy", "Implementation"]
 cover:
   image: "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200"
   alt: "Abstract visualization of AI machine learning algorithms and financial data analysis with neural network patterns"

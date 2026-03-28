@@ -51,10 +51,11 @@ export function slugify(text: string): string {
 }
 
 export const CATEGORIES = [
-  { name: "AI & Finance", slug: "ai-finance", color: "#00D4AA" },
-  { name: "Risk & Compliance", slug: "risk-compliance", color: "#3B82F6" },
-  { name: "Enterprise Tech", slug: "enterprise-tech", color: "#8B5CF6" },
-  { name: "Energy & ESG", slug: "energy-esg", color: "#F59E0B" },
+  { name: "AI Strategy", slug: "ai-strategy", color: "#E8552E" },
+  { name: "Implementation", slug: "implementation", color: "#D4962A" },
+  { name: "Operations & Finance", slug: "operations-finance", color: "#A89E94" },
+  { name: "Risk & Governance", slug: "risk-governance", color: "#2D9B5A" },
+  { name: "Industry Signals", slug: "industry-signals", color: "#5A7FA0" },
 ] as const;
 
 export type CategorySlug = (typeof CATEGORIES)[number]["slug"];

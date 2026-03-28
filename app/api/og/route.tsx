@@ -6,7 +6,7 @@ export const runtime = "edge";
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const title = searchParams.get("title") || "Particle Post";
-  const category = searchParams.get("category") || "AI & Finance Intelligence";
+  const category = searchParams.get("category") || "AI Briefings for Business Leaders";
 
   return new ImageResponse(
     (

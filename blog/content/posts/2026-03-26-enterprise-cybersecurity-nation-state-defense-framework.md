@@ -13,12 +13,11 @@ keywords:
 author: ""
 tags:
   - "Cybersecurity"
-  - "AI Risk Management"
+  - "Risk & Governance"
   - "Zero Trust"
   - "Enterprise Security"
   - "NIST"
-categories:
-  - "AI Risk Management"
+categories: ["Risk & Governance", "Industry Signals"]
 cover:
   image: "https://images.pexels.com/photos/5380618/pexels-photo-5380618.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
   alt: "Cybersecurity monitoring interface with network security threat detection visualization"

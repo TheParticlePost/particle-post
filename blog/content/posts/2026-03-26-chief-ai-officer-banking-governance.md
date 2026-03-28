@@ -15,9 +15,8 @@ tags:
   - "Banking"
   - "C-Suite Strategy"
   - "Artificial Intelligence"
-  - "Fintech"
-categories:
-  - "AI in Finance"
+  - "Operations & Finance"
+categories: ["AI Strategy", "Risk & Governance"]
 cover:
   image: "https://images.pexels.com/photos/7679559/pexels-photo-7679559.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
   alt: "Banking executive reviewing AI governance strategy on digital display"

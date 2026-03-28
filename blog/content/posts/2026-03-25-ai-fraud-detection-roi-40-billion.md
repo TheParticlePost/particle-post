@@ -12,11 +12,11 @@ keywords:
 author: "Editorial Team"
 tags:
   - "AI"
-  - "Fraud Detection"
+  - "Risk & Governance"
   - "Financial Services"
   - "ROI"
-  - "Banking Technology"
-categories: ["AI & Finance", "Fraud Detection", "Banking Technology"]
+  - "Operations & Finance"
+categories: ["AI Strategy", "Risk & Governance", "Operations & Finance"]
 cover:
   image: "https://images.pexels.com/photos/5497951/pexels-photo-5497951.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200"
   alt: "Banking security technology and fraud detection systems"

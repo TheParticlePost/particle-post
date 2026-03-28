@@ -13,11 +13,10 @@ author: ""
 tags:
   - "AI Strategy"
   - "Enterprise AI"
-  - "AI Risk Management"
+  - "Risk & Governance"
   - "Meta"
   - "AI Investment"
-categories:
-  - "AI Strategy"
+categories: ["AI Strategy", "Operations & Finance"]
 cover:
   image: "https://cdn.pixabay.com/photo/2016/09/29/17/05/hourglass-1703349_1280.jpg"
   alt: "Hourglass symbolizing time-sensitive AI investment decisions and strategic planning cycles in enterprise restructuring"

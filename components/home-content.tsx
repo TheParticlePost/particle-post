@@ -5,7 +5,6 @@ import Image from "next/image";
 import { OverlineLabel } from "@/components/ui/overline-label";
 import { DataText } from "@/components/ui/data-text";
 import { DataTicker } from "@/components/ui/data-ticker";
-import { SentimentBadge } from "@/components/ui/sentiment-badge";
 import { SubscribeForm } from "@/components/newsletter/subscribe-form";
 import { FadeUp } from "@/components/effects/fade-up";
 import { formatDateShort } from "@/lib/utils";
@@ -19,13 +18,12 @@ interface HomeContentProps {
   trendingPosts: PostMeta[];
 }
 
-const MOCK_TICKER = [
-  { label: "S&P 500", value: "5,234.18", change: 0.87 },
-  { label: "NASDAQ", value: "16,428.82", change: 1.24 },
-  { label: "BTC/USD", value: "68,421.30", change: -0.53 },
-  { label: "EUR/USD", value: "1.0842", change: 0.12 },
-  { label: "10Y UST", value: "4.28%", change: -0.03 },
-  { label: "GOLD", value: "2,178.40", change: 0.34 },
+const AI_TICKER = [
+  { label: "AI ADOPTION", value: "78% of Fortune 500" },
+  { label: "ENTERPRISE AI SPEND", value: "$200B+ in 2026" },
+  { label: "TOP USE CASE", value: "Customer Service Automation" },
+  { label: "AVG IMPLEMENTATION", value: "6–12 months" },
+  { label: "ROI TIMELINE", value: "9–18 months" },
 ];
 
 export function HomeContent({
@@ -41,24 +39,30 @@ export function HomeContent({
       <section className="bg-bg-base py-24 px-4 sm:px-6">
         <div className="max-w-container mx-auto">
           <FadeUp>
-            <OverlineLabel className="mb-6 block">Morning Briefing</OverlineLabel>
+            <OverlineLabel className="mb-6 block">Twice Daily · Free</OverlineLabel>
 
-            {latestPost ? (
-              <Link href={`/posts/${latestPost.slug}/`} className="group">
-                <h1 className="font-display text-display-hero text-text-primary mb-6 max-w-4xl group-hover:text-accent transition-colors duration-[180ms] ease-kinetic">
-                  {latestPost.title}
-                </h1>
-              </Link>
-            ) : (
-              <h1 className="font-display text-display-hero text-text-primary mb-6 max-w-4xl">
-                AI-Powered Intelligence for Global Leaders
-              </h1>
-            )}
+            <h1 className="font-display text-display-hero text-text-primary mb-6 max-w-4xl">
+              AI is changing how companies operate. We tell you what to do about it.
+            </h1>
+
+            <p className="text-body-lg text-text-secondary mb-10 max-w-2xl">
+              Implementation strategies, operational playbooks, and executive
+              decisions — delivered before your morning meeting.
+            </p>
 
             {latestPost && (
-              <p className="text-body-lg text-text-secondary mb-10 max-w-2xl">
-                {latestPost.description}
-              </p>
+              <Link
+                href={`/posts/${latestPost.slug}/`}
+                className="block bg-bg-container border border-border-ghost rounded-lg p-6 mb-10 max-w-2xl editorial-stripe hover:border-border-hover transition-colors duration-[180ms] ease-kinetic group"
+              >
+                <OverlineLabel className="mb-2 block text-[10px]">Latest</OverlineLabel>
+                <h2 className="font-display text-display-sm text-text-primary group-hover:text-accent transition-colors duration-[180ms]">
+                  {latestPost.title}
+                </h2>
+                <DataText as="p" className="mt-2 text-caption">
+                  {latestPost.readingTime} min read · {formatDateShort(latestPost.date)}
+                </DataText>
+              </Link>
             )}
 
             {/* Email signup */}
@@ -109,7 +113,7 @@ export function HomeContent({
               <div className="bg-bg-container border border-border-ghost rounded-lg p-8 hover:border-accent transition-colors duration-[180ms] ease-kinetic">
                 <OverlineLabel className="mb-4 block">Evening Edition</OverlineLabel>
                 <h3 className="font-display text-display-lg text-text-primary mb-8">
-                  PM Market Closing
+                  PM Intelligence Wrap
                 </h3>
                 <ul className="space-y-6">
                   {eveningPosts.map((post, i) => {
@@ -197,16 +201,9 @@ export function HomeContent({
                     href={`/posts/${post.slug}/`}
                     className="block bg-bg-container border border-border-ghost rounded-lg p-6 hover:border-accent transition-colors duration-[180ms] ease-kinetic group"
                   >
-                    <div className="flex justify-between items-start mb-6">
-                      {post.categories[0] && (
-                        <span className="px-2 py-1 bg-bg-high font-mono text-[10px] text-text-primary uppercase tracking-widest rounded-lg">
-                          {post.categories[0]}
-                        </span>
-                      )}
-                      <SentimentBadge
-                        sentiment={i === 1 ? "bearish" : "bullish"}
-                      />
-                    </div>
+                    {post.categories[0] && (
+                      <OverlineLabel className="mb-4 block">{post.categories[0]}</OverlineLabel>
+                    )}
                     <h4 className="font-display text-display-sm text-text-primary mb-8 leading-snug group-hover:text-accent transition-colors duration-[180ms]">
                       {post.title}
                     </h4>
@@ -218,12 +215,24 @@ export function HomeContent({
                 </FadeUp>
               ))}
             </div>
+
+            {/* View all link */}
+            <FadeUp delay={0.15}>
+              <div className="mt-10 text-center">
+                <Link
+                  href="/archive/"
+                  className="font-mono text-data text-accent hover:text-accent-hover transition-colors"
+                >
+                  View all in Archive &rarr;
+                </Link>
+              </div>
+            </FadeUp>
           </div>
         </section>
       )}
 
-      {/* ═══ SECTION 5: DATA TICKER — bg-deep ═══ */}
-      <DataTicker items={MOCK_TICKER} />
+      {/* ═══ SECTION 5: AI DATA TICKER — bg-deep ═══ */}
+      <DataTicker items={AI_TICKER} />
     </div>
   );
 }

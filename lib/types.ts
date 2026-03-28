@@ -33,4 +33,4 @@ export interface Post extends PostMeta {
   content: string;
 }
 
-export type CategorySlug = "ai-finance" | "risk-compliance" | "enterprise-tech" | "energy-esg";
+export type CategorySlug = "ai-strategy" | "implementation" | "operations-finance" | "risk-governance" | "industry-signals";

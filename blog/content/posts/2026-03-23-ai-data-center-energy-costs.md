@@ -12,13 +12,13 @@ keywords:
   - "net-zero pledges carbon removal"
 author: "FinTech Editorial"
 tags:
-  - "AI Infrastructure"
+  - "Implementation"
   - "Energy Finance"
   - "ESG Risk Management"
-  - "Carbon Markets"
+  - "Industry Signals"
   - "Utility Sector"
   - "Hyperscaler Investment"
-categories: ["Energy & ESG", "AI Infrastructure", "Carbon Markets"]
+categories: ["Industry Signals", "Implementation", "Industry Signals"]
 cover:
   image: "https://images.pexels.com/photos/5480781/pexels-photo-5480781.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200"
   alt: "Data center power grid infrastructure with electrical systems and energy distribution"

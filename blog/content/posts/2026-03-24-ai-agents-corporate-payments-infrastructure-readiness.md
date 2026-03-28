@@ -12,11 +12,11 @@ keywords:
 author: "Editorial Team"
 tags:
   - "AI"
-  - "Fintech"
-  - "Payments"
+  - "Operations & Finance"
+  - "Operations & Finance"
   - "Compliance"
   - "Enterprise Finance"
-categories: ["AI & Finance", "Payments", "Fintech Infrastructure"]
+categories: ["AI Strategy", "Operations & Finance", "Operations & Finance"]
 cover:
   image: "https://images.pexels.com/photos/7793102/pexels-photo-7793102.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200"
   alt: "Abstract digital visualization of artificial intelligence and autonomous financial transactions with interconnected nodes and data flow"

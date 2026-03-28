@@ -5,8 +5,8 @@ slug: "explainable-ai-capital-problem-fca"
 description: "The FCA's mandate for explainable AI in financial decision-making forces fintech firms to build interpretability as permanent infrastructure, not as a one-time technical fix. Learn why compliance is reshaping competitive advantage in retail financial services."
 keywords: ["explainable AI fintech", "FCA AI regulation", "interpretability financial services", "AI compliance costs", "regulatory moat fintech"]
 author: "Particle"
-tags: ["AI Regulation", "Fintech Compliance", "Explainable AI"]
-categories: ["Risk & Compliance", "Regulatory Analysis", "Explainable AI"]
+tags: ["Risk & Governance", "Fintech Compliance", "AI Strategy"]
+categories: ["Risk & Governance", "Risk & Governance", "AI Strategy"]
 cover:
   image: "https://images.pexels.com/photos/7561314/pexels-photo-7561314.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200"
   alt: "Regulatory compliance audit trail and documentation systems"

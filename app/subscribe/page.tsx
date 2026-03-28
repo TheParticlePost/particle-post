@@ -25,15 +25,15 @@ export default function SubscribePage() {
       {/* Hero — centered (exception to left-align rule) */}
       <section className="min-h-[80vh] flex items-center justify-center px-4 sm:px-6">
         <div className="text-center max-w-2xl mx-auto">
-          <OverlineLabel className="mb-6 block">AI-Powered Intelligence</OverlineLabel>
+          <OverlineLabel className="mb-6 block">Twice Daily · Free</OverlineLabel>
 
           <h1 className="font-display text-display-hero text-text-primary mb-6 tracking-[-0.02em]">
-            The AI briefing 12,000 leaders read before markets open.
+            The AI briefing that helps leaders make better decisions.
           </h1>
 
           <p className="text-body-lg text-text-secondary mb-8 max-w-lg mx-auto">
-            High-frequency market intelligence synthesized from the noise of global
-            business. Direct to your inbox, curated for those who drive the future.
+            Implementation strategies and operational intelligence — in your inbox
+            before your first meeting.
           </p>
 
           <div className="max-w-md mx-auto mb-4">

@@ -16,8 +16,7 @@ tags:
   - "AI Compliance"
   - "Model Validation"
   - "Financial Services AI"
-categories:
-  - "AI Risk Management"
+categories: ["Risk & Governance", "Implementation"]
 cover:
   image: "https://images.pexels.com/photos/7567443/pexels-photo-7567443.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200"
   alt: "Financial data analysis with AI dashboard visualization"

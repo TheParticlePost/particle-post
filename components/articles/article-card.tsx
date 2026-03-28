@@ -79,11 +79,8 @@ export function ArticleCard({
         </p>
 
         {/* Footer — IBM Plex Mono metadata */}
-        <div className="flex items-center justify-between pt-1">
+        <div className="flex items-center pt-1">
           <ReadingTime minutes={readingTime} />
-          <span className="text-caption text-accent opacity-0 group-hover:opacity-100 transition-opacity duration-[180ms]">
-            Read more &rarr;
-          </span>
         </div>
       </div>
     </Link>

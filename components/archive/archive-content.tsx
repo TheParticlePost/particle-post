@@ -10,10 +10,11 @@ import { slugify } from "@/lib/utils";
 
 const FILTERS = [
   { slug: "all", label: "All" },
-  { slug: "ai-finance", label: "AI & Finance" },
-  { slug: "risk-compliance", label: "Risk & Compliance" },
-  { slug: "enterprise-tech", label: "Enterprise Tech" },
-  { slug: "energy-esg", label: "Energy & ESG" },
+  { slug: "ai-strategy", label: "AI Strategy" },
+  { slug: "implementation", label: "Implementation" },
+  { slug: "operations-finance", label: "Operations & Finance" },
+  { slug: "risk-governance", label: "Risk & Governance" },
+  { slug: "industry-signals", label: "Industry Signals" },
 ];
 
 interface ArticleMeta {

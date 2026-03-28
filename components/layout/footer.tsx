@@ -32,8 +32,8 @@ export function Footer() {
               </span>
             </div>
             <p className="text-body-sm text-text-secondary max-w-xs">
-              AI-powered insights at the intersection of finance, technology,
-              and energy.
+              Particle Post helps business leaders implement AI. Twice-daily
+              briefings on strategy, operations, and the decisions that matter.
             </p>
           </div>
 
@@ -80,7 +80,7 @@ export function Footer() {
             &copy; {year} Particle Post. All rights reserved.
           </p>
           <p className="font-mono text-caption text-text-muted">
-            Built with AI. Curated by humans.
+            Research-grade intelligence. Delivered daily.
           </p>
         </div>
       </div>

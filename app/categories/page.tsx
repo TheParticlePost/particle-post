@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Categories",
-  description: "Browse articles by topic: AI & Finance, Risk & Compliance, Enterprise Tech, and Energy & ESG.",
+  description: "Browse articles by topic: AI Strategy, Implementation, Operations & Finance, Risk & Governance, and Industry Signals.",
 };
 
 export default function CategoriesPage() {

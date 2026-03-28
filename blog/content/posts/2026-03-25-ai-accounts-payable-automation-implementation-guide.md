@@ -13,11 +13,11 @@ keywords:
 author: ""
 tags:
   - "Accounts Payable"
-  - "AP Automation"
-  - "Agentic AI"
-  - "Finance Operations"
+  - "Operations & Finance"
+  - "AI Strategy"
+  - "Operations & Finance"
   - "Implementation Guide"
-categories: ["Enterprise Tech", "Finance Operations", "AP Automation"]
+categories: ["Implementation", "Operations & Finance", "Operations & Finance"]
 cover:
   image: "https://images.pexels.com/photos/7681091/pexels-photo-7681091.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200"
   alt: "Finance professional reviewing automated invoice processing dashboard on laptop"

@@ -12,26 +12,36 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "Particle Post",
+    default: "Particle Post | AI Briefings for Business Leaders",
     template: "%s | Particle Post",
   },
   description:
-    "AI-powered insights at the intersection of finance, technology, and energy. Deep analysis on fintech, risk management, and enterprise innovation.",
+    "Twice-daily AI briefings for business leaders. Implementation strategies, operational decisions, and what actually works — delivered before markets open.",
   metadataBase: new URL("https://theparticlepost.com"),
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+  },
+  manifest: "/site.webmanifest",
   openGraph: {
     type: "website",
     locale: "en_US",
+    url: "https://theparticlepost.com",
     siteName: "Particle Post",
     title: "Particle Post",
     description:
-      "AI-powered insights at the intersection of finance, technology, and energy.",
+      "Twice-daily AI briefings for business leaders. Implementation strategies, operational decisions, and what actually works.",
     images: [{ url: "/og-image.svg", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Particle Post",
     description:
-      "AI-powered insights at the intersection of finance, technology, and energy.",
+      "Twice-daily AI briefings for business leaders.",
   },
   robots: {
     index: true,

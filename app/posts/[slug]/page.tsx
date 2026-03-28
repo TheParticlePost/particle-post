@@ -14,6 +14,8 @@ import { RelatedArticles } from "@/components/articles/related-articles";
 import { ScrollProgress } from "@/components/effects/scroll-progress";
 import { SidebarRelated } from "@/components/articles/sidebar-related";
 import { MarketSnapshot } from "@/components/articles/market-snapshot";
+import { JsonLd } from "@/components/seo/json-ld";
+import { generateArticleJsonLd, generateFaqJsonLd } from "@/lib/structured-data";
 import { formatDate } from "@/lib/utils";
 import type { Metadata } from "next";
 
@@ -61,6 +63,12 @@ export default async function PostPage({ params }: PageProps) {
 
   return (
     <>
+      {/* Structured data (JSON-LD) */}
+      <JsonLd data={generateArticleJsonLd(post)} />
+      {post.faq_pairs && post.faq_pairs.length > 0 && (
+        <JsonLd data={generateFaqJsonLd(post) as Record<string, unknown>} />
+      )}
+
       {/* 3px vermillion progress bar */}
       <ScrollProgress />
 

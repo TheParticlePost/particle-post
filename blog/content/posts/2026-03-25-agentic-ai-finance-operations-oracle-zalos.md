@@ -12,12 +12,12 @@ keywords:
   - "Oracle Action Unit pricing"
 author: ""
 tags:
-  - "Agentic AI"
+  - "AI Strategy"
   - "Oracle"
-  - "ERP Automation"
-  - "Finance Operations"
-  - "CFO Technology"
-categories: ["Enterprise Tech", "Agentic AI", "ERP Automation"]
+  - "Implementation"
+  - "Operations & Finance"
+  - "Operations & Finance"
+categories: ["Implementation", "AI Strategy", "Implementation"]
 cover:
   image: "https://images.pexels.com/photos/5717797/pexels-photo-5717797.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200"
   alt: "Professional analyzing financial data and workflow automation on computer dashboard"

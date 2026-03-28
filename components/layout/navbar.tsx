@@ -14,7 +14,6 @@ import { cn } from "@/lib/utils";
 const NAV_LINKS = [
   { href: "/", label: "Briefings" },
   { href: "/categories/", label: "Deep Dives" },
-  { href: "/categories/ai-finance/", label: "Markets" },
   { href: "/archive/", label: "Archive" },
 ];
 
