@@ -94,7 +94,7 @@ export function ResetPasswordForm() {
           <p className="text-body-sm text-[#ef4444]">{error}</p>
         )}
 
-        <Button type="submit" variant="primary" size="md" className="w-full" disabled={loading}>
+        <Button type="submit" variant="primary" size="default" className="w-full" disabled={loading}>
           {loading ? "Updating..." : "Update Password"}
         </Button>
       </form>

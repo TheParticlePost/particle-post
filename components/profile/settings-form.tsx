@@ -208,7 +208,7 @@ export function SettingsForm({ profile }: SettingsFormProps) {
             <Button
               type="submit"
               variant="primary"
-              size="md"
+              size="default"
               disabled={profileState === "loading"}
             >
               {profileState === "loading" ? "Saving..." : "Save"}
@@ -266,7 +266,7 @@ export function SettingsForm({ profile }: SettingsFormProps) {
             <Button
               type="submit"
               variant="primary"
-              size="md"
+              size="default"
               disabled={passwordState === "loading"}
             >
               {passwordState === "loading" ? "Updating..." : "Update Password"}
@@ -287,7 +287,7 @@ export function SettingsForm({ profile }: SettingsFormProps) {
         <div className="flex flex-col sm:flex-row gap-3">
           <Button
             variant="secondary"
-            size="md"
+            size="default"
             onClick={() => handleLinkIdentity("google")}
             disabled={linkingProvider !== null}
           >
@@ -301,7 +301,7 @@ export function SettingsForm({ profile }: SettingsFormProps) {
           </Button>
           <Button
             variant="secondary"
-            size="md"
+            size="default"
             onClick={() => handleLinkIdentity("github")}
             disabled={linkingProvider !== null}
           >

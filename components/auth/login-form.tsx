@@ -112,7 +112,7 @@ function LoginFormInner() {
           <p className="text-body-sm text-[#ef4444]">{error}</p>
         )}
 
-        <Button type="submit" variant="primary" size="md" className="w-full" disabled={loading}>
+        <Button type="submit" variant="primary" size="default" className="w-full" disabled={loading}>
           {loading ? "Logging in..." : "Log In"}
         </Button>
       </form>
@@ -127,7 +127,7 @@ function LoginFormInner() {
         <Button
           type="button"
           variant="secondary"
-          size="md"
+          size="default"
           className="flex-1"
           onClick={() => handleOAuth("google")}
         >
@@ -154,7 +154,7 @@ function LoginFormInner() {
         <Button
           type="button"
           variant="secondary"
-          size="md"
+          size="default"
           className="flex-1"
           onClick={() => handleOAuth("github")}
         >

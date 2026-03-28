@@ -83,7 +83,7 @@ export function ProfileView({ profile }: ProfileViewProps) {
 
           {/* Edit button */}
           <Link href="/settings" className="mt-2">
-            <Button variant="secondary" size="md">
+            <Button variant="secondary" size="default">
               Edit Profile
             </Button>
           </Link>

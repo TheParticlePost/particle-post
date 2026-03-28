@@ -88,7 +88,7 @@ export function SignupForm() {
         <div className="w-full flex flex-col gap-2">
           <Button
             variant="primary"
-            size="md"
+            size="default"
             className="w-full"
             onClick={() => router.push("/")}
           >
@@ -96,7 +96,7 @@ export function SignupForm() {
           </Button>
           <Button
             variant="secondary"
-            size="md"
+            size="default"
             className="w-full"
             onClick={() => router.push("/login")}
           >
@@ -185,7 +185,7 @@ export function SignupForm() {
           <p className="text-body-sm text-[#ef4444]">{error}</p>
         )}
 
-        <Button type="submit" variant="primary" size="md" className="w-full" disabled={loading}>
+        <Button type="submit" variant="primary" size="default" className="w-full" disabled={loading}>
           {loading ? "Creating account..." : "Sign Up"}
         </Button>
       </form>

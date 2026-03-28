@@ -310,7 +310,7 @@ export default async function StrategyPage() {
                               {Math.round(theme.weight * 100)}%
                             </p>
                           </div>
-                          <div className="w-full bg-[var(--bg-primary)] rounded-full h-2 mb-2">
+                          <div className="w-full bg-bg-base rounded-full h-2 mb-2">
                             <div
                               className="bg-accent rounded-full h-2 transition-all"
                               style={{ width: `${theme.weight * 100}%` }}

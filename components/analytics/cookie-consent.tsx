@@ -42,10 +42,10 @@ export function CookieConsent() {
         We use cookies to improve your experience and analyze site usage.
       </p>
       <div className="flex items-center gap-2">
-        <Button variant="primary" size="sm" onClick={accept}>
+        <Button variant="primary" size="compact" onClick={accept}>
           Accept
         </Button>
-        <Button variant="ghost" size="sm" onClick={decline}>
+        <Button variant="ghost" size="compact" onClick={decline}>
           Decline
         </Button>
       </div>

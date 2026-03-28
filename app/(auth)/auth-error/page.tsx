@@ -37,7 +37,7 @@ function AuthErrorContent() {
         <p className="text-body-sm text-text-secondary">{errorDescription}</p>
       </div>
       <Link href="/login" className="w-full">
-        <Button variant="primary" size="md" className="w-full">
+        <Button variant="primary" size="default" className="w-full">
           Back to Log In
         </Button>
       </Link>

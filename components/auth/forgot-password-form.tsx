@@ -68,7 +68,7 @@ export function ForgotPasswordForm() {
           </p>
         </div>
         <Link href="/login" className="w-full">
-          <Button variant="secondary" size="md" className="w-full">
+          <Button variant="secondary" size="default" className="w-full">
             Back to Log In
           </Button>
         </Link>
@@ -107,7 +107,7 @@ export function ForgotPasswordForm() {
           <p className="text-body-sm text-[#ef4444]">{error}</p>
         )}
 
-        <Button type="submit" variant="primary" size="md" className="w-full" disabled={loading}>
+        <Button type="submit" variant="primary" size="default" className="w-full" disabled={loading}>
           {loading ? "Sending..." : "Send Reset Link"}
         </Button>
       </form>

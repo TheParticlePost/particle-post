@@ -88,7 +88,7 @@ export function SubscribeForm({ compact = false, className }: SubscribeFormProps
       <Button
         type="submit"
         variant="primary"
-        size="md"
+        size="default"
         disabled={state === "loading"}
         className="shrink-0"
       >
