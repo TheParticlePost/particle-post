@@ -2,8 +2,11 @@ import path from "path";
 import fs from "fs/promises";
 import { WidgetCard } from "@/components/admin/widget-card";
 import { AgentCard } from "@/components/admin/widgets/agent-card";
+import { AgentRunButton } from "@/components/admin/widgets/agent-run-button";
 import { RejectionLog } from "@/components/admin/widgets/rejection-log";
 import { WriterFeedback } from "@/components/admin/widgets/writer-feedback";
+import { ApiCosts } from "@/components/admin/widgets/api-costs";
+import { HumanPostDialog } from "@/components/admin/widgets/human-post-dialog";
 
 // --- SVG icons for agents ---
 const PenIcon = (
@@ -75,6 +78,18 @@ interface AgentInfo {
   schedule: string;
   lastActivity: string | null;
   icon: React.ReactNode;
+  workflow: string;
+}
+
+interface CostLogEntry {
+  timestamp: string;
+  slot: string;
+  prompt_tokens: number;
+  completion_tokens: number;
+  total_tokens: number;
+  estimated_cost_usd: number;
+  successful_requests: number;
+  verdict: string;
 }
 
 async function getLatestPostDate(): Promise<string | null> {
@@ -176,9 +191,33 @@ async function getLatestFeedbackDate(
   feedback: FeedbackEntry[]
 ): Promise<string | null> {
   if (feedback.length === 0) return null;
-  // Feedback is appended chronologically; last entry is most recent
   const last = feedback[feedback.length - 1];
   return last.date ? last.date.split("T")[0] : null;
+}
+
+async function getCostLogs(): Promise<CostLogEntry[]> {
+  try {
+    const dir = path.join(process.cwd(), "pipeline/logs/costs");
+    const entries = await fs.readdir(dir);
+    const jsonFiles = entries
+      .filter((f) => f.endsWith(".json"))
+      .sort()
+      .reverse()
+      .slice(0, 30);
+
+    const results: CostLogEntry[] = [];
+    for (const file of jsonFiles) {
+      try {
+        const raw = await fs.readFile(path.join(dir, file), "utf-8");
+        results.push(JSON.parse(raw));
+      } catch {
+        // Skip malformed files
+      }
+    }
+    return results;
+  } catch {
+    return [];
+  }
 }
 
 export default async function PipelinePage() {
@@ -198,6 +237,8 @@ export default async function PipelinePage() {
 
   const latestFeedbackDate = await getLatestFeedbackDate(writerFeedback);
 
+  const costLogs = await getCostLogs();
+
   // Build agent info
   const agents: AgentInfo[] = [
     {
@@ -205,36 +246,42 @@ export default async function PipelinePage() {
       schedule: "Daily at 8:00 AM UTC",
       lastActivity: latestPostDate,
       icon: PenIcon,
+      workflow: "morning-post.yml",
     },
     {
       name: "Evening Post",
       schedule: "Daily at 6:00 PM UTC",
       lastActivity: latestPostDate,
       icon: MoonIcon,
+      workflow: "evening-post.yml",
     },
     {
       name: "Marketing Director",
       schedule: "Daily report generation",
       lastActivity: latestMarketingDate,
       icon: MegaphoneIcon,
+      workflow: "marketing-director.yml",
     },
     {
       name: "Security Audit",
       schedule: "Weekly security scan",
       lastActivity: latestSecurityDate,
       icon: ShieldIcon,
+      workflow: "security-audit.yml",
     },
     {
       name: "Content Audit",
       schedule: "Weekly content quality review",
       lastActivity: latestFeedbackDate,
       icon: ClipboardIcon,
+      workflow: "content-audit.yml",
     },
     {
       name: "UI Designer",
       schedule: "On-demand design iterations",
       lastActivity: null,
       icon: PaletteIcon,
+      workflow: "ui-designer.yml",
     },
   ];
 
@@ -243,13 +290,16 @@ export default async function PipelinePage() {
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="font-display text-display-lg text-foreground">
-          Agent Monitor
-        </h1>
-        <p className="text-body-sm text-foreground-muted mt-1">
-          Pipeline agent status, editorial feedback, and rejection logs.
-        </p>
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="font-display text-display-lg text-foreground">
+            Agent Monitor
+          </h1>
+          <p className="text-body-sm text-foreground-muted mt-1">
+            Pipeline agent status, editorial feedback, and rejection logs.
+          </p>
+        </div>
+        <HumanPostDialog />
       </div>
 
       {/* Agent status grid */}
@@ -262,9 +312,16 @@ export default async function PipelinePage() {
               schedule={agent.schedule}
               lastActivity={agent.lastActivity}
               icon={agent.icon}
-            />
+            >
+              <AgentRunButton workflow={agent.workflow} />
+            </AgentCard>
           ))}
         </div>
+      </WidgetCard>
+
+      {/* API Cost Tracking */}
+      <WidgetCard title="API Costs">
+        <ApiCosts logs={costLogs} />
       </WidgetCard>
 
       {/* Two column grid for feedback and rejections */}

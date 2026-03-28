@@ -79,12 +79,12 @@ Believe the direction. Be sceptical of the timeline. Visa's infrastructure work 
 
 ## Sources
 
-- Visa Agentic Ready Programme (March 2026)
-- Visa Trusted Agent Protocol (October 2025)
-- TRM Labs, AI-enabled Financial Scams Report (2025)
-- Deloitte, Financial Services AI Research (Late 2025)
-- ChargebackX 2025 Conference
-- Vendo Services, Industry Analysis on Payment Liability
-- FINRA's 2026 Annual Regulatory Oversight Report
-- NASCUS Analysis (February 2026)
-- Gravitee State of AI Agent Security 2026 Report
+1. Visa Agentic Ready Programme (March 2026).
+2. Visa Trusted Agent Protocol (October 2025).
+3. TRM Labs, "AI-enabled Financial Scams Report (2025)."
+4. Deloitte, "Financial Services AI Research (Late 2025)."
+5. ChargebackX 2025 Conference.
+6. Vendo Services, "Industry Analysis on Payment Liability."
+7. FINRA's 2026 Annual Regulatory Oversight Report.
+8. NASCUS Analysis (February 2026).
+9. Gravitee State of AI Agent Security 2026 Report.

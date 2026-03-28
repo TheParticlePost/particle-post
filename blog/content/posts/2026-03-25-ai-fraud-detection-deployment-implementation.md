@@ -89,7 +89,7 @@ Build this review into your project plan before go-live. It should cover model p
 
 ## Sources
 
-- https://www.abrigo.com/blog/how-ai-is-used-in-fraud-detection/
-- https://www.biocatch.com/ai-fraud-financial-crime-survey
-- https://www.feedzai.com/blog/what-is-ai-fraud-detection/
-- https://www.ai21.com/knowledge/ai-based-fraud-detection-banking/
+1. abrigo.com. https://www.abrigo.com/blog/how-ai-is-used-in-fraud-detection/
+2. biocatch.com. https://www.biocatch.com/ai-fraud-financial-crime-survey
+3. feedzai.com. https://www.feedzai.com/blog/what-is-ai-fraud-detection/
+4. ai21.com. https://www.ai21.com/knowledge/ai-based-fraud-detection-banking/

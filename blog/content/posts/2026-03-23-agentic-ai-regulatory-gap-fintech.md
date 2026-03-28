@@ -67,5 +67,5 @@ Firms that treat agentic AI governance as a legal formality will face the most e
 
 ## Sources
 
-- Taylor Wessing. (2026). Fintech Outlook 2026. https://www.taylorwessing.com/en/insights-and-events/insights/2026/01/fintech-outlook-2026
-- FinTech Futures. https://www.fintechfutures.com/
+1. Taylor Wessing. (2026). Fintech Outlook 2026. https://www.taylorwessing.com/en/insights-and-events/insights/2026/01/fintech-outlook-2026
+2. FinTech Futures. https://www.fintechfutures.com/

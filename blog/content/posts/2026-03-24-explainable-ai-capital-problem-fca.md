@@ -75,10 +75,10 @@ Explainable AI mandates are real, enforceable, and accelerating under the FCA's 
 
 ## Sources
 
-- Fintech Global. "Explainable Redress Decisions: What the FCA Demands." March 20, 2026. https://fintech.global/2026/03/20/explainable-redress-decisions-what-the-fca-demands/
-- Financial Conduct Authority. "FCA Long-Term Review of AI in Retail Financial Services: Designing for the Unknown." https://www.fca.org.uk/news/speeches/fca-long-term-review-ai-retail-financial-services-designing-unknown
-- Financial Conduct Authority. "Review of the Long-Term Impact of AI on Retail Financial Services (Mills Review)." https://www.fca.org.uk/publications/calls-input/review-long-term-impact-ai-retail-financial-services-mills-review
-- relevant.software. "2026 Fintech Compliance Report." 2026.
-- CEPS. "Quality Management Systems for High-Risk AI Products: Cost Analysis." 2026.
-- Baker McKenzie. "Analysis of the Mills Review: Board Recommendations and Regulatory Direction." 2026.
-- BIS Financial Stability Institute. "Technical Limits to Post-Hoc Explainability in Deep Neural Networks." 2025.
+1. Fintech Global. "Explainable Redress Decisions: What the FCA Demands." March 20, 2026. https://fintech.global/2026/03/20/explainable-redress-decisions-what-the-fca-demands/
+2. Financial Conduct Authority. "FCA Long-Term Review of AI in Retail Financial Services: Designing for the Unknown." https://www.fca.org.uk/news/speeches/fca-long-term-review-ai-retail-financial-services-designing-unknown
+3. Financial Conduct Authority. "Review of the Long-Term Impact of AI on Retail Financial Services (Mills Review)." https://www.fca.org.uk/publications/calls-input/review-long-term-impact-ai-retail-financial-services-mills-review
+4. relevant.software. "2026 Fintech Compliance Report." 2026.
+5. CEPS. "Quality Management Systems for High-Risk AI Products: Cost Analysis." 2026.
+6. Baker McKenzie. "Analysis of the Mills Review: Board Recommendations and Regulatory Direction." 2026.
+7. BIS Financial Stability Institute. "Technical Limits to Post-Hoc Explainability in Deep Neural Networks." 2025.

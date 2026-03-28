@@ -37,7 +37,7 @@ DO NOT REMOVE (GSO requirements, these must survive editing):
 - Answer-first paragraphs immediately after question H2s (40-60 word direct answers)
 - ## Frequently Asked Questions section (required for FAQPage schema)
 - KEY TAKEAWAY callout (Formatter converts to blockquote)
-- ## Sources section (attribution requirement)
+- ## Sources section (attribution requirement) — must use numbered format: `1. Source Name, "Title." URL`
 - Internal links to /posts/ slugs (SEO internal linking)
 - Stat markers: STAT: [number] | [label] | [source] (Formatter converts to shortcode)
 

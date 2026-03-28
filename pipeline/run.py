@@ -713,6 +713,13 @@ def main() -> None:
         issues   = verdict.get("issues", [])
         coaching = verdict.get("coaching_notes", [])
 
+        # Log API cost
+        try:
+            from pipeline.utils.cost_logger import save_cost_log
+            save_cost_log(result.token_usage, args.slot, attempt, decision)
+        except Exception as cost_err:
+            print(f"  [Cost Logger] Warning: {cost_err}")
+
         print(f"\n{'='*60}")
         print(f"  PRODUCTION DIRECTOR: {decision}  (score {score}/100)")
         if issues:

@@ -97,9 +97,9 @@ Nation-state tactics are not exotic. They rely on the same access control failur
 
 ## Sources
 
-1. https://www.ibm.com/reports/data-breach
-2. https://www.cisa.gov/
-3. https://www.nist.gov/cybersecurity-framework
-4. https://www.microsoft.com/en-us/security/security-insider/microsoft-digital-defense-report-2024
-5. https://attack.mitre.org/
-6. https://smallwarsjournal.com/2026/03/25/2026-worldwide-threats-hearing
+1. ibm.com. https://www.ibm.com/reports/data-breach
+2. cisa.gov. https://www.cisa.gov/
+3. nist.gov. https://www.nist.gov/cybersecurity-framework
+4. microsoft.com. https://www.microsoft.com/en-us/security/security-insider/microsoft-digital-defense-report-2024
+5. attack.mitre.org. https://attack.mitre.org/
+6. smallwarsjournal.com. https://smallwarsjournal.com/2026/03/25/2026-worldwide-threats-hearing

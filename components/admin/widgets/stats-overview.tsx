@@ -4,6 +4,7 @@ interface StatsOverviewProps {
   postCount: number;
   subscriberCount: number;
   postsThisMonth: number;
+  impressions?: number;
 }
 
 interface StatCardProps {
@@ -43,15 +44,26 @@ export function StatsOverview({
   postCount,
   subscriberCount,
   postsThisMonth,
+  impressions,
 }: StatsOverviewProps) {
-  const avgPerWeek = postsThisMonth > 0 ? (postsThisMonth / 4).toFixed(1) : "0";
+  const formattedImpressions =
+    impressions && impressions > 0
+      ? impressions >= 1000
+        ? `${(impressions / 1000).toFixed(1)}K`
+        : impressions.toString()
+      : "0";
 
   return (
     <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
       <StatCard label="Total Posts" value={postCount} accent />
       <StatCard label="Subscribers" value={subscriberCount} accent />
       <StatCard label="This Month" value={postsThisMonth} subtitle="posts published" />
-      <StatCard label="Avg / Week" value={avgPerWeek} subtitle="this month" />
+      <StatCard
+        label="Impressions"
+        value={formattedImpressions}
+        accent
+        subtitle="GSC search"
+      />
     </div>
   );
 }

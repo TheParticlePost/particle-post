@@ -12,6 +12,7 @@ on:
           - images
           - links
           - style
+          - sources
           - all
       file_pattern:
         description: "File glob pattern (default: all posts)"

@@ -89,10 +89,10 @@ Third, vendors conflate prevented fraud with net savings. Prevented fraud is a g
 
 ## Sources
 
-- Visa Corporate. "Visa Protect: AI Fraud Detection Insights." https://corporate.visa.com/en/solutions/visa-protect/insights/ai-fraud-detection.html
-- Mastercard. "2025 Payment Fraud Prevention Report." Produced with Financial Times Longitude.
-- Modernize.io. "JPMorgan Chase's AI-Driven Fraud Detection and Technology Investment Overview." https://www.linkedin.com/posts/dr-mongi-hamdi-22372724_jpmorgan-chases-ai-driven-fraud-detection-activity-7420460464398049280
-- CNBC. "Visa Reports $40 Billion in Prevented Fraud." Interview with James Mirfin, July 2024.
-- The Payments Association & Payments Intelligence. "2025 Consumer Behaviour Survey: Declined Transactions and Cardholder Experience."
-- PlusAI. "AI in Financial Services: Real ROI Data." https://plusai.com/blog/ai-in-financial-services-real-roi-data
-- Emburse. "AI Fraud Detection in Banking." https://www.emburse.com/resources/ai-fraud-detection-in-banking
+1. Visa Corporate. "Visa Protect: AI Fraud Detection Insights." https://corporate.visa.com/en/solutions/visa-protect/insights/ai-fraud-detection.html
+2. Mastercard. "2025 Payment Fraud Prevention Report." Produced with Financial Times Longitude.
+3. Modernize.io. "JPMorgan Chase's AI-Driven Fraud Detection and Technology Investment Overview." https://www.linkedin.com/posts/dr-mongi-hamdi-22372724_jpmorgan-chases-ai-driven-fraud-detection-activity-7420460464398049280
+4. CNBC. "Visa Reports $40 Billion in Prevented Fraud." Interview with James Mirfin, July 2024.
+5. The Payments Association & Payments Intelligence. "2025 Consumer Behaviour Survey: Declined Transactions and Cardholder Experience."
+6. PlusAI. "AI in Financial Services: Real ROI Data." https://plusai.com/blog/ai-in-financial-services-real-roi-data
+7. Emburse. "AI Fraud Detection in Banking." https://www.emburse.com/resources/ai-fraud-detection-in-banking

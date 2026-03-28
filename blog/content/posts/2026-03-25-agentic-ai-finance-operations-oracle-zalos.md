@@ -126,11 +126,11 @@ For organizations ready to move from evaluation to deployment, [our implementati
 
 ## Sources
 
-1. https://www.oracle.com/news/announcement/oracle-introduces-fusion-agentic-applications-2026-03-24/
-2. https://www.oracle.com/applications/fusion-ai/how-to-create-ai-agent/
-3. https://www.cio.com/article/4149291/oracle-bets-on-agentic-apps-in-fusion-suite-to-fully-automate-business-processes.html
-4. https://siliconangle.com/2026/03/24/zalos-raises-3-6m-develop-erp-computer-agents-operate-finance-systems-like-humans/
-5. https://www.globenewswire.com/news-release/2026/03/24/3261268/0/en/Zalos-raises-3-6M-to-build-Computer-Agents-that-operate-finance-systems-the-way-humans-do/
-6. https://drj.com/industry_news/zalos-raises-3-6m-to-build-computer-agents-that-operate-finance-systems-the-way-humans-do/
-7. https://www.erpresearch.com/blog/en-us/blog/oracle-erp-cloud-implementation-cost-breakdown
-8. https://www.pymnts.com/artificial-intelligence-2/2026/oracle-launches-tools-to-help-enterprises-deploy-ai-agents/
+1. oracle.com. https://www.oracle.com/news/announcement/oracle-introduces-fusion-agentic-applications-2026-03-24/
+2. oracle.com. https://www.oracle.com/applications/fusion-ai/how-to-create-ai-agent/
+3. cio.com. https://www.cio.com/article/4149291/oracle-bets-on-agentic-apps-in-fusion-suite-to-fully-automate-business-processes.html
+4. siliconangle.com. https://siliconangle.com/2026/03/24/zalos-raises-3-6m-develop-erp-computer-agents-operate-finance-systems-like-humans/
+5. globenewswire.com. https://www.globenewswire.com/news-release/2026/03/24/3261268/0/en/Zalos-raises-3-6M-to-build-Computer-Agents-that-operate-finance-systems-the-way-humans-do/
+6. drj.com. https://drj.com/industry_news/zalos-raises-3-6m-to-build-computer-agents-that-operate-finance-systems-the-way-humans-do/
+7. erpresearch.com. https://www.erpresearch.com/blog/en-us/blog/oracle-erp-cloud-implementation-cost-breakdown
+8. pymnts.com. https://www.pymnts.com/artificial-intelligence-2/2026/oracle-launches-tools-to-help-enterprises-deploy-ai-agents/

@@ -147,9 +147,9 @@ For organizations ready to move from evaluation to deployment, the [AI accounts 
 
 ## Sources
 
-1. https://blogs.nvidia.com/blog/ai-future-open-and-proprietary/
-2. https://aws.amazon.com/blogs/machine-learning/reinforcement-fine-tuning-on-amazon-bedrock-with-openai-compatible-apis-a-technical-walkthrough/
-3. https://fortune.com/2026/03/25/the-roi-for-ai-isnt-one-size-fits-all-says-data-storage-cto/
-4. https://openai.com/pricing
-5. https://aws.amazon.com/ec2/pricing/
-6. https://www.levels.fyi/
+1. blogs.nvidia.com. https://blogs.nvidia.com/blog/ai-future-open-and-proprietary/
+2. aws.amazon.com. https://aws.amazon.com/blogs/machine-learning/reinforcement-fine-tuning-on-amazon-bedrock-with-openai-compatible-apis-a-technical-walkthrough/
+3. fortune.com. https://fortune.com/2026/03/25/the-roi-for-ai-isnt-one-size-fits-all-says-data-storage-cto/
+4. openai.com. https://openai.com/pricing
+5. aws.amazon.com. https://aws.amazon.com/ec2/pricing/
+6. levels.fyi. https://www.levels.fyi/

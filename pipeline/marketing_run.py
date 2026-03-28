@@ -404,6 +404,13 @@ def main() -> None:
 
     result = crew.kickoff()
 
+    # Log API cost
+    try:
+        from pipeline.utils.cost_logger import save_cost_log
+        save_cost_log(result.token_usage, "marketing", 1, "N/A")
+    except Exception as cost_err:
+        print(f"  [Cost Logger] Warning: {cost_err}")
+
     # Marketing Director output is the first task
     md_raw  = result.tasks_output[0].raw if result.tasks_output else ""
     # SEO noon task output is the second task

@@ -95,8 +95,8 @@ Oracle's rebuild does not prove that agentic finance operations reduce audit ris
 
 ## Sources
 
-- https://siliconangle.com/2026/03/24/oracle-fusion-agentic-applications-signal-shift-toward-autonomous-enterprise-software/
-- https://www.thehindubusinessline.com/info-tech/oracle-reworks-its-finance-procurement-apps-for-ai-agents/article70778489.ece
-- https://www.channelnewsasia.com/business/oracle-reworks-its-finance-procurement-apps-ai-agents-6013181
-- https://siliconangle.com/2026/03/24/zalos-raises-3-6m-develop-erp-computer-agents-operate-finance-systems-like-humans/
-- https://www.pymnts.com/accounts-payable/2026/the-back-office-gets-smarter-as-ai-transforms-supplier-payments/
+1. siliconangle.com. https://siliconangle.com/2026/03/24/oracle-fusion-agentic-applications-signal-shift-toward-autonomous-enterprise-software/
+2. thehindubusinessline.com. https://www.thehindubusinessline.com/info-tech/oracle-reworks-its-finance-procurement-apps-for-ai-agents/article70778489.ece
+3. channelnewsasia.com. https://www.channelnewsasia.com/business/oracle-reworks-its-finance-procurement-apps-ai-agents-6013181
+4. siliconangle.com. https://siliconangle.com/2026/03/24/zalos-raises-3-6m-develop-erp-computer-agents-operate-finance-systems-like-humans/
+5. pymnts.com. https://www.pymnts.com/accounts-payable/2026/the-back-office-gets-smarter-as-ai-transforms-supplier-payments/

@@ -74,13 +74,13 @@ The strategic question for 2026 is not the size of the AI budget. It is whether 
 
 ## Sources
 
-- Broadridge Financial Solutions, 2025 Digital Transformation & Next-Gen Technology Study
-- Broadridge / StockTitan, Gen AI Delivering Now, 2026 Study
-- Menlo Ventures, 2025 State of Generative AI in the Enterprise
-- Upstart Q4 and Full Year 2025 Results
-- Upstart AI Underwriting Edge, deBanked
-- Technavio, Generative AI in Fintech Market 2025–2029
-- Innovate Finance, Fintech Investment Landscape 2025
-- Gartner, Finance AI Adoption Survey 2025
-- Marqeta, AI in Payments and Fintech 2025
-- Banks and Bankers, AI Fintech Trends 2026
+1. Broadridge Financial Solutions, "2025 Digital Transformation & Next-Gen Technology Study."
+2. Broadridge / StockTitan, "Gen AI Delivering Now, 2026 Study."
+3. Menlo Ventures, "2025 State of Generative AI in the Enterprise."
+4. Upstart Q4 and Full Year 2025 Results.
+5. Upstart AI Underwriting Edge, "deBanked."
+6. Technavio, "Generative AI in Fintech Market 2025–2029."
+7. Innovate Finance, "Fintech Investment Landscape 2025."
+8. Gartner, "Finance AI Adoption Survey 2025."
+9. Marqeta, "AI in Payments and Fintech 2025."
+10. Banks and Bankers, "AI Fintech Trends 2026."

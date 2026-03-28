@@ -147,6 +147,99 @@ def fix_links(file_path: Path) -> bool:
     return changed
 
 
+def fix_sources(file_path: Path) -> bool:
+    """Standardize the ## Sources section to numbered format with source name + URL."""
+    content = file_path.read_text(encoding="utf-8")
+
+    # Find the ## Sources section
+    sources_match = re.search(r'^## Sources\s*\n', content, re.MULTILINE)
+    if not sources_match:
+        print(f"  SKIP {file_path.name}: no ## Sources section found")
+        return False
+
+    before = content[:sources_match.start()]
+    sources_block = content[sources_match.end():]
+
+    # Parse existing entries (handle numbered, bulleted, and plain lines)
+    entries = []
+    for line in sources_block.strip().split("\n"):
+        line = line.strip()
+        if not line:
+            continue
+        # Strip leading number or bullet
+        cleaned = re.sub(r'^(\d+\.\s*|-\s*|\*\s*)', '', line).strip()
+        if not cleaned:
+            continue
+        entries.append(cleaned)
+
+    if not entries:
+        print(f"  SKIP {file_path.name}: no source entries found")
+        return False
+
+    # Reformat each entry to standard: Source Name, "Title." URL
+    formatted = []
+    for i, entry in enumerate(entries, 1):
+        # Extract URL if present
+        url_match = re.search(r'(https?://\S+)', entry)
+        url = url_match.group(1).rstrip('.,;') if url_match else ""
+        text_part = entry[:url_match.start()].rstrip(' :,\t') if url_match else entry.rstrip('.')
+
+        # Clean up text part: remove trailing periods, colons
+        text_part = text_part.strip().rstrip(':').strip()
+
+        if not text_part and url:
+            # Bare URL only — try to extract domain as source name
+            from urllib.parse import urlparse
+            domain = urlparse(url).netloc.replace('www.', '')
+            formatted.append(f"{i}. {domain}. {url}")
+        elif text_part and url:
+            # Has both text and URL
+            # Check if already has quotes
+            if '"' not in text_part and "'" not in text_part:
+                # Try to split "Source, Title" pattern
+                comma_idx = text_part.find(',')
+                if comma_idx > 0 and comma_idx < len(text_part) - 2:
+                    source = text_part[:comma_idx].strip()
+                    title = text_part[comma_idx+1:].strip().rstrip('.')
+                    formatted.append(f'{i}. {source}, "{title}." {url}')
+                else:
+                    formatted.append(f'{i}. {text_part.rstrip(".")}. {url}')
+            else:
+                # Already has quotes, just ensure numbering and URL placement
+                if not text_part.endswith('.'):
+                    text_part = text_part.rstrip('.') + '.'
+                formatted.append(f'{i}. {text_part} {url}')
+        else:
+            # No URL
+            if '"' not in text_part and "'" not in text_part:
+                comma_idx = text_part.find(',')
+                if comma_idx > 0 and comma_idx < len(text_part) - 2:
+                    source = text_part[:comma_idx].strip()
+                    title = text_part[comma_idx+1:].strip().rstrip('.')
+                    formatted.append(f'{i}. {source}, "{title}."')
+                else:
+                    formatted.append(f'{i}. {text_part.rstrip(".")}.')
+            else:
+                if not text_part.endswith('.'):
+                    text_part = text_part.rstrip('.') + '.'
+                formatted.append(f'{i}. {text_part}')
+
+    # Clean up double periods from academic-style entries
+    formatted = [re.sub(r'\."\.\s', '." ', entry) for entry in formatted]
+    formatted = [re.sub(r'\."\.($)', '."', entry) for entry in formatted]
+
+    new_sources = "## Sources\n\n" + "\n".join(formatted) + "\n"
+    new_content = before + new_sources
+
+    if new_content != content:
+        file_path.write_text(new_content, encoding="utf-8")
+        print(f"  FIXED {file_path.name}: standardized {len(formatted)} source entries")
+        return True
+    else:
+        print(f"  OK {file_path.name}: sources already standardized")
+        return False
+
+
 def fix_style(file_path: Path) -> bool:
     """Remove em-dashes and other style issues."""
     content = file_path.read_text(encoding="utf-8")
@@ -174,13 +267,14 @@ def main():
     parser.add_argument("--fix-images", action="store_true", help="Re-fetch cover images from Pexels")
     parser.add_argument("--fix-links", action="store_true", help="Validate and repair internal links")
     parser.add_argument("--fix-style", action="store_true", help="Remove em-dashes and style issues")
+    parser.add_argument("--fix-sources", action="store_true", help="Standardize ## Sources format")
     parser.add_argument("--fix-all", action="store_true", help="Run all fixes")
     args = parser.parse_args()
 
     if args.fix_all:
-        args.fix_images = args.fix_links = args.fix_style = True
+        args.fix_images = args.fix_links = args.fix_style = args.fix_sources = True
 
-    if not (args.fix_images or args.fix_links or args.fix_style):
+    if not (args.fix_images or args.fix_links or args.fix_style or args.fix_sources):
         parser.error("Specify at least one fix mode: --fix-images, --fix-links, --fix-style, or --fix-all")
 
     # Expand glob patterns
@@ -208,6 +302,8 @@ def main():
             total_fixed += fix_links(fp)
         if args.fix_style:
             total_fixed += fix_style(fp)
+        if args.fix_sources:
+            total_fixed += fix_sources(fp)
         print()
 
     print(f"Done. {total_fixed} fix(es) applied across {len(file_paths)} file(s).")

@@ -5,9 +5,10 @@ interface AgentCardProps {
   schedule: string;
   lastActivity: string | null;
   icon: React.ReactNode;
+  children?: React.ReactNode;
 }
 
-export function AgentCard({ name, schedule, lastActivity, icon }: AgentCardProps) {
+export function AgentCard({ name, schedule, lastActivity, icon, children }: AgentCardProps) {
   const isRecent =
     lastActivity &&
     new Date(lastActivity).getTime() > Date.now() - 48 * 60 * 60 * 1000;
@@ -36,6 +37,7 @@ export function AgentCard({ name, schedule, lastActivity, icon }: AgentCardProps
               isRecent ? "bg-accent" : "bg-foreground-muted/40"
             )}
           />
+          {children && <div className="ml-auto shrink-0">{children}</div>}
         </div>
         <p className="text-body-xs text-foreground-muted mt-0.5">{schedule}</p>
         <p className="text-body-xs text-foreground-muted mt-1">

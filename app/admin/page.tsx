@@ -1,6 +1,7 @@
 import path from "path";
 import fs from "fs/promises";
 import { getSupabaseClient } from "@/lib/supabase";
+import { getLatestMarketingLog, parseMarketingLog } from "@/lib/marketing-log";
 import { WidgetCard } from "@/components/admin/widget-card";
 import { StatsOverview } from "@/components/admin/widgets/stats-overview";
 import { RecentPosts } from "@/components/admin/widgets/recent-posts";
@@ -120,11 +121,20 @@ export default async function AdminDashboard() {
     getTopicsHistory(),
     getSubscriberCount(),
     getSubscribersByDay(),
+    getLatestMarketingLog(),
   ]);
   const posts = results[0].status === "fulfilled" ? results[0].value : [];
   const topics = results[1].status === "fulfilled" ? results[1].value : [];
   const subscriberCount = results[2].status === "fulfilled" ? results[2].value : 0;
   const subscribersByDay = results[3].status === "fulfilled" ? results[3].value : [];
+  const marketingLog = results[4].status === "fulfilled" ? results[4].value : null;
+
+  // Calculate total GSC impressions from marketing log
+  let totalImpressions = 0;
+  if (marketingLog) {
+    const parsed = parseMarketingLog(marketingLog);
+    totalImpressions = parsed.googleQueries.reduce((s, q) => s + q.impressions, 0);
+  }
 
   const now = new Date();
   const currentMonth = now.getMonth();
@@ -169,6 +179,7 @@ export default async function AdminDashboard() {
           postCount={posts.length}
           subscriberCount={subscriberCount}
           postsThisMonth={postsThisMonth}
+          impressions={totalImpressions}
         />
       </WidgetCard>
 

@@ -75,18 +75,18 @@ For finance leaders, the near-term action is specific: audit any ESG-linked fina
 
 ## Sources
 
-1. Futurum Research, AI Capex 2026: The $690B Infrastructure Sprint: https://futurumgroup.com/insights/ai-capex-2026-the-690b-infrastructure-sprint/
-2. Reuters, Big Tech to invest about $650 billion in AI in 2026, Bridgewater says: https://www.reuters.com/business/big-tech-invest-about-650-billion-ai-2026-bridgewater-says-2026-02-23/
-3. Yahoo Finance, Big Tech Spending $720 Billion on AI: https://finance.yahoo.com/news/big-tech-spending-720-billion-223900918.html
-4. CNBC, Tech AI spending approaches $700 billion in 2026, cash taking big hit: https://www.cnbc.com/2026/02/06/google-microsoft-meta-amazon-ai-cash.html
-5. Lawrence Berkeley National Laboratory / Belfer Center, AI, Data Centers, and the U.S. Electric Grid: https://www.belfercenter.org/research-analysis/ai-data-centers-us-electric-grid
-6. Morgan Stanley, Energy Markets Race to Solve the AI Power Bottleneck: https://www.morganstanley.com/insights/articles/powering-ai-energy-market-outlook-2026
-7. TechCrunch, Google's new 1.9GW clean energy deal includes massive 100-hour battery: https://techcrunch.com/2026/02/24/googles-new-1-9gw-clean-energy-deal-includes-massive-100-hour-battery/
-8. TotalEnergies, TotalEnergies to Provide 1 GW of Solar Capacity to Power Google's Data Centers: https://totalenergies.com/news/press-releases/united-states-totalenergies-provide-1-gw-solar-capacity-power-googles-data
-9. Carbon Credits, Microsoft More Than Doubles Carbon Removal Deals to 45 Million Tonnes in 2025: https://carboncredits.com/microsoft-more-than-double-carbon-removal-deals-to-45-million-tonnes-in-2025/
-10. Microsoft Environmental Sustainability Report FY24: https://www.microsoft.com/en-us/corporate-responsibility/sustainability/report/
-11. CNBC, Big Tech looks to carbon credits amid AI race; Microsoft leads: https://www.cnbc.com/2026/03/16/microsoft-carbon-credits-ai-tech-google-meta.html
-12. OilPrice.com, Can Carbon Credits Clean Up Big Tech's AI-Fueled Emissions Surge: https://oilprice.com/Energy/Energy-General/Can-Carbon-Credits-Clean-Up-Big-Techs-AI-Fueled-Emissions-Surge.html
-13. Carbon Direct, AI Scale and Climate Commitments: A 2026 Outlook: https://www.carbon-direct.com/insights/ai-scale-and-climate-commitments-a-2026-outlook
-14. Google / Introl, Google's $4.75B Intersect Power Acquisition: https://introl.com/blog/google-intersect-power-acquisition-energy-vertical-integration-january-2026
-15. GeekWire, Amazon's $12B data center deal signals a new era of accountability: https://www.geekwire.com/2026/water-power-and-transparency-amazons-12b-data-center-deal-signals-a-new-era-of-accountability/
+1. Futurum Research, "AI Capex 2026: The $690B Infrastructure Sprint." https://futurumgroup.com/insights/ai-capex-2026-the-690b-infrastructure-sprint/
+2. Reuters, "Big Tech to invest about $650 billion in AI in 2026, Bridgewater says." https://www.reuters.com/business/big-tech-invest-about-650-billion-ai-2026-bridgewater-says-2026-02-23/
+3. Yahoo Finance, "Big Tech Spending $720 Billion on AI." https://finance.yahoo.com/news/big-tech-spending-720-billion-223900918.html
+4. CNBC, "Tech AI spending approaches $700 billion in 2026, cash taking big hit." https://www.cnbc.com/2026/02/06/google-microsoft-meta-amazon-ai-cash.html
+5. Lawrence Berkeley National Laboratory / Belfer Center, "AI, Data Centers, and the U.S. Electric Grid." https://www.belfercenter.org/research-analysis/ai-data-centers-us-electric-grid
+6. Morgan Stanley, "Energy Markets Race to Solve the AI Power Bottleneck." https://www.morganstanley.com/insights/articles/powering-ai-energy-market-outlook-2026
+7. TechCrunch, Google's new 1.9GW clean energy deal includes massive 100-hour battery. https://techcrunch.com/2026/02/24/googles-new-1-9gw-clean-energy-deal-includes-massive-100-hour-battery/
+8. TotalEnergies, TotalEnergies to Provide 1 GW of Solar Capacity to Power Google's Data Centers. https://totalenergies.com/news/press-releases/united-states-totalenergies-provide-1-gw-solar-capacity-power-googles-data
+9. Carbon Credits, "Microsoft More Than Doubles Carbon Removal Deals to 45 Million Tonnes in 2025." https://carboncredits.com/microsoft-more-than-double-carbon-removal-deals-to-45-million-tonnes-in-2025/
+10. Microsoft Environmental Sustainability Report FY24. https://www.microsoft.com/en-us/corporate-responsibility/sustainability/report/
+11. CNBC, "Big Tech looks to carbon credits amid AI race; Microsoft leads." https://www.cnbc.com/2026/03/16/microsoft-carbon-credits-ai-tech-google-meta.html
+12. OilPrice.com, Can Carbon Credits Clean Up Big Tech's AI-Fueled Emissions Surge. https://oilprice.com/Energy/Energy-General/Can-Carbon-Credits-Clean-Up-Big-Techs-AI-Fueled-Emissions-Surge.html
+13. Carbon Direct, "AI Scale and Climate Commitments: A 2026 Outlook." https://www.carbon-direct.com/insights/ai-scale-and-climate-commitments-a-2026-outlook
+14. Google / Introl, Google's $4.75B Intersect Power Acquisition. https://introl.com/blog/google-intersect-power-acquisition-energy-vertical-integration-january-2026
+15. GeekWire, Amazon's $12B data center deal signals a new era of accountability. https://www.geekwire.com/2026/water-power-and-transparency-amazons-12b-data-center-deal-signals-a-new-era-of-accountability/

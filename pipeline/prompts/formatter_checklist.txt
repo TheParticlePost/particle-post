@@ -45,7 +45,21 @@ ARTICLE BODY RULES:
   {{< stat-box number="[number]" label="[label]" source="[source]" >}}
   (double quotes required around all values)
 - INTERNAL LINKS: [anchor text](/posts/slug/) format — preserve all from editor output
-- FINAL SECTION: ## Sources with numbered URL list
+- FINAL SECTION: ## Sources (MANDATORY FORMAT below)
+
+SOURCES FORMAT (MANDATORY — single format, zero exceptions):
+## Sources
+
+1. Source Name, "Article or Report Title." https://full-url.com/path
+2. Source Name, "Title." https://url.com/path
+
+RULES:
+- Numbered list (1. 2. 3.), NOT bullet points
+- Each entry: Source Name (publication/org), comma, quoted title, period, then full URL
+- If URL is unavailable: Source Name, "Title." (omit URL, keep period after closing quote)
+- No date prefixes, no academic-style "Author. (Year)." formatting
+- Minimum 3 sources, maximum 15 sources per article
+- One source per line, no blank lines between entries
 - No blank line between frontmatter closing --- and first paragraph
 
 ESCAPING RULES (YAML special characters):

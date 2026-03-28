@@ -182,15 +182,15 @@ Ramp (Agents for AP, launched October 2025), Precoro, and Oracle Fusion Agentic 
 
 ## Sources
 
-1. https://www.prnewswire.com/news-releases/ramp-launches-agents-ap-to-automate-accounts-payable-302576975.html
-2. https://www.medius.com/blog/how-much-does-cost-process-invoice-where-you-save/
-3. https://www.medius.com/blog/the-real-cost-of-ignoring-supplier-data-quality-in-ap-automation/
-4. https://precoro.com/blog/invoice-automation/
-5. https://yodaplus.com/blog/what-master-data-issues-silently-kill-ap-automation/
-6. https://www.forrester.com/blogs/whats-new-for-accounts-payable-invoice-automation-in-2026/
-7. https://www.forrester.com/blogs/top-ai-use-cases-for-accounts-payable-automation-in-2025/
-8. https://www.zenwork.com/payments/blog/top-5-vendor-payment-mistakes-that-are-costing-your-business-in-2025/
-9. https://www.intelmarketresearch.com/accounts-payable-automation-market-35899
-10. https://chatfin.ai/blog/ap-automation-by-ai-agents-the-complete-2026-accounts-payable-forecast/
-11. https://quantumbyte.ai/articles/accounts-payable-automation
-12. https://www.snowfox.ai/insights/implementing-ap-automation-a-step-by-step-guide-for-businesses/
+1. prnewswire.com. https://www.prnewswire.com/news-releases/ramp-launches-agents-ap-to-automate-accounts-payable-302576975.html
+2. medius.com. https://www.medius.com/blog/how-much-does-cost-process-invoice-where-you-save/
+3. medius.com. https://www.medius.com/blog/the-real-cost-of-ignoring-supplier-data-quality-in-ap-automation/
+4. precoro.com. https://precoro.com/blog/invoice-automation/
+5. yodaplus.com. https://yodaplus.com/blog/what-master-data-issues-silently-kill-ap-automation/
+6. forrester.com. https://www.forrester.com/blogs/whats-new-for-accounts-payable-invoice-automation-in-2026/
+7. forrester.com. https://www.forrester.com/blogs/top-ai-use-cases-for-accounts-payable-automation-in-2025/
+8. zenwork.com. https://www.zenwork.com/payments/blog/top-5-vendor-payment-mistakes-that-are-costing-your-business-in-2025/
+9. intelmarketresearch.com. https://www.intelmarketresearch.com/accounts-payable-automation-market-35899
+10. chatfin.ai. https://chatfin.ai/blog/ap-automation-by-ai-agents-the-complete-2026-accounts-payable-forecast/
+11. quantumbyte.ai. https://quantumbyte.ai/articles/accounts-payable-automation
+12. snowfox.ai. https://www.snowfox.ai/insights/implementing-ap-automation-a-step-by-step-guide-for-businesses/

@@ -102,7 +102,5 @@ Firms that skip this step are not moving faster. They are accumulating liability
 ## Sources
 
 1. Business Insider, "AI Test for Spotting Bullshit," March 2026. https://www.businessinsider.com/ai-test-spotting-bullshit-peter-gostev-arena-anthropic-openai-google-2026-3
-
 2. MIT Sloan Management Review, "An AI Reckoning for HR: Transform or Fade Away," 2026. https://sloanreview.mit.edu/article/an-ai-reckoning-for-hr-transform-or-fade-away/
-
 3. Amazon Web Services, "Reinforcement Fine-Tuning on Amazon Bedrock with OpenAI-Compatible APIs," AWS Machine Learning Blog. https://aws.amazon.com/blogs/machine-learning/reinforcement-fine-tuning-on-amazon-bedrock-with-openai-compatible-apis-a-technical-walkthrough/
