@@ -140,9 +140,9 @@ export default async function PostPage({ params }: PageProps) {
             )}
           </div>
 
-          {/* Sidebar — fills remaining space (roughly 300px), sticky */}
+          {/* Sidebar — fills remaining space (~300px), sticky with scroll */}
           <aside className="hidden xl:block flex-1 min-w-[260px] max-w-[320px]">
-            <div className="sticky top-20 space-y-6">
+            <div className="sticky top-20 max-h-[calc(100vh-6rem)] overflow-y-auto scrollbar-hide space-y-6">
               <TableOfContents content={post.content} />
               <SidebarRelated articles={relatedPosts} />
               <MarketSnapshot />
@@ -150,8 +150,8 @@ export default async function PostPage({ params }: PageProps) {
           </aside>
         </div>
 
-        {/* Related articles */}
-        <div className="max-w-[680px] mx-auto mt-16">
+        {/* Related articles — full width for larger cards on desktop */}
+        <div className="max-w-[1040px] mx-auto mt-16">
           <RelatedArticles articles={relatedPosts} />
         </div>
       </article>
