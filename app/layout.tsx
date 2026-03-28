@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { instrumentSerif, dmSans, jetbrainsMono } from "@/lib/fonts";
+import { sora, dmSans, ibmPlexMono } from "@/lib/fonts";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
@@ -48,9 +48,9 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${instrumentSerif.variable} ${dmSans.variable} ${jetbrainsMono.variable}`}
+      className={`${sora.variable} ${dmSans.variable} ${ibmPlexMono.variable}`}
     >
-      <body className="font-body bg-bg-primary text-foreground antialiased min-h-screen">
+      <body className="font-body bg-bg-base text-text-body antialiased min-h-screen">
         <ThemeProvider>
           <div className="flex flex-col min-h-screen">
             <Navbar />

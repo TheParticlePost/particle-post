@@ -5,53 +5,82 @@
 @tailwind utilities;
 
 @layer base {
+  /* Light theme — Warm Cream editorial feel */
   :root {
-    /* Light theme */
-    --bg-primary: #fafaf8;
-    --bg-secondary: #f0f0ec;
-    --bg-tertiary: #e5e5e0;
-    --surface: #ffffff;
-    --text-primary: #1a1a2e;
-    --text-secondary: #4a4a5a;
-    --text-muted: #8a8a9a;
-    --accent: #00d4aa;
-    --accent-hover: #00b894;
-    --accent-glow: rgba(0, 212, 170, 0.1);
-    --accent-secondary: #3b82f6;
-    --warning: #f59e0b;
-    --danger: #ef4444;
-    --border: rgba(0, 0, 0, 0.08);
-    --border-hover: rgba(0, 0, 0, 0.15);
-    --glass-bg: rgba(255, 255, 255, 0.7);
-    --glass-border: rgba(0, 0, 0, 0.06);
-    --card-bg: #ffffff;
-    --code-bg: #f5f5f0;
-    --scrollbar-track: #e5e5e0;
-    --scrollbar-thumb: #c0c0b8;
+    --bg-deep: #E8E2DB;
+    --bg-base: #F5F0EB;
+    --bg-low: #EDE8E2;
+    --bg-container: #FFFFFF;
+    --bg-high: #F0EBE5;
+    --bg-bright: #E8E2DB;
+
+    --accent: #E8552E;
+    --accent-hover: #D04520;
+    --accent-subtle: rgba(232, 85, 46, 0.08);
+    --accent-muted: rgba(232, 85, 46, 0.04);
+
+    --text-primary: #1C1C1C;
+    --text-body: #2E2E2E;
+    --text-secondary: #6E6660;
+    --text-muted: #A89E94;
+
+    --border-ghost: rgba(90, 65, 59, 0.12);
+    --border-hover: rgba(90, 65, 59, 0.35);
+    --border-solid: #D6CFC8;
+
+    --color-positive: #2D9B5A;
+    --color-negative: #D14040;
+    --color-info: #5A7FA0;
+    --color-warning: #D4962A;
+
+    --radius: 6px;
+    --ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+    --ease-expressive: cubic-bezier(0.16, 1, 0.3, 1);
+
+    --glass-bg: rgba(245, 240, 235, 0.80);
+    --glass-border: rgba(90, 65, 59, 0.12);
+    --code-bg: #F0EBE5;
+    --scrollbar-track: #EDE8E2;
+    --scrollbar-thumb: #D6CFC8;
   }
 
+  /* Dark theme — The Kinetic Ledger (DESIGN.md canonical) */
   .dark {
-    --bg-primary: #0a0a0f;
-    --bg-secondary: #12121a;
-    --bg-tertiary: #1a1a2e;
-    --surface: #16161f;
-    --text-primary: #f0f0f5;
-    --text-secondary: #9ca3af;
-    --text-muted: #6b7280;
-    --accent: #00d4aa;
-    --accent-hover: #00e8bc;
-    --accent-glow: rgba(0, 212, 170, 0.15);
-    --accent-secondary: #3b82f6;
-    --warning: #f59e0b;
-    --danger: #ef4444;
-    --border: rgba(255, 255, 255, 0.06);
-    --border-hover: rgba(255, 255, 255, 0.12);
-    --glass-bg: rgba(18, 18, 26, 0.8);
-    --glass-border: rgba(255, 255, 255, 0.06);
-    --card-bg: #16161f;
-    --code-bg: #1a1a2e;
-    --scrollbar-track: #12121a;
-    --scrollbar-thumb: #2a2a3e;
+    --bg-deep: #0E0E0E;
+    --bg-base: #141414;
+    --bg-low: #1C1B1B;
+    --bg-container: #1E1E1E;
+    --bg-high: #282828;
+    --bg-bright: #333333;
+
+    --accent: #E8552E;
+    --accent-hover: #F06840;
+    --accent-subtle: rgba(232, 85, 46, 0.10);
+    --accent-muted: rgba(232, 85, 46, 0.06);
+
+    --text-primary: #F5F0EB;
+    --text-body: #E6DED6;
+    --text-secondary: #A89E94;
+    --text-muted: #6E6660;
+
+    --border-ghost: rgba(90, 65, 59, 0.20);
+    --border-hover: #A98A82;
+    --border-solid: #3D3733;
+
+    --color-positive: #2D9B5A;
+    --color-negative: #D14040;
+    --color-info: #5A7FA0;
+    --color-warning: #D4962A;
+
+    --radius: 6px;
+    --ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+    --ease-expressive: cubic-bezier(0.16, 1, 0.3, 1);
+
+    --glass-bg: rgba(30, 30, 30, 0.80);
+    --glass-border: rgba(90, 65, 59, 0.20);
+    --code-bg: #282828;
+    --scrollbar-track: #141414;
+    --scrollbar-thumb: #333333;
   }
 }
 
@@ -70,9 +99,8 @@
 
   body {
     font-family: var(--font-body), system-ui, sans-serif;
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
-    transition: background-color 0.3s ease, color 0.3s ease;
+    background-color: var(--bg-base);
+    color: var(--text-body);
     min-height: 100vh;
   }
 
@@ -94,10 +122,10 @@
     background: var(--accent);
   }
 
-  /* Selection */
+  /* Selection — vermillion */
   ::selection {
     background-color: var(--accent);
-    color: #0a0a0f;
+    color: var(--bg-base);
   }
 
   /* Links */
@@ -112,7 +140,7 @@
     height: auto;
   }
 
-  /* Focus */
+  /* Focus — vermillion ring */
   :focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 2px;
@@ -120,36 +148,38 @@
 }
 
 @layer components {
-  /* Glass card */
+  /* Glass card — nav and breaking news only */
   .glass-card {
     background: var(--glass-bg);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid var(--glass-border);
-    border-radius: 16px;
+    border-radius: var(--radius);
   }
 
-  /* Gradient text */
-  .gradient-text {
-    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-secondary) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  /* Ghost border — default card treatment */
+  .ghost-border {
+    border: 1px solid var(--border-ghost);
+    border-radius: var(--radius);
   }
 
-  /* Prose styles consolidated in styles/typography.css */
-
-  /* Accent glow */
-  .accent-glow {
-    box-shadow: 0 0 40px var(--accent-glow);
+  .ghost-border-hover:hover {
+    border-color: var(--border-hover);
   }
 
-  /* Mesh gradient background */
-  .mesh-gradient {
-    background:
-      radial-gradient(ellipse at 20% 50%, var(--accent-glow) 0%, transparent 50%),
-      radial-gradient(ellipse at 80% 20%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
-      radial-gradient(ellipse at 50% 80%, rgba(139, 92, 246, 0.06) 0%, transparent 50%);
+  /* Editorial Stripe — 3px vermillion left border for featured cards */
+  .editorial-stripe {
+    border-left: 3px solid var(--accent);
+  }
+
+  /* Overline style — Sora 11px, 700, uppercase, vermillion */
+  .overline-style {
+    font-family: var(--font-display), system-ui, sans-serif;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
   }
 
   /* Line clamp utilities */

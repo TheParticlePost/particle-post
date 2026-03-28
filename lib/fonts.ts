@@ -1,22 +1,48 @@
-import { Instrument_Serif, DM_Sans, JetBrains_Mono } from "next/font/google";
+import localFont from "next/font/local";
 
-export const instrumentSerif = Instrument_Serif({
-  weight: "400",
-  subsets: ["latin"],
+export const sora = localFont({
+  src: "../public/fonts/Sora-Bold.woff2",
+  weight: "700",
+  style: "normal",
   display: "swap",
   variable: "--font-display",
 });
 
-export const dmSans = DM_Sans({
-  subsets: ["latin"],
+export const dmSans = localFont({
+  src: [
+    {
+      path: "../public/fonts/DMSans-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/DMSans-Medium.woff2",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/DMSans-SemiBold.woff2",
+      weight: "600",
+      style: "normal",
+    },
+  ],
   display: "swap",
   variable: "--font-body",
-  weight: ["400", "500", "600", "700"],
 });
 
-export const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
+export const ibmPlexMono = localFont({
+  src: [
+    {
+      path: "../public/fonts/IBMPlexMono-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/IBMPlexMono-Medium.woff2",
+      weight: "500",
+      style: "normal",
+    },
+  ],
   display: "swap",
   variable: "--font-mono",
-  weight: ["400", "500"],
 });

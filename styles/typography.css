@@ -1,33 +1,43 @@
-/* Typography system for Particle Post
-   Fonts loaded via next/font/google in lib/fonts.ts
-   This file provides editorial typography rules */
+/* Typography system for Particle Post — "The Kinetic Ledger"
+   Fonts: Sora (headlines), DM Sans (body/UI), IBM Plex Mono (data)
+   Self-hosted WOFF2 loaded via next/font/local in lib/fonts.ts */
 
-/* Headings — Instrument Serif */
-h1, h2, h3, h4 {
-  font-family: var(--font-display), Georgia, serif;
-  font-weight: 400;
+/* Headings — Sora Bold */
+h1, h2, h3 {
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-weight: 700;
   letter-spacing: -0.02em;
   line-height: 1.2;
+  color: var(--text-primary);
+}
+
+h4 {
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--text-primary);
 }
 
 h1 {
-  font-size: 3.5rem;
-  line-height: 1.1;
-  letter-spacing: -0.03em;
+  font-size: 2.5rem;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
 }
 
 h2 {
   font-size: 2rem;
   line-height: 1.2;
+  letter-spacing: -0.015em;
 }
 
 h3 {
-  font-size: 1.5rem;
+  font-size: 1.375rem;
   line-height: 1.3;
+  letter-spacing: -0.01em;
 }
 
 h4 {
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   line-height: 1.4;
 }
 
@@ -36,29 +46,37 @@ p, li, td, th, label, input, textarea, select, button {
   font-family: var(--font-body), system-ui, sans-serif;
 }
 
-/* Code — JetBrains Mono */
+/* Code/Data — IBM Plex Mono */
 code, pre, kbd, samp {
-  font-family: var(--font-mono), monospace;
+  font-family: var(--font-mono), 'Courier New', monospace;
 }
 
 /* Article prose styling */
 .prose {
-  font-size: 1.25rem;
+  font-size: 1rem;
   line-height: 1.8;
+  color: var(--text-body);
+  max-width: 65ch;
+}
+
+/* Prose headings — Sora Bold (not DM Sans body) */
+.prose h2, .prose h3 {
+  font-family: var(--font-display), system-ui, sans-serif;
   color: var(--text-primary);
 }
 
-.prose h2, .prose h3, .prose h4 {
+.prose h4 {
   font-family: var(--font-body), system-ui, sans-serif;
+  color: var(--text-primary);
 }
 
 .prose h2 {
-  font-size: 1.75rem;
+  font-size: 2rem;
   font-weight: 700;
   margin-top: 3rem;
   margin-bottom: 1.25rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid var(--border);
+  letter-spacing: -0.015em;
+  /* No border-bottom — No-Line Rule */
 }
 
 .prose h3 {
@@ -66,17 +84,18 @@ code, pre, kbd, samp {
   font-weight: 700;
   margin-top: 2rem;
   margin-bottom: 1rem;
+  letter-spacing: -0.01em;
 }
 
 .prose h4 {
-  font-size: 1.1875rem;
-  font-weight: 700;
+  font-size: 1.125rem;
+  font-weight: 600;
   margin-top: 1.5rem;
   margin-bottom: 0.75rem;
 }
 
 .prose p {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.75rem; /* 28px paragraph spacing per DESIGN.md */
 }
 
 .prose a {
@@ -84,7 +103,7 @@ code, pre, kbd, samp {
   text-decoration: underline;
   text-underline-offset: 3px;
   text-decoration-thickness: 1px;
-  transition: color 0.2s ease;
+  transition: color 0.15s var(--ease);
 }
 
 .prose a:hover {
@@ -96,12 +115,16 @@ code, pre, kbd, samp {
   color: var(--text-primary);
 }
 
+/* Pull quotes — Editorial Stripe */
 .prose blockquote {
   border-left: 3px solid var(--accent);
   padding-left: 1.5rem;
   margin: 2rem 0;
-  color: var(--text-secondary);
-  font-style: italic;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  font-style: normal; /* No italic body text per DESIGN.md */
 }
 
 .prose ul, .prose ol {
@@ -123,10 +146,10 @@ code, pre, kbd, samp {
 .prose pre {
   background: var(--code-bg);
   padding: 1.25rem;
-  border-radius: 8px;
+  border-radius: 6px; /* Max 6px per DESIGN.md */
   overflow-x: auto;
   margin: 2rem 0;
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-ghost);
 }
 
 .prose pre code {
@@ -137,7 +160,7 @@ code, pre, kbd, samp {
 }
 
 .prose img {
-  border-radius: 12px;
+  border-radius: 6px; /* Max 6px per DESIGN.md */
   margin: 2rem 0;
 }
 
@@ -150,9 +173,10 @@ code, pre, kbd, samp {
 .prose th {
   text-align: left;
   padding: 0.75rem 1rem;
-  border-bottom: 2px solid var(--border);
-  font-weight: 600;
-  font-size: 0.875rem;
+  border-bottom: 2px solid var(--border-ghost);
+  font-family: var(--font-mono), 'Courier New', monospace;
+  font-weight: 500;
+  font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--text-secondary);
@@ -160,19 +184,20 @@ code, pre, kbd, samp {
 
 .prose td {
   padding: 0.75rem 1rem;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--border-ghost);
 }
 
 .prose hr {
   border: none;
-  border-top: 1px solid var(--border);
+  height: 1px;
+  background: var(--border-ghost);
   margin: 3rem 0;
 }
 
-/* Responsive typography */
+/* Responsive typography — body stays 16px min on mobile */
 @media (max-width: 768px) {
   h1 {
-    font-size: 2.25rem;
+    font-size: 2rem;
   }
 
   h2 {
@@ -184,8 +209,8 @@ code, pre, kbd, samp {
   }
 
   .prose {
-    font-size: 1.125rem;
-    line-height: 1.75;
+    font-size: 1rem; /* 16px minimum per DESIGN.md */
+    line-height: 1.8;
   }
 
   .prose h2 {
