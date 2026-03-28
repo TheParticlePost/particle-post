@@ -123,10 +123,17 @@ export default async function PostPage({ params }: PageProps) {
           </div>
         )}
 
-        {/* Content + Sidebar — proper 2-column layout */}
-        <div className="max-w-[1040px] mx-auto flex gap-12">
-          {/* Main content — 680px, left-aligned */}
-          <div className="w-full xl:w-[680px] xl:shrink-0 min-w-0">
+        {/* 3-column layout: Left sidebar (ToC) | Content | Right sidebar (Related + Pulse) */}
+        <div className="max-w-[1200px] mx-auto flex gap-8">
+          {/* LEFT SIDEBAR — Table of Contents, sticky */}
+          <aside className="hidden xl:block w-[220px] shrink-0">
+            <div className="sticky top-20">
+              <TableOfContents content={post.content} />
+            </div>
+          </aside>
+
+          {/* CENTER — Article body, 680px */}
+          <div className="flex-1 min-w-0 max-w-[680px]">
             <div className="prose">
               <MDXRemote
                 source={convertHugoShortcodes(post.content, !!(post.faq_pairs && post.faq_pairs.length > 0))}
@@ -140,18 +147,17 @@ export default async function PostPage({ params }: PageProps) {
             )}
           </div>
 
-          {/* Sidebar — fills remaining space (~300px), sticky with scroll */}
-          <aside className="hidden xl:block flex-1 min-w-[260px] max-w-[320px]">
-            <div className="sticky top-20 max-h-[calc(100vh-6rem)] overflow-y-auto scrollbar-hide space-y-6">
-              <TableOfContents content={post.content} />
+          {/* RIGHT SIDEBAR — Related Articles + AI Industry Pulse, sticky */}
+          <aside className="hidden xl:block w-[260px] shrink-0">
+            <div className="sticky top-20 space-y-6">
               <SidebarRelated articles={relatedPosts} />
               <MarketSnapshot />
             </div>
           </aside>
         </div>
 
-        {/* Related articles — full width for larger cards on desktop */}
-        <div className="max-w-[1040px] mx-auto mt-16">
+        {/* Related articles — full width below */}
+        <div className="max-w-[1200px] mx-auto mt-16">
           <RelatedArticles articles={relatedPosts} />
         </div>
       </article>
