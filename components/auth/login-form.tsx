@@ -9,8 +9,8 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const inputStyles = cn(
-  "w-full px-4 py-2.5 rounded-lg bg-bg-tertiary/50 border border-[var(--border)]",
-  "text-body-sm text-foreground placeholder:text-foreground-muted",
+  "w-full px-4 py-2.5 rounded-lg bg-bg-high/50 border border-border-ghost",
+  "text-body-sm text-text-primary placeholder:text-text-muted",
   "focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent",
   "transition-all duration-200"
 );
@@ -59,19 +59,19 @@ function LoginFormInner() {
   }
 
   return (
-    <div className="glass-card w-full p-8 flex flex-col gap-6">
+    <div className="bg-bg-container border border-border-ghost rounded-lg w-full p-8 flex flex-col gap-6">
       <div className="text-center space-y-1">
-        <h1 className="text-heading-md font-heading font-bold text-foreground">
+        <h1 className="text-heading-md font-heading font-bold text-text-primary">
           Welcome back
         </h1>
-        <p className="text-body-sm text-foreground-secondary">
+        <p className="text-body-sm text-text-secondary">
           Log in to your account
         </p>
       </div>
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <div className="flex flex-col gap-1.5">
-          <label htmlFor="email" className="text-body-sm font-medium text-foreground-secondary">
+          <label htmlFor="email" className="text-body-sm font-medium text-text-secondary">
             Email
           </label>
           <input
@@ -87,7 +87,7 @@ function LoginFormInner() {
 
         <div className="flex flex-col gap-1.5">
           <div className="flex items-center justify-between">
-            <label htmlFor="password" className="text-body-sm font-medium text-foreground-secondary">
+            <label htmlFor="password" className="text-body-sm font-medium text-text-secondary">
               Password
             </label>
             <Link
@@ -119,7 +119,7 @@ function LoginFormInner() {
 
       <div className="relative flex items-center gap-4">
         <div className="flex-1 h-px bg-[var(--border)]" />
-        <span className="text-body-sm text-foreground-muted">or continue with</span>
+        <span className="text-body-sm text-text-muted">or continue with</span>
         <div className="flex-1 h-px bg-[var(--border)]" />
       </div>
 
@@ -165,7 +165,7 @@ function LoginFormInner() {
         </Button>
       </div>
 
-      <p className="text-center text-body-sm text-foreground-secondary">
+      <p className="text-center text-body-sm text-text-secondary">
         Don&apos;t have an account?{" "}
         <Link href="/signup" className="text-accent hover:text-accent-hover transition-colors font-medium">
           Sign up
@@ -179,8 +179,8 @@ export function LoginForm() {
   return (
     <Suspense
       fallback={
-        <div className="glass-card w-full p-8 text-center">
-          <p className="text-body-sm text-foreground-secondary">Loading...</p>
+        <div className="bg-bg-container border border-border-ghost rounded-lg w-full p-8 text-center">
+          <p className="text-body-sm text-text-secondary">Loading...</p>
         </div>
       }
     >

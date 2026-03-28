@@ -37,8 +37,8 @@ export default async function SettingsPage() {
     <main className="container-content py-16">
       <div className="max-w-2xl mx-auto space-y-8">
         <div>
-          <h1 className="text-display-sm font-bold text-foreground">Settings</h1>
-          <p className="text-body-md text-foreground-secondary mt-1">
+          <h1 className="text-display-sm font-bold text-text-primary">Settings</h1>
+          <p className="text-body-md text-text-secondary mt-1">
             Manage your account and preferences.
           </p>
         </div>

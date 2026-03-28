@@ -37,21 +37,21 @@ export function PipelineStatus({
             isHealthy ? "bg-accent animate-pulse-dot" : "bg-danger"
           )}
         />
-        <span className="text-body-sm font-medium text-foreground">
+        <span className="text-body-sm font-medium text-text-primary">
           Pipeline {isHealthy ? "Healthy" : "Needs Attention"}
         </span>
       </div>
 
       {/* Stats grid */}
       <div className="grid grid-cols-2 gap-3">
-        <div className="rounded-lg bg-[var(--bg-secondary)] border border-[var(--border)] px-3 py-2.5">
-          <p className="text-body-xs text-foreground-muted">Last Run</p>
+        <div className="rounded-lg bg-bg-low border border-border-ghost px-3 py-2.5">
+          <p className="text-body-xs text-text-muted">Last Run</p>
           <p className="text-body-sm font-medium text-foreground mt-0.5">
             {formattedDate}
           </p>
         </div>
-        <div className="rounded-lg bg-[var(--bg-secondary)] border border-[var(--border)] px-3 py-2.5">
-          <p className="text-body-xs text-foreground-muted">Success Rate</p>
+        <div className="rounded-lg bg-bg-low border border-border-ghost px-3 py-2.5">
+          <p className="text-body-xs text-text-muted">Success Rate</p>
           <p
             className={cn(
               "text-body-sm font-medium mt-0.5",
@@ -61,18 +61,18 @@ export function PipelineStatus({
             {successRate}%
           </p>
         </div>
-        <div className="rounded-lg bg-[var(--bg-secondary)] border border-[var(--border)] px-3 py-2.5">
-          <p className="text-body-xs text-foreground-muted">Total Generated</p>
+        <div className="rounded-lg bg-bg-low border border-border-ghost px-3 py-2.5">
+          <p className="text-body-xs text-text-muted">Total Generated</p>
           <p className="text-body-sm font-medium text-foreground mt-0.5">
             {totalPosts}
           </p>
         </div>
-        <div className="rounded-lg bg-[var(--bg-secondary)] border border-[var(--border)] px-3 py-2.5">
-          <p className="text-body-xs text-foreground-muted">Rejected</p>
+        <div className="rounded-lg bg-bg-low border border-border-ghost px-3 py-2.5">
+          <p className="text-body-xs text-text-muted">Rejected</p>
           <p
             className={cn(
               "text-body-sm font-medium mt-0.5",
-              rejectCount > 0 ? "text-warning" : "text-foreground"
+              rejectCount > 0 ? "text-warning" : "text-text-primary"
             )}
           >
             {rejectCount}

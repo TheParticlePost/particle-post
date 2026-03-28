@@ -19,14 +19,14 @@ const SLOT_COLORS: Record<string, { bg: string; text: string }> = {
 export function WriterFeedback({ entries }: WriterFeedbackProps) {
   if (entries.length === 0) {
     return (
-      <p className="text-body-sm text-foreground-muted py-4">
+      <p className="text-body-sm text-text-muted py-4">
         No editorial feedback recorded yet.
       </p>
     );
   }
 
   return (
-    <ul className="divide-y divide-[var(--border)]">
+    <ul className="divide-y divide-border-ghost">
       {entries.map((entry, i) => {
         const slotConfig = SLOT_COLORS[entry.slot] ?? {
           bg: "rgba(156, 163, 175, 0.12)",
@@ -42,11 +42,11 @@ export function WriterFeedback({ entries }: WriterFeedbackProps) {
               >
                 {entry.slot}
               </span>
-              <span className="text-body-xs text-foreground-muted">
+              <span className="text-body-xs text-text-muted">
                 {formatDateShort(entry.date)}
               </span>
             </div>
-            <p className="text-body-sm text-foreground-secondary leading-relaxed line-clamp-3">
+            <p className="text-body-sm text-text-secondary leading-relaxed line-clamp-3">
               {entry.text}
             </p>
           </li>

@@ -165,10 +165,10 @@ export default async function AdminDashboard() {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <h1 className="font-display text-display-lg text-foreground">
+        <h1 className="font-display text-display-lg text-text-primary">
           Dashboard
         </h1>
-        <p className="text-body-sm text-foreground-muted mt-1">
+        <p className="text-body-sm text-text-muted mt-1">
           Overview of Particle Post content and growth.
         </p>
       </div>

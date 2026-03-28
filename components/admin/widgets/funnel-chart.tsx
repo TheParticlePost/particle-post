@@ -15,7 +15,7 @@ export function FunnelChart({ data }: FunnelChartProps) {
 
   if (total === 0) {
     return (
-      <p className="text-body-sm text-foreground-muted text-center py-8">
+      <p className="text-body-sm text-text-muted text-center py-8">
         No funnel data available.
       </p>
     );
@@ -45,12 +45,12 @@ export function FunnelChart({ data }: FunnelChartProps) {
         <div
           className={cn(
             "absolute inset-0 m-auto w-20 h-20 rounded-full",
-            "bg-[var(--bg-primary)]"
+            "bg-bg-base"
           )}
         />
         {/* Center label */}
         <div className="absolute inset-0 flex items-center justify-center">
-          <span className="text-display-sm font-display text-foreground">
+          <span className="text-display-sm font-display text-text-primary">
             {total}
           </span>
         </div>
@@ -66,12 +66,12 @@ export function FunnelChart({ data }: FunnelChartProps) {
                 className="w-3 h-3 rounded-full shrink-0"
                 style={{ backgroundColor: segment.color }}
               />
-              <span className="text-body-xs text-foreground-secondary">
+              <span className="text-body-xs text-text-secondary">
                 {segment.label}{" "}
-                <span className="text-foreground font-medium">
+                <span className="text-text-primary font-medium">
                   {segment.count}
                 </span>{" "}
-                <span className="text-foreground-muted">({pct}%)</span>
+                <span className="text-text-muted">({pct}%)</span>
               </span>
             </div>
           );

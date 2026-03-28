@@ -13,7 +13,7 @@ function AuthErrorContent() {
     "An unexpected authentication error occurred. Please try again.";
 
   return (
-    <div className="glass-card w-full p-8 text-center flex flex-col items-center gap-6">
+    <div className="bg-bg-container border border-border-ghost rounded-lg w-full p-8 text-center flex flex-col items-center gap-6">
       <div className="w-12 h-12 rounded-full bg-[#ef4444]/10 flex items-center justify-center">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -31,10 +31,10 @@ function AuthErrorContent() {
         </svg>
       </div>
       <div className="space-y-2">
-        <h1 className="text-heading-md font-heading font-bold text-foreground">
+        <h1 className="text-heading-md font-heading font-bold text-text-primary">
           Authentication Error
         </h1>
-        <p className="text-body-sm text-foreground-secondary">{errorDescription}</p>
+        <p className="text-body-sm text-text-secondary">{errorDescription}</p>
       </div>
       <Link href="/login" className="w-full">
         <Button variant="primary" size="md" className="w-full">
@@ -49,8 +49,8 @@ export default function AuthErrorPage() {
   return (
     <Suspense
       fallback={
-        <div className="glass-card w-full p-8 text-center">
-          <p className="text-body-sm text-foreground-secondary">Loading...</p>
+        <div className="bg-bg-container border border-border-ghost rounded-lg w-full p-8 text-center">
+          <p className="text-body-sm text-text-secondary">Loading...</p>
         </div>
       }
     >

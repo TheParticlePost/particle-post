@@ -14,18 +14,18 @@ function MetricCard({ label, value, subtext }: Metric) {
   return (
     <div
       className={cn(
-        "rounded-xl px-4 py-4",
-        "bg-[var(--bg-secondary)] border border-[var(--border)]"
+        "rounded-lg px-4 py-4",
+        "bg-bg-low border border-border-ghost"
       )}
     >
-      <p className="text-body-xs text-foreground-muted font-medium uppercase tracking-wider">
+      <p className="text-body-xs text-text-muted font-medium uppercase tracking-wider">
         {label}
       </p>
       <p className="text-display-md font-display mt-1 leading-none text-accent">
         {value}
       </p>
       {subtext && (
-        <p className="text-body-xs text-foreground-muted mt-1">{subtext}</p>
+        <p className="text-body-xs text-text-muted mt-1">{subtext}</p>
       )}
     </div>
   );

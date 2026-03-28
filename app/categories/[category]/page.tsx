@@ -37,7 +37,7 @@ export default async function CategoryPage({ params }: PageProps) {
           style={{ backgroundColor: cat.color }}
         />
         <h1 className="font-display text-display-lg">{cat.name}</h1>
-        <span className="text-body-sm text-foreground-muted ml-2">
+        <span className="text-body-sm text-text-muted ml-2">
           {posts.length} {posts.length === 1 ? "article" : "articles"}
         </span>
       </div>

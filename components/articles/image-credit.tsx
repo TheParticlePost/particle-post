@@ -18,7 +18,7 @@ export function ImageCredit({
   if (!photographer && !source) return null;
 
   return (
-    <p className={cn("text-body-xs text-foreground-muted", className)}>
+    <p className={cn("text-body-xs text-text-muted", className)}>
       Photo{" "}
       {photographer && (
         <>

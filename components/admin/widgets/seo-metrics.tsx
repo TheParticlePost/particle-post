@@ -13,14 +13,14 @@ interface MetricRowProps {
 
 function MetricRow({ label, value, status = "neutral" }: MetricRowProps) {
   return (
-    <div className="flex items-center justify-between py-2.5 border-b border-[var(--border)] last:border-0">
-      <span className="text-body-sm text-foreground-secondary">{label}</span>
+    <div className="flex items-center justify-between py-2.5 border-b border-border-ghost last:border-0">
+      <span className="text-body-sm text-text-secondary">{label}</span>
       <span
         className={cn(
           "text-body-sm font-medium",
           status === "good" && "text-accent",
           status === "warning" && "text-warning",
-          status === "neutral" && "text-foreground"
+          status === "neutral" && "text-text-primary"
         )}
       >
         {value}

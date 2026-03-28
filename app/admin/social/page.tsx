@@ -85,10 +85,10 @@ export default async function SocialPage() {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <h1 className="font-display text-display-lg text-foreground">
+        <h1 className="font-display text-display-lg text-text-primary">
           Social Media Agent
         </h1>
-        <p className="text-body-sm text-foreground-muted mt-1">
+        <p className="text-body-sm text-text-muted mt-1">
           Reddit sharing agent status, article index, and posting queue.
         </p>
       </div>
@@ -100,7 +100,7 @@ export default async function SocialPage() {
             {/* Reddit API Status */}
             <div
               className={cn(
-                "rounded-xl p-4",
+                "rounded-lg p-4",
                 "bg-amber-500/5 border border-amber-500/20"
               )}
             >
@@ -110,7 +110,7 @@ export default async function SocialPage() {
                   Reddit API: Pending Approval
                 </p>
               </div>
-              <p className="text-body-xs text-foreground-muted mt-2">
+              <p className="text-body-xs text-text-muted mt-2">
                 The Reddit API application is awaiting approval. Social posting
                 is not yet active. The agent will begin operating once API access
                 is granted.
@@ -120,62 +120,62 @@ export default async function SocialPage() {
             {/* Config Summary */}
             {config && (
               <div className="space-y-3">
-                <h3 className="text-body-xs text-foreground-muted font-medium uppercase tracking-wider">
+                <h3 className="text-body-xs text-text-muted font-medium uppercase tracking-wider">
                   Agent Configuration
                 </h3>
 
                 <div className="grid grid-cols-2 gap-3">
                   <div
                     className={cn(
-                      "rounded-xl px-3 py-3",
-                      "bg-[var(--bg-secondary)] border border-[var(--border)]"
+                      "rounded-lg px-3 py-3",
+                      "bg-bg-low border border-border-ghost"
                     )}
                   >
                     <p className="text-display-sm font-display text-accent">
                       {config.subreddits?.length ?? 0}
                     </p>
-                    <p className="text-body-xs text-foreground-muted">
+                    <p className="text-body-xs text-text-muted">
                       Target Subreddits
                     </p>
                   </div>
                   <div
                     className={cn(
-                      "rounded-xl px-3 py-3",
-                      "bg-[var(--bg-secondary)] border border-[var(--border)]"
+                      "rounded-lg px-3 py-3",
+                      "bg-bg-low border border-border-ghost"
                     )}
                   >
                     <p className="text-display-sm font-display text-accent">
                       {config.rate_limits?.max_replies_per_day ?? "N/A"}
                     </p>
-                    <p className="text-body-xs text-foreground-muted">
+                    <p className="text-body-xs text-text-muted">
                       Max Replies/Day
                     </p>
                   </div>
                   <div
                     className={cn(
-                      "rounded-xl px-3 py-3",
-                      "bg-[var(--bg-secondary)] border border-[var(--border)]"
+                      "rounded-lg px-3 py-3",
+                      "bg-bg-low border border-border-ghost"
                     )}
                   >
                     <p className="text-display-sm font-display text-accent">
                       {config.rate_limits?.max_original_posts_per_week ?? "N/A"}
                     </p>
-                    <p className="text-body-xs text-foreground-muted">
+                    <p className="text-body-xs text-text-muted">
                       Max Posts/Week
                     </p>
                   </div>
                   <div
                     className={cn(
-                      "rounded-xl px-3 py-3",
-                      "bg-[var(--bg-secondary)] border border-[var(--border)]"
+                      "rounded-lg px-3 py-3",
+                      "bg-bg-low border border-border-ghost"
                     )}
                   >
-                    <p className="text-display-sm font-display text-foreground">
+                    <p className="text-display-sm font-display text-text-primary">
                       {config.rate_limits?.self_promo_ratio_max != null
                         ? `${config.rate_limits.self_promo_ratio_max * 100}%`
                         : "N/A"}
                     </p>
-                    <p className="text-body-xs text-foreground-muted">
+                    <p className="text-body-xs text-text-muted">
                       Self-Promo Limit
                     </p>
                   </div>
@@ -184,7 +184,7 @@ export default async function SocialPage() {
                 {/* Subreddit list */}
                 {config.subreddits && config.subreddits.length > 0 && (
                   <div>
-                    <h3 className="text-body-xs text-foreground-muted font-medium uppercase tracking-wider mb-2">
+                    <h3 className="text-body-xs text-text-muted font-medium uppercase tracking-wider mb-2">
                       Target Subreddits
                     </h3>
                     <div className="flex flex-wrap gap-1.5">
@@ -203,17 +203,17 @@ export default async function SocialPage() {
                 {/* Scoring */}
                 {config.scoring_thresholds && (
                   <div>
-                    <h3 className="text-body-xs text-foreground-muted font-medium uppercase tracking-wider mb-2">
+                    <h3 className="text-body-xs text-text-muted font-medium uppercase tracking-wider mb-2">
                       Scoring Thresholds
                     </h3>
                     <div className="flex gap-4">
-                      <p className="text-body-xs text-foreground-secondary">
+                      <p className="text-body-xs text-text-secondary">
                         Min relevance:{" "}
                         <span className="text-accent font-mono">
                           {config.scoring_thresholds.min_relevance}
                         </span>
                       </p>
-                      <p className="text-body-xs text-foreground-secondary">
+                      <p className="text-body-xs text-text-secondary">
                         Min helpfulness:{" "}
                         <span className="text-accent font-mono">
                           {config.scoring_thresholds.min_helpfulness}
@@ -226,7 +226,7 @@ export default async function SocialPage() {
             )}
 
             {!config && (
-              <p className="text-foreground-muted text-body-sm">
+              <p className="text-text-muted text-body-sm">
                 No social config found. Create{" "}
                 <code className="text-accent text-body-xs font-mono">
                   pipeline/social/config/social_config.json
@@ -256,16 +256,16 @@ export default async function SocialPage() {
                   key={i}
                   className={cn(
                     "rounded-lg p-3",
-                    "bg-[var(--bg-secondary)] border border-[var(--border)]"
+                    "bg-bg-low border border-border-ghost"
                   )}
                 >
                   <div className="flex items-start justify-between gap-2">
                     <div className="min-w-0 flex-1">
-                      <p className="text-body-sm text-foreground font-medium truncate">
+                      <p className="text-body-sm text-text-primary font-medium truncate">
                         {entry.title ?? entry.slug ?? "Untitled"}
                       </p>
                       {entry.subreddit && (
-                        <p className="text-body-xs text-foreground-muted mt-0.5">
+                        <p className="text-body-xs text-text-muted mt-0.5">
                           r/{entry.subreddit}
                         </p>
                       )}
@@ -284,7 +284,7 @@ export default async function SocialPage() {
                     )}
                   </div>
                   {entry.posted_at && (
-                    <p className="text-body-xs text-foreground-muted mt-1">
+                    <p className="text-body-xs text-text-muted mt-1">
                       Posted: {entry.posted_at}
                     </p>
                   )}
@@ -303,7 +303,7 @@ export default async function SocialPage() {
             </div>
           ) : (
             <div className="flex flex-col items-center justify-center py-8">
-              <div className="w-12 h-12 rounded-full bg-[var(--bg-secondary)] border border-[var(--border)] flex items-center justify-center mb-3">
+              <div className="w-12 h-12 rounded-full bg-bg-low border border-border-ghost flex items-center justify-center mb-3">
                 <svg
                   width="20"
                   height="20"
@@ -313,15 +313,15 @@ export default async function SocialPage() {
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  className="text-foreground-muted"
+                  className="text-text-muted"
                 >
                   <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
                 </svg>
               </div>
-              <p className="text-foreground-muted text-body-sm">
+              <p className="text-text-muted text-body-sm">
                 No posts yet
               </p>
-              <p className="text-foreground-muted text-body-xs mt-1">
+              <p className="text-text-muted text-body-xs mt-1">
                 Posting history will appear here once the Reddit agent is active.
               </p>
             </div>

@@ -8,7 +8,7 @@ export default function NotFound() {
           Error 404
         </p>
         <h1 className="font-display text-display-lg">Page not found</h1>
-        <p className="text-foreground-secondary text-body-lg">
+        <p className="text-text-secondary text-body-lg">
           The page you are looking for does not exist or has been moved.
         </p>
         <Link

@@ -121,13 +121,13 @@ export default async function AdminLayout({
   }
 
   return (
-    <div className="min-h-screen flex flex-col lg:flex-row bg-bg-primary">
+    <div className="min-h-screen flex flex-col lg:flex-row bg-bg-base">
       {/* Mobile top nav */}
       <nav
         className={cn(
           "lg:hidden flex items-center gap-1 px-4 py-3 overflow-x-auto scrollbar-hide",
-          "border-b border-[var(--border)]",
-          "bg-[var(--bg-secondary)]"
+          "border-b border-border-ghost",
+          "bg-bg-low"
         )}
       >
         <span className="font-display text-body-md text-accent mr-3 shrink-0">
@@ -139,7 +139,7 @@ export default async function AdminLayout({
             href={item.href}
             className={cn(
               "flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-body-sm font-medium whitespace-nowrap",
-              "text-foreground-secondary hover:text-foreground hover:bg-[var(--bg-tertiary)]",
+              "text-text-secondary hover:text-text-primary hover:bg-bg-high",
               "transition-colors duration-200"
             )}
           >
@@ -153,21 +153,21 @@ export default async function AdminLayout({
       <aside
         className={cn(
           "hidden lg:flex lg:flex-col lg:w-60 lg:shrink-0",
-          "border-r border-[var(--border)]",
-          "bg-[var(--bg-secondary)]"
+          "border-r border-border-ghost",
+          "bg-bg-low"
         )}
       >
         {/* Sidebar header */}
-        <div className="px-5 py-6 border-b border-[var(--border)]">
+        <div className="px-5 py-6 border-b border-border-ghost">
           <Link href="/admin" className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center">
               <div className="w-3 h-3 rounded-full bg-accent" />
             </div>
             <div>
-              <p className="font-display text-body-md text-foreground leading-none">
+              <p className="font-display text-body-md text-text-primary leading-none">
                 Particle Post
               </p>
-              <p className="text-body-xs text-foreground-muted mt-0.5">
+              <p className="text-body-xs text-text-muted mt-0.5">
                 Admin Dashboard
               </p>
             </div>
@@ -182,7 +182,7 @@ export default async function AdminLayout({
               href={item.href}
               className={cn(
                 "flex items-center gap-3 px-3 py-2.5 rounded-lg text-body-sm font-medium",
-                "text-foreground-secondary hover:text-foreground hover:bg-[var(--bg-tertiary)]",
+                "text-text-secondary hover:text-text-primary hover:bg-bg-high",
                 "transition-colors duration-200"
               )}
             >
@@ -193,12 +193,12 @@ export default async function AdminLayout({
         </nav>
 
         {/* Sidebar footer */}
-        <div className="px-5 py-4 border-t border-[var(--border)]">
+        <div className="px-5 py-4 border-t border-border-ghost">
           <div className="flex items-center gap-2">
             <div className="w-7 h-7 rounded-full bg-accent/20 flex items-center justify-center text-body-xs text-accent font-medium">
               {user.email?.charAt(0).toUpperCase()}
             </div>
-            <span className="text-body-xs text-foreground-muted truncate">
+            <span className="text-body-xs text-text-muted truncate">
               {user.email}
             </span>
           </div>

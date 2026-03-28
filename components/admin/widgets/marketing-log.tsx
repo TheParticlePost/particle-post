@@ -14,7 +14,7 @@ function renderMarkdownLine(line: string): React.ReactNode {
   // Bold
   let processed = line.replace(
     /\*\*(.+?)\*\*/g,
-    '<strong class="text-foreground font-semibold">$1</strong>'
+    '<strong class="text-text-primary font-semibold">$1</strong>'
   );
   // Inline code
   processed = processed.replace(
@@ -42,15 +42,15 @@ function renderMarkdown(content: string): React.ReactNode {
       elements.push(
         <div
           key={`table-${elements.length}`}
-          className="overflow-x-auto my-3 rounded-lg border border-[var(--border)]"
+          className="overflow-x-auto my-3 rounded-lg border border-border-ghost"
         >
           <table className="w-full text-body-xs">
             <thead>
-              <tr className="bg-[var(--bg-tertiary)]">
+              <tr className="bg-bg-high">
                 {tableHeaders.map((h, i) => (
                   <th
                     key={i}
-                    className="px-3 py-2 text-left text-foreground-muted font-medium uppercase tracking-wider"
+                    className="px-3 py-2 text-left text-text-muted font-medium uppercase tracking-wider"
                   >
                     {h.trim()}
                   </th>
@@ -61,10 +61,10 @@ function renderMarkdown(content: string): React.ReactNode {
               {tableRows.map((row, ri) => (
                 <tr
                   key={ri}
-                  className="border-t border-[var(--border)] hover:bg-[var(--bg-secondary)]"
+                  className="border-t border-border-ghost hover:bg-bg-low"
                 >
                   {row.map((cell, ci) => (
-                    <td key={ci} className="px-3 py-2 text-foreground">
+                    <td key={ci} className="px-3 py-2 text-text-primary">
                       {renderMarkdownLine(cell.trim())}
                     </td>
                   ))}
@@ -115,7 +115,7 @@ function renderMarkdown(content: string): React.ReactNode {
       elements.push(
         <h4
           key={i}
-          className="text-body-sm font-semibold text-foreground mt-4 mb-1"
+          className="text-body-sm font-semibold text-text-primary mt-4 mb-1"
         >
           {trimmed.slice(4)}
         </h4>
@@ -126,7 +126,7 @@ function renderMarkdown(content: string): React.ReactNode {
       elements.push(
         <h3
           key={i}
-          className="text-body-md font-display text-foreground mt-4 mb-1"
+          className="text-body-md font-display text-text-primary mt-4 mb-1"
         >
           {trimmed.slice(3)}
         </h3>
@@ -139,7 +139,7 @@ function renderMarkdown(content: string): React.ReactNode {
       elements.push(
         <hr
           key={i}
-          className="border-t border-[var(--border)] my-3"
+          className="border-t border-border-ghost my-3"
         />
       );
       continue;
@@ -152,7 +152,7 @@ function renderMarkdown(content: string): React.ReactNode {
 
     // Regular paragraph
     elements.push(
-      <p key={i} className="text-body-sm text-foreground-secondary leading-relaxed">
+      <p key={i} className="text-body-sm text-text-secondary leading-relaxed">
         {renderMarkdownLine(trimmed)}
       </p>
     );
@@ -180,7 +180,7 @@ function formatLogDate(dateStr: string): string {
 export function MarketingLog({ logs, className }: MarketingLogProps) {
   if (logs.length === 0) {
     return (
-      <div className={cn("text-foreground-muted text-body-sm", className)}>
+      <div className={cn("text-text-muted text-body-sm", className)}>
         No marketing reports available yet.
       </div>
     );
@@ -192,14 +192,14 @@ export function MarketingLog({ logs, className }: MarketingLogProps) {
         <div key={log.date}>
           <div className="flex items-center gap-2 mb-3">
             <div className="w-2 h-2 rounded-full bg-accent" />
-            <h3 className="font-display text-body-md text-foreground">
+            <h3 className="font-display text-body-md text-text-primary">
               {formatLogDate(log.date)}
             </h3>
           </div>
           <div
             className={cn(
-              "rounded-xl p-4",
-              "bg-[var(--bg-secondary)] border border-[var(--border)]",
+              "rounded-lg p-4",
+              "bg-bg-low border border-border-ghost",
               "max-h-[500px] overflow-y-auto scrollbar-hide"
             )}
           >

@@ -7,8 +7,8 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const inputStyles = cn(
-  "w-full px-4 py-2.5 rounded-lg bg-bg-tertiary/50 border border-[var(--border)]",
-  "text-body-sm text-foreground placeholder:text-foreground-muted",
+  "w-full px-4 py-2.5 rounded-lg bg-bg-high/50 border border-border-ghost",
+  "text-body-sm text-text-primary placeholder:text-text-muted",
   "focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent",
   "transition-all duration-200"
 );
@@ -41,7 +41,7 @@ export function ForgotPasswordForm() {
 
   if (success) {
     return (
-      <div className="glass-card w-full p-8 flex flex-col items-center gap-6 text-center">
+      <div className="bg-bg-container border border-border-ghost rounded-lg w-full p-8 flex flex-col items-center gap-6 text-center">
         <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -59,11 +59,11 @@ export function ForgotPasswordForm() {
           </svg>
         </div>
         <div className="space-y-2">
-          <h2 className="text-heading-md font-heading font-bold text-foreground">
+          <h2 className="text-heading-md font-heading font-bold text-text-primary">
             Check your email
           </h2>
-          <p className="text-body-sm text-foreground-secondary">
-            We sent a password reset link to <strong className="text-foreground">{email}</strong>.
+          <p className="text-body-sm text-text-secondary">
+            We sent a password reset link to <strong className="text-text-primary">{email}</strong>.
             Follow the link to reset your password.
           </p>
         </div>
@@ -77,19 +77,19 @@ export function ForgotPasswordForm() {
   }
 
   return (
-    <div className="glass-card w-full p-8 flex flex-col gap-6">
+    <div className="bg-bg-container border border-border-ghost rounded-lg w-full p-8 flex flex-col gap-6">
       <div className="text-center space-y-1">
-        <h1 className="text-heading-md font-heading font-bold text-foreground">
+        <h1 className="text-heading-md font-heading font-bold text-text-primary">
           Forgot your password?
         </h1>
-        <p className="text-body-sm text-foreground-secondary">
+        <p className="text-body-sm text-text-secondary">
           Enter your email and we&apos;ll send you a reset link
         </p>
       </div>
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <div className="flex flex-col gap-1.5">
-          <label htmlFor="email" className="text-body-sm font-medium text-foreground-secondary">
+          <label htmlFor="email" className="text-body-sm font-medium text-text-secondary">
             Email
           </label>
           <input
@@ -112,7 +112,7 @@ export function ForgotPasswordForm() {
         </Button>
       </form>
 
-      <p className="text-center text-body-sm text-foreground-secondary">
+      <p className="text-center text-body-sm text-text-secondary">
         Remember your password?{" "}
         <Link href="/login" className="text-accent hover:text-accent-hover transition-colors font-medium">
           Log in

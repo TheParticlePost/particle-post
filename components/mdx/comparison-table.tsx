@@ -15,14 +15,14 @@ export function ComparisonTable({ headers, rows, source }: ComparisonTableProps)
   }
 
   return (
-    <div className="my-6 overflow-x-auto rounded-xl border border-[var(--border)]">
+    <div className="my-6 overflow-x-auto rounded-lg border border-border-ghost">
       <table className="w-full text-body-sm">
         <thead>
-          <tr className="bg-bg-tertiary/50">
+          <tr className="bg-bg-high/50">
             {parsedHeaders.map((h, i) => (
               <th
                 key={i}
-                className="text-left px-4 py-3 font-semibold text-foreground-secondary uppercase tracking-wider text-body-xs"
+                className="text-left px-4 py-3 font-semibold text-text-secondary uppercase tracking-wider text-body-xs"
               >
                 {h}
               </th>
@@ -31,9 +31,9 @@ export function ComparisonTable({ headers, rows, source }: ComparisonTableProps)
         </thead>
         <tbody>
           {parsedRows.map((row, i) => (
-            <tr key={i} className="border-t border-[var(--border)]">
+            <tr key={i} className="border-t border-border-ghost">
               {row.map((cell, j) => (
-                <td key={j} className="px-4 py-3 text-foreground">
+                <td key={j} className="px-4 py-3 text-text-primary">
                   {cell}
                 </td>
               ))}
@@ -42,8 +42,8 @@ export function ComparisonTable({ headers, rows, source }: ComparisonTableProps)
         </tbody>
       </table>
       {source && (
-        <div className="px-4 py-2 border-t border-[var(--border)] bg-bg-tertiary/30">
-          <p className="text-body-xs text-foreground-muted">Source: {source}</p>
+        <div className="px-4 py-2 border-t border-border-ghost bg-bg-high/30">
+          <p className="text-body-xs text-text-muted">Source: {source}</p>
         </div>
       )}
     </div>

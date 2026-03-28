@@ -70,19 +70,19 @@ export default async function AnalyticsPage() {
     return (
       <div className="space-y-6">
         <div>
-          <h1 className="font-display text-display-lg text-foreground">
+          <h1 className="font-display text-display-lg text-text-primary">
             Analytics
           </h1>
-          <p className="text-body-md text-foreground-muted mt-1">
+          <p className="text-body-md text-text-muted mt-1">
             Unified view of GA4, Google Search Console, and Bing Webmaster data
           </p>
         </div>
         <WidgetCard title="Awaiting Data">
           <div className="py-12 text-center">
-            <p className="text-body-md text-foreground-muted">
+            <p className="text-body-md text-text-muted">
               Analytics data will appear after the Marketing Director runs.
             </p>
-            <p className="text-body-sm text-foreground-muted mt-2">
+            <p className="text-body-sm text-text-muted mt-2">
               The marketing pipeline writes daily reports to{" "}
               <code className="text-accent text-body-xs">
                 pipeline/logs/marketing/
@@ -139,13 +139,13 @@ export default async function AnalyticsPage() {
     <div className="space-y-6">
       {/* Page header */}
       <div>
-        <h1 className="font-display text-display-lg text-foreground">
+        <h1 className="font-display text-display-lg text-text-primary">
           Analytics
         </h1>
-        <p className="text-body-md text-foreground-muted mt-1">
+        <p className="text-body-md text-text-muted mt-1">
           Unified view of GA4, Google Search Console, and Bing Webmaster data
           {data.reportDate && (
-            <span className="ml-2 text-body-xs text-foreground-muted">
+            <span className="ml-2 text-body-xs text-text-muted">
               — Last report: {data.reportDate}
             </span>
           )}
@@ -156,8 +156,8 @@ export default async function AnalyticsPage() {
       <WidgetCard title="Traffic Overview">
         <AnalyticsOverview metrics={overviewMetrics} />
         {data.trafficSources.length > 0 && (
-          <div className="mt-5 pt-5 border-t border-[var(--border)]">
-            <h3 className="text-body-sm font-medium text-foreground-secondary mb-3">
+          <div className="mt-5 pt-5 border-t border-border-ghost">
+            <h3 className="text-body-sm font-medium text-text-secondary mb-3">
               Traffic Sources
             </h3>
             <TrafficSources sources={data.trafficSources} />

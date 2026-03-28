@@ -10,7 +10,7 @@ export default function CookiesPage() {
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-12">
       <h1 className="font-display text-display-lg mb-8">Cookie Policy</h1>
       <div className="prose">
-        <p className="text-foreground-secondary text-body-sm mb-8">
+        <p className="text-text-secondary text-body-sm mb-8">
           Last updated: March 2026
         </p>
 

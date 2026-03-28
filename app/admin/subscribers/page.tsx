@@ -117,8 +117,8 @@ function StatCard({
   accent?: boolean;
 }) {
   return (
-    <div className="rounded-lg bg-[var(--bg-secondary)] border border-[var(--border)] px-4 py-3">
-      <p className="text-body-xs text-foreground-muted">{label}</p>
+    <div className="rounded-lg bg-bg-low border border-border-ghost px-4 py-3">
+      <p className="text-body-xs text-text-muted">{label}</p>
       <p
         className={
           accent
@@ -142,10 +142,10 @@ export default async function SubscribersPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="font-display text-display-lg text-foreground">
+        <h1 className="font-display text-display-lg text-text-primary">
           Subscriber Management
         </h1>
-        <p className="text-body-sm text-foreground-muted mt-1">
+        <p className="text-body-sm text-text-muted mt-1">
           Track subscriber growth and manage your audience.
         </p>
       </div>

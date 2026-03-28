@@ -36,7 +36,7 @@ function StatusBadge({ status }: { status: string }) {
 export function SubscriberList({ subscribers }: SubscriberListProps) {
   if (subscribers.length === 0) {
     return (
-      <p className="text-body-sm text-foreground-muted py-4">
+      <p className="text-body-sm text-text-muted py-4">
         No subscribers found.
       </p>
     );
@@ -46,14 +46,14 @@ export function SubscriberList({ subscribers }: SubscriberListProps) {
     <div className="overflow-x-auto -mx-5 sm:-mx-6 px-5 sm:px-6">
       <table className="w-full text-body-sm">
         <thead>
-          <tr className="border-b border-[var(--border)]">
-            <th className="pb-3 pr-4 text-left font-medium text-foreground-muted">
+          <tr className="border-b border-border-ghost">
+            <th className="pb-3 pr-4 text-left font-medium text-text-muted">
               Email
             </th>
-            <th className="pb-3 pr-4 text-center font-medium text-foreground-muted">
+            <th className="pb-3 pr-4 text-center font-medium text-text-muted">
               Status
             </th>
-            <th className="pb-3 text-left font-medium text-foreground-muted hidden sm:table-cell">
+            <th className="pb-3 text-left font-medium text-text-muted hidden sm:table-cell">
               Subscribed
             </th>
           </tr>
@@ -62,15 +62,15 @@ export function SubscriberList({ subscribers }: SubscriberListProps) {
           {subscribers.map((sub) => (
             <tr
               key={sub.id}
-              className="hover:bg-[var(--bg-secondary)] transition-colors duration-150"
+              className="hover:bg-bg-low transition-colors duration-150"
             >
-              <td className="py-3 pr-4 text-foreground truncate max-w-[240px]">
+              <td className="py-3 pr-4 text-text-primary truncate max-w-[240px]">
                 {sub.email}
               </td>
               <td className="py-3 pr-4 text-center">
                 <StatusBadge status={sub.status} />
               </td>
-              <td className="py-3 text-foreground-muted whitespace-nowrap hidden sm:table-cell">
+              <td className="py-3 text-text-muted whitespace-nowrap hidden sm:table-cell">
                 {formatDateShort(sub.subscribed_at)}
               </td>
             </tr>

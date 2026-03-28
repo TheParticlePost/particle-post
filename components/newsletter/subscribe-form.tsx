@@ -77,8 +77,8 @@ export function SubscribeForm({ compact = false, className }: SubscribeFormProps
         aria-label="Email address"
         required
         className={cn(
-          "flex-1 px-4 py-2.5 rounded-lg bg-bg-tertiary/50 border border-[var(--border)]",
-          "text-body-sm text-foreground placeholder:text-foreground-muted",
+          "flex-1 px-4 py-2.5 rounded-lg bg-bg-high/50 border border-border-ghost",
+          "text-body-sm text-text-primary placeholder:text-text-muted",
           "focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent",
           "transition-all duration-200",
           compact ? "min-w-0" : "min-w-[240px]"

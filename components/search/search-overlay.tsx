@@ -100,7 +100,7 @@ export function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
     <div className="fixed inset-0 z-[70] flex items-start justify-center pt-[15vh]">
       {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-bg-primary/80 backdrop-blur-sm"
+        className="absolute inset-0 bg-bg-base/80 backdrop-blur-sm"
         onClick={onClose}
         role="button"
         aria-label="Close search"
@@ -109,14 +109,14 @@ export function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
 
       {/* Modal */}
       <div
-        className="relative w-full max-w-xl mx-4 glass-card shadow-card-hover animate-fade-in"
+        className="relative w-full max-w-xl mx-4 bg-bg-container border border-border-ghost rounded-lg animate-fade-in"
         role="dialog"
         aria-modal="true"
         aria-label="Search articles"
       >
         {/* Search input */}
-        <div className="flex items-center gap-3 px-5 py-4 border-b border-[var(--border)]">
-          <svg className="w-5 h-5 text-foreground-muted shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <div className="flex items-center gap-3 px-5 py-4 border-b border-border-ghost">
+          <svg className="w-5 h-5 text-text-muted shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <circle cx="11" cy="11" r="8" />
             <path d="m21 21-4.35-4.35" />
           </svg>
@@ -129,9 +129,9 @@ export function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
             aria-label="Search articles"
             aria-autocomplete="list"
             aria-controls="search-results"
-            className="flex-1 bg-transparent text-body-md text-foreground placeholder:text-foreground-muted outline-none"
+            className="flex-1 bg-transparent text-body-md text-text-primary placeholder:text-text-muted outline-none"
           />
-          <kbd className="hidden sm:inline-flex px-2 py-0.5 text-body-xs text-foreground-muted border border-[var(--border)] rounded">
+          <kbd className="hidden sm:inline-flex px-2 py-0.5 text-body-xs text-text-muted border border-border-ghost rounded">
             Esc
           </kbd>
         </div>
@@ -148,16 +148,16 @@ export function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
                     "block px-5 py-3 transition-colors duration-100",
                     i === activeIndex
                       ? "bg-accent/10 text-accent"
-                      : "hover:bg-bg-tertiary/50"
+                      : "hover:bg-bg-high/50"
                   )}
                 >
                   <p className="text-body-md font-medium line-clamp-1">
                     {item.title}
                   </p>
-                  <p className="text-body-xs text-foreground-muted line-clamp-1 mt-0.5">
+                  <p className="text-body-xs text-text-muted line-clamp-1 mt-0.5">
                     {item.description}
                   </p>
-                  <p className="text-body-xs text-foreground-muted mt-1">
+                  <p className="text-body-xs text-text-muted mt-1">
                     {formatDateShort(item.date)}
                   </p>
                 </Link>
@@ -168,14 +168,14 @@ export function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
 
         {/* Empty state */}
         {query && results.length === 0 && (
-          <div className="px-5 py-8 text-center text-foreground-muted text-body-sm">
+          <div className="px-5 py-8 text-center text-text-muted text-body-sm">
             No results found for &quot;{query}&quot;
           </div>
         )}
 
         {/* Hint */}
         {!query && (
-          <div className="px-5 py-6 text-center text-foreground-muted text-body-sm">
+          <div className="px-5 py-6 text-center text-text-muted text-body-sm">
             Start typing to search articles
           </div>
         )}

@@ -20,7 +20,7 @@ export default function CategoriesPage() {
             <Link
               key={cat.slug}
               href={`/categories/${cat.slug}/`}
-              className="group glass-card p-6 hover:border-[var(--border-hover)] transition-all duration-300"
+              className="group bg-bg-container border border-border-ghost rounded-lg p-6 hover:border-border-hover transition-all duration-300"
             >
               <div className="flex items-center gap-3 mb-2">
                 <div
@@ -31,7 +31,7 @@ export default function CategoriesPage() {
                   {cat.name}
                 </h2>
               </div>
-              <p className="text-body-sm text-foreground-muted">
+              <p className="text-body-sm text-text-muted">
                 {posts.length} {posts.length === 1 ? "article" : "articles"}
               </p>
             </Link>

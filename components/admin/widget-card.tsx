@@ -15,9 +15,9 @@ export function WidgetCard({
   children,
 }: WidgetCardProps) {
   return (
-    <div className={cn("glass-card p-5 sm:p-6", className)}>
+    <div className={cn("bg-bg-container border border-border-ghost rounded-lg p-5 sm:p-6", className)}>
       <div className="flex items-center justify-between mb-4">
-        <h2 className="font-display text-display-sm text-foreground">
+        <h2 className="font-display text-display-sm text-text-primary">
           {title}
         </h2>
         {action && (

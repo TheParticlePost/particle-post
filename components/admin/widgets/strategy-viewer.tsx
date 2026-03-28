@@ -7,7 +7,7 @@ interface StrategyViewerProps {
 
 function renderValue(value: unknown, depth: number = 0): React.ReactNode {
   if (value === null || value === undefined) {
-    return <span className="text-foreground-muted italic">N/A</span>;
+    return <span className="text-text-muted italic">N/A</span>;
   }
 
   if (typeof value === "boolean") {
@@ -23,12 +23,12 @@ function renderValue(value: unknown, depth: number = 0): React.ReactNode {
   }
 
   if (typeof value === "string") {
-    return <span className="text-foreground">{value}</span>;
+    return <span className="text-text-primary">{value}</span>;
   }
 
   if (Array.isArray(value)) {
     if (value.length === 0) {
-      return <span className="text-foreground-muted italic">Empty</span>;
+      return <span className="text-text-muted italic">Empty</span>;
     }
     // Simple string/number arrays render as inline tags
     if (value.every((v) => typeof v === "string" || typeof v === "number")) {
@@ -56,13 +56,13 @@ function renderValue(value: unknown, depth: number = 0): React.ReactNode {
             key={i}
             className={cn(
               "rounded-lg p-3",
-              "bg-[var(--bg-primary)] border border-[var(--border)]"
+              "bg-bg-base border border-border-ghost"
             )}
           >
             {typeof item === "object" && item !== null ? (
               renderObject(item as Record<string, unknown>, depth + 1)
             ) : (
-              <span className="text-body-sm text-foreground">
+              <span className="text-body-sm text-text-primary">
                 {String(item)}
               </span>
             )}
@@ -76,7 +76,7 @@ function renderValue(value: unknown, depth: number = 0): React.ReactNode {
     return renderObject(value as Record<string, unknown>, depth + 1);
   }
 
-  return <span className="text-foreground">{String(value)}</span>;
+  return <span className="text-text-primary">{String(value)}</span>;
 }
 
 function formatKey(key: string): string {
@@ -92,14 +92,14 @@ function renderObject(
 ): React.ReactNode {
   const entries = Object.entries(obj);
   if (entries.length === 0) {
-    return <span className="text-foreground-muted italic">Empty</span>;
+    return <span className="text-text-muted italic">Empty</span>;
   }
 
   return (
     <div className={cn("space-y-3", depth > 0 && "ml-2 mt-1")}>
       {entries.map(([key, val]) => (
         <div key={key}>
-          <p className="text-body-xs text-foreground-muted font-medium uppercase tracking-wider">
+          <p className="text-body-xs text-text-muted font-medium uppercase tracking-wider">
             {formatKey(key)}
           </p>
           <div className="mt-0.5">{renderValue(val, depth)}</div>
@@ -112,7 +112,7 @@ function renderObject(
 export function StrategyViewer({ data, className }: StrategyViewerProps) {
   if (!data || Object.keys(data).length === 0) {
     return (
-      <div className={cn("text-foreground-muted text-body-sm", className)}>
+      <div className={cn("text-text-muted text-body-sm", className)}>
         No data available yet.
       </div>
     );

@@ -292,10 +292,10 @@ export default async function PipelinePage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="font-display text-display-lg text-foreground">
+          <h1 className="font-display text-display-lg text-text-primary">
             Agent Monitor
           </h1>
-          <p className="text-body-sm text-foreground-muted mt-1">
+          <p className="text-body-sm text-text-muted mt-1">
             Pipeline agent status, editorial feedback, and rejection logs.
           </p>
         </div>

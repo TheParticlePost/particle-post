@@ -38,14 +38,14 @@ function FunnelBadge({ type }: { type: string }) {
 export function RecentPosts({ posts }: RecentPostsProps) {
   if (posts.length === 0) {
     return (
-      <p className="text-body-sm text-foreground-muted py-4">
+      <p className="text-body-sm text-text-muted py-4">
         No posts published yet.
       </p>
     );
   }
 
   return (
-    <ul className="divide-y divide-[var(--border)]">
+    <ul className="divide-y divide-border-ghost">
       {posts.slice(0, 5).map((post) => (
         <li key={post.slug} className="py-3 first:pt-0 last:pb-0">
           <div className="flex items-start justify-between gap-3">
@@ -53,14 +53,14 @@ export function RecentPosts({ posts }: RecentPostsProps) {
               <Link
                 href={`/posts/${post.slug}/`}
                 className={cn(
-                  "text-body-sm font-medium text-foreground",
+                  "text-body-sm font-medium text-text-primary",
                   "hover:text-accent transition-colors duration-200",
                   "line-clamp-2"
                 )}
               >
                 {post.title}
               </Link>
-              <p className="text-body-xs text-foreground-muted mt-0.5">
+              <p className="text-body-xs text-text-muted mt-0.5">
                 {formatDateShort(post.date)}
               </p>
             </div>

@@ -19,8 +19,8 @@ interface SettingsFormProps {
 }
 
 const inputStyles = cn(
-  "flex-1 px-4 py-2.5 rounded-lg bg-bg-tertiary/50 border border-[var(--border)]",
-  "text-body-sm text-foreground placeholder:text-foreground-muted",
+  "flex-1 px-4 py-2.5 rounded-lg bg-bg-high/50 border border-border-ghost",
+  "text-body-sm text-text-primary placeholder:text-text-muted",
   "focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent",
   "transition-all duration-200"
 );
@@ -165,15 +165,15 @@ export function SettingsForm({ profile }: SettingsFormProps) {
   return (
     <div className="space-y-8">
       {/* Section 1: Profile */}
-      <section className="glass-card rounded-xl p-6">
-        <h2 className="text-body-lg font-semibold text-foreground mb-4">
+      <section className="bg-bg-container border border-border-ghost rounded-lg p-6">
+        <h2 className="text-body-lg font-semibold text-text-primary mb-4">
           Profile
         </h2>
         <form onSubmit={handleProfileSubmit} className="space-y-4">
           <div>
             <label
               htmlFor="fullName"
-              className="block text-body-sm font-medium text-foreground-secondary mb-1.5"
+              className="block text-body-sm font-medium text-text-secondary mb-1.5"
             >
               Full name
             </label>
@@ -190,7 +190,7 @@ export function SettingsForm({ profile }: SettingsFormProps) {
           <div>
             <label
               htmlFor="avatarUrl"
-              className="block text-body-sm font-medium text-foreground-secondary mb-1.5"
+              className="block text-body-sm font-medium text-text-secondary mb-1.5"
             >
               Avatar URL
             </label>
@@ -219,15 +219,15 @@ export function SettingsForm({ profile }: SettingsFormProps) {
       </section>
 
       {/* Section 2: Change Password */}
-      <section className="glass-card rounded-xl p-6">
-        <h2 className="text-body-lg font-semibold text-foreground mb-4">
+      <section className="bg-bg-container border border-border-ghost rounded-lg p-6">
+        <h2 className="text-body-lg font-semibold text-text-primary mb-4">
           Change Password
         </h2>
         <form onSubmit={handlePasswordSubmit} className="space-y-4">
           <div>
             <label
               htmlFor="newPassword"
-              className="block text-body-sm font-medium text-foreground-secondary mb-1.5"
+              className="block text-body-sm font-medium text-text-secondary mb-1.5"
             >
               New password
             </label>
@@ -246,7 +246,7 @@ export function SettingsForm({ profile }: SettingsFormProps) {
           <div>
             <label
               htmlFor="confirmPassword"
-              className="block text-body-sm font-medium text-foreground-secondary mb-1.5"
+              className="block text-body-sm font-medium text-text-secondary mb-1.5"
             >
               Confirm password
             </label>
@@ -277,11 +277,11 @@ export function SettingsForm({ profile }: SettingsFormProps) {
       </section>
 
       {/* Section 3: Connected Accounts */}
-      <section className="glass-card rounded-xl p-6">
-        <h2 className="text-body-lg font-semibold text-foreground mb-4">
+      <section className="bg-bg-container border border-border-ghost rounded-lg p-6">
+        <h2 className="text-body-lg font-semibold text-text-primary mb-4">
           Connected Accounts
         </h2>
-        <p className="text-body-sm text-foreground-secondary mb-4">
+        <p className="text-body-sm text-text-secondary mb-4">
           Link external accounts for easier sign-in.
         </p>
         <div className="flex flex-col sm:flex-row gap-3">

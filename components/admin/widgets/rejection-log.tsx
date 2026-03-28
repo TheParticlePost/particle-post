@@ -15,7 +15,7 @@ export function RejectionLog({ rejections }: RejectionLogProps) {
     return (
       <div className="flex items-center gap-2 py-4">
         <div className="w-2.5 h-2.5 rounded-full bg-accent" />
-        <p className="text-body-sm text-foreground-muted">
+        <p className="text-body-sm text-text-muted">
           No rejections recorded. Pipeline is running clean.
         </p>
       </div>
@@ -23,21 +23,21 @@ export function RejectionLog({ rejections }: RejectionLogProps) {
   }
 
   return (
-    <ul className="divide-y divide-[var(--border)]">
+    <ul className="divide-y divide-border-ghost">
       {rejections.map((entry, i) => (
         <li key={`${entry.date}-${i}`} className="py-3 first:pt-0 last:pb-0">
           <div className="flex items-start gap-3">
             <div className="w-2 h-2 rounded-full bg-warning mt-1.5 shrink-0" />
             <div className="min-w-0 flex-1">
               <div className="flex items-center gap-2 flex-wrap">
-                <span className="text-body-sm font-medium text-foreground">
+                <span className="text-body-sm font-medium text-text-primary">
                   {entry.slug}
                 </span>
-                <span className="text-body-xs text-foreground-muted">
+                <span className="text-body-xs text-text-muted">
                   {formatDateShort(entry.date)}
                 </span>
               </div>
-              <p className="text-body-xs text-foreground-muted mt-0.5 line-clamp-2">
+              <p className="text-body-xs text-text-muted mt-0.5 line-clamp-2">
                 {entry.reason}
               </p>
             </div>

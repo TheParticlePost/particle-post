@@ -113,7 +113,7 @@ export function PostsTable({ posts }: PostsTableProps) {
 
   if (posts.length === 0) {
     return (
-      <p className="text-body-sm text-foreground-muted py-4">
+      <p className="text-body-sm text-text-muted py-4">
         No posts found.
       </p>
     );
@@ -139,7 +139,7 @@ export function PostsTable({ posts }: PostsTableProps) {
               "px-3 py-1.5 rounded-lg text-body-xs font-medium transition-colors duration-200",
               funnelFilter === f
                 ? "bg-accent/15 text-accent"
-                : "bg-[var(--bg-secondary)] text-foreground-muted hover:text-foreground hover:bg-[var(--bg-tertiary)]"
+                : "bg-bg-low text-text-muted hover:text-text-primary hover:bg-bg-high"
             )}
           >
             {f === "all" ? "All" : f}{" "}
@@ -152,12 +152,12 @@ export function PostsTable({ posts }: PostsTableProps) {
       <div className="overflow-x-auto -mx-5 sm:-mx-6 px-5 sm:px-6">
         <table className="w-full text-body-sm">
           <thead>
-            <tr className="border-b border-[var(--border)]">
+            <tr className="border-b border-border-ghost">
               {columns.map((col) => (
                 <th
                   key={col.key}
                   className={cn(
-                    "pb-3 pr-4 font-medium text-foreground-muted cursor-pointer select-none",
+                    "pb-3 pr-4 font-medium text-text-muted cursor-pointer select-none",
                     col.className
                   )}
                   onClick={() => handleSort(col.key)}
@@ -172,13 +172,13 @@ export function PostsTable({ posts }: PostsTableProps) {
             {sorted.map((post) => (
               <tr
                 key={post.slug}
-                className="group hover:bg-[var(--bg-secondary)] transition-colors duration-150"
+                className="group hover:bg-bg-low transition-colors duration-150"
               >
                 <td className="py-3 pr-4 max-w-[300px]">
                   <Link
                     href={`/posts/${post.slug}/`}
                     className={cn(
-                      "text-body-sm font-medium text-foreground",
+                      "text-body-sm font-medium text-text-primary",
                       "hover:text-accent transition-colors duration-200",
                       "line-clamp-2"
                     )}
@@ -186,10 +186,10 @@ export function PostsTable({ posts }: PostsTableProps) {
                     {post.title}
                   </Link>
                 </td>
-                <td className="py-3 pr-4 text-foreground-muted whitespace-nowrap hidden sm:table-cell">
+                <td className="py-3 pr-4 text-text-muted whitespace-nowrap hidden sm:table-cell">
                   {formatDateShort(post.date)}
                 </td>
-                <td className="py-3 pr-4 text-foreground-muted hidden md:table-cell">
+                <td className="py-3 pr-4 text-text-muted hidden md:table-cell">
                   <span className="inline-block max-w-[140px] truncate">
                     {post.category || "Uncategorized"}
                   </span>
@@ -197,7 +197,7 @@ export function PostsTable({ posts }: PostsTableProps) {
                 <td className="py-3 pr-4 text-center">
                   <FunnelBadge type={post.funnel_type} />
                 </td>
-                <td className="py-3 text-foreground-muted hidden lg:table-cell">
+                <td className="py-3 text-text-muted hidden lg:table-cell">
                   {post.schema_type || "Article"}
                 </td>
               </tr>
@@ -207,7 +207,7 @@ export function PostsTable({ posts }: PostsTableProps) {
       </div>
 
       {/* Count */}
-      <p className="text-body-xs text-foreground-muted">
+      <p className="text-body-xs text-text-muted">
         Showing {sorted.length} of {posts.length} posts
       </p>
     </div>

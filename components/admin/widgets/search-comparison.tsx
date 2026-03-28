@@ -44,7 +44,7 @@ export function SearchComparison({
   return (
     <div>
       {/* Tab switcher */}
-      <div className="flex gap-1 mb-4 p-1 rounded-lg bg-[var(--bg-secondary)] w-fit">
+      <div className="flex gap-1 mb-4 p-1 rounded-lg bg-bg-low w-fit">
         {tabs.map((tab) => (
           <button
             key={tab.key}
@@ -53,7 +53,7 @@ export function SearchComparison({
               "px-3 py-1.5 rounded-md text-body-sm font-medium transition-colors duration-200",
               activeTab === tab.key
                 ? "bg-accent/15 text-accent"
-                : "text-foreground-muted hover:text-foreground"
+                : "text-text-muted hover:text-text-primary"
             )}
           >
             {tab.label}
@@ -66,20 +66,20 @@ export function SearchComparison({
         <div className="overflow-x-auto">
           <table className="w-full text-body-sm">
             <thead>
-              <tr className="border-b border-[var(--border)]">
-                <th className="text-left py-2 pr-4 text-foreground-muted font-medium">
+              <tr className="border-b border-border-ghost">
+                <th className="text-left py-2 pr-4 text-text-muted font-medium">
                   Query
                 </th>
-                <th className="text-right py-2 px-3 text-foreground-muted font-medium">
+                <th className="text-right py-2 px-3 text-text-muted font-medium">
                   Clicks
                 </th>
-                <th className="text-right py-2 px-3 text-foreground-muted font-medium">
+                <th className="text-right py-2 px-3 text-text-muted font-medium">
                   Impressions
                 </th>
-                <th className="text-right py-2 px-3 text-foreground-muted font-medium">
+                <th className="text-right py-2 px-3 text-text-muted font-medium">
                   CTR
                 </th>
-                <th className="text-right py-2 pl-3 text-foreground-muted font-medium">
+                <th className="text-right py-2 pl-3 text-text-muted font-medium">
                   Position
                 </th>
               </tr>
@@ -88,21 +88,21 @@ export function SearchComparison({
               {displayData.map((row, i) => (
                 <tr
                   key={`${row.query}-${i}`}
-                  className="border-b border-[var(--border)] last:border-0"
+                  className="border-b border-border-ghost last:border-0"
                 >
-                  <td className="py-2.5 pr-4 text-foreground max-w-[240px] truncate">
+                  <td className="py-2.5 pr-4 text-text-primary max-w-[240px] truncate">
                     {row.query}
                   </td>
                   <td className="py-2.5 px-3 text-right text-accent font-medium tabular-nums">
                     {row.clicks.toLocaleString()}
                   </td>
-                  <td className="py-2.5 px-3 text-right text-foreground-secondary tabular-nums">
+                  <td className="py-2.5 px-3 text-right text-text-secondary tabular-nums">
                     {row.impressions.toLocaleString()}
                   </td>
-                  <td className="py-2.5 px-3 text-right text-foreground-secondary tabular-nums">
+                  <td className="py-2.5 px-3 text-right text-text-secondary tabular-nums">
                     {(row.ctr * 100).toFixed(1)}%
                   </td>
-                  <td className="py-2.5 pl-3 text-right text-foreground-secondary tabular-nums">
+                  <td className="py-2.5 pl-3 text-right text-text-secondary tabular-nums">
                     {row.position.toFixed(1)}
                   </td>
                 </tr>
@@ -111,7 +111,7 @@ export function SearchComparison({
           </table>
         </div>
       ) : (
-        <div className="py-8 text-center text-foreground-muted text-body-sm">
+        <div className="py-8 text-center text-text-muted text-body-sm">
           <p>No search query data available yet.</p>
           <p className="mt-1 text-body-xs">
             Data will appear once Google Search Console and Bing Webmaster Tools

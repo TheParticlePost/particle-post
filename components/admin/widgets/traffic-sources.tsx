@@ -14,7 +14,7 @@ export function TrafficSources({ sources }: TrafficSourcesProps) {
 
   if (sources.length === 0) {
     return (
-      <p className="text-body-sm text-foreground-muted text-center py-8">
+      <p className="text-body-sm text-text-muted text-center py-8">
         No traffic source data available.
       </p>
     );
@@ -28,17 +28,17 @@ export function TrafficSources({ sources }: TrafficSourcesProps) {
         return (
           <div key={source.name}>
             <div className="flex items-center justify-between mb-1">
-              <span className="text-body-sm text-foreground-secondary">
+              <span className="text-body-sm text-text-secondary">
                 {source.name}
               </span>
-              <span className="text-body-sm font-medium text-foreground tabular-nums">
+              <span className="text-body-sm font-medium text-text-primary tabular-nums">
                 {source.sessions} sessions
               </span>
             </div>
             <div
               className={cn(
                 "h-2.5 rounded-full overflow-hidden",
-                "bg-[var(--bg-secondary)]"
+                "bg-bg-low"
               )}
             >
               <div

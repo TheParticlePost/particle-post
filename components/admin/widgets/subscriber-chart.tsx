@@ -14,7 +14,7 @@ interface SubscriberChartProps {
 export function SubscriberChart({ data }: SubscriberChartProps) {
   if (data.length === 0) {
     return (
-      <p className="text-body-sm text-foreground-muted py-4">
+      <p className="text-body-sm text-text-muted py-4">
         No subscriber data available yet.
       </p>
     );
@@ -28,7 +28,7 @@ export function SubscriberChart({ data }: SubscriberChartProps) {
       {/* Summary row */}
       <div className="flex items-baseline gap-2 mb-4">
         <span className="text-display-sm font-display text-accent">{total}</span>
-        <span className="text-body-xs text-foreground-muted">
+        <span className="text-body-xs text-text-muted">
           new in last {data.length} days
         </span>
       </div>
@@ -52,7 +52,7 @@ export function SubscriberChart({ data }: SubscriberChartProps) {
                 className={cn(
                   "absolute -top-8 left-1/2 -translate-x-1/2",
                   "px-2 py-1 rounded-md text-body-xs font-medium whitespace-nowrap",
-                  "bg-[var(--bg-tertiary)] text-foreground border border-[var(--border)]",
+                  "bg-bg-high text-text-primary border border-border-ghost",
                   "opacity-0 group-hover:opacity-100 transition-opacity duration-200",
                   "pointer-events-none z-10"
                 )}
@@ -67,7 +67,7 @@ export function SubscriberChart({ data }: SubscriberChartProps) {
                     "w-full max-w-[28px] rounded-t-md transition-all duration-300",
                     point.count > 0
                       ? "bg-accent/70 hover:bg-accent"
-                      : "bg-[var(--border)]"
+                      : "bg-border-ghost"
                   )}
                   style={{
                     height: `${Math.max(heightPercent, 4)}%`,
@@ -78,7 +78,7 @@ export function SubscriberChart({ data }: SubscriberChartProps) {
               {/* Date label - show every other one on small datasets, every 3rd on larger */}
               <span
                 className={cn(
-                  "text-[10px] text-foreground-muted leading-none",
+                  "text-[10px] text-text-muted leading-none",
                   data.length > 10 ? "hidden sm:block" : ""
                 )}
               >

@@ -34,7 +34,7 @@ export function ApiCosts({ logs }: ApiCostsProps) {
   if (logs.length === 0) {
     return (
       <div className="py-8 text-center">
-        <p className="text-body-sm text-foreground-muted">
+        <p className="text-body-sm text-text-muted">
           No cost data yet. Costs are logged after each pipeline run.
         </p>
       </div>
@@ -57,27 +57,27 @@ export function ApiCosts({ logs }: ApiCostsProps) {
     <div className="space-y-4">
       {/* Summary cards */}
       <div className="grid grid-cols-3 gap-3">
-        <div className="rounded-lg bg-[var(--bg-tertiary)] p-3">
-          <p className="text-body-xs text-foreground-muted uppercase tracking-wider">
+        <div className="rounded-lg bg-bg-high p-3">
+          <p className="text-body-xs text-text-muted uppercase tracking-wider">
             This Month
           </p>
           <p className="text-display-sm font-display text-accent mt-1">
             {formatCost(totalCostMonth)}
           </p>
         </div>
-        <div className="rounded-lg bg-[var(--bg-tertiary)] p-3">
-          <p className="text-body-xs text-foreground-muted uppercase tracking-wider">
+        <div className="rounded-lg bg-bg-high p-3">
+          <p className="text-body-xs text-text-muted uppercase tracking-wider">
             Avg / Run
           </p>
-          <p className="text-display-sm font-display text-foreground mt-1">
+          <p className="text-display-sm font-display text-text-primary mt-1">
             {formatCost(avgCostPerRun)}
           </p>
         </div>
-        <div className="rounded-lg bg-[var(--bg-tertiary)] p-3">
-          <p className="text-body-xs text-foreground-muted uppercase tracking-wider">
+        <div className="rounded-lg bg-bg-high p-3">
+          <p className="text-body-xs text-text-muted uppercase tracking-wider">
             Tokens (Month)
           </p>
-          <p className="text-display-sm font-display text-foreground mt-1">
+          <p className="text-display-sm font-display text-text-primary mt-1">
             {formatTokens(totalTokensMonth)}
           </p>
         </div>
@@ -87,7 +87,7 @@ export function ApiCosts({ logs }: ApiCostsProps) {
       <div className="overflow-x-auto">
         <table className="w-full text-body-xs">
           <thead>
-            <tr className="border-b border-[var(--border)] text-foreground-muted">
+            <tr className="border-b border-border-ghost text-text-muted">
               <th className="text-left py-2 font-medium">Date</th>
               <th className="text-left py-2 font-medium">Slot</th>
               <th className="text-right py-2 font-medium">Tokens</th>
@@ -99,15 +99,15 @@ export function ApiCosts({ logs }: ApiCostsProps) {
             {recentLogs.map((log, i) => (
               <tr
                 key={`${log.timestamp}-${i}`}
-                className="border-b border-[var(--border)]/50"
+                className="border-b border-border-ghost/50"
               >
-                <td className="py-2 text-foreground-secondary">
+                <td className="py-2 text-text-secondary">
                   {formatDate(log.timestamp)}
                 </td>
-                <td className="py-2 text-foreground-secondary capitalize">
+                <td className="py-2 text-text-secondary capitalize">
                   {log.slot}
                 </td>
-                <td className="py-2 text-right text-foreground-secondary">
+                <td className="py-2 text-right text-text-secondary">
                   {formatTokens(log.total_tokens)}
                 </td>
                 <td className="py-2 text-right text-accent font-medium">
@@ -121,7 +121,7 @@ export function ApiCosts({ logs }: ApiCostsProps) {
                         ? "bg-accent/12 text-accent"
                         : log.verdict === "REJECT"
                         ? "bg-red-500/12 text-red-400"
-                        : "bg-foreground-muted/12 text-foreground-muted"
+                        : "bg-text-muted/12 text-text-muted"
                     )}
                   >
                     {log.verdict || "N/A"}

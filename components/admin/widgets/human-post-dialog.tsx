@@ -70,11 +70,11 @@ export function HumanPostDialog() {
 
       {/* Dialog */}
       <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-        <div className="w-full max-w-lg rounded-xl bg-[var(--bg-secondary)] border border-[var(--border)] p-6 shadow-2xl">
-          <h2 className="font-display text-display-sm text-foreground mb-4">
+        <div className="w-full max-w-lg rounded-lg bg-bg-low border border-border-ghost p-6">
+          <h2 className="font-display text-display-sm text-text-primary mb-4">
             New Human-Assisted Post
           </h2>
-          <p className="text-body-xs text-foreground-muted mb-5">
+          <p className="text-body-xs text-text-muted mb-5">
             Provide topic direction and sources. AI handles writing, SEO, and
             formatting. A pull request is created for your review before publishing.
           </p>
@@ -82,7 +82,7 @@ export function HumanPostDialog() {
           <div className="space-y-4">
             {/* Topic */}
             <div>
-              <label className="block text-body-xs font-medium text-foreground-secondary mb-1">
+              <label className="block text-body-xs font-medium text-text-secondary mb-1">
                 Topic *
               </label>
               <input
@@ -90,13 +90,13 @@ export function HumanPostDialog() {
                 value={topic}
                 onChange={(e) => setTopic(e.target.value)}
                 placeholder="e.g., AI-powered fraud detection in cross-border payments"
-                className="w-full px-3 py-2 rounded-lg bg-[var(--bg-tertiary)] border border-[var(--border)] text-body-sm text-foreground placeholder:text-foreground-muted/50 focus:outline-none focus:border-accent"
+                className="w-full px-3 py-2 rounded-lg bg-bg-high border border-border-ghost text-body-sm text-text-primary placeholder:text-text-muted/50 focus:outline-none focus:border-accent"
               />
             </div>
 
             {/* Sources */}
             <div>
-              <label className="block text-body-xs font-medium text-foreground-secondary mb-1">
+              <label className="block text-body-xs font-medium text-text-secondary mb-1">
                 Sources / URLs
               </label>
               <textarea
@@ -104,13 +104,13 @@ export function HumanPostDialog() {
                 onChange={(e) => setSources(e.target.value)}
                 placeholder={"One URL per line:\nhttps://example.com/article-1\nhttps://example.com/report-2"}
                 rows={3}
-                className="w-full px-3 py-2 rounded-lg bg-[var(--bg-tertiary)] border border-[var(--border)] text-body-sm text-foreground placeholder:text-foreground-muted/50 focus:outline-none focus:border-accent resize-none"
+                className="w-full px-3 py-2 rounded-lg bg-bg-high border border-border-ghost text-body-sm text-text-primary placeholder:text-text-muted/50 focus:outline-none focus:border-accent resize-none"
               />
             </div>
 
             {/* Key Points */}
             <div>
-              <label className="block text-body-xs font-medium text-foreground-secondary mb-1">
+              <label className="block text-body-xs font-medium text-text-secondary mb-1">
                 Key Points / Direction
               </label>
               <textarea
@@ -118,13 +118,13 @@ export function HumanPostDialog() {
                 onChange={(e) => setKeyPoints(e.target.value)}
                 placeholder={"One point per line:\nFocus on ROI data for enterprise CFOs\nInclude comparison with manual processes"}
                 rows={3}
-                className="w-full px-3 py-2 rounded-lg bg-[var(--bg-tertiary)] border border-[var(--border)] text-body-sm text-foreground placeholder:text-foreground-muted/50 focus:outline-none focus:border-accent resize-none"
+                className="w-full px-3 py-2 rounded-lg bg-bg-high border border-border-ghost text-body-sm text-text-primary placeholder:text-text-muted/50 focus:outline-none focus:border-accent resize-none"
               />
             </div>
 
             {/* Slot */}
             <div>
-              <label className="block text-body-xs font-medium text-foreground-secondary mb-1">
+              <label className="block text-body-xs font-medium text-text-secondary mb-1">
                 Slot
               </label>
               <div className="flex gap-3">
@@ -136,7 +136,7 @@ export function HumanPostDialog() {
                       "px-4 py-1.5 rounded-lg text-body-sm font-medium capitalize transition-colors",
                       slot === s
                         ? "bg-accent/20 text-accent border border-accent/40"
-                        : "bg-[var(--bg-tertiary)] text-foreground-muted border border-[var(--border)] hover:border-foreground-muted"
+                        : "bg-bg-high text-text-muted border border-border-ghost hover:border-border-hover"
                     )}
                   >
                     {s}
@@ -163,7 +163,7 @@ export function HumanPostDialog() {
             <button
               onClick={() => setState("closed")}
               disabled={state === "loading"}
-              className="px-4 py-2 rounded-lg text-body-sm text-foreground-muted hover:text-foreground transition-colors"
+              className="px-4 py-2 rounded-lg text-body-sm text-text-muted hover:text-text-primary transition-colors"
             >
               Cancel
             </button>

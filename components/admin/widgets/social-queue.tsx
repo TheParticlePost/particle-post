@@ -32,7 +32,7 @@ export function SocialQueue({ items, className }: SocialQueueProps) {
           className
         )}
       >
-        <div className="w-12 h-12 rounded-full bg-[var(--bg-secondary)] border border-[var(--border)] flex items-center justify-center mb-3">
+        <div className="w-12 h-12 rounded-full bg-bg-low border border-border-ghost flex items-center justify-center mb-3">
           <svg
             width="20"
             height="20"
@@ -42,15 +42,15 @@ export function SocialQueue({ items, className }: SocialQueueProps) {
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="text-foreground-muted"
+            className="text-text-muted"
           >
             <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
           </svg>
         </div>
-        <p className="text-foreground-muted text-body-sm">
+        <p className="text-text-muted text-body-sm">
           No items in queue
         </p>
-        <p className="text-foreground-muted text-body-xs mt-1">
+        <p className="text-text-muted text-body-xs mt-1">
           Articles will appear here when queued for social sharing.
         </p>
       </div>
@@ -64,16 +64,16 @@ export function SocialQueue({ items, className }: SocialQueueProps) {
           key={item.id ?? i}
           className={cn(
             "rounded-lg p-3",
-            "bg-[var(--bg-secondary)] border border-[var(--border)]"
+            "bg-bg-low border border-border-ghost"
           )}
         >
           <div className="flex items-start justify-between gap-2">
             <div className="min-w-0 flex-1">
-              <p className="text-body-sm text-foreground font-medium truncate">
+              <p className="text-body-sm text-text-primary font-medium truncate">
                 {item.title ?? item.slug ?? "Untitled"}
               </p>
               {item.subreddit && (
-                <p className="text-body-xs text-foreground-muted mt-0.5">
+                <p className="text-body-xs text-text-muted mt-0.5">
                   r/{item.subreddit}
                 </p>
               )}
@@ -89,7 +89,7 @@ export function SocialQueue({ items, className }: SocialQueueProps) {
                   className={cn(
                     "inline-block px-2 py-0.5 rounded-md text-body-xs border font-medium",
                     STATUS_STYLES[item.status.toLowerCase()] ??
-                      "bg-[var(--bg-tertiary)] text-foreground border-[var(--border)]"
+                      "bg-bg-high text-text-primary border-border-ghost"
                   )}
                 >
                   {item.status}
@@ -98,7 +98,7 @@ export function SocialQueue({ items, className }: SocialQueueProps) {
             </div>
           </div>
           {item.created_at && (
-            <p className="text-body-xs text-foreground-muted mt-1">
+            <p className="text-body-xs text-text-muted mt-1">
               Queued: {item.created_at}
             </p>
           )}

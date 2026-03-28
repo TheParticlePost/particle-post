@@ -59,10 +59,10 @@ export function TableOfContents({ content }: TableOfContentsProps) {
 
   return (
     <nav className="hidden xl:block sticky top-24 max-h-[calc(100vh-8rem)] overflow-y-auto scrollbar-hide">
-      <p className="text-body-xs font-semibold uppercase tracking-widest text-foreground-muted mb-3">
+      <p className="text-body-xs font-semibold uppercase tracking-widest text-text-muted mb-3">
         On this page
       </p>
-      <ul className="space-y-1 border-l border-[var(--border)]">
+      <ul className="space-y-1 border-l border-border-ghost">
         {headings.map((heading) => (
           <li key={heading.id}>
             <a
@@ -72,7 +72,7 @@ export function TableOfContents({ content }: TableOfContentsProps) {
                 heading.level === 3 ? "pl-6" : "pl-4",
                 activeId === heading.id
                   ? "border-accent text-accent"
-                  : "border-transparent text-foreground-muted hover:text-foreground hover:border-[var(--border-hover)]"
+                  : "border-transparent text-text-muted hover:text-text-primary hover:border-border-hover"
               )}
             >
               {heading.text}

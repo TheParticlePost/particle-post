@@ -29,7 +29,7 @@ const SEVERITY_STYLES: Record<string, string> = {
   CRITICAL: "bg-red-500/20 text-red-400 border-red-500/30",
   HIGH: "bg-orange-500/20 text-orange-400 border-orange-500/30",
   MEDIUM: "bg-yellow-500/20 text-yellow-400 border-yellow-500/30",
-  LOW: "bg-[var(--bg-tertiary)] text-foreground-muted border-[var(--border)]",
+  LOW: "bg-bg-high text-text-muted border-border-ghost",
 };
 
 const SEVERITY_DOT: Record<string, string> = {
@@ -50,7 +50,7 @@ export function SecurityFindings({
 
   if (findings.length === 0) {
     return (
-      <div className={cn("text-foreground-muted text-body-sm", className)}>
+      <div className={cn("text-text-muted text-body-sm", className)}>
         No findings to display.
       </div>
     );
@@ -105,14 +105,14 @@ export function SecurityFindings({
         return (
           <div
             key={severity}
-            className="rounded-xl border border-[var(--border)] overflow-hidden"
+            className="rounded-lg border border-border-ghost overflow-hidden"
           >
             {/* Group header */}
             <button
               onClick={() => toggleGroup(severity)}
               className={cn(
                 "w-full flex items-center justify-between px-4 py-3",
-                "bg-[var(--bg-secondary)] hover:bg-[var(--bg-tertiary)]",
+                "bg-bg-low hover:bg-bg-high",
                 "transition-colors duration-200 text-left"
               )}
             >
@@ -123,10 +123,10 @@ export function SecurityFindings({
                     SEVERITY_DOT[severity] ?? "bg-gray-500"
                   )}
                 />
-                <span className="text-body-sm font-medium text-foreground">
+                <span className="text-body-sm font-medium text-text-primary">
                   {severity}
                 </span>
-                <span className="text-body-xs text-foreground-muted">
+                <span className="text-body-xs text-text-muted">
                   ({items.length})
                 </span>
               </div>
@@ -140,7 +140,7 @@ export function SecurityFindings({
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 className={cn(
-                  "text-foreground-muted transition-transform duration-200",
+                  "text-text-muted transition-transform duration-200",
                   isExpanded && "rotate-180"
                 )}
               >
@@ -156,10 +156,10 @@ export function SecurityFindings({
                   const isItemExpanded = expandedItems.has(itemIdx);
 
                   return (
-                    <div key={itemIdx} className="bg-[var(--bg-primary)]">
+                    <div key={itemIdx} className="bg-bg-base">
                       <button
                         onClick={() => toggleItem(itemIdx)}
-                        className="w-full flex items-start justify-between px-4 py-3 hover:bg-[var(--bg-secondary)] transition-colors duration-200 text-left"
+                        className="w-full flex items-start justify-between px-4 py-3 hover:bg-bg-low transition-colors duration-200 text-left"
                       >
                         <div className="min-w-0 flex-1">
                           <div className="flex items-center gap-2 mb-0.5">
@@ -167,7 +167,7 @@ export function SecurityFindings({
                               className={cn(
                                 "inline-block px-1.5 py-0.5 rounded text-body-xs border",
                                 SEVERITY_STYLES[severity] ??
-                                  "bg-[var(--bg-tertiary)] text-foreground"
+                                  "bg-bg-high text-text-primary"
                               )}
                             >
                               {finding.category}
@@ -178,7 +178,7 @@ export function SecurityFindings({
                               </span>
                             )}
                           </div>
-                          <p className="text-body-sm text-foreground">
+                          <p className="text-body-sm text-text-primary">
                             {finding.title}
                           </p>
                         </div>
@@ -192,7 +192,7 @@ export function SecurityFindings({
                           strokeLinecap="round"
                           strokeLinejoin="round"
                           className={cn(
-                            "text-foreground-muted transition-transform duration-200 shrink-0 mt-1 ml-2",
+                            "text-text-muted transition-transform duration-200 shrink-0 mt-1 ml-2",
                             isItemExpanded && "rotate-180"
                           )}
                         >
@@ -202,11 +202,11 @@ export function SecurityFindings({
 
                       {isItemExpanded && (
                         <div className="px-4 pb-3 space-y-2">
-                          <p className="text-body-xs text-foreground-secondary leading-relaxed">
+                          <p className="text-body-xs text-text-secondary leading-relaxed">
                             {finding.detail}
                           </p>
                           {finding.file_path && (
-                            <p className="text-body-xs text-foreground-muted">
+                            <p className="text-body-xs text-text-muted">
                               File:{" "}
                               <code className="text-accent font-mono">
                                 {finding.file_path}

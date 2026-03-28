@@ -96,10 +96,10 @@ export default async function SecurityPage() {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <h1 className="font-display text-display-lg text-foreground">
+        <h1 className="font-display text-display-lg text-text-primary">
           Security Overview
         </h1>
-        <p className="text-body-sm text-foreground-muted mt-1">
+        <p className="text-body-sm text-text-muted mt-1">
           Automated security scan results and vulnerability tracking.
         </p>
       </div>
@@ -107,7 +107,7 @@ export default async function SecurityPage() {
       {scans.length === 0 ? (
         <WidgetCard title="Security Scans">
           <div className="flex flex-col items-center justify-center py-12">
-            <div className="w-16 h-16 rounded-full bg-[var(--bg-secondary)] border border-[var(--border)] flex items-center justify-center mb-4">
+            <div className="w-16 h-16 rounded-full bg-bg-low border border-border-ghost flex items-center justify-center mb-4">
               <svg
                 width="28"
                 height="28"
@@ -117,15 +117,15 @@ export default async function SecurityPage() {
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="text-foreground-muted"
+                className="text-text-muted"
               >
                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
               </svg>
             </div>
-            <p className="text-foreground-muted text-body-sm">
+            <p className="text-text-muted text-body-sm">
               No security scans found yet.
             </p>
-            <p className="text-foreground-muted text-body-xs mt-1">
+            <p className="text-text-muted text-body-xs mt-1">
               Security scan results will appear in{" "}
               <code className="text-accent font-mono">
                 pipeline/logs/security/
@@ -140,7 +140,7 @@ export default async function SecurityPage() {
           <WidgetCard title="Severity Overview" className="lg:col-span-2">
             <SecuritySummary summary={summary} />
             {latestScan && (
-              <p className="text-body-xs text-foreground-muted text-center mt-2">
+              <p className="text-body-xs text-text-muted text-center mt-2">
                 Last scan: {formatScanDate(latestScan.date)}
                 {latestScan.scan_duration_seconds != null && (
                   <span>
@@ -173,7 +173,7 @@ export default async function SecurityPage() {
                       key={scan.date}
                       className={cn(
                         "rounded-lg p-4",
-                        "bg-[var(--bg-secondary)] border border-[var(--border)]"
+                        "bg-bg-low border border-border-ghost"
                       )}
                     >
                       <div className="flex items-center justify-between">
@@ -209,10 +209,10 @@ export default async function SecurityPage() {
                             </svg>
                           </div>
                           <div>
-                            <p className="text-body-sm text-foreground font-medium">
+                            <p className="text-body-sm text-text-primary font-medium">
                               {formatScanDate(scan.date)}
                             </p>
-                            <p className="text-body-xs text-foreground-muted">
+                            <p className="text-body-xs text-text-muted">
                               {total} finding{total !== 1 ? "s" : ""}
                               {scan.scan_duration_seconds != null && (
                                 <span>
@@ -246,7 +246,7 @@ export default async function SecurityPage() {
                             </span>
                           )}
                           {scan.summary.low > 0 && (
-                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-body-xs text-foreground-muted border border-[var(--border)]">
+                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-body-xs text-text-muted border border-border-ghost">
                               <span className="w-1.5 h-1.5 rounded-full bg-gray-500" />
                               {scan.summary.low}
                             </span>
@@ -258,7 +258,7 @@ export default async function SecurityPage() {
                 })}
               </div>
             ) : (
-              <p className="text-foreground-muted text-body-sm">
+              <p className="text-text-muted text-body-sm">
                 No scan history available.
               </p>
             )}

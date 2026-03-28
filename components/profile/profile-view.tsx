@@ -32,13 +32,13 @@ export function ProfileView({ profile }: ProfileViewProps) {
 
   return (
     <section className="max-w-lg mx-auto">
-      <div className="glass-card rounded-xl p-8">
+      <div className="bg-bg-container border border-border-ghost rounded-lg p-8">
         <div className="flex flex-col items-center text-center gap-4">
           {/* Avatar */}
           <div
             className={cn(
               "w-24 h-24 rounded-full overflow-hidden flex items-center justify-center",
-              "border-2 border-[var(--border)]"
+              "border-2 border-border-ghost"
             )}
           >
             {profile.avatar_url ? (
@@ -55,12 +55,12 @@ export function ProfileView({ profile }: ProfileViewProps) {
           </div>
 
           {/* Name */}
-          <h1 className="text-display-sm font-bold text-foreground">
+          <h1 className="text-display-sm font-bold text-text-primary">
             {profile.full_name || "Anonymous User"}
           </h1>
 
           {/* Email */}
-          <p className="text-body-md text-foreground-secondary">
+          <p className="text-body-md text-text-secondary">
             {profile.email}
           </p>
 
@@ -70,14 +70,14 @@ export function ProfileView({ profile }: ProfileViewProps) {
               "inline-flex items-center px-3 py-1 rounded-full text-body-xs font-medium",
               isAdmin
                 ? "bg-accent/15 text-accent border border-accent/30"
-                : "bg-bg-tertiary/50 text-foreground-secondary border border-[var(--border)]"
+                : "bg-bg-high/50 text-text-secondary border border-border-ghost"
             )}
           >
             {isAdmin ? "Admin" : "User"}
           </span>
 
           {/* Member since */}
-          <p className="text-body-sm text-foreground-muted">
+          <p className="text-body-sm text-text-muted">
             Member since {formatDate(profile.created_at)}
           </p>
 

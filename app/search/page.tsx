@@ -14,8 +14,8 @@ export default function SearchPage() {
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12">
       <h1 className="font-display text-display-lg mb-4">Search</h1>
-      <p className="text-foreground-secondary text-body-md mb-8">
-        Press <kbd className="px-2 py-0.5 text-body-xs border border-[var(--border)] rounded font-mono">Ctrl+K</kbd> to
+      <p className="text-text-secondary text-body-md mb-8">
+        Press <kbd className="px-2 py-0.5 text-body-xs border border-border-ghost rounded font-mono">Ctrl+K</kbd> to
         open the search overlay, or browse all articles below.
       </p>
 

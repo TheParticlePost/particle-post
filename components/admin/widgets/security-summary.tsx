@@ -34,7 +34,7 @@ const SEVERITY_CONFIG = [
   {
     key: "low" as const,
     label: "Low",
-    color: "bg-[var(--bg-secondary)] text-foreground-muted border-[var(--border)]",
+    color: "bg-bg-low text-text-muted border-border-ghost",
     dotColor: "bg-gray-500",
   },
 ];
@@ -52,7 +52,7 @@ export function SecuritySummary({ summary, className }: SecuritySummaryProps) {
             <div
               key={sev.key}
               className={cn(
-                "rounded-xl px-4 py-4 border text-center",
+                "rounded-lg px-4 py-4 border text-center",
                 sev.color
               )}
             >
@@ -69,7 +69,7 @@ export function SecuritySummary({ summary, className }: SecuritySummaryProps) {
           );
         })}
       </div>
-      <p className="text-body-xs text-foreground-muted text-center">
+      <p className="text-body-xs text-text-muted text-center">
         {total} total finding{total !== 1 ? "s" : ""} across all severity levels
       </p>
     </div>

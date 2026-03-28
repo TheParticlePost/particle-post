@@ -144,10 +144,10 @@ export default async function StrategyPage() {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <h1 className="font-display text-display-lg text-foreground">
+        <h1 className="font-display text-display-lg text-text-primary">
           Content &amp; Marketing Strategy
         </h1>
-        <p className="text-body-sm text-foreground-muted mt-1">
+        <p className="text-body-sm text-text-muted mt-1">
           Funnel definitions, marketing plans, SEO targets, and daily reports.
         </p>
       </div>
@@ -159,20 +159,20 @@ export default async function StrategyPage() {
             <div className="space-y-6">
               {/* Funnel Schedule */}
               <div>
-                <h3 className="text-body-xs text-foreground-muted font-medium uppercase tracking-wider mb-3">
+                <h3 className="text-body-xs text-text-muted font-medium uppercase tracking-wider mb-3">
                   Weekly Funnel Schedule
                 </h3>
-                <div className="overflow-x-auto rounded-lg border border-[var(--border)]">
+                <div className="overflow-x-auto rounded-lg border border-border-ghost">
                   <table className="w-full text-body-xs">
                     <thead>
-                      <tr className="bg-[var(--bg-tertiary)]">
-                        <th className="px-3 py-2 text-left text-foreground-muted font-medium uppercase tracking-wider">
+                      <tr className="bg-bg-high">
+                        <th className="px-3 py-2 text-left text-text-muted font-medium uppercase tracking-wider">
                           Day
                         </th>
-                        <th className="px-3 py-2 text-left text-foreground-muted font-medium uppercase tracking-wider">
+                        <th className="px-3 py-2 text-left text-text-muted font-medium uppercase tracking-wider">
                           Morning
                         </th>
-                        <th className="px-3 py-2 text-left text-foreground-muted font-medium uppercase tracking-wider">
+                        <th className="px-3 py-2 text-left text-text-muted font-medium uppercase tracking-wider">
                           Evening
                         </th>
                       </tr>
@@ -183,9 +183,9 @@ export default async function StrategyPage() {
                         return (
                           <tr
                             key={day}
-                            className="border-t border-[var(--border)] hover:bg-[var(--bg-secondary)]"
+                            className="border-t border-border-ghost hover:bg-bg-low"
                           >
-                            <td className="px-3 py-2 text-foreground font-medium">
+                            <td className="px-3 py-2 text-text-primary font-medium">
                               {day}
                             </td>
                             <td className="px-3 py-2">
@@ -196,17 +196,17 @@ export default async function StrategyPage() {
                                       "inline-block px-2 py-0.5 rounded-md text-body-xs border",
                                       FUNNEL_COLORS[
                                         daySchedule.morning.funnel
-                                      ] ?? "bg-[var(--bg-tertiary)] text-foreground"
+                                      ] ?? "bg-bg-high text-text-primary"
                                     )}
                                   >
                                     {daySchedule.morning.funnel}
                                   </span>
-                                  <span className="text-foreground-muted">
+                                  <span className="text-text-muted">
                                     {daySchedule.morning.content_type}
                                   </span>
                                 </div>
                               ) : (
-                                <span className="text-foreground-muted">
+                                <span className="text-text-muted">
                                   --
                                 </span>
                               )}
@@ -219,17 +219,17 @@ export default async function StrategyPage() {
                                       "inline-block px-2 py-0.5 rounded-md text-body-xs border",
                                       FUNNEL_COLORS[
                                         daySchedule.evening.funnel
-                                      ] ?? "bg-[var(--bg-tertiary)] text-foreground"
+                                      ] ?? "bg-bg-high text-text-primary"
                                     )}
                                   >
                                     {daySchedule.evening.funnel}
                                   </span>
-                                  <span className="text-foreground-muted">
+                                  <span className="text-text-muted">
                                     {daySchedule.evening.content_type}
                                   </span>
                                 </div>
                               ) : (
-                                <span className="text-foreground-muted">
+                                <span className="text-text-muted">
                                   --
                                 </span>
                               )}
@@ -245,7 +245,7 @@ export default async function StrategyPage() {
               {/* Word Count Targets */}
               {contentStrategy.funnel_types && (
                 <div>
-                  <h3 className="text-body-xs text-foreground-muted font-medium uppercase tracking-wider mb-3">
+                  <h3 className="text-body-xs text-text-muted font-medium uppercase tracking-wider mb-3">
                     Word Count Targets
                   </h3>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -254,27 +254,27 @@ export default async function StrategyPage() {
                         <div
                           key={key}
                           className={cn(
-                            "rounded-xl px-4 py-3",
-                            "bg-[var(--bg-secondary)] border border-[var(--border)]"
+                            "rounded-lg px-4 py-3",
+                            "bg-bg-low border border-border-ghost"
                           )}
                         >
                           <span
                             className={cn(
                               "inline-block px-2 py-0.5 rounded-md text-body-xs border mb-2",
                               FUNNEL_COLORS[key] ??
-                                "bg-[var(--bg-tertiary)] text-foreground"
+                                "bg-bg-high text-text-primary"
                             )}
                           >
                             {key}
                           </span>
-                          <p className="text-body-xs text-foreground-muted truncate">
+                          <p className="text-body-xs text-text-muted truncate">
                             {funnel.name}
                           </p>
                           {funnel.word_count && (
-                            <p className="text-body-sm text-foreground font-mono mt-1">
+                            <p className="text-body-sm text-text-primary font-mono mt-1">
                               {funnel.word_count.min.toLocaleString()}&ndash;
                               {funnel.word_count.max.toLocaleString()}{" "}
-                              <span className="text-foreground-muted">
+                              <span className="text-text-muted">
                                 (target: {funnel.word_count.target.toLocaleString()})
                               </span>
                             </p>
@@ -289,7 +289,7 @@ export default async function StrategyPage() {
               {/* Theme Weights */}
               {contentStrategy.theme_weights && (
                 <div>
-                  <h3 className="text-body-xs text-foreground-muted font-medium uppercase tracking-wider mb-3">
+                  <h3 className="text-body-xs text-text-muted font-medium uppercase tracking-wider mb-3">
                     Theme Weights
                   </h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -298,12 +298,12 @@ export default async function StrategyPage() {
                         <div
                           key={key}
                           className={cn(
-                            "rounded-xl px-4 py-3",
-                            "bg-[var(--bg-secondary)] border border-[var(--border)]"
+                            "rounded-lg px-4 py-3",
+                            "bg-bg-low border border-border-ghost"
                           )}
                         >
                           <div className="flex items-center justify-between mb-2">
-                            <p className="text-body-sm text-foreground font-medium capitalize">
+                            <p className="text-body-sm text-text-primary font-medium capitalize">
                               {key}
                             </p>
                             <p className="text-display-sm font-display text-accent">
@@ -326,7 +326,7 @@ export default async function StrategyPage() {
                               </span>
                             ))}
                           </div>
-                          <p className="text-body-xs text-foreground-muted mt-2">
+                          <p className="text-body-xs text-text-muted mt-2">
                             {theme.audience}
                           </p>
                         </div>
@@ -337,7 +337,7 @@ export default async function StrategyPage() {
               )}
             </div>
           ) : (
-            <p className="text-foreground-muted text-body-sm">
+            <p className="text-text-muted text-body-sm">
               No content strategy data available yet.
             </p>
           )}
@@ -356,20 +356,20 @@ export default async function StrategyPage() {
                         "inline-block px-2 py-0.5 rounded-md text-body-xs border font-medium",
                         DECISION_COLORS[
                           marketingStrategy.current_plan.type
-                        ] ?? "bg-[var(--bg-tertiary)] text-foreground"
+                        ] ?? "bg-bg-high text-text-primary"
                       )}
                     >
                       {marketingStrategy.current_plan.type}
                     </span>
-                    <span className="text-body-xs text-foreground-muted">
+                    <span className="text-body-xs text-text-muted">
                       since {marketingStrategy.current_plan.started}
                     </span>
                   </div>
-                  <p className="text-body-sm text-foreground leading-relaxed">
+                  <p className="text-body-sm text-text-primary leading-relaxed">
                     {marketingStrategy.current_plan.description}
                   </p>
                   {marketingStrategy.current_plan.content_pillar_focus && (
-                    <p className="text-body-xs text-foreground-muted mt-2">
+                    <p className="text-body-xs text-text-muted mt-2">
                       Pillar:{" "}
                       <span className="text-accent">
                         {marketingStrategy.current_plan.content_pillar_focus}
@@ -377,9 +377,9 @@ export default async function StrategyPage() {
                     </p>
                   )}
                   {marketingStrategy.current_plan.evaluation_date && (
-                    <p className="text-body-xs text-foreground-muted mt-1">
+                    <p className="text-body-xs text-text-muted mt-1">
                       Next evaluation:{" "}
-                      <span className="text-foreground">
+                      <span className="text-text-primary">
                         {marketingStrategy.current_plan.evaluation_date}
                       </span>
                     </p>
@@ -390,7 +390,7 @@ export default async function StrategyPage() {
               {/* Recent Decisions */}
               {recentDecisions.length > 0 && (
                 <div>
-                  <h3 className="text-body-xs text-foreground-muted font-medium uppercase tracking-wider mb-2 mt-4">
+                  <h3 className="text-body-xs text-text-muted font-medium uppercase tracking-wider mb-2 mt-4">
                     Recent Decisions
                   </h3>
                   <div className="space-y-2">
@@ -399,7 +399,7 @@ export default async function StrategyPage() {
                         key={i}
                         className={cn(
                           "rounded-lg p-3",
-                          "bg-[var(--bg-secondary)] border border-[var(--border)]"
+                          "bg-bg-low border border-border-ghost"
                         )}
                       >
                         <div className="flex items-center gap-2 mb-1">
@@ -407,16 +407,16 @@ export default async function StrategyPage() {
                             className={cn(
                               "inline-block px-2 py-0.5 rounded-md text-body-xs border font-medium",
                               DECISION_COLORS[entry.decision] ??
-                                "bg-[var(--bg-tertiary)] text-foreground"
+                                "bg-bg-high text-text-primary"
                             )}
                           >
                             {entry.decision}
                           </span>
-                          <span className="text-body-xs text-foreground-muted">
+                          <span className="text-body-xs text-text-muted">
                             {entry.date}
                           </span>
                         </div>
-                        <p className="text-body-xs text-foreground-secondary leading-relaxed line-clamp-3">
+                        <p className="text-body-xs text-text-secondary leading-relaxed line-clamp-3">
                           {entry.rationale}
                         </p>
                       </div>
@@ -426,7 +426,7 @@ export default async function StrategyPage() {
               )}
             </div>
           ) : (
-            <p className="text-foreground-muted text-body-sm">
+            <p className="text-text-muted text-body-sm">
               No marketing strategy data available yet.
             </p>
           )}
@@ -440,7 +440,7 @@ export default async function StrategyPage() {
               {seoConfig.keyword_targets &&
                 seoConfig.keyword_targets.length > 0 && (
                   <div>
-                    <h3 className="text-body-xs text-foreground-muted font-medium uppercase tracking-wider mb-2">
+                    <h3 className="text-body-xs text-text-muted font-medium uppercase tracking-wider mb-2">
                       Keyword Targets
                     </h3>
                     <div className="flex flex-wrap gap-1.5">
@@ -460,7 +460,7 @@ export default async function StrategyPage() {
               {seoConfig.content_gap_priorities &&
                 seoConfig.content_gap_priorities.length > 0 && (
                   <div>
-                    <h3 className="text-body-xs text-foreground-muted font-medium uppercase tracking-wider mb-2">
+                    <h3 className="text-body-xs text-text-muted font-medium uppercase tracking-wider mb-2">
                       Content Gap Priorities
                     </h3>
                     <div className="space-y-2">
@@ -469,10 +469,10 @@ export default async function StrategyPage() {
                           key={i}
                           className={cn(
                             "rounded-lg p-3",
-                            "bg-[var(--bg-secondary)] border border-[var(--border)]"
+                            "bg-bg-low border border-border-ghost"
                           )}
                         >
-                          <p className="text-body-xs text-foreground-secondary leading-relaxed">
+                          <p className="text-body-xs text-text-secondary leading-relaxed">
                             {gap}
                           </p>
                         </div>
@@ -484,7 +484,7 @@ export default async function StrategyPage() {
               {/* Schema Coverage */}
               {seoConfig.schema_coverage && (
                 <div>
-                  <h3 className="text-body-xs text-foreground-muted font-medium uppercase tracking-wider mb-2">
+                  <h3 className="text-body-xs text-text-muted font-medium uppercase tracking-wider mb-2">
                     Schema Coverage
                   </h3>
                   <div className="grid grid-cols-2 gap-2">
@@ -494,16 +494,16 @@ export default async function StrategyPage() {
                           key={schema}
                           className={cn(
                             "rounded-lg px-3 py-2",
-                            "bg-[var(--bg-secondary)] border border-[var(--border)]"
+                            "bg-bg-low border border-border-ghost"
                           )}
                         >
-                          <p className="text-body-xs text-foreground-muted">
+                          <p className="text-body-xs text-text-muted">
                             {schema}
                           </p>
                           <p
                             className={cn(
                               "text-body-md font-display",
-                              count > 0 ? "text-accent" : "text-foreground-muted"
+                              count > 0 ? "text-accent" : "text-text-muted"
                             )}
                           >
                             {count}
@@ -513,7 +513,7 @@ export default async function StrategyPage() {
                     )}
                   </div>
                   {seoConfig.schema_priority && (
-                    <p className="text-body-xs text-foreground-muted mt-2">
+                    <p className="text-body-xs text-text-muted mt-2">
                       Priority:{" "}
                       <span className="text-accent">
                         {seoConfig.schema_priority}
@@ -524,7 +524,7 @@ export default async function StrategyPage() {
               )}
             </div>
           ) : (
-            <p className="text-foreground-muted text-body-sm">
+            <p className="text-text-muted text-body-sm">
               No SEO config data available yet.
             </p>
           )}

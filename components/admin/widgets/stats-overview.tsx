@@ -18,23 +18,23 @@ function StatCard({ label, value, accent = false, subtitle }: StatCardProps) {
   return (
     <div
       className={cn(
-        "rounded-xl px-4 py-4",
-        "bg-[var(--bg-secondary)] border border-[var(--border)]"
+        "rounded-lg px-4 py-4",
+        "bg-bg-low border border-border-ghost"
       )}
     >
-      <p className="text-body-xs text-foreground-muted font-medium uppercase tracking-wider">
+      <p className="text-body-xs text-text-muted font-medium uppercase tracking-wider">
         {label}
       </p>
       <p
         className={cn(
           "text-display-md font-display mt-1 leading-none",
-          accent ? "text-accent" : "text-foreground"
+          accent ? "text-accent" : "text-text-primary"
         )}
       >
         {value}
       </p>
       {subtitle && (
-        <p className="text-body-xs text-foreground-muted mt-1">{subtitle}</p>
+        <p className="text-body-xs text-text-muted mt-1">{subtitle}</p>
       )}
     </div>
   );

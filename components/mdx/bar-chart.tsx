@@ -20,7 +20,7 @@ export function BarChart({ title, data, source }: BarChartProps) {
   const maxValue = Math.max(...parsed.map((d) => d.value));
 
   return (
-    <div className="my-6 p-5 rounded-xl border border-[var(--border)] bg-surface">
+    <div className="my-6 p-5 rounded-lg border border-border-ghost bg-surface">
       {title && (
         <h4 className="font-display text-display-sm mb-4">{title}</h4>
       )}
@@ -29,10 +29,10 @@ export function BarChart({ title, data, source }: BarChartProps) {
         {parsed.map((item) => (
           <div key={item.label} className="space-y-1">
             <div className="flex items-center justify-between text-body-sm">
-              <span className="text-foreground-secondary">{item.label}</span>
+              <span className="text-text-secondary">{item.label}</span>
               <span className="font-mono text-accent">{item.value}</span>
             </div>
-            <div className="h-2 bg-bg-tertiary rounded-full overflow-hidden">
+            <div className="h-2 bg-bg-high rounded-full overflow-hidden">
               <div
                 className="h-full bg-accent rounded-full transition-all duration-500"
                 style={{ width: `${(item.value / maxValue) * 100}%` }}
@@ -43,7 +43,7 @@ export function BarChart({ title, data, source }: BarChartProps) {
       </div>
 
       {source && (
-        <p className="mt-3 text-body-xs text-foreground-muted">
+        <p className="mt-3 text-body-xs text-text-muted">
           Source: {source}
         </p>
       )}

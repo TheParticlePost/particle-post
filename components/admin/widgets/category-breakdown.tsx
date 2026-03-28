@@ -24,7 +24,7 @@ const BAR_COLORS = [
 export function CategoryBreakdown({ categories }: CategoryBreakdownProps) {
   if (categories.length === 0) {
     return (
-      <p className="text-body-sm text-foreground-muted py-4">
+      <p className="text-body-sm text-text-muted py-4">
         No categories found.
       </p>
     );
@@ -41,12 +41,12 @@ export function CategoryBreakdown({ categories }: CategoryBreakdownProps) {
         return (
           <div key={category.name} className="space-y-1">
             <div className="flex items-center justify-between">
-              <span className="text-body-sm text-foreground">{category.name}</span>
-              <span className="text-body-xs text-foreground-muted font-medium">
+              <span className="text-body-sm text-text-primary">{category.name}</span>
+              <span className="text-body-xs text-text-muted font-medium">
                 {category.count}
               </span>
             </div>
-            <div className="h-2 rounded-full bg-[var(--bg-secondary)] overflow-hidden">
+            <div className="h-2 rounded-full bg-bg-low overflow-hidden">
               <div
                 className={cn(
                   "h-full rounded-full transition-all duration-500"

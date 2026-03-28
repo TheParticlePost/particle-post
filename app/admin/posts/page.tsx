@@ -109,10 +109,10 @@ export default async function PostsPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="font-display text-display-lg text-foreground">
+        <h1 className="font-display text-display-lg text-text-primary">
           Content Management
         </h1>
-        <p className="text-body-sm text-foreground-muted mt-1">
+        <p className="text-body-sm text-text-muted mt-1">
           Browse, sort, and filter all published posts.
         </p>
       </div>

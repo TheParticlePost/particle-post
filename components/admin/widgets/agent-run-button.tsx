@@ -82,7 +82,7 @@ export function AgentRunButton({ workflow, inputs }: AgentRunButtonProps) {
         className={cn(
           "w-7 h-7 rounded-md flex items-center justify-center transition-colors",
           state === "idle" &&
-            "bg-transparent hover:bg-accent/12 text-foreground-muted hover:text-accent",
+            "bg-transparent hover:bg-accent/12 text-text-muted hover:text-accent",
           state === "loading" && "bg-accent/12 text-accent cursor-wait",
           state === "success" && "bg-accent/20 text-accent",
           state === "error" && "bg-red-500/20 text-red-400"

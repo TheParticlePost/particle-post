@@ -8,8 +8,8 @@ import { validatePassword } from "@/lib/validate-password";
 import { cn } from "@/lib/utils";
 
 const inputStyles = cn(
-  "w-full px-4 py-2.5 rounded-lg bg-bg-tertiary/50 border border-[var(--border)]",
-  "text-body-sm text-foreground placeholder:text-foreground-muted",
+  "w-full px-4 py-2.5 rounded-lg bg-bg-high/50 border border-border-ghost",
+  "text-body-sm text-text-primary placeholder:text-text-muted",
   "focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent",
   "transition-all duration-200"
 );
@@ -47,19 +47,19 @@ export function ResetPasswordForm() {
   }
 
   return (
-    <div className="glass-card w-full p-8 flex flex-col gap-6">
+    <div className="bg-bg-container border border-border-ghost rounded-lg w-full p-8 flex flex-col gap-6">
       <div className="text-center space-y-1">
-        <h1 className="text-heading-md font-heading font-bold text-foreground">
+        <h1 className="text-heading-md font-heading font-bold text-text-primary">
           Reset your password
         </h1>
-        <p className="text-body-sm text-foreground-secondary">
+        <p className="text-body-sm text-text-secondary">
           Enter your new password below
         </p>
       </div>
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <div className="flex flex-col gap-1.5">
-          <label htmlFor="password" className="text-body-sm font-medium text-foreground-secondary">
+          <label htmlFor="password" className="text-body-sm font-medium text-text-secondary">
             New Password
           </label>
           <input
@@ -75,7 +75,7 @@ export function ResetPasswordForm() {
         </div>
 
         <div className="flex flex-col gap-1.5">
-          <label htmlFor="confirmPassword" className="text-body-sm font-medium text-foreground-secondary">
+          <label htmlFor="confirmPassword" className="text-body-sm font-medium text-text-secondary">
             Confirm New Password
           </label>
           <input
