@@ -1,6 +1,12 @@
 {
   "posts": [
     {
+      "slug": "ai-compensation-management-predictive-salary-planning",
+      "title": "AI Compensation Management: What CFOs Must Know in 2026",
+      "funnel_type": "TOF",
+      "date": "2026-03-28"
+    },
+    {
       "slug": "ai-investment-strategy-open-vs-proprietary-models",
       "title": "AI Investment Strategy: Open vs Proprietary Models ROI",
       "funnel_type": "MOF",

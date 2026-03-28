@@ -5,6 +5,7 @@
 
 ## Posts
 
+- [AI Compensation Management: What CFOs Must Know in 2026](https://theparticlepost.com/posts/ai-compensation-management-predictive-salary-planning/): AI compensation tools like Decusoft Compose Insights can cut planning time, but 80% of firms skip the data prep that prevents pay equity violations. Here
 - [AI Investment Strategy: Open vs Proprietary Models ROI](https://theparticlepost.com/posts/ai-investment-strategy-open-vs-proprietary-models/): Wrong AI model choice costs $2M-$8M in 18 months. Our CFO framework compares GPT-4o vs Llama 3 on cost, compliance, and ROI for finance operations.
 - [AI Investment Strategy: Recalibrate After Meta](https://theparticlepost.com/posts/ai-investment-strategy-meta-restructuring-2026/): Meta cut hundreds of roles while keeping $60B+ in AI infrastructure spend. Here
 - [AI Risk Management Finance: Stop Nation-State Breaches](https://theparticlepost.com/posts/enterprise-cybersecurity-nation-state-defense-framework/): Nation-state actors dwelled 18 months inside US telecoms undetected. IBM data shows zero-trust cuts breach costs $1.76M. Here is your 5-step defense framework.

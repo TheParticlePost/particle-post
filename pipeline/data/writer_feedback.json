@@ -1,21 +1,6 @@
 {
   "notes": [
     {
-      "text": "[WEEKLY AUDIT] No internal links to other posts — found in 3/7 articles this week. Fix this pattern in future articles.",
-      "slot": "audit",
-      "date": "2026-03-25T16:55:49.810724+00:00"
-    },
-    {
-      "text": "[WEEKLY AUDIT] Cover image uses picsum.photos placeholder — found in 1/7 articles this week. Fix this pattern in future articles.",
-      "slot": "audit",
-      "date": "2026-03-25T16:55:49.810724+00:00"
-    },
-    {
-      "text": "The H1 — 'The AI Fraud Arms Race: What the Research Shows About Detection ROI — and Where It Breaks' — does not contain any of the eight designated primary keywords from the SEO guidelines. Per the SEO rules, every H1 must contain at least one primary keyword unmodified or in close variant. Revise to something like: 'AI Fraud Detection ROI: What the Research Shows — and Where It Breaks' or 'AI Risk Management Finance: The Fraud Arms Race Banks Can't Afford to Lose 2026'. This is the single highest-priority fix before the next submission.",
-      "slot": "morning",
-      "date": "2026-03-25T18:11:18.499174+00:00"
-    },
-    {
       "text": "Clean up the submission pipeline: the article arrived with both a YAML-fronted formatted version and a second '[RESTRUCTURED ARTICLE]' plain-text duplicate below the sources cut-off. The formatter should deliver exactly one version. Having two versions risks the wrong one going to publish and creates confusion in the CMS. Enforce a single clean output handoff from the formatter.",
       "slot": "morning",
       "date": "2026-03-25T18:11:18.499174+00:00"
@@ -149,6 +134,21 @@
       "text": "First H2 answer-first compliance: The 'Five Conditions' section opens with a framing sentence rather than a direct answer. For BOF articles targeting executives who skim, the first sentence after any H2 must deliver the answer, not announce that an answer is coming. Try opening with the most decisive condition first: 'Your AI investment map must be documented before any restructuring signal can be applied — without a function-level spend inventory, you cannot distinguish redundancy from capability.'",
       "slot": "evening",
       "date": "2026-03-27T21:25:53.516887+00:00"
+    },
+    {
+      "text": "CRITICAL — Fix the H1 to include a primary SEO keyword AND make it a question: TOF articles require a question-format H1 per funnel compliance rules, AND the SEO guidelines require one of 8 approved primary keywords in every H1. A title like 'Machine Learning Financial Services: Can Your HR Team Use AI for Compensation Planning?' solves both problems at once. The Restructured Article draft your pipeline produced had the right instinct ('Can Your HR Team Actually Use AI...?') but missed the required keyword anchor.",
+      "slot": "morning",
+      "date": "2026-03-28T13:20:13.683881+00:00"
+    },
+    {
+      "text": "CRITICAL — Cut the article to under 1,000 words: At approximately 1,150-1,200 words, this TOF piece exceeds the hard maximum by 15-20%. The FAQ section (5 Q&As) alone adds ~300 words that belong in a MOF or BOF piece, not a TOF awareness article. Consider moving the FAQ to a companion MOF article, or stripping it to 2 Q&As. The failure scenarios section is valuable but could be tightened to a single illustrative example at the TOF stage — save the second scenario for a deeper funnel piece.",
+      "slot": "morning",
+      "date": "2026-03-28T13:20:13.683881+00:00"
+    },
+    {
+      "text": "ADVISORY — Strengthen the Gartner citation: The Gartner stat ('80% of enterprise companies deploying AI as core HR infrastructure by 2026') is used three times across the article but the Sources section only lists it as 'Gartner, AI as Core Fintech Infrastructure: 80% of Companies Go All-In. 2026' with no URL. Per editorial guidelines, every statistic must cite a named source with enough detail for the reader to verify it. Add the full report name and a URL, or reframe as 'Gartner projects' to signal it is a forecast rather than a published figure. This is currently your weakest attribution and the one most likely to draw an editorial challenge.",
+      "slot": "morning",
+      "date": "2026-03-28T13:20:13.683881+00:00"
     }
   ]
 }
