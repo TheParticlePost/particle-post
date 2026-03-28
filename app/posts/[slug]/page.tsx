@@ -72,9 +72,9 @@ export default async function PostPage({ params }: PageProps) {
       {/* 3px vermillion progress bar */}
       <ScrollProgress />
 
-      <article className="max-w-container mx-auto px-4 sm:px-6 py-8">
-        {/* Header — 680px centered */}
-        <header className="max-w-article mx-auto mb-8">
+      <article className="px-4 sm:px-6 py-8">
+        {/* Header — centered, max 680px */}
+        <header className="max-w-[680px] mx-auto mb-8">
           {/* Category overline */}
           <div className="flex items-center gap-2 mb-4">
             {post.categories.slice(0, 2).map((cat) => (
@@ -82,13 +82,13 @@ export default async function PostPage({ params }: PageProps) {
             ))}
           </div>
 
-          {/* Title — Sora Bold 40px */}
+          {/* Title — Sora Bold */}
           <h1 className="font-display text-display-xl text-text-primary mb-4">
             {post.title}
           </h1>
 
           {/* Meta line — IBM Plex Mono */}
-          <div className="flex items-center gap-4">
+          <div className="flex flex-wrap items-center gap-3">
             {post.author && (
               <DataText>By {post.author}</DataText>
             )}
@@ -101,16 +101,16 @@ export default async function PostPage({ params }: PageProps) {
           <div className="mt-6 border-b border-border-ghost" />
         </header>
 
-        {/* Cover Image — 6px radius */}
+        {/* Cover Image — centered, wider than body */}
         {post.coverImage && (
-          <div className="max-w-4xl mx-auto mb-10">
+          <div className="max-w-[680px] mx-auto mb-10">
             <div className="relative aspect-[2/1] rounded-lg overflow-hidden">
               <Image
                 src={post.coverImage.url}
                 alt={post.coverImage.alt || post.title}
                 fill
                 priority
-                sizes="(max-width: 768px) 100vw, 896px"
+                sizes="(max-width: 768px) 100vw, 680px"
                 className="object-cover"
               />
             </div>
@@ -123,10 +123,10 @@ export default async function PostPage({ params }: PageProps) {
           </div>
         )}
 
-        {/* Content + Sidebar */}
-        <div className="max-w-container mx-auto flex gap-10">
-          {/* Main content — 680px max */}
-          <div className="max-w-article mx-auto flex-1 min-w-0">
+        {/* Content + Sidebar — proper 2-column layout */}
+        <div className="max-w-[1040px] mx-auto flex gap-12">
+          {/* Main content — 680px, left-aligned */}
+          <div className="w-full xl:w-[680px] xl:shrink-0 min-w-0">
             <div className="prose">
               <MDXRemote
                 source={convertHugoShortcodes(post.content, !!(post.faq_pairs && post.faq_pairs.length > 0))}
@@ -140,8 +140,8 @@ export default async function PostPage({ params }: PageProps) {
             )}
           </div>
 
-          {/* Sidebar — 300px, sticky */}
-          <aside className="hidden xl:block w-sidebar shrink-0">
+          {/* Sidebar — fills remaining space (roughly 300px), sticky */}
+          <aside className="hidden xl:block flex-1 min-w-[260px] max-w-[320px]">
             <div className="sticky top-20 space-y-6">
               <TableOfContents content={post.content} />
               <SidebarRelated articles={relatedPosts} />
@@ -150,8 +150,8 @@ export default async function PostPage({ params }: PageProps) {
           </aside>
         </div>
 
-        {/* Related articles — bg shift section */}
-        <div className="max-w-4xl mx-auto mt-16">
+        {/* Related articles */}
+        <div className="max-w-[680px] mx-auto mt-16">
           <RelatedArticles articles={relatedPosts} />
         </div>
       </article>
