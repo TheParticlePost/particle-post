@@ -12,6 +12,8 @@ import { TableOfContents } from "@/components/articles/table-of-contents";
 import { FaqSection } from "@/components/articles/faq-section";
 import { RelatedArticles } from "@/components/articles/related-articles";
 import { ScrollProgress } from "@/components/effects/scroll-progress";
+import { SidebarRelated } from "@/components/articles/sidebar-related";
+import { MarketSnapshot } from "@/components/articles/market-snapshot";
 import { formatDate } from "@/lib/utils";
 import type { Metadata } from "next";
 
@@ -132,8 +134,10 @@ export default async function PostPage({ params }: PageProps) {
 
           {/* Sidebar — 300px, sticky */}
           <aside className="hidden xl:block w-sidebar shrink-0">
-            <div className="sticky top-20">
+            <div className="sticky top-20 space-y-6">
               <TableOfContents content={post.content} />
+              <SidebarRelated articles={relatedPosts} />
+              <MarketSnapshot />
             </div>
           </aside>
         </div>

@@ -15,7 +15,7 @@ const NAV_LINKS = [
   { href: "/", label: "Briefings" },
   { href: "/categories/", label: "Deep Dives" },
   { href: "/categories/ai-finance/", label: "Markets" },
-  { href: "/about/", label: "Archive" },
+  { href: "/archive/", label: "Archive" },
 ];
 
 interface UserProfile {
@@ -86,10 +86,25 @@ export function Navbar() {
         )}
       >
         <nav className="max-w-container mx-auto h-full px-4 sm:px-6 flex items-center justify-between">
-          {/* Logo — monogram dot + wordmark */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <span className="w-2 h-2 rounded-full bg-accent animate-pulse-dot" />
-            <span className="font-display text-lg font-bold uppercase tracking-[-0.02em] text-accent">
+          {/* Logo — monogram SVG + wordmark */}
+          <Link href="/" className="flex items-center gap-2.5 group">
+            {/* Light theme monogram */}
+            <img
+              src="/logos/monogram-light.svg"
+              alt="Particle Post"
+              width={32}
+              height={32}
+              className="dark:hidden"
+            />
+            {/* Dark theme monogram */}
+            <img
+              src="/logos/monogram-dark.svg"
+              alt="Particle Post"
+              width={32}
+              height={32}
+              className="hidden dark:block"
+            />
+            <span className="font-display text-lg font-bold uppercase tracking-[-0.02em] text-text-primary hidden sm:inline">
               Particle Post
             </span>
           </Link>
