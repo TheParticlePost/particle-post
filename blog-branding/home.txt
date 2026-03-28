@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Particle Post | AI &amp; Finance Intelligence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@700&amp;family=DM+Sans:wght@400;500&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "tertiary": "#d0c5ba",
+                        "on-primary-container": "#550f00",
+                        "primary-container": "#f65f37",
+                        "secondary-fixed-dim": "#cfc5bf",
+                        "background": "#141414",
+                        "on-error": "#690005",
+                        "surface-container-high": "#282828",
+                        "primary": "#E8552E",
+                        "on-secondary-fixed-variant": "#4c4541",
+                        "inverse-surface": "#e5e2e1",
+                        "on-primary-fixed": "#3c0800",
+                        "secondary-container": "#4c4541",
+                        "tertiary-fixed-dim": "#d0c5ba",
+                        "surface-bright": "#393939",
+                        "primary-fixed": "#ffdbd2",
+                        "on-tertiary-fixed": "#201b14",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed": "#ece1d5",
+                        "on-surface": "#F5F0EB",
+                        "secondary-fixed": "#ebe0da",
+                        "surface-container": "#1E1E1E",
+                        "on-primary-fixed-variant": "#891e00",
+                        "on-surface-variant": "#e2bfb6",
+                        "inverse-primary": "#b02e07",
+                        "primary-fixed-dim": "#ffb4a1",
+                        "on-primary": "#F5F0EB",
+                        "tertiary-container": "#998f85",
+                        "outline-variant": "#3D3733",
+                        "outline": "#A98A82",
+                        "secondary": "#cfc5bf",
+                        "surface-container-low": "#1C1B1B",
+                        "on-tertiary-fixed-variant": "#4d463e",
+                        "on-secondary-container": "#bdb3ae",
+                        "surface": "#141414",
+                        "error": "#D14040",
+                        "surface-container-highest": "#353534",
+                        "surface-container-lowest": "#0E0E0E",
+                        "error-container": "#93000a",
+                        "surface-variant": "#353534",
+                        "on-secondary-fixed": "#201b17",
+                        "surface-tint": "#E8552E",
+                        "on-tertiary": "#362f28",
+                        "inverse-on-surface": "#313030",
+                        "on-tertiary-container": "#2f2922",
+                        "on-secondary": "#352f2b",
+                        "on-background": "#F5F0EB",
+                        "surface-dim": "#141414"
+                    },
+                    fontFamily: {
+                        "headline": ["Sora", "sans-serif"],
+                        "body": ["DM Sans", "sans-serif"],
+                        "mono": ["IBM Plex Mono", "monospace"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "6px",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #141414;
+            color: #F5F0EB;
+            font-family: 'DM Sans', sans-serif;
+        }
+        .headline-tight {
+            letter-spacing: -0.02em;
+        }
+        .overline-style {
+            font-family: 'Sora', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #E8552E;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full h-[64px] z-50 bg-[#1E1E1E] flex justify-between items-center px-8">
+<div class="flex items-center gap-4">
+<img alt="Particle Post Logo" class="w-8 h-8" data-alt="geometric stylized letter P with a sharp vermillion dot in a minimalist corporate tech style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsje_Af8JrmUUA8vpytMXz6x3aZOQsy4y1ffECP9_J9s1wjkbVZb2UdKfuATylR54Oon1BtTIEJ8k1_7Lb42N-hc7999SzM3vKvgzSd92NEvvrUhmTUyjUi6-6E_G73Zh0EfKoQPStimtqFAJQOiZogT2y19PNmG0huE9G3-U2qt2gGNdz1dSGSyrP3G_uwpTBgM558ZNAQd21q3U_u88FVFeUeeUkmWdlA2G4lZPx_ajXHbmFPhlV0QOKhLPJQY0aUfTMIxWbZ4C0"/>
+<span class="text-2xl font-bold font-headline text-[#F5F0EB]">Particle Post</span>
+</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-[#E8552E] font-bold border-b-2 border-[#E8552E] pb-1 font-headline text-sm tracking-tight" href="#">Briefings</a>
+<a class="text-[#F5F0EB] hover:text-[#E8552E] transition-colors font-headline text-sm tracking-tight" href="#">Deep Dives</a>
+<a class="text-[#F5F0EB] hover:text-[#E8552E] transition-colors font-headline text-sm tracking-tight" href="#">Markets</a>
+<a class="text-[#F5F0EB] hover:text-[#E8552E] transition-colors font-headline text-sm tracking-tight" href="#">Archive</a>
+</div>
+<div>
+<button class="bg-primary text-on-surface px-6 py-2 rounded font-headline text-sm hover:bg-[#ff6b4a] transition-all duration-200 active:scale-95">
+                Subscribe
+            </button>
+</div>
+</nav>
+<main class="pt-[64px]">
+<!-- Hero Section -->
+<section class="py-24 px-8 max-w-5xl mx-auto text-center">
+<p class="overline-style mb-6">MORNING BRIEFING</p>
+<h1 class="font-headline text-5xl md:text-6xl text-[#F5F0EB] headline-tight mb-8">
+                Nvidia Revenue Tops $40B as Data Center Demand Surges
+            </h1>
+<p class="font-body text-xl text-[#E6DED6] leading-relaxed max-w-3xl mx-auto mb-12">
+                The chipmaker shatters expectations as hyperscalers double down on AI infrastructure. Wall Street recalibrates valuations for the 2024 compute supercycle.
+            </p>
+<div class="flex flex-col md:flex-row gap-4 justify-center items-center mb-4">
+<input class="bg-surface-container-high border-none text-on-surface px-6 py-4 w-full md:w-80 rounded focus:ring-1 focus:ring-primary transition-all" placeholder="Email address" type="email"/>
+<button class="bg-primary text-on-surface font-headline px-8 py-4 rounded w-full md:w-auto hover:bg-[#ff6b4a] transition-all">
+                    Get the Briefing
+                </button>
+</div>
+<p class="font-mono text-xs text-[#A89E94] tracking-wider uppercase">Join 12,000+ leaders. Free, twice daily.</p>
+</section>
+<!-- Today's Briefings -->
+<section class="px-8 pb-24 max-w-7xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Morning Edition -->
+<div class="bg-surface-container border border-outline-variant p-8 rounded hover:border-primary transition-all duration-300">
+<p class="overline-style mb-4">MORNING EDITION</p>
+<h3 class="font-headline text-2xl mb-8">AM Intelligence Wrap</h3>
+<ul class="space-y-6">
+<li class="group cursor-pointer">
+<span class="font-mono text-xs text-primary block mb-1">07:00 AM</span>
+<h4 class="font-body text-lg group-hover:text-primary transition-colors">Japan's SoftBank seeks $100B for AI chip venture 'Izanagi'</h4>
+</li>
+<li class="group cursor-pointer">
+<span class="font-mono text-xs text-primary block mb-1">07:15 AM</span>
+<h4 class="font-body text-lg group-hover:text-primary transition-colors">ECB signals cautious stance on rate cuts despite easing inflation</h4>
+</li>
+<li class="group cursor-pointer">
+<span class="font-mono text-xs text-primary block mb-1">07:45 AM</span>
+<h4 class="font-body text-lg group-hover:text-primary transition-colors">OpenAI Sora creates ripples in Hollywood production strategy</h4>
+</li>
+<li class="group cursor-pointer">
+<span class="font-mono text-xs text-primary block mb-1">08:00 AM</span>
+<h4 class="font-body text-lg group-hover:text-primary transition-colors">Bitcoin ETF inflows hit record $2.4B in single week</h4>
+</li>
+</ul>
+</div>
+<!-- Evening Edition -->
+<div class="bg-surface-container border border-outline-variant p-8 rounded hover:border-primary transition-all duration-300">
+<p class="overline-style mb-4">EVENING EDITION</p>
+<h3 class="font-headline text-2xl mb-8">PM Market Closing</h3>
+<ul class="space-y-6">
+<li class="group cursor-pointer">
+<span class="font-mono text-xs text-primary block mb-1">04:30 PM</span>
+<h4 class="font-body text-lg group-hover:text-primary transition-colors">Nasdaq closes at all-time high led by semiconductor rally</h4>
+</li>
+<li class="group cursor-pointer">
+<span class="font-mono text-xs text-primary block mb-1">05:00 PM</span>
+<h4 class="font-body text-lg group-hover:text-primary transition-colors">Federal Reserve minutes reveal internal debate over quantitative tightening</h4>
+</li>
+<li class="group cursor-pointer">
+<span class="font-mono text-xs text-primary block mb-1">05:15 PM</span>
+<h4 class="font-body text-lg group-hover:text-primary transition-colors">Mistral AI valuation nears $6B ahead of Microsoft partnership</h4>
+</li>
+<li class="group cursor-pointer">
+<span class="font-mono text-xs text-primary block mb-1">06:00 PM</span>
+<h4 class="font-body text-lg group-hover:text-primary transition-colors">Crude oil futures stabilize as geopolitical tensions reach stalemate</h4>
+</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- Featured Deep Dive -->
+<section class="px-8 pb-24 max-w-7xl mx-auto">
+<div class="bg-surface-container border-l-[3px] border-l-primary border-t border-r border-b border-outline-variant p-12 rounded shadow-none flex flex-col md:flex-row gap-12 items-center group cursor-pointer">
+<div class="flex-1">
+<p class="overline-style mb-4">DEEP DIVE</p>
+<h2 class="font-headline text-3xl md:text-4xl mb-6 group-hover:text-primary transition-colors">
+                        The Rise of Sovereign AI: Why Nations are Racing to Build Local Large Language Models
+                    </h2>
+<p class="font-body text-lg text-[#E6DED6] leading-relaxed mb-8">
+                        Beyond commercial dominance, compute power has become a matter of national security. We analyze how France, India, and the UAE are decoupling from Silicon Valley's tech stack.
+                    </p>
+<div class="flex items-center gap-6 font-mono text-xs text-[#A89E94]">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">schedule</span> 14 MIN READ
+                        </span>
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">person</span> BY DR. ELIAS VANCE
+                        </span>
+</div>
+</div>
+<div class="w-full md:w-1/3 overflow-hidden rounded">
+<img alt="Sovereign AI Concept" class="w-full h-64 object-cover grayscale group-hover:grayscale-0 transition-all duration-500 scale-105 group-hover:scale-100" data-alt="Abstract digital representation of a glowing neural network map of Europe with data particles flowing between nodes on a dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqtDaouDDz2D-5BYSOxYcIMDuyddAXz3gX4Jpt7us0wSVCk1zdqUbUaXAkBSLErje-ELhOxoKqdTHcky3m0oU4gR8W85cvzkojRpRWeFkkOV4Vv36urVaAY3SXExxiJevLUO2C_xImCQsEQaKdI1TAj2ziJCINKAwXlu0iJo6OpwD7J7oygDW8-YNrvhgKGd3aVCio6-AgxTaGYngyqksfn47wQdq5LbRuXZj1-oAmEMBDTzHzZ9hn5r_nxH2rwM08X4TZY7u4ra23"/>
+</div>
+</div>
+</section>
+<!-- Trending -->
+<section class="px-8 pb-24 max-w-7xl mx-auto">
+<h3 class="font-headline text-xl mb-8 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">trending_up</span> TRENDING NOW
+            </h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Card 1 -->
+<div class="bg-surface-container border border-outline-variant p-6 rounded hover:border-primary transition-all group cursor-pointer">
+<div class="flex justify-between items-start mb-6">
+<span class="px-2 py-1 bg-surface-container-high text-[10px] font-mono text-on-surface uppercase tracking-widest rounded">MARKETS</span>
+<span class="flex items-center gap-1 text-[10px] font-mono text-primary bg-primary/10 px-2 py-1 rounded">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">arrow_upward</span> BULLISH
+                        </span>
+</div>
+<h4 class="font-headline text-lg mb-8 leading-snug group-hover:text-primary transition-colors">How TSMC is redefining the 2nm production timeline</h4>
+<div class="flex justify-between items-center font-mono text-[10px] text-[#A89E94]">
+<span>FEB 24, 2024</span>
+<span>6 MIN READ</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container border border-outline-variant p-6 rounded hover:border-primary transition-all group cursor-pointer">
+<div class="flex justify-between items-start mb-6">
+<span class="px-2 py-1 bg-surface-container-high text-[10px] font-mono text-on-surface uppercase tracking-widest rounded">REGULATION</span>
+<span class="flex items-center gap-1 text-[10px] font-mono text-error bg-error/10 px-2 py-1 rounded">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">arrow_downward</span> BEARISH
+                        </span>
+</div>
+<h4 class="font-headline text-lg mb-8 leading-snug group-hover:text-primary transition-colors">New SEC filings indicate stricter audit requirements for AI startups</h4>
+<div class="flex justify-between items-center font-mono text-[10px] text-[#A89E94]">
+<span>FEB 24, 2024</span>
+<span>9 MIN READ</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container border border-outline-variant p-6 rounded hover:border-primary transition-all group cursor-pointer">
+<div class="flex justify-between items-start mb-6">
+<span class="px-2 py-1 bg-surface-container-high text-[10px] font-mono text-on-surface uppercase tracking-widest rounded">M&amp;A</span>
+<span class="flex items-center gap-1 text-[10px] font-mono text-primary bg-primary/10 px-2 py-1 rounded">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">arrow_upward</span> BULLISH
+                        </span>
+</div>
+<h4 class="font-headline text-lg mb-8 leading-snug group-hover:text-primary transition-colors">Inside the $12B deal to consolidate data center real estate</h4>
+<div class="flex justify-between items-center font-mono text-[10px] text-[#A89E94]">
+<span>FEB 23, 2024</span>
+<span>12 MIN READ</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-[#141414] border-t-2 border-primary pt-24 pb-12 px-8">
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+<div class="col-span-1 md:col-span-2">
+<div class="flex items-center gap-4 mb-6">
+<img alt="Logo" class="w-8 h-8" data-alt="minimalist P logo with vermillion dot on dark onyx background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7idHZcGm0dEgtr8IXPI_Qx-unvlojF8Nw5R544TUZ6Sa4aEmcV1RBRqNnbEVKkcUT7_3i8zcYk109SFvICp-sh1qX8dxrDO8ZNkT8uezQGrpRVgN6DYQD8KC5b1s6z2kU1LBLJwffEKitq_Dtb8-cdqAQ1HYfI_uSJfWBsPJGOlEEwYvZJguA0uChl3NijfIXm_My8TgLsvGdg0pPmfXK25gz20EATkZ97l9Z-MC3HFNGxpt0j4TqsPJBbvppI_scWOS8hqlOwhu9"/>
+<span class="text-2xl font-bold font-headline text-[#F5F0EB]">Particle Post</span>
+</div>
+<p class="text-[#A89E94] font-body text-base max-w-sm mb-8 leading-relaxed">
+                    High-frequency AI &amp; Finance Intelligence for institutional investors, researchers, and policy makers.
+                </p>
+<div class="flex gap-6">
+<a class="text-[#A89E94] hover:text-primary transition-colors font-headline text-xs tracking-widest" href="#">X / TWITTER</a>
+<a class="text-[#A89E94] hover:text-primary transition-colors font-headline text-xs tracking-widest" href="#">LINKEDIN</a>
+<a class="text-[#A89E94] hover:text-primary transition-colors font-headline text-xs tracking-widest" href="#">SUBSTACK</a>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<p class="overline-style mb-2">QUICK LINKS</p>
+<a class="text-[#A89E94] hover:text-on-surface transition-colors font-body text-sm" href="#">Briefings</a>
+<a class="text-[#A89E94] hover:text-on-surface transition-colors font-body text-sm" href="#">Deep Dives</a>
+<a class="text-[#A89E94] hover:text-on-surface transition-colors font-body text-sm" href="#">Archive</a>
+<a class="text-[#A89E94] hover:text-on-surface transition-colors font-body text-sm" href="#">RSS Feed</a>
+</div>
+<div class="flex flex-col gap-4">
+<p class="overline-style mb-2">LEGAL</p>
+<a class="text-[#A89E94] hover:text-on-surface transition-colors font-body text-sm" href="#">Privacy Policy</a>
+<a class="text-[#A89E94] hover:text-on-surface transition-colors font-body text-sm" href="#">Terms of Service</a>
+<a class="text-[#A89E94] hover:text-on-surface transition-colors font-body text-sm" href="#">Cookie Settings</a>
+<a class="text-[#A89E94] hover:text-on-surface transition-colors font-body text-sm" href="#">Accessibility</a>
+</div>
+</div>
+<div class="max-w-7xl mx-auto mt-24 pt-8 border-t border-[#282828] flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="font-mono text-[10px] text-[#A89E94] tracking-wider uppercase">
+                © Particle Post. High-frequency AI &amp; Finance Intelligence.
+            </p>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-green-500"></span>
+<p class="font-mono text-[10px] text-[#A89E94] tracking-wider uppercase">SYSTEMS OPERATIONAL</p>
+</div>
+</div>
+</footer>
+</body></html>

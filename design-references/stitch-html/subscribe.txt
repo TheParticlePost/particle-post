@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Particle Post | AI-Powered Intelligence for Leaders</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@700;800&amp;family=Manrope:wght@400;500;600&amp;family=Space+Grotesk:wght@500;700&amp;family=IBM+Plex+Mono:wght@400;700&amp;family=DM+Sans:wght@400;500;700&amp;family=Sora:wght@700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "outline": "#a98a82",
+            "on-error": "#690005",
+            "tertiary-container": "#998f85",
+            "tertiary": "#d0c5ba",
+            "primary-fixed-dim": "#ffb4a1",
+            "inverse-surface": "#e5e2e1",
+            "on-tertiary-fixed-variant": "#4d463e",
+            "surface-container-highest": "#353534",
+            "on-error-container": "#ffdad6",
+            "surface-variant": "#353534",
+            "primary": "#ffb4a1",
+            "tertiary-fixed": "#ece1d5",
+            "primary-container": "#f65f37",
+            "primary-fixed": "#ffdbd2",
+            "on-primary-fixed-variant": "#891e00",
+            "secondary": "#cfc5bf",
+            "on-tertiary-container": "#2f2922",
+            "on-secondary-fixed-variant": "#4c4541",
+            "error": "#ffb4ab",
+            "inverse-primary": "#b02e07",
+            "on-tertiary": "#362f28",
+            "on-secondary-fixed": "#201b17",
+            "on-tertiary-fixed": "#201b14",
+            "surface-dim": "#131313",
+            "on-surface": "#e5e2e1",
+            "on-primary-container": "#550f00",
+            "tertiary-fixed-dim": "#d0c5ba",
+            "surface-container-lowest": "#0e0e0e",
+            "secondary-fixed": "#ebe0da",
+            "on-primary": "#611300",
+            "error-container": "#93000a",
+            "surface-container-low": "#1c1b1b",
+            "on-secondary": "#352f2b",
+            "surface": "#131313",
+            "secondary-fixed-dim": "#cfc5bf",
+            "background": "#131313",
+            "surface-container": "#201f1f",
+            "on-surface-variant": "#e2bfb6",
+            "surface-tint": "#ffb4a1",
+            "outline-variant": "#5a413b",
+            "on-secondary-container": "#bdb3ae",
+            "surface-bright": "#393939",
+            "on-primary-fixed": "#3c0800",
+            "surface-container-high": "#2a2a2a",
+            "inverse-on-surface": "#313030",
+            "secondary-container": "#4c4541",
+            "on-background": "#e5e2e1",
+            "vermillion": "#E8552E",
+            "warm-white": "#F5F0EB",
+            "cream": "#E6DED6",
+            "onyx": "#1E1E1E",
+            "carbon": "#282828",
+            "ember": "#3D3733"
+          },
+          fontFamily: {
+            "headline": ["Epilogue", "Sora", "sans-serif"],
+            "body": ["Manrope", "DM Sans", "sans-serif"],
+            "label": ["Space Grotesk", "IBM Plex Mono", "monospace"],
+            "sora": ["Sora", "sans-serif"],
+            "dm-sans": ["DM Sans", "sans-serif"],
+            "mono": ["IBM Plex Mono", "monospace"]
+          },
+          borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    body {
+      background-color: #141414;
+      color: #F5F0EB;
+    }
+    .ghost-border {
+      outline: 1px solid rgba(90, 65, 59, 0.2);
+    }
+    .editorial-stripe {
+      border-left: 3px solid #E8552E;
+    }
+    .custom-shadow-none {
+      box-shadow: none !important;
+    }
+  </style>
+</head>
+<body class="font-body selection:bg-vermillion selection:text-white">
+<!-- TopAppBar -->
+<nav class="w-full top-0 z-50 bg-[#141414] dark:bg-[#141414]">
+<div class="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto">
+<div class="text-2xl font-['Epilogue'] font-bold tracking-tighter text-[#E8552E] uppercase">
+        Particle Post
+      </div>
+<div class="flex items-center gap-6">
+<a class="bg-vermillion text-warm-white px-5 py-2 rounded-[6px] font-bold text-sm uppercase tracking-wider transition-transform hover:scale-105 active:scale-95" href="#subscribe">
+          Subscribe
+        </a>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<section class="min-h-screen flex flex-col items-center justify-center px-6 py-20 text-center relative overflow-hidden">
+<!-- Kinetic Particle Background Elements (Decorative) -->
+<div class="absolute top-1/4 -left-20 w-64 h-64 bg-vermillion/5 rounded-full blur-3xl"></div>
+<div class="absolute bottom-1/4 -right-20 w-96 h-96 bg-vermillion/5 rounded-full blur-3xl"></div>
+<div class="max-w-4xl mx-auto z-10">
+<span class="font-sora text-[11px] font-bold tracking-[0.12em] text-vermillion uppercase block mb-6">
+        AI-POWERED INTELLIGENCE
+      </span>
+<h1 class="font-sora font-bold text-[40px] md:text-[56px] leading-[1.1] text-warm-white tracking-[-0.02em] mb-8">
+        The AI briefing 12,000 leaders read before markets open.
+      </h1>
+<p class="font-dm-sans text-lg md:text-[18px] leading-[1.8] text-cream max-w-2xl mx-auto mb-12">
+        High-frequency market intelligence synthesized from the noise of global innovation.<br/>
+        Direct to your inbox, curated for those who drive the future.
+      </p>
+<form class="flex flex-col md:flex-row gap-3 max-w-xl mx-auto mb-4" id="subscribe">
+<input class="flex-1 bg-carbon border-ember border focus:border-vermillion text-warm-white px-6 py-4 rounded-[6px] font-dm-sans outline-none transition-colors" placeholder="Enter your work email" type="email"/>
+<button class="bg-vermillion text-warm-white px-8 py-4 rounded-[6px] font-sora font-bold text-base transition-all hover:saturate-150 active:scale-95 whitespace-nowrap" type="submit">
+          Subscribe — Free
+        </button>
+</form>
+<p class="font-mono text-[10px] tracking-widest text-[#6E6660] uppercase">
+        Free forever. No spam. Unsubscribe anytime.
+      </p>
+</div>
+</section>
+<!-- Social Proof -->
+<section class="py-12 bg-surface-container-lowest border-y border-outline-variant/10">
+<div class="max-w-7xl mx-auto px-6 text-center">
+<p class="font-mono text-xs tracking-widest text-[#A89E94] uppercase mb-8">Trusted by leaders at</p>
+<div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-40 grayscale contrast-125">
+<div class="h-6 w-24 bg-[#5A413B]/40 rounded-sm"></div>
+<div class="h-6 w-32 bg-[#5A413B]/40 rounded-sm"></div>
+<div class="h-6 w-28 bg-[#5A413B]/40 rounded-sm"></div>
+<div class="h-6 w-36 bg-[#5A413B]/40 rounded-sm"></div>
+<div class="h-6 w-20 bg-[#5A413B]/40 rounded-sm"></div>
+</div>
+</div>
+</section>
+<!-- What You Get -->
+<section class="py-32 px-6">
+<div class="max-w-7xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Card 1 -->
+<div class="bg-onyx border border-ember p-8 rounded-[6px] group hover:border-vermillion transition-colors">
+<div class="mb-6 text-vermillion">
+<span class="material-symbols-outlined text-4xl" data-icon="bolt">bolt</span>
+</div>
+<h3 class="font-sora text-xl font-bold text-warm-white mb-4">Morning Briefing</h3>
+<p class="font-dm-sans text-cream/70 leading-relaxed">
+            Every AM, we distill 1,000+ data points into five essential insights that will impact your market position.
+          </p>
+</div>
+<!-- Card 2 -->
+<div class="bg-onyx border border-ember p-8 rounded-[6px] group hover:border-vermillion transition-colors">
+<div class="mb-6 text-vermillion">
+<span class="material-symbols-outlined text-4xl" data-icon="monitoring">monitoring</span>
+</div>
+<h3 class="font-sora text-xl font-bold text-warm-white mb-4">Evening Recap</h3>
+<p class="font-dm-sans text-cream/70 leading-relaxed">
+            The signal, not the noise. A post-market synthesis of how AI moves evolved through the day’s trading cycles.
+          </p>
+</div>
+<!-- Card 3 -->
+<div class="bg-onyx border border-ember p-8 rounded-[6px] group hover:border-vermillion transition-colors">
+<div class="mb-6 text-vermillion">
+<span class="material-symbols-outlined text-4xl" data-icon="article">article</span>
+</div>
+<h3 class="font-sora text-xl font-bold text-warm-white mb-4">Weekly Deep Dive</h3>
+<p class="font-dm-sans text-cream/70 leading-relaxed">
+            Our weekend strategic analysis looking 6 months ahead. Original research you won't find on generic tech blogs.
+          </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Sample Content -->
+<section class="py-32 bg-surface-container-low">
+<div class="max-w-7xl mx-auto px-6">
+<span class="font-mono text-xs tracking-widest text-vermillion uppercase block mb-12">The Archives // Sample Intel</span>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+<div class="space-y-16">
+<!-- Article 1 -->
+<article class="editorial-stripe pl-8">
+<p class="font-mono text-[10px] text-[#A89E94] uppercase tracking-widest mb-3">Sept 14 // Tech-Finance Flux</p>
+<h2 class="font-sora text-3xl font-bold text-warm-white mb-4 hover:text-vermillion transition-colors cursor-pointer">
+              The Sovereign AI Cloud: Why 2024 is the Year of Data Borders
+            </h2>
+<p class="font-dm-sans text-cream/60 leading-relaxed line-clamp-2">
+              National interest is colliding with centralized compute power. We analyze the $40B shift in infrastructure spending as governments race to build their own neural bastions.
+            </p>
+</article>
+<!-- Article 2 -->
+<article class="editorial-stripe pl-8">
+<p class="font-mono text-[10px] text-[#A89E94] uppercase tracking-widest mb-3">Sept 12 // Model Efficiency</p>
+<h2 class="font-sora text-3xl font-bold text-warm-white mb-4 hover:text-vermillion transition-colors cursor-pointer">
+              Small Language Models (SLMs) and the Death of the Giant
+            </h2>
+<p class="font-dm-sans text-cream/60 leading-relaxed line-clamp-2">
+              Performance parity at 1/100th the cost. The economic case for enterprise specialized models is becoming undeniable for the C-Suite.
+            </p>
+</article>
+<!-- Article 3 -->
+<article class="editorial-stripe pl-8">
+<p class="font-mono text-[10px] text-[#A89E94] uppercase tracking-widest mb-3">Sept 10 // Capital Flow</p>
+<h2 class="font-sora text-3xl font-bold text-warm-white mb-4 hover:text-vermillion transition-colors cursor-pointer">
+              Tokenized Liquidity: The Convergence of RWA and Neural Nets
+            </h2>
+<p class="font-dm-sans text-cream/60 leading-relaxed line-clamp-2">
+              As real-world assets migrate to the ledger, AI agents are becoming the primary market makers. What this means for high-frequency volatility.
+            </p>
+</article>
+</div>
+<div class="relative hidden lg:block">
+<div class="aspect-[4/5] bg-onyx rounded-[6px] overflow-hidden border border-ember relative">
+<img alt="Particle Post Intel Illustration" class="w-full h-full object-cover opacity-50 grayscale hover:grayscale-0 transition-all duration-700" data-alt="abstract digital visualization of data particles flowing through a futuristic neural network grid with deep shadows and orange highlights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-jynC0GFMsDOifXkAdTh88Mw5n3S6Pm9fdWc9MsAuKCCmCJbowrtYc7vvL9nnoQi0e6udb2kp2GNVvJlWIbdOHand_HS26GjbKkNAQw4XL3i-17qMRBV15UW7sv_ktT0ZUNJFHlbqTEP5iiSk40NiG-XC4LBslOPT4NF181q3BJh90TK9mOUI19oeg3v_aNUPXr54qBp-igIBci8-RNnQGUFF0YyceyCS73CI9KSPdxY_QvDCItgFaRduWgCQBlsRGrVYBa-dyflI"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#141414] via-transparent to-transparent"></div>
+<div class="absolute bottom-8 left-8 right-8">
+<div class="bg-vermillion/90 backdrop-blur-sm p-4 rounded-sm inline-block mb-4">
+<p class="font-mono text-[10px] text-white font-bold uppercase tracking-tighter">Live Insight Feed</p>
+</div>
+<p class="font-sora text-xl text-warm-white font-bold">"Intelligence is the ultimate leverage."</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Final CTA -->
+<section class="py-40 px-6 relative">
+<div class="max-w-4xl mx-auto text-center">
+<h2 class="font-sora font-bold text-[32px] md:text-[48px] leading-tight text-warm-white mb-12">
+        Join now. Your first briefing arrives tomorrow morning.
+      </h2>
+<div class="max-w-xl mx-auto">
+<form class="flex flex-col md:flex-row gap-3 mb-4">
+<input class="flex-1 bg-carbon border-ember border focus:border-vermillion text-warm-white px-6 py-4 rounded-[6px] font-dm-sans outline-none transition-colors" placeholder="Enter your work email" type="email"/>
+<button class="bg-vermillion text-warm-white px-8 py-4 rounded-[6px] font-sora font-bold text-base transition-all hover:saturate-150 active:scale-95 whitespace-nowrap" type="submit">
+            Subscribe — Free
+          </button>
+</form>
+<p class="font-mono text-[10px] tracking-widest text-[#6E6660] uppercase">
+          Private access. Secure ledger.
+        </p>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="w-full py-12 px-6 border-t border-[#5A413B]/20 bg-[#0E0E0E] dark:bg-[#0E0E0E]">
+<div class="flex flex-col md:flex-row justify-between items-center gap-8 max-w-7xl mx-auto">
+<div class="text-lg font-bold text-[#E8552E] font-['Epilogue'] uppercase tracking-tighter">
+        Particle Post
+      </div>
+<div class="flex gap-8">
+<a class="font-['IBM_Plex_Mono'] text-xs uppercase tracking-widest text-[#F5F0EB]/50 hover:text-[#E8552E] transition-all underline-offset-4 hover:underline" href="#">Terms of Service</a>
+<a class="font-['IBM_Plex_Mono'] text-xs uppercase tracking-widest text-[#F5F0EB]/50 hover:text-[#E8552E] transition-all underline-offset-4 hover:underline" href="#">Privacy Policy</a>
+<a class="font-['IBM_Plex_Mono'] text-xs uppercase tracking-widest text-[#F5F0EB]/50 hover:text-[#E8552E] transition-all underline-offset-4 hover:underline" href="#">Contact</a>
+<a class="font-['IBM_Plex_Mono'] text-xs uppercase tracking-widest text-[#F5F0EB]/50 hover:text-[#E8552E] transition-all underline-offset-4 hover:underline" href="#">Archive</a>
+</div>
+<div class="font-['IBM_Plex_Mono'] text-xs uppercase tracking-widest text-[#F5F0EB]">
+        © 2024 Particle Post. Kinetic Ledger Technology.
+      </div>
+</div>
+</footer>
+</body></html>
