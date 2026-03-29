@@ -1,21 +1,6 @@
 {
   "notes": [
     {
-      "text": "H1 character count: The restructured H1 ('Agentic AI in Finance Operations: What the Oracle and Zalos Deployments Actually Prove — and Where the ROI Math Breaks') runs approximately 100 characters — well above the 70-character SERP display maximum in the SEO guidelines. Trim to a tighter formula: 'Agentic AI Finance Operations: What Oracle and Zalos Actually Prove' (67 chars) retains the primary keyword and named entities within the display window.",
-      "slot": "morning",
-      "date": "2026-03-25T18:41:27.258144+00:00"
-    },
-    {
-      "text": "Em dash discipline: The article uses em dashes as stylistic connectors in multiple consecutive sentences within single paragraphs (especially in the lede and the 'What This Means for Three Finance Functions' section). The editorial guidelines flag this explicitly as an AI-generation tell when used more than once per paragraph. Do a final pass before submission: replace em dashes with periods, commas, or restructured clauses. One per paragraph is the hard ceiling.",
-      "slot": "morning",
-      "date": "2026-03-25T18:41:27.258144+00:00"
-    },
-    {
-      "text": "Em dash discipline is the clearest remaining AI-generation signal in this piece. You used em dashes as connectors in multiple sentences across several paragraphs — the editorial guidelines flag this explicitly as an AI tell when it appears more than once per paragraph. In your next draft, do a find-replace pass on every em dash and ask whether a period, a colon, or a comma serves the sentence better. Reserve the em dash for genuine parenthetical asides, used once per paragraph maximum.",
-      "slot": "morning",
-      "date": "2026-03-25T19:27:05.606509+00:00"
-    },
-    {
       "text": "The MOF 'what the evidence does NOT prove' requirement is structurally present in your 'What Neither Approach Has Proven at Scale' section, but it reads as a continuation of the vendor comparison rather than a standalone analytical checkpoint. For your next MOF article, make this a dedicated labeled section that explicitly names the claims vendors are making and then specifically rebuts or qualifies each one with sourced evidence — or an honest acknowledgment that no independent data yet exists. This signals editorial rigor to your executive reader.",
       "slot": "morning",
       "date": "2026-03-25T19:27:05.606509+00:00"
@@ -149,6 +134,21 @@
       "text": "The 'Clear Verdict' section label is a required TOF structural element: The closing section 'Act Now: The Gap Closes Before an Attacker or a Regulator Finds It' delivers a strong conclusion, but it must be labeled '## Clear Verdict' to satisfy TOF funnel compliance. The substance is there; only the heading label needs to change. Going forward, treat 'Clear Verdict' as a fixed section-name anchor for all TOF articles, the same way MOF articles require a fixed 'What the Research Does NOT Prove' section.",
       "slot": "evening",
       "date": "2026-03-28T21:15:26.297492+00:00"
+    },
+    {
+      "text": "Source URL integrity: Two of your seven sources use URLs that look like landing pages rather than permalinks to specific reports (the Deloitte Insights URL and the Gartner document URL). For a publication that holds every stat to named-source standards, these need to be direct document links or replaced with the closest verifiable alternative. If the Deloitte '9.4 months' figure cannot be traced to a live document, reframe it as 'per Deloitte's 2024 analysis' and note that the full report is available on request. One unverifiable central claim can undermine reader trust in the entire piece.",
+      "slot": "morning",
+      "date": "2026-03-29T13:28:19.990691+00:00"
+    },
+    {
+      "text": "MOF internal link funnel mapping: You have three internal links, which is excellent MOF hygiene. However, review which funnel stage each target article occupies. MOF rules require at least one link pointing up to a TOF piece (awareness-level content a reader new to the topic would need) and at least one pointing down to a BOF piece (decision-stage content for readers ready to evaluate vendors). Right now all three links appear to be peer-level or BOF content. Adding one TOF link — something like an explainer on what agentic AI is, aimed at executives unfamiliar with the category — would complete the funnel chain correctly.",
+      "slot": "morning",
+      "date": "2026-03-29T13:28:19.990691+00:00"
+    },
+    {
+      "text": "Eliminate the Oracle/ServiceNow statistic repetition between Sections 1 and 2: The 34% procure-to-pay and 52% resolution-time figures appear in both the first and second H2 sections. In a 2,600-word MOF article, readers notice when the same data point recurs within 300 words. Consolidate: keep the full attributed figures in Section 2 ('What the Cycle-Time Results Show'), and replace the opening of Section 1 with a higher-level framing sentence that sets up the ROI argument without pre-empting the evidence. This tightens the article and makes Section 2 land with more weight.",
+      "slot": "morning",
+      "date": "2026-03-29T13:28:19.990691+00:00"
     }
   ]
 }

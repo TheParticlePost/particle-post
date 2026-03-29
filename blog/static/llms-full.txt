@@ -5,6 +5,7 @@
 
 ## Posts
 
+- [Agentic AI Finance: What the Research Shows About Execution-Driven Systems](https://theparticlepost.com/posts/agentic-ai-finance-execution-research-deployment/): Agentic AI finance deployments average 9.4 months to go-live, not 90 days. Learn what Oracle, Deloitte, and Gartner data actually prove before committing $1.5M.
 - [AI Compensation Management: What CFOs Must Know in 2026](https://theparticlepost.com/posts/ai-compensation-management-predictive-salary-planning/): AI compensation tools like Decusoft Compose Insights can cut planning time, but 80% of firms skip the data prep that prevents pay equity violations. Here
 - [Agentic AI Risk Management Finance: Security Overhaul Now](https://theparticlepost.com/posts/agentic-ai-risk-management-finance-security/): Agentic AI risk in finance is immediate: RSAC 2026 exposed 3 critical governance gaps. Cisco, Oracle, and Microsoft warn enterprises to act now before regulators do.
 - [AI Investment Strategy: Open vs Proprietary Models ROI](https://theparticlepost.com/posts/ai-investment-strategy-open-vs-proprietary-models/): Wrong AI model choice costs $2M-$8M in 18 months. Our CFO framework compares GPT-4o vs Llama 3 on cost, compliance, and ROI for finance operations.

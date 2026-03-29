@@ -1,8 +1,8 @@
 {
-  "last_updated": "2026-03-28",
+  "last_updated": "2026-03-29",
   "schema_coverage": {
     "Article": 0,
-    "FAQPage": 10,
+    "FAQPage": 11,
     "HowTo": 0,
     "NewsArticle": 0
   },
@@ -109,6 +109,14 @@
       "schema_type": "FAQPage",
       "has_faq": true,
       "search_intent": "informational"
+    },
+    {
+      "date": "2026-03-29",
+      "slug": "agentic-ai-finance-execution-research-deployment",
+      "primary_keyword": "agentic AI finance operations",
+      "schema_type": "FAQPage",
+      "has_faq": true,
+      "search_intent": "commercial"
     }
   ]
 }

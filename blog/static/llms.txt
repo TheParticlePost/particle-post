@@ -5,6 +5,7 @@
 
 ## Posts
 
+- [Agentic AI Finance: What the Research Shows About Execution-Driven Systems](https://theparticlepost.com/posts/agentic-ai-finance-execution-research-deployment/)
 - [AI Compensation Management: What CFOs Must Know in 2026](https://theparticlepost.com/posts/ai-compensation-management-predictive-salary-planning/)
 - [Agentic AI Risk Management Finance: Security Overhaul Now](https://theparticlepost.com/posts/agentic-ai-risk-management-finance-security/)
 - [AI Investment Strategy: Open vs Proprietary Models ROI](https://theparticlepost.com/posts/ai-investment-strategy-open-vs-proprietary-models/)
