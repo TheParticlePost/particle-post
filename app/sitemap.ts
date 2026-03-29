@@ -28,6 +28,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/privacy/`, changeFrequency: "yearly", priority: 0.2 },
     { url: `${BASE_URL}/terms/`, changeFrequency: "yearly", priority: 0.2 },
     { url: `${BASE_URL}/cookies/`, changeFrequency: "yearly", priority: 0.2 },
+    { url: `${BASE_URL}/subscribe/`, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE_URL}/archive/`, changeFrequency: "daily", priority: 0.7 },
+    { url: `${BASE_URL}/pulse/`, changeFrequency: "daily", priority: 0.8 },
     ...categoryEntries,
     ...postEntries,
   ];

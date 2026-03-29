@@ -10,8 +10,8 @@ export function NewsletterCta() {
           Stay ahead of the curve
         </h2>
         <p className="text-text-secondary text-body-md mb-6">
-          Get the latest insights on AI, finance, and enterprise tech delivered
-          to your inbox. No spam.
+          Twice-daily AI implementation strategies and operational intelligence
+          delivered to your inbox. No spam.
         </p>
         <SubscribeForm />
         <p className="font-mono text-caption text-text-muted mt-3 uppercase tracking-wide">

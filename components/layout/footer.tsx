@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { FooterSubscribe } from "@/components/newsletter/footer-subscribe";
 
 const NAV_LINKS = [
   { href: "/", label: "Briefings" },
@@ -22,7 +23,7 @@ export function Footer() {
       <div className="h-[2px] bg-accent" />
 
       <div className="max-w-container mx-auto px-4 sm:px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8">
           {/* Brand */}
           <div className="space-y-3">
             <div className="flex items-center gap-2">
@@ -72,6 +73,9 @@ export function Footer() {
               ))}
             </nav>
           </div>
+
+          {/* Subscribe */}
+          <FooterSubscribe />
         </div>
 
         {/* Bottom — spacing only, no border (No-Line Rule) */}

@@ -8,7 +8,7 @@ export async function GET() {
 
   const feed = new RSS({
     title: "Particle Post",
-    description: "AI-powered insights at the intersection of finance, technology, and energy.",
+    description: "Twice-daily AI briefings for business leaders. Implementation strategies, operational decisions, and what actually works.",
     site_url: BASE_URL,
     feed_url: `${BASE_URL}/feed.xml/`,
     language: "en",

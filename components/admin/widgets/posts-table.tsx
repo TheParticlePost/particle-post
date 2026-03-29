@@ -23,7 +23,7 @@ type SortDir = "asc" | "desc";
 const FUNNEL_COLORS: Record<string, { bg: string; text: string; label: string }> = {
   TOF: { bg: "rgba(59, 130, 246, 0.12)", text: "#3b82f6", label: "TOF" },
   MOF: { bg: "rgba(245, 158, 11, 0.12)", text: "#f59e0b", label: "MOF" },
-  BOF: { bg: "rgba(0, 212, 170, 0.12)", text: "#00d4aa", label: "BOF" },
+  BOF: { bg: "rgba(0, 212, 170, 0.12)", text: "#E8552E", label: "BOF" },
 };
 
 function FunnelBadge({ type }: { type: string }) {

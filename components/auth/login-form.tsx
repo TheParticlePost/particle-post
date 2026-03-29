@@ -39,7 +39,8 @@ function LoginFormInner() {
       return;
     }
 
-    router.push(redirect || "/");
+    const safeRedirect = redirect?.startsWith("/") && !redirect.startsWith("//") ? redirect : "/";
+    router.push(safeRedirect);
     router.refresh();
   }
 

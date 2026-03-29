@@ -104,7 +104,7 @@ export default async function AnalyticsPage() {
   }
 
   const funnelData = [
-    { label: "TOF (Awareness)", count: funnelCounts.TOF, color: "#00d4aa" },
+    { label: "TOF (Awareness)", count: funnelCounts.TOF, color: "#E8552E" },
     { label: "MOF (Consideration)", count: funnelCounts.MOF, color: "#3B82F6" },
     { label: "BOF (Decision)", count: funnelCounts.BOF, color: "#8B5CF6" },
   ];

@@ -7,7 +7,7 @@ export function FooterSubscribe() {
         Newsletter
       </h4>
       <p className="text-body-sm text-text-secondary">
-        Weekly insights, no spam.
+        Twice-daily AI briefings, no spam.
       </p>
       <SubscribeForm compact />
     </div>

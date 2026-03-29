@@ -11,7 +11,7 @@ interface CategoryBreakdownProps {
 
 // Use the project's accent palette for category colors
 const BAR_COLORS = [
-  "#00d4aa", // accent teal
+  "#E8552E", // accent teal
   "#3b82f6", // blue
   "#8b5cf6", // purple
   "#f59e0b", // amber

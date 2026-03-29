@@ -33,4 +33,4 @@ export interface Post extends PostMeta {
   content: string;
 }
 
-export type CategorySlug = "ai-strategy" | "implementation" | "operations-finance" | "risk-governance" | "industry-signals";
+// CategorySlug is derived from CATEGORIES in lib/utils.ts — import from there

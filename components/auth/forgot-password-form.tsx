@@ -63,8 +63,8 @@ export function ForgotPasswordForm() {
             Check your email
           </h2>
           <p className="text-body-sm text-text-secondary">
-            We sent a password reset link to <strong className="text-text-primary">{email}</strong>.
-            Follow the link to reset your password.
+            If an account exists for that email, we sent a password reset link.
+            Check your inbox and follow the link to reset your password.
           </p>
         </div>
         <Link href="/login" className="w-full">

@@ -10,9 +10,20 @@ interface MarketingLogProps {
   className?: string;
 }
 
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
 function renderMarkdownLine(line: string): React.ReactNode {
+  // Escape HTML first to prevent XSS
+  let processed = escapeHtml(line);
   // Bold
-  let processed = line.replace(
+  processed = processed.replace(
     /\*\*(.+?)\*\*/g,
     '<strong class="text-text-primary font-semibold">$1</strong>'
   );
@@ -21,9 +32,9 @@ function renderMarkdownLine(line: string): React.ReactNode {
     /`(.+?)`/g,
     '<code class="px-1 py-0.5 rounded bg-accent/10 text-accent text-body-xs font-mono">$1</code>'
   );
-  // Links
+  // Links — only allow http/https URLs
   processed = processed.replace(
-    /\[(.+?)\]\((.+?)\)/g,
+    /\[(.+?)\]\((https?:\/\/.+?)\)/g,
     '<a href="$2" class="text-accent hover:text-accent-hover underline" target="_blank" rel="noopener noreferrer">$1</a>'
   );
 

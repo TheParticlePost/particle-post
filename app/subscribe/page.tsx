@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { OverlineLabel } from "@/components/ui/overline-label";
 import { SubscribeForm } from "@/components/newsletter/subscribe-form";
+import { SubscribeParticles } from "@/components/effects/subscribe-particles";
 
 export const metadata: Metadata = {
   title: "Subscribe",
@@ -23,8 +24,9 @@ export default function SubscribePage() {
       </nav>
 
       {/* Hero — centered (exception to left-align rule) */}
-      <section className="min-h-[80vh] flex items-center justify-center px-4 sm:px-6">
-        <div className="text-center max-w-2xl mx-auto">
+      <section className="relative min-h-[80vh] flex items-center justify-center px-4 sm:px-6 overflow-hidden">
+        <SubscribeParticles />
+        <div className="text-center max-w-2xl mx-auto relative z-10">
           <OverlineLabel className="mb-6 block">Twice Daily · Free</OverlineLabel>
 
           <h1 className="font-display text-display-hero text-text-primary mb-6 tracking-[-0.02em]">
@@ -46,25 +48,8 @@ export default function SubscribePage() {
         </div>
       </section>
 
-      {/* Social proof — bg shift */}
-      <section className="bg-bg-deep py-16 px-4 sm:px-6">
-        <div className="max-w-container mx-auto text-center">
-          <p className="font-mono text-data text-text-secondary uppercase tracking-widest mb-8">
-            Trusted by leaders at
-          </p>
-          <div className="flex items-center justify-center gap-8 flex-wrap">
-            {["Company A", "Company B", "Company C", "Company D", "Company E"].map(
-              (name) => (
-                <div
-                  key={name}
-                  className="w-24 h-8 bg-bg-bright/50 rounded-lg"
-                  aria-label={name}
-                />
-              )
-            )}
-          </div>
-        </div>
-      </section>
+      {/* Divider — bg shift for visual rhythm */}
+      <div className="bg-bg-deep py-8" />
 
       {/* What you get — 3 cards */}
       <section className="py-20 px-4 sm:px-6">

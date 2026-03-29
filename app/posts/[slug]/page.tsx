@@ -14,6 +14,7 @@ import { RelatedArticles } from "@/components/articles/related-articles";
 import { ScrollProgress } from "@/components/effects/scroll-progress";
 import { SidebarRelated } from "@/components/articles/sidebar-related";
 import { MarketSnapshot } from "@/components/articles/market-snapshot";
+import { NewsletterCta } from "@/components/newsletter/newsletter-cta";
 import { JsonLd } from "@/components/seo/json-ld";
 import { generateArticleJsonLd, generateFaqJsonLd } from "@/lib/structured-data";
 import { formatDate } from "@/lib/utils";
@@ -154,6 +155,11 @@ export default async function PostPage({ params }: PageProps) {
               <MarketSnapshot />
             </div>
           </aside>
+        </div>
+
+        {/* Newsletter CTA */}
+        <div className="max-w-[680px] mx-auto">
+          <NewsletterCta />
         </div>
 
         {/* Related articles — full width below */}
