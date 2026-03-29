@@ -40,7 +40,7 @@ GSO_CONFIG_FILE  = _REPO_ROOT / "pipeline" / "config" / "seo_gso_config.json"
 LLMS_TXT_FILE    = _REPO_ROOT / "blog" / "static" / "llms.txt"
 LLMS_FULL_FILE   = _REPO_ROOT / "blog" / "static" / "llms-full.txt"
 
-MAX_ATTEMPTS = 3
+MAX_ATTEMPTS = 2
 
 
 # ──────────────────────────────────────────────────────────────────────────────
