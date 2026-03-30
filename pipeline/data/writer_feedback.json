@@ -1,21 +1,6 @@
 {
   "notes": [
     {
-      "text": "H1 KEYWORD ALIGNMENT: Your restructured body H1 reads 'How to Deploy AI Agents for Accounts Payable: 4-Step Implementation Roadmap' but the primary target keyword is 'AI accounts payable automation.' Google indexes the body H1, not the frontmatter title. Align the two so the H1 in the article body matches the frontmatter title: 'AI Accounts Payable Automation: 7-Step Implementation Guide' works perfectly and follows the SEO H1 formula. Never let the body H1 and frontmatter title diverge.",
-      "slot": "evening",
-      "date": "2026-03-25T21:10:33.479585+00:00"
-    },
-    {
-      "text": "BOF FUNNEL COMPLIANCE — STRONG EXECUTION: This article correctly includes numbered implementation steps (7 steps), names four specific failure scenarios, and has a clearly labeled go/no-go decision checkpoint section with four explicit criteria. The two internal links pointing to deeper content are present. The FAQ section has five well-sourced Q+A pairs. This is a well-structured BOF piece — the em-dash issue is the only meaningful barrier to a clean submission.",
-      "slot": "evening",
-      "date": "2026-03-25T21:10:33.479585+00:00"
-    },
-    {
-      "text": "TOF word count discipline: This article runs approximately 1,050-1,100 words against a TOF ceiling of 1,000. Trim the 'Three Consistent Failure Modes' section and the 'Three Actions' section by combining related sentences. Target 900 words — enough for substance, with clear headroom below the limit. Word count violations are automatic -20 deductions regardless of content quality.",
-      "slot": "evening",
-      "date": "2026-03-26T13:45:45.518947+00:00"
-    },
-    {
       "text": "TOF H1 must be a question: The formatter published 'AI Risk Management Finance: Stop Nation-State Breaches' as the title — a declarative statement. TOF funnel requires a question-format H1 ('Can Your Security Stack Stop Nation-State Breaches?' or 'Does Your Enterprise Firewall Survive a Nation-State Attack?'). The question-format title existed in your working draft but did not make it into the final formatter output. Confirm the formatter receives and preserves the correct H1 every run.",
       "slot": "evening",
       "date": "2026-03-26T13:45:45.518947+00:00"
@@ -149,6 +134,21 @@
       "text": "Internal link funnel direction: You have four internal links, which exceeds the MOF minimum, but the slugs alone do not confirm which links route to TOF articles versus MOF versus BOF. MOF compliance requires at least one link in each direction (to_TOF, to_BOF, to_MOF). Before the next submission, annotate your internal links in your draft notes with their funnel type so the formatter can verify routing. For example, the Oracle vs Zalos comparison and the AP automation guide likely sit at BOF; the explainable AI and FCA piece may be MOF or TOF. Confirming this routing protects the article from a funnel compliance deduction on re-audit.",
       "slot": "morning",
       "date": "2026-03-30T13:20:20.565428+00:00"
+    },
+    {
+      "text": "RENDER THE FAQ INTO THE ARTICLE BODY: You correctly set has_faq: true and populated faq_pairs in the YAML, but the rendered FAQ section never appears in the article body. Add a '## Frequently Asked Questions' H2 followed by each Q+A pair formatted in bold question / plain-text answer blocks. This is a hard checklist requirement and also a significant GSO (Google Search Optimization) opportunity given the FAQPage schema type you've declared.",
+      "slot": "evening",
+      "date": "2026-03-30T21:04:54.873158+00:00"
+    },
+    {
+      "text": "VERIFY BOTH SOURCE URLs BEFORE PUBLICATION: The SiliconANGLE article URL (siliconangle.com/2026/03/28/agentic-ai-gap-vendors-sprint-enterprises-crawl/) and the AWS Security Blog URL could not be confirmed via search. If either URL is fabricated or a best-guess placeholder, this is a credibility-ending error for an executive audience. Manually open both links, confirm they resolve to the cited content, and add a third verifiable source (the JPMorgan reference is used inline but never sourced in the Sources section).",
+      "slot": "evening",
+      "date": "2026-03-30T21:04:54.873158+00:00"
+    },
+    {
+      "text": "ADD AT LEAST ONE INTERNAL LINK: TOF articles require a minimum of one internal markdown link to an existing Particle Post post. Review published slugs in the content library and anchor a relevant phrase — for example, 'agentic AI governance framework' or 'enterprise AI strategy' — to a related article. Internal links improve dwell time, support topical authority clustering, and are a non-negotiable funnel compliance item for TOF.",
+      "slot": "evening",
+      "date": "2026-03-30T21:04:54.873158+00:00"
     }
   ]
 }
