@@ -1,8 +1,8 @@
 {
-  "last_updated": "2026-03-29",
+  "last_updated": "2026-03-30",
   "schema_coverage": {
     "Article": 0,
-    "FAQPage": 11,
+    "FAQPage": 12,
     "HowTo": 0,
     "NewsArticle": 0
   },
@@ -114,6 +114,14 @@
       "date": "2026-03-29",
       "slug": "agentic-ai-finance-execution-research-deployment",
       "primary_keyword": "agentic AI finance operations",
+      "schema_type": "FAQPage",
+      "has_faq": true,
+      "search_intent": "commercial"
+    },
+    {
+      "date": "2026-03-30",
+      "slug": "agentic-ai-enterprise-readiness-framework",
+      "primary_keyword": "agentic AI adoption gap",
       "schema_type": "FAQPage",
       "has_faq": true,
       "search_intent": "commercial"

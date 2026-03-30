@@ -1,21 +1,6 @@
 {
   "notes": [
     {
-      "text": "The MOF 'what the evidence does NOT prove' requirement is structurally present in your 'What Neither Approach Has Proven at Scale' section, but it reads as a continuation of the vendor comparison rather than a standalone analytical checkpoint. For your next MOF article, make this a dedicated labeled section that explicitly names the claims vendors are making and then specifically rebuts or qualifies each one with sourced evidence — or an honest acknowledgment that no independent data yet exists. This signals editorial rigor to your executive reader.",
-      "slot": "morning",
-      "date": "2026-03-25T19:27:05.606509+00:00"
-    },
-    {
-      "text": "The H1 does not contain a clean primary keyword match from the SEO target list. 'Agentic AI finance' is a Priority 4 target keyword — your H1 has 'agentic' and 'finance' separated by other words, which may not satisfy SERP matching. A revision like 'Agentic AI Finance: Oracle's 22 Fusion Apps vs. Zalos — Which Fits Your Stack' would bring it into compliance without sacrificing the comparison framing that makes this piece useful.",
-      "slot": "morning",
-      "date": "2026-03-25T19:27:05.606509+00:00"
-    },
-    {
-      "text": "EM-DASH BAN: This is your most urgent fix. Em-dashes appear at least four times in the article body and FAQ section — e.g., 'agentic AI — covering autonomous exception handling...' and 'per Snowfox.ai — these must be resolved before go-live.' Every single em-dash must be replaced before the next submission. Use a comma, colon, semicolon, or parentheses instead. The ban is absolute and carries a 15-point penalty per instance. Run a find-and-replace for the '—' character before submitting any article.",
-      "slot": "evening",
-      "date": "2026-03-25T21:10:33.479585+00:00"
-    },
-    {
       "text": "H1 KEYWORD ALIGNMENT: Your restructured body H1 reads 'How to Deploy AI Agents for Accounts Payable: 4-Step Implementation Roadmap' but the primary target keyword is 'AI accounts payable automation.' Google indexes the body H1, not the frontmatter title. Align the two so the H1 in the article body matches the frontmatter title: 'AI Accounts Payable Automation: 7-Step Implementation Guide' works perfectly and follows the SEO H1 formula. Never let the body H1 and frontmatter title diverge.",
       "slot": "evening",
       "date": "2026-03-25T21:10:33.479585+00:00"
@@ -149,6 +134,21 @@
       "text": "Eliminate the Oracle/ServiceNow statistic repetition between Sections 1 and 2: The 34% procure-to-pay and 52% resolution-time figures appear in both the first and second H2 sections. In a 2,600-word MOF article, readers notice when the same data point recurs within 300 words. Consolidate: keep the full attributed figures in Section 2 ('What the Cycle-Time Results Show'), and replace the opening of Section 1 with a higher-level framing sentence that sets up the ROI argument without pre-empting the evidence. This tightens the article and makes Section 2 land with more weight.",
       "slot": "morning",
       "date": "2026-03-29T13:28:19.990691+00:00"
+    },
+    {
+      "text": "Answer-first discipline on section openers: The paragraph immediately after your first H2 opens with methodology context rather than a direct finding. Per editorial guidelines and the answer-first check, the first paragraph under each H2 should lead with the conclusion, then support it. Rewrite the opener to something like: 'The SiliconANGLE research tested adoption velocity at Fortune 500 firms with public AI disclosures — and the sample design means its 12-to-18-month gap estimate is a floor, not a ceiling.' That one sentence delivers the finding before the explanation.",
+      "slot": "morning",
+      "date": "2026-03-30T13:20:20.565428+00:00"
+    },
+    {
+      "text": "FAQ section placement: Your FAQ data lives entirely in the YAML frontmatter as 'faq_pairs', with no '## Frequently Asked Questions' section rendered in the article body. If your template auto-renders FAQ schema from frontmatter, confirm with the formatter that the output HTML contains visible Q+A pairs for readers, not just JSON-LD schema markup. If the template does not auto-render, add the FAQ section explicitly to the article body before the Sources section. The has_faq: true flag creates a reader expectation that must be met in the visible content.",
+      "slot": "morning",
+      "date": "2026-03-30T13:20:20.565428+00:00"
+    },
+    {
+      "text": "Internal link funnel direction: You have four internal links, which exceeds the MOF minimum, but the slugs alone do not confirm which links route to TOF articles versus MOF versus BOF. MOF compliance requires at least one link in each direction (to_TOF, to_BOF, to_MOF). Before the next submission, annotate your internal links in your draft notes with their funnel type so the formatter can verify routing. For example, the Oracle vs Zalos comparison and the AP automation guide likely sit at BOF; the explainable AI and FCA piece may be MOF or TOF. Confirming this routing protects the article from a funnel compliance deduction on re-audit.",
+      "slot": "morning",
+      "date": "2026-03-30T13:20:20.565428+00:00"
     }
   ]
 }
