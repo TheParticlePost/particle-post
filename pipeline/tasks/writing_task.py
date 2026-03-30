@@ -134,7 +134,7 @@ def _load_seo_guidelines() -> str:
         return ""
 
 
-def build_writing_task(agent: Agent, selection_task: Task, funnel_type: str = "TOF") -> Task:
+def build_writing_task(agent: Agent, funnel_type: str = "TOF") -> Task:
     coaching_context = _load_recent_coaching()
     post_index = _load_post_index()
     funnel_reqs = _load_funnel_requirements(funnel_type)
@@ -146,7 +146,8 @@ def build_writing_task(agent: Agent, selection_task: Task, funnel_type: str = "T
     return Task(
         description=(
             f"{coaching_context}"
-            f"Write a complete, publication-ready article based on the selected topic.\n\n"
+            "Write a complete, publication-ready article based on the following topic:\n\n"
+            "── SELECTED TOPIC ──\n{topic_json}\n── END TOPIC ──\n\n"
             f"══════════════════════════════════════════════\n"
             f"  FUNNEL TYPE: {funnel_type}\n"
             f"══════════════════════════════════════════════\n\n"
@@ -187,5 +188,5 @@ def build_writing_task(agent: Agent, selection_task: Task, funnel_type: str = "T
             "a Clear Verdict section, and a Sources section with URLs."
         ),
         agent=agent,
-        context=[selection_task],
+        context=[],
     )

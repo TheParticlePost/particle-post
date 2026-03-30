@@ -23,30 +23,50 @@ from pipeline.tasks.formatting_task import build_formatting_task
 from pipeline.tasks.validation_task import build_validation_task
 
 
-def build_crew(slot: str, topic_override: str | None = None) -> Crew:
+def build_research_crew(slot: str, topic_override: str | None = None) -> tuple[Crew, str, str]:
     """
-    Build the Particle Post publishing crew for a given slot.
+    Build the Research crew (Phase 1) — Haiku only, runs ONCE.
 
-    8 sequential agents (new order — SEO/GSO now position 3, Editor position 4):
-      0  Researcher         → research_task
-      1  Topic Selector     → selection_task    (outputs funnel_type in JSON)
-      2  Writer             → writing_task      (funnel-specific requirements injected)
-      3  SEO/GSO Specialist → seo_gso_task      (restructures V1 + generates SEO package)
-      4  Editor             → editing_task      (polishes GSO-restructured article)
-      5  Photo Finder       → photo_task
-      6  Formatter          → formatting_task   ← run.py reads tasks_output[-2].raw
-      7  Prod. Director     → validation_task   ← run.py reads tasks_output[-1].raw (verdict JSON)
-
-    Funnel type (TOF/MOF/BOF) is determined from content_strategy.json schedule
-    at crew build time and injected into selection and writing tasks.
+    2 agents: Researcher → Topic Selector
+    Returns: (crew, funnel_type, content_type)
     """
-    # Determine funnel type and content type for this slot from the schedule
     funnel_type, content_type = _get_schedule_info(slot)
-    print(f"\n  [Crew] Funnel type for {slot} slot: {funnel_type} | Content type: {content_type}")
+    print(f"\n  [Research Crew] Funnel type for {slot}: {funnel_type} | Content type: {content_type}")
+
+    researcher     = build_researcher()
+    topic_selector = build_topic_selector()
+
+    research_task  = build_research_task(researcher, content_type=content_type, topic_override=topic_override)
+    selection_task = build_selection_task(topic_selector, research_task, slot, topic_override=topic_override)
+
+    crew = Crew(
+        agents=[researcher, topic_selector],
+        tasks=[research_task, selection_task],
+        process=Process.sequential,
+        verbose=True,
+    )
+
+    return crew, funnel_type, content_type
+
+
+def build_production_crew(slot: str, funnel_type: str = "TOF") -> Crew:
+    """
+    Build the Production crew (Phase 2) — Sonnet + Haiku, retried on rejection.
+
+    6 agents: Writer → SEO/GSO → Editor → Photo → Formatter → Prod Director
+    Topic info comes via kickoff inputs: {topic_json}, {funnel_type}, {content_type}, {rejection_feedback}
+
+    Task indices for run.py:
+      [0] writing_task
+      [1] seo_gso_task     ← run.py reads SEO JSON from here
+      [2] editing_task
+      [3] photo_task
+      [-2] formatting_task  ← run.py reads article content from here
+      [-1] validation_task  ← run.py reads director verdict from here
+    """
+    print(f"\n  [Production Crew] Building for {slot} slot, funnel: {funnel_type}")
 
     # --- Agents ---
-    researcher          = build_researcher()
-    topic_selector      = build_topic_selector()
     writer              = build_writer()
     seo_gso_specialist  = build_seo_gso_specialist()
     editor              = build_editor()
@@ -54,24 +74,16 @@ def build_crew(slot: str, topic_override: str | None = None) -> Crew:
     formatter           = build_formatter()
     production_director = build_production_director()
 
-    # --- Tasks (order matters — sequential process) ---
-    research_task   = build_research_task(researcher, content_type=content_type, topic_override=topic_override)
-    selection_task  = build_selection_task(topic_selector, research_task, slot, topic_override=topic_override)
-    writing_task    = build_writing_task(writer, selection_task, funnel_type)
-    seo_gso_task    = build_seo_gso_task(seo_gso_specialist, writing_task, selection_task)
-    editing_task    = build_editing_task(editor, seo_gso_task, selection_task)   # ← SEO-restructured + funnel type context
-    photo_task      = build_photo_task(photo_finder, editing_task, seo_gso_task)
-    formatting_task = build_formatting_task(
-        formatter, editing_task, seo_gso_task, photo_task, selection_task
-    )
-    validation_task = build_validation_task(
-        production_director, formatting_task, seo_gso_task, selection_task
-    )
+    # --- Tasks (context uses only upstream production tasks + {input} placeholders) ---
+    writing_task    = build_writing_task(writer, funnel_type)
+    seo_gso_task    = build_seo_gso_task(seo_gso_specialist, writing_task)
+    editing_task    = build_editing_task(editor, seo_gso_task)
+    photo_task      = build_photo_task(photo_finder, editing_task)
+    formatting_task = build_formatting_task(formatter, editing_task, seo_gso_task, photo_task)
+    validation_task = build_validation_task(production_director, formatting_task)
 
     return Crew(
         agents=[
-            researcher,
-            topic_selector,
             writer,
             seo_gso_specialist,
             editor,
@@ -80,15 +92,22 @@ def build_crew(slot: str, topic_override: str | None = None) -> Crew:
             production_director,
         ],
         tasks=[
-            research_task,
-            selection_task,
             writing_task,
-            seo_gso_task,      # index 3 — SEO package read by run.py
+            seo_gso_task,
             editing_task,
             photo_task,
-            formatting_task,   # index -2 — formatter output accessed by run.py
-            validation_task,   # index -1 — director verdict in result.tasks_output[-1]
+            formatting_task,
+            validation_task,
         ],
         process=Process.sequential,
         verbose=True,
     )
+
+
+# --- Backward compatibility (deprecated) ---
+def build_crew(slot: str, topic_override: str | None = None) -> Crew:
+    """DEPRECATED: Use build_research_crew() + build_production_crew() instead."""
+    print("  [WARN] build_crew() is deprecated. Use the 2-crew split instead.")
+    # Fall back to old behavior for any external callers
+    research_crew, funnel_type, content_type = build_research_crew(slot, topic_override)
+    return research_crew  # Only returns research crew — callers must be updated

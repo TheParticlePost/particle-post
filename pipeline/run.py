@@ -667,26 +667,68 @@ def main() -> None:
         print(f"  TOPIC OVERRIDE: {args.topic}")
     print(f"{'='*60}\n")
 
-    from pipeline.crew import build_crew
+    from pipeline.crew import build_research_crew, build_production_crew
 
+    # ═══ PHASE 1: RESEARCH (runs ONCE, never retried) ═══
+    print(f"\n─── Phase 1: Research ───\n")
+
+    research_crew, funnel_type, content_type = build_research_crew(
+        slot=args.slot, topic_override=args.topic
+    )
+
+    # Rate-limit-aware kickoff for research
+    for rate_retry in range(1, 4):
+        try:
+            research_result = research_crew.kickoff()
+            break
+        except Exception as exc:
+            if "429" in str(exc) or "rate_limit" in str(exc).lower():
+                wait = 60 * rate_retry
+                print(f"  [RATE LIMIT] Waiting {wait}s before retry {rate_retry}/3...")
+                time.sleep(wait)
+                if rate_retry == 3:
+                    raise
+            else:
+                raise
+
+    # Extract selected topic JSON from the last task (selection_task)
+    topic_raw = research_result.tasks_output[-1].raw or "" if research_result.tasks_output else ""
+    topic_json = _strip_code_fences(topic_raw)
+
+    # Parse funnel_type from topic JSON (may override schedule-based type)
+    try:
+        topic_data = json.loads(topic_json)
+        funnel_type = topic_data.get("funnel_type", funnel_type)
+        content_type = topic_data.get("content_type", content_type)
+    except Exception:
+        pass
+
+    print(f"  [Research] Topic selected. Funnel: {funnel_type} | Content: {content_type}")
+
+    # ═══ PHASE 2: PRODUCTION (retried on rejection) ═══
     rejection_feedback = ""
     last_verdict: dict = {}
     formatter_content = ""
 
     for attempt in range(1, MAX_ATTEMPTS + 1):
-        print(f"\n─── Pipeline attempt {attempt} of {MAX_ATTEMPTS} ───\n")
+        print(f"\n─── Phase 2: Production attempt {attempt} of {MAX_ATTEMPTS} ───\n")
 
-        crew = build_crew(slot=args.slot, topic_override=args.topic)
+        production_crew = build_production_crew(slot=args.slot, funnel_type=funnel_type)
 
-        # Retry on rate limit (429) errors — wait and try again
+        # Rate-limit-aware kickoff with topic + feedback inputs
         for rate_retry in range(1, 4):
             try:
-                result = crew.kickoff(inputs={"rejection_feedback": rejection_feedback})
+                result = production_crew.kickoff(inputs={
+                    "topic_json": topic_json,
+                    "funnel_type": funnel_type,
+                    "content_type": content_type,
+                    "rejection_feedback": rejection_feedback,
+                })
                 break
             except Exception as exc:
                 if "429" in str(exc) or "rate_limit" in str(exc).lower():
-                    wait = 60 * rate_retry  # 60s, 120s, 180s
-                    print(f"  [RATE LIMIT] Hit API rate limit. Waiting {wait}s before retry {rate_retry}/3...")
+                    wait = 60 * rate_retry
+                    print(f"  [RATE LIMIT] Waiting {wait}s before retry {rate_retry}/3...")
                     time.sleep(wait)
                     if rate_retry == 3:
                         raise
@@ -704,7 +746,7 @@ def main() -> None:
         director_raw = result.tasks_output[-1].raw if result.tasks_output else ""
         verdict = _parse_director_verdict(director_raw or "")
 
-        # Correct false-positive deductions (duplicate/em-dash from combined context)
+        # Correct false-positive deductions
         verdict = _correct_verdict(verdict, formatter_content)
         last_verdict = verdict
 
@@ -713,7 +755,7 @@ def main() -> None:
         issues   = verdict.get("issues", [])
         coaching = verdict.get("coaching_notes", [])
 
-        # Log API cost
+        # Log API cost (combine research + production tokens)
         try:
             from pipeline.utils.cost_logger import save_cost_log
             save_cost_log(result.token_usage, args.slot, attempt, decision)
@@ -736,19 +778,10 @@ def main() -> None:
         _save_coaching_notes(verdict, args.slot)
 
         if decision == "APPROVE":
-            # Extract funnel_type from the selection task output (index 1)
-            funnel_type = "???"
-            try:
-                sel_raw  = result.tasks_output[1].raw or ""
-                sel_json = json.loads(_strip_code_fences(sel_raw))
-                funnel_type = sel_json.get("funnel_type", "???")
-            except Exception:
-                pass
-
-            # Extract SEO/GSO data from task index 3 (seo_gso_task — new position)
+            # SEO/GSO data from production task index 1 (seo_gso_task)
             seo_data: dict = {}
             try:
-                seo_raw  = result.tasks_output[3].raw or ""
+                seo_raw  = result.tasks_output[1].raw or ""
                 seo_data = _parse_seo_json(seo_raw)
             except Exception:
                 pass
@@ -763,16 +796,15 @@ def main() -> None:
 
             return  # success
 
-        # REJECT path
+        # REJECT path — only production crew retries, research stays locked
         if attempt < MAX_ATTEMPTS:
-            print(f"  Article rejected. Retrying with feedback injected...\n")
+            print(f"  Article rejected. Retrying production with feedback...\n")
             rejection_feedback = (
                 f"PREVIOUS ATTEMPT REJECTED by the Production Director. "
                 f"Score: {score}/100.\n"
                 "Fix ALL of the following issues before submitting again:\n"
                 + "\n".join(f"  - {i}" for i in issues)
             )
-        # else: loop ends naturally, fall through to failure handling
 
     # Both attempts exhausted
     print(f"\n{'='*60}")

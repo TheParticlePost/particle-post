@@ -173,14 +173,14 @@ def _build_human_crew(slot: str, topic: str, sources: str, key_points: str):
         agent=writer,
     )
 
-    seo_gso_task = build_seo_gso_task(seo_gso_specialist, writing_task, selection_stub)
-    editing_task = build_editing_task(editor, seo_gso_task, selection_stub)
-    photo_task = build_photo_task(photo_finder, editing_task, seo_gso_task)
+    seo_gso_task = build_seo_gso_task(seo_gso_specialist, writing_task)
+    editing_task = build_editing_task(editor, seo_gso_task)
+    photo_task = build_photo_task(photo_finder, editing_task)
     formatting_task = build_formatting_task(
-        formatter, editing_task, seo_gso_task, photo_task, selection_stub
+        formatter, editing_task, seo_gso_task, photo_task
     )
     validation_task = build_validation_task(
-        production_director, formatting_task, seo_gso_task, selection_stub
+        production_director, formatting_task
     )
 
     return Crew(
@@ -245,7 +245,17 @@ def main():
         # Retry on rate limit
         for rate_retry in range(1, 4):
             try:
-                result = crew.kickoff(inputs={"rejection_feedback": rejection_feedback})
+                result = crew.kickoff(inputs={
+                    "rejection_feedback": rejection_feedback,
+                    "topic_json": json.dumps({
+                        "topic": args.topic,
+                        "funnel_type": funnel_type,
+                        "angle": args.key_points.split(";")[0] if args.key_points else args.topic,
+                        "content_type": "practical",
+                    }),
+                    "funnel_type": funnel_type,
+                    "content_type": "practical",
+                })
                 break
             except Exception as exc:
                 if "429" in str(exc) or "rate_limit" in str(exc).lower():

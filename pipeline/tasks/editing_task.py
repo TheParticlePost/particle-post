@@ -1,18 +1,16 @@
 from crewai import Task, Agent
 
 
-def build_editing_task(agent: Agent, seo_gso_task: Task, selection_task: Task = None) -> Task:
+def build_editing_task(agent: Agent, seo_gso_task: Task) -> Task:
     context = [seo_gso_task]
-    if selection_task is not None:
-        context.append(selection_task)
 
     return Task(
         description=(
             "Edit and improve the GSO-restructured article draft. "
             "Read the article from the [RESTRUCTURED ARTICLE]...[END RESTRUCTURED ARTICLE] block "
             "in the SEO/GSO Specialist's output. "
-            "If the selection_task context is available, check the funnel_type to apply "
-            "funnel-specific editing rules (TOF: keep concise; MOF: ensure depth; BOF: verify steps).\n\n"
+            "Apply funnel-specific editing rules for funnel type: {funnel_type}\n"
+            "(TOF: keep concise 600-1000 words; MOF: ensure depth 1800-3000 words; BOF: verify steps 1200-2000 words).\n\n"
             "Apply the full Particle Post style guide:\n\n"
             "1. Remove all AI-tell phrases: delve, it's worth noting, game-changing, "
             "transformative, landscape, groundbreaking, revolutionary, unprecedented, "

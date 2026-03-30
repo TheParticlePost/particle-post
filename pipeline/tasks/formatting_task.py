@@ -7,7 +7,6 @@ def build_formatting_task(
     editing_task: Task,
     seo_gso_task: Task,
     photo_task: Task,
-    selection_task: Task,
 ) -> Task:
     date_str = utc_date_str()
     timestamp_iso = utc_now_iso()
@@ -82,5 +81,5 @@ def build_formatting_task(
             "Frontmatter includes has_faq, schema_type, and faq_pairs (when has_faq=true)."
         ),
         agent=agent,
-        context=[editing_task, seo_gso_task, photo_task, selection_task],
+        context=[editing_task, seo_gso_task, photo_task],
     )

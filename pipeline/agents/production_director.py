@@ -4,7 +4,7 @@ from pathlib import Path
 from crewai import Agent, LLM
 
 from pipeline.tools.tavily_search import TavilySearchTool
-from pipeline.tools.anthropic_skill import make_skill_tool
+# Skill tools removed — E-E-A-T + SEO audits already run by Editor + SEO/GSO Specialist upstream
 
 _CONFIG_DIR       = Path(__file__).resolve().parent.parent / "config"
 _GUIDELINES_PATH  = _CONFIG_DIR / "editorial_guidelines.md"
@@ -94,19 +94,6 @@ def build_production_director() -> Agent:
         ),
         tools=[
             TavilySearchTool(),
-            make_skill_tool(
-                name="quality_and_seo_check",
-                description=(
-                    "Run a combined E-E-A-T quality audit and on-page SEO check on the "
-                    "final article. Returns scores and specific issues to flag. "
-                    "Input: the complete article text."
-                ),
-                skill_ids=[
-                    "skill_01WR6KJsiHVuBoTguex7GwBY",
-                    "skill_01Vfz4w2KDBGugoUXP5YJHVP",
-                ],
-                model="claude-haiku-4-5-20251001",
-            ),
         ],
         llm=LLM(model="anthropic/claude-sonnet-4-6", max_tokens=8192),
         verbose=True,

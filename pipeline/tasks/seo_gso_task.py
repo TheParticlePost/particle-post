@@ -1,7 +1,7 @@
 from crewai import Task, Agent
 
 
-def build_seo_gso_task(agent: Agent, writing_task: Task, selection_task: Task) -> Task:
+def build_seo_gso_task(agent: Agent, writing_task: Task) -> Task:
     """
     SEO/GSO Specialist article production task.
 
@@ -14,7 +14,9 @@ def build_seo_gso_task(agent: Agent, writing_task: Task, selection_task: Task) -
     """
     return Task(
         description=(
-            "You have received the Writer's V1 article draft and the topic selection context.\n\n"
+            "You have received the Writer's V1 article draft.\n"
+            "Topic context: {topic_json}\n"
+            "Funnel type: {funnel_type}\n\n"
 
             "═══ PART 1: RESTRUCTURE FOR GSO ═══\n\n"
 
@@ -100,5 +102,5 @@ def build_seo_gso_task(agent: Agent, writing_task: Task, selection_task: Task) -
             "followed immediately by a 14-field JSON SEO package with no prose or code fences."
         ),
         agent=agent,
-        context=[writing_task, selection_task],
+        context=[writing_task],
     )
