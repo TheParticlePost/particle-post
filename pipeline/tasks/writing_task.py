@@ -9,8 +9,8 @@ _STRATEGY_PATH       = Path(__file__).resolve().parent.parent / "config" / "cont
 _SEO_GUIDELINES_PATH = Path(__file__).resolve().parent.parent / "config" / "seo_guidelines.md"
 
 
-def _load_recent_coaching(n: int = 5) -> str:
-    """Load the last N coaching notes from the Production Director's feedback log."""
+def _load_recent_coaching(n: int = 3) -> str:
+    """Load the last N coaching notes, compacted to max 150 chars each for token efficiency."""
     if not _FEEDBACK_PATH.exists():
         return ""
     try:
@@ -18,10 +18,20 @@ def _load_recent_coaching(n: int = 5) -> str:
         notes = data.get("notes", [])[-n:]
         if not notes:
             return ""
-        lines = "\n".join(f"  - {note['text']}" for note in notes)
+        lines = []
+        for note in notes:
+            text = note["text"]
+            # Compact: take first sentence or truncate at 150 chars
+            first_period = text.find(". ")
+            if 0 < first_period <= 150:
+                text = text[:first_period + 1]
+            elif len(text) > 150:
+                text = text[:147] + "..."
+            lines.append(f"  - {text}")
         return (
-            "\nCOACHING FROM PREVIOUS ARTICLES (Production Director feedback — apply these lessons):\n"
-            f"{lines}\n"
+            "\nCOACHING (apply these lessons):\n"
+            + "\n".join(lines)
+            + "\n"
         )
     except Exception:
         return ""
@@ -121,9 +131,10 @@ def _load_seo_guidelines() -> str:
         return ""
     try:
         content = _SEO_GUIDELINES_PATH.read_text(encoding="utf-8")
-        # Truncate to keep token budget reasonable (first 2000 chars)
-        if len(content) > 2000:
-            content = content[:2000] + "\n(... truncated for token budget)"
+        # Truncate aggressively — Writer just needs keyword targets + basic rules.
+        # The SEO/GSO Specialist handles detailed optimization downstream.
+        if len(content) > 800:
+            content = content[:800] + "\n(... SEO/GSO Specialist handles full optimization)"
         return (
             "\n══════════════════════════════════════════════\n"
             "  SEO GUIDELINES (from Marketing Director)\n"

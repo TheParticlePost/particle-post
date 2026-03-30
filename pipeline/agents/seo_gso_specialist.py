@@ -3,11 +3,9 @@ from pathlib import Path
 
 from crewai import Agent, LLM
 from pipeline.tools.tavily_search import TavilySearchTool
-from pipeline.tools.anthropic_skill import make_skill_tool
 
 _BACKSTORY_PATH = Path(__file__).parents[1] / "prompts" / "seo_gso_backstory.txt"
 _CONFIG_PATH    = Path(__file__).parents[1] / "config" / "seo_gso_config.json"
-_POST_INDEX     = Path(__file__).parents[1] / "config" / "post_index.json"
 
 
 def _load_gso_state() -> str:
@@ -50,25 +48,6 @@ def _load_gso_state() -> str:
         return f"(Could not load GSO state: {exc})"
 
 
-def _load_post_index() -> str:
-    """Load compact post index for internal link targeting."""
-    if not _POST_INDEX.exists():
-        return "(No post index yet.)"
-    try:
-        data  = json.loads(_POST_INDEX.read_text(encoding="utf-8"))
-        posts = data.get("posts", [])[:30]
-        if not posts:
-            return "(No posts indexed yet.)"
-        lines = ["POST INDEX (for internal_link_targets — use exact slugs):"]
-        for p in posts:
-            lines.append(
-                f"  {p.get('slug', '')} | {p.get('title', '')} | {p.get('funnel_type', '')} | {p.get('date', '')}"
-            )
-        return "\n".join(lines)
-    except Exception as exc:
-        return f"(Could not load post index: {exc})"
-
-
 def build_seo_gso_specialist() -> Agent:
     """
     Build the SEO/GSO Specialist agent.
@@ -82,7 +61,29 @@ def build_seo_gso_specialist() -> Agent:
     """
     backstory = _BACKSTORY_PATH.read_text(encoding="utf-8")
     gso_state  = _load_gso_state()
-    post_index = _load_post_index()
+
+    # Inline self-audit replaces the on_page_seo_audit and geo_content_optimizer skill tools.
+    # These were separate Haiku API calls (~500K tokens each). Now the agent does the same
+    # checks in a single pass using its own Sonnet context.
+    self_audit = (
+        "\n\n━━━ SELF-AUDIT CHECKLIST (run mentally before outputting) ━━━\n\n"
+        "ON-PAGE SEO AUDIT:\n"
+        "  [ ] Meta title: primary keyword in first 5 words, under 60 chars\n"
+        "  [ ] Meta description: keyword in first 60 chars, under 155 chars, contains data point\n"
+        "  [ ] Slug: 3-6 words, lowercase hyphens, keyword-rich\n"
+        "  [ ] H1 contains primary keyword (exact or close variant)\n"
+        "  [ ] Heading hierarchy: H1 > H2 > H3, no skipped levels\n"
+        "  [ ] Primary keyword appears 2-4x naturally in body (not stuffed)\n"
+        "  [ ] Schema type matches content (FAQPage if has_faq=true)\n"
+        "  [ ] Internal links use keyword-rich anchor text, not 'click here'\n\n"
+        "AI SEARCH OPTIMIZATION (CITE framework):\n"
+        "  [ ] Credibility: named sources, dates, dollar amounts in every section\n"
+        "  [ ] Informativeness: answer-first paragraph after each H2 (40-60 words)\n"
+        "  [ ] Timeliness: recent data (within 90 days preferred), dates stated explicitly\n"
+        "  [ ] Engagement: FAQ section with self-contained answers under 50 words each\n"
+        "  [ ] Sub-queries: 2-4 AI sub-query angles explicitly addressed\n"
+        "  [ ] Entity density: specific companies, people, percentages throughout\n"
+    )
 
     return Agent(
         role="SEO/GSO Specialist",
@@ -95,29 +96,10 @@ def build_seo_gso_specialist() -> Agent:
             backstory
             + "\n\n━━━ CURRENT GSO DIRECTIVES ━━━\n\n"
             + gso_state
-            + "\n\n━━━ POST INDEX ━━━\n\n"
-            + post_index
+            + self_audit
         ),
         tools=[
             TavilySearchTool(),
-            make_skill_tool(
-                name="on_page_seo_audit",
-                description=(
-                    "Run an on-page SEO audit on article content. Checks title tags, meta, "
-                    "heading hierarchy, keyword density, schema markup. Input: article text."
-                ),
-                skill_ids=["skill_01Vfz4w2KDBGugoUXP5YJHVP"],
-                model="claude-haiku-4-5-20251001",
-            ),
-            make_skill_tool(
-                name="geo_content_optimizer",
-                description=(
-                    "Optimize content for AI search engines (Google AI Overviews, ChatGPT, "
-                    "Perplexity) using the CITE framework. Input: article text."
-                ),
-                skill_ids=["skill_017b8yDSqwFwQE91UneDmHjv"],
-                model="claude-haiku-4-5-20251001",
-            ),
         ],
         llm=LLM(model="anthropic/claude-sonnet-4-6", max_tokens=8192),
         verbose=True,
