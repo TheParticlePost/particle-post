@@ -676,15 +676,16 @@ def main() -> None:
         slot=args.slot, topic_override=args.topic
     )
 
-    # Rate-limit-aware kickoff for research
+    # Retry on API rate limit (429) or overloaded (529) errors
     for rate_retry in range(1, 4):
         try:
             research_result = research_crew.kickoff()
             break
         except Exception as exc:
-            if "429" in str(exc) or "rate_limit" in str(exc).lower():
+            exc_str = str(exc).lower()
+            if "429" in str(exc) or "529" in str(exc) or "rate_limit" in exc_str or "overloaded" in exc_str:
                 wait = 60 * rate_retry
-                print(f"  [RATE LIMIT] Waiting {wait}s before retry {rate_retry}/3...")
+                print(f"  [API RETRY] {type(exc).__name__}. Waiting {wait}s (retry {rate_retry}/3)...")
                 time.sleep(wait)
                 if rate_retry == 3:
                     raise
@@ -715,7 +716,7 @@ def main() -> None:
 
         production_crew = build_production_crew(slot=args.slot, funnel_type=funnel_type)
 
-        # Rate-limit-aware kickoff with topic + feedback inputs
+        # Retry on API rate limit (429) or overloaded (529) errors
         for rate_retry in range(1, 4):
             try:
                 result = production_crew.kickoff(inputs={
@@ -726,9 +727,10 @@ def main() -> None:
                 })
                 break
             except Exception as exc:
-                if "429" in str(exc) or "rate_limit" in str(exc).lower():
+                exc_str = str(exc).lower()
+                if "429" in str(exc) or "529" in str(exc) or "rate_limit" in exc_str or "overloaded" in exc_str:
                     wait = 60 * rate_retry
-                    print(f"  [RATE LIMIT] Waiting {wait}s before retry {rate_retry}/3...")
+                    print(f"  [API RETRY] {type(exc).__name__}. Waiting {wait}s (retry {rate_retry}/3)...")
                     time.sleep(wait)
                     if rate_retry == 3:
                         raise
