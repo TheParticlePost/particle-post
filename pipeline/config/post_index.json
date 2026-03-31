@@ -1,6 +1,12 @@
 {
   "posts": [
     {
+      "slug": "cfo-ai-deployment-without-chief-ai-officer",
+      "title": "CFO AI Deployment: Skip the Chief AI Officer",
+      "funnel_type": "TOF",
+      "date": "2026-03-31"
+    },
+    {
       "slug": "agentic-ai-enterprise-readiness-framework",
       "title": "Agentic AI Finance: 5-Phase Enterprise Readiness Framework",
       "funnel_type": "MOF",

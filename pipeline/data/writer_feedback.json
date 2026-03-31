@@ -1,21 +1,6 @@
 {
   "notes": [
     {
-      "text": "TOF H1 must be a question: The formatter published 'AI Risk Management Finance: Stop Nation-State Breaches' as the title — a declarative statement. TOF funnel requires a question-format H1 ('Can Your Security Stack Stop Nation-State Breaches?' or 'Does Your Enterprise Firewall Survive a Nation-State Attack?'). The question-format title existed in your working draft but did not make it into the final formatter output. Confirm the formatter receives and preserves the correct H1 every run.",
-      "slot": "evening",
-      "date": "2026-03-26T13:45:45.518947+00:00"
-    },
-    {
-      "text": "FAQ section missing from published article: has_faq is set to true in the SEO/GSO package and the FAQ pairs are fully written in the frontmatter, but the '## Frequently Asked Questions' section with its Q+A pairs was not included in the formatter article body. This costs -5 points and, more importantly, loses the FAQPage schema markup and featured snippet eligibility that the schema_type: FAQPage declaration promises. Ensure the FAQ block is appended to the article body before the Sources section on every run where has_faq=true.",
-      "slot": "evening",
-      "date": "2026-03-26T13:45:45.518947+00:00"
-    },
-    {
-      "text": "(Director output was truncated — coaching notes unavailable this run)",
-      "slot": "morning",
-      "date": "2026-03-26T15:07:04.657862+00:00"
-    },
-    {
       "text": "TOF funnel H1 must be a question: The formatted article title is 'Chief AI Officer: Why Artificial Intelligence Banking Needs One' — a declarative statement, not a question. TOF articles require question-format H1s (e.g., 'Does Your Bank Need a Chief AI Officer? HSBC's Move Signals Yes' — which the Topic Selector specified). The Formatter overwrote this. Ensure the final YAML title matches the question format from the brief.",
       "slot": "morning",
       "date": "2026-03-26T15:10:47.306971+00:00"
@@ -149,6 +134,21 @@
       "text": "ADD AT LEAST ONE INTERNAL LINK: TOF articles require a minimum of one internal markdown link to an existing Particle Post post. Review published slugs in the content library and anchor a relevant phrase — for example, 'agentic AI governance framework' or 'enterprise AI strategy' — to a related article. Internal links improve dwell time, support topical authority clustering, and are a non-negotiable funnel compliance item for TOF.",
       "slot": "evening",
       "date": "2026-03-30T21:04:54.873158+00:00"
+    },
+    {
+      "text": "CRITICAL BEFORE PUBLISH — Fix the H1 to a question: TOF articles require an interrogative H1 for both funnel compliance and GSO optimization. A title like 'Can a CFO Deploy AI Without a Chief AI Officer?' preserves the primary keyword 'CFO AI deployment' while satisfying the TOF structure rule. This is the single highest-leverage change you can make.",
+      "slot": "morning",
+      "date": "2026-03-31T13:05:09.850964+00:00"
+    },
+    {
+      "text": "RENDER THE FAQ IN THE ARTICLE BODY: You have five strong FAQ pairs in the YAML frontmatter, but none of them appear as a rendered '## Frequently Asked Questions' section in the article body. Since has_faq=true and schema_type is FAQPage, the body must include the Q+A markup so both readers and search engines see the structured content. Add the section above Sources.",
+      "slot": "morning",
+      "date": "2026-03-31T13:05:09.850964+00:00"
+    },
+    {
+      "text": "REPLACE THE ORACLE SOURCE URL: Citing 'https://www.oracle.com/' as a source for a specific claim about a 2026 Fusion ERP AI agent rollout is not defensible. Locate the actual Oracle press release, product documentation page, or earnings call transcript and link directly to it. A bare homepage URL will be flagged by any editorial reviewer and undermines the credibility of an otherwise well-sourced piece.",
+      "slot": "morning",
+      "date": "2026-03-31T13:05:09.850964+00:00"
     }
   ]
 }
