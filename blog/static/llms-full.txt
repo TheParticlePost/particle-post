@@ -5,6 +5,7 @@
 
 ## Posts
 
+- [Agentic AI Accounts Payable: 60-80% ROI Implementation Playbook](https://theparticlepost.com/posts/agentic-ap-automation-roi-implementation-playbook/): Agentic AI in accounts payable cuts cost-per-invoice from $12.88 to $2.78. Step-by-step ROI formula, Basware vs Ramp vs Automation Anywhere comparison, and deployment checklist.
 - [CFO AI Deployment: Skip the Chief AI Officer](https://theparticlepost.com/posts/cfo-ai-deployment-without-chief-ai-officer/): CFO AI deployment achieves 15–30% back-office cost savings without a Chief AI Officer. Learn the 3-step vendor evaluation and ROI framework Fortune validated in 2026.
 - [Agentic AI Finance: 5-Phase Enterprise Readiness Framework](https://theparticlepost.com/posts/agentic-ai-enterprise-readiness-framework/): Enterprises lag 12-18 months behind AI vendors. This 5-phase agentic AI readiness framework helps CFOs and COOs close the deployment gap in financial services.
 - [Agentic AI Deployment: Is Your Enterprise Ready to Compete?](https://theparticlepost.com/posts/agentic-ai-deployment-enterprise-readiness/): Agentic AI deployment readiness determines ROI more than platform choice. SiliconANGLE 2026: a 12-18 month window favors early movers. Close 3 critical gaps first.

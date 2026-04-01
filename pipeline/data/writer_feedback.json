@@ -1,36 +1,6 @@
 {
   "notes": [
     {
-      "text": "TOF funnel H1 must be a question: The formatted article title is 'Chief AI Officer: Why Artificial Intelligence Banking Needs One' — a declarative statement, not a question. TOF articles require question-format H1s (e.g., 'Does Your Bank Need a Chief AI Officer? HSBC's Move Signals Yes' — which the Topic Selector specified). The Formatter overwrote this. Ensure the final YAML title matches the question format from the brief.",
-      "slot": "morning",
-      "date": "2026-03-26T15:10:47.306971+00:00"
-    },
-    {
-      "text": "FAQ section is missing from the article body: has_faq=true is set in the SEO package and faq_pairs are defined in the frontmatter, but no '## Frequently Asked Questions' section appears in the formatted article body. The FAQ content exists in the [RESTRUCTURED ARTICLE] draft but was not carried into the final .md output. The Formatter must include the FAQ section as rendered body content, not just frontmatter metadata.",
-      "slot": "morning",
-      "date": "2026-03-26T15:10:47.306971+00:00"
-    },
-    {
-      "text": "Add a second genuine question H2 to hit the GSO requirement: Only one H2 is phrased as a question ('Does AI Risk Management in Finance Require a Standalone C-Suite Role?'). The guidelines require at least two question H2s each followed by a 40-60 word answer-first paragraph. Consider converting 'How AI Is Changing Investment Banking Organizational Structures at Scale' into a proper question format, e.g., 'How Is AI Changing Investment Banking Organizational Structures in 2026?' — and ensure the immediately following paragraph opens with a direct declarative answer, not context-setting.",
-      "slot": "morning",
-      "date": "2026-03-26T15:10:47.306971+00:00"
-    },
-    {
-      "text": "TOF lede must open with a concrete fact, not a generalization. The current opener ('Most finance executives assume...') is a setup paragraph, not a lede. Restructure the first two sentences to lead with the most striking data point: 'According to Gartner, 60% of AI deployment failures stem from insufficient pre-production validation — a gap that costs finance teams weeks of remediation and exposes them to regulatory risk.' Put the number first, then build the argument.",
-      "slot": "evening",
-      "date": "2026-03-26T21:16:45.244474+00:00"
-    },
-    {
-      "text": "TOF funnel compliance requires a question-format H1 and a clearly labeled 'Clear Verdict' section. The current H1 is declarative and the verdict section is labeled 'Verdict: Validate First, Deploy Second.' Rename it '## Clear Verdict' to satisfy the funnel structure check, and consider whether the H1 can be reframed as a question (e.g., 'AI Risk Management Finance: Is Your Model Ready for Live Deployment?') without sacrificing the SEO keyword.",
-      "slot": "evening",
-      "date": "2026-03-26T21:16:45.244474+00:00"
-    },
-    {
-      "text": "The MIT Sloan Management Review source ('An AI Reckoning for HR') is an HR-focused article being used to support a finance compliance claim. This is a sourcing mismatch that a skeptical reader or editor will flag. Either find a directly relevant MIT Sloan or equivalent source on AI validation in financial services, or remove the specific attribution and reframe the sentence as industry-observed pattern rather than citing research that does not directly apply.",
-      "slot": "evening",
-      "date": "2026-03-26T21:16:45.244474+00:00"
-    },
-    {
       "text": "The 'Midwest lender reducing manual review queues by 28%' claim cites 'AWS Bedrock customer documentation from Q4 2025' without a direct URL or institution name. In future articles, either name the institution, label it explicitly as an anonymized AWS case study, or link directly to the source document. Vague case study citations weaken credibility with a CFO audience that will try to verify claims.",
       "slot": "morning",
       "date": "2026-03-27T13:27:39.186997+00:00"
@@ -149,6 +119,36 @@
       "text": "REPLACE THE ORACLE SOURCE URL: Citing 'https://www.oracle.com/' as a source for a specific claim about a 2026 Fusion ERP AI agent rollout is not defensible. Locate the actual Oracle press release, product documentation page, or earnings call transcript and link directly to it. A bare homepage URL will be flagged by any editorial reviewer and undermines the credibility of an otherwise well-sourced piece.",
       "slot": "morning",
       "date": "2026-03-31T13:05:09.850964+00:00"
+    },
+    {
+      "text": "Replace the picsum.photos placeholder image immediately — this is a hard blocker. Source a real, licensed image from Unsplash, Getty, or your internal asset library and update cover.image with the permanent URL before resubmitting. Picsum images are randomly generated and will display inconsistently across page loads, which undermines publication credibility.",
+      "slot": "morning",
+      "date": "2026-04-01T13:11:04.103139+00:00"
+    },
+    {
+      "text": "Convert your three prose internal-link references into actual markdown hyperlinks. You have the right instinct (referencing related Particle Post content at natural anchor points), but the links must use the format [descriptive anchor text](/slug-goes-here) to satisfy MOF's two-internal-link requirement and to pass Google's internal linking signals to those pages. Pull the correct slugs from your CMS or the YAML frontmatter of the target articles.",
+      "slot": "morning",
+      "date": "2026-04-01T13:11:04.103139+00:00"
+    },
+    {
+      "text": "The 'author' field in the YAML frontmatter is blank. Every published piece needs a byline for E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness) signaling to both readers and search engines. Assign either a staff author or a clearly labeled editorial team attribution before publication.",
+      "slot": "morning",
+      "date": "2026-04-01T13:11:04.103139+00:00"
+    },
+    {
+      "text": "FAQ body rendering is required when has_faq=true: The faq_pairs block in the YAML frontmatter is correct, but the article body must also contain a rendered '## Frequently Asked Questions' section with the Q+A pairs written out in full. Relying solely on frontmatter data means the FAQ will not display if the theme's shortcode is absent, and it fails checklist item 14. Add the FAQ section explicitly at the bottom of the body, before ## Sources.",
+      "slot": "morning",
+      "date": "2026-04-01T13:18:35.681484+00:00"
+    },
+    {
+      "text": "Strengthen primary source attribution on the benchmark figures: The $12.88 and $2.78 cost-per-invoice stats are attributed to 'Aberdeen Group/APQC 2025' but Source 1 in the Sources section links to a Quadient blog post, not a primary APQC or Aberdeen Group report. For a finance executive audience, citing a vendor blog as the authority for a headline benchmark undermines credibility. Either locate the primary APQC 'Accounts Payable Performance' report URL or add a caveat that the figure is aggregated via Quadient's summary.",
+      "slot": "morning",
+      "date": "2026-04-01T13:18:35.681484+00:00"
+    },
+    {
+      "text": "The comparison table is strong, but the 'Agentic Capability' row needs a source citation inline or in the Sources section: the claim that Automation Anywhere uses a 'UiPath-class RPA plus LLM layer' is unattributed and reads as editorial characterization. Add a footnote or inline citation to an Automation Anywhere product page or analyst report to prevent a fact-check challenge from readers who know the competitive landscape.",
+      "slot": "morning",
+      "date": "2026-04-01T13:18:35.681484+00:00"
     }
   ]
 }

@@ -5,6 +5,7 @@
 
 ## Posts
 
+- [Agentic AI Accounts Payable: 60-80% ROI Implementation Playbook](https://theparticlepost.com/posts/agentic-ap-automation-roi-implementation-playbook/)
 - [CFO AI Deployment: Skip the Chief AI Officer](https://theparticlepost.com/posts/cfo-ai-deployment-without-chief-ai-officer/)
 - [Agentic AI Finance: 5-Phase Enterprise Readiness Framework](https://theparticlepost.com/posts/agentic-ai-enterprise-readiness-framework/)
 - [Agentic AI Deployment: Is Your Enterprise Ready to Compete?](https://theparticlepost.com/posts/agentic-ai-deployment-enterprise-readiness/)
