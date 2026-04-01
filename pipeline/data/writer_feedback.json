@@ -1,21 +1,6 @@
 {
   "notes": [
     {
-      "text": "The 'Midwest lender reducing manual review queues by 28%' claim cites 'AWS Bedrock customer documentation from Q4 2025' without a direct URL or institution name. In future articles, either name the institution, label it explicitly as an anonymized AWS case study, or link directly to the source document. Vague case study citations weaken credibility with a CFO audience that will try to verify claims.",
-      "slot": "morning",
-      "date": "2026-03-27T13:27:39.186997+00:00"
-    },
-    {
-      "text": "The internal link anchor text in two places reads 'our analysis of the FCA's explainability requirements covers this compliance risk in depth at [how explainable AI creates capital risk under FCA rules]' — the phrasing is slightly awkward because the bracketed link text duplicates context already stated. Tighten to a cleaner in-line reference: 'The compliance exposure is substantial (see [How Explainable AI Creates Capital Risk Under FCA Rules])' so the anchor stands on its own for scanners who skip body copy.",
-      "slot": "morning",
-      "date": "2026-03-27T13:27:39.186997+00:00"
-    },
-    {
-      "text": "The H2 'What This Means for Finance Operations, Customer Service, and HR Automation' handles three distinct use cases in a single section with no H3 sub-breaks. Add H3s for each sub-topic (e.g., '### Finance Operations: The Case for Fine-Tuned Open-Source at Scale') to improve scannability, give each use case its own GSO answer target, and help time-pressed executives jump directly to their relevant vertical.",
-      "slot": "morning",
-      "date": "2026-03-27T13:27:39.186997+00:00"
-    },
-    {
       "text": "FAQ rendering gap — fix before next run: When has_faq=true, the Formatter must output a '## Frequently Asked Questions' section in the article body with all Q+A pairs rendered as '### Q:' and '**A:**' pairs. Storing them only in YAML frontmatter means readers never see them, the FAQPage schema has no on-page content to match, and the GSO featured-snippet benefit is lost entirely.",
       "slot": "evening",
       "date": "2026-03-27T21:25:53.516887+00:00"
@@ -149,6 +134,21 @@
       "text": "The comparison table is strong, but the 'Agentic Capability' row needs a source citation inline or in the Sources section: the claim that Automation Anywhere uses a 'UiPath-class RPA plus LLM layer' is unattributed and reads as editorial characterization. Add a footnote or inline citation to an Automation Anywhere product page or analyst report to prevent a fact-check challenge from readers who know the competitive landscape.",
       "slot": "morning",
       "date": "2026-04-01T13:18:35.681484+00:00"
+    },
+    {
+      "text": "Populate the 'author' field in the YAML frontmatter before publication. An empty author tag undermines credibility with executive readers and creates a schema gap since the article uses FAQPage schema — Google's structured data validator may flag an incomplete entity record.",
+      "slot": "evening",
+      "date": "2026-04-01T21:09:30.698112+00:00"
+    },
+    {
+      "text": "The answer-first paragraph after the first H2 ('Five Preconditions That Determine Deployment Readiness') runs slightly long and opens with a conditional clause rather than a direct declarative answer. Tighten it to a crisp 40–60 word declaration — e.g., 'Five preconditions determine deployment readiness: clean baseline data, structured ERP fields, a documented approval matrix, a dedicated integration owner, and confirmed data residency controls. Missing any one of them will stall the pilot before Week 4.' This keeps GSO compliance clean.",
+      "slot": "evening",
+      "date": "2026-04-01T21:09:30.698112+00:00"
+    },
+    {
+      "text": "The vendor comparison table is a strong differentiator, but the Zapier pricing entry ('~$20/month') is the only figure in the table without a source citation inline or in the Sources list. Either add a source URL for Zapier's pricing tier or replace the figure with 'Tiered SaaS (see vendor site)' to avoid an unattributed claim that a skeptical executive reader — or an auditor — could flag.",
+      "slot": "evening",
+      "date": "2026-04-01T21:09:30.698112+00:00"
     }
   ]
 }
