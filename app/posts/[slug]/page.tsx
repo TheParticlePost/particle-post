@@ -18,6 +18,7 @@ import { NewsletterCta } from "@/components/newsletter/newsletter-cta";
 import { JsonLd } from "@/components/seo/json-ld";
 import { generateArticleJsonLd, generateFaqJsonLd } from "@/lib/structured-data";
 import { formatDate } from "@/lib/utils";
+import { generatePostMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 
 interface PageProps {
@@ -33,26 +34,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params;
   const post = getPostBySlug(slug);
   if (!post) return {};
-
-  return {
-    title: post.title,
-    description: post.description,
-    keywords: post.keywords,
-    openGraph: {
-      title: post.title,
-      description: post.description,
-      type: "article",
-      publishedTime: post.date,
-      modifiedTime: post.lastmod,
-      authors: [post.author || "Particle Post"],
-      images: post.coverImage ? [{ url: post.coverImage.url }] : [],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: post.title,
-      description: post.description,
-    },
-  };
+  return generatePostMetadata(post);
 }
 
 export default async function PostPage({ params }: PageProps) {

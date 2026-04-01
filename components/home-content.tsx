@@ -93,7 +93,7 @@ export function HomeContent({
                     const hours = ["07:00 AM", "07:15 AM", "07:45 AM", "08:00 AM"];
                     return (
                       <li key={post.slug} className="group">
-                        <Link href={`/posts/${post.slug}/`}>
+                        <Link href={`/posts/${post.slug}/`} aria-label={post.title}>
                           <DataText className="text-accent text-caption block mb-1">
                             {hours[i] || "08:30 AM"}
                           </DataText>
@@ -120,7 +120,7 @@ export function HomeContent({
                     const hours = ["04:30 PM", "05:00 PM", "05:15 PM", "06:00 PM"];
                     return (
                       <li key={post.slug} className="group">
-                        <Link href={`/posts/${post.slug}/`}>
+                        <Link href={`/posts/${post.slug}/`} aria-label={post.title}>
                           <DataText className="text-accent text-caption block mb-1">
                             {hours[i] || "06:30 PM"}
                           </DataText>
@@ -145,6 +145,7 @@ export function HomeContent({
             <FadeUp>
               <Link
                 href={`/posts/${featuredDeepDive.slug}/`}
+                aria-label={featuredDeepDive.title}
                 className="block editorial-stripe bg-bg-container border border-border-ghost rounded-lg p-8 md:p-12 hover:border-border-hover transition-colors duration-[180ms] ease-kinetic group"
               >
                 <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center">
@@ -199,6 +200,7 @@ export function HomeContent({
                 <FadeUp key={post.slug} delay={i * 0.05}>
                   <Link
                     href={`/posts/${post.slug}/`}
+                    aria-label={post.title}
                     className="block bg-bg-container border border-border-ghost rounded-lg p-6 hover:border-accent transition-colors duration-[180ms] ease-kinetic group"
                   >
                     {post.categories[0] && (

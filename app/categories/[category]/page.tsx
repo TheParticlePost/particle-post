@@ -17,8 +17,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const cat = CATEGORIES.find((c) => c.slug === category);
   if (!cat) return {};
   return {
-    title: cat.name,
-    description: `Articles about ${cat.name} from Particle Post.`,
+    title: `${cat.name} Articles`,
+    description: cat.description,
   };
 }
 
@@ -31,15 +31,20 @@ export default async function CategoryPage({ params }: PageProps) {
 
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12">
-      <div className="flex items-center gap-3 mb-8">
-        <div
-          className="w-3 h-3 rounded-full"
-          style={{ backgroundColor: cat.color }}
-        />
-        <h1 className="font-display text-display-lg">{cat.name}</h1>
-        <span className="text-body-sm text-text-muted ml-2">
-          {posts.length} {posts.length === 1 ? "article" : "articles"}
-        </span>
+      <div className="mb-10">
+        <div className="flex items-center gap-3 mb-3">
+          <div
+            className="w-3 h-3 rounded-full"
+            style={{ backgroundColor: cat.color }}
+          />
+          <h1 className="font-display text-display-lg">{cat.name}</h1>
+          <span className="text-body-sm font-mono text-text-muted ml-2">
+            {posts.length} {posts.length === 1 ? "article" : "articles"}
+          </span>
+        </div>
+        <p className="text-body-base text-text-muted max-w-prose">
+          {cat.description}
+        </p>
       </div>
 
       <ArticleGrid

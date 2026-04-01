@@ -48,7 +48,7 @@ export function PulseCaseStudies({ caseStudies }: PulseCaseStudiesProps) {
         );
 
         return cs.slug ? (
-          <Link key={cs.id || cs.company} href={`/posts/${cs.slug}/`} className="block">
+          <Link key={cs.id || cs.company} href={`/posts/${cs.slug}/`} aria-label={cs.company} className="block">
             {Card}
           </Link>
         ) : (

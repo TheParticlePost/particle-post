@@ -51,11 +51,11 @@ export function slugify(text: string): string {
 }
 
 export const CATEGORIES = [
-  { name: "AI Strategy", slug: "ai-strategy", color: "#E8552E" },
-  { name: "Implementation", slug: "implementation", color: "#D4962A" },
-  { name: "Operations & Finance", slug: "operations-finance", color: "#A89E94" },
-  { name: "Risk & Governance", slug: "risk-governance", color: "#2D9B5A" },
-  { name: "Industry Signals", slug: "industry-signals", color: "#5A7FA0" },
+  { name: "AI Strategy", slug: "ai-strategy", color: "#E8552E", description: "How executives are positioning their organizations for AI-driven competitive advantage. Board-level decisions, investment frameworks, and strategic pivots from companies deploying AI at scale." },
+  { name: "Implementation", slug: "implementation", color: "#D4962A", description: "Step-by-step guides for deploying AI in enterprise environments. Tool comparisons, integration playbooks, cost breakdowns, and lessons from real implementations across industries." },
+  { name: "Operations & Finance", slug: "operations-finance", color: "#A89E94", description: "AI in financial operations, payments, trading, credit scoring, fraud detection, and risk modeling. How CFOs and operations leaders are using AI to drive measurable business outcomes." },
+  { name: "Risk & Governance", slug: "risk-governance", color: "#2D9B5A", description: "AI regulation, compliance frameworks, and governance models for enterprise AI deployments. Legislation, central bank guidance, and the operational risk of getting AI wrong." },
+  { name: "Industry Signals", slug: "industry-signals", color: "#5A7FA0", description: "Notable company moves, funding rounds, partnerships, and market shifts in the AI landscape. What the latest developments mean for executives watching this space." },
 ] as const;
 
 export type CategorySlug = (typeof CATEGORIES)[number]["slug"];

@@ -87,7 +87,7 @@ export function Navbar() {
       >
         <nav className="max-w-container mx-auto h-full px-4 sm:px-6 flex items-center justify-between">
           {/* Logo — monogram SVG + wordmark */}
-          <Link href="/" className="flex items-center gap-2.5 group">
+          <Link href="/" aria-label="Particle Post home" className="flex items-center gap-2.5 group">
             {/* Light theme monogram */}
             <img
               src="/logos/monogram-light.svg"

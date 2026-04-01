@@ -91,7 +91,7 @@ Third, vendors conflate prevented fraud with net savings. Prevented fraud is a g
 
 1. Visa Corporate. "Visa Protect: AI Fraud Detection Insights." https://corporate.visa.com/en/solutions/visa-protect/insights/ai-fraud-detection.html
 2. Mastercard. "2025 Payment Fraud Prevention Report." Produced with Financial Times Longitude.
-3. Modernize.io. "JPMorgan Chase's AI-Driven Fraud Detection and Technology Investment Overview." https://www.linkedin.com/posts/dr-mongi-hamdi-22372724_jpmorgan-chases-ai-driven-fraud-detection-activity-7420460464398049280
+3. Modernize.io. "JPMorgan Chase's AI-Driven Fraud Detection and Technology Investment Overview." LinkedIn post by Dr. Mongi Hamdi.
 4. CNBC. "Visa Reports $40 Billion in Prevented Fraud." Interview with James Mirfin, July 2024.
 5. The Payments Association & Payments Intelligence. "2025 Consumer Behaviour Survey: Declined Transactions and Cardholder Experience."
 6. PlusAI. "AI in Financial Services: Real ROI Data." https://plusai.com/blog/ai-in-financial-services-real-roi-data

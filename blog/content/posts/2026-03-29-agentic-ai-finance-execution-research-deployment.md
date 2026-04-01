@@ -132,7 +132,7 @@ The organizations that will extract durable value from agentic AI are not the on
 ## Sources
 
 1. Economic Times, "From Insights to Action: Why Enterprises Are Shifting to Execution-Driven AI Systems." https://economictimes.indiatimes.com/news/company/corporate-trends/from-insights-to-action-why-enterprises-are-shifting-to-execution-driven-ai-systems/articleshow/129848268.cms
-2. Oracle, "Oracle Fusion Agentic Applications: Customer Reference Data 2025." https://www.oracle.com/applications/ai-agents/
+2. Oracle, "Oracle Fusion Agentic Applications: Customer Reference Data 2025." https://www.oracle.com/applications/fusion-ai/how-to-create-ai-agent/
 3. ServiceNow, "2025 Annual Report: AI-Driven Workflow Performance Metrics." https://ir.servicenow.com/
 4. McKinsey and Company, "The State of AI: 2024 Global Survey." https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai
 5. Deloitte, "AI Implementation in Enterprise Finance: 2024 Survey of 300 Deployments." https://www2.deloitte.com/insights/ai-enterprise-finance-2024

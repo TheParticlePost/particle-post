@@ -11,7 +11,13 @@ export const metadata: Metadata = {
 export default function CategoriesPage() {
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 py-12">
-      <h1 className="font-display text-display-lg mb-8">Categories</h1>
+      <h1 className="font-display text-display-lg mb-4">Categories</h1>
+      <p className="text-body-base text-text-muted mb-10 max-w-prose">
+        Particle Post covers AI in business and finance across five editorial
+        pillars. Each category targets a specific stage of the executive
+        decision-making process, from strategic positioning to hands-on
+        implementation.
+      </p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {CATEGORIES.map((cat) => {
@@ -31,7 +37,10 @@ export default function CategoriesPage() {
                   {cat.name}
                 </h2>
               </div>
-              <p className="text-body-sm text-text-muted">
+              <p className="text-body-sm text-text-secondary mb-2">
+                {cat.description}
+              </p>
+              <p className="text-body-xs font-mono text-text-muted">
                 {posts.length} {posts.length === 1 ? "article" : "articles"}
               </p>
             </Link>

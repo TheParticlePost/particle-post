@@ -18,6 +18,7 @@ export function SidebarRelated({ articles }: SidebarRelatedProps) {
           <Link
             key={article.slug}
             href={`/posts/${article.slug}/`}
+            aria-label={article.title}
             className="block editorial-stripe pl-4 py-2 hover:border-l-accent transition-colors duration-[180ms] ease-kinetic group"
           >
             <p className="text-body-sm text-text-primary font-medium leading-snug group-hover:text-accent transition-colors duration-[180ms]">

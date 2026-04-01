@@ -30,6 +30,7 @@ export function ArticleCard({
   return (
     <Link
       href={`/posts/${slug}/`}
+      aria-label={title}
       className={cn(
         "group block bg-bg-container border border-border-ghost rounded-lg overflow-hidden",
         "hover:border-border-hover transition-colors duration-[180ms] ease-kinetic",

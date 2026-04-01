@@ -87,5 +87,5 @@ HSBC's Chief AI Officer appointment is not a trend story. It is a governance sig
 1. itnews.com.au. https://www.itnews.com.au/news/hsbc-appoints-first-chief-ai-officer-624525
 2. mckinsey.com. https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai
 3. ibm.com. https://www.ibm.com/thought-leadership/institute-business-value/report/ai-enterprise
-4. accenture.com. https://www.accenture.com/us-en/insights/banking/ai-banking-leadership
-5. fca.org.uk. https://www.fca.org.uk/publications/discussion-papers/dp24-ai-financial-services
+4. accenture.com. https://www.accenture.com/us-en/insights/banking/ai-in-banking
+5. fca.org.uk. https://www.fca.org.uk/publications/discussion-papers/artificial-intelligence-financial-services
