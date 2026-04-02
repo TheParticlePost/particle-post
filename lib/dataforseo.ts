@@ -421,6 +421,64 @@ export async function getKeywordVolume(
 }
 
 // ---------------------------------------------------------------------------
+// Account / Credit balance
+// ---------------------------------------------------------------------------
+
+export interface AccountBalance {
+  balance: number;
+  currency: string;
+  totalSpent: number;
+  rateLimit: number;
+  rateLimitRemaining: number;
+}
+
+/**
+ * Get DataForSEO account balance and usage info.
+ * Uses the /appendix/user_data endpoint.
+ */
+export async function getAccountBalance(): Promise<AccountBalance> {
+  interface UserDataRaw {
+    money: {
+      balance: number;
+      currency: string;
+      total_paid: number;
+    };
+    rates: {
+      limits: {
+        day: {
+          limit: number;
+          remaining: number;
+        };
+      };
+    };
+  }
+
+  const envelope = await apiFetch<DfsEnvelope<UserDataRaw>>(
+    "/appendix/user_data",
+    "GET"
+  );
+
+  const raw = envelope.tasks?.[0]?.result?.[0];
+  if (!raw) {
+    return {
+      balance: 0,
+      currency: "USD",
+      totalSpent: 0,
+      rateLimit: 0,
+      rateLimitRemaining: 0,
+    };
+  }
+
+  return {
+    balance: raw.money?.balance ?? 0,
+    currency: raw.money?.currency ?? "USD",
+    totalSpent: raw.money?.total_paid ?? 0,
+    rateLimit: raw.rates?.limits?.day?.limit ?? 0,
+    rateLimitRemaining: raw.rates?.limits?.day?.remaining ?? 0,
+  };
+}
+
+// ---------------------------------------------------------------------------
 // Raw API response shapes (internal)
 // ---------------------------------------------------------------------------
 
