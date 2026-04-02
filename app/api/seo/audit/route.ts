@@ -1,38 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createServerClient } from "@supabase/ssr";
+import { verifyAdmin } from "@/lib/api-auth";
 import { startOnPageAudit, getOnPageResults } from "@/lib/dataforseo";
-
-// ---------------------------------------------------------------------------
-// Admin verification
-// ---------------------------------------------------------------------------
-
-async function verifyAdmin(req: NextRequest): Promise<boolean> {
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-  if (!supabaseUrl || !supabaseAnonKey) return false;
-
-  const supabase = createServerClient(supabaseUrl, supabaseAnonKey, {
-    cookies: {
-      getAll() {
-        return req.cookies.getAll();
-      },
-      setAll() {},
-    },
-  });
-
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-  if (!user) return false;
-
-  const { data: profile } = await supabase
-    .from("profiles")
-    .select("role")
-    .eq("id", user.id)
-    .single();
-
-  return profile?.role === "admin";
-}
 
 // ---------------------------------------------------------------------------
 // POST /api/seo/audit — Start a new on-page audit
