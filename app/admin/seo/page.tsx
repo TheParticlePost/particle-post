@@ -36,11 +36,20 @@ interface BrokenBacklink {
   statusCode: number;
 }
 
+interface AccountBalance {
+  balance: number;
+  currency: string;
+  totalSpent: number;
+  rateLimit: number;
+  rateLimitRemaining: number;
+}
+
 interface SeoData {
   keywords: KeywordRanking[];
   backlinks: BacklinkSummary | null;
   referringDomains: ReferringDomain[];
   brokenBacklinks: BrokenBacklink[];
+  balance: AccountBalance | null;
 }
 
 /* ---------- Page ---------- */
@@ -51,6 +60,7 @@ export default function SeoPage() {
     backlinks: null,
     referringDomains: [],
     brokenBacklinks: [],
+    balance: null,
   });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -59,21 +69,24 @@ export default function SeoPage() {
     setLoading(true);
     setError("");
     try {
-      const [kwRes, blRes] = await Promise.all([
+      const [kwRes, blRes, balRes] = await Promise.all([
         fetch("/api/seo/keywords"),
         fetch("/api/seo/backlinks"),
+        fetch("/api/seo/balance"),
       ]);
 
       const kwData = kwRes.ok ? await kwRes.json() : { keywords: [] };
       const blData = blRes.ok
         ? await blRes.json()
         : { summary: null, referringDomains: [], brokenBacklinks: [] };
+      const balData = balRes.ok ? await balRes.json() : null;
 
       setData({
         keywords: kwData.keywords || [],
         backlinks: blData.summary || null,
         referringDomains: blData.referringDomains || [],
         brokenBacklinks: blData.brokenBacklinks || [],
+        balance: balData,
       });
     } catch (err) {
       setError(String(err));
@@ -148,6 +161,56 @@ export default function SeoPage() {
           Refresh
         </button>
       </div>
+
+      {/* Credit Balance */}
+      {data.balance && (
+        <WidgetCard title="DataForSEO Credits">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <div className="bg-bg-low rounded-lg p-4">
+              <p className="font-mono text-caption text-text-muted uppercase tracking-widest mb-1">
+                Balance
+              </p>
+              <p className="font-display text-display-sm text-accent">
+                ${data.balance.balance.toFixed(2)}
+              </p>
+              <p className="font-mono text-caption text-text-muted mt-1">
+                {data.balance.currency}
+              </p>
+            </div>
+            <div className="bg-bg-low rounded-lg p-4">
+              <p className="font-mono text-caption text-text-muted uppercase tracking-widest mb-1">
+                Total Spent
+              </p>
+              <p className="font-display text-display-sm text-text-primary">
+                ${data.balance.totalSpent.toFixed(2)}
+              </p>
+            </div>
+            <div className="bg-bg-low rounded-lg p-4">
+              <p className="font-mono text-caption text-text-muted uppercase tracking-widest mb-1">
+                Daily Rate Limit
+              </p>
+              <p className="font-display text-display-sm text-text-primary">
+                {data.balance.rateLimit.toLocaleString()}
+              </p>
+            </div>
+            <div className="bg-bg-low rounded-lg p-4">
+              <p className="font-mono text-caption text-text-muted uppercase tracking-widest mb-1">
+                Remaining Today
+              </p>
+              <p className={`font-display text-display-sm ${
+                data.balance.rateLimitRemaining > data.balance.rateLimit * 0.2
+                  ? "text-green-400"
+                  : "text-red-400"
+              }`}>
+                {data.balance.rateLimitRemaining.toLocaleString()}
+              </p>
+            </div>
+          </div>
+          <p className="font-mono text-caption text-text-muted mt-3">
+            Cost per keyword check: ~$0.002 · Backlink summary: ~$0.002 · On-page audit: ~$0.01/page
+          </p>
+        </WidgetCard>
+      )}
 
       {/* Domain Overview */}
       {data.backlinks && (
