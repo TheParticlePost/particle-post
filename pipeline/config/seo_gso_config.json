@@ -2,7 +2,7 @@
   "last_updated": "2026-04-02",
   "schema_coverage": {
     "Article": 0,
-    "FAQPage": 17,
+    "FAQPage": 18,
     "HowTo": 0,
     "NewsArticle": 0
   },
@@ -165,6 +165,14 @@
       "schema_type": "FAQPage",
       "has_faq": true,
       "search_intent": "informational"
+    },
+    {
+      "date": "2026-04-02",
+      "slug": "ai-agent-governance-framework-enterprise-2026",
+      "primary_keyword": "AI agent governance framework",
+      "schema_type": "FAQPage",
+      "has_faq": true,
+      "search_intent": "transactional"
     }
   ]
 }

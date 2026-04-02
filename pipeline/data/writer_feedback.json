@@ -1,21 +1,6 @@
 {
   "notes": [
     {
-      "text": "CRITICAL — Fix the H1 to include a primary SEO keyword AND make it a question: TOF articles require a question-format H1 per funnel compliance rules, AND the SEO guidelines require one of 8 approved primary keywords in every H1. A title like 'Machine Learning Financial Services: Can Your HR Team Use AI for Compensation Planning?' solves both problems at once. The Restructured Article draft your pipeline produced had the right instinct ('Can Your HR Team Actually Use AI...?') but missed the required keyword anchor.",
-      "slot": "morning",
-      "date": "2026-03-28T13:20:13.683881+00:00"
-    },
-    {
-      "text": "CRITICAL — Cut the article to under 1,000 words: At approximately 1,150-1,200 words, this TOF piece exceeds the hard maximum by 15-20%. The FAQ section (5 Q&As) alone adds ~300 words that belong in a MOF or BOF piece, not a TOF awareness article. Consider moving the FAQ to a companion MOF article, or stripping it to 2 Q&As. The failure scenarios section is valuable but could be tightened to a single illustrative example at the TOF stage — save the second scenario for a deeper funnel piece.",
-      "slot": "morning",
-      "date": "2026-03-28T13:20:13.683881+00:00"
-    },
-    {
-      "text": "ADVISORY — Strengthen the Gartner citation: The Gartner stat ('80% of enterprise companies deploying AI as core HR infrastructure by 2026') is used three times across the article but the Sources section only lists it as 'Gartner, AI as Core Fintech Infrastructure: 80% of Companies Go All-In. 2026' with no URL. Per editorial guidelines, every statistic must cite a named source with enough detail for the reader to verify it. Add the full report name and a URL, or reframe as 'Gartner projects' to signal it is a forecast rather than a published figure. This is currently your weakest attribution and the one most likely to draw an editorial challenge.",
-      "slot": "morning",
-      "date": "2026-03-28T13:20:13.683881+00:00"
-    },
-    {
       "text": "TOF H1 must be a question: The Formatter dropped the question-format H1 that was correctly drafted in the restructured version. For every TOF article, the YAML title field (which renders as the H1) must begin with 'Does...', 'Can...', 'Should...', or 'Is...'. A title like 'Can Your AI Agent Security Keep Up With RSAC 2026's Findings?' signals to the reader this is an evaluative piece, aligns with TOF intent, and matches the GSO answer-first structure — the first H2 then answers the question directly. Remind the Formatter to preserve the question format from the restructured draft.",
       "slot": "evening",
       "date": "2026-03-28T21:15:26.297492+00:00"
@@ -149,6 +134,21 @@
       "text": "The first H2 ('The Myth That Gets CFOs in Trouble') is doing good narrative work, but its answer-first paragraph opens with storytelling rather than a direct declarative statement. For GSO compliance, the first 40-60 words after any H2 should lead with the conclusion, not the setup — consider opening with 'AI fraud detection is not a durable one-time investment' before the HSBC/AXA proof points.",
       "slot": "morning",
       "date": "2026-04-02T13:08:08.547007+00:00"
+    },
+    {
+      "text": "Fix the H1 to a question for TOF compliance. The current declarative title 'AI Agent Governance Framework for Enterprise Deployment 2026' fails the TOF requirement. A revision like 'Does Your Enterprise Have an AI Agent Governance Framework Before 2026 Deployments?' preserves the primary keyword while meeting funnel-type structure rules.",
+      "slot": "evening",
+      "date": "2026-04-02T21:08:08.528542+00:00"
+    },
+    {
+      "text": "The $240,000 transfer scenario in the body is compelling and specific — lean into more named, dollar-anchored examples like this throughout. The lede is strong (Beam AI stat in sentence one), but the fictional scenario could be even more credible if attributed to a reported or composite case study with a named industry vertical and timeframe.",
+      "slot": "evening",
+      "date": "2026-04-02T21:08:08.528542+00:00"
+    },
+    {
+      "text": "Source spot-check passed: Beam AI's 52.9% figure is verified (47.1% monitored = 52.9% unmonitored), and the Deloitte 2026 report is confirmed live and real. Oliver Wyman and Darktrace citations were not independently verified via search — recommend the writer confirm those URLs resolve to the specific pages cited before final publication.",
+      "slot": "evening",
+      "date": "2026-04-02T21:08:08.528542+00:00"
     }
   ]
 }
