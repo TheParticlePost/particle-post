@@ -32,15 +32,17 @@ _get_funnel_type = lambda slot: _get_schedule_info(slot)[0]
 
 def build_selection_task(agent: Agent, research_task: Task, slot: str, topic_override: str | None = None) -> Task:
     # Load recent post titles to inject into prompt
-    recent_titles = []
+    recent_entries = []
     if HISTORY_FILE.exists():
         try:
             history = json.loads(HISTORY_FILE.read_text(encoding="utf-8"))
-            recent_titles = [p["title"] for p in history.get("posts", [])[-30:]]
+            for p in history.get("posts", [])[-100:]:
+                tags = ", ".join(t[:15] for t in p.get("tags", [])[:3])
+                recent_entries.append(f"- {p['title']} [{tags}]")
         except (json.JSONDecodeError, KeyError):
             pass
 
-    recent_str = "\n".join(f"- {t}" for t in recent_titles) if recent_titles else "None yet."
+    recent_str = "\n".join(recent_entries) if recent_entries else "None yet."
     slot_label = "morning" if slot == "morning" else "evening"
     slot_index = 0 if slot == "morning" else 1
 
@@ -87,7 +89,10 @@ def build_selection_task(agent: Agent, research_task: Task, slot: str, topic_ove
             f"over finance-themed topics (targeting CFO — 30% of articles). "
             f"Business = AI in enterprise operations, productivity, company moves. "
             f"Finance = AI in banking, trading, compliance, capital markets.\n\n"
-            f"Recent post titles (avoid repeating these themes):\n{recent_str}\n\n"
+            f"PUBLISHED ARTICLES (ZERO REPETITION — you MUST select a topic that covers a "
+            f"DIFFERENT company, technology, regulation, or use case than ANY article below. "
+            f"Same theme with a different angle is NOT sufficient — the core subject must be distinct):\n"
+            f"{recent_str}\n\n"
             f"Instructions:\n"
             f"1. Review all topics in the research briefing.\n"
             f"2. Score each on: (a) trending relevance, (b) uniqueness vs recent posts, "

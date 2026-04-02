@@ -12,8 +12,7 @@ import type { PostMeta } from "@/lib/types";
 
 interface HomeContentProps {
   latestPost: PostMeta | null;
-  morningPosts: PostMeta[];
-  eveningPosts: PostMeta[];
+  recentPosts: PostMeta[];
   featuredDeepDive: PostMeta | null;
   trendingPosts: PostMeta[];
 }
@@ -28,8 +27,7 @@ const AI_TICKER = [
 
 export function HomeContent({
   latestPost,
-  morningPosts,
-  eveningPosts,
+  recentPosts,
   featuredDeepDive,
   trendingPosts,
 }: HomeContentProps) {
@@ -77,66 +75,42 @@ export function HomeContent({
         </div>
       </section>
 
-      {/* ═══ SECTION 2: AM/PM BRIEFINGS — bg-low (No-Line Rule shift) ═══ */}
-      <section className="bg-bg-low py-20 px-4 sm:px-6">
-        <div className="max-w-container mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Morning Edition */}
+      {/* ═══ SECTION 2: LATEST BRIEFINGS — bg-low (No-Line Rule shift) ═══ */}
+      {recentPosts.length > 0 && (
+        <section className="bg-bg-low py-20 px-4 sm:px-6">
+          <div className="max-w-container mx-auto">
             <FadeUp>
-              <div className="bg-bg-container border border-border-ghost rounded-lg p-8 hover:border-accent transition-colors duration-[180ms] ease-kinetic">
-                <OverlineLabel className="mb-4 block">Morning Edition</OverlineLabel>
-                <h3 className="font-display text-display-lg text-text-primary mb-8">
-                  AM Intelligence Wrap
-                </h3>
-                <ul className="space-y-6">
-                  {morningPosts.map((post, i) => {
-                    const hours = ["07:00 AM", "07:15 AM", "07:45 AM", "08:00 AM"];
-                    return (
-                      <li key={post.slug} className="group">
-                        <Link href={`/posts/${post.slug}/`} aria-label={post.title}>
-                          <DataText className="text-accent text-caption block mb-1">
-                            {hours[i] || "08:30 AM"}
-                          </DataText>
-                          <h4 className="text-body-lg text-text-body group-hover:text-accent transition-colors duration-[180ms]">
-                            {post.title}
-                          </h4>
-                        </Link>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
+              <OverlineLabel className="mb-4 block">Latest Briefings</OverlineLabel>
+              <h3 className="font-display text-display-lg text-text-primary mb-10">
+                Intelligence Wrap
+              </h3>
             </FadeUp>
-
-            {/* Evening Edition */}
-            <FadeUp delay={0.05}>
-              <div className="bg-bg-container border border-border-ghost rounded-lg p-8 hover:border-accent transition-colors duration-[180ms] ease-kinetic">
-                <OverlineLabel className="mb-4 block">Evening Edition</OverlineLabel>
-                <h3 className="font-display text-display-lg text-text-primary mb-8">
-                  PM Intelligence Wrap
-                </h3>
-                <ul className="space-y-6">
-                  {eveningPosts.map((post, i) => {
-                    const hours = ["04:30 PM", "05:00 PM", "05:15 PM", "06:00 PM"];
-                    return (
-                      <li key={post.slug} className="group">
-                        <Link href={`/posts/${post.slug}/`} aria-label={post.title}>
-                          <DataText className="text-accent text-caption block mb-1">
-                            {hours[i] || "06:30 PM"}
-                          </DataText>
-                          <h4 className="text-body-lg text-text-body group-hover:text-accent transition-colors duration-[180ms]">
-                            {post.title}
-                          </h4>
-                        </Link>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
-            </FadeUp>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {recentPosts.map((post, i) => (
+                <FadeUp key={post.slug} delay={i * 0.03}>
+                  <Link
+                    href={`/posts/${post.slug}/`}
+                    aria-label={post.title}
+                    className="block bg-bg-container border border-border-ghost rounded-lg p-6 hover:border-accent transition-colors duration-[180ms] ease-kinetic group"
+                  >
+                    {post.categories[0] && (
+                      <OverlineLabel className="mb-2 block text-[10px]">
+                        {post.categories[0]}
+                      </OverlineLabel>
+                    )}
+                    <h4 className="text-body-lg text-text-body group-hover:text-accent transition-colors duration-[180ms] mb-3">
+                      {post.title}
+                    </h4>
+                    <DataText className="text-caption text-text-muted">
+                      {post.readingTime} min read · {formatDateShort(post.date)}
+                    </DataText>
+                  </Link>
+                </FadeUp>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* ═══ SECTION 3: FEATURED DEEP DIVE — bg-base ═══ */}
       {featuredDeepDive && (

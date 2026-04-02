@@ -1,5 +1,35 @@
+import json
+from pathlib import Path
 from crewai import Task
 from crewai import Agent
+
+HISTORY_FILE = Path(__file__).parents[2] / "blog" / "data" / "topics_history.json"
+
+
+def _build_topic_archive(limit: int = 100) -> str:
+    """Build a compact archive of recent articles for the researcher's memory.
+
+    Format: one line per article, ~40 chars each: "YYYY-MM-DD | slug-excerpt | tag1, tag2"
+    Total: ~4K chars / ~1K tokens for 100 articles.
+    """
+    if not HISTORY_FILE.exists():
+        return ""
+    try:
+        history = json.loads(HISTORY_FILE.read_text(encoding="utf-8"))
+        posts = history.get("posts", [])[-limit:]
+    except (json.JSONDecodeError, KeyError):
+        return ""
+
+    if not posts:
+        return ""
+
+    lines = []
+    for p in posts:
+        date = p.get("filename", "")[:10] or "????"
+        slug = p.get("slug", "")[:40]
+        tags = ", ".join(t[:15] for t in p.get("tags", [])[:3])
+        lines.append(f"{date} | {slug} | {tags}")
+    return "\n".join(lines)
 
 
 def build_research_task(agent: Agent, content_type: str = "news", topic_override: str | None = None) -> Task:
@@ -49,9 +79,21 @@ def build_research_task(agent: Agent, content_type: str = "news", topic_override
             f"Still include 4-5 other trending topics, but the directed topic MUST be first and most detailed.\n\n"
         )
 
+    # Build compact archive of last 100 articles to prevent topic repetition
+    topic_archive = _build_topic_archive(100)
+    archive_block = ""
+    if topic_archive:
+        archive_block = (
+            "COVERED TOPICS — DO NOT RESEARCH THESE ANGLES AGAIN:\n"
+            "These articles have already been published. Find topics that explore DIFFERENT "
+            "industries, companies, technologies, or use cases than anything listed below.\n"
+            f"{topic_archive}\n\n"
+        )
+
     return Task(
         description=(
             "Research trending AI, Business, and Finance topics from the last 24 hours.\n\n"
+            f"{archive_block}"
             f"{topic_directive}"
             f"{content_guidance}"
             "THEME PREFERENCE: 70% of topics should be business-themed (enterprise AI, productivity, "

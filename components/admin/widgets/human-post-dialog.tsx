@@ -125,21 +125,21 @@ export function HumanPostDialog() {
             {/* Slot */}
             <div>
               <label className="block text-body-xs font-medium text-text-secondary mb-1">
-                Slot
+                Pipeline Run
               </label>
               <div className="flex gap-3">
-                {(["morning", "evening"] as const).map((s) => (
+                {([["morning", "Run 1"], ["evening", "Run 2"]] as const).map(([val, label]) => (
                   <button
-                    key={s}
-                    onClick={() => setSlot(s)}
+                    key={val}
+                    onClick={() => setSlot(val)}
                     className={cn(
-                      "px-4 py-1.5 rounded-lg text-body-sm font-medium capitalize transition-colors",
-                      slot === s
+                      "px-4 py-1.5 rounded-lg text-body-sm font-medium transition-colors",
+                      slot === val
                         ? "bg-accent/20 text-accent border border-accent/40"
                         : "bg-bg-high text-text-muted border border-border-ghost hover:border-border-hover"
                     )}
                   >
-                    {s}
+                    {label}
                   </button>
                 ))}
               </div>
