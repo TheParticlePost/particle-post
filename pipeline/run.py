@@ -662,6 +662,13 @@ def _write_post(content: str, dry_run: bool, funnel_type: str = "???", content_t
         print(f"\nContent preview (first 400 chars):\n{content[:400]}\n")
         return
 
+    # Insert affiliate links before writing to disk
+    try:
+        from pipeline.tools.affiliate_inserter import insert_affiliate_links
+        content = insert_affiliate_links(content)
+    except Exception as aff_err:
+        print(f"  [Affiliate] Warning: {aff_err}")
+
     POSTS_DIR.mkdir(parents=True, exist_ok=True)
     post_path.write_text(content, encoding="utf-8")
     print(f"\nPost written to: {post_path}")
@@ -905,6 +912,50 @@ def main() -> None:
         else:
             formatter_raw = ""
         formatter_content = _sanitize_article(_strip_code_fences(formatter_raw))
+
+        # ═══ QA GATE: programmatic pre-check (no LLM cost) ═══
+        from pipeline.qa_gate import validate as qa_validate
+        qa_passed, qa_issues, qa_score = qa_validate(formatter_content, funnel_type, content_type)
+        print(f"\n  [QA GATE] Score: {qa_score}/100 ({'PASS' if qa_passed else 'FAIL'})")
+        if qa_issues:
+            for issue in qa_issues:
+                print(f"    - {issue}")
+        if not qa_passed:
+            print(f"  [QA GATE] Score {qa_score} < 60 — skipping Production Director (saving LLM cost)")
+            verdict = {
+                "decision": "REJECT",
+                "score": qa_score,
+                "issues": qa_issues,
+                "coaching_notes": ["QA gate failed — fix programmatic issues before retry"],
+            }
+            last_verdict = verdict
+            decision = "REJECT"
+            score    = qa_score
+            issues   = qa_issues
+            coaching = verdict["coaching_notes"]
+
+            print(f"\n{'='*60}")
+            print(f"  PRODUCTION DIRECTOR (skipped — QA GATE REJECT)  (score {score}/100)")
+            if issues:
+                print("  Issues:")
+                for issue in issues:
+                    print(f"    - {issue}")
+            print(f"{'='*60}\n")
+
+            _save_coaching_notes(verdict, args.slot)
+
+            if attempt < MAX_ATTEMPTS:
+                print(f"  Article rejected by QA gate. Retrying production with feedback...\n")
+                rejection_feedback = (
+                    f"PREVIOUS ATTEMPT REJECTED by QA Gate (programmatic check). "
+                    f"Score: {score}/100.\n"
+                    "Fix ALL of the following issues before submitting again:\n"
+                    + "\n".join(f"  - {i}" for i in issues)
+                )
+                continue  # retry loop
+
+            # Both attempts exhausted via QA gate
+            break
 
         # Production Director verdict = last task (index -1)
         director_raw = result.tasks_output[-1].raw if result.tasks_output else ""
