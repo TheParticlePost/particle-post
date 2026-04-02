@@ -1,42 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createServerClient } from "@supabase/ssr";
+import { verifyAdmin } from "@/lib/api-auth";
 import { getKeywordRankings } from "@/lib/dataforseo";
 import * as fs from "fs/promises";
 import * as path from "path";
-
-// ---------------------------------------------------------------------------
-// Admin verification (matches pattern from app/api/agents/human-post)
-// ---------------------------------------------------------------------------
-
-async function verifyAdmin(req: NextRequest): Promise<boolean> {
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-  if (!supabaseUrl || !supabaseAnonKey) return false;
-
-  const supabase = createServerClient(supabaseUrl, supabaseAnonKey, {
-    cookies: {
-      getAll() {
-        return req.cookies.getAll();
-      },
-      setAll() {
-        // API route — cookie writes handled by middleware
-      },
-    },
-  });
-
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-  if (!user) return false;
-
-  const { data: profile } = await supabase
-    .from("profiles")
-    .select("role")
-    .eq("id", user.id)
-    .single();
-
-  return profile?.role === "admin";
-}
 
 // ---------------------------------------------------------------------------
 // Load keyword targets from seo_gso_config.json
@@ -94,12 +60,12 @@ export async function GET(req: NextRequest) {
       lastChecked: new Date().toISOString(),
       source: "placeholder" as const,
     }));
-    return NextResponse.json(placeholders);
+    return NextResponse.json({ keywords: placeholders });
   }
 
   try {
     const rankings = await getKeywordRankings(keywords);
-    return NextResponse.json(rankings);
+    return NextResponse.json({ keywords: rankings });
   } catch (err) {
     console.error("[seo/keywords] DataForSEO error:", err);
 
@@ -114,6 +80,6 @@ export async function GET(req: NextRequest) {
       lastChecked: new Date().toISOString(),
       source: "placeholder" as const,
     }));
-    return NextResponse.json(placeholders);
+    return NextResponse.json({ keywords: placeholders });
   }
 }

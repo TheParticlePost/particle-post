@@ -18,6 +18,8 @@ interface BacklinkSummary {
   referringDomains: number;
   dofollow: number;
   nofollow: number;
+  followLinks: number;
+  nofollowLinks: number;
   domainRank: number | null;
 }
 
@@ -71,7 +73,7 @@ export default function SeoPage() {
     try {
       const [kwRes, blRes, balRes] = await Promise.all([
         fetch("/api/seo/keywords"),
-        fetch("/api/seo/backlinks"),
+        fetch("/api/seo/backlinks?include=referring,broken"),
         fetch("/api/seo/balance"),
       ]);
 
@@ -231,7 +233,7 @@ export default function SeoPage() {
               },
               {
                 label: "Dofollow",
-                value: data.backlinks.dofollow.toLocaleString(),
+                value: (data.backlinks.dofollow || data.backlinks.followLinks || 0).toLocaleString(),
               },
             ].map((m) => (
               <div key={m.label} className="bg-bg-low rounded-lg p-4">
