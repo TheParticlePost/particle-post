@@ -5,6 +5,7 @@
 
 ## Posts
 
+- [AI Fraud Detection ROI: Real Wins, Rising Threats](https://theparticlepost.com/posts/ai-fraud-detection-roi-arms-race/)
 - [AI Accounts Payable Automation: 6-Week Deployment Playbook](https://theparticlepost.com/posts/ai-accounts-payable-automation-deployment-playbook/)
 - [Agentic AI Accounts Payable: 60-80% ROI Implementation Playbook](https://theparticlepost.com/posts/agentic-ap-automation-roi-implementation-playbook/)
 - [CFO AI Deployment: Skip the Chief AI Officer](https://theparticlepost.com/posts/cfo-ai-deployment-without-chief-ai-officer/)

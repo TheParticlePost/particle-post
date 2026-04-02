@@ -1,21 +1,6 @@
 {
   "notes": [
     {
-      "text": "FAQ rendering gap — fix before next run: When has_faq=true, the Formatter must output a '## Frequently Asked Questions' section in the article body with all Q+A pairs rendered as '### Q:' and '**A:**' pairs. Storing them only in YAML frontmatter means readers never see them, the FAQPage schema has no on-page content to match, and the GSO featured-snippet benefit is lost entirely.",
-      "slot": "evening",
-      "date": "2026-03-27T21:25:53.516887+00:00"
-    },
-    {
-      "text": "Generic H2s undercut an otherwise strong BOF structure: 'Success Metrics' and 'Decision Checkpoint' are the two weakest headings in the piece. BOF readers skim for decision-support anchors — give them specifics in the heading itself. Rewrite to name a number or action: 'Three Metrics That Confirm AI Roadmap Recalibration Is Working' and 'Go/No-Go Checkpoint: Four Criteria for Reallocating AI Budget Now'. This also improves H2-level SERP appearance.",
-      "slot": "evening",
-      "date": "2026-03-27T21:25:53.516887+00:00"
-    },
-    {
-      "text": "First H2 answer-first compliance: The 'Five Conditions' section opens with a framing sentence rather than a direct answer. For BOF articles targeting executives who skim, the first sentence after any H2 must deliver the answer, not announce that an answer is coming. Try opening with the most decisive condition first: 'Your AI investment map must be documented before any restructuring signal can be applied — without a function-level spend inventory, you cannot distinguish redundancy from capability.'",
-      "slot": "evening",
-      "date": "2026-03-27T21:25:53.516887+00:00"
-    },
-    {
       "text": "CRITICAL — Fix the H1 to include a primary SEO keyword AND make it a question: TOF articles require a question-format H1 per funnel compliance rules, AND the SEO guidelines require one of 8 approved primary keywords in every H1. A title like 'Machine Learning Financial Services: Can Your HR Team Use AI for Compensation Planning?' solves both problems at once. The Restructured Article draft your pipeline produced had the right instinct ('Can Your HR Team Actually Use AI...?') but missed the required keyword anchor.",
       "slot": "morning",
       "date": "2026-03-28T13:20:13.683881+00:00"
@@ -149,6 +134,21 @@
       "text": "The vendor comparison table is a strong differentiator, but the Zapier pricing entry ('~$20/month') is the only figure in the table without a source citation inline or in the Sources list. Either add a source URL for Zapier's pricing tier or replace the figure with 'Tiered SaaS (see vendor site)' to avoid an unattributed claim that a skeptical executive reader — or an auditor — could flag.",
       "slot": "evening",
       "date": "2026-04-01T21:09:30.698112+00:00"
+    },
+    {
+      "text": "Flip the H1 into a question to satisfy TOF funnel convention and improve GSO/featured-snippet eligibility — something like 'Is AI Fraud Detection ROI Real, or Is the Arms Race Erasing It?' preserves the keyword 'AI Fraud Detection ROI' while signaling the article answers a specific CFO question.",
+      "slot": "morning",
+      "date": "2026-04-02T13:08:08.547007+00:00"
+    },
+    {
+      "text": "Add at least one internal markdown link to an existing Particle Post article (e.g., a related piece on AI in banking or CFO strategy). This is a hard TOF funnel requirement and also supports site architecture — check the content library for a slug to anchor to a relevant phrase like 'generative AI in financial services' or 'CFO technology investment.'",
+      "slot": "morning",
+      "date": "2026-04-02T13:08:08.547007+00:00"
+    },
+    {
+      "text": "The first H2 ('The Myth That Gets CFOs in Trouble') is doing good narrative work, but its answer-first paragraph opens with storytelling rather than a direct declarative statement. For GSO compliance, the first 40-60 words after any H2 should lead with the conclusion, not the setup — consider opening with 'AI fraud detection is not a durable one-time investment' before the HSBC/AXA proof points.",
+      "slot": "morning",
+      "date": "2026-04-02T13:08:08.547007+00:00"
     }
   ]
 }

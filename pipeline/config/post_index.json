@@ -1,6 +1,20 @@
 {
   "posts": [
     {
+      "slug": "ai-fraud-detection-roi-arms-race",
+      "title": "AI Fraud Detection ROI: Real Wins, Rising Threats",
+      "funnel_type": "TOF",
+      "content_type": "news",
+      "tags": [
+        "AI Fraud Detection",
+        "Banking Security",
+        "Financial Crime",
+        "Machine Learning",
+        "CFO Strategy"
+      ],
+      "date": "2026-04-02"
+    },
+    {
       "slug": "agentic-ap-automation-roi-implementation-playbook",
       "title": "Agentic AI Accounts Payable: 60-80% ROI Implementation Playbook",
       "funnel_type": "MOF",
@@ -93,12 +107,6 @@
     {
       "slug": "oracle-ai-agent-rebuild-cfo-erp-modernization",
       "title": "Oracle's AI Agent Rebuild: Why CFOs Must Act Now on ERP Modernization",
-      "funnel_type": "MOF",
-      "date": "2026-03-25"
-    },
-    {
-      "slug": "ai-fraud-detection-roi-arms-race",
-      "title": "The AI Fraud Arms Race: What the Research Shows About Detection ROI — and Where It Breaks",
       "funnel_type": "MOF",
       "date": "2026-03-25"
     },
