@@ -1,34 +1,57 @@
 import { getAllPosts } from "@/lib/content";
 import { HomeContent } from "@/components/home-content";
-import type { PostMeta } from "@/lib/types";
+import type { Post, PostMeta } from "@/lib/types";
+
+// Revalidate every 4 hours so hero rotates between deploys
+export const revalidate = 14400;
 
 function toMeta(post: { content: string } & PostMeta): PostMeta {
   const { content, ...meta } = post;
   return meta;
 }
 
+function selectHero(posts: Post[]): Post | null {
+  if (posts.length === 0) return null;
+
+  // Priority 1: most recent post with featured: true
+  const featured = posts.slice(0, 10).find((p) => p.featured);
+  if (featured) return featured;
+
+  // Priority 2: time-based rotation through top 5 posts (cycles every 4 hours)
+  const pool = Math.min(5, posts.length);
+  const rotationIndex = Math.floor(Date.now() / (4 * 60 * 60 * 1000)) % pool;
+  return posts[rotationIndex];
+}
+
 export default function HomePage() {
   const allPosts = getAllPosts();
 
-  // Latest post for hero
-  const latestPost = allPosts[0] ? toMeta(allPosts[0]) : null;
+  // Hero: featured override or time-based rotation
+  const heroPost = selectHero(allPosts);
+  const latestPost = heroPost ? toMeta(heroPost) : null;
 
-  // Morning posts (first 4 after latest)
-  const morningPosts = allPosts.slice(1, 5).map(toMeta);
+  // Recent posts (first 8 excluding hero)
+  const recentPosts = allPosts
+    .filter((p) => p.slug !== heroPost?.slug)
+    .slice(0, 8)
+    .map(toMeta);
 
-  // Evening posts (next 4)
-  const eveningPosts = allPosts.slice(5, 9).map(toMeta);
-
-  // Featured deep dive — longest article
-  const deepDive = allPosts.slice(1).sort((a, b) => b.readingTime - a.readingTime)[0];
-  const featuredDeepDive = deepDive ? toMeta(deepDive) : allPosts[1] ? toMeta(allPosts[1]) : null;
+  // Featured deep dive — longest article, prefer different category from hero
+  const deepDiveCandidates = allPosts
+    .filter((p) => p.slug !== heroPost?.slug)
+    .sort((a, b) => b.readingTime - a.readingTime);
+  const heroCategory = heroPost?.categories[0];
+  const diverseDeepDive = heroCategory
+    ? deepDiveCandidates.find((p) => p.categories[0] !== heroCategory)
+    : null;
+  const deepDive = diverseDeepDive || deepDiveCandidates[0] || null;
+  const featuredDeepDive = deepDive ? toMeta(deepDive) : null;
 
   // Trending — 3 recent posts not used elsewhere
   const usedSlugs = new Set([
     latestPost?.slug,
     featuredDeepDive?.slug,
-    ...morningPosts.map((p) => p.slug),
-    ...eveningPosts.map((p) => p.slug),
+    ...recentPosts.map((p) => p.slug),
   ]);
   const trendingPosts = allPosts
     .filter((p) => !usedSlugs.has(p.slug))
@@ -38,8 +61,7 @@ export default function HomePage() {
   return (
     <HomeContent
       latestPost={latestPost}
-      morningPosts={morningPosts}
-      eveningPosts={eveningPosts}
+      recentPosts={recentPosts}
       featuredDeepDive={featuredDeepDive}
       trendingPosts={trendingPosts}
     />

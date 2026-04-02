@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CATEGORIES } from "@/lib/utils";
 import { getPostsByCategory } from "@/lib/content";
@@ -59,6 +60,24 @@ export default async function CategoryPage({ params }: PageProps) {
         }))}
         featureFirst={false}
       />
+
+      {/* Cross-links to other categories */}
+      <nav className="mt-16 pt-8 border-t border-border-ghost" aria-label="Browse other categories">
+        <p className="font-mono text-data text-text-muted uppercase tracking-widest mb-4">
+          More Categories
+        </p>
+        <div className="flex flex-wrap gap-3">
+          {CATEGORIES.filter((c) => c.slug !== category).map((c) => (
+            <Link
+              key={c.slug}
+              href={`/categories/${c.slug}/`}
+              className="px-4 py-2 rounded-lg bg-bg-container border border-border-ghost text-body-sm text-text-secondary hover:border-accent hover:text-accent transition-colors duration-[180ms]"
+            >
+              {c.name}
+            </Link>
+          ))}
+        </div>
+      </nav>
     </div>
   );
 }

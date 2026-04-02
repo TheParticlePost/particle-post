@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
+import { createServerClient } from "@supabase/ssr";
 
 const GITHUB_REPO = "TheParticlePost/particle-post";
 const WORKFLOW = "human-assisted-post.yml";
@@ -9,9 +9,15 @@ async function verifyAdmin(req: NextRequest): Promise<boolean> {
   const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
   if (!supabaseUrl || !supabaseAnonKey) return false;
 
-  const cookieHeader = req.headers.get("cookie") ?? "";
-  const supabase = createClient(supabaseUrl, supabaseAnonKey, {
-    global: { headers: { cookie: cookieHeader } },
+  const supabase = createServerClient(supabaseUrl, supabaseAnonKey, {
+    cookies: {
+      getAll() {
+        return req.cookies.getAll();
+      },
+      setAll() {
+        // API route — cookie writes handled by middleware
+      },
+    },
   });
 
   const { data: { user } } = await supabase.auth.getUser();

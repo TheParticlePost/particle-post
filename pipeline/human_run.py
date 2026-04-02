@@ -309,7 +309,7 @@ def main():
             except Exception:
                 pass
 
-            _write_post(content=formatter_content, dry_run=False, funnel_type=funnel_type)
+            _write_post(content=formatter_content, dry_run=False, funnel_type=funnel_type, content_type=content_type)
 
             slug = None
             try:

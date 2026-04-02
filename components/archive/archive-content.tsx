@@ -128,6 +128,17 @@ export function ArchiveContent({ articles }: ArchiveContentProps) {
           </div>
         </FadeUp>
       )}
+
+      {/* Hidden crawlable links — ensures all articles are discoverable by search engines */}
+      <nav className="sr-only" aria-label="All articles">
+        <ul>
+          {articles.map((a) => (
+            <li key={a.slug}>
+              <a href={`/posts/${a.slug}/`}>{a.title}</a>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </div>
   );
 }

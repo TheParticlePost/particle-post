@@ -27,6 +27,7 @@ export interface PostMeta {
   schema_type?: string;
   keywords?: string[];
   author?: string;
+  featured?: boolean;
 }
 
 export interface Post extends PostMeta {

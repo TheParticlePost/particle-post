@@ -542,7 +542,105 @@ def _submit_to_search_engines(url: str) -> None:
             print(f"  [WARN] {label} submission failed: {exc}")
 
 
-def _write_post(content: str, dry_run: bool, funnel_type: str = "???") -> None:
+# ──────────────────────────────────────────────────────────────────────────────
+# Topic uniqueness check (zero-repetition enforcement)
+# ──────────────────────────────────────────────────────────────────────────────
+
+_STOP_WORDS = frozenset(
+    "the a an is are was were be been being have has had do does did will would "
+    "shall should may might can could of in to for on with at by from as into "
+    "through during before after above below between under and but or nor not "
+    "so yet both either neither each every all any few more most other some such "
+    "no only own same than too very how what which who whom this that these those "
+    "it its you your they their we our he his she her".split()
+)
+
+
+def _extract_significant_words(text: str) -> set[str]:
+    """Extract meaningful words (>4 chars, not stop words) from text."""
+    words = re.findall(r'[a-z]+', text.lower())
+    return {w for w in words if len(w) > 4 and w not in _STOP_WORDS}
+
+
+def _check_topic_uniqueness(title: str, tags: list[str]) -> tuple[bool, str]:
+    """Check proposed topic against last 100 articles for uniqueness.
+
+    Returns (is_unique, reason). Thresholds are aggressive:
+    - Title similarity > 0.45 → reject
+    - Tag overlap > 50% with any past article → reject
+    - Keyword overlap > 60% with any past title → reject
+    """
+    from difflib import SequenceMatcher
+
+    # Load both data sources
+    past_titles: list[str] = []
+    past_tags: list[list[str]] = []
+
+    if HISTORY_FILE.exists():
+        try:
+            history = json.loads(HISTORY_FILE.read_text(encoding="utf-8"))
+            for p in history.get("posts", [])[-100:]:
+                past_titles.append(p.get("title", ""))
+                past_tags.append(p.get("tags", []))
+        except Exception:
+            pass
+
+    if POST_INDEX_FILE.exists():
+        try:
+            index = json.loads(POST_INDEX_FILE.read_text(encoding="utf-8"))
+            idx_titles = {p.get("title", "") for p in index.get("posts", [])[:100]}
+            # Add any titles from post_index not already in history
+            for t in idx_titles:
+                if t and t not in past_titles:
+                    past_titles.append(t)
+        except Exception:
+            pass
+
+    if not past_titles:
+        return True, "No history to compare against."
+
+    proposed_lower = title.lower().strip()
+
+    # Check 1: Title similarity (SequenceMatcher)
+    for past_title in past_titles:
+        ratio = SequenceMatcher(None, proposed_lower, past_title.lower().strip()).ratio()
+        if ratio > 0.45:
+            return False, f"Title too similar to '{past_title}' (similarity: {ratio:.0%})"
+
+    # Check 2: Tag overlap
+    if tags:
+        proposed_tags_lower = {t.lower() for t in tags}
+        for i, pt in enumerate(past_tags):
+            if not pt:
+                continue
+            past_tags_lower = {t.lower() for t in pt}
+            overlap = proposed_tags_lower & past_tags_lower
+            overlap_ratio = len(overlap) / max(len(proposed_tags_lower), 1)
+            if overlap_ratio > 0.5:
+                return False, (
+                    f"Tag overlap {overlap_ratio:.0%} with '{past_titles[i] if i < len(past_titles) else '?'}' "
+                    f"(shared: {', '.join(sorted(overlap))})"
+                )
+
+    # Check 3: Keyword overlap in titles
+    proposed_words = _extract_significant_words(title)
+    if proposed_words:
+        for past_title in past_titles:
+            past_words = _extract_significant_words(past_title)
+            if not past_words:
+                continue
+            common = proposed_words & past_words
+            overlap_ratio = len(common) / max(len(proposed_words), 1)
+            if overlap_ratio > 0.6:
+                return False, (
+                    f"Keyword overlap {overlap_ratio:.0%} with '{past_title}' "
+                    f"(shared words: {', '.join(sorted(common))})"
+                )
+
+    return True, "Topic is unique."
+
+
+def _write_post(content: str, dry_run: bool, funnel_type: str = "???", content_type: str = "news") -> None:
     """Extract metadata from frontmatter and write the post to disk."""
     slug  = _extract_frontmatter_field(content, "slug")
     title = _extract_frontmatter_field(content, "title")
@@ -569,19 +667,22 @@ def _write_post(content: str, dry_run: bool, funnel_type: str = "???") -> None:
     print(f"\nPost written to: {post_path}")
 
     _update_history(title=title, slug=slug, tags=tags, filename=filename)
-    _update_post_index(title=title, slug=slug, funnel_type=funnel_type, date_str=date_str)
+    _update_post_index(title=title, slug=slug, funnel_type=funnel_type, date_str=date_str, content_type=content_type, tags=tags)
 
     # Submit to search engines for immediate indexing
     article_url = f"https://theparticlepost.com/posts/{slug}/"
     _submit_to_search_engines(article_url)
 
 
-def _update_post_index(title: str, slug: str, funnel_type: str, date_str: str) -> None:
+def _update_post_index(
+    title: str, slug: str, funnel_type: str, date_str: str,
+    content_type: str = "news", tags: list[str] | None = None
+) -> None:
     """
     Maintain a compact post index for the writer's internal linking context.
 
     Format (one entry per post, kept sorted newest-first, max 100 posts):
-      {"posts": [{"slug": "...", "title": "...", "funnel_type": "TOF", "date": "YYYY-MM-DD"}, ...]}
+      {"posts": [{"slug": "...", "title": "...", "funnel_type": "TOF", "content_type": "news", "tags": [...], "date": "YYYY-MM-DD"}, ...]}
 
     The writing_task loads this and formats it as pipe-separated lines (~85 chars each)
     so the writer can see the full archive in ~2,000 tokens regardless of size.
@@ -598,10 +699,12 @@ def _update_post_index(title: str, slug: str, funnel_type: str, date_str: str) -
     # Avoid duplicates (same slug on retry)
     index["posts"] = [p for p in index["posts"] if p.get("slug") != slug]
     index["posts"].append({
-        "slug":        slug,
-        "title":       title,
-        "funnel_type": funnel_type,
-        "date":        date_str,
+        "slug":         slug,
+        "title":        title,
+        "funnel_type":  funnel_type,
+        "content_type": content_type,
+        "tags":         tags or [],
+        "date":         date_str,
     })
     # Newest first, keep last 100
     index["posts"] = sorted(index["posts"], key=lambda p: p.get("date", ""), reverse=True)[:100]
@@ -702,9 +805,68 @@ def main() -> None:
         funnel_type = topic_data.get("funnel_type", funnel_type)
         content_type = topic_data.get("content_type", content_type)
     except Exception:
-        pass
+        topic_data = {}
 
     print(f"  [Research] Topic selected. Funnel: {funnel_type} | Content: {content_type}")
+
+    # ═══ UNIQUENESS GATE: reject near-duplicate topics, re-run research if needed ═══
+    proposed_title = topic_data.get("title", "") if topic_data else ""
+    proposed_tags = topic_data.get("target_keywords", []) if topic_data else []
+
+    if proposed_title:
+        is_unique, reason = _check_topic_uniqueness(proposed_title, proposed_tags)
+
+        if not is_unique:
+            print(f"\n  [DIVERSITY GATE] REJECTED: {reason}")
+            print(f"  [DIVERSITY GATE] Re-running research with exclusion...\n")
+
+            # Re-run Phase 1 with the rejected topic explicitly excluded
+            for diversity_retry in range(1, 3):
+                excluded_topic = proposed_title
+                research_crew, funnel_type, content_type = build_research_crew(
+                    slot=args.slot,
+                    topic_override=args.topic or f"EXCLUDED TOPIC (do NOT cover): {excluded_topic}",
+                )
+
+                for rate_retry in range(1, 4):
+                    try:
+                        research_result = research_crew.kickoff()
+                        break
+                    except Exception as exc:
+                        exc_str = str(exc).lower()
+                        if "429" in str(exc) or "529" in str(exc) or "rate_limit" in exc_str or "overloaded" in exc_str:
+                            wait = 60 * rate_retry
+                            print(f"  [API RETRY] {type(exc).__name__}. Waiting {wait}s (retry {rate_retry}/3)...")
+                            time.sleep(wait)
+                            if rate_retry == 3:
+                                raise
+                        else:
+                            raise
+
+                topic_raw = research_result.tasks_output[-1].raw or "" if research_result.tasks_output else ""
+                topic_json = _strip_code_fences(topic_raw)
+
+                try:
+                    topic_data = json.loads(topic_json)
+                    funnel_type = topic_data.get("funnel_type", funnel_type)
+                    content_type = topic_data.get("content_type", content_type)
+                    proposed_title = topic_data.get("title", "")
+                    proposed_tags = topic_data.get("target_keywords", [])
+                except Exception:
+                    topic_data = {}
+                    break
+
+                is_unique, reason = _check_topic_uniqueness(proposed_title, proposed_tags)
+                if is_unique:
+                    print(f"  [DIVERSITY GATE] Retry {diversity_retry} passed: {reason}")
+                    break
+                else:
+                    print(f"  [DIVERSITY GATE] Retry {diversity_retry} still duplicate: {reason}")
+
+            if not is_unique:
+                print(f"  [DIVERSITY WARNING] All retries exhausted. Proceeding with current topic.")
+        else:
+            print(f"  [DIVERSITY GATE] PASSED: {reason}")
 
     # ═══ PHASE 2: PRODUCTION (retried on rejection) ═══
     rejection_feedback = ""
@@ -789,7 +951,7 @@ def main() -> None:
                 pass
 
             date_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-            _write_post(content=formatter_content, dry_run=args.dry_run, funnel_type=funnel_type)
+            _write_post(content=formatter_content, dry_run=args.dry_run, funnel_type=funnel_type, content_type=content_type)
 
             if not args.dry_run:
                 slug = _extract_frontmatter_field(formatter_content, "slug")
