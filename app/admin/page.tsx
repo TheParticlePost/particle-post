@@ -9,6 +9,10 @@ import { SubscriberChart } from "@/components/admin/widgets/subscriber-chart";
 import { PipelineStatus } from "@/components/admin/widgets/pipeline-status";
 import { SeoMetrics } from "@/components/admin/widgets/seo-metrics";
 import { CategoryBreakdown } from "@/components/admin/widgets/category-breakdown";
+import { QuickActions } from "@/components/admin/widgets/quick-actions";
+import { IntegrationHealth } from "@/components/admin/widgets/integration-health";
+import { ContentCalendar } from "@/components/admin/widgets/content-calendar";
+import { ActivityFeed } from "@/components/admin/widgets/activity-feed";
 
 interface PostIndexEntry {
   slug: string;
@@ -173,6 +177,14 @@ export default async function AdminDashboard() {
         </p>
       </div>
 
+      {/* Quick Actions */}
+      <WidgetCard title="Quick Actions">
+        <QuickActions />
+      </WidgetCard>
+
+      {/* Integration Health */}
+      <IntegrationHealth />
+
       {/* Stats row */}
       <WidgetCard title="At a Glance">
         <StatsOverview
@@ -181,6 +193,11 @@ export default async function AdminDashboard() {
           postsThisMonth={postsThisMonth}
           impressions={totalImpressions}
         />
+      </WidgetCard>
+
+      {/* Activity Feed */}
+      <WidgetCard title="Activity Feed" action={{ label: "View all", href: "/admin/pipeline" }}>
+        <ActivityFeed />
       </WidgetCard>
 
       {/* Two column grid */}
@@ -208,8 +225,12 @@ export default async function AdminDashboard() {
           <SeoMetrics totalPages={totalPages} sitemapUrl={sitemapUrl} />
         </WidgetCard>
 
-        <WidgetCard title="Top Categories" className="lg:col-span-2">
+        <WidgetCard title="Top Categories">
           <CategoryBreakdown categories={categories} />
+        </WidgetCard>
+
+        <WidgetCard title="Content Calendar">
+          <ContentCalendar />
         </WidgetCard>
       </div>
     </div>

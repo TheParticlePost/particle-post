@@ -2,6 +2,9 @@ import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { ToastProvider } from "@/components/admin/toast-provider";
+import { KeyboardShortcuts } from "@/components/admin/keyboard-shortcuts";
+import { CommandPalette } from "@/components/admin/command-palette";
 
 export const metadata = {
   title: "Admin Dashboard",
@@ -253,6 +256,11 @@ export default async function AdminLayout({
           {children}
         </div>
       </main>
+
+      {/* Global providers */}
+      <ToastProvider />
+      <KeyboardShortcuts />
+      <CommandPalette />
     </div>
   );
 }
