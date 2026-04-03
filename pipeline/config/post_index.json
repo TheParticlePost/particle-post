@@ -13,12 +13,6 @@
       "date": "2026-03-30"
     },
     {
-      "slug": "agentic-ai-deployment-enterprise-readiness",
-      "title": "Agentic AI Deployment: Is Your Enterprise Ready to Compete?",
-      "funnel_type": "TOF",
-      "date": "2026-03-30"
-    },
-    {
       "slug": "agentic-ai-finance-execution-research-deployment",
       "title": "Agentic AI Finance: What the Research Shows About Execution-Driven Systems",
       "funnel_type": "MOF",
@@ -67,21 +61,9 @@
       "date": "2026-03-26"
     },
     {
-      "slug": "ai-fraud-detection-roi-40-billion",
-      "title": "AI Fraud Detection ROI: Why Banks Can't Ignore $40B in Savings",
-      "funnel_type": "MOF",
-      "date": "2026-03-25"
-    },
-    {
       "slug": "ai-fraud-detection-deployment-implementation",
       "title": "How to Deploy AI Fraud Detection: 5 Implementation Pitfalls and Go/No-Go Checkpoints",
       "funnel_type": "BOF",
-      "date": "2026-03-25"
-    },
-    {
-      "slug": "oracle-ai-agent-rebuild-cfo-erp-modernization",
-      "title": "Oracle's AI Agent Rebuild: Why CFOs Must Act Now on ERP Modernization",
-      "funnel_type": "MOF",
       "date": "2026-03-25"
     },
     {

@@ -35,7 +35,7 @@ Visa's AI fraud detection system blocked more than $40 billion in fraudulent tra
 
 This guide is for the project lead or C-suite executive who has already decided to deploy AI fraud detection and now needs to avoid the most common and costly failures.
 
-For the business case behind this investment, see our research breakdown on [AI fraud detection ROI and where the numbers hold up](/posts/ai-fraud-detection-roi-40-billion/).
+For the business case behind this investment, see our research breakdown on [the AI fraud detection arms race and where the ROI numbers hold up](/posts/ai-fraud-detection-roi-arms-race/).
 
 ## What You Need to Be True First
 
