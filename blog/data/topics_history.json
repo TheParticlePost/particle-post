@@ -61,19 +61,6 @@
       "published_at": "2026-03-24T16:45:37.718981+00:00"
     },
     {
-      "title": "AI Fraud Detection ROI: Why Banks Can",
-      "slug": "ai-fraud-detection-roi-40-billion",
-      "tags": [
-        "AI",
-        "Fraud Detection",
-        "Financial Services",
-        "ROI",
-        "Banking Technology"
-      ],
-      "filename": "2026-03-25-ai-fraud-detection-roi-40-billion.md",
-      "published_at": "2026-03-25T03:06:07.614479+00:00"
-    },
-    {
       "title": "How to Deploy AI Fraud Detection: 5 Implementation Pitfalls and Go/No-Go Checkpoints",
       "slug": "ai-fraud-detection-deployment-implementation",
       "tags": [
@@ -84,18 +71,6 @@
       ],
       "filename": "2026-03-25-ai-fraud-detection-deployment-implementation.md",
       "published_at": "2026-03-25T03:30:07.589070+00:00"
-    },
-    {
-      "title": "Oracle",
-      "slug": "oracle-ai-agent-rebuild-cfo-erp-modernization",
-      "tags": [
-        "Enterprise Software",
-        "AI & Automation",
-        "ERP Strategy",
-        "Finance Technology"
-      ],
-      "filename": "2026-03-25-oracle-ai-agent-rebuild-cfo-erp-modernization.md",
-      "published_at": "2026-03-25T13:06:55.588216+00:00"
     },
     {
       "title": "The AI Fraud Arms Race: What the Research Shows About Detection ROI — and Where It Breaks",
@@ -265,19 +240,6 @@
       ],
       "filename": "2026-03-30-agentic-ai-enterprise-readiness-framework.md",
       "published_at": "2026-03-30T13:20:20.566722+00:00"
-    },
-    {
-      "title": "Agentic AI Deployment: Is Your Enterprise Ready to Compete?",
-      "slug": "agentic-ai-deployment-enterprise-readiness",
-      "tags": [
-        "Agentic AI",
-        "Enterprise AI",
-        "AI Governance",
-        "AI Strategy",
-        "Autonomous Workflows"
-      ],
-      "filename": "2026-03-30-agentic-ai-deployment-enterprise-readiness.md",
-      "published_at": "2026-03-30T21:04:54.874330+00:00"
     },
     {
       "title": "CFO AI Deployment: Skip the Chief AI Officer",
