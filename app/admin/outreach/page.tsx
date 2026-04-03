@@ -2,6 +2,8 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { WidgetCard } from "@/components/admin/widget-card";
+import { BrokenLinkPipeline } from "@/components/admin/widgets/broken-link-pipeline";
+import { EmailComposer } from "@/components/admin/widgets/email-composer";
 
 interface OutreachTarget {
   id: string;
@@ -169,6 +171,14 @@ export default function OutreachPage() {
           </WidgetCard>
         ))
       )}
+      {/* Broken Link Builder */}
+      <WidgetCard title="Broken Link Builder">
+        <p className="text-body-xs text-text-muted mb-4">
+          Scan competitor sites for broken outbound links, match with your
+          articles, and send outreach emails to claim the backlink.
+        </p>
+        <BrokenLinkPipeline />
+      </WidgetCard>
     </div>
   );
 }

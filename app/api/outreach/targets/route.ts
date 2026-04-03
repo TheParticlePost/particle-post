@@ -1,43 +1,40 @@
 import { NextRequest, NextResponse } from "next/server";
 import { verifyAdmin, getServiceClient } from "@/lib/api-auth";
 
-export async function GET(req: NextRequest) {
-  if (!(await verifyAdmin(req))) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
-
-  const sb = getServiceClient();
-  const { data } = await sb
-    .from("affiliate_links")
-    .select("*")
-    .order("created_at", { ascending: false });
-
-  return NextResponse.json({ links: data || [] });
-}
-
 export async function POST(req: NextRequest) {
   if (!(await verifyAdmin(req))) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const body = await req.json();
-  const { keyword, url, product_name, commission_rate } = body;
+  const {
+    campaign_id,
+    site_url,
+    site_name,
+    contact_email,
+    contact_name,
+    broken_link_url,
+    our_replacement_url,
+  } = body;
 
-  if (!keyword || !url) {
+  if (!site_url) {
     return NextResponse.json(
-      { error: "keyword and url required" },
+      { error: "site_url required" },
       { status: 400 }
     );
   }
 
   const sb = getServiceClient();
   const { data, error } = await sb
-    .from("affiliate_links")
+    .from("outreach_targets")
     .insert({
-      keyword,
-      url,
-      product_name: product_name || null,
-      commission_rate: commission_rate || null,
+      campaign_id: campaign_id || null,
+      site_url,
+      site_name: site_name || null,
+      contact_email: contact_email || null,
+      contact_name: contact_name || null,
+      broken_link_url: broken_link_url || null,
+      our_replacement_url: our_replacement_url || null,
     })
     .select()
     .single();
@@ -46,7 +43,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: error.message }, { status: 400 });
   }
 
-  return NextResponse.json({ link: data });
+  return NextResponse.json({ target: data });
 }
 
 export async function PATCH(req: NextRequest) {
@@ -61,22 +58,22 @@ export async function PATCH(req: NextRequest) {
     return NextResponse.json({ error: "id required" }, { status: 400 });
   }
 
-  const sb = getServiceClient();
-
   const allowed: Record<string, unknown> = {};
-  if ("active" in updates) allowed.active = updates.active;
-  if ("url" in updates) allowed.url = updates.url;
-  if ("keyword" in updates) allowed.keyword = updates.keyword;
-  if ("product_name" in updates) allowed.product_name = updates.product_name;
-  if ("commission_rate" in updates)
-    allowed.commission_rate = updates.commission_rate;
-  if ("max_insertions_per_article" in updates)
-    allowed.max_insertions_per_article = updates.max_insertions_per_article;
+  for (const key of [
+    "site_url",
+    "site_name",
+    "contact_email",
+    "contact_name",
+    "broken_link_url",
+    "our_replacement_url",
+    "status",
+  ]) {
+    if (key in updates) allowed[key] = updates[key];
+  }
 
-  allowed.updated_at = new Date().toISOString();
-
+  const sb = getServiceClient();
   const { data, error } = await sb
-    .from("affiliate_links")
+    .from("outreach_targets")
     .update(allowed)
     .eq("id", id)
     .select()
@@ -86,7 +83,7 @@ export async function PATCH(req: NextRequest) {
     return NextResponse.json({ error: error.message }, { status: 400 });
   }
 
-  return NextResponse.json({ link: data });
+  return NextResponse.json({ target: data });
 }
 
 export async function DELETE(req: NextRequest) {
@@ -100,7 +97,7 @@ export async function DELETE(req: NextRequest) {
   }
 
   const sb = getServiceClient();
-  const { error } = await sb.from("affiliate_links").delete().eq("id", id);
+  const { error } = await sb.from("outreach_targets").delete().eq("id", id);
 
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 400 });

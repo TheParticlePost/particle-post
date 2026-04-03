@@ -3,6 +3,9 @@ import fs from "fs/promises";
 import { WidgetCard } from "@/components/admin/widget-card";
 import { AgentCard } from "@/components/admin/widgets/agent-card";
 import { AgentRunButton } from "@/components/admin/widgets/agent-run-button";
+import { AgentRunDialog } from "@/components/admin/widgets/agent-run-dialog";
+import { AgentLogs } from "@/components/admin/widgets/agent-logs";
+import { PipelineConfigEditor } from "@/components/admin/widgets/pipeline-config-editor";
 import { RejectionLog } from "@/components/admin/widgets/rejection-log";
 import { WriterFeedback } from "@/components/admin/widgets/writer-feedback";
 import { ApiCosts } from "@/components/admin/widgets/api-costs";
@@ -313,10 +316,30 @@ export default async function PipelinePage() {
               lastActivity={agent.lastActivity}
               icon={agent.icon}
             >
-              <AgentRunButton workflow={agent.workflow} />
+              <div className="flex items-center gap-2">
+                <AgentRunDialog workflow={agent.workflow} label={agent.name} />
+                <AgentRunButton workflow={agent.workflow} />
+              </div>
             </AgentCard>
           ))}
         </div>
+      </WidgetCard>
+
+      {/* Workflow Execution Logs */}
+      <WidgetCard title="Recent Pipeline Runs">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          {agents.slice(0, 4).map((agent) => (
+            <div key={agent.workflow} className="bg-bg-low rounded-lg p-4">
+              <p className="text-body-sm text-text-primary font-medium mb-3">{agent.name}</p>
+              <AgentLogs workflow={agent.workflow} />
+            </div>
+          ))}
+        </div>
+      </WidgetCard>
+
+      {/* Pipeline Configuration */}
+      <WidgetCard title="Pipeline Configuration">
+        <PipelineConfigEditor />
       </WidgetCard>
 
       {/* API Cost Tracking */}

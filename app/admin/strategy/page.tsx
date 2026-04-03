@@ -1,8 +1,11 @@
 import path from "path";
 import fs from "fs/promises";
 import { WidgetCard } from "@/components/admin/widget-card";
-import { StrategyViewer } from "@/components/admin/widgets/strategy-viewer";
 import { MarketingLog } from "@/components/admin/widgets/marketing-log";
+import { ScheduleEditor } from "@/components/admin/widgets/schedule-editor";
+import { ThemeWeightEditor } from "@/components/admin/widgets/theme-weight-editor";
+import { ContentMixEditor } from "@/components/admin/widgets/content-mix-editor";
+import { AiTellsManager } from "@/components/admin/widgets/ai-tells-manager";
 import { cn } from "@/lib/utils";
 
 interface ScheduleSlot {
@@ -341,6 +344,23 @@ export default async function StrategyPage() {
               No content strategy data available yet.
             </p>
           )}
+        </WidgetCard>
+
+        {/* Interactive Editors */}
+        <WidgetCard title="Edit Schedule" className="lg:col-span-2">
+          <ScheduleEditor />
+        </WidgetCard>
+
+        <WidgetCard title="Edit Theme Weights">
+          <ThemeWeightEditor />
+        </WidgetCard>
+
+        <WidgetCard title="Edit Content Mix">
+          <ContentMixEditor />
+        </WidgetCard>
+
+        <WidgetCard title="AI Tells Blacklist" className="lg:col-span-2">
+          <AiTellsManager />
         </WidgetCard>
 
         {/* Card 2: Marketing Strategy */}

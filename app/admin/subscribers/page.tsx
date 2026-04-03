@@ -2,6 +2,7 @@ import { getSupabaseClient } from "@/lib/supabase";
 import { WidgetCard } from "@/components/admin/widget-card";
 import { SubscriberChart } from "@/components/admin/widgets/subscriber-chart";
 import { SubscriberList } from "@/components/admin/widgets/subscriber-list";
+import { SubscriberActions } from "@/components/admin/widgets/subscriber-actions";
 
 interface SubscriberStats {
   totalActive: number;
@@ -168,6 +169,11 @@ export default async function SubscribersPage() {
       {/* Recent subscribers */}
       <WidgetCard title="Recent Subscribers">
         <SubscriberList subscribers={recentSubscribers} />
+      </WidgetCard>
+
+      {/* Actions */}
+      <WidgetCard title="Actions">
+        <SubscriberActions />
       </WidgetCard>
     </div>
   );
