@@ -1,21 +1,6 @@
 {
   "notes": [
     {
-      "text": "Source URL integrity: Two of your seven sources use URLs that look like landing pages rather than permalinks to specific reports (the Deloitte Insights URL and the Gartner document URL). For a publication that holds every stat to named-source standards, these need to be direct document links or replaced with the closest verifiable alternative. If the Deloitte '9.4 months' figure cannot be traced to a live document, reframe it as 'per Deloitte's 2024 analysis' and note that the full report is available on request. One unverifiable central claim can undermine reader trust in the entire piece.",
-      "slot": "morning",
-      "date": "2026-03-29T13:28:19.990691+00:00"
-    },
-    {
-      "text": "MOF internal link funnel mapping: You have three internal links, which is excellent MOF hygiene. However, review which funnel stage each target article occupies. MOF rules require at least one link pointing up to a TOF piece (awareness-level content a reader new to the topic would need) and at least one pointing down to a BOF piece (decision-stage content for readers ready to evaluate vendors). Right now all three links appear to be peer-level or BOF content. Adding one TOF link — something like an explainer on what agentic AI is, aimed at executives unfamiliar with the category — would complete the funnel chain correctly.",
-      "slot": "morning",
-      "date": "2026-03-29T13:28:19.990691+00:00"
-    },
-    {
-      "text": "Eliminate the Oracle/ServiceNow statistic repetition between Sections 1 and 2: The 34% procure-to-pay and 52% resolution-time figures appear in both the first and second H2 sections. In a 2,600-word MOF article, readers notice when the same data point recurs within 300 words. Consolidate: keep the full attributed figures in Section 2 ('What the Cycle-Time Results Show'), and replace the opening of Section 1 with a higher-level framing sentence that sets up the ROI argument without pre-empting the evidence. This tightens the article and makes Section 2 land with more weight.",
-      "slot": "morning",
-      "date": "2026-03-29T13:28:19.990691+00:00"
-    },
-    {
       "text": "Answer-first discipline on section openers: The paragraph immediately after your first H2 opens with methodology context rather than a direct finding. Per editorial guidelines and the answer-first check, the first paragraph under each H2 should lead with the conclusion, then support it. Rewrite the opener to something like: 'The SiliconANGLE research tested adoption velocity at Fortune 500 firms with public AI disclosures — and the sample design means its 12-to-18-month gap estimate is a floor, not a ceiling.' That one sentence delivers the finding before the explanation.",
       "slot": "morning",
       "date": "2026-03-30T13:20:20.565428+00:00"
@@ -149,6 +134,21 @@
       "text": "STAT-BOX SOURCING PRECISION: The first stat-box credits 'MIT GenAI Divide: State of AI in Business 2025' for the 95% figure — confirmed accurate. However, the bar-chart shortcode at the bottom credits both 'IBM Institute for Business Value / PwC 29th Global CEO Survey 2026' for three separate data points that come from two different studies. Split these into two separate visual elements or add a footnote clarifying which figure comes from which source, so readers and fact-checkers can trace each number independently.",
       "slot": "morning",
       "date": "2026-04-03T13:09:36.580453+00:00"
+    },
+    {
+      "text": "Render the FAQ in the article body, not just in YAML frontmatter. When has_faq is true, the article must contain a visible '## Frequently Asked Questions' section with each Q+A pair written out in full — likely as bold question followed by answer paragraph. The faq_pairs block in frontmatter is metadata only; it does not satisfy the body-rendering requirement that readers and search engines see.",
+      "slot": "evening",
+      "date": "2026-04-03T21:09:21.432285+00:00"
+    },
+    {
+      "text": "Add a labeled 'Clear Verdict' or '## Verdict' section before the Sources list. The 'Proceed Only When All Four Gates Clear' section does the editorial job but lacks the standard label that readers skimming for a bottom-line recommendation expect, and that our BOF template requires for consistent funnel structure across the publication.",
+      "slot": "evening",
+      "date": "2026-04-03T21:09:21.432285+00:00"
+    },
+    {
+      "text": "The 'author' field is blank in the frontmatter. Every published article should carry a named author or a publication byline. Empty author fields create credibility gaps for executive readers and hurt E-E-A-T signals for SEO. Either assign the byline to the staff writer or use 'Particle Post Editorial Team' as a fallback.",
+      "slot": "evening",
+      "date": "2026-04-03T21:09:21.432285+00:00"
     }
   ]
 }
