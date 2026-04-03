@@ -1,21 +1,6 @@
 {
   "notes": [
     {
-      "text": "TOF H1 must be a question: The Formatter dropped the question-format H1 that was correctly drafted in the restructured version. For every TOF article, the YAML title field (which renders as the H1) must begin with 'Does...', 'Can...', 'Should...', or 'Is...'. A title like 'Can Your AI Agent Security Keep Up With RSAC 2026's Findings?' signals to the reader this is an evaluative piece, aligns with TOF intent, and matches the GSO answer-first structure — the first H2 then answers the question directly. Remind the Formatter to preserve the question format from the restructured draft.",
-      "slot": "evening",
-      "date": "2026-03-28T21:15:26.297492+00:00"
-    },
-    {
-      "text": "Render the FAQ section in the article body: When has_faq=true, the FAQ Q&A pairs must appear as a '## Frequently Asked Questions' section with '### Q:' / '**A:**' formatting in the article body itself — not just in YAML. The five FAQ pairs are already well-written and tightly sourced; they just need to be surfaced in the rendered markdown so both readers and search crawlers can access them. This is a Formatter instruction gap, not a content gap.",
-      "slot": "evening",
-      "date": "2026-03-28T21:15:26.297492+00:00"
-    },
-    {
-      "text": "The 'Clear Verdict' section label is a required TOF structural element: The closing section 'Act Now: The Gap Closes Before an Attacker or a Regulator Finds It' delivers a strong conclusion, but it must be labeled '## Clear Verdict' to satisfy TOF funnel compliance. The substance is there; only the heading label needs to change. Going forward, treat 'Clear Verdict' as a fixed section-name anchor for all TOF articles, the same way MOF articles require a fixed 'What the Research Does NOT Prove' section.",
-      "slot": "evening",
-      "date": "2026-03-28T21:15:26.297492+00:00"
-    },
-    {
       "text": "Source URL integrity: Two of your seven sources use URLs that look like landing pages rather than permalinks to specific reports (the Deloitte Insights URL and the Gartner document URL). For a publication that holds every stat to named-source standards, these need to be direct document links or replaced with the closest verifiable alternative. If the Deloitte '9.4 months' figure cannot be traced to a live document, reframe it as 'per Deloitte's 2024 analysis' and note that the full report is available on request. One unverifiable central claim can undermine reader trust in the entire piece.",
       "slot": "morning",
       "date": "2026-03-29T13:28:19.990691+00:00"
@@ -149,6 +134,21 @@
       "text": "Source spot-check passed: Beam AI's 52.9% figure is verified (47.1% monitored = 52.9% unmonitored), and the Deloitte 2026 report is confirmed live and real. Oliver Wyman and Darktrace citations were not independently verified via search — recommend the writer confirm those URLs resolve to the specific pages cited before final publication.",
       "slot": "evening",
       "date": "2026-04-02T21:08:08.528542+00:00"
+    },
+    {
+      "text": "CRITICAL — Fix the MIT attribution in the lede: The article opens 'MIT's Project NANDA analyzed more than 300 publicly disclosed AI deployments,' but Project NANDA is an MIT networking/AI agents initiative unrelated to this study. The correct attribution is 'MIT's GenAI Divide: State of AI in Business 2025,' consistent with how the report is named in the rest of the article and in the Sources section. Change the lede before publication to avoid a factual embarrassment.",
+      "slot": "morning",
+      "date": "2026-04-03T13:09:36.580453+00:00"
+    },
+    {
+      "text": "FAQ RENDERING GAP: The YAML frontmatter correctly sets has_faq: true and populates five faq_pairs, but no '## Frequently Asked Questions' section appears in the article body. The FAQ must be rendered as a visible H2 section with Q+A pairs in the body — not stored only in frontmatter — for schema_type: FAQPage structured data to work and for the checklist requirement to pass. Add the rendered FAQ block before the Sources section.",
+      "slot": "morning",
+      "date": "2026-04-03T13:09:36.580453+00:00"
+    },
+    {
+      "text": "STAT-BOX SOURCING PRECISION: The first stat-box credits 'MIT GenAI Divide: State of AI in Business 2025' for the 95% figure — confirmed accurate. However, the bar-chart shortcode at the bottom credits both 'IBM Institute for Business Value / PwC 29th Global CEO Survey 2026' for three separate data points that come from two different studies. Split these into two separate visual elements or add a footnote clarifying which figure comes from which source, so readers and fact-checkers can trace each number independently.",
+      "slot": "morning",
+      "date": "2026-04-03T13:09:36.580453+00:00"
     }
   ]
 }

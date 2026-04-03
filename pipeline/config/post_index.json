@@ -1,6 +1,20 @@
 {
   "posts": [
     {
+      "slug": "enterprise-ai-roi-four-practices",
+      "title": "Enterprise AI ROI: 4 Practices That Unlock 55% Returns",
+      "funnel_type": "MOF",
+      "content_type": "practical",
+      "tags": [
+        "Enterprise AI",
+        "AI ROI",
+        "Generative AI",
+        "AI Governance",
+        "AI Strategy"
+      ],
+      "date": "2026-04-03"
+    },
+    {
       "slug": "cfo-ai-deployment-without-chief-ai-officer",
       "title": "CFO AI Deployment: Skip the Chief AI Officer",
       "funnel_type": "TOF",
