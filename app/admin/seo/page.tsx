@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { WidgetCard } from "@/components/admin/widget-card";
+import { KeywordTargetEditor } from "@/components/admin/widgets/keyword-target-editor";
 
 /* ---------- Types ---------- */
 
@@ -400,6 +401,11 @@ export default function SeoPage() {
           </div>
         </WidgetCard>
       )}
+
+      {/* Keyword & Gap Management */}
+      <WidgetCard title="Manage Keywords & Content Gaps">
+        <KeywordTargetEditor />
+      </WidgetCard>
     </div>
   );
 }
