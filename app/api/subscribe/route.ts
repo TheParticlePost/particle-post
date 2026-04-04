@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getSupabaseClient } from "@/lib/supabase";
+import { sendEmail } from "@/lib/email";
+import { welcomeEmailTemplate } from "@/lib/email-templates";
+import { buildUnsubscribeUrl } from "@/app/api/unsubscribe/route";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -83,6 +86,22 @@ export async function POST(req: NextRequest) {
         { error: "Something went wrong. Please try again." },
         { status: 500 }
       );
+    }
+
+    // Send welcome email (fire-and-forget, never blocks subscribe)
+    try {
+      const unsubUrl = buildUnsubscribeUrl(email);
+      await sendEmail({
+        to: email,
+        subject: "Welcome to Particle Post",
+        html: welcomeEmailTemplate(unsubUrl),
+        headers: {
+          "List-Unsubscribe": `<${unsubUrl}>`,
+          "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
+        },
+      });
+    } catch (emailErr) {
+      console.error("Welcome email failed:", emailErr);
     }
 
     return NextResponse.json({ message: "Successfully subscribed!" });

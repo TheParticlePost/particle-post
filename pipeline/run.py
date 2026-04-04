@@ -680,6 +680,20 @@ def _write_post(content: str, dry_run: bool, funnel_type: str = "???", content_t
     article_url = f"https://theparticlepost.com/posts/{slug}/"
     _submit_to_search_engines(article_url)
 
+    # Send email notification to subscribers (non-fatal)
+    try:
+        from pipeline.utils.email_sender import send_article_notification
+        desc = _extract_frontmatter_field(content, "description")
+        cover = _extract_frontmatter_field(content, "cover")
+        if not cover:
+            cover = _extract_frontmatter_field(content, "image")
+        email_result = send_article_notification(
+            title=title, slug=slug, description=desc, image_url=cover or None,
+        )
+        print(f"  [Email] {email_result}")
+    except Exception as email_err:
+        print(f"  [Email] Warning: notification failed — {email_err}")
+
 
 def _update_post_index(
     title: str, slug: str, funnel_type: str, date_str: str,
