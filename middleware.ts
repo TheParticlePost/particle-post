@@ -40,7 +40,9 @@ export async function middleware(request: NextRequest) {
       !user &&
       (pathname.startsWith("/admin") ||
         pathname.startsWith("/profile") ||
-        pathname.startsWith("/settings"))
+        pathname.startsWith("/settings") ||
+        pathname.startsWith("/specialists/register") ||
+        pathname.startsWith("/dashboard"))
     ) {
       const url = request.nextUrl.clone();
       url.pathname = "/login";
@@ -59,6 +61,21 @@ export async function middleware(request: NextRequest) {
       if (!profile || profile.role !== "admin") {
         const url = request.nextUrl.clone();
         url.pathname = "/";
+        return NextResponse.redirect(url);
+      }
+    }
+
+    // Dashboard routes: check specialist status
+    if (user && pathname.startsWith("/dashboard")) {
+      const { data: specialist } = await supabase
+        .from("specialists")
+        .select("status")
+        .eq("user_id", user.id)
+        .maybeSingle();
+
+      if (!specialist || specialist.status !== "approved") {
+        const url = request.nextUrl.clone();
+        url.pathname = "/specialists/register";
         return NextResponse.redirect(url);
       }
     }

@@ -1,51 +1,6 @@
 {
   "notes": [
     {
-      "text": "TOF H1 must be a question: The Formatter dropped the question-format H1 that was correctly drafted in the restructured version. For every TOF article, the YAML title field (which renders as the H1) must begin with 'Does...', 'Can...', 'Should...', or 'Is...'. A title like 'Can Your AI Agent Security Keep Up With RSAC 2026's Findings?' signals to the reader this is an evaluative piece, aligns with TOF intent, and matches the GSO answer-first structure — the first H2 then answers the question directly. Remind the Formatter to preserve the question format from the restructured draft.",
-      "slot": "evening",
-      "date": "2026-03-28T21:15:26.297492+00:00"
-    },
-    {
-      "text": "Render the FAQ section in the article body: When has_faq=true, the FAQ Q&A pairs must appear as a '## Frequently Asked Questions' section with '### Q:' / '**A:**' formatting in the article body itself — not just in YAML. The five FAQ pairs are already well-written and tightly sourced; they just need to be surfaced in the rendered markdown so both readers and search crawlers can access them. This is a Formatter instruction gap, not a content gap.",
-      "slot": "evening",
-      "date": "2026-03-28T21:15:26.297492+00:00"
-    },
-    {
-      "text": "The 'Clear Verdict' section label is a required TOF structural element: The closing section 'Act Now: The Gap Closes Before an Attacker or a Regulator Finds It' delivers a strong conclusion, but it must be labeled '## Clear Verdict' to satisfy TOF funnel compliance. The substance is there; only the heading label needs to change. Going forward, treat 'Clear Verdict' as a fixed section-name anchor for all TOF articles, the same way MOF articles require a fixed 'What the Research Does NOT Prove' section.",
-      "slot": "evening",
-      "date": "2026-03-28T21:15:26.297492+00:00"
-    },
-    {
-      "text": "Source URL integrity: Two of your seven sources use URLs that look like landing pages rather than permalinks to specific reports (the Deloitte Insights URL and the Gartner document URL). For a publication that holds every stat to named-source standards, these need to be direct document links or replaced with the closest verifiable alternative. If the Deloitte '9.4 months' figure cannot be traced to a live document, reframe it as 'per Deloitte's 2024 analysis' and note that the full report is available on request. One unverifiable central claim can undermine reader trust in the entire piece.",
-      "slot": "morning",
-      "date": "2026-03-29T13:28:19.990691+00:00"
-    },
-    {
-      "text": "MOF internal link funnel mapping: You have three internal links, which is excellent MOF hygiene. However, review which funnel stage each target article occupies. MOF rules require at least one link pointing up to a TOF piece (awareness-level content a reader new to the topic would need) and at least one pointing down to a BOF piece (decision-stage content for readers ready to evaluate vendors). Right now all three links appear to be peer-level or BOF content. Adding one TOF link — something like an explainer on what agentic AI is, aimed at executives unfamiliar with the category — would complete the funnel chain correctly.",
-      "slot": "morning",
-      "date": "2026-03-29T13:28:19.990691+00:00"
-    },
-    {
-      "text": "Eliminate the Oracle/ServiceNow statistic repetition between Sections 1 and 2: The 34% procure-to-pay and 52% resolution-time figures appear in both the first and second H2 sections. In a 2,600-word MOF article, readers notice when the same data point recurs within 300 words. Consolidate: keep the full attributed figures in Section 2 ('What the Cycle-Time Results Show'), and replace the opening of Section 1 with a higher-level framing sentence that sets up the ROI argument without pre-empting the evidence. This tightens the article and makes Section 2 land with more weight.",
-      "slot": "morning",
-      "date": "2026-03-29T13:28:19.990691+00:00"
-    },
-    {
-      "text": "Answer-first discipline on section openers: The paragraph immediately after your first H2 opens with methodology context rather than a direct finding. Per editorial guidelines and the answer-first check, the first paragraph under each H2 should lead with the conclusion, then support it. Rewrite the opener to something like: 'The SiliconANGLE research tested adoption velocity at Fortune 500 firms with public AI disclosures — and the sample design means its 12-to-18-month gap estimate is a floor, not a ceiling.' That one sentence delivers the finding before the explanation.",
-      "slot": "morning",
-      "date": "2026-03-30T13:20:20.565428+00:00"
-    },
-    {
-      "text": "FAQ section placement: Your FAQ data lives entirely in the YAML frontmatter as 'faq_pairs', with no '## Frequently Asked Questions' section rendered in the article body. If your template auto-renders FAQ schema from frontmatter, confirm with the formatter that the output HTML contains visible Q+A pairs for readers, not just JSON-LD schema markup. If the template does not auto-render, add the FAQ section explicitly to the article body before the Sources section. The has_faq: true flag creates a reader expectation that must be met in the visible content.",
-      "slot": "morning",
-      "date": "2026-03-30T13:20:20.565428+00:00"
-    },
-    {
-      "text": "Internal link funnel direction: You have four internal links, which exceeds the MOF minimum, but the slugs alone do not confirm which links route to TOF articles versus MOF versus BOF. MOF compliance requires at least one link in each direction (to_TOF, to_BOF, to_MOF). Before the next submission, annotate your internal links in your draft notes with their funnel type so the formatter can verify routing. For example, the Oracle vs Zalos comparison and the AP automation guide likely sit at BOF; the explainable AI and FCA piece may be MOF or TOF. Confirming this routing protects the article from a funnel compliance deduction on re-audit.",
-      "slot": "morning",
-      "date": "2026-03-30T13:20:20.565428+00:00"
-    },
-    {
       "text": "RENDER THE FAQ INTO THE ARTICLE BODY: You correctly set has_faq: true and populated faq_pairs in the YAML, but the rendered FAQ section never appears in the article body. Add a '## Frequently Asked Questions' H2 followed by each Q+A pair formatted in bold question / plain-text answer blocks. This is a hard checklist requirement and also a significant GSO (Google Search Optimization) opportunity given the FAQPage schema type you've declared.",
       "slot": "evening",
       "date": "2026-03-30T21:04:54.873158+00:00"
@@ -149,6 +104,51 @@
       "text": "Source spot-check passed: Beam AI's 52.9% figure is verified (47.1% monitored = 52.9% unmonitored), and the Deloitte 2026 report is confirmed live and real. Oliver Wyman and Darktrace citations were not independently verified via search — recommend the writer confirm those URLs resolve to the specific pages cited before final publication.",
       "slot": "evening",
       "date": "2026-04-02T21:08:08.528542+00:00"
+    },
+    {
+      "text": "CRITICAL — Fix the MIT attribution in the lede: The article opens 'MIT's Project NANDA analyzed more than 300 publicly disclosed AI deployments,' but Project NANDA is an MIT networking/AI agents initiative unrelated to this study. The correct attribution is 'MIT's GenAI Divide: State of AI in Business 2025,' consistent with how the report is named in the rest of the article and in the Sources section. Change the lede before publication to avoid a factual embarrassment.",
+      "slot": "morning",
+      "date": "2026-04-03T13:09:36.580453+00:00"
+    },
+    {
+      "text": "FAQ RENDERING GAP: The YAML frontmatter correctly sets has_faq: true and populates five faq_pairs, but no '## Frequently Asked Questions' section appears in the article body. The FAQ must be rendered as a visible H2 section with Q+A pairs in the body — not stored only in frontmatter — for schema_type: FAQPage structured data to work and for the checklist requirement to pass. Add the rendered FAQ block before the Sources section.",
+      "slot": "morning",
+      "date": "2026-04-03T13:09:36.580453+00:00"
+    },
+    {
+      "text": "STAT-BOX SOURCING PRECISION: The first stat-box credits 'MIT GenAI Divide: State of AI in Business 2025' for the 95% figure — confirmed accurate. However, the bar-chart shortcode at the bottom credits both 'IBM Institute for Business Value / PwC 29th Global CEO Survey 2026' for three separate data points that come from two different studies. Split these into two separate visual elements or add a footnote clarifying which figure comes from which source, so readers and fact-checkers can trace each number independently.",
+      "slot": "morning",
+      "date": "2026-04-03T13:09:36.580453+00:00"
+    },
+    {
+      "text": "Render the FAQ in the article body, not just in YAML frontmatter. When has_faq is true, the article must contain a visible '## Frequently Asked Questions' section with each Q+A pair written out in full — likely as bold question followed by answer paragraph. The faq_pairs block in frontmatter is metadata only; it does not satisfy the body-rendering requirement that readers and search engines see.",
+      "slot": "evening",
+      "date": "2026-04-03T21:09:21.432285+00:00"
+    },
+    {
+      "text": "Add a labeled 'Clear Verdict' or '## Verdict' section before the Sources list. The 'Proceed Only When All Four Gates Clear' section does the editorial job but lacks the standard label that readers skimming for a bottom-line recommendation expect, and that our BOF template requires for consistent funnel structure across the publication.",
+      "slot": "evening",
+      "date": "2026-04-03T21:09:21.432285+00:00"
+    },
+    {
+      "text": "The 'author' field is blank in the frontmatter. Every published article should carry a named author or a publication byline. Empty author fields create credibility gaps for executive readers and hurt E-E-A-T signals for SEO. Either assign the byline to the staff writer or use 'Particle Post Editorial Team' as a fallback.",
+      "slot": "evening",
+      "date": "2026-04-03T21:09:21.432285+00:00"
+    },
+    {
+      "text": "Convert the H1 to a question for TOF compliance. A strong candidate: 'Does Your AI Agent Governance Framework Have These 5 Controls?' — this preserves the primary keyword 'AI agent governance framework,' signals the listicle format, and satisfies the TOF question-H1 rule that currently costs you 10 points.",
+      "slot": "morning",
+      "date": "2026-04-04T13:07:29.856805+00:00"
+    },
+    {
+      "text": "Fix the Cisco source URL in your Sources section. You're citing mcpmanager.ai as the reference for the 24% stat, but the primary source is the Cisco AI Readiness Index PDF hosted at cisco.com. Tavily confirmed the stat is accurate, but linking to a secondary aggregator instead of the original report undermines credibility with executive readers and may raise fact-checking flags in future audits.",
+      "slot": "morning",
+      "date": "2026-04-04T13:07:29.856805+00:00"
+    },
+    {
+      "text": "The FAQ section is well-constructed with 5 Q+A pairs that directly mirror likely executive search queries — this is exactly the right approach for FAQPage schema. Consider tightening the answer to FAQ #4 (kill switch requirements) by leading with the actionable spec before the 60% stat, following the answer-first structure you use well elsewhere in the article.",
+      "slot": "morning",
+      "date": "2026-04-04T13:07:29.856805+00:00"
     }
   ]
 }

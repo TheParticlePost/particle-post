@@ -15,6 +15,7 @@ const NAV_LINKS = [
   { href: "/", label: "Briefings" },
   { href: "/categories/", label: "Deep Dives" },
   { href: "/pulse/", label: "AI Pulse" },
+  { href: "/specialists/", label: "Specialists" },
   { href: "/archive/", label: "Archive" },
 ];
 
@@ -29,6 +30,7 @@ export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [user, setUser] = useState<UserProfile | null>(null);
+  const [isSpecialist, setIsSpecialist] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -63,6 +65,15 @@ export function Navbar() {
         avatar_url: authUser.user_metadata?.avatar_url || null,
         role: "user",
       });
+
+      // Check if user is an approved specialist
+      const { data: specialist } = await supabase
+        .from("specialists")
+        .select("status")
+        .eq("user_id", authUser.id)
+        .eq("status", "approved")
+        .maybeSingle();
+      setIsSpecialist(!!specialist);
     }
 
     getUser();
@@ -139,7 +150,14 @@ export function Navbar() {
             <ThemeToggle />
 
             {user ? (
-              <div className="hidden sm:block">
+              <div className="hidden sm:flex items-center gap-2">
+                {isSpecialist && (
+                  <Link href="/dashboard/">
+                    <Button variant="ghost" size="compact">
+                      Dashboard
+                    </Button>
+                  </Link>
+                )}
                 <UserMenu user={user} />
               </div>
             ) : (

@@ -5,13 +5,15 @@
 
 ## Posts
 
+- [AI Agent Governance Framework: 5-Step Control Plan](https://theparticlepost.com/posts/ai-agent-governance-framework-5-steps/)
+- [EU AI Act Enforcement: AI Compliance Banking Guide](https://theparticlepost.com/posts/eu-ai-act-enforcement-banking-compliance/)
+- [Enterprise AI ROI: 4 Practices That Unlock 55% Returns](https://theparticlepost.com/posts/enterprise-ai-roi-four-practices/)
 - [AI Fraud Detection ROI: Real Wins, Rising Threats](https://theparticlepost.com/posts/ai-fraud-detection-roi-arms-race/)
 - [AI Agent Governance Framework for Enterprise Deployment 2026](https://theparticlepost.com/posts/ai-agent-governance-framework-enterprise-2026/)
 - [AI Accounts Payable Automation: 6-Week Deployment Playbook](https://theparticlepost.com/posts/ai-accounts-payable-automation-deployment-playbook/)
 - [Agentic AI Accounts Payable: 60-80% ROI Implementation Playbook](https://theparticlepost.com/posts/agentic-ap-automation-roi-implementation-playbook/)
 - [CFO AI Deployment: Skip the Chief AI Officer](https://theparticlepost.com/posts/cfo-ai-deployment-without-chief-ai-officer/)
 - [Agentic AI Finance: 5-Phase Enterprise Readiness Framework](https://theparticlepost.com/posts/agentic-ai-enterprise-readiness-framework/)
-- [Agentic AI Deployment: Is Your Enterprise Ready to Compete?](https://theparticlepost.com/posts/agentic-ai-deployment-enterprise-readiness/)
 - [Agentic AI Finance: What the Research Shows About Execution-Driven Systems](https://theparticlepost.com/posts/agentic-ai-finance-execution-research-deployment/)
 - [AI Compensation Management: What CFOs Must Know in 2026](https://theparticlepost.com/posts/ai-compensation-management-predictive-salary-planning/)
 - [Agentic AI Risk Management Finance: Security Overhaul Now](https://theparticlepost.com/posts/agentic-ai-risk-management-finance-security/)
@@ -20,9 +22,7 @@
 - [AI Risk Management Finance: Stop Nation-State Breaches](https://theparticlepost.com/posts/enterprise-cybersecurity-nation-state-defense-framework/)
 - [Chief AI Officer: Why Artificial Intelligence Banking Needs One](https://theparticlepost.com/posts/chief-ai-officer-banking-governance/)
 - [AI Risk Management Finance: Stop Hallucinations Before Deployment](https://theparticlepost.com/posts/ai-hallucination-risk-finance-deployment-validation/)
-- [Oracle](https://theparticlepost.com/posts/oracle-ai-agent-rebuild-cfo-erp-modernization/)
 - [The AI Fraud Arms Race: What the Research Shows About Detection ROI, and Where It Breaks](https://theparticlepost.com/posts/ai-fraud-detection-roi-arms-race/)
-- [AI Fraud Detection ROI: Why Banks Can](https://theparticlepost.com/posts/ai-fraud-detection-roi-40-billion/)
 - [How to Deploy AI Fraud Detection: 5 Implementation Pitfalls and Go/No-Go Checkpoints](https://theparticlepost.com/posts/ai-fraud-detection-deployment-implementation/)
 - [AI Accounts Payable Automation: 7-Step Implementation Guide](https://theparticlepost.com/posts/ai-accounts-payable-automation-implementation-guide/)
 - [Oracle Fusion Agentic Apps vs Zalos: Which Fits Your Stack](https://theparticlepost.com/posts/agentic-ai-finance-operations-oracle-zalos/)

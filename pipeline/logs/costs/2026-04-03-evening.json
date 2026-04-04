@@ -1,0 +1,12 @@
+{
+  "timestamp": "2026-04-03T21:09:21.431985+00:00",
+  "slot": "evening",
+  "attempt": 1,
+  "prompt_tokens": 93736,
+  "cached_prompt_tokens": 0,
+  "completion_tokens": 18884,
+  "total_tokens": 112620,
+  "successful_requests": 12,
+  "estimated_cost_usd": 0.3575,
+  "verdict": "APPROVE"
+}
