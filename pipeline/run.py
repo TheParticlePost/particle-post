@@ -40,6 +40,7 @@ GSO_CONFIG_FILE  = _REPO_ROOT / "pipeline" / "config" / "seo_gso_config.json"
 LLMS_TXT_FILE    = _REPO_ROOT / "blog" / "static" / "llms.txt"
 LLMS_FULL_FILE   = _REPO_ROOT / "blog" / "static" / "llms-full.txt"
 URGENT_TOPIC_FILE = _REPO_ROOT / "pipeline" / "data" / "urgent_topic.json"
+TOPIC_PERF_FILE   = _REPO_ROOT / "pipeline" / "data" / "topic_performance.json"
 
 MAX_ATTEMPTS = 2
 
@@ -373,6 +374,39 @@ def _save_coaching_notes(verdict: dict, slot: str) -> None:
 # ──────────────────────────────────────────────────────────────────────────────
 # Rejection log
 # ──────────────────────────────────────────────────────────────────────────────
+
+def _record_topic_performance(
+    slug: str, title: str, funnel_type: str, content_type: str,
+    director_score: int, seo_data: dict,
+) -> None:
+    """Record topic performance for feedback loop to Topic Selector."""
+    TOPIC_PERF_FILE.parent.mkdir(parents=True, exist_ok=True)
+    if TOPIC_PERF_FILE.exists():
+        try:
+            data = json.loads(TOPIC_PERF_FILE.read_text(encoding="utf-8"))
+        except Exception:
+            data = {"articles": []}
+    else:
+        data = {"articles": []}
+
+    data["articles"].append({
+        "slug": slug,
+        "title": title,
+        "primary_keyword": seo_data.get("primary_keyword", ""),
+        "funnel_type": funnel_type,
+        "content_type": content_type,
+        "director_score": director_score,
+        "published_at": datetime.now(timezone.utc).isoformat(),
+        "tags": seo_data.get("tags", []),
+    })
+
+    # Keep last 50 entries
+    data["articles"] = data["articles"][-50:]
+    TOPIC_PERF_FILE.write_text(
+        json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8"
+    )
+    print(f"  Topic performance recorded (score: {director_score}).")
+
 
 def _write_rejection_log(
     slot: str, attempt: int, verdict: dict, article_preview: str
@@ -1086,10 +1120,23 @@ def main() -> None:
             date_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
             _write_post(content=formatter_content, dry_run=args.dry_run, funnel_type=funnel_type, content_type=content_type)
 
+            slug = _extract_frontmatter_field(formatter_content, "slug")
             if not args.dry_run:
-                slug = _extract_frontmatter_field(formatter_content, "slug")
                 _update_gso_state(seo_data, slug, date_str)
                 _generate_llms_txt()
+
+            # Record topic performance (both dry-run and live)
+            try:
+                _record_topic_performance(
+                    slug=slug,
+                    title=_extract_frontmatter_field(formatter_content, "title"),
+                    funnel_type=funnel_type,
+                    content_type=content_type,
+                    director_score=score,
+                    seo_data=seo_data,
+                )
+            except Exception as perf_err:
+                print(f"  [Topic Performance] Warning: {perf_err}")
 
             return  # success
 
