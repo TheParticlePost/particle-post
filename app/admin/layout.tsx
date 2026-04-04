@@ -4,12 +4,44 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { ToastProvider } from "@/components/admin/toast-provider";
 import { CommandPalette } from "@/components/admin/command-palette";
+import { NavLink } from "@/components/admin/nav-link";
+import {
+  LayoutDashboard,
+  FileText,
+  TrendingUp,
+  Store,
+  Shield,
+} from "lucide-react";
 
 export const metadata = {
   title: "Admin Dashboard",
   robots: { index: false, follow: false },
 };
 
+const NAV_GROUPS = [
+  {
+    label: "Operations",
+    items: [
+      { label: "Command Center", href: "/admin", icon: <LayoutDashboard className="w-[18px] h-[18px]" /> },
+      { label: "Content", href: "/admin/content", icon: <FileText className="w-[18px] h-[18px]" /> },
+      { label: "Growth", href: "/admin/growth", icon: <TrendingUp className="w-[18px] h-[18px]" /> },
+    ],
+  },
+  {
+    label: "Business",
+    items: [
+      { label: "Marketplace", href: "/admin/marketplace", icon: <Store className="w-[18px] h-[18px]" /> },
+    ],
+  },
+  {
+    label: "System",
+    items: [
+      { label: "Security", href: "/admin/security", icon: <Shield className="w-[18px] h-[18px]" /> },
+    ],
+  },
+];
+
+// Flat list for mobile nav and backward compat
 const NAV_ITEMS = [
   {
     label: "Overview",
@@ -228,21 +260,24 @@ export default async function AdminLayout({
           </Link>
         </div>
 
-        {/* Nav links */}
-        <nav className="flex-1 px-3 py-4 space-y-1">
-          {NAV_ITEMS.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={cn(
-                "flex items-center gap-3 px-3 py-2.5 rounded-lg text-body-sm font-medium",
-                "text-text-secondary hover:text-text-primary hover:bg-bg-high",
-                "transition-colors duration-200"
-              )}
-            >
-              {item.icon}
-              {item.label}
-            </Link>
+        {/* Nav links — grouped */}
+        <nav className="flex-1 px-3 py-4 space-y-4">
+          {NAV_GROUPS.map((group) => (
+            <div key={group.label}>
+              <p className="px-3 mb-1 font-mono text-caption text-text-muted uppercase tracking-widest">
+                {group.label}
+              </p>
+              <div className="space-y-0.5">
+                {group.items.map((item) => (
+                  <NavLink
+                    key={item.href}
+                    href={item.href}
+                    label={item.label}
+                    icon={item.icon}
+                  />
+                ))}
+              </div>
+            </div>
           ))}
         </nav>
 
