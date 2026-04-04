@@ -71,6 +71,28 @@ async function dispatchWorkflow(workflow, env) {
   if (!resp.ok) {
     const body = await resp.text();
     console.error(`[particle-post] GitHub API error ${resp.status} for ${workflow}: ${body}`);
+
+    // Send alert email via Resend (if configured)
+    if (env.RESEND_API_KEY && env.ALERT_EMAIL) {
+      try {
+        await fetch('https://api.resend.com/emails', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${env.RESEND_API_KEY}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            from: 'Particle Post Alerts <alerts@theparticlepost.com>',
+            to: [env.ALERT_EMAIL],
+            subject: `[ALERT] Failed to dispatch ${workflow}`,
+            text: `Cloudflare Worker failed to dispatch ${workflow}.\nGitHub API returned ${resp.status}: ${body}\nTime: ${new Date().toISOString()}`,
+          }),
+        });
+      } catch (emailErr) {
+        console.error(`[particle-post] Alert email also failed: ${emailErr}`);
+      }
+    }
+
     throw new Error(`GitHub dispatch failed for ${workflow}: ${resp.status}`);
   }
 
