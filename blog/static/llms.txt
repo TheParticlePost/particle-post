@@ -5,6 +5,7 @@
 
 ## Posts
 
+- [AI Agent Governance Framework: 5-Step Control Plan](https://theparticlepost.com/posts/ai-agent-governance-framework-5-steps/)
 - [EU AI Act Enforcement: AI Compliance Banking Guide](https://theparticlepost.com/posts/eu-ai-act-enforcement-banking-compliance/)
 - [Enterprise AI ROI: 4 Practices That Unlock 55% Returns](https://theparticlepost.com/posts/enterprise-ai-roi-four-practices/)
 - [AI Fraud Detection ROI: Real Wins, Rising Threats](https://theparticlepost.com/posts/ai-fraud-detection-roi-arms-race/)

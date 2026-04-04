@@ -1,21 +1,6 @@
 {
   "notes": [
     {
-      "text": "Answer-first discipline on section openers: The paragraph immediately after your first H2 opens with methodology context rather than a direct finding. Per editorial guidelines and the answer-first check, the first paragraph under each H2 should lead with the conclusion, then support it. Rewrite the opener to something like: 'The SiliconANGLE research tested adoption velocity at Fortune 500 firms with public AI disclosures — and the sample design means its 12-to-18-month gap estimate is a floor, not a ceiling.' That one sentence delivers the finding before the explanation.",
-      "slot": "morning",
-      "date": "2026-03-30T13:20:20.565428+00:00"
-    },
-    {
-      "text": "FAQ section placement: Your FAQ data lives entirely in the YAML frontmatter as 'faq_pairs', with no '## Frequently Asked Questions' section rendered in the article body. If your template auto-renders FAQ schema from frontmatter, confirm with the formatter that the output HTML contains visible Q+A pairs for readers, not just JSON-LD schema markup. If the template does not auto-render, add the FAQ section explicitly to the article body before the Sources section. The has_faq: true flag creates a reader expectation that must be met in the visible content.",
-      "slot": "morning",
-      "date": "2026-03-30T13:20:20.565428+00:00"
-    },
-    {
-      "text": "Internal link funnel direction: You have four internal links, which exceeds the MOF minimum, but the slugs alone do not confirm which links route to TOF articles versus MOF versus BOF. MOF compliance requires at least one link in each direction (to_TOF, to_BOF, to_MOF). Before the next submission, annotate your internal links in your draft notes with their funnel type so the formatter can verify routing. For example, the Oracle vs Zalos comparison and the AP automation guide likely sit at BOF; the explainable AI and FCA piece may be MOF or TOF. Confirming this routing protects the article from a funnel compliance deduction on re-audit.",
-      "slot": "morning",
-      "date": "2026-03-30T13:20:20.565428+00:00"
-    },
-    {
       "text": "RENDER THE FAQ INTO THE ARTICLE BODY: You correctly set has_faq: true and populated faq_pairs in the YAML, but the rendered FAQ section never appears in the article body. Add a '## Frequently Asked Questions' H2 followed by each Q+A pair formatted in bold question / plain-text answer blocks. This is a hard checklist requirement and also a significant GSO (Google Search Optimization) opportunity given the FAQPage schema type you've declared.",
       "slot": "evening",
       "date": "2026-03-30T21:04:54.873158+00:00"
@@ -149,6 +134,21 @@
       "text": "The 'author' field is blank in the frontmatter. Every published article should carry a named author or a publication byline. Empty author fields create credibility gaps for executive readers and hurt E-E-A-T signals for SEO. Either assign the byline to the staff writer or use 'Particle Post Editorial Team' as a fallback.",
       "slot": "evening",
       "date": "2026-04-03T21:09:21.432285+00:00"
+    },
+    {
+      "text": "Convert the H1 to a question for TOF compliance. A strong candidate: 'Does Your AI Agent Governance Framework Have These 5 Controls?' — this preserves the primary keyword 'AI agent governance framework,' signals the listicle format, and satisfies the TOF question-H1 rule that currently costs you 10 points.",
+      "slot": "morning",
+      "date": "2026-04-04T13:07:29.856805+00:00"
+    },
+    {
+      "text": "Fix the Cisco source URL in your Sources section. You're citing mcpmanager.ai as the reference for the 24% stat, but the primary source is the Cisco AI Readiness Index PDF hosted at cisco.com. Tavily confirmed the stat is accurate, but linking to a secondary aggregator instead of the original report undermines credibility with executive readers and may raise fact-checking flags in future audits.",
+      "slot": "morning",
+      "date": "2026-04-04T13:07:29.856805+00:00"
+    },
+    {
+      "text": "The FAQ section is well-constructed with 5 Q+A pairs that directly mirror likely executive search queries — this is exactly the right approach for FAQPage schema. Consider tightening the answer to FAQ #4 (kill switch requirements) by leading with the actionable spec before the 60% stat, following the answer-first structure you use well elsewhere in the article.",
+      "slot": "morning",
+      "date": "2026-04-04T13:07:29.856805+00:00"
     }
   ]
 }

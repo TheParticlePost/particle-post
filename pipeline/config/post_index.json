@@ -1,6 +1,20 @@
 {
   "posts": [
     {
+      "slug": "ai-agent-governance-framework-5-steps",
+      "title": "AI Agent Governance Framework: 5-Step Control Plan",
+      "funnel_type": "TOF",
+      "content_type": "practical",
+      "tags": [
+        "AI Governance",
+        "Agentic AI",
+        "Enterprise AI",
+        "Risk Management",
+        "Shadow AI"
+      ],
+      "date": "2026-04-04"
+    },
+    {
       "slug": "enterprise-ai-roi-four-practices",
       "title": "Enterprise AI ROI: 4 Practices That Unlock 55% Returns",
       "funnel_type": "MOF",
