@@ -155,6 +155,15 @@ def _sanitize_article(content: str) -> str:
         )
         fixes_applied.append("Replaced expiring Pixabay /get/ URL with Pexels fallback")
 
+    # 1c. Catch Pixabay thumbnail URLs (150px/180px/340px preview — too small for cover images)
+    pixabay_thumb = re.search(r'image:\s*"(https://cdn\.pixabay\.com/[^"]*_(?:150|180|340)\.[^"]+)"', content)
+    if pixabay_thumb:
+        content = content.replace(
+            pixabay_thumb.group(1),
+            "https://images.pexels.com/photos/7567443/pexels-photo-7567443.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200"
+        )
+        fixes_applied.append("Replaced Pixabay thumbnail URL with Pexels fallback")
+
     # 2. Replace en-dashes (U+2013) used as em-dashes (not in number ranges)
     #    Keep en-dashes in ranges like "2020-2026" or "$1M-$5M"
     en_dash_count = len(re.findall(r'(?<!\d)\u2013(?!\d)', content))
@@ -600,16 +609,19 @@ def _extract_significant_words(text: str) -> set[str]:
 def _check_topic_uniqueness(title: str, tags: list[str]) -> tuple[bool, str]:
     """Check proposed topic against last 100 articles for uniqueness.
 
-    Returns (is_unique, reason). Thresholds are aggressive:
-    - Title similarity > 0.45 → reject
-    - Tag overlap > 50% with any past article → reject
-    - Keyword overlap > 60% with any past title → reject
+    Enhanced checks:
+    1. Same-day stricter duplicate detection (threshold: 0.35)
+    2. Standard title similarity > 0.45 (SequenceMatcher)
+    3. Core noun phrase overlap (strips common AI/finance modifiers)
+    4. Tag overlap > 50%
+    5. Keyword overlap > 60%
+    6. Same-day shared bigram detection
     """
     from difflib import SequenceMatcher
 
-    # Load both data sources
     past_titles: list[str] = []
     past_tags: list[list[str]] = []
+    past_dates: list[str] = []
 
     if HISTORY_FILE.exists():
         try:
@@ -617,17 +629,19 @@ def _check_topic_uniqueness(title: str, tags: list[str]) -> tuple[bool, str]:
             for p in history.get("posts", [])[-100:]:
                 past_titles.append(p.get("title", ""))
                 past_tags.append(p.get("tags", []))
+                past_dates.append(p.get("filename", "")[:10])
         except Exception:
             pass
 
     if POST_INDEX_FILE.exists():
         try:
             index = json.loads(POST_INDEX_FILE.read_text(encoding="utf-8"))
-            idx_titles = {p.get("title", "") for p in index.get("posts", [])[:100]}
-            # Add any titles from post_index not already in history
-            for t in idx_titles:
+            for p in index.get("posts", [])[:100]:
+                t = p.get("title", "")
                 if t and t not in past_titles:
                     past_titles.append(t)
+                    past_tags.append(p.get("tags", []))
+                    past_dates.append(p.get("date", ""))
         except Exception:
             pass
 
@@ -635,14 +649,55 @@ def _check_topic_uniqueness(title: str, tags: list[str]) -> tuple[bool, str]:
         return True, "No history to compare against."
 
     proposed_lower = title.lower().strip()
+    today_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
-    # Check 1: Title similarity (SequenceMatcher)
+    # ── CHECK 1: Same-day stricter duplicate detection ──
+    for i, past_title in enumerate(past_titles):
+        past_date = past_dates[i] if i < len(past_dates) else ""
+
+        if past_date == today_str:
+            ratio = SequenceMatcher(None, proposed_lower, past_title.lower().strip()).ratio()
+            if ratio > 0.35:
+                return False, f"Same-day duplicate: '{past_title}' (similarity: {ratio:.0%})"
+
+            # Shared bigrams check for same-day articles
+            proposed_words = proposed_lower.split()
+            past_words = past_title.lower().split()
+            if len(proposed_words) >= 2 and len(past_words) >= 2:
+                proposed_bigrams = set(zip(proposed_words, proposed_words[1:]))
+                past_bigrams = set(zip(past_words, past_words[1:]))
+                shared = proposed_bigrams & past_bigrams
+                if len(shared) >= 2:
+                    shared_text = [f"'{a} {b}'" for a, b in list(shared)[:3]]
+                    return False, f"Same-day topic overlap with '{past_title}' (shared phrases: {', '.join(shared_text)})"
+
+    # ── CHECK 2: Standard title similarity (all articles) ──
     for past_title in past_titles:
         ratio = SequenceMatcher(None, proposed_lower, past_title.lower().strip()).ratio()
         if ratio > 0.45:
             return False, f"Title too similar to '{past_title}' (similarity: {ratio:.0%})"
 
-    # Check 2: Tag overlap
+    # ── CHECK 3: Core noun phrase overlap (strips common modifiers) ──
+    NOISE = frozenset(
+        "ai artificial intelligence machine learning enterprise agentic "
+        "finance financial business strategy deployment implementation "
+        "framework guide playbook 2026 2025 how what why does can should "
+        "the for and with from into step steps".split()
+    )
+    proposed_core = {w for w in proposed_lower.split() if w not in NOISE and len(w) > 3}
+
+    for past_title in past_titles[-30:]:
+        past_core = {w for w in past_title.lower().split() if w not in NOISE and len(w) > 3}
+        if proposed_core and past_core:
+            overlap = proposed_core & past_core
+            ratio = len(overlap) / max(len(proposed_core), 1)
+            if ratio > 0.5:
+                return False, (
+                    f"Core topic overlap {ratio:.0%} with '{past_title}' "
+                    f"(shared: {', '.join(sorted(overlap))})"
+                )
+
+    # ── CHECK 4: Tag overlap ──
     if tags:
         proposed_tags_lower = {t.lower() for t in tags}
         for i, pt in enumerate(past_tags):
@@ -657,7 +712,7 @@ def _check_topic_uniqueness(title: str, tags: list[str]) -> tuple[bool, str]:
                     f"(shared: {', '.join(sorted(overlap))})"
                 )
 
-    # Check 3: Keyword overlap in titles
+    # ── CHECK 5: Keyword overlap in titles ──
     proposed_words = _extract_significant_words(title)
     if proposed_words:
         for past_title in past_titles:

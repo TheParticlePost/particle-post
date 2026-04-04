@@ -46,7 +46,8 @@ export async function middleware(request: NextRequest) {
     ) {
       const url = request.nextUrl.clone();
       url.pathname = "/login";
-      url.searchParams.set("redirect", pathname);
+      const safeRedirect = pathname.startsWith("/") && !pathname.startsWith("//") ? pathname : "/";
+      url.searchParams.set("redirect", safeRedirect);
       return NextResponse.redirect(url);
     }
 
@@ -100,10 +101,16 @@ export async function middleware(request: NextRequest) {
     }
 
     // For other protected routes, redirect to login on auth failure
-    if (pathname.startsWith("/profile") || pathname.startsWith("/settings")) {
+    if (
+      pathname.startsWith("/profile") ||
+      pathname.startsWith("/settings") ||
+      pathname.startsWith("/dashboard") ||
+      pathname.startsWith("/specialists/register")
+    ) {
       const url = request.nextUrl.clone();
       url.pathname = "/login";
-      url.searchParams.set("redirect", pathname);
+      const safeRedirect = pathname.startsWith("/") && !pathname.startsWith("//") ? pathname : "/";
+      url.searchParams.set("redirect", safeRedirect);
       return NextResponse.redirect(url);
     }
 

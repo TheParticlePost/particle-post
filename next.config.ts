@@ -43,8 +43,7 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "images.pexels.com" },
       { protocol: "https", hostname: "cdn.pixabay.com" },
       { protocol: "https", hostname: "images.unsplash.com" },
-      // TODO: Replace wildcard with your specific project hostname (e.g., "abcdefg.supabase.co")
-      { protocol: "https", hostname: "*.supabase.co" },
+      { protocol: "https", hostname: "uzgywmjexciknmpbebqs.supabase.co" },
       { protocol: "https", hostname: "lh3.googleusercontent.com" },
       { protocol: "https", hostname: "avatars.githubusercontent.com" },
     ],
