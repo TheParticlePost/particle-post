@@ -61,6 +61,12 @@ def assemble_article(
         keywords = [seo_data["primary_keyword"]] + [k for k in keywords if k != seo_data["primary_keyword"]]
     tags = seo_data.get("tags", [])
     categories = seo_data.get("categories", [])
+    # Fallback: if tags are empty, derive from keywords
+    if not tags and keywords:
+        tags = keywords[:5]
+    # Fallback: if categories are empty, use a default
+    if not categories:
+        categories = ["AI in Finance"]
     schema_type = seo_data.get("schema_type", "Article")
     has_faq = seo_data.get("has_faq", False)
     faq_pairs = seo_data.get("faq_questions", [])
