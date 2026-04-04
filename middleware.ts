@@ -69,8 +69,28 @@ export async function middleware(request: NextRequest) {
       url.pathname = "/";
       return NextResponse.redirect(url);
     }
-  } catch {
-    // On any error, let the request through
+  } catch (error) {
+    // Log auth errors for debugging — silent failures here are dangerous
+    console.error("Middleware auth error:", error);
+
+    const pathname = request.nextUrl.pathname;
+
+    // Fail closed for admin routes — never allow unauthenticated access
+    if (pathname.startsWith("/admin")) {
+      const url = request.nextUrl.clone();
+      url.pathname = "/";
+      return NextResponse.redirect(url);
+    }
+
+    // For other protected routes, redirect to login on auth failure
+    if (pathname.startsWith("/profile") || pathname.startsWith("/settings")) {
+      const url = request.nextUrl.clone();
+      url.pathname = "/login";
+      url.searchParams.set("redirect", pathname);
+      return NextResponse.redirect(url);
+    }
+
+    // Public routes: let through even if auth check failed
   }
 
   return supabaseResponse;

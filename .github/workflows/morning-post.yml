@@ -1,3 +1,7 @@
+# SECURITY NOTE: This workflow pushes directly to main (required for automated
+# content publishing). The GH_PAT token is scoped to this repo only.
+# Risk accepted: if the token is compromised, attacker can push to main.
+# Mitigation: token rotation, workflow-level permissions restricted to contents:write.
 name: Morning Post (9am ET)
 
 on:

@@ -3,7 +3,9 @@ import { getSupabaseClient } from "@/lib/supabase";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-// Simple in-memory rate limiter (resets on redeploy)
+// In-memory rate limiter — provides best-effort protection in serverless.
+// Resets on cold start and each instance has its own map.
+// For production-grade rate limiting, migrate to Upstash Redis or Vercel KV.
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
 const RATE_LIMIT = 5;
 const RATE_WINDOW = 60_000; // 1 minute

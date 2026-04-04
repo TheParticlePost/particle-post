@@ -37,8 +37,16 @@ Thumbs.db
 
 .vercel
 
+# Build artifacts
+*.tsbuildinfo
+
 # Security — prevent accidental commit of keys/certs
 *.pem
 *.key
 credentials.json
 .mcp.json
+.env.production
+
+# Prevent accidental commit of local files
+UsersWilliam*
+.claude/plans/

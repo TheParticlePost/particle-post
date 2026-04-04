@@ -1,3 +1,5 @@
+# SECURITY NOTE: This workflow pushes directly to main (required for automated
+# content publishing). See morning-post.yml for risk assessment.
 name: Evening Post (5pm ET)
 
 on:
