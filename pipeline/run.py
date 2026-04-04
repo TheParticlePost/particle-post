@@ -39,6 +39,7 @@ POST_INDEX_FILE  = _REPO_ROOT / "pipeline" / "config" / "post_index.json"
 GSO_CONFIG_FILE  = _REPO_ROOT / "pipeline" / "config" / "seo_gso_config.json"
 LLMS_TXT_FILE    = _REPO_ROOT / "blog" / "static" / "llms.txt"
 LLMS_FULL_FILE   = _REPO_ROOT / "blog" / "static" / "llms-full.txt"
+URGENT_TOPIC_FILE = _REPO_ROOT / "pipeline" / "data" / "urgent_topic.json"
 
 MAX_ATTEMPTS = 2
 
@@ -785,10 +786,30 @@ def main() -> None:
         print(f"ERROR: Missing required environment variables: {', '.join(missing)}")
         sys.exit(1)
 
+    # Check for urgent topic directive from Marketing Director
+    topic_override = args.topic
+    if not topic_override and URGENT_TOPIC_FILE.exists():
+        try:
+            directive = json.loads(URGENT_TOPIC_FILE.read_text(encoding="utf-8"))
+            requested_at = directive.get("requested_at", "")
+            # Only use if less than 12 hours old
+            if requested_at:
+                from datetime import timedelta
+                req_time = datetime.fromisoformat(requested_at)
+                age = datetime.now(timezone.utc) - req_time
+                if age < timedelta(hours=12):
+                    topic_override = directive.get("topic")
+                    print(f"  [URGENT TOPIC] Using Marketing Director directive: {topic_override}")
+                    print(f"  [URGENT TOPIC] Urgency: {directive.get('urgency', 'normal')}")
+            # Delete after reading (consumed)
+            URGENT_TOPIC_FILE.unlink(missing_ok=True)
+        except Exception as e:
+            print(f"  [URGENT TOPIC] Warning: could not read directive: {e}")
+
     print(f"\n{'='*60}")
     print(f"  PARTICLE POST — {args.slot.upper()} PIPELINE")
-    if args.topic:
-        print(f"  TOPIC OVERRIDE: {args.topic}")
+    if topic_override:
+        print(f"  TOPIC OVERRIDE: {topic_override}")
     print(f"{'='*60}\n")
 
     from pipeline.crew import build_research_crew, build_production_crew, build_director_crew
@@ -798,7 +819,7 @@ def main() -> None:
     print(f"\n─── Phase 1: Research ───\n")
 
     research_crew, funnel_type, content_type = build_research_crew(
-        slot=args.slot, topic_override=args.topic
+        slot=args.slot, topic_override=topic_override
     )
 
     # Retry on API rate limit (429) or overloaded (529) errors
@@ -847,7 +868,7 @@ def main() -> None:
                 excluded_topic = proposed_title
                 research_crew, funnel_type, content_type = build_research_crew(
                     slot=args.slot,
-                    topic_override=args.topic or f"EXCLUDED TOPIC (do NOT cover): {excluded_topic}",
+                    topic_override=topic_override or f"EXCLUDED TOPIC (do NOT cover): {excluded_topic}",
                 )
 
                 for rate_retry in range(1, 4):

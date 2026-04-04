@@ -9,9 +9,14 @@ from pipeline.tools.google_trends import GoogleTrendsTool
 from pipeline.tools.hostinger import HostingerTool
 from pipeline.tools.search_console import SearchConsoleTool
 from pipeline.tools.tavily_search import TavilySearchTool
+from pipeline.tools.pipeline_trigger import PipelineTriggerTool
+
+import os
+import urllib.request
 
 _CONFIG_DIR      = Path(__file__).resolve().parent.parent / "config"
 _DATA_DIR        = Path(__file__).resolve().parent.parent.parent / "blog" / "data"
+_COSTS_DIR       = Path(__file__).resolve().parent.parent / "logs" / "costs"
 _STRATEGY_PATH   = _CONFIG_DIR / "marketing_strategy.json"
 _GUIDELINES_PATH = _CONFIG_DIR / "editorial_guidelines.md"
 _HISTORY_PATH    = _DATA_DIR / "topics_history.json"
@@ -140,6 +145,72 @@ def _load_gso_state() -> str:
         return f"(Could not load GSO state: {exc})"
 
 
+def _load_cost_summary() -> str:
+    """Load pipeline cost summary from the last 14 cost log files."""
+    if not _COSTS_DIR.exists():
+        return "(No cost data available.)"
+    files = sorted(_COSTS_DIR.glob("*.json"), reverse=True)[:14]
+    if not files:
+        return "(No cost data available.)"
+
+    total_input = 0
+    total_output = 0
+    total_runs = 0
+    for f in files:
+        try:
+            data = json.loads(f.read_text(encoding="utf-8"))
+            total_input += data.get("total_input_tokens", 0) or data.get("prompt_tokens", 0)
+            total_output += data.get("total_output_tokens", 0) or data.get("completion_tokens", 0)
+            total_runs += 1
+        except Exception:
+            continue
+
+    if total_runs == 0:
+        return "(No cost data available.)"
+
+    # Approximate cost: ~60% Sonnet ($3/$15 per 1M), ~40% Haiku ($0.25/$1.25 per 1M)
+    est_cost = (total_input * 0.000002 + total_output * 0.00001) * 0.6 + \
+               (total_input * 0.0000002 + total_output * 0.000001) * 0.4
+    avg_cost = est_cost / max(total_runs, 1)
+
+    return (
+        f"PIPELINE COSTS (last {total_runs} runs):\n"
+        f"  Total input tokens: {total_input:,}\n"
+        f"  Total output tokens: {total_output:,}\n"
+        f"  Estimated total cost: ${est_cost:.2f}\n"
+        f"  Avg cost per article: ${avg_cost:.2f}"
+    )
+
+
+def _load_subscriber_metrics() -> str:
+    """Load subscriber count from Supabase."""
+    url = os.environ.get("SUPABASE_URL")
+    key = os.environ.get("SUPABASE_SERVICE_ROLE_KEY")
+    if not url or not key:
+        return "(Subscriber data not available — Supabase credentials not set.)"
+
+    try:
+        req = urllib.request.Request(
+            f"{url}/rest/v1/subscribers?select=id,status,subscribed_at&status=eq.active",
+            headers={
+                "apikey": key,
+                "Authorization": f"Bearer {key}",
+            },
+        )
+        with urllib.request.urlopen(req, timeout=10) as resp:
+            data = json.loads(resp.read())
+
+        total = len(data)
+        from datetime import timedelta
+        from datetime import datetime as dt
+        week_ago = (dt.now().astimezone() - timedelta(days=7)).isoformat()
+        recent = sum(1 for s in data if s.get("subscribed_at", "") > week_ago)
+
+        return f"SUBSCRIBERS: {total} active | {recent} new this week"
+    except Exception:
+        return "(Subscriber data not available.)"
+
+
 def build_marketing_director() -> Agent:
     """
     Build the Marketing Director agent.
@@ -158,6 +229,8 @@ def build_marketing_director() -> Agent:
     editorial_guide   = _load_editorial_guidelines()
     ui_history        = _load_ui_change_history()
     gso_state         = _load_gso_state()
+    cost_summary      = _load_cost_summary()
+    subscriber_metrics = _load_subscriber_metrics()
 
     return Agent(
         role="Marketing Director",
@@ -219,6 +292,10 @@ def build_marketing_director() -> Agent:
             f"{recent_articles}\n\n"
             "─── UI EXPERIMENT HISTORY ───\n\n"
             f"{ui_history}\n\n"
+            "─── PIPELINE COSTS ───\n\n"
+            f"{cost_summary}\n\n"
+            "─── SUBSCRIBER GROWTH ───\n\n"
+            f"{subscriber_metrics}\n\n"
             "─── EDITORIAL GUIDELINES (context) ───\n\n"
             f"{editorial_guide}"
         ),
@@ -231,6 +308,7 @@ def build_marketing_director() -> Agent:
             GoogleTrendsTool(),
             TavilySearchTool(),
             HostingerTool(),
+            PipelineTriggerTool(),
         ],
         llm=LLM(model="anthropic/claude-sonnet-4-6", max_tokens=8192),
         verbose=True,
