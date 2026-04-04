@@ -262,9 +262,26 @@ def validate(
                 "## Frequently Asked section found"
             )
 
+    # ── 16. Vague lede detection ─────────────────────────────────────────
+    # First 2 sentences should name a company, person, dollar amount, or date
+    first_para = body.split("\n\n")[0] if body else ""
+    if first_para and len(first_para) > 20:
+        has_specifics = bool(
+            re.search(r'\$\d', first_para)  # dollar amount
+            or re.search(r'\b\d{4}\b', first_para)  # year
+            or re.search(r'\b\d+%', first_para)  # percentage
+            or re.search(r'\b[A-Z][a-z]+(?:\s[A-Z][a-z]+)+', first_para)  # proper noun (2+ words)
+        )
+        if not has_specifics:
+            score -= 10
+            issues.append(
+                "Vague lede — first paragraph has no specific company, person, "
+                "dollar amount, percentage, or date"
+            )
+
     # Clamp score
     score = max(score, 0)
-    passed = score >= 60
+    passed = score >= 65
 
     return passed, issues, score
 
@@ -275,7 +292,7 @@ def validate(
 
 def print_report(issues: list[str], score: int) -> None:
     """Print a formatted QA gate report."""
-    status = "PASS" if score >= 60 else "FAIL"
+    status = "PASS" if score >= 65 else "FAIL"
     print(f"\n{'='*60}")
     print(f"  QA GATE REPORT  |  Score: {score}/100  |  {status}")
     print(f"{'='*60}")

@@ -10,7 +10,6 @@ from pipeline.agents.writer import build_writer
 from pipeline.agents.editor import build_editor
 from pipeline.agents.seo_gso_specialist import build_seo_gso_specialist
 from pipeline.agents.photo_finder import build_photo_finder
-from pipeline.agents.formatter import build_formatter
 from pipeline.agents.production_director import build_production_director
 
 from pipeline.tasks.research_task import build_research_task
@@ -19,7 +18,6 @@ from pipeline.tasks.writing_task import build_writing_task
 from pipeline.tasks.seo_gso_task import build_seo_gso_task
 from pipeline.tasks.editing_task import build_editing_task
 from pipeline.tasks.photo_task import build_photo_task
-from pipeline.tasks.formatting_task import build_formatting_task
 from pipeline.tasks.validation_task import build_validation_task
 
 
@@ -53,52 +51,63 @@ def build_production_crew(slot: str, funnel_type: str = "TOF") -> Crew:
     """
     Build the Production crew (Phase 2) — Sonnet + Haiku, retried on rejection.
 
-    6 agents: Writer → SEO/GSO → Editor → Photo → Formatter → Prod Director
+    4 agents: Writer → Editor → SEO/GSO → Photo
+    The Formatter has been replaced by a deterministic Python assembler (article_assembler.py).
+    The Production Director runs as a separate step after assembly.
+
     Topic info comes via kickoff inputs: {topic_json}, {funnel_type}, {content_type}, {rejection_feedback}
 
     Task indices for run.py:
       [0] writing_task
-      [1] seo_gso_task     ← run.py reads SEO JSON from here
-      [2] editing_task
+      [1] editing_task
+      [2] seo_gso_task     ← run.py reads SEO JSON from here
       [3] photo_task
-      [-2] formatting_task  ← run.py reads article content from here
-      [-1] validation_task  ← run.py reads director verdict from here
     """
     print(f"\n  [Production Crew] Building for {slot} slot, funnel: {funnel_type}")
 
     # --- Agents ---
-    writer              = build_writer()
-    seo_gso_specialist  = build_seo_gso_specialist()
-    editor              = build_editor()
-    photo_finder        = build_photo_finder()
-    formatter           = build_formatter()
-    production_director = build_production_director()
+    writer             = build_writer()
+    editor             = build_editor()
+    seo_gso_specialist = build_seo_gso_specialist()
+    photo_finder       = build_photo_finder()
 
-    # --- Tasks (context uses only upstream production tasks + {input} placeholders) ---
-    writing_task    = build_writing_task(writer, funnel_type)
-    seo_gso_task    = build_seo_gso_task(seo_gso_specialist, writing_task)
-    editing_task    = build_editing_task(editor, seo_gso_task)
-    photo_task      = build_photo_task(photo_finder, editing_task)
-    formatting_task = build_formatting_task(formatter, editing_task, seo_gso_task, photo_task)
-    validation_task = build_validation_task(production_director, formatting_task)
+    # --- Tasks (Writer → Editor → SEO/GSO → Photo) ---
+    writing_task = build_writing_task(writer, funnel_type)
+    editing_task = build_editing_task(editor, writing_task)
+    seo_gso_task = build_seo_gso_task(seo_gso_specialist, editing_task)
+    photo_task   = build_photo_task(photo_finder, seo_gso_task)
 
     return Crew(
         agents=[
             writer,
-            seo_gso_specialist,
             editor,
+            seo_gso_specialist,
             photo_finder,
-            formatter,
-            production_director,
         ],
         tasks=[
             writing_task,
-            seo_gso_task,
             editing_task,
+            seo_gso_task,
             photo_task,
-            formatting_task,
-            validation_task,
         ],
+        process=Process.sequential,
+        verbose=True,
+    )
+
+
+def build_director_crew() -> Crew:
+    """
+    Build a standalone 1-agent crew for the Production Director.
+
+    Called after the Python assembler produces the final article.
+    The assembled article is passed via {assembled_article} kickoff input.
+    """
+    director = build_production_director()
+    validation_task = build_validation_task(director, formatting_task=None)
+
+    return Crew(
+        agents=[director],
+        tasks=[validation_task],
         process=Process.sequential,
         verbose=True,
     )

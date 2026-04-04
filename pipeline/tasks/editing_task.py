@@ -1,14 +1,13 @@
 from crewai import Task, Agent
 
 
-def build_editing_task(agent: Agent, seo_gso_task: Task) -> Task:
-    context = [seo_gso_task]
+def build_editing_task(agent: Agent, writing_task: Task) -> Task:
+    context = [writing_task]
 
     return Task(
         description=(
-            "Edit and improve the GSO-restructured article draft. "
-            "Read the article from the [RESTRUCTURED ARTICLE]...[END RESTRUCTURED ARTICLE] block "
-            "in the SEO/GSO Specialist's output. "
+            "Edit and improve the Writer's V1 article draft. "
+            "Read the article from the Writer's output. "
             "Apply funnel-specific editing rules for funnel type: {funnel_type}\n"
             "(TOF: keep concise 600-1000 words; MOF: ensure depth 1800-3000 words; BOF: verify steps 1200-2000 words).\n\n"
             "Apply the full Particle Post style guide:\n\n"

@@ -1,35 +1,51 @@
+import json
+from pathlib import Path
+
 from crewai import Task, Agent
 
+_GSO_CONFIG = Path(__file__).parents[1] / "config" / "seo_gso_config.json"
 
-def build_seo_gso_task(agent: Agent, writing_task: Task) -> Task:
+
+def _load_keyword_targets() -> str:
+    """Load SEO keyword targets from config, falling back to defaults."""
+    try:
+        if _GSO_CONFIG.exists():
+            data = json.loads(_GSO_CONFIG.read_text(encoding="utf-8"))
+            targets = data.get("keyword_targets", [])
+            if targets:
+                return ", ".join(f"'{kw}'" for kw in targets)
+    except Exception:
+        pass
+    return "'AI in finance', 'artificial intelligence banking', 'fintech AI'"
+
+
+def build_seo_gso_task(agent: Agent, editing_task: Task) -> Task:
     """
     SEO/GSO Specialist article production task.
 
     Context:
-      - writing_task: Writer's V1 draft
+      - editing_task: Editor's revised article
       - selection_task: topic JSON (funnel_type, source_urls, topic)
 
     Output: [RESTRUCTURED ARTICLE] block + 14-field JSON package.
-    The Formatter reads both; the Editor polishes the restructured article.
+    The Python assembler reads both to produce the final .md file.
     """
     return Task(
         description=(
-            "You have received the Writer's V1 article draft.\n"
+            "You have received the Editor's revised article draft.\n"
             "Topic context: {topic_json}\n"
             "Funnel type: {funnel_type}\n\n"
 
             "═══ PART 1: RESTRUCTURE FOR GSO ═══\n\n"
 
-            "Read the Writer's V1 draft from the writing_task context.\n"
+            "Read the Editor's revised article from the editing_task context.\n"
             "Make SURGICAL additions to optimize it for AI engine extraction. "
             "Do NOT rewrite the article — preserve all facts, quotes, and statistics.\n\n"
 
             "REQUIRED CHANGES:\n"
             "1. QUESTION H2s WITH ANSWER-FIRST PARAGRAPHS (GSO critical):\n"
             "   a) Rewrite at least 2 H2 headings as QUESTIONS containing a long-tail SEO keyword.\n"
-            "      Long-tail keywords: 'how AI is changing investment banking', 'AI fraud detection banks', "
-            "'agentic AI regulatory compliance fintech', 'machine learning credit scoring banks', "
-            "'AI compliance financial services', 'artificial intelligence risk management finance'.\n"
+            f"      Long-tail keywords: {_load_keyword_targets()}.\n"
             "      Question formula: '[How/Can/Does/Should] + [Long-Tail Keyword] + [Specific Context]?'\n"
             "      Example: 'How Does AI Fraud Detection Help Banks Cut Losses by 40%?'\n"
             "   b) Immediately after EACH question H2, insert a 40-60 word declarative answer paragraph. "
@@ -82,10 +98,8 @@ def build_seo_gso_task(agent: Agent, writing_task: Task) -> Task:
             "- has_faq must be true if faq_questions has ≥ 3 items\n"
             "- schema_type must be 'FAQPage' whenever has_faq is true\n"
             "- internal_link_targets must use slugs from the post_index — use [] if no relevant matches\n"
-            "- meta_title MUST contain at least one primary SEO keyword: "
-            "'AI in finance', 'artificial intelligence banking', 'fintech AI', 'agentic AI finance', "
-            "'AI risk management finance', 'machine learning financial services', "
-            "'AI investment strategy', 'AI trading algorithms'. This is MANDATORY.\n"
+            f"- meta_title MUST contain at least one primary SEO keyword: "
+            f"{_load_keyword_targets()}. This is MANDATORY.\n"
             "- meta_title must be under 70 characters\n"
             "- NEVER use em-dash characters (--) anywhere in the restructured article. Replace with commas, colons, or periods.\n"
             "- Output ONLY the [RESTRUCTURED ARTICLE] block then immediately the JSON -- no other text\n\n"
@@ -102,5 +116,5 @@ def build_seo_gso_task(agent: Agent, writing_task: Task) -> Task:
             "followed immediately by a 14-field JSON SEO package with no prose or code fences."
         ),
         agent=agent,
-        context=[writing_task],
+        context=[editing_task],
     )

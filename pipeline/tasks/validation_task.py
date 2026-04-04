@@ -3,22 +3,26 @@ from crewai import Task, Agent
 
 def build_validation_task(
     agent: Agent,
-    formatting_task: Task,
+    formatting_task: Task | None = None,
 ) -> Task:
     """
     Build the Production Director's validation task.
 
-    Context provided:
-    - formatting_task: the complete Hugo .md article (YAML frontmatter + markdown body)
+    When called from the pipeline, the assembled article content is passed
+    via the {assembled_article} kickoff input. The formatting_task parameter
+    is kept for backward compatibility but is no longer used.
 
     SEO metadata (has_faq, schema_type, primary_keyword) is read from the YAML frontmatter.
     Funnel type is provided via the {funnel_type} kickoff input.
     """
+    context = [formatting_task] if formatting_task else []
+
     return Task(
         description=(
             "Audit the completed Particle Post article before publication.\n\n"
             "You have access to:\n"
-            "  • The complete formatted .md article with YAML frontmatter (from the Formatter)\n"
+            "  • The complete assembled .md article with YAML frontmatter:\n"
+            "{assembled_article}\n\n"
             "  • The funnel type: {funnel_type}\n\n"
 
             "Read SEO metadata directly from the YAML frontmatter:\n"
@@ -103,9 +107,12 @@ def build_validation_task(
 
             "DECISION RULE: If final score ≥ 65 → APPROVE. If below 65 → REJECT.\n\n"
 
-            "IMPORTANT: You are an editorial coach, not a nitpick machine. Use tavily_search "
-            "to spot-check 1-2 source URLs. Add a WARNING (not a penalty) "
-            "if a source appears questionable.\n\n"
+            "MANDATORY: Use tavily_search to verify at least 2 source URLs from the article's "
+            "Sources section. Search for the claim + source name to confirm the citation is real. "
+            "If a source cannot be verified, add a WARNING in the issues list (not a score deduction) "
+            "with the specific URL and claim that could not be confirmed.\n\n"
+            "You are an editorial coach, not a nitpick machine. Most articles with good content "
+            "and proper sources should score 80+. Reject only articles that would embarrass the publication.\n\n"
 
             "═══ PART 2: COACHING NOTES ═══\n\n"
 
@@ -133,5 +140,5 @@ def build_validation_task(
             "No article content embedded. No prose outside the JSON."
         ),
         agent=agent,
-        context=[formatting_task],
+        context=context,
     )

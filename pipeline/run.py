@@ -777,7 +777,8 @@ def main() -> None:
         print(f"  TOPIC OVERRIDE: {args.topic}")
     print(f"{'='*60}\n")
 
-    from pipeline.crew import build_research_crew, build_production_crew
+    from pipeline.crew import build_research_crew, build_production_crew, build_director_crew
+    from pipeline.utils.article_assembler import assemble_article
 
     # ═══ PHASE 1: RESEARCH (runs ONCE, never retried) ═══
     print(f"\n─── Phase 1: Research ───\n")
@@ -906,12 +907,45 @@ def main() -> None:
                 else:
                     raise
 
-        # Formatter output = second-to-last task (index -2)
-        if result.tasks_output and len(result.tasks_output) >= 2:
-            formatter_raw = result.tasks_output[-2].raw or ""
-        else:
-            formatter_raw = ""
-        formatter_content = _sanitize_article(_strip_code_fences(formatter_raw))
+        # ═══ EXTRACT TASK OUTPUTS (new order: Writer→Editor→SEO/GSO→Photo) ═══
+        assert len(result.tasks_output) >= 4, (
+            f"Expected 4 task outputs but got {len(result.tasks_output)}"
+        )
+        editing_raw = result.tasks_output[1].raw or ""
+        seo_raw     = result.tasks_output[2].raw or ""
+        photo_raw   = result.tasks_output[3].raw or ""
+
+        # Parse SEO JSON package (index 2: seo_gso_task)
+        seo_data: dict = {}
+        try:
+            seo_data = _parse_seo_json(seo_raw)
+            # Stash raw output so the assembler can extract [RESTRUCTURED ARTICLE]
+            seo_data["_raw_output"] = seo_raw
+        except Exception:
+            pass
+
+        # Parse photo JSON
+        photo_data: dict = {}
+        try:
+            photo_data = json.loads(_strip_code_fences(photo_raw))
+        except Exception:
+            photo_data = {}
+
+        # ═══ PYTHON ASSEMBLER: replaces the Formatter agent ═══
+        try:
+            formatter_content = assemble_article(
+                editing_output=editing_raw,
+                seo_data=seo_data,
+                photo_data=photo_data,
+                funnel_type=funnel_type,
+                content_type=content_type,
+            )
+        except Exception as asm_err:
+            print(f"  [ASSEMBLER ERROR] {asm_err}")
+            formatter_content = ""
+
+        # Safety net: run sanitizer on assembled output
+        formatter_content = _sanitize_article(formatter_content) if formatter_content else ""
 
         # ═══ QA GATE: programmatic pre-check (no LLM cost) ═══
         from pipeline.qa_gate import validate as qa_validate
@@ -921,7 +955,7 @@ def main() -> None:
             for issue in qa_issues:
                 print(f"    - {issue}")
         if not qa_passed:
-            print(f"  [QA GATE] Score {qa_score} < 60 — skipping Production Director (saving LLM cost)")
+            print(f"  [QA GATE] Score {qa_score} < 65 — skipping Production Director (saving LLM cost)")
             verdict = {
                 "decision": "REJECT",
                 "score": qa_score,
@@ -957,11 +991,32 @@ def main() -> None:
             # Both attempts exhausted via QA gate
             break
 
-        # Production Director verdict = last task (index -1)
-        director_raw = result.tasks_output[-1].raw if result.tasks_output else ""
+        # ═══ PRODUCTION DIRECTOR: runs as separate 1-agent crew ═══
+        print(f"\n─── Production Director (separate step) ───\n")
+        director_crew = build_director_crew()
+
+        for rate_retry in range(1, 4):
+            try:
+                director_result = director_crew.kickoff(inputs={
+                    "assembled_article": formatter_content,
+                    "funnel_type": funnel_type,
+                })
+                break
+            except Exception as exc:
+                exc_str = str(exc).lower()
+                if "429" in str(exc) or "529" in str(exc) or "rate_limit" in exc_str or "overloaded" in exc_str:
+                    wait = 60 * rate_retry
+                    print(f"  [API RETRY] Director {type(exc).__name__}. Waiting {wait}s (retry {rate_retry}/3)...")
+                    time.sleep(wait)
+                    if rate_retry == 3:
+                        raise
+                else:
+                    raise
+
+        director_raw = director_result.tasks_output[0].raw if director_result.tasks_output else ""
         verdict = _parse_director_verdict(director_raw or "")
 
-        # Correct false-positive deductions
+        # Correct false-positive deductions (simplified — assembler should prevent most)
         verdict = _correct_verdict(verdict, formatter_content)
         last_verdict = verdict
 
@@ -970,7 +1025,7 @@ def main() -> None:
         issues   = verdict.get("issues", [])
         coaching = verdict.get("coaching_notes", [])
 
-        # Log API cost (combine research + production tokens)
+        # Log API cost (combine research + production + director tokens)
         try:
             from pipeline.utils.cost_logger import save_cost_log
             save_cost_log(result.token_usage, args.slot, attempt, decision)
@@ -993,14 +1048,6 @@ def main() -> None:
         _save_coaching_notes(verdict, args.slot)
 
         if decision == "APPROVE":
-            # SEO/GSO data from production task index 1 (seo_gso_task)
-            seo_data: dict = {}
-            try:
-                seo_raw  = result.tasks_output[1].raw or ""
-                seo_data = _parse_seo_json(seo_raw)
-            except Exception:
-                pass
-
             date_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
             _write_post(content=formatter_content, dry_run=args.dry_run, funnel_type=funnel_type, content_type=content_type)
 

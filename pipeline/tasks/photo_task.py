@@ -1,7 +1,7 @@
 from crewai import Task, Agent
 
 
-def build_photo_task(agent: Agent, editing_task: Task) -> Task:
+def build_photo_task(agent: Agent, upstream_task: Task) -> Task:
     return Task(
         description=(
             "Find the best royalty-free image for this article.\n\n"
@@ -36,5 +36,5 @@ def build_photo_task(agent: Agent, editing_task: Task) -> Task:
             "photographer_url, and source."
         ),
         agent=agent,
-        context=[editing_task],
+        context=[upstream_task],
     )

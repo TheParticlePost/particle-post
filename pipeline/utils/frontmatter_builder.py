@@ -14,8 +14,11 @@ def build_frontmatter(
     image_credit_url: str,
     image_credit_source: str,
     author: str = "Particle Post Editorial Team",
+    schema_type: str = "Article",
+    has_faq: bool = False,
+    faq_pairs: list[dict] | None = None,
 ) -> str:
-    """Build a YAML frontmatter block for a Hugo post."""
+    """Build a YAML frontmatter block for a Hugo/Next.js post."""
 
     def _yaml_list(items: list[str]) -> str:
         return "[" + ", ".join(f'"{i}"' for i in items) + "]"
@@ -30,16 +33,41 @@ def build_frontmatter(
         f'author: "{author}"',
         f"tags: {_yaml_list(tags)}",
         f"categories: {_yaml_list(categories)}",
-        f'image: "{image_url}"',
-        f'image_alt: "{_escape(image_alt)}"',
-        f'image_credit_name: "{_escape(image_credit_name)}"',
-        f'image_credit_url: "{image_credit_url}"',
-        f'image_credit_source: "{image_credit_source}"',
+        f'schema_type: "{schema_type}"',
+        f"has_faq: {'true' if has_faq else 'false'}",
+    ]
+
+    # Cover image as nested YAML block (Next.js format)
+    if image_url:
+        lines.append("cover:")
+        lines.append(f'  image: "{image_url}"')
+        lines.append(f'  alt: "{_escape(image_alt)}"')
+        lines.append(f'  credit_name: "{_escape(image_credit_name)}"')
+        lines.append(f'  credit_url: "{image_credit_url}"')
+        lines.append(f'  credit_source: "{image_credit_source}"')
+    # Also keep flat image field for backward compat
+    lines.append(f'image: "{image_url}"')
+    lines.append(f'image_alt: "{_escape(image_alt)}"')
+    lines.append(f'image_credit_name: "{_escape(image_credit_name)}"')
+    lines.append(f'image_credit_url: "{image_credit_url}"')
+    lines.append(f'image_credit_source: "{image_credit_source}"')
+
+    # FAQ pairs as YAML list of maps
+    if has_faq and faq_pairs:
+        lines.append("faq_pairs:")
+        for pair in faq_pairs:
+            q = pair.get("q", pair.get("question", ""))
+            a = pair.get("a", pair.get("answer", ""))
+            if q and a:
+                lines.append(f'  - question: "{_escape(q)}"')
+                lines.append(f'    answer: "{_escape(a)}"')
+
+    lines.extend([
         "ShowToc: true",
         "TocOpen: false",
         "draft: false",
         "---",
-    ]
+    ])
     return "\n".join(lines)
 
 
