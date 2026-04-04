@@ -5,6 +5,7 @@
 
 ## Posts
 
+- [AI Infrastructure Cost: Does TurboQuant Save Money?](https://theparticlepost.com/posts/ai-infrastructure-cost-turboquant-savings/)
 - [AI Agent Governance Framework: 5-Step Control Plan](https://theparticlepost.com/posts/ai-agent-governance-framework-5-steps/)
 - [EU AI Act Enforcement: AI Compliance Banking Guide](https://theparticlepost.com/posts/eu-ai-act-enforcement-banking-compliance/)
 - [Enterprise AI ROI: 4 Practices That Unlock 55% Returns](https://theparticlepost.com/posts/enterprise-ai-roi-four-practices/)

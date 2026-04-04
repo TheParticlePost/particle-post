@@ -1,26 +1,6 @@
 {
   "notes": [
     {
-      "text": "RENDER THE FAQ INTO THE ARTICLE BODY: You correctly set has_faq: true and populated faq_pairs in the YAML, but the rendered FAQ section never appears in the article body. Add a '## Frequently Asked Questions' H2 followed by each Q+A pair formatted in bold question / plain-text answer blocks. This is a hard checklist requirement and also a significant GSO (Google Search Optimization) opportunity given the FAQPage schema type you've declared.",
-      "slot": "evening",
-      "date": "2026-03-30T21:04:54.873158+00:00"
-    },
-    {
-      "text": "VERIFY BOTH SOURCE URLs BEFORE PUBLICATION: The SiliconANGLE article URL (siliconangle.com/2026/03/28/agentic-ai-gap-vendors-sprint-enterprises-crawl/) and the AWS Security Blog URL could not be confirmed via search. If either URL is fabricated or a best-guess placeholder, this is a credibility-ending error for an executive audience. Manually open both links, confirm they resolve to the cited content, and add a third verifiable source (the JPMorgan reference is used inline but never sourced in the Sources section).",
-      "slot": "evening",
-      "date": "2026-03-30T21:04:54.873158+00:00"
-    },
-    {
-      "text": "ADD AT LEAST ONE INTERNAL LINK: TOF articles require a minimum of one internal markdown link to an existing Particle Post post. Review published slugs in the content library and anchor a relevant phrase — for example, 'agentic AI governance framework' or 'enterprise AI strategy' — to a related article. Internal links improve dwell time, support topical authority clustering, and are a non-negotiable funnel compliance item for TOF.",
-      "slot": "evening",
-      "date": "2026-03-30T21:04:54.873158+00:00"
-    },
-    {
-      "text": "CRITICAL BEFORE PUBLISH — Fix the H1 to a question: TOF articles require an interrogative H1 for both funnel compliance and GSO optimization. A title like 'Can a CFO Deploy AI Without a Chief AI Officer?' preserves the primary keyword 'CFO AI deployment' while satisfying the TOF structure rule. This is the single highest-leverage change you can make.",
-      "slot": "morning",
-      "date": "2026-03-31T13:05:09.850964+00:00"
-    },
-    {
       "text": "RENDER THE FAQ IN THE ARTICLE BODY: You have five strong FAQ pairs in the YAML frontmatter, but none of them appear as a rendered '## Frequently Asked Questions' section in the article body. Since has_faq=true and schema_type is FAQPage, the body must include the Q+A markup so both readers and search engines see the structured content. Add the section above Sources.",
       "slot": "morning",
       "date": "2026-03-31T13:05:09.850964+00:00"
@@ -149,6 +129,26 @@
       "text": "The FAQ section is well-constructed with 5 Q+A pairs that directly mirror likely executive search queries — this is exactly the right approach for FAQPage schema. Consider tightening the answer to FAQ #4 (kill switch requirements) by leading with the actionable spec before the 60% stat, following the answer-first structure you use well elsewhere in the article.",
       "slot": "morning",
       "date": "2026-04-04T13:07:29.856805+00:00"
+    },
+    {
+      "text": "QA gate failed — fix programmatic issues before retry",
+      "slot": "evening",
+      "date": "2026-04-04T21:08:19.570589+00:00"
+    },
+    {
+      "text": "Tighten the answer-first paragraph under '## The Common Misconception About AI Memory Compression Savings' to 40-60 words. Right now it runs ~65 words and buries the direct answer behind context. Lead with the conclusion ('A 6x memory reduction does not produce a 6x cost reduction') and cut the MUFG stat to the following paragraph where it already appears.",
+      "slot": "evening",
+      "date": "2026-04-04T21:11:58.668885+00:00"
+    },
+    {
+      "text": "Add a second STAT: marker or stat-box shortcode. You have strong quantitative claims throughout — the $630B Morgan Stanley figure, the 90% operating cash flow stat from Bank of America, and the 6-7% silicon wafer growth rate — any one of these would add visual diversity and reinforce credibility at a glance without changing word count materially.",
+      "slot": "evening",
+      "date": "2026-04-04T21:11:58.668885+00:00"
+    },
+    {
+      "text": "Confirm your internal link slugs match published Particle Post URLs before this goes live. The anchor text 'enterprise AI ROI analysis' and 'Big Tech $700B AI data center analysis' are well-written, but if those slugs don't resolve, readers hit dead links and SEO equity is lost. Pull the actual slug values from your CMS and hard-code them into the href.",
+      "slot": "evening",
+      "date": "2026-04-04T21:11:58.668885+00:00"
     }
   ]
 }

@@ -15,6 +15,20 @@
       "date": "2026-04-04"
     },
     {
+      "slug": "ai-infrastructure-cost-turboquant-savings",
+      "title": "AI Infrastructure Cost: Does TurboQuant Save Money?",
+      "funnel_type": "TOF",
+      "content_type": "news",
+      "tags": [
+        "AI Infrastructure",
+        "CAPEX Optimization",
+        "TurboQuant",
+        "LLM Inference",
+        "Data Center"
+      ],
+      "date": "2026-04-04"
+    },
+    {
       "slug": "enterprise-ai-roi-four-practices",
       "title": "Enterprise AI ROI: 4 Practices That Unlock 55% Returns",
       "funnel_type": "MOF",

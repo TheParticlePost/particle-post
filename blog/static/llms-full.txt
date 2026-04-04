@@ -5,6 +5,7 @@
 
 ## Posts
 
+- [AI Infrastructure Cost: Does TurboQuant Save Money?](https://theparticlepost.com/posts/ai-infrastructure-cost-turboquant-savings/): AI infrastructure cost relief from TurboQuant is real but time-limited. Google
 - [AI Agent Governance Framework: 5-Step Control Plan](https://theparticlepost.com/posts/ai-agent-governance-framework-5-steps/): AI agent governance framework in 5 steps. Only 24% of firms have live agent controls. Deploy kill switches, purpose binding, and observability without a CAO.
 - [EU AI Act Enforcement: AI Compliance Banking Guide](https://theparticlepost.com/posts/eu-ai-act-enforcement-banking-compliance/): EU AI Act enforcement begins August 2, 2026. Banks face fines up to €15M for non-compliant high-risk AI. 7-step compliance workflow for credit scoring and more.
 - [Enterprise AI ROI: 4 Practices That Unlock 55% Returns](https://theparticlepost.com/posts/enterprise-ai-roi-four-practices/): Enterprise AI ROI hits 55% for product teams using 4 IBM-backed practices, while 95% of pilots fail. Diagnose your readiness gaps and sequence deployment correctly.

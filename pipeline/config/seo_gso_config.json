@@ -2,7 +2,7 @@
   "last_updated": "2026-04-04",
   "schema_coverage": {
     "Article": 0,
-    "FAQPage": 21,
+    "FAQPage": 22,
     "HowTo": 0,
     "NewsArticle": 0
   },
@@ -191,6 +191,14 @@
       "date": "2026-04-04",
       "slug": "ai-agent-governance-framework-5-steps",
       "primary_keyword": "AI agent governance framework",
+      "schema_type": "FAQPage",
+      "has_faq": true,
+      "search_intent": "informational"
+    },
+    {
+      "date": "2026-04-04",
+      "slug": "ai-infrastructure-cost-turboquant-savings",
+      "primary_keyword": "AI infrastructure cost savings",
       "schema_type": "FAQPage",
       "has_faq": true,
       "search_intent": "informational"
