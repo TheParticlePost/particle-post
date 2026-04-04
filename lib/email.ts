@@ -1,4 +1,5 @@
 import "server-only";
+import { leadNotificationTemplate, matchNotificationTemplate } from "./email-templates";
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const RESEND_API_URL = "https://api.resend.com/emails";
@@ -66,4 +67,52 @@ export async function sendEmail(options: SendEmailOptions): Promise<SendResult> 
   } catch (err) {
     return { success: false, error: String(err) };
   }
+}
+
+/**
+ * Send a lead notification email to a specialist.
+ */
+export async function sendLeadNotification(
+  specialistEmail: string,
+  specialistName: string,
+  lead: {
+    client_name: string;
+    client_company: string | null;
+    project_description: string;
+    budget_range: string | null;
+  }
+): Promise<boolean> {
+  const html = leadNotificationTemplate(specialistName, lead);
+  const result = await sendEmail({
+    to: specialistEmail,
+    subject: `New inquiry from ${lead.client_name}`,
+    html,
+    from: "Particle Post Leads <leads@theparticlepost.com>",
+  });
+  return result.success;
+}
+
+/**
+ * Send a match notification email to a specialist.
+ */
+export async function sendMatchNotification(
+  specialistEmail: string,
+  specialistName: string,
+  brief: {
+    client_name: string;
+    client_company: string | null;
+    project_description: string;
+    categories: string[];
+  },
+  rank: number,
+  score: number
+): Promise<boolean> {
+  const html = matchNotificationTemplate(specialistName, brief, rank, score);
+  const result = await sendEmail({
+    to: specialistEmail,
+    subject: `You matched with a new project`,
+    html,
+    from: "Particle Post Leads <leads@theparticlepost.com>",
+  });
+  return result.success;
 }

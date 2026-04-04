@@ -126,3 +126,36 @@ export function articleNotificationTemplate(
 
   return baseWrapper(content, unsubscribeUrl);
 }
+
+export function leadNotificationTemplate(
+  specialistName: string,
+  lead: { client_name: string; client_company: string | null; project_description: string; budget_range: string | null; }
+): string {
+  const safeDesc = lead.project_description.substring(0, 300);
+  const company = lead.client_company ? ` at ${lead.client_company}` : "";
+  const content = `
+    <tr><td style="padding:24px 32px 8px"><p style="color:#E8552E;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;margin:0;font-family:'IBM Plex Mono',monospace">NEW INQUIRY</p></td></tr>
+    <tr><td style="padding:0 32px 16px"><h1 style="color:#F5F0EB;font-size:22px;font-weight:700;line-height:1.3;margin:0">${specialistName}, you have a new lead</h1></td></tr>
+    <tr><td style="padding:0 32px 24px"><p style="color:#9A8C82;font-size:15px;line-height:1.6;margin:0"><strong style="color:#F5F0EB">${lead.client_name}</strong>${company} is interested in working with you.</p></td></tr>
+    <tr><td style="padding:0 32px 24px"><div style="background-color:#141414;border-radius:6px;padding:16px"><p style="margin:0 0 8px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#6E6660">Project Description</p><p style="margin:0;font-size:14px;color:#9A8C82;line-height:1.6">${safeDesc}${lead.project_description.length > 300 ? "..." : ""}</p>${lead.budget_range ? `<p style="margin:12px 0 0;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#6E6660">Budget: ${lead.budget_range}</p>` : ""}</div></td></tr>
+    <tr><td style="padding:0 32px 32px"><a href="${SITE_URL}/dashboard/leads/" style="display:inline-block;padding:12px 24px;background-color:#E8552E;color:#141414;font-size:14px;font-weight:600;text-decoration:none;border-radius:4px">VIEW IN DASHBOARD</a></td></tr>`;
+  return baseWrapper(content);
+}
+
+export function matchNotificationTemplate(
+  specialistName: string,
+  brief: { client_name: string; client_company: string | null; project_description: string; categories: string[]; },
+  rank: number,
+  score: number
+): string {
+  const company = brief.client_company ? ` at ${brief.client_company}` : "";
+  const pct = Math.round(score * 100);
+  const safeDesc = brief.project_description.substring(0, 300);
+  const content = `
+    <tr><td style="padding:24px 32px 8px"><p style="color:#E8552E;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;margin:0;font-family:'IBM Plex Mono',monospace">PROJECT MATCH</p></td></tr>
+    <tr><td style="padding:0 32px 16px"><h1 style="color:#F5F0EB;font-size:22px;font-weight:700;line-height:1.3;margin:0">You matched with a new project</h1></td></tr>
+    <tr><td style="padding:0 32px 24px"><p style="color:#9A8C82;font-size:15px;line-height:1.6;margin:0">${specialistName}, a client${company} is looking for expertise in your area. You ranked <strong style="color:#F5F0EB">#${rank}</strong> with a <strong style="color:#F5F0EB">${pct}%</strong> match.</p></td></tr>
+    <tr><td style="padding:0 32px 24px"><div style="background-color:#141414;border-radius:6px;padding:16px"><p style="margin:0 0 8px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#6E6660">Project Brief</p><p style="margin:0 0 12px;font-size:14px;color:#9A8C82;line-height:1.6">${safeDesc}${brief.project_description.length > 300 ? "..." : ""}</p><p style="margin:0;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#6E6660">Categories: ${brief.categories.join(", ")}</p></div></td></tr>
+    <tr><td style="padding:0 32px 32px"><a href="${SITE_URL}/dashboard/" style="display:inline-block;padding:12px 24px;background-color:#E8552E;color:#141414;font-size:14px;font-weight:600;text-decoration:none;border-radius:4px">VIEW DASHBOARD</a></td></tr>`;
+  return baseWrapper(content);
+}
