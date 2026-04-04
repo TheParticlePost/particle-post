@@ -30,7 +30,7 @@ export async function verifyAdmin(req: NextRequest): Promise<boolean> {
     .from("profiles")
     .select("role")
     .eq("id", user.id)
-    .single();
+    .maybeSingle();
 
   return profile?.role === "admin";
 }
