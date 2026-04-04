@@ -1,18 +1,6 @@
 import Link from "next/link";
 import { FooterSubscribe } from "@/components/newsletter/footer-subscribe";
-
-const NAV_LINKS = [
-  { href: "/", label: "Briefings" },
-  { href: "/categories/", label: "Deep Dives" },
-  { href: "/archive/", label: "Archive" },
-  { href: "/about/", label: "About" },
-];
-
-const LEGAL_LINKS = [
-  { href: "/privacy/", label: "Privacy" },
-  { href: "/terms/", label: "Terms" },
-  { href: "/cookies/", label: "Cookies" },
-];
+import { FOOTER_NAV_LINKS, LEGAL_LINKS } from "@/lib/nav-links";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -44,7 +32,7 @@ export function Footer() {
               Navigate
             </h4>
             <nav aria-label="Site navigation" className="flex flex-col gap-2">
-              {NAV_LINKS.map((link) => (
+              {FOOTER_NAV_LINKS.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}

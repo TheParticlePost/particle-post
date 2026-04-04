@@ -10,14 +10,9 @@ import { SearchTrigger } from "@/components/search/search-trigger";
 import { UserMenu } from "@/components/auth/user-menu";
 import { createClient, isSupabaseConfigured } from "@/lib/supabase/client";
 import { cn } from "@/lib/utils";
+import { SITE_NAV_LINKS } from "@/lib/nav-links";
 
-const NAV_LINKS = [
-  { href: "/", label: "Briefings" },
-  { href: "/categories/", label: "Deep Dives" },
-  { href: "/pulse/", label: "AI Pulse" },
-  { href: "/specialists/", label: "Specialists" },
-  { href: "/archive/", label: "Archive" },
-];
+const NAV_LINKS = SITE_NAV_LINKS;
 
 interface UserProfile {
   email: string;

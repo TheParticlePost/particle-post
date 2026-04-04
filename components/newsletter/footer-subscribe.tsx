@@ -9,7 +9,7 @@ export function FooterSubscribe() {
       <p className="text-body-sm text-text-secondary">
         Twice-daily AI briefings, no spam.
       </p>
-      <SubscribeForm compact />
+      <SubscribeForm />
     </div>
   );
 }

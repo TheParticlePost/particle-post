@@ -81,7 +81,7 @@ export function SubscribeForm({ compact = false, className }: SubscribeFormProps
           "text-body-sm text-text-primary placeholder:text-text-muted",
           "focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent",
           "transition-all duration-200",
-          compact ? "min-w-0" : "min-w-[240px]"
+          compact ? "min-w-[180px]" : "min-w-[240px]"
         )}
         disabled={state === "loading"}
       />
