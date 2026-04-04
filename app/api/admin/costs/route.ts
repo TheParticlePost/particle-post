@@ -5,6 +5,19 @@ import path from "path";
 
 const COSTS_DIR = path.join(process.cwd(), "pipeline", "logs", "costs");
 
+/**
+ * Estimate USD cost from token counts.
+ * IMPORTANT: Keep in sync with pipeline/utils/cost_calculator.py
+ */
+function estimateCost(inputTokens: number, outputTokens: number): number {
+  const SONNET_FRAC = 0.6;
+  const HAIKU_FRAC = 0.4;
+  return (
+    (inputTokens * (3.0 / 1e6) + outputTokens * (15.0 / 1e6)) * SONNET_FRAC +
+    (inputTokens * (0.25 / 1e6) + outputTokens * (1.25 / 1e6)) * HAIKU_FRAC
+  );
+}
+
 interface CostEntry {
   date: string;
   slot: string;
@@ -79,10 +92,9 @@ export async function GET(req: NextRequest) {
       existing.runs += 1;
       existing.input_tokens += input;
       existing.output_tokens += output;
-      // Estimate: ~60% Sonnet ($3/$15 per 1M), ~40% Haiku ($0.25/$1.25 per 1M)
-      existing.estimated_cost +=
-        (input * 0.000002 + output * 0.00001) * 0.6 +
-        (input * 0.0000002 + output * 0.000001) * 0.4;
+      // Mirror: pipeline/utils/cost_calculator.py estimate_cost()
+      // 60% Sonnet ($3/$15 per 1M), 40% Haiku ($0.25/$1.25 per 1M)
+      existing.estimated_cost += estimateCost(input, output);
       dailyMap.set(date, existing);
     }
 

@@ -7,6 +7,9 @@ const UNSUBSCRIBE_SECRET = process.env.UNSUBSCRIBE_SECRET || process.env.RESEND_
 /**
  * Generate an HMAC unsubscribe token for an email address.
  * Used by both the unsubscribe endpoint and email template generation.
+ *
+ * Algorithm: HMAC-SHA256(secret, email) → hex digest.
+ * Must match: pipeline/utils/email_sender.py _build_unsubscribe_url()
  */
 export function generateUnsubscribeToken(email: string): string {
   return createHmac("sha256", UNSUBSCRIBE_SECRET).update(email).digest("hex");

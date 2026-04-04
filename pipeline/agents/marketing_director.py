@@ -168,9 +168,8 @@ def _load_cost_summary() -> str:
     if total_runs == 0:
         return "(No cost data available.)"
 
-    # Approximate cost: ~60% Sonnet ($3/$15 per 1M), ~40% Haiku ($0.25/$1.25 per 1M)
-    est_cost = (total_input * 0.000002 + total_output * 0.00001) * 0.6 + \
-               (total_input * 0.0000002 + total_output * 0.000001) * 0.4
+    from pipeline.utils.cost_calculator import estimate_cost
+    est_cost = estimate_cost(total_input, total_output)
     avg_cost = est_cost / max(total_runs, 1)
 
     return (

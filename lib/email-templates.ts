@@ -1,6 +1,9 @@
 /**
  * HTML email templates for Particle Post.
  *
+ * Article notification layout is shared with pipeline/templates/article_notification.html
+ * (used by the Python email sender). Keep visual changes in sync.
+ *
  * Brand tokens:
  *   Vermillion: #E8552E
  *   Rich Black: #141414

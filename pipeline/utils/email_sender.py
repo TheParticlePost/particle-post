@@ -11,6 +11,7 @@ import json
 import os
 import urllib.parse
 import urllib.request
+from pathlib import Path
 from typing import Optional
 
 
@@ -116,16 +117,30 @@ def _fetch_subscribers(supabase_url: str, supabase_key: str) -> list[dict]:
 
 
 def _build_unsubscribe_url(email: str, secret: str) -> str:
-    """Build an HMAC-signed unsubscribe URL."""
+    """Build an HMAC-signed unsubscribe URL.
+
+    Algorithm must match app/api/unsubscribe/route.ts generateUnsubscribeToken().
+    Both use: HMAC-SHA256(secret, email) → hex digest.
+    """
     token = hmac.new(secret.encode(), email.encode(), hashlib.sha256).hexdigest()
     return f"{SITE_URL}/api/unsubscribe?email={urllib.parse.quote(email)}&token={token}"
+
+
+_TEMPLATE_DIR = Path(__file__).parents[1] / "templates"
 
 
 def _build_notification_html(
     title: str, description: str, article_url: str,
     image_url: Optional[str], unsubscribe_url: str,
 ) -> str:
-    """Build the article notification email HTML."""
+    """Build article notification email from shared HTML template.
+
+    Template: pipeline/templates/article_notification.html
+    Also used by: lib/email-templates.ts (TypeScript equivalent for Next.js)
+    """
+    tpl_path = _TEMPLATE_DIR / "article_notification.html"
+    html = tpl_path.read_text(encoding="utf-8")
+
     img_block = ""
     if image_url:
         img_block = (
@@ -134,37 +149,12 @@ def _build_notification_html(
             f'style="width:100%;border-radius:4px;display:block" /></td></tr>'
         )
 
-    return f"""<!DOCTYPE html>
-<html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
-<body style="margin:0;padding:0;background-color:#141414;font-family:'DM Sans',Helvetica,Arial,sans-serif">
-<table cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#141414">
-  <tr><td align="center" style="padding:32px 16px">
-    <table cellpadding="0" cellspacing="0" border="0" width="600" style="max-width:600px;background-color:#1E1E1E;border-radius:6px">
-      <tr><td style="padding:24px 32px;border-bottom:2px solid #E8552E">
-        <a href="{SITE_URL}" style="text-decoration:none;color:#F5F0EB;font-size:18px;font-weight:700">PARTICLE POST</a>
-      </td></tr>
-      <tr><td style="padding:24px 32px 8px">
-        <p style="color:#E8552E;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;margin:0;font-family:'IBM Plex Mono',monospace">NEW BRIEFING</p>
-      </td></tr>
-      {img_block}
-      <tr><td style="padding:0 32px 16px">
-        <a href="{article_url}" style="text-decoration:none">
-          <h1 style="color:#F5F0EB;font-size:22px;font-weight:700;line-height:1.3;margin:0">{title}</h1>
-        </a>
-      </td></tr>
-      <tr><td style="padding:0 32px 24px">
-        <p style="color:#9A8C82;font-size:15px;line-height:1.6;margin:0">{description}</p>
-      </td></tr>
-      <tr><td style="padding:0 32px 32px">
-        <a href="{article_url}" style="display:inline-block;padding:12px 24px;background-color:#E8552E;color:#141414;font-size:14px;font-weight:600;text-decoration:none;border-radius:4px">Read the full briefing &rarr;</a>
-      </td></tr>
-      <tr><td style="padding:24px 32px;text-align:center;border-top:1px solid rgba(90,65,59,0.2)">
-        <a href="{unsubscribe_url}" style="color:#9A8C82;font-size:11px;font-family:'IBM Plex Mono',monospace;text-decoration:none">Unsubscribe</a>
-        <span style="color:#6B5E56;font-size:11px"> &middot; </span>
-        <a href="{SITE_URL}" style="color:#9A8C82;font-size:11px;font-family:'IBM Plex Mono',monospace;text-decoration:none">theparticlepost.com</a>
-      </td></tr>
-    </table>
-  </td></tr>
-</table>
-</body></html>"""
+    return (
+        html
+        .replace("{{SITE_URL}}", SITE_URL)
+        .replace("{{ARTICLE_URL}}", article_url)
+        .replace("{{TITLE}}", title)
+        .replace("{{DESCRIPTION}}", description)
+        .replace("{{IMAGE_BLOCK}}", img_block)
+        .replace("{{UNSUBSCRIBE_URL}}", unsubscribe_url)
+    )

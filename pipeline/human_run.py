@@ -58,7 +58,7 @@ def _build_human_crew(slot: str, topic: str, sources: str, key_points: str):
     from pipeline.agents.editor import build_editor
     from pipeline.agents.seo_gso_specialist import build_seo_gso_specialist
     from pipeline.agents.photo_finder import build_photo_finder
-    from pipeline.agents.formatter import build_formatter
+    from pipeline.agents.formatter import build_formatter  # TODO: migrate to article_assembler.py (see run.py)
     from pipeline.agents.production_director import build_production_director
 
     from pipeline.tasks.selection_task import _get_schedule_info
@@ -71,7 +71,7 @@ def _build_human_crew(slot: str, topic: str, sources: str, key_points: str):
     from pipeline.tasks.seo_gso_task import build_seo_gso_task
     from pipeline.tasks.editing_task import build_editing_task
     from pipeline.tasks.photo_task import build_photo_task
-    from pipeline.tasks.formatting_task import build_formatting_task
+    from pipeline.tasks.formatting_task import build_formatting_task  # TODO: migrate to article_assembler.py
     from pipeline.tasks.validation_task import build_validation_task
 
     funnel_type, content_type = _get_schedule_info(slot)
