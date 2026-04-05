@@ -43,7 +43,8 @@ ShowToc: true
 TocOpen: false
 draft: false
 
-content_type: "how_to"---
+content_type: "how_to"
+---
 More than half of deployed enterprise AI agents operate without consistent security oversight or logging, according to Beam AI research. That gap is not a technology problem. It is a governance failure waiting to trigger a compliance event.
 
 ## The Most Common Misconception About AI Risk Management in Finance

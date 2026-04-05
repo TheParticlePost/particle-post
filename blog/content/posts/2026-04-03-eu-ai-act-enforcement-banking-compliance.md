@@ -44,7 +44,8 @@ faq_pairs:
   - q: "What is the EBA's role in EU AI Act enforcement for banks?"
     a: "The EBA promotes common supervisory approaches among national competent authorities and provides input to the European AI Office per the EBA Work Programme 2026. National market surveillance authorities hold primary enforcement powers. The EBA coordinates to prevent regulatory arbitrage across member states."
 
-content_type: "deep_dive"---
+content_type: "deep_dive"
+---
 
 August 2, 2026 is not a suggestion. Any bank or fintech operating in the EU that runs credit scoring, creditworthiness assessment, or AI-driven insurance pricing without a documented conformity assessment faces fines up to 15 million euros or 3% of global annual turnover, whichever is greater, according to the EU AI Act penalty framework. The compliance window is closed. Execution is all that remains.
 

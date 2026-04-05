@@ -43,7 +43,8 @@ ShowToc: true
 TocOpen: false
 draft: false
 
-content_type: "how_to"---
+content_type: "how_to"
+---
 Only 23% of organizations have a formal AI agent governance strategy, according to AI Thinker Lab. The other 77% are running autonomous software in production while improvising the rules in real time.
 
 ## The Governance Myth Blocking Safe Agent Deployment

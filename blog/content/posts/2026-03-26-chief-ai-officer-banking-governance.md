@@ -39,7 +39,8 @@ ShowToc: true
 TocOpen: false
 draft: false
 
-content_type: "news_analysis"---
+content_type: "news_analysis"
+---
 
 HSBC appointed its first Chief AI Officer in early 2025, making it one of the largest banks in the world to formalize AI governance at the C-suite level. If your institution still routes AI decisions through the CTO's office, you are already behind.
 

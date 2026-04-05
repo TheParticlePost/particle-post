@@ -41,7 +41,8 @@ ShowToc: true
 TocOpen: false
 draft: false
 
-content_type: "case_study"---
+content_type: "case_study"
+---
 
 Meta cut hundreds of roles across multiple divisions in March 2026, according to SiliconAngle, concentrating reductions in teams that support legacy infrastructure, mid-level management, and non-core AI functions. For enterprise leaders who have benchmarked their own AI programs against Big Tech spending patterns, this is not a cautionary tale. It is a targeting signal.
 

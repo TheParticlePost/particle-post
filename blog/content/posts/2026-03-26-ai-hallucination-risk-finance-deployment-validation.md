@@ -41,7 +41,8 @@ faq_pairs:
   - q: "How often should AI model outputs be monitored after deployment in financial services?"
     a: "Review a random sample of AI outputs weekly for at least the first 90 days post-deployment. Model behavior drifts as real-world inputs diverge from training data, and ongoing monitoring is the only reliable mechanism to catch accuracy degradation before it reaches a regulator."
 
-content_type: "news_analysis"---
+content_type: "news_analysis"
+---
 
 ## The Most Common Misconception About AI Risk Management in Finance
 

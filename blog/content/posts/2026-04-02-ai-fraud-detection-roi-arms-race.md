@@ -42,7 +42,8 @@ ShowToc: true
 TocOpen: false
 draft: false
 
-content_type: "news_analysis"---
+content_type: "news_analysis"
+---
 
 ## The Myth That Gets CFOs in Trouble
 

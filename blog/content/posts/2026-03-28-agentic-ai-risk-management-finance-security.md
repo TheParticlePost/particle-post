@@ -43,7 +43,8 @@ ShowToc: true
 TocOpen: false
 draft: false
 
-content_type: "news_analysis"---
+content_type: "news_analysis"
+---
 
 Cisco's security researchers told RSAC 2026 attendees something board members did not want to hear: autonomous AI agents are already operating inside enterprise networks with weaker identity controls than a junior contractor. The security debt is not theoretical. It is compounding daily.
 

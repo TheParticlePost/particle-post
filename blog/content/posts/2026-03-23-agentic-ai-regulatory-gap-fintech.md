@@ -29,7 +29,8 @@ TocOpen: false
 draft: false
 
 content_type: "news_analysis"
-schema_type: "NewsArticle"---
+schema_type: "NewsArticle"
+---
 
 JPMorgan Chase now runs AI agents that autonomously execute segments of intraday trading strategies, and no regulator has yet defined who is liable when one of those agents misfires. That accountability gap sits at the center of a slow-motion compliance crisis spreading across global financial services.
 

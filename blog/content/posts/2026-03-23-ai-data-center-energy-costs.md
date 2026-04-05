@@ -31,7 +31,8 @@ TocOpen: false
 draft: false
 
 content_type: "news_analysis"
-schema_type: "NewsArticle"---
+schema_type: "NewsArticle"
+---
 
 Amazon alone plans to spend $200 billion on capital expenditures this year. That single number explains why power grids, carbon markets, and utility balance sheets are all under simultaneous pressure in 2026.
 
