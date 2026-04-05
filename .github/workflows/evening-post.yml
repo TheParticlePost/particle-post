@@ -48,6 +48,9 @@ jobs:
       - name: Install Python dependencies
         run: pip install -r requirements.txt
 
+      - name: Install Playwright for graphics rendering
+        run: python -m playwright install chromium --with-deps
+
       - name: Run evening pipeline
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
