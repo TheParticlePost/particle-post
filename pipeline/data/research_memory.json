@@ -1,7 +1,18 @@
 {
-  "last_updated": null,
-  "total_runs": 0,
-  "query_history": [],
+  "last_updated": "2026-04-05T06:15:30.396641+00:00",
+  "total_runs": 1,
+  "query_history": [
+    {
+      "date": "2026-04-05",
+      "slot": "afternoon",
+      "content_type": "case_study",
+      "queries_used": [],
+      "topics_found": 2,
+      "topic_selected": "How Klarna Cut 700 Support Jobs With AI — and What It Cost",
+      "director_score": null,
+      "quality": null
+    }
+  ],
   "successful_query_patterns": {
     "news_analysis": [],
     "deep_dive": [],
@@ -15,7 +26,7 @@
     "finance": 0,
     "operations": 0,
     "supply_chain": 0,
-    "hr": 0,
+    "hr": 1,
     "manufacturing": 0,
     "healthcare": 0,
     "compliance": 0,

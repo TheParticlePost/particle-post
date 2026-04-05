@@ -5,6 +5,7 @@
 
 ## Posts
 
+- [Klarna AI Customer Service: What the Real Numbers Show](https://theparticlepost.com/posts/klarna-ai-customer-service-case-study/)
 - [AI Infrastructure Cost: Does TurboQuant Save Money?](https://theparticlepost.com/posts/ai-infrastructure-cost-turboquant-savings/)
 - [AI Agent Governance Framework: 5-Step Control Plan](https://theparticlepost.com/posts/ai-agent-governance-framework-5-steps/)
 - [EU AI Act Enforcement: AI Compliance Banking Guide](https://theparticlepost.com/posts/eu-ai-act-enforcement-banking-compliance/)

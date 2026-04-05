@@ -1,21 +1,6 @@
 {
   "notes": [
     {
-      "text": "RENDER THE FAQ IN THE ARTICLE BODY: You have five strong FAQ pairs in the YAML frontmatter, but none of them appear as a rendered '## Frequently Asked Questions' section in the article body. Since has_faq=true and schema_type is FAQPage, the body must include the Q+A markup so both readers and search engines see the structured content. Add the section above Sources.",
-      "slot": "morning",
-      "date": "2026-03-31T13:05:09.850964+00:00"
-    },
-    {
-      "text": "REPLACE THE ORACLE SOURCE URL: Citing 'https://www.oracle.com/' as a source for a specific claim about a 2026 Fusion ERP AI agent rollout is not defensible. Locate the actual Oracle press release, product documentation page, or earnings call transcript and link directly to it. A bare homepage URL will be flagged by any editorial reviewer and undermines the credibility of an otherwise well-sourced piece.",
-      "slot": "morning",
-      "date": "2026-03-31T13:05:09.850964+00:00"
-    },
-    {
-      "text": "Replace the picsum.photos placeholder image immediately — this is a hard blocker. Source a real, licensed image from Unsplash, Getty, or your internal asset library and update cover.image with the permanent URL before resubmitting. Picsum images are randomly generated and will display inconsistently across page loads, which undermines publication credibility.",
-      "slot": "morning",
-      "date": "2026-04-01T13:11:04.103139+00:00"
-    },
-    {
       "text": "Convert your three prose internal-link references into actual markdown hyperlinks. You have the right instinct (referencing related Particle Post content at natural anchor points), but the links must use the format [descriptive anchor text](/slug-goes-here) to satisfy MOF's two-internal-link requirement and to pass Google's internal linking signals to those pages. Pull the correct slugs from your CMS or the YAML frontmatter of the target articles.",
       "slot": "morning",
       "date": "2026-04-01T13:11:04.103139+00:00"
@@ -149,6 +134,21 @@
       "text": "Confirm your internal link slugs match published Particle Post URLs before this goes live. The anchor text 'enterprise AI ROI analysis' and 'Big Tech $700B AI data center analysis' are well-written, but if those slugs don't resolve, readers hit dead links and SEO equity is lost. Pull the actual slug values from your CMS and hard-code them into the href.",
       "slot": "evening",
       "date": "2026-04-04T21:11:58.668885+00:00"
+    },
+    {
+      "text": "Fix the Forrester/Gartner misattribution before this goes live: the '50% of AI job cuts reversed by 2027' forecast is a Gartner prediction, not a Forrester finding. Forrester's verified stat is the 55% employer-regret figure. Mixing the two in a single sentence damages credibility with the CFO/COO audience who will recognize the error. Correct the attribution or separate the two claims clearly.",
+      "slot": "afternoon",
+      "date": "2026-04-05T06:21:10.817267+00:00"
+    },
+    {
+      "text": "Trim approximately 150-200 words to land within the 1,800-3,000 MOF word count ceiling. The 'What This Deployment Does NOT Prove' section contains five parallel 'It does not prove...' constructions that are repetitive at this length — condensing those to three tightly worded bullets would preserve analytical rigor while cutting the overage and tightening the reader experience.",
+      "slot": "afternoon",
+      "date": "2026-04-05T06:21:10.817267+00:00"
+    },
+    {
+      "text": "Replace the picsum.photos placeholder cover image with a licensed editorial image before scheduling publication. A placeholder image on a case study targeting CFOs and COOs signals draft status and undermines the authority positioning the article otherwise earns through its sourcing and depth.",
+      "slot": "afternoon",
+      "date": "2026-04-05T06:21:10.817267+00:00"
     }
   ]
 }

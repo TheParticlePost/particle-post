@@ -1,6 +1,14 @@
 {
   "posts": [
     {
+      "slug": "klarna-ai-customer-service-case-study",
+      "title": "Klarna AI Customer Service: What the Real Numbers Show",
+      "funnel_type": "MOF",
+      "content_type": "case_study",
+      "tags": [],
+      "date": "2026-04-05"
+    },
+    {
       "slug": "ai-agent-governance-framework-5-steps",
       "title": "AI Agent Governance Framework: 5-Step Control Plan",
       "funnel_type": "TOF",
