@@ -1,26 +1,6 @@
 {
   "notes": [
     {
-      "text": "Strengthen primary source attribution on the benchmark figures: The $12.88 and $2.78 cost-per-invoice stats are attributed to 'Aberdeen Group/APQC 2025' but Source 1 in the Sources section links to a Quadient blog post, not a primary APQC or Aberdeen Group report. For a finance executive audience, citing a vendor blog as the authority for a headline benchmark undermines credibility. Either locate the primary APQC 'Accounts Payable Performance' report URL or add a caveat that the figure is aggregated via Quadient's summary.",
-      "slot": "morning",
-      "date": "2026-04-01T13:18:35.681484+00:00"
-    },
-    {
-      "text": "The comparison table is strong, but the 'Agentic Capability' row needs a source citation inline or in the Sources section: the claim that Automation Anywhere uses a 'UiPath-class RPA plus LLM layer' is unattributed and reads as editorial characterization. Add a footnote or inline citation to an Automation Anywhere product page or analyst report to prevent a fact-check challenge from readers who know the competitive landscape.",
-      "slot": "morning",
-      "date": "2026-04-01T13:18:35.681484+00:00"
-    },
-    {
-      "text": "Populate the 'author' field in the YAML frontmatter before publication. An empty author tag undermines credibility with executive readers and creates a schema gap since the article uses FAQPage schema — Google's structured data validator may flag an incomplete entity record.",
-      "slot": "evening",
-      "date": "2026-04-01T21:09:30.698112+00:00"
-    },
-    {
-      "text": "The answer-first paragraph after the first H2 ('Five Preconditions That Determine Deployment Readiness') runs slightly long and opens with a conditional clause rather than a direct declarative answer. Tighten it to a crisp 40–60 word declaration — e.g., 'Five preconditions determine deployment readiness: clean baseline data, structured ERP fields, a documented approval matrix, a dedicated integration owner, and confirmed data residency controls. Missing any one of them will stall the pilot before Week 4.' This keeps GSO compliance clean.",
-      "slot": "evening",
-      "date": "2026-04-01T21:09:30.698112+00:00"
-    },
-    {
       "text": "The vendor comparison table is a strong differentiator, but the Zapier pricing entry ('~$20/month') is the only figure in the table without a source citation inline or in the Sources list. Either add a source URL for Zapier's pricing tier or replace the figure with 'Tiered SaaS (see vendor site)' to avoid an unattributed claim that a skeptical executive reader — or an auditor — could flag.",
       "slot": "evening",
       "date": "2026-04-01T21:09:30.698112+00:00"
@@ -149,6 +129,26 @@
       "text": "Replace the picsum.photos placeholder cover image before resubmission. A published article at Particle Post must have a real, licensed image. Also convert the KEY TAKEAWAY from inline text to a proper blockquote or callout shortcode — visual formatting elements like this must render distinctly from body copy to serve their purpose for skimmable executive readers.",
       "slot": "morning",
       "date": "2026-04-05T13:06:09.587156+00:00"
+    },
+    {
+      "text": "QA gate failed — fix programmatic issues before retry",
+      "slot": "afternoon",
+      "date": "2026-04-05T16:10:14.475865+00:00"
+    },
+    {
+      "text": "RECONCILE THE AI USE-CASE COUNT: You cite '450 AI use cases in production' (attributed to Emerj) in one section and 'more than 500 active AI use cases' (attributed to Chronicle Journal, March 2026) in the closing section. Pick the most current verified figure (500+, per Chronicle Journal March 2026) and use it consistently throughout. Contradictory statistics in the same article undermine credibility with the executive audience this piece targets.",
+      "slot": "afternoon",
+      "date": "2026-04-05T16:17:14.473571+00:00"
+    },
+    {
+      "text": "FIX THE STAT MARKER UNIT ERROR: 'STAT: 12,000 | Commercial credit agreements COiN processes per second' is factually wrong — COiN processes 12,000 annual agreements in seconds (total elapsed time), not 12,000 per second. Change the descriptor to 'Commercial credit agreements COiN processes annually, in seconds' to match what Bloomberg and ABA Journal actually reported. A single wrong unit in a visible callout is the kind of error that triggers reader distrust.",
+      "slot": "afternoon",
+      "date": "2026-04-05T16:17:14.473571+00:00"
+    },
+    {
+      "text": "UPGRADE THE KEY TAKEAWAY TO A SHORTCODE: The KEY TAKEAWAY is buried as bold inline text mid-article. For a MOF case study targeting CFOs and COOs, this is the single most important scannable element on the page. Wrap it in the publication's callout shortcode (e.g., {{< callout >}}) so it renders as a visually distinct box. Executives who skim will miss it entirely in its current form, which defeats the purpose of including it.",
+      "slot": "afternoon",
+      "date": "2026-04-05T16:17:14.473571+00:00"
     }
   ]
 }

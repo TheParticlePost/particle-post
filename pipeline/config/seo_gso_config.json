@@ -1,7 +1,7 @@
 {
   "last_updated": "2026-04-05",
   "schema_coverage": {
-    "Article": 1,
+    "Article": 2,
     "FAQPage": 23,
     "HowTo": 0,
     "NewsArticle": 0
@@ -218,6 +218,14 @@
       "schema_type": "FAQPage",
       "has_faq": true,
       "search_intent": "informational"
+    },
+    {
+      "date": "2026-04-05",
+      "slug": "jpmorgan-coin-ai-contract-intelligence-case-study",
+      "primary_keyword": "JPMorgan AI case study",
+      "schema_type": "Article",
+      "has_faq": true,
+      "search_intent": "commercial"
     }
   ]
 }

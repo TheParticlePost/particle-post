@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-04-05T13:02:31.963506+00:00",
-  "total_runs": 2,
+  "last_updated": "2026-04-05T16:03:10.046987+00:00",
+  "total_runs": 3,
   "query_history": [
     {
       "date": "2026-04-05",
@@ -19,6 +19,16 @@
       "queries_used": [],
       "topics_found": 2,
       "topic_selected": "Does Microsoft's AI Model Push Signal the End of the OpenAI Era?",
+      "director_score": null,
+      "quality": null
+    },
+    {
+      "date": "2026-04-05",
+      "slot": "afternoon",
+      "content_type": "case_study",
+      "queries_used": [],
+      "topics_found": 2,
+      "topic_selected": "How JPMorgan Cut Contract Review Time 80% with AI",
       "director_score": null,
       "quality": null
     }
@@ -40,7 +50,7 @@
     "manufacturing": 0,
     "healthcare": 0,
     "compliance": 0,
-    "technology": 0,
+    "technology": 1,
     "strategy": 1
   },
   "content_gap_queue": []
