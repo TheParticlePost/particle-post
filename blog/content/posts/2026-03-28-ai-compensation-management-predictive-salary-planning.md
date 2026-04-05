@@ -26,7 +26,7 @@ cover:
 image_credit_name: "Lalmch"
 image_credit_url: "https://pixabay.com/users/Lalmch-1026205"
 image_credit_source: "pixabay"
-schema_type: "FAQPage"
+schema_type: "NewsArticle"
 has_faq: true
 faq_pairs:
   - q: "What data does an AI compensation management tool require to work accurately?"
@@ -42,7 +42,8 @@ faq_pairs:
 ShowToc: true
 TocOpen: false
 draft: false
----
+
+content_type: "news_analysis"---
 
 Decusoft launched Compose Insights in March 2026 with a specific promise: cut the time HR leaders spend on compensation planning by using predictive modeling on live workforce data. The question CFOs should ask is not whether AI can analyze salary data. It is whether their HR teams can actually use it without introducing new compliance and fairness risks.
 

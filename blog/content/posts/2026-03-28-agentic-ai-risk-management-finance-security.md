@@ -26,7 +26,7 @@ cover:
 image_credit_name: "TheDigitalArtist"
 image_credit_url: "https://pixabay.com/users/TheDigitalArtist-202249"
 image_credit_source: "Pixabay"
-schema_type: "FAQPage"
+schema_type: "NewsArticle"
 has_faq: true
 faq_pairs:
   - q: "What is agentic AI security and why does it matter for finance?"
@@ -42,7 +42,8 @@ faq_pairs:
 ShowToc: true
 TocOpen: false
 draft: false
----
+
+content_type: "news_analysis"---
 
 Cisco's security researchers told RSAC 2026 attendees something board members did not want to hear: autonomous AI agents are already operating inside enterprise networks with weaker identity controls than a junior contractor. The security debt is not theoretical. It is compounding daily.
 

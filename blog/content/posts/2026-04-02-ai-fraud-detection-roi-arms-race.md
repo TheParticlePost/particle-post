@@ -25,7 +25,7 @@ cover:
 image_credit_name: "nattanan23"
 image_credit_url: "https://pixabay.com/users/nattanan23-6312362"
 image_credit_source: "Pixabay"
-schema_type: "FAQPage"
+schema_type: "NewsArticle"
 has_faq: true
 faq_pairs:
   - q: "What ROI do banks actually get from AI fraud detection?"
@@ -41,7 +41,8 @@ faq_pairs:
 ShowToc: true
 TocOpen: false
 draft: false
----
+
+content_type: "news_analysis"---
 
 ## The Myth That Gets CFOs in Trouble
 

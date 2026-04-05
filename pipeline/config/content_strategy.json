@@ -39,13 +39,58 @@
   },
 
   "schedule": {
-    "Monday":    {"morning": {"funnel": "MOF", "content_type": "practical"}, "evening": {"funnel": "TOF", "content_type": "news"}},
-    "Tuesday":   {"morning": {"funnel": "TOF", "content_type": "practical"}, "evening": {"funnel": "TOF", "content_type": "news"}},
-    "Wednesday": {"morning": {"funnel": "MOF", "content_type": "practical"}, "evening": {"funnel": "BOF", "content_type": "practical"}},
-    "Thursday":  {"morning": {"funnel": "TOF", "content_type": "news"},      "evening": {"funnel": "TOF", "content_type": "practical"}},
-    "Friday":    {"morning": {"funnel": "MOF", "content_type": "practical"}, "evening": {"funnel": "BOF", "content_type": "news"}},
-    "Saturday":  {"morning": {"funnel": "TOF", "content_type": "practical"}, "evening": {"funnel": "TOF", "content_type": "news"}},
-    "Sunday":    {"morning": {"funnel": "MOF", "content_type": "practical"}, "evening": {"funnel": "BOF", "content_type": "news"}}
+    "Monday":    {"morning": {"content_type": "news_analysis"}, "afternoon": {"content_type": "deep_dive"},          "evening": {"content_type": "how_to"}},
+    "Tuesday":   {"morning": {"content_type": "news_analysis"}, "afternoon": {"content_type": "case_study"},         "evening": {"content_type": "technology_profile"}},
+    "Wednesday": {"morning": {"content_type": "news_analysis"}, "afternoon": {"content_type": "deep_dive"},          "evening": {"content_type": "industry_briefing"}},
+    "Thursday":  {"morning": {"content_type": "news_analysis"}, "afternoon": {"content_type": "technology_profile"}, "evening": {"content_type": "case_study"}},
+    "Friday":    {"morning": {"content_type": "news_analysis"}, "afternoon": {"content_type": "deep_dive"},          "evening": {"content_type": "how_to"}},
+    "Saturday":  {"morning": {"content_type": "news_analysis"}, "afternoon": {"content_type": "technology_profile"}, "evening": {"content_type": "case_study"}},
+    "Sunday":    {"morning": {"content_type": "news_analysis"}, "afternoon": {"content_type": "case_study"},         "evening": {"content_type": "how_to"}}
+  },
+
+  "content_type_definitions": {
+    "news_analysis": {
+      "name": "News Analysis",
+      "word_count": {"min": 600, "max": 1000},
+      "h1_format": "question",
+      "schema_type": "NewsArticle",
+      "description": "Breaking AI news with business implications. Must answer: what should the reader DO?"
+    },
+    "deep_dive": {
+      "name": "Deep Dive",
+      "word_count": {"min": 2000, "max": 3000},
+      "h1_format": "analytical",
+      "schema_type": "Article",
+      "description": "In-depth analysis of a trend, study, or strategic shift. Data-heavy, evaluative."
+    },
+    "case_study": {
+      "name": "Case Study",
+      "word_count": {"min": 1500, "max": 2500},
+      "h1_format": "company_outcome",
+      "schema_type": "Article",
+      "description": "Real-world AI deployment with timeline, costs, results, lessons learned."
+    },
+    "how_to": {
+      "name": "How-To Guide",
+      "word_count": {"min": 1200, "max": 2000},
+      "h1_format": "action",
+      "schema_type": "HowTo",
+      "description": "Step-by-step implementation guide with prerequisites, failure scenarios, success metrics."
+    },
+    "technology_profile": {
+      "name": "Technology Profile",
+      "word_count": {"min": 1500, "max": 2500},
+      "h1_format": "comparison",
+      "schema_type": "Article",
+      "description": "Vendor/tool comparison or technology landscape assessment with scoring criteria."
+    },
+    "industry_briefing": {
+      "name": "Industry Briefing",
+      "word_count": {"min": 1000, "max": 1500},
+      "h1_format": "sector",
+      "schema_type": "NewsArticle",
+      "description": "Sector-specific AI adoption roundup. Rotating: Logistics, Manufacturing, Healthcare, Professional Services, Retail, Energy."
+    }
   },
 
   "funnel_types": {

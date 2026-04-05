@@ -25,7 +25,7 @@ cover:
 image_credit_name: "AS_Photography"
 image_credit_url: "https://pixabay.com/users/AS_Photography-1546875"
 image_credit_source: "Pixabay"
-schema_type: "FAQPage"
+schema_type: "Article"
 has_faq: true
 faq_pairs:
   - q: "What is the average ROI of enterprise AI investments in 2025?"
@@ -41,7 +41,8 @@ faq_pairs:
 ShowToc: true
 TocOpen: false
 draft: false
----
+
+content_type: "deep_dive"---
 
 MIT's Project NANDA analyzed more than 300 publicly disclosed AI deployments and found that 95% of enterprise AI pilots produced no measurable P&L impact. A specific cluster of product development teams following four documented practices reported median generative AI returns of 55%, according to the IBM Institute for Business Value. The gap between those two populations is not random. It is structural, repeatable, and diagnosable before you spend another dollar.
 

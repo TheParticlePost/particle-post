@@ -9,10 +9,10 @@
  *   Hour 5  daily       -> security-audit.yml    (Midnight ET)
  *   Hour 13 daily       -> morning-post.yml      (9 AM ET)
  *   Hour 15 daily       -> ui-proactive.yml      (11 AM ET)
- *   Hour 17 daily       -> marketing-director.yml(Noon ET)
- *   Hour 18 daily       -> ui-designer.yml       (1 PM ET)
+ *   Hour 17 daily       -> afternoon-post.yml    (1 PM ET)
+ *   Hour 18 daily       -> ui-designer.yml       (2 PM ET)
  *   Hour 19 daily       -> ui-proactive.yml      (3 PM ET)
- *   Hour 21 daily       -> evening-post.yml      (5 PM ET)
+ *   Hour 22 daily       -> evening-post.yml      (6 PM ET)
  *   Hour 23 daily       -> ui-proactive.yml      (7 PM ET)
  *   Hour 0  Saturday    -> weekly-report.yml     (Fri 8 PM ET)
  *   Hour 2  Saturday    -> security-report.yml   (Fri 9 PM ET)
@@ -37,10 +37,10 @@ function getWorkflows(hour, day) {
     5:  'security-audit.yml',
     13: 'morning-post.yml',
     15: 'ui-proactive.yml',
-    17: 'marketing-director.yml',
+    17: 'afternoon-post.yml',
     18: 'ui-designer.yml',
     19: 'ui-proactive.yml',
-    21: 'evening-post.yml',
+    22: 'evening-post.yml',
     23: 'ui-proactive.yml',
   };
 
@@ -71,28 +71,6 @@ async function dispatchWorkflow(workflow, env) {
   if (!resp.ok) {
     const body = await resp.text();
     console.error(`[particle-post] GitHub API error ${resp.status} for ${workflow}: ${body}`);
-
-    // Send alert email via Resend (if configured)
-    if (env.RESEND_API_KEY && env.ALERT_EMAIL) {
-      try {
-        await fetch('https://api.resend.com/emails', {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${env.RESEND_API_KEY}`,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            from: 'Particle Post Alerts <alerts@theparticlepost.com>',
-            to: [env.ALERT_EMAIL],
-            subject: `[ALERT] Failed to dispatch ${workflow}`,
-            text: `Cloudflare Worker failed to dispatch ${workflow}.\nGitHub API returned ${resp.status}: ${body}\nTime: ${new Date().toISOString()}`,
-          }),
-        });
-      } catch (emailErr) {
-        console.error(`[particle-post] Alert email also failed: ${emailErr}`);
-      }
-    }
-
     throw new Error(`GitHub dispatch failed for ${workflow}: ${resp.status}`);
   }
 
@@ -136,10 +114,10 @@ export default {
         { utcHour: 5,  days: 'daily',    workflow: 'security-audit.yml',    et: 'Midnight ET' },
         { utcHour: 13, days: 'daily',    workflow: 'morning-post.yml',      et: '9 AM ET' },
         { utcHour: 15, days: 'daily',    workflow: 'ui-proactive.yml',      et: '11 AM ET' },
-        { utcHour: 17, days: 'daily',    workflow: 'marketing-director.yml',et: 'Noon ET' },
-        { utcHour: 18, days: 'daily',    workflow: 'ui-designer.yml',       et: '1 PM ET' },
+        { utcHour: 17, days: 'daily',    workflow: 'afternoon-post.yml',    et: '1 PM ET' },
+        { utcHour: 18, days: 'daily',    workflow: 'ui-designer.yml',       et: '2 PM ET' },
         { utcHour: 19, days: 'daily',    workflow: 'ui-proactive.yml',      et: '3 PM ET' },
-        { utcHour: 21, days: 'daily',    workflow: 'evening-post.yml',      et: '5 PM ET' },
+        { utcHour: 22, days: 'daily',    workflow: 'evening-post.yml',      et: '6 PM ET' },
         { utcHour: 23, days: 'daily',    workflow: 'ui-proactive.yml',      et: '7 PM ET' },
         { utcHour: 0,  days: 'Saturday', workflow: 'weekly-report.yml',     et: 'Fri 8 PM ET' },
         { utcHour: 2,  days: 'Saturday', workflow: 'security-report.yml',   et: 'Fri 9 PM ET' },

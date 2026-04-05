@@ -25,7 +25,7 @@ cover:
 image_credit_name: "QuinceCreative"
 image_credit_url: "https://pixabay.com/users/QuinceCreative-1031690"
 image_credit_source: "pixabay"
-schema_type: "FAQPage"
+schema_type: "NewsArticle"
 has_faq: true
 ShowToc: true
 TocOpen: false
@@ -41,7 +41,8 @@ faq_pairs:
     a: "Only for the first 12 to 24 months. Model it as a tactical deferral, not a structural cost reduction. Budget for the next constraint, likely GPU compute, within the same planning horizon. Hyperscalers will spend 90% of operating cash flow on capex in 2026, per Bank of America."
   - q: "Is memory the main cost driver in AI infrastructure?"
     a: "No. Memory is one component alongside compute, networking, power, and cooling. Roughly $180 billion of 2026 hyperscaler spend goes to memory, but total AI infrastructure capex across the five largest providers exceeds $600 billion, per MUFG Americas."
----
+
+content_type: "news_analysis"---
 Google's TurboQuant compresses AI model memory by 6x on H100 GPUs, according to Google Research, and CFOs are treating that number as a capital expenditure fix. It is not. Memory is one line item in a data center stack that also includes compute, networking, power, cooling, and software licensing.
 
 ## The Common Misconception About AI Memory Compression Savings

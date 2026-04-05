@@ -25,7 +25,7 @@ cover:
 image_credit_name: "Tima Miroshnichenko"
 image_credit_url: "https://www.pexels.com/@tima-miroshnichenko"
 image_credit_source: "Pexels"
-schema_type: "FAQPage"
+schema_type: "NewsArticle"
 has_faq: true
 faq_pairs:
   - q: "How long do nation-state attackers dwell inside enterprise networks before detection?"
@@ -41,7 +41,8 @@ faq_pairs:
 ShowToc: true
 TocOpen: false
 draft: false
----
+
+content_type: "news_analysis"---
 China's Salt Typhoon operation compromised at least nine US telecommunications carriers in 2024, dwelling inside networks for up to 18 months before detection, according to a joint advisory from the FBI and CISA. The attackers did not break down the door; they walked through gaps every large enterprise has.
 
 ## How Is AI Changing Enterprise Security Threat Detection?

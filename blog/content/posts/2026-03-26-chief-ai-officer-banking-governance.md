@@ -24,7 +24,7 @@ cover:
 image_credit_name: "Mikhail Nilov"
 image_credit_url: "https://www.pexels.com/@mikhail-nilov"
 image_credit_source: "Pexels"
-schema_type: "FAQPage"
+schema_type: "NewsArticle"
 has_faq: true
 faq_pairs:
   - q: "What does a Chief AI Officer do in a bank?"
@@ -38,7 +38,8 @@ faq_pairs:
 ShowToc: true
 TocOpen: false
 draft: false
----
+
+content_type: "news_analysis"---
 
 HSBC appointed its first Chief AI Officer in early 2025, making it one of the largest banks in the world to formalize AI governance at the C-suite level. If your institution still routes AI decisions through the CTO's office, you are already behind.
 

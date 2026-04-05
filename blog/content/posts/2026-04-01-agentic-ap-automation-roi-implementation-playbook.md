@@ -26,7 +26,7 @@ cover:
 image_credit_name: "Lalmch"
 image_credit_url: "https://pixabay.com/users/Lalmch-1026205"
 image_credit_source: "Pixabay"
-schema_type: "FAQPage"
+schema_type: "HowTo"
 has_faq: true
 faq_pairs:
   - q: "What ROI can finance teams realistically expect from agentic AP automation in year one?"
@@ -42,7 +42,8 @@ faq_pairs:
 ShowToc: true
 TocOpen: false
 draft: false
----
+
+content_type: "how_to"---
 Finance teams that deploy agentic AI in accounts payable are cutting cost-per-invoice from $12.88 to $2.78, according to Aberdeen Group benchmarks. That gap is wide enough to repay a mid-market implementation in under six months.
 
 This playbook is for finance directors and VPs who have moved past the proof-of-concept stage and need to make a platform decision, assign a budget, and build a deployment roadmap. It covers the ROI formula, platform selection, the data quality gates most teams skip, ERP integration checkpoints, and the agent oversight dashboards that regulators will ask to see.

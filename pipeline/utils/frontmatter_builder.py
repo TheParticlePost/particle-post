@@ -15,6 +15,7 @@ def build_frontmatter(
     image_credit_source: str,
     author: str = "Particle Post Editorial Team",
     schema_type: str = "Article",
+    content_type: str = "news_analysis",
     has_faq: bool = False,
     faq_pairs: list[dict] | None = None,
 ) -> str:
@@ -34,6 +35,7 @@ def build_frontmatter(
         f"tags: {_yaml_list(tags)}",
         f"categories: {_yaml_list(categories)}",
         f'schema_type: "{schema_type}"',
+        f'content_type: "{content_type}"',
         f"has_faq: {'true' if has_faq else 'false'}",
     ]
 

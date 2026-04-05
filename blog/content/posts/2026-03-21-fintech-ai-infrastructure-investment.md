@@ -27,7 +27,9 @@ image_credit_source: "Pexels"
 ShowToc: true
 TocOpen: false
 draft: false
----
+
+content_type: "news_analysis"
+schema_type: "NewsArticle"---
 Fintech has stopped debating whether to use AI and started competing on how deeply it runs. Eight in ten financial firms now make moderate-to-large investments in AI, according to Broadridge Financial Solutions, and those that lag are not losing a feature; they are losing the business.
 
 The economics have changed. Generative AI spending across enterprises hit $37 billion in 2025, up from $11.5 billion in 2024, a 3.2x year-over-year jump, according to Menlo Ventures. Within financial services, Broadridge reports that 72% of firms made moderate-to-large investments in generative AI in 2025, compared with just 40% in 2024. That near-doubling in a single year signals something more durable than a technology cycle: it signals an infrastructure build-out. CFOs who still classify AI as an R&D line item are misreading where it sits in the cost structure.

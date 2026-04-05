@@ -25,7 +25,7 @@ cover:
 image_credit_name: "Tima Miroshnichenko"
 image_credit_url: "https://www.pexels.com/@tima-miroshnichenko"
 image_credit_source: "Pexels"
-schema_type: "FAQPage"
+schema_type: "HowTo"
 has_faq: true
 faq_pairs:
   - q: "How much does AI accounts payable automation reduce per-invoice costs?"
@@ -41,7 +41,8 @@ faq_pairs:
 ShowToc: true
 TocOpen: false
 draft: false
----
+
+content_type: "how_to"---
 Ramp launched its Agents for AP platform in October 2025, promising to process, approve, and pay invoices in as few as three clicks. Finance teams deploying similar agentic AP systems are cutting per-invoice costs from a manual average of $15 or more to below $2, according to Medius benchmarking data.
 
 The gap between those results and a failed rollout comes down almost entirely to what you do before go-live. This guide is for the CFO or finance operations leader who has already committed to AI-driven AP automation and needs to execute without the common failures.

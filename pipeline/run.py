@@ -856,7 +856,7 @@ def _update_history(title: str, slug: str, tags: list, filename: str) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Run the Particle Post publishing pipeline.")
-    parser.add_argument("--slot", choices=["morning", "evening"], required=True)
+    parser.add_argument("--slot", choices=["morning", "afternoon", "evening"], required=True)
     parser.add_argument(
         "--dry-run",
         action="store_true",
@@ -1055,6 +1055,115 @@ def main() -> None:
         except Exception:
             photo_data = {}
 
+        # ═══ GRAPHIC GENERATION: branded covers + data visuals ═══
+        graphic_data: dict = {}
+        try:
+            from pipeline.graphics.data_extractor import (
+                extract_statistics, extract_steps, extract_comparisons,
+                extract_timeline, select_visuals,
+            )
+            from pipeline.graphics.templates import (
+                cover_news_analysis, cover_deep_dive, cover_case_study,
+                cover_how_to, cover_technology_profile, cover_industry_briefing,
+                stat_card, diagram_before_after, diagram_process_flow,
+                diagram_timeline, chart_bar_horizontal,
+            )
+            from pipeline.graphics.renderer import render_sync
+            from pipeline.graphics.uploader import upload_to_supabase
+
+            # Extract data from article body
+            article_body = editing_raw or ""
+            stats = extract_statistics(article_body)
+            steps = extract_steps(article_body)
+            comparisons = extract_comparisons(article_body)
+            timeline_events = extract_timeline(article_body)
+
+            title_for_cover = seo_data.get("meta_title", "") or "Untitled"
+            date_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+            slug_for_cover = seo_data.get("slug", "article")
+
+            # Generate cover SVG based on content type
+            cover_funcs = {
+                "news_analysis": lambda: cover_news_analysis(title_for_cover, date_str),
+                "deep_dive": lambda: cover_deep_dive(title_for_cover, date_str),
+                "case_study": lambda: cover_case_study(
+                    title_for_cover,
+                    stats[0]["value"] if stats else "",
+                    stats[0]["value"] if stats else "",
+                ),
+                "how_to": lambda: cover_how_to(title_for_cover, steps[:4]),
+                "technology_profile": lambda: cover_technology_profile(
+                    title_for_cover, len(comparisons) or 2
+                ),
+                "industry_briefing": lambda: cover_industry_briefing(
+                    "AI Industry", date_str, len(stats) or 3
+                ),
+            }
+
+            cover_func = cover_funcs.get(content_type, cover_funcs.get("news_analysis"))
+            if cover_func:
+                cover_svg = cover_func()
+                cover_path = f"/tmp/cover-{slug_for_cover}.png"
+                render_sync(cover_svg, cover_path)
+                cover_url = upload_to_supabase(cover_path, "covers", f"{slug_for_cover}.png")
+                if cover_url:
+                    graphic_data["cover"] = {
+                        "url": cover_url,
+                        "alt": f"{content_type.replace('_', ' ').title()}: {title_for_cover}",
+                    }
+                    print(f"  [GRAPHICS] Cover generated: {cover_url}")
+
+            # Generate in-article visuals
+            visual_specs = select_visuals(content_type, stats, steps, comparisons, timeline_events)
+            visuals = []
+            for spec in visual_specs:
+                try:
+                    vtype = spec["type"]
+                    vdata = spec["data"]
+                    svg = ""
+                    w, h = 800, 250
+
+                    if vtype == "stat_card":
+                        svg = stat_card(vdata["number"], vdata["label"], vdata.get("source", ""))
+                        w, h = 400, 200
+                    elif vtype == "before_after":
+                        svg = diagram_before_after(
+                            vdata["before_label"], vdata["before_value"],
+                            vdata["after_label"], vdata["after_value"],
+                            vdata.get("metric", ""), vdata.get("source", ""),
+                        )
+                    elif vtype == "process_flow":
+                        svg = diagram_process_flow(vdata["steps"])
+                        w, h = 1000, 150
+                    elif vtype == "timeline":
+                        svg = diagram_timeline(vdata["events"])
+                        w, h = 1000, 180
+                    elif vtype == "chart_bar_horizontal":
+                        svg = chart_bar_horizontal(
+                            vdata["data"], vdata.get("title", ""), vdata.get("source", ""),
+                        )
+                        w, h = 800, 300
+
+                    if svg:
+                        vpath = f"/tmp/visual-{slug_for_cover}-{vtype}.png"
+                        render_sync(svg, vpath, w, h)
+                        vurl = upload_to_supabase(vpath, "visuals", f"{slug_for_cover}-{vtype}.png")
+                        if vurl:
+                            visuals.append({
+                                "type": vtype,
+                                "url": vurl,
+                                "alt": f"{vtype.replace('_', ' ').title()} visualization",
+                            })
+                            print(f"  [GRAPHICS] Visual generated: {vtype}")
+                except Exception as ve:
+                    print(f"  [GRAPHICS] Visual {spec.get('type', '?')} failed: {ve}")
+
+            if visuals:
+                graphic_data["visuals"] = visuals
+
+        except Exception as gfx_err:
+            print(f"  [GRAPHICS] Generation failed (using Photo Finder fallback): {gfx_err}")
+
         # ═══ PYTHON ASSEMBLER: replaces the Formatter agent ═══
         try:
             formatter_content = assemble_article(
@@ -1063,6 +1172,7 @@ def main() -> None:
                 photo_data=photo_data,
                 funnel_type=funnel_type,
                 content_type=content_type,
+                graphic_data=graphic_data if graphic_data else None,
             )
         except Exception as asm_err:
             print(f"  [ASSEMBLER ERROR] {asm_err}")

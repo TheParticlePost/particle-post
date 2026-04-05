@@ -25,7 +25,7 @@ cover:
 image_credit_name: "3844328"
 image_credit_url: "https://pixabay.com/users/3844328-3844328"
 image_credit_source: "pixabay"
-schema_type: "FAQPage"
+schema_type: "Article"
 has_faq: true
 faq_pairs:
   - q: "What is agentic AI in finance and how does it differ from a standard AI dashboard?"
@@ -41,7 +41,8 @@ faq_pairs:
 ShowToc: true
 TocOpen: false
 draft: false
----
+
+content_type: "deep_dive"---
 
 JPMorgan Chase's COiN platform processes 12,000 commercial credit agreements per second, a workload that previously consumed 360,000 hours of lawyer time annually. That is not a dashboard delivering insights. That is an AI agent executing work. The gap between those two categories is where most enterprise AI budgets currently sit, unspent or misdirected.
 

@@ -25,7 +25,7 @@ cover:
 image_credit_name: "Campaign_Creators"
 image_credit_url: "https://pixabay.com/users/Campaign_Creators-9720680"
 image_credit_source: "pixabay"
-schema_type: "FAQPage"
+schema_type: "HowTo"
 has_faq: true
 faq_pairs:
   - q: "How long does an AI accounts payable deployment take?"
@@ -41,7 +41,8 @@ faq_pairs:
 ShowToc: true
 TocOpen: false
 draft: false
----
+
+content_type: "how_to"---
 
 A mid-sized manufacturer running 8,000 invoices per month cut its cost per invoice from $14.20 to $3.10 in 11 weeks, but only after its first vendor integration failed and cost four weeks of rework. That failure was preventable, and this playbook shows finance leads and COOs exactly how to avoid it.
 

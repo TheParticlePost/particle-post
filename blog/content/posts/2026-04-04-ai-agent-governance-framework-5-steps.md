@@ -26,7 +26,7 @@ cover:
 image_credit_name: "QuinceCreative"
 image_credit_url: "https://pixabay.com/users/QuinceCreative-1031690"
 image_credit_source: "Pixabay"
-schema_type: "FAQPage"
+schema_type: "HowTo"
 has_faq: true
 faq_pairs:
   - q: "Do I need a Chief AI Officer before deploying AI agents?"
@@ -42,7 +42,8 @@ faq_pairs:
 ShowToc: true
 TocOpen: false
 draft: false
----
+
+content_type: "how_to"---
 Only 23% of organizations have a formal AI agent governance strategy, according to AI Thinker Lab. The other 77% are running autonomous software in production while improvising the rules in real time.
 
 ## The Governance Myth Blocking Safe Agent Deployment

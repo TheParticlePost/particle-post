@@ -25,7 +25,7 @@ cover:
 image_credit_name: "www.kaboompics.com"
 image_credit_url: "https://www.pexels.com/@karola-g"
 image_credit_source: "Pexels"
-schema_type: "FAQPage"
+schema_type: "Article"
 has_faq: true
 faq_pairs:
   - q: "Do Oracle's Fusion Agentic Applications work if I'm not already on Oracle Cloud?"
@@ -41,7 +41,8 @@ faq_pairs:
 ShowToc: true
 TocOpen: false
 draft: false
----
+
+content_type: "technology_profile"---
 Oracle launched 22 Fusion Agentic Applications on March 24, 2026, betting that enterprises already running its cloud ERP will activate autonomous finance workflows without replacing anything. That same day, San Francisco startup Zalos closed a $3.6M seed round to do the opposite: send screen-trained agents into whatever ERP you already own, no migration required.
 
 Two strategies. Two cost profiles. One decision that could shape your finance operations for the next decade. Here is what the evidence shows, and where each approach breaks.

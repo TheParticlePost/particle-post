@@ -24,7 +24,7 @@ cover:
 image_credit_name: "Tima Miroshnichenko"
 image_credit_url: "https://www.pexels.com/@tima-miroshnichenko"
 image_credit_source: "Pexels"
-schema_type: "FAQPage"
+schema_type: "NewsArticle"
 has_faq: true
 ShowToc: true
 TocOpen: false
@@ -40,7 +40,8 @@ faq_pairs:
     a: "Yes. Vendor testing covers general accuracy across broad datasets. Your firm's regulatory environment, data formats, and output standards are specific to you. No vendor test substitutes for validation against your own golden dataset and accuracy thresholds."
   - q: "How often should AI model outputs be monitored after deployment in financial services?"
     a: "Review a random sample of AI outputs weekly for at least the first 90 days post-deployment. Model behavior drifts as real-world inputs diverge from training data, and ongoing monitoring is the only reliable mechanism to catch accuracy degradation before it reaches a regulator."
----
+
+content_type: "news_analysis"---
 
 ## The Most Common Misconception About AI Risk Management in Finance
 

@@ -26,7 +26,7 @@ cover:
 image_credit_name: "TheDigitalArtist"
 image_credit_url: "https://pixabay.com/users/TheDigitalArtist-202249"
 image_credit_source: "Pixabay"
-schema_type: "FAQPage"
+schema_type: "HowTo"
 has_faq: true
 faq_pairs:
   - q: "What is an AI agent governance framework?"
@@ -42,7 +42,8 @@ faq_pairs:
 ShowToc: true
 TocOpen: false
 draft: false
----
+
+content_type: "how_to"---
 More than half of deployed enterprise AI agents operate without consistent security oversight or logging, according to Beam AI research. That gap is not a technology problem. It is a governance failure waiting to trigger a compliance event.
 
 ## The Most Common Misconception About AI Risk Management in Finance
