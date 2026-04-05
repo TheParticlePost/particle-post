@@ -9,9 +9,11 @@ interface PulseCaseStudiesProps {
 }
 
 export function PulseCaseStudies({ caseStudies }: PulseCaseStudiesProps) {
-  const featured = caseStudies.filter((cs) => cs.featured);
-  const rest = caseStudies.filter((cs) => !cs.featured).slice(0, 6);
-  const all = [...featured, ...rest].slice(0, 9);
+  // Prioritize published case studies (those with a slug linking to an article)
+  const published = caseStudies.filter((cs) => cs.slug);
+  const seedOnly = caseStudies.filter((cs) => !cs.slug && cs.featured);
+  // Show all published first, then fill with featured seed data up to 9
+  const all = [...published, ...seedOnly].slice(0, 9);
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

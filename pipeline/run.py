@@ -969,6 +969,11 @@ def main() -> None:
     except Exception:
         topic_data = {}
 
+    # Re-apply CLI content-type override (locked — Topic Selector cannot override)
+    if content_type_override:
+        content_type = content_type_override
+        funnel_type = _CONTENT_TYPE_TO_FUNNEL.get(content_type, funnel_type)
+
     print(f"  [Research] Topic selected. Funnel: {funnel_type} | Content: {content_type}")
 
     # Record research run in memory
@@ -1357,6 +1362,14 @@ def main() -> None:
                 )
             except Exception as mem_err:
                 print(f"  [Research Memory] Warning: {mem_err}")
+
+            # Publish case study to AI Pulse map (Supabase)
+            if content_type == "case_study" and not args.dry_run:
+                try:
+                    from pipeline.utils.case_study_publisher import publish_case_study_to_pulse
+                    publish_case_study_to_pulse(formatter_content, seo_data, slug)
+                except Exception as pulse_err:
+                    print(f"  [Pulse] Warning: {pulse_err}")
 
             return  # success
 

@@ -53,7 +53,7 @@ export const INDUSTRY_ROI = [
 ] as const;
 
 export const CASE_STUDIES = [
-  { company: "JPMorgan Chase", country_code: "US", lat: 40.7128, lng: -74.006, industry: "Financial Services", headline: "AI fraud detection saves $1.2B annually", outcome_metric: "$1.2B saved/yr", outcome_value: 1200, slug: "ai-fraud-detection-roi-40-billion", featured: true },
+  { company: "JPMorgan Chase", country_code: "US", lat: 40.7128, lng: -74.006, industry: "Financial Services", headline: "AI fraud detection saves $1.2B annually", outcome_metric: "$1.2B saved/yr", outcome_value: 1200, slug: "ai-fraud-detection-roi-arms-race", featured: true },
   { company: "Siemens", country_code: "DE", lat: 48.1351, lng: 11.582, industry: "Manufacturing", headline: "Predictive maintenance reduces downtime 40%", outcome_metric: "40% less downtime", outcome_value: 40, slug: null, featured: true },
   { company: "NHS England", country_code: "GB", lat: 51.5074, lng: -0.1278, industry: "Healthcare", headline: "AI triage cuts emergency wait times by 35%", outcome_metric: "35% faster triage", outcome_value: 35, slug: null, featured: false },
   { company: "Alibaba", country_code: "CN", lat: 30.2741, lng: 120.1551, industry: "Retail & E-commerce", headline: "Logistics AI reduces delivery time 28%", outcome_metric: "28% faster delivery", outcome_value: 28, slug: null, featured: false },
