@@ -870,6 +870,13 @@ def main() -> None:
         default=None,
         help="Override topic directive — the pipeline will write about this specific topic.",
     )
+    parser.add_argument(
+        "--content-type",
+        type=str,
+        default=None,
+        choices=["news_analysis", "deep_dive", "case_study", "how_to", "technology_profile", "industry_briefing"],
+        help="Override the scheduled content type for this run.",
+    )
     args = parser.parse_args()
 
     missing = _check_env()
@@ -897,14 +904,20 @@ def main() -> None:
         except Exception as e:
             print(f"  [URGENT TOPIC] Warning: could not read directive: {e}")
 
+    # Content type override (CLI flag takes precedence over schedule)
+    content_type_override = getattr(args, "content_type", None)
+
     print(f"\n{'='*60}")
     print(f"  PARTICLE POST — {args.slot.upper()} PIPELINE")
     if topic_override:
         print(f"  TOPIC OVERRIDE: {topic_override}")
+    if content_type_override:
+        print(f"  CONTENT TYPE OVERRIDE: {content_type_override}")
     print(f"{'='*60}\n")
 
     from pipeline.crew import build_research_crew, build_production_crew, build_director_crew
     from pipeline.utils.article_assembler import assemble_article
+    from pipeline.tasks.selection_task import _CONTENT_TYPE_TO_FUNNEL
 
     # ═══ PHASE 1: RESEARCH (runs ONCE, never retried) ═══
     print(f"\n─── Phase 1: Research ───\n")
@@ -912,6 +925,21 @@ def main() -> None:
     research_crew, funnel_type, content_type = build_research_crew(
         slot=args.slot, topic_override=topic_override
     )
+
+    # Apply content type override if specified
+    if content_type_override:
+        content_type = content_type_override
+        funnel_type = _CONTENT_TYPE_TO_FUNNEL.get(content_type, funnel_type)
+        # Rebuild research crew with correct content type
+        research_crew, _, _ = build_research_crew(
+            slot=args.slot, topic_override=topic_override
+        )
+        # Patch the research task's content_type by rebuilding
+        from pipeline.tasks.research_task import build_research_task
+        research_crew.tasks[0] = build_research_task(
+            research_crew.agents[0], content_type=content_type, topic_override=topic_override
+        )
+        print(f"  [Override] Content type: {content_type} | Funnel: {funnel_type}")
 
     # Retry on API rate limit (429) or overloaded (529) errors
     for rate_retry in range(1, 4):

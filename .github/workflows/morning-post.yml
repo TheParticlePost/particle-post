@@ -19,6 +19,11 @@ on:
         required: false
         default: ""
         type: string
+      content_type:
+        description: "Override content type (news_analysis, deep_dive, case_study, how_to, technology_profile, industry_briefing)"
+        required: false
+        default: ""
+        type: string
 
 permissions:
   contents: write
@@ -61,10 +66,13 @@ jobs:
           fi
           TOPIC="${{ github.event.inputs.topic }}"
           if [ -n "$TOPIC" ]; then
-            python -m pipeline.run $ARGS --topic "$TOPIC"
-          else
-            python -m pipeline.run $ARGS
+            ARGS="$ARGS --topic \"$TOPIC\""
           fi
+          CT="${{ github.event.inputs.content_type }}"
+          if [ -n "$CT" ]; then
+            ARGS="$ARGS --content-type $CT"
+          fi
+          python -m pipeline.run $ARGS
 
       - name: Commit new post
         if: ${{ github.event.inputs.dry_run != 'true' }}
@@ -72,7 +80,7 @@ jobs:
           git config user.name "Particle Post Bot"
           git config user.email "bot@particlepost.com"
           git remote set-url origin "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git"
-          git add blog/content/posts/ blog/data/topics_history.json pipeline/data/writer_feedback.json pipeline/config/post_index.json pipeline/config/seo_gso_config.json blog/static/llms.txt blog/static/llms-full.txt pipeline/logs/costs/
+          git add blog/content/posts/ blog/data/topics_history.json pipeline/data/writer_feedback.json pipeline/config/post_index.json pipeline/config/seo_gso_config.json blog/static/llms.txt blog/static/llms-full.txt pipeline/logs/costs/ pipeline/data/research_memory.json pipeline/data/topic_performance.json
           git diff --staged --quiet || git commit -m "auto: morning post $(date -u +%Y-%m-%d)"
           for i in 1 2 3; do
             git pull --rebase origin main && git push && break
