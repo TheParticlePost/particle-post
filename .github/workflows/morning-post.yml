@@ -62,6 +62,10 @@ jobs:
           PIXABAY_API_KEY: ${{ secrets.PIXABAY_KEY }}
           UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
           INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+          SUPABASE_URL: https://uzgywmjexciknmpbebqs.supabase.co
+          NEXT_PUBLIC_SUPABASE_URL: https://uzgywmjexciknmpbebqs.supabase.co
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_PUBLIC_KEY }}
         run: |
           ARGS="--slot morning"
           if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then

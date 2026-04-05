@@ -46,6 +46,8 @@ jobs:
           GSC_SITE_URL: ${{ secrets.GSC_SITE_URL }}
           HOSTINGER_API_KEY: ${{ secrets.HOSTINGER_API_KEY }}
           BING_WEBMASTER_KEY: ${{ secrets.BING_WEBMASTER_KEY }}
+          SUPABASE_URL: https://uzgywmjexciknmpbebqs.supabase.co
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
         run: python -m pipeline.marketing_run
 
       - name: Commit updated strategy files
