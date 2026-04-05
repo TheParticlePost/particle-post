@@ -7,6 +7,7 @@ _FEEDBACK_PATH       = Path(__file__).resolve().parent.parent / "data" / "writer
 _POST_INDEX_FILE     = Path(__file__).resolve().parent.parent / "config" / "post_index.json"
 _STRATEGY_PATH       = Path(__file__).resolve().parent.parent / "config" / "content_strategy.json"
 _SEO_GUIDELINES_PATH = Path(__file__).resolve().parent.parent / "config" / "seo_guidelines.md"
+_CONTENT_TYPES_DIR   = Path(__file__).resolve().parent.parent / "config" / "content_types"
 
 
 def _load_recent_coaching(n: int = 3) -> str:
@@ -145,11 +146,29 @@ def _load_seo_guidelines() -> str:
         return ""
 
 
-def build_writing_task(agent: Agent, funnel_type: str = "TOF") -> Task:
+def _load_content_type_instructions(content_type: str) -> str:
+    """Load the detailed content-type specification from the MD file."""
+    md_file = _CONTENT_TYPES_DIR / f"{content_type}.md"
+    if not md_file.exists():
+        return ""
+    try:
+        content = md_file.read_text(encoding="utf-8")
+        return (
+            "\n══════════════════════════════════════════════\n"
+            f"  CONTENT TYPE: {content_type.upper().replace('_', ' ')}\n"
+            "══════════════════════════════════════════════\n\n"
+            f"{content}\n"
+        )
+    except Exception:
+        return ""
+
+
+def build_writing_task(agent: Agent, funnel_type: str = "TOF", content_type: str = "news_analysis") -> Task:
     coaching_context = _load_recent_coaching()
     post_index = _load_post_index()
     funnel_reqs = _load_funnel_requirements(funnel_type)
     seo_guidelines = _load_seo_guidelines()
+    ct_instructions = _load_content_type_instructions(content_type)
 
     word_targets = {"TOF": "600-1000", "MOF": "1800-3000", "BOF": "1200-2000"}
     word_range = word_targets.get(funnel_type, "900-1100")
@@ -163,6 +182,7 @@ def build_writing_task(agent: Agent, funnel_type: str = "TOF") -> Task:
             f"  FUNNEL TYPE: {funnel_type}\n"
             f"══════════════════════════════════════════════\n\n"
             f"{funnel_reqs}\n\n"
+            f"{ct_instructions}"
             "══════════════════════════════════════════════\n"
             "  VOICE & STYLE (always applies)\n"
             "══════════════════════════════════════════════\n\n"

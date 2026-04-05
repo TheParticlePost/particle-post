@@ -1,9 +1,10 @@
 {
-  "version": "3.0.0",
-  "last_updated": "2026-03-25",
-  "strategy_notes": "Funnel + content-type strategy. 55% practical (how-to, case study, tool comparison) / 45% news. 70% business / 30% finance. Targeting CEO, CFO, COO. Marketing Director may propose max 2 field changes per run with rationale.",
+  "version": "4.0.0",
+  "last_updated": "2026-04-05",
+  "strategy_notes": "6 content types with detailed specifications. Research memory system tracks query effectiveness. Writer receives content-type-specific instructions. 70% business / 30% finance. Marketing Director may propose max 2 field changes per run with rationale.",
   "change_log": [
-    {"date": "2026-03-25", "change": "Added content_type (practical/news) to schedule. Reweighted 70% business / 30% finance. Version 2.1→3.0."}
+    {"date": "2026-03-25", "change": "Added content_type (practical/news) to schedule. Reweighted 70% business / 30% finance. Version 2.1→3.0."},
+    {"date": "2026-04-05", "change": "Expanded to 6 content types with full specs, added audiences/personas, topic_domains, research memory. Version 3.0→4.0."}
   ],
 
   "content_types": {
@@ -52,45 +53,90 @@
     "news_analysis": {
       "name": "News Analysis",
       "word_count": {"min": 600, "max": 1000},
-      "h1_format": "question",
+      "h1_format": "[Event/Company/Regulation]: What [Persona] Should Do Now",
       "schema_type": "NewsArticle",
-      "description": "Breaking AI news with business implications. Must answer: what should the reader DO?"
+      "funnel": "TOF",
+      "target_personas": ["strategist", "compliance_lead", "finance_lead"],
+      "description": "Breaking AI news with business implications. Must answer: what should the reader DO?",
+      "mandatory_sections": ["Lede", "What Happened", "Why It Matters", "What To Do Next", "Bottom Line"],
+      "visual_requirements": {"stat_box": 1, "bar_chart": "if_comparing"},
+      "internal_links": {"min": 1, "target_types": ["deep_dive", "case_study"]}
     },
     "deep_dive": {
       "name": "Deep Dive",
-      "word_count": {"min": 2000, "max": 3000},
-      "h1_format": "analytical",
+      "word_count": {"min": 2000, "max": 3500},
+      "h1_format": "Declarative claim or contrarian thesis",
       "schema_type": "Article",
-      "description": "In-depth analysis of a trend, study, or strategic shift. Data-heavy, evaluative."
+      "funnel": "MOF",
+      "target_personas": ["strategist", "people_lead", "compliance_lead"],
+      "description": "Comprehensive analysis establishing thought leadership. Data-heavy, evaluative.",
+      "mandatory_sections": ["Lede", "What the Research Shows", "What This Doesn't Prove", "Implications by Function", "Where This Breaks in Practice", "Clear Judgment"],
+      "visual_requirements": {"stat_box": 2, "chart_or_table": 1},
+      "internal_links": {"min": 2, "target_types": ["how_to", "case_study", "news_analysis"]}
     },
     "case_study": {
       "name": "Case Study",
-      "word_count": {"min": 1500, "max": 2500},
-      "h1_format": "company_outcome",
+      "word_count": {"min": 1200, "max": 2000},
+      "h1_format": "How [Company] [Achieved Specific Outcome] with [AI Approach]",
       "schema_type": "Article",
-      "description": "Real-world AI deployment with timeline, costs, results, lessons learned."
+      "funnel": "MOF_BOF",
+      "target_personas": ["operator", "finance_lead", "tech_lead"],
+      "description": "Real-world AI deployment with timeline, costs, results, lessons learned.",
+      "mandatory_sections": ["Lede", "The Challenge", "The Approach", "The Implementation", "The Results", "What They'd Do Differently", "Key Takeaways"],
+      "visual_requirements": {"before_after": 1, "timeline": 1, "stat_box": 2},
+      "internal_links": {"min": 1, "target_types": ["how_to", "technology_profile"]}
     },
     "how_to": {
       "name": "How-To Guide",
-      "word_count": {"min": 1200, "max": 2000},
-      "h1_format": "action",
+      "word_count": {"min": 1500, "max": 2500},
+      "h1_format": "How to [Action] [AI Technology] in [Context]: [Number]-Step Guide",
       "schema_type": "HowTo",
-      "description": "Step-by-step implementation guide with prerequisites, failure scenarios, success metrics."
+      "funnel": "BOF",
+      "target_personas": ["operator", "tech_lead", "finance_lead"],
+      "description": "Step-by-step implementation playbooks for readers ready to act.",
+      "mandatory_sections": ["Lede", "Prerequisites", "Step-by-Step", "Common Failure Points", "Success Metrics", "Go/No-Go Checklist", "What This Costs"],
+      "visual_requirements": {"process_flow": 1, "verdict_card": 1},
+      "internal_links": {"min": 1, "target_types": ["case_study", "deep_dive"]}
     },
     "technology_profile": {
       "name": "Technology Profile",
       "word_count": {"min": 1500, "max": 2500},
-      "h1_format": "comparison",
+      "h1_format": "[Technology Category]: What [Persona] Needs to Know in [Year]",
       "schema_type": "Article",
-      "description": "Vendor/tool comparison or technology landscape assessment with scoring criteria."
+      "funnel": "MOF",
+      "target_personas": ["tech_lead", "operator", "strategist"],
+      "description": "Objective technology assessments. Must compare 2+ vendors/approaches.",
+      "mandatory_sections": ["What It Is", "How It Works", "Who Uses It", "Vendor Landscape", "Where It Fits", "Risks and Limitations", "Our Assessment"],
+      "visual_requirements": {"comparison_table": 1, "stat_box": 2},
+      "internal_links": {"min": 1, "target_types": ["how_to", "case_study"]}
     },
     "industry_briefing": {
       "name": "Industry Briefing",
-      "word_count": {"min": 1000, "max": 1500},
-      "h1_format": "sector",
+      "word_count": {"min": 800, "max": 1200},
+      "h1_format": "AI in [Industry]: [Number] Developments [Persona] Can't Ignore This Week",
       "schema_type": "NewsArticle",
-      "description": "Sector-specific AI adoption roundup. Rotating: Logistics, Manufacturing, Healthcare, Professional Services, Retail, Energy."
+      "funnel": "TOF",
+      "target_personas": ["operator", "people_lead"],
+      "description": "Sector-specific AI intelligence roundup. 6-week rotation: Logistics, Manufacturing, Healthcare, Professional Services, Retail, Energy.",
+      "mandatory_sections": ["Lede", "Development 1", "Development 2", "Development 3", "The Pattern", "What To Watch Next Week"],
+      "visual_requirements": {"stat_box_per_development": 1, "summary_table": "recommended"},
+      "internal_links": {"min": 1, "target_types": ["case_study", "technology_profile"]}
     }
+  },
+
+  "audiences": {
+    "strategist": {"title": "The Strategist", "roles": ["CEO", "COO", "Board member"], "focus": "Strategic direction, competitive positioning, investment decisions"},
+    "operator": {"title": "The Operator", "roles": ["VP Operations", "Supply Chain Director", "Plant Manager"], "focus": "Process efficiency, deployment feasibility, operational risk"},
+    "finance_lead": {"title": "The Finance Lead", "roles": ["CFO", "Controller", "Treasury Director"], "focus": "ROI, cost analysis, budget justification, financial risk"},
+    "tech_lead": {"title": "The Tech Lead", "roles": ["CTO", "VP Engineering", "Solutions Architect"], "focus": "Architecture, vendor evaluation, technical feasibility, integration"},
+    "people_lead": {"title": "The People Lead", "roles": ["CHRO", "VP People", "Workforce Planning Director"], "focus": "Workforce impact, skills gaps, change management, hiring"},
+    "compliance_lead": {"title": "The Compliance Lead", "roles": ["CRO", "GRC Director", "Chief Ethics Officer"], "focus": "Regulatory compliance, risk frameworks, audit readiness, AI governance"}
+  },
+
+  "topic_domains": {
+    "primary": ["finance", "technology", "operations", "compliance"],
+    "secondary": ["strategy", "hr"],
+    "rotating": ["supply_chain", "manufacturing", "healthcare", "retail", "energy", "professional_services"]
   },
 
   "funnel_types": {
