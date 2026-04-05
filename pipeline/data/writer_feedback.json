@@ -1,26 +1,6 @@
 {
   "notes": [
     {
-      "text": "Fix the H1 to a question for TOF compliance. The current declarative title 'AI Agent Governance Framework for Enterprise Deployment 2026' fails the TOF requirement. A revision like 'Does Your Enterprise Have an AI Agent Governance Framework Before 2026 Deployments?' preserves the primary keyword while meeting funnel-type structure rules.",
-      "slot": "evening",
-      "date": "2026-04-02T21:08:08.528542+00:00"
-    },
-    {
-      "text": "The $240,000 transfer scenario in the body is compelling and specific — lean into more named, dollar-anchored examples like this throughout. The lede is strong (Beam AI stat in sentence one), but the fictional scenario could be even more credible if attributed to a reported or composite case study with a named industry vertical and timeframe.",
-      "slot": "evening",
-      "date": "2026-04-02T21:08:08.528542+00:00"
-    },
-    {
-      "text": "Source spot-check passed: Beam AI's 52.9% figure is verified (47.1% monitored = 52.9% unmonitored), and the Deloitte 2026 report is confirmed live and real. Oliver Wyman and Darktrace citations were not independently verified via search — recommend the writer confirm those URLs resolve to the specific pages cited before final publication.",
-      "slot": "evening",
-      "date": "2026-04-02T21:08:08.528542+00:00"
-    },
-    {
-      "text": "CRITICAL — Fix the MIT attribution in the lede: The article opens 'MIT's Project NANDA analyzed more than 300 publicly disclosed AI deployments,' but Project NANDA is an MIT networking/AI agents initiative unrelated to this study. The correct attribution is 'MIT's GenAI Divide: State of AI in Business 2025,' consistent with how the report is named in the rest of the article and in the Sources section. Change the lede before publication to avoid a factual embarrassment.",
-      "slot": "morning",
-      "date": "2026-04-03T13:09:36.580453+00:00"
-    },
-    {
       "text": "FAQ RENDERING GAP: The YAML frontmatter correctly sets has_faq: true and populates five faq_pairs, but no '## Frequently Asked Questions' section appears in the article body. The FAQ must be rendered as a visible H2 section with Q+A pairs in the body — not stored only in frontmatter — for schema_type: FAQPage structured data to work and for the checklist requirement to pass. Add the rendered FAQ block before the Sources section.",
       "slot": "morning",
       "date": "2026-04-03T13:09:36.580453+00:00"
@@ -149,6 +129,26 @@
       "text": "Add at least one blockquote callout (a pull-quote from CFO Rainey or CEO McMillon) to satisfy MOF visual diversity standards more robustly. The CFO's Q3 FY2025 earnings language — 'That translates into lower shipping costs' — or the 'obvious benefits for per-unit delivery cost' line already in the article body are ready-made candidates. This closes the minor visual element gap and increases on-page engagement for the executive audience.",
       "slot": "afternoon",
       "date": "2026-04-05T19:00:35.291150+00:00"
+    },
+    {
+      "text": "QA gate failed — fix programmatic issues before retry",
+      "slot": "evening",
+      "date": "2026-04-05T21:09:35.288438+00:00"
+    },
+    {
+      "text": "Trim to BOF word count (1,200–2,000 words): At roughly 2,800 words, this article is significantly over the BOF ceiling. The 'Success Metrics' and 'What Does AI Workforce Planning Actually Cost?' sections are strong but could be condensed into a single table or bullet list rather than full prose paragraphs. The FAQ section, while excellent, adds ~400 words — consider moving it to a linked companion piece or cutting to 3 Q&A pairs maximum. Getting under 2,000 words will sharpen the BOF conversion focus.",
+      "slot": "evening",
+      "date": "2026-04-05T21:15:23.761783+00:00"
+    },
+    {
+      "text": "Fix the has_faq frontmatter flag: The YAML says 'has_faq: false' but the article contains a full, well-written FAQ section. Change this to 'has_faq: true' before publication. This controls whether the HowTo/FAQ schema markup renders in search results — with it set to false, you are leaving rich result eligibility on the table for every FAQ entry, which is a significant SEO loss for a BOF piece targeting high-intent search queries.",
+      "slot": "evening",
+      "date": "2026-04-05T21:15:23.761783+00:00"
+    },
+    {
+      "text": "Strengthen the SHRM 20-35% attrition reduction citation with a direct quote or page reference: The claim 'AI workforce planning cuts voluntary attrition by 20 to 35%, according to SHRM's 2026 State of AI in HR Report' is the article's anchor stat in both the lede and the second STAT: marker, but publicly available SHRM excerpts do not surface this exact range. Add a page number, quote the finding verbatim, or supplement with a second corroborating source (e.g., Visier or McKinsey) so the claim is bulletproof against editorial challenge or reader scrutiny.",
+      "slot": "evening",
+      "date": "2026-04-05T21:15:23.761783+00:00"
     }
   ]
 }

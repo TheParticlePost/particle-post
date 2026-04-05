@@ -3,7 +3,7 @@
   "schema_coverage": {
     "Article": 3,
     "FAQPage": 23,
-    "HowTo": 0,
+    "HowTo": 1,
     "NewsArticle": 0
   },
   "keyword_targets": [
@@ -234,6 +234,14 @@
       "schema_type": "Article",
       "has_faq": true,
       "search_intent": "commercial"
+    },
+    {
+      "date": "2026-04-05",
+      "slug": "ai-workforce-planning-hr-analytics-roadmap",
+      "primary_keyword": "AI workforce planning implementation",
+      "schema_type": "HowTo",
+      "has_faq": false,
+      "search_intent": "transactional"
     }
   ]
 }

@@ -9,6 +9,7 @@
 - [Microsoft AI Models: Is the OpenAI Era Ending?](https://theparticlepost.com/posts/microsoft-ai-models-openai-enterprise-strategy/)
 - [Klarna AI Customer Service: What the Real Numbers Show](https://theparticlepost.com/posts/klarna-ai-customer-service-case-study/)
 - [JPMorgan AI Case Study: COiN Cut Contract Review 80%](https://theparticlepost.com/posts/jpmorgan-coin-ai-contract-intelligence-case-study/)
+- [AI Workforce Planning: 4-Phase HR Analytics Roadmap](https://theparticlepost.com/posts/ai-workforce-planning-hr-analytics-roadmap/)
 - [AI Infrastructure Cost: Does TurboQuant Save Money?](https://theparticlepost.com/posts/ai-infrastructure-cost-turboquant-savings/)
 - [AI Agent Governance Framework: 5-Step Control Plan](https://theparticlepost.com/posts/ai-agent-governance-framework-5-steps/)
 - [EU AI Act Enforcement: AI Compliance Banking Guide](https://theparticlepost.com/posts/eu-ai-act-enforcement-banking-compliance/)
