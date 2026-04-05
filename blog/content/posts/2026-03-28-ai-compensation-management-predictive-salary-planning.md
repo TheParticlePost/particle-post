@@ -43,7 +43,8 @@ ShowToc: true
 TocOpen: false
 draft: false
 
-content_type: "news_analysis"---
+content_type: "news_analysis"
+---
 
 Decusoft launched Compose Insights in March 2026 with a specific promise: cut the time HR leaders spend on compensation planning by using predictive modeling on live workforce data. The question CFOs should ask is not whether AI can analyze salary data. It is whether their HR teams can actually use it without introducing new compliance and fairness risks.
 

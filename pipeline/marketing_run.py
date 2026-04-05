@@ -270,6 +270,16 @@ def _write_gso_directives(raw: str) -> None:
     kw_count = len(directives.get("keyword_targets", []))
     print(f"  GSO directives written ({kw_count} keyword targets).")
 
+    # Sync content gap priorities into research memory
+    gaps = config.get("content_gap_priorities", [])
+    if gaps:
+        try:
+            from pipeline.utils.research_memory import sync_content_gaps
+            sync_content_gaps(gaps)
+            print(f"  Research memory: synced {len(gaps)} content gaps")
+        except Exception as mem_err:
+            print(f"  [Research Memory] Warning: {mem_err}")
+
 
 def _write_daily_report(output: dict) -> None:
     report = output.get("daily_report", "")

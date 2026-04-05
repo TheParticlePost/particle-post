@@ -31,7 +31,8 @@ ShowToc: true
 TocOpen: false
 draft: false
 
-content_type: "how_to"---
+content_type: "how_to"
+---
 Visa's AI fraud detection system blocked more than $40 billion in fraudulent transactions in a single year, but Visa spent nearly a decade building the data infrastructure behind that result. Most banks that attempt to replicate it in 12 months fall well short: they produce false positive rates that alienate customers, suffer model drift that quietly erodes detection accuracy, and face regulatory auditors who reject black-box explanations.
 
 This guide is for the project lead or C-suite executive who has already decided to deploy AI fraud detection and now needs to avoid the most common and costly failures.

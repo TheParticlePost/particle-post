@@ -42,7 +42,8 @@ ShowToc: true
 TocOpen: false
 draft: false
 
-content_type: "how_to"---
+content_type: "how_to"
+---
 
 A mid-sized manufacturer running 8,000 invoices per month cut its cost per invoice from $14.20 to $3.10 in 11 weeks, but only after its first vendor integration failed and cost four weeks of rework. That failure was preventable, and this playbook shows finance leads and COOs exactly how to avoid it.
 

@@ -42,7 +42,8 @@ faq_pairs:
   - q: "Is memory the main cost driver in AI infrastructure?"
     a: "No. Memory is one component alongside compute, networking, power, and cooling. Roughly $180 billion of 2026 hyperscaler spend goes to memory, but total AI infrastructure capex across the five largest providers exceeds $600 billion, per MUFG Americas."
 
-content_type: "news_analysis"---
+content_type: "news_analysis"
+---
 Google's TurboQuant compresses AI model memory by 6x on H100 GPUs, according to Google Research, and CFOs are treating that number as a capital expenditure fix. It is not. Memory is one line item in a data center stack that also includes compute, networking, power, cooling, and software licensing.
 
 ## The Common Misconception About AI Memory Compression Savings

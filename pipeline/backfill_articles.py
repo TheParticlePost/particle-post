@@ -131,7 +131,7 @@ def process_article(filepath: Path, dry_run: bool = False) -> dict:
         updated = True
 
     if updated:
-        filepath.write_text(f"---{frontmatter}---{body}", encoding="utf-8")
+        filepath.write_text(f"---{frontmatter}\n---{body}", encoding="utf-8")
 
     return {
         "file": filepath.name,

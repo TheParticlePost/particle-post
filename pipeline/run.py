@@ -42,6 +42,8 @@ LLMS_FULL_FILE   = _REPO_ROOT / "blog" / "static" / "llms-full.txt"
 URGENT_TOPIC_FILE = _REPO_ROOT / "pipeline" / "data" / "urgent_topic.json"
 TOPIC_PERF_FILE   = _REPO_ROOT / "pipeline" / "data" / "topic_performance.json"
 
+from pipeline.utils.research_memory import record_research_run, record_article_outcome, classify_domain
+
 MAX_ATTEMPTS = 2
 
 
@@ -941,8 +943,20 @@ def main() -> None:
 
     print(f"  [Research] Topic selected. Funnel: {funnel_type} | Content: {content_type}")
 
-    # ═══ UNIQUENESS GATE: reject near-duplicate topics, re-run research if needed ═══
+    # Record research run in memory
     proposed_title = topic_data.get("title", "") if topic_data else ""
+    try:
+        record_research_run(
+            slot=args.slot,
+            content_type=content_type,
+            queries_used=[],
+            topics_found=len(topic_data.get("source_urls", [])) if topic_data else 0,
+            topic_selected=proposed_title,
+        )
+    except Exception as mem_err:
+        print(f"  [Research Memory] Warning: {mem_err}")
+
+    # ═══ UNIQUENESS GATE: reject near-duplicate topics, re-run research if needed ═══
     proposed_tags = topic_data.get("target_keywords", []) if topic_data else []
 
     if proposed_title:
@@ -1008,7 +1022,7 @@ def main() -> None:
     for attempt in range(1, MAX_ATTEMPTS + 1):
         print(f"\n─── Phase 2: Production attempt {attempt} of {MAX_ATTEMPTS} ───\n")
 
-        production_crew = build_production_crew(slot=args.slot, funnel_type=funnel_type)
+        production_crew = build_production_crew(slot=args.slot, funnel_type=funnel_type, content_type=content_type)
 
         # Retry on API rate limit (429) or overloaded (529) errors
         for rate_retry in range(1, 4):
@@ -1302,6 +1316,19 @@ def main() -> None:
                 )
             except Exception as perf_err:
                 print(f"  [Topic Performance] Warning: {perf_err}")
+
+            # Record article outcome in research memory
+            try:
+                article_title = _extract_frontmatter_field(formatter_content, "title")
+                article_tags = seo_data.get("tags", [])
+                record_article_outcome(
+                    topic_title=article_title,
+                    director_score=score,
+                    content_type=content_type,
+                    domain=classify_domain(article_tags),
+                )
+            except Exception as mem_err:
+                print(f"  [Research Memory] Warning: {mem_err}")
 
             return  # success
 

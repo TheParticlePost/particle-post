@@ -43,7 +43,8 @@ ShowToc: true
 TocOpen: false
 draft: false
 
-content_type: "deep_dive"---
+content_type: "deep_dive"
+---
 JPMorgan Chase reported blocking over $15 billion in fraud attempts in 2023 using AI-powered detection, then watched its fraud team scramble the following year as criminals deployed the same technology to build attacks those models had never seen. This is not a metaphor. It is the operating reality every CFO and Chief Risk Officer inherits when they sign an AI fraud contract.
 
 Fraud-related losses across U.S. financial services reached $12.5 billion in 2024, up 25% from 2023, according to Wolters Kluwer. AI-enabled fraud surged 1,210% between 2023 and 2025, according to BIIA. Those two numbers sit in the same balance sheet. Understanding what research actually proves about AI fraud detection, and what it does not, is the difference between sound capital allocation and an expensive false sense of security.

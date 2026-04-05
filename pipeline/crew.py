@@ -47,7 +47,7 @@ def build_research_crew(slot: str, topic_override: str | None = None) -> tuple[C
     return crew, funnel_type, content_type
 
 
-def build_production_crew(slot: str, funnel_type: str = "TOF") -> Crew:
+def build_production_crew(slot: str, funnel_type: str = "TOF", content_type: str = "news_analysis") -> Crew:
     """
     Build the Production crew (Phase 2) — Sonnet + Haiku, retried on rejection.
 
@@ -72,7 +72,7 @@ def build_production_crew(slot: str, funnel_type: str = "TOF") -> Crew:
     photo_finder       = build_photo_finder()
 
     # --- Tasks (Writer → Editor → SEO/GSO → Photo) ---
-    writing_task = build_writing_task(writer, funnel_type)
+    writing_task = build_writing_task(writer, funnel_type, content_type)
     editing_task = build_editing_task(editor, writing_task)
     seo_gso_task = build_seo_gso_task(seo_gso_specialist, editing_task)
     photo_task   = build_photo_task(photo_finder, seo_gso_task)

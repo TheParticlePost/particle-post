@@ -42,7 +42,8 @@ ShowToc: true
 TocOpen: false
 draft: false
 
-content_type: "news_analysis"---
+content_type: "news_analysis"
+---
 China's Salt Typhoon operation compromised at least nine US telecommunications carriers in 2024, dwelling inside networks for up to 18 months before detection, according to a joint advisory from the FBI and CISA. The attackers did not break down the door; they walked through gaps every large enterprise has.
 
 ## How Is AI Changing Enterprise Security Threat Detection?

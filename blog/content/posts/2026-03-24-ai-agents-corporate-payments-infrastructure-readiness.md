@@ -39,7 +39,8 @@ ShowToc: true
 TocOpen: false
 draft: false
 
-content_type: "news_analysis"---
+content_type: "news_analysis"
+---
 Visa completed hundreds of AI agent-initiated transactions in 2025 and expects millions of consumers to use autonomous agents for purchases by the 2026 holiday season. That timeline is compelling on paper, but the infrastructure enterprise finance teams actually need is still being built.
 
 ## The Most Common Misconception

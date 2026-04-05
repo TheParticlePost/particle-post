@@ -1,0 +1,26 @@
+{
+  "last_updated": null,
+  "total_runs": 0,
+  "query_history": [],
+  "successful_query_patterns": {
+    "news_analysis": [],
+    "deep_dive": [],
+    "case_study": [],
+    "how_to": [],
+    "technology_profile": [],
+    "industry_briefing": []
+  },
+  "failed_query_patterns": [],
+  "domain_coverage": {
+    "finance": 0,
+    "operations": 0,
+    "supply_chain": 0,
+    "hr": 0,
+    "manufacturing": 0,
+    "healthcare": 0,
+    "compliance": 0,
+    "technology": 0,
+    "strategy": 0
+  },
+  "content_gap_queue": []
+}

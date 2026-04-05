@@ -5,7 +5,7 @@ const cspDirectives = [
   "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://va.vercel-scripts.com",
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob: https://images.pexels.com https://cdn.pixabay.com https://images.unsplash.com https://*.supabase.co https://lh3.googleusercontent.com https://avatars.githubusercontent.com",
-  "connect-src 'self' https://*.supabase.co https://vitals.vercel-insights.com https://www.google-analytics.com",
+  "connect-src 'self' https://*.supabase.co https://vitals.vercel-insights.com https://www.google-analytics.com https://cdn.jsdelivr.net",
   "font-src 'self'",
   "frame-ancestors 'none'",
   "base-uri 'self'",

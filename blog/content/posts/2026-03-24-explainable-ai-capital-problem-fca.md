@@ -25,7 +25,8 @@ ShowToc: true
 TocOpen: false
 draft: false
 
-content_type: "news_analysis"---
+content_type: "news_analysis"
+---
 Klarna and Monzo now publish detailed model cards before each license renewal. The UK's Financial Conduct Authority launched the Mills Review on January 27, 2026, making clear that explainability is no longer optional; it is the price of operating in retail financial services.
 
 ## The Most Common Misconception

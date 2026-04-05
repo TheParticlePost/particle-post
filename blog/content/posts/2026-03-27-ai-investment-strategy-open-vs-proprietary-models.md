@@ -41,7 +41,8 @@ ShowToc: true
 TocOpen: false
 draft: false
 
-content_type: "technology_profile"---
+content_type: "technology_profile"
+---
 
 The wrong AI model choice costs enterprises between $2M and $8M in remediation, retraining, and migration expenses within the first 18 months, according to Fortune's March 2026 analysis of enterprise AI deployment data. Finance leaders who frame this as a technology decision are already behind. It is a capital allocation decision, and the math is not close in every scenario.
 
