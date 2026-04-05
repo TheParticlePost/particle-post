@@ -5,6 +5,7 @@
 
 ## Posts
 
+- [Walmart AI Supply Chain: How It Cut Costs 40%](https://theparticlepost.com/posts/walmart-ai-supply-chain-cost-reduction-blueprint/)
 - [Microsoft AI Models: Is the OpenAI Era Ending?](https://theparticlepost.com/posts/microsoft-ai-models-openai-enterprise-strategy/)
 - [Klarna AI Customer Service: What the Real Numbers Show](https://theparticlepost.com/posts/klarna-ai-customer-service-case-study/)
 - [JPMorgan AI Case Study: COiN Cut Contract Review 80%](https://theparticlepost.com/posts/jpmorgan-coin-ai-contract-intelligence-case-study/)

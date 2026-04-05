@@ -1,7 +1,7 @@
 {
   "last_updated": "2026-04-05",
   "schema_coverage": {
-    "Article": 2,
+    "Article": 3,
     "FAQPage": 23,
     "HowTo": 0,
     "NewsArticle": 0
@@ -223,6 +223,14 @@
       "date": "2026-04-05",
       "slug": "jpmorgan-coin-ai-contract-intelligence-case-study",
       "primary_keyword": "JPMorgan AI case study",
+      "schema_type": "Article",
+      "has_faq": true,
+      "search_intent": "commercial"
+    },
+    {
+      "date": "2026-04-05",
+      "slug": "walmart-ai-supply-chain-cost-reduction-blueprint",
+      "primary_keyword": "Walmart AI supply chain",
       "schema_type": "Article",
       "has_faq": true,
       "search_intent": "commercial"

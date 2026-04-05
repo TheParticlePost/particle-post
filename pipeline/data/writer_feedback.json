@@ -1,26 +1,6 @@
 {
   "notes": [
     {
-      "text": "The vendor comparison table is a strong differentiator, but the Zapier pricing entry ('~$20/month') is the only figure in the table without a source citation inline or in the Sources list. Either add a source URL for Zapier's pricing tier or replace the figure with 'Tiered SaaS (see vendor site)' to avoid an unattributed claim that a skeptical executive reader — or an auditor — could flag.",
-      "slot": "evening",
-      "date": "2026-04-01T21:09:30.698112+00:00"
-    },
-    {
-      "text": "Flip the H1 into a question to satisfy TOF funnel convention and improve GSO/featured-snippet eligibility — something like 'Is AI Fraud Detection ROI Real, or Is the Arms Race Erasing It?' preserves the keyword 'AI Fraud Detection ROI' while signaling the article answers a specific CFO question.",
-      "slot": "morning",
-      "date": "2026-04-02T13:08:08.547007+00:00"
-    },
-    {
-      "text": "Add at least one internal markdown link to an existing Particle Post article (e.g., a related piece on AI in banking or CFO strategy). This is a hard TOF funnel requirement and also supports site architecture — check the content library for a slug to anchor to a relevant phrase like 'generative AI in financial services' or 'CFO technology investment.'",
-      "slot": "morning",
-      "date": "2026-04-02T13:08:08.547007+00:00"
-    },
-    {
-      "text": "The first H2 ('The Myth That Gets CFOs in Trouble') is doing good narrative work, but its answer-first paragraph opens with storytelling rather than a direct declarative statement. For GSO compliance, the first 40-60 words after any H2 should lead with the conclusion, not the setup — consider opening with 'AI fraud detection is not a durable one-time investment' before the HSBC/AXA proof points.",
-      "slot": "morning",
-      "date": "2026-04-02T13:08:08.547007+00:00"
-    },
-    {
       "text": "Fix the H1 to a question for TOF compliance. The current declarative title 'AI Agent Governance Framework for Enterprise Deployment 2026' fails the TOF requirement. A revision like 'Does Your Enterprise Have an AI Agent Governance Framework Before 2026 Deployments?' preserves the primary keyword while meeting funnel-type structure rules.",
       "slot": "evening",
       "date": "2026-04-02T21:08:08.528542+00:00"
@@ -149,6 +129,26 @@
       "text": "UPGRADE THE KEY TAKEAWAY TO A SHORTCODE: The KEY TAKEAWAY is buried as bold inline text mid-article. For a MOF case study targeting CFOs and COOs, this is the single most important scannable element on the page. Wrap it in the publication's callout shortcode (e.g., {{< callout >}}) so it renders as a visually distinct box. Executives who skim will miss it entirely in its current form, which defeats the purpose of including it.",
       "slot": "afternoon",
       "date": "2026-04-05T16:17:14.473571+00:00"
+    },
+    {
+      "text": "QA gate failed — fix programmatic issues before retry",
+      "slot": "afternoon",
+      "date": "2026-04-05T18:53:55.399300+00:00"
+    },
+    {
+      "text": "Tighten primary source attribution on the $55M figure: the article cites 'Investing.com citing company data' but Walmart's own July 2025 corporate newsroom post (already listed as Source #4) is the primary record. Replace the Investing.com attribution inline with 'according to Walmart's July 2025 global supply chain announcement' — this removes one degree of indirection and strengthens credibility with executive readers who will click through.",
+      "slot": "afternoon",
+      "date": "2026-04-05T19:00:35.291150+00:00"
+    },
+    {
+      "text": "Clarify the Pactum metrics timeline to pre-empt reader skepticism: the original HBR-documented Walmart pilot (2022) reported a 64% agreement rate and 1.5% average savings. The article uses the higher program-level figures from Pactum's client page (68% / 3%). Add a single parenthetical — e.g., '(across the full program; the initial 2022 pilot reported 64% and 1.5%, per Harvard Business Review)' — so sophisticated COO readers don't flag the discrepancy as an error.",
+      "slot": "afternoon",
+      "date": "2026-04-05T19:00:35.291150+00:00"
+    },
+    {
+      "text": "Add at least one blockquote callout (a pull-quote from CFO Rainey or CEO McMillon) to satisfy MOF visual diversity standards more robustly. The CFO's Q3 FY2025 earnings language — 'That translates into lower shipping costs' — or the 'obvious benefits for per-unit delivery cost' line already in the article body are ready-made candidates. This closes the minor visual element gap and increases on-page engagement for the executive audience.",
+      "slot": "afternoon",
+      "date": "2026-04-05T19:00:35.291150+00:00"
     }
   ]
 }

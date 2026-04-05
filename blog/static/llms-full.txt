@@ -5,6 +5,7 @@
 
 ## Posts
 
+- [Walmart AI Supply Chain: How It Cut Costs 40%](https://theparticlepost.com/posts/walmart-ai-supply-chain-cost-reduction-blueprint/): Walmart AI supply chain eliminated 30M driving miles, saved $55M with Self-Healing Inventory, and cut delivery costs 40%. A COO blueprint for enterprise AI ops.
 - [Microsoft AI Models: Is the OpenAI Era Ending?](https://theparticlepost.com/posts/microsoft-ai-models-openai-enterprise-strategy/): Microsoft launched MAI models on Azure Foundry April 2026, priced below OpenAI. Learn what CFOs and COOs must do now to cut costs without disrupting core AI workflows.
 - [Klarna AI Customer Service: What the Real Numbers Show](https://theparticlepost.com/posts/klarna-ai-customer-service-case-study/): Klarna
 - [JPMorgan AI Case Study: COiN Cut Contract Review 80%](https://theparticlepost.com/posts/jpmorgan-coin-ai-contract-intelligence-case-study/): JPMorgan
