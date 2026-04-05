@@ -15,6 +15,22 @@
         "Enterprise AI",
         "Workforce Strategy"
       ]
+    },
+    {
+      "slug": "microsoft-ai-models-openai-enterprise-strategy",
+      "title": "Microsoft AI Models: Is the OpenAI Era Ending?",
+      "primary_keyword": "Microsoft AI models enterprise strategy",
+      "funnel_type": "TOF",
+      "content_type": "news_analysis",
+      "director_score": 70,
+      "published_at": "2026-04-05T13:06:10.185994+00:00",
+      "tags": [
+        "Microsoft",
+        "OpenAI",
+        "Azure",
+        "Enterprise AI",
+        "AI Strategy"
+      ]
     }
   ]
 }

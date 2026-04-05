@@ -1,21 +1,6 @@
 {
   "notes": [
     {
-      "text": "Convert your three prose internal-link references into actual markdown hyperlinks. You have the right instinct (referencing related Particle Post content at natural anchor points), but the links must use the format [descriptive anchor text](/slug-goes-here) to satisfy MOF's two-internal-link requirement and to pass Google's internal linking signals to those pages. Pull the correct slugs from your CMS or the YAML frontmatter of the target articles.",
-      "slot": "morning",
-      "date": "2026-04-01T13:11:04.103139+00:00"
-    },
-    {
-      "text": "The 'author' field in the YAML frontmatter is blank. Every published piece needs a byline for E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness) signaling to both readers and search engines. Assign either a staff author or a clearly labeled editorial team attribution before publication.",
-      "slot": "morning",
-      "date": "2026-04-01T13:11:04.103139+00:00"
-    },
-    {
-      "text": "FAQ body rendering is required when has_faq=true: The faq_pairs block in the YAML frontmatter is correct, but the article body must also contain a rendered '## Frequently Asked Questions' section with the Q+A pairs written out in full. Relying solely on frontmatter data means the FAQ will not display if the theme's shortcode is absent, and it fails checklist item 14. Add the FAQ section explicitly at the bottom of the body, before ## Sources.",
-      "slot": "morning",
-      "date": "2026-04-01T13:18:35.681484+00:00"
-    },
-    {
       "text": "Strengthen primary source attribution on the benchmark figures: The $12.88 and $2.78 cost-per-invoice stats are attributed to 'Aberdeen Group/APQC 2025' but Source 1 in the Sources section links to a Quadient blog post, not a primary APQC or Aberdeen Group report. For a finance executive audience, citing a vendor blog as the authority for a headline benchmark undermines credibility. Either locate the primary APQC 'Accounts Payable Performance' report URL or add a caveat that the figure is aggregated via Quadient's summary.",
       "slot": "morning",
       "date": "2026-04-01T13:18:35.681484+00:00"
@@ -149,6 +134,21 @@
       "text": "Replace the picsum.photos placeholder cover image with a licensed editorial image before scheduling publication. A placeholder image on a case study targeting CFOs and COOs signals draft status and undermines the authority positioning the article otherwise earns through its sourcing and depth.",
       "slot": "afternoon",
       "date": "2026-04-05T06:21:10.817267+00:00"
+    },
+    {
+      "text": "Fix the Windsurf claim immediately — this is a publication-embarrassing factual error. The OpenAI-Windsurf acquisition talks were reported by CNBC in April 2025, not 2026, and the deal collapsed entirely (Cognition bought Windsurf in July 2025). Either update this to accurately describe what happened historically and why it's relevant context, or remove the reference. Publishing it as a present-tense 2026 event will damage credibility with any executive who follows AI M&A.",
+      "slot": "morning",
+      "date": "2026-04-05T13:06:09.587156+00:00"
+    },
+    {
+      "text": "TOF articles must stay under 1,000 words — the FAQ section is the culprit here. Since has_faq=true requires the FAQ to render in the body, you need to trim the core article to roughly 650-700 words to leave room for the FAQ pairs. Audit every paragraph for redundancy: the three 'concrete steps' section largely repeats points already made in the answer-first paragraph above it. Consolidate.",
+      "slot": "morning",
+      "date": "2026-04-05T13:06:09.587156+00:00"
+    },
+    {
+      "text": "Replace the picsum.photos placeholder cover image before resubmission. A published article at Particle Post must have a real, licensed image. Also convert the KEY TAKEAWAY from inline text to a proper blockquote or callout shortcode — visual formatting elements like this must render distinctly from body copy to serve their purpose for skimmable executive readers.",
+      "slot": "morning",
+      "date": "2026-04-05T13:06:09.587156+00:00"
     }
   ]
 }

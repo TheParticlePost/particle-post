@@ -2,7 +2,7 @@
   "last_updated": "2026-04-05",
   "schema_coverage": {
     "Article": 1,
-    "FAQPage": 22,
+    "FAQPage": 23,
     "HowTo": 0,
     "NewsArticle": 0
   },
@@ -210,6 +210,14 @@
       "schema_type": "Article",
       "has_faq": true,
       "search_intent": "commercial"
+    },
+    {
+      "date": "2026-04-05",
+      "slug": "microsoft-ai-models-openai-enterprise-strategy",
+      "primary_keyword": "Microsoft AI models enterprise strategy",
+      "schema_type": "FAQPage",
+      "has_faq": true,
+      "search_intent": "informational"
     }
   ]
 }

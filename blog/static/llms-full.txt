@@ -5,6 +5,7 @@
 
 ## Posts
 
+- [Microsoft AI Models: Is the OpenAI Era Ending?](https://theparticlepost.com/posts/microsoft-ai-models-openai-enterprise-strategy/): Microsoft launched MAI models on Azure Foundry April 2026, priced below OpenAI. Learn what CFOs and COOs must do now to cut costs without disrupting core AI workflows.
 - [Klarna AI Customer Service: What the Real Numbers Show](https://theparticlepost.com/posts/klarna-ai-customer-service-case-study/): Klarna
 - [AI Infrastructure Cost: Does TurboQuant Save Money?](https://theparticlepost.com/posts/ai-infrastructure-cost-turboquant-savings/): AI infrastructure cost relief from TurboQuant is real but time-limited. Google
 - [AI Agent Governance Framework: 5-Step Control Plan](https://theparticlepost.com/posts/ai-agent-governance-framework-5-steps/): AI agent governance framework in 5 steps. Only 24% of firms have live agent controls. Deploy kill switches, purpose binding, and observability without a CAO.
