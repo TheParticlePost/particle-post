@@ -1,0 +1,52 @@
+name: Backfill Pulse Case Studies (one-off)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+      - run: pip install -r requirements.txt
+
+      - name: Backfill case studies to Supabase
+        env:
+          SUPABASE_URL: https://uzgywmjexciknmpbebqs.supabase.co
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: |
+          python -c "
+          import sys, os
+          sys.path.insert(0, os.getcwd())
+          from pipeline.utils.case_study_publisher import publish_case_study_to_pulse
+
+          articles = [
+              ('blog/content/posts/2026-04-05-klarna-ai-customer-service-case-study.md',
+               {'meta_title': 'Klarna AI Customer Service: What the Real Numbers Show',
+                'meta_description': 'Klarna AI handled 2.3M chats in month one and saved 40M dollars, then satisfaction dropped 22%.',
+                'tags': ['Klarna', 'AI Automation', 'Customer Service', 'Enterprise AI'],
+                'categories': ['AI Strategy']},
+               'klarna-ai-customer-service-case-study'),
+              ('blog/content/posts/2026-04-05-jpmorgan-coin-ai-contract-intelligence-case-study.md',
+               {'meta_title': 'JPMorgan COiN AI Contract Intelligence Case Study',
+                'meta_description': 'JPMorgan COiN processes 12,000 commercial credit agreements in seconds.',
+                'tags': ['JPMorgan', 'AI', 'Contract Intelligence', 'Financial Services'],
+                'categories': ['AI Strategy']},
+               'jpmorgan-coin-ai-contract-intelligence-case-study'),
+          ]
+
+          for filepath, seo, slug in articles:
+              print(f'Backfilling: {slug}')
+              content = open(filepath, encoding='utf-8').read()
+              publish_case_study_to_pulse(content, seo, slug)
+
+          print('Done.')
+          "
