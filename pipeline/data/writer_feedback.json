@@ -1,21 +1,6 @@
 {
   "notes": [
     {
-      "text": "FAQ RENDERING GAP: The YAML frontmatter correctly sets has_faq: true and populates five faq_pairs, but no '## Frequently Asked Questions' section appears in the article body. The FAQ must be rendered as a visible H2 section with Q+A pairs in the body — not stored only in frontmatter — for schema_type: FAQPage structured data to work and for the checklist requirement to pass. Add the rendered FAQ block before the Sources section.",
-      "slot": "morning",
-      "date": "2026-04-03T13:09:36.580453+00:00"
-    },
-    {
-      "text": "STAT-BOX SOURCING PRECISION: The first stat-box credits 'MIT GenAI Divide: State of AI in Business 2025' for the 95% figure — confirmed accurate. However, the bar-chart shortcode at the bottom credits both 'IBM Institute for Business Value / PwC 29th Global CEO Survey 2026' for three separate data points that come from two different studies. Split these into two separate visual elements or add a footnote clarifying which figure comes from which source, so readers and fact-checkers can trace each number independently.",
-      "slot": "morning",
-      "date": "2026-04-03T13:09:36.580453+00:00"
-    },
-    {
-      "text": "Render the FAQ in the article body, not just in YAML frontmatter. When has_faq is true, the article must contain a visible '## Frequently Asked Questions' section with each Q+A pair written out in full — likely as bold question followed by answer paragraph. The faq_pairs block in frontmatter is metadata only; it does not satisfy the body-rendering requirement that readers and search engines see.",
-      "slot": "evening",
-      "date": "2026-04-03T21:09:21.432285+00:00"
-    },
-    {
       "text": "Add a labeled 'Clear Verdict' or '## Verdict' section before the Sources list. The 'Proceed Only When All Four Gates Clear' section does the editorial job but lacks the standard label that readers skimming for a bottom-line recommendation expect, and that our BOF template requires for consistent funnel structure across the publication.",
       "slot": "evening",
       "date": "2026-04-03T21:09:21.432285+00:00"
@@ -149,6 +134,21 @@
       "text": "Strengthen the SHRM 20-35% attrition reduction citation with a direct quote or page reference: The claim 'AI workforce planning cuts voluntary attrition by 20 to 35%, according to SHRM's 2026 State of AI in HR Report' is the article's anchor stat in both the lede and the second STAT: marker, but publicly available SHRM excerpts do not surface this exact range. Add a page number, quote the finding verbatim, or supplement with a second corroborating source (e.g., Visier or McKinsey) so the claim is bulletproof against editorial challenge or reader scrutiny.",
       "slot": "evening",
       "date": "2026-04-05T21:15:23.761783+00:00"
+    },
+    {
+      "text": "TRIM TO TOF RANGE: The article body runs approximately 50-100 words over the 1,000-word TOF ceiling. Cut the 'Three Steps That Close Most of the Exposure' section by condensing each bullet to one tight sentence, or fold it into the preceding H2. This section reads like the start of a MOF piece and is the primary reason the count is over.",
+      "slot": "morning",
+      "date": "2026-04-06T13:07:50.188652+00:00"
+    },
+    {
+      "text": "ADD AN EXPLICIT VERDICT SECTION: TOF compliance requires a labeled 'Clear Verdict' or '## Verdict' H2. Right now the closing paragraphs do the work but won't satisfy checklist item 8 or the TOF structural requirement. Add a 2-3 sentence verdict H2 before the internal links — something like '## Is AI Washing a Legal Risk Worth Prioritizing Now?' — and answer it in a single direct paragraph.",
+      "slot": "morning",
+      "date": "2026-04-06T13:07:50.188652+00:00"
+    },
+    {
+      "text": "CITE OR CUT THE WSJ REFERENCE: The inline citation 'according to reporting by The Wall Street Journal' is the only claim in the article without a corresponding URL in the Sources section. Either add the specific WSJ article URL to the Sources list or rephrase the claim to cite a documentable primary source (e.g., SEC enforcement docket). Unsourced WSJ references create liability for the publication if the characterization is disputed.",
+      "slot": "morning",
+      "date": "2026-04-06T13:07:50.188652+00:00"
     }
   ]
 }

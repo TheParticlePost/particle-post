@@ -1,6 +1,14 @@
 {
   "posts": [
     {
+      "slug": "ai-washing-legal-risk-2026",
+      "title": "AI Washing Legal Risk 2026: FTC & SEC Enforcement",
+      "funnel_type": "TOF",
+      "content_type": "news_analysis",
+      "tags": [],
+      "date": "2026-04-06"
+    },
+    {
       "slug": "klarna-ai-customer-service-case-study",
       "title": "Klarna AI Customer Service: What the Real Numbers Show",
       "funnel_type": "MOF",
