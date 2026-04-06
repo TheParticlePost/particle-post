@@ -1,52 +1,71 @@
-name: Backfill Pulse Case Studies (one-off)
+name: Backfill Pulse + Regenerate Covers (one-off)
 
 on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   backfill:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
+        with:
+          token: ${{ github.token }}
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
           cache: "pip"
       - run: pip install -r requirements.txt
+      - run: python -m playwright install chromium --with-deps
 
-      - name: Backfill case studies to Supabase
+      - name: Regenerate Klarna cover + update frontmatter
         env:
           SUPABASE_URL: https://uzgywmjexciknmpbebqs.supabase.co
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
         run: |
           python -c "
-          import sys, os
+          import sys, os, re
           sys.path.insert(0, os.getcwd())
-          from pipeline.utils.case_study_publisher import publish_case_study_to_pulse
 
-          articles = [
-              ('blog/content/posts/2026-04-05-klarna-ai-customer-service-case-study.md',
-               {'meta_title': 'Klarna AI Customer Service: What the Real Numbers Show',
-                'meta_description': 'Klarna AI handled 2.3M chats in month one and saved 40M dollars, then satisfaction dropped 22%.',
-                'tags': ['Klarna', 'AI Automation', 'Customer Service', 'Enterprise AI'],
-                'categories': ['AI Strategy']},
-               'klarna-ai-customer-service-case-study'),
-              ('blog/content/posts/2026-04-05-jpmorgan-coin-ai-contract-intelligence-case-study.md',
-               {'meta_title': 'JPMorgan COiN AI Contract Intelligence Case Study',
-                'meta_description': 'JPMorgan COiN processes 12,000 commercial credit agreements in seconds.',
-                'tags': ['JPMorgan', 'AI', 'Contract Intelligence', 'Financial Services'],
-                'categories': ['AI Strategy']},
-               'jpmorgan-coin-ai-contract-intelligence-case-study'),
-          ]
+          from pipeline.graphics.templates import cover_case_study
+          from pipeline.graphics.renderer import render_sync
+          from pipeline.graphics.uploader import upload_to_supabase
 
-          for filepath, seo, slug in articles:
-              print(f'Backfilling: {slug}')
-              content = open(filepath, encoding='utf-8').read()
-              publish_case_study_to_pulse(content, seo, slug)
+          # Regenerate Klarna cover
+          svg = cover_case_study(
+              'Klarna AI Customer Service: What the Real Numbers Show',
+              '2.3M chats/month',
+              '22% satisfaction drop',
+          )
+          render_sync(svg, '/tmp/klarna-cover.png')
+          url = upload_to_supabase('/tmp/klarna-cover.png', 'covers', 'klarna-ai-customer-service-case-study.png')
+          print(f'Klarna cover URL: {url}')
 
-          print('Done.')
+          if url:
+              # Update the article frontmatter
+              path = 'blog/content/posts/2026-04-05-klarna-ai-customer-service-case-study.md'
+              content = open(path, encoding='utf-8').read()
+              # Replace picsum placeholder URLs with Supabase cover URL
+              content = re.sub(
+                  r'https://picsum\.photos/seed/[^\s\"]+',
+                  url,
+                  content,
+              )
+              open(path, 'w', encoding='utf-8').write(content)
+              print(f'Updated frontmatter in {path}')
           "
+
+      - name: Commit updated cover
+        run: |
+          git config user.name "Particle Post Bot"
+          git config user.email "bot@particlepost.com"
+          git add blog/content/posts/
+          git diff --staged --quiet || git commit -m "fix: regenerate Klarna case study cover (replace picsum placeholder)"
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push && break
+            echo "Push attempt $i failed, retrying in 10s..."
+            sleep 10
+          done
