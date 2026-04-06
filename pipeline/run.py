@@ -57,6 +57,28 @@ def _check_env() -> list[str]:
 
 
 # ──────────────────────────────────────────────────────────────────────────────
+# Graphics helpers
+# ──────────────────────────────────────────────────────────────────────────────
+
+def _extract_company_for_cover(title: str) -> str:
+    """Extract company name from a case study title for the cover graphic.
+
+    Handles: "Walmart AI Supply Chain: How It Cut Costs 40%"
+             "How Klarna Cut 700 Support Jobs With AI"
+             "JPMorgan COiN AI Contract Intelligence Case Study"
+    """
+    # "Company ...: subtitle" → take before colon
+    if ":" in title:
+        return title.split(":")[0].strip()
+    # "How Company Verb..." → extract company
+    m = re.match(r"How\s+(.+?)\s+(?:Cut|Reduce|Deploy|Achieve|Save|Built|Launch)", title)
+    if m:
+        return m.group(1).strip()
+    # Fallback: first 3 words
+    return " ".join(title.split()[:3])
+
+
+# ──────────────────────────────────────────────────────────────────────────────
 # Frontmatter parsing
 # ──────────────────────────────────────────────────────────────────────────────
 
@@ -1143,7 +1165,7 @@ def main() -> None:
                     "deep_dive": lambda: cover_deep_dive(title_for_cover, date_str),
                     "case_study": lambda: cover_case_study(
                         title_for_cover,
-                        stats[0]["value"] if stats else "",
+                        _extract_company_for_cover(title_for_cover),
                         stats[0]["value"] if stats else "",
                     ),
                     "how_to": lambda: cover_how_to(title_for_cover, steps[:4]),

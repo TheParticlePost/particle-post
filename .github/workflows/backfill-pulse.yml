@@ -21,7 +21,7 @@ jobs:
       - run: pip install -r requirements.txt
       - run: python -m playwright install chromium --with-deps
 
-      - name: Regenerate Klarna cover + update frontmatter
+      - name: Regenerate case study covers
         env:
           SUPABASE_URL: https://uzgywmjexciknmpbebqs.supabase.co
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
@@ -34,28 +34,41 @@ jobs:
           from pipeline.graphics.renderer import render_sync
           from pipeline.graphics.uploader import upload_to_supabase
 
-          # Regenerate Klarna cover
-          svg = cover_case_study(
-              'Klarna AI Customer Service: What the Real Numbers Show',
-              '2.3M chats/month',
-              '22% satisfaction drop',
-          )
-          render_sync(svg, '/tmp/klarna-cover.png')
-          url = upload_to_supabase('/tmp/klarna-cover.png', 'covers', 'klarna-ai-customer-service-case-study.png')
-          print(f'Klarna cover URL: {url}')
+          covers = [
+              {
+                  'title': 'Klarna AI Customer Service: What the Real Numbers Show',
+                  'company': 'Klarna AI Customer Service',
+                  'metric': '\$40M saved',
+                  'slug': 'klarna-ai-customer-service-case-study',
+              },
+              {
+                  'title': 'Walmart AI Supply Chain: How It Cut Costs 40%',
+                  'company': 'Walmart AI Supply Chain',
+                  'metric': '40% cost reduction',
+                  'slug': 'walmart-ai-supply-chain-cost-reduction-blueprint',
+              },
+          ]
 
-          if url:
-              # Update the article frontmatter
-              path = 'blog/content/posts/2026-04-05-klarna-ai-customer-service-case-study.md'
-              content = open(path, encoding='utf-8').read()
-              # Replace picsum placeholder URLs with Supabase cover URL
-              content = re.sub(
-                  r'https://picsum\.photos/seed/[^\s\"]+',
-                  url,
-                  content,
-              )
-              open(path, 'w', encoding='utf-8').write(content)
-              print(f'Updated frontmatter in {path}')
+          for c in covers:
+              svg = cover_case_study(c['title'], c['company'], c['metric'])
+              tmp = f\"/tmp/{c['slug']}-cover.png\"
+              render_sync(svg, tmp)
+              url = upload_to_supabase(tmp, 'covers', f\"{c['slug']}.png\")
+              print(f\"{c['slug']}: {url}\")
+
+              if url:
+                  path = f\"blog/content/posts/2026-04-05-{c['slug']}.md\"
+                  if os.path.exists(path):
+                      content = open(path, encoding='utf-8').read()
+                      content = re.sub(
+                          r'https://(?:picsum\.photos/seed/[^\s\"]+|uzgywmjexciknmpbebqs\.supabase\.co/storage/v1/object/public/covers/[^\s\"]+)',
+                          url,
+                          content,
+                      )
+                      open(path, 'w', encoding='utf-8').write(content)
+                      print(f'Updated: {path}')
+
+          print('Done.')
           "
 
       - name: Commit updated cover
@@ -63,7 +76,7 @@ jobs:
           git config user.name "Particle Post Bot"
           git config user.email "bot@particlepost.com"
           git add blog/content/posts/
-          git diff --staged --quiet || git commit -m "fix: regenerate Klarna case study cover (replace picsum placeholder)"
+          git diff --staged --quiet || git commit -m "fix: regenerate case study covers with correct company names"
           for i in 1 2 3; do
             git pull --rebase origin main && git push && break
             echo "Push attempt $i failed, retrying in 10s..."
