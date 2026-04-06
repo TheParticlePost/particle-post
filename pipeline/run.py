@@ -1104,6 +1104,8 @@ def main() -> None:
 
         # ═══ GRAPHIC GENERATION: branded covers + data visuals ═══
         graphic_data: dict = {}
+
+        # Import graphics modules (shared by cover + visuals)
         try:
             from pipeline.graphics.data_extractor import (
                 extract_statistics, extract_steps, extract_comparisons,
@@ -1117,7 +1119,12 @@ def main() -> None:
             )
             from pipeline.graphics.renderer import render_sync
             from pipeline.graphics.uploader import upload_to_supabase
+            _graphics_available = True
+        except Exception as import_err:
+            print(f"  [GRAPHICS] Import failed, skipping graphics: {import_err}")
+            _graphics_available = False
 
+        if _graphics_available:
             # Extract data from article body
             article_body = editing_raw or ""
             stats = extract_statistics(article_body)
@@ -1129,38 +1136,43 @@ def main() -> None:
             date_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
             slug_for_cover = seo_data.get("slug", "article")
 
-            # Generate cover SVG based on content type
-            cover_funcs = {
-                "news_analysis": lambda: cover_news_analysis(title_for_cover, date_str),
-                "deep_dive": lambda: cover_deep_dive(title_for_cover, date_str),
-                "case_study": lambda: cover_case_study(
-                    title_for_cover,
-                    stats[0]["value"] if stats else "",
-                    stats[0]["value"] if stats else "",
-                ),
-                "how_to": lambda: cover_how_to(title_for_cover, steps[:4]),
-                "technology_profile": lambda: cover_technology_profile(
-                    title_for_cover, len(comparisons) or 2
-                ),
-                "industry_briefing": lambda: cover_industry_briefing(
-                    "AI Industry", date_str, len(stats) or 3
-                ),
-            }
+            # --- Cover generation (separate try/except) ---
+            try:
+                cover_funcs = {
+                    "news_analysis": lambda: cover_news_analysis(title_for_cover, date_str),
+                    "deep_dive": lambda: cover_deep_dive(title_for_cover, date_str),
+                    "case_study": lambda: cover_case_study(
+                        title_for_cover,
+                        stats[0]["value"] if stats else "",
+                        stats[0]["value"] if stats else "",
+                    ),
+                    "how_to": lambda: cover_how_to(title_for_cover, steps[:4]),
+                    "technology_profile": lambda: cover_technology_profile(
+                        title_for_cover, len(comparisons) or 2
+                    ),
+                    "industry_briefing": lambda: cover_industry_briefing(
+                        "AI Industry", date_str, len(stats) or 3
+                    ),
+                }
 
-            cover_func = cover_funcs.get(content_type, cover_funcs.get("news_analysis"))
-            if cover_func:
-                cover_svg = cover_func()
-                cover_path = f"/tmp/cover-{slug_for_cover}.png"
-                render_sync(cover_svg, cover_path)
-                cover_url = upload_to_supabase(cover_path, "covers", f"{slug_for_cover}.png")
-                if cover_url:
-                    graphic_data["cover"] = {
-                        "url": cover_url,
-                        "alt": f"{content_type.replace('_', ' ').title()}: {title_for_cover}",
-                    }
-                    print(f"  [GRAPHICS] Cover generated: {cover_url}")
+                cover_func = cover_funcs.get(content_type, cover_funcs.get("news_analysis"))
+                if cover_func:
+                    cover_svg = cover_func()
+                    cover_path = f"/tmp/cover-{slug_for_cover}.png"
+                    render_sync(cover_svg, cover_path)
+                    cover_url = upload_to_supabase(cover_path, "covers", f"{slug_for_cover}.png")
+                    if cover_url:
+                        graphic_data["cover"] = {
+                            "url": cover_url,
+                            "alt": f"{content_type.replace('_', ' ').title()}: {title_for_cover}",
+                        }
+                        print(f"  [GRAPHICS] Cover generated: {cover_url}")
+                    else:
+                        print(f"  [GRAPHICS] Cover rendered but upload failed")
+            except Exception as cover_err:
+                print(f"  [GRAPHICS] Cover generation failed: {cover_err}")
 
-            # Generate in-article visuals
+            # --- In-article visuals (separate try/except per visual) ---
             visual_specs = select_visuals(content_type, stats, steps, comparisons, timeline_events)
             visuals = []
             for spec in visual_specs:
@@ -1200,16 +1212,16 @@ def main() -> None:
                                 "type": vtype,
                                 "url": vurl,
                                 "alt": f"{vtype.replace('_', ' ').title()} visualization",
+                                "insert_after_heading": spec.get("insert_after_heading", ""),
                             })
                             print(f"  [GRAPHICS] Visual generated: {vtype}")
+                        else:
+                            print(f"  [GRAPHICS] Visual {vtype} rendered but upload failed")
                 except Exception as ve:
                     print(f"  [GRAPHICS] Visual {spec.get('type', '?')} failed: {ve}")
 
             if visuals:
                 graphic_data["visuals"] = visuals
-
-        except Exception as gfx_err:
-            print(f"  [GRAPHICS] Generation failed (using Photo Finder fallback): {gfx_err}")
 
         # ═══ PYTHON ASSEMBLER: replaces the Formatter agent ═══
         try:

@@ -165,6 +165,7 @@ def select_visuals(
             best = stats[0]
             visuals.append({
                 "type": "stat_card",
+                "insert_after_heading": "What Happened",
                 "data": {
                     "number": best["value"],
                     "label": best["sentence"][:60] if best.get("sentence") else best["context"][:60],
@@ -183,11 +184,13 @@ def select_visuals(
             if chart_data:
                 visuals.append({
                     "type": "chart_bar_horizontal",
+                    "insert_after_heading": "What the Research Shows",
                     "data": {"data": chart_data, "title": "Key Metrics", "source": ""},
                 })
         if stats:
             visuals.append({
                 "type": "stat_card",
+                "insert_after_heading": "Implications",
                 "data": {
                     "number": stats[0]["value"],
                     "label": stats[0].get("sentence", "")[:60],
@@ -202,6 +205,7 @@ def select_visuals(
             if ba["type"] == "before_after":
                 visuals.append({
                     "type": "before_after",
+                    "insert_after_heading": "The Results",
                     "data": {
                         "before_label": "Before",
                         "before_value": ba["before"],
@@ -214,6 +218,7 @@ def select_visuals(
         if timeline:
             visuals.append({
                 "type": "timeline",
+                "insert_after_heading": "The Implementation",
                 "data": {"events": timeline[:6]},
             })
 
@@ -222,6 +227,7 @@ def select_visuals(
         if steps:
             visuals.append({
                 "type": "process_flow",
+                "insert_after_heading": "Step",
                 "data": {"steps": steps[:6]},
             })
 
@@ -236,6 +242,7 @@ def select_visuals(
             if chart_data:
                 visuals.append({
                     "type": "chart_bar_horizontal",
+                    "insert_after_heading": "Vendor Landscape",
                     "data": {"data": chart_data, "title": "Comparison", "source": ""},
                 })
 

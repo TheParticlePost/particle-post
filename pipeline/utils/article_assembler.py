@@ -198,17 +198,41 @@ def _append_faq_section(body: str, faq_pairs: list[dict]) -> str:
 
 
 def _insert_visuals(body: str, visuals: list[dict]) -> str:
-    """Insert generated visual images after specified headings."""
+    """Insert generated visual images after specified headings.
+
+    Uses fuzzy heading matching (50% word overlap) so "The Results" matches
+    headings like "What the Initial Results Showed" or "Results and Impact".
+    """
     for visual in visuals:
-        heading = visual.get("insert_after_heading", "")
+        target = visual.get("insert_after_heading", "")
         url = visual.get("url", "")
         alt = visual.get("alt", "")
-        if not heading or not url:
+        if not target or not url:
             continue
-        # Find the H2 heading and insert image after the first paragraph following it
-        pattern = rf'(##\s+{re.escape(heading)}[^\n]*\n\n[^\n]+\n)'
-        replacement = rf'\1\n![{alt}]({url})\n'
-        body = re.sub(pattern, replacement, body, count=1, flags=re.DOTALL)
+
+        # Fuzzy match: find the H2 heading with best word overlap
+        target_words = set(target.lower().replace("#", "").split())
+        best_match = None
+        best_overlap = 0
+
+        for m in re.finditer(r'(##\s+[^\n]+)\n', body):
+            heading_text = m.group(1)
+            heading_words = set(heading_text.lower().replace("#", "").split())
+            overlap = len(target_words & heading_words)
+            threshold = max(1, len(target_words) * 0.5)
+            if overlap >= threshold and overlap > best_overlap:
+                best_overlap = overlap
+                best_match = m
+
+        if best_match:
+            # Insert image after the heading + first paragraph
+            insert_pos = best_match.end()
+            para_end = body.find("\n\n", insert_pos)
+            if para_end > 0:
+                insert_pos = para_end
+            img_tag = f"\n\n![{alt}]({url})\n"
+            body = body[:insert_pos] + img_tag + body[insert_pos:]
+
     return body
 
 
@@ -257,6 +281,22 @@ def _convert_visual_markers(body: str) -> str:
         r'PERSONA_NOTE:\s*(.+?)\s*\|\s*(.+)',
         r'{{< persona-note role="\1" text="\2" >}}',
         body,
+    )
+
+    # STAT: number | label | source
+    body = re.sub(
+        r'^STAT:\s*(.+?)\s*\|\s*(.+?)\s*\|\s*(.+)$',
+        r'{{< stat-box value="\1" label="\2" source="\3" >}}',
+        body,
+        flags=re.MULTILINE,
+    )
+
+    # STAT: number | label (no source variant)
+    body = re.sub(
+        r'^STAT:\s*(.+?)\s*\|\s*(.+)$',
+        r'{{< stat-box value="\1" label="\2" source="" >}}',
+        body,
+        flags=re.MULTILINE,
     )
 
     return body
