@@ -1,6 +1,14 @@
 {
   "posts": [
     {
+      "slug": "ai-credit-review-time-70-percent",
+      "title": "AI Credit Review Time: Can It Really Drop 70%?",
+      "funnel_type": "TOF",
+      "content_type": "news_analysis",
+      "tags": [],
+      "date": "2026-04-07"
+    },
+    {
       "slug": "ai-washing-legal-risk-2026",
       "title": "AI Washing Legal Risk 2026: FTC & SEC Enforcement",
       "funnel_type": "TOF",

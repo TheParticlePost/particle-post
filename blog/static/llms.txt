@@ -5,6 +5,7 @@
 
 ## Posts
 
+- [AI Credit Review Time: Can It Really Drop 70%?](https://theparticlepost.com/posts/ai-credit-review-time-70-percent/)
 - [AI Washing Legal Risk 2026: FTC & SEC Enforcement](https://theparticlepost.com/posts/ai-washing-legal-risk-2026/)
 - [Walmart AI Supply Chain: How It Cut Costs 40%](https://theparticlepost.com/posts/walmart-ai-supply-chain-cost-reduction-blueprint/)
 - [Microsoft AI Models: Is the OpenAI Era Ending?](https://theparticlepost.com/posts/microsoft-ai-models-openai-enterprise-strategy/)

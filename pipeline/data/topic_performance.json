@@ -96,6 +96,22 @@
         "SEC",
         "EU AI Act"
       ]
+    },
+    {
+      "slug": "ai-credit-review-time-70-percent",
+      "title": "AI Credit Review Time: Can It Really Drop 70%?",
+      "primary_keyword": "AI credit review time",
+      "funnel_type": "TOF",
+      "content_type": "news_analysis",
+      "director_score": 100,
+      "published_at": "2026-04-07T13:06:45.869718+00:00",
+      "tags": [
+        "AI Lending",
+        "Credit Decisioning",
+        "Banking Compliance",
+        "Machine Learning",
+        "Fintech"
+      ]
     }
   ]
 }

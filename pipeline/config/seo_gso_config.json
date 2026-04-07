@@ -1,8 +1,8 @@
 {
-  "last_updated": "2026-04-06",
+  "last_updated": "2026-04-07",
   "schema_coverage": {
     "Article": 3,
-    "FAQPage": 24,
+    "FAQPage": 25,
     "HowTo": 1,
     "NewsArticle": 0
   },
@@ -247,6 +247,14 @@
       "date": "2026-04-06",
       "slug": "ai-washing-legal-risk-2026",
       "primary_keyword": "AI washing legal risk 2026",
+      "schema_type": "FAQPage",
+      "has_faq": true,
+      "search_intent": "informational"
+    },
+    {
+      "date": "2026-04-07",
+      "slug": "ai-credit-review-time-70-percent",
+      "primary_keyword": "AI credit review time",
       "schema_type": "FAQPage",
       "has_faq": true,
       "search_intent": "informational"
