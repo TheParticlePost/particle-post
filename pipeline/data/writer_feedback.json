@@ -1,26 +1,6 @@
 {
   "notes": [
     {
-      "text": "Fix the Cisco source URL in your Sources section. You're citing mcpmanager.ai as the reference for the 24% stat, but the primary source is the Cisco AI Readiness Index PDF hosted at cisco.com. Tavily confirmed the stat is accurate, but linking to a secondary aggregator instead of the original report undermines credibility with executive readers and may raise fact-checking flags in future audits.",
-      "slot": "morning",
-      "date": "2026-04-04T13:07:29.856805+00:00"
-    },
-    {
-      "text": "The FAQ section is well-constructed with 5 Q+A pairs that directly mirror likely executive search queries — this is exactly the right approach for FAQPage schema. Consider tightening the answer to FAQ #4 (kill switch requirements) by leading with the actionable spec before the 60% stat, following the answer-first structure you use well elsewhere in the article.",
-      "slot": "morning",
-      "date": "2026-04-04T13:07:29.856805+00:00"
-    },
-    {
-      "text": "QA gate failed — fix programmatic issues before retry",
-      "slot": "evening",
-      "date": "2026-04-04T21:08:19.570589+00:00"
-    },
-    {
-      "text": "Tighten the answer-first paragraph under '## The Common Misconception About AI Memory Compression Savings' to 40-60 words. Right now it runs ~65 words and buries the direct answer behind context. Lead with the conclusion ('A 6x memory reduction does not produce a 6x cost reduction') and cut the MUFG stat to the following paragraph where it already appears.",
-      "slot": "evening",
-      "date": "2026-04-04T21:11:58.668885+00:00"
-    },
-    {
       "text": "Add a second STAT: marker or stat-box shortcode. You have strong quantitative claims throughout — the $630B Morgan Stanley figure, the 90% operating cash flow stat from Bank of America, and the 6-7% silicon wafer growth rate — any one of these would add visual diversity and reinforce credibility at a glance without changing word count materially.",
       "slot": "evening",
       "date": "2026-04-04T21:11:58.668885+00:00"
@@ -149,6 +129,26 @@
       "text": "Manually verify the Upstart 91% automated decisioning figure against the actual 2023 10-K filing before publication — the figure is directionally consistent with Upstart's public disclosures, but the exact percentage and framing should be confirmed against the primary document, not a secondary summary. Similarly, confirm OCC Bulletin 2023-22 is the correct bulletin number for model risk management guidance, as OCC bulletin numbering is frequently misremembered in AI-generated drafts.",
       "slot": "morning",
       "date": "2026-04-07T13:06:44.174417+00:00"
+    },
+    {
+      "text": "QA gate failed — fix programmatic issues before retry",
+      "slot": "evening",
+      "date": "2026-04-07T21:08:14.961155+00:00"
+    },
+    {
+      "text": "Cut aggressively to hit the 1,800–3,000 word MOF ceiling. The 'Production-Ready vs. Experimental' section and the 'What to Watch Over the Next 24 Months' section are strong candidates for trimming or removal — they add texture but dilute the core vendor-selection argument. Alternatively, consider splitting this into a two-part series: a comparative framework piece (MOF) and a forward-looking outlook piece (TOF). The word count violation is the only structural issue holding this article back from a clean score.",
+      "slot": "evening",
+      "date": "2026-04-07T21:15:41.460926+00:00"
+    },
+    {
+      "text": "Add at least one blockquote callout to satisfy the MOF visual diversity requirement. The KEY TAKEAWAY paragraph is well-written and already formatted inline — converting it to a proper blockquote shortcode would close this gap instantly and improve scannability for executive readers who skim before committing to a full read.",
+      "slot": "evening",
+      "date": "2026-04-07T21:15:41.460926+00:00"
+    },
+    {
+      "text": "The six-criteria scoring table is this article's most defensible and shareable asset, but the methodology behind the 1–5 scores is author-attributed rather than third-party sourced. Add a brief methodology footnote explaining that scores reflect editorial assessment of documented production deployments as of Q1 2026, or anchor at least one score per vendor to a named external source. This protects the publication if a vendor challenges the scores publicly.",
+      "slot": "evening",
+      "date": "2026-04-07T21:15:41.460926+00:00"
     }
   ]
 }
