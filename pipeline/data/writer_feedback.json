@@ -1,21 +1,6 @@
 {
   "notes": [
     {
-      "text": "Trim approximately 150-200 words to land within the 1,800-3,000 MOF word count ceiling. The 'What This Deployment Does NOT Prove' section contains five parallel 'It does not prove...' constructions that are repetitive at this length — condensing those to three tightly worded bullets would preserve analytical rigor while cutting the overage and tightening the reader experience.",
-      "slot": "afternoon",
-      "date": "2026-04-05T06:21:10.817267+00:00"
-    },
-    {
-      "text": "Replace the picsum.photos placeholder cover image with a licensed editorial image before scheduling publication. A placeholder image on a case study targeting CFOs and COOs signals draft status and undermines the authority positioning the article otherwise earns through its sourcing and depth.",
-      "slot": "afternoon",
-      "date": "2026-04-05T06:21:10.817267+00:00"
-    },
-    {
-      "text": "Fix the Windsurf claim immediately — this is a publication-embarrassing factual error. The OpenAI-Windsurf acquisition talks were reported by CNBC in April 2025, not 2026, and the deal collapsed entirely (Cognition bought Windsurf in July 2025). Either update this to accurately describe what happened historically and why it's relevant context, or remove the reference. Publishing it as a present-tense 2026 event will damage credibility with any executive who follows AI M&A.",
-      "slot": "morning",
-      "date": "2026-04-05T13:06:09.587156+00:00"
-    },
-    {
       "text": "TOF articles must stay under 1,000 words — the FAQ section is the culprit here. Since has_faq=true requires the FAQ to render in the body, you need to trim the core article to roughly 650-700 words to leave room for the FAQ pairs. Audit every paragraph for redundancy: the three 'concrete steps' section largely repeats points already made in the answer-first paragraph above it. Consolidate.",
       "slot": "morning",
       "date": "2026-04-05T13:06:09.587156+00:00"
@@ -149,6 +134,21 @@
       "text": "Manually verify all three sources before publish. The Fortune April 7 2026 URL, Gartner's 74% AI pilot ROI failure stat, and McKinsey's 2.4x governance multiplier are the article's entire evidentiary foundation. If any one of these cannot be confirmed with a live URL or report page, the article's credibility collapses. Add publication dates and report titles to the Gartner and McKinsey citations in the Sources section to strengthen traceability.",
       "slot": "morning",
       "date": "2026-04-08T13:05:40.284247+00:00"
+    },
+    {
+      "text": "Fix the H1 to be a question for TOF compliance — something like 'Is Agentic AI Reshaping Professional Services Faster Than Executives Expect?' satisfies the funnel rule, keeps the primary keyword, and improves click-through from search by matching user intent phrasing.",
+      "slot": "evening",
+      "date": "2026-04-08T21:05:32.098897+00:00"
+    },
+    {
+      "text": "Cut the article to under 1,000 words. The FAQ section alone adds ~350 words; since has_faq=true renders the FAQ from YAML frontmatter automatically, the inline FAQ section in the body is redundant and should be removed entirely — this single cut likely brings word count into range without losing any content value.",
+      "slot": "evening",
+      "date": "2026-04-08T21:05:32.098897+00:00"
+    },
+    {
+      "text": "Eliminate the duplicate paragraph in the '$1.86T market' H2 section (the second paragraph restates the first almost verbatim) and consolidate the two internal links to the enterprise readiness framework into one placement. Both edits will tighten the read and remove the assembly-error impression that would undermine credibility with exec readers.",
+      "slot": "evening",
+      "date": "2026-04-08T21:05:32.098897+00:00"
     }
   ]
 }
