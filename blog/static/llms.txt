@@ -5,6 +5,7 @@
 
 ## Posts
 
+- [CFO AI Investment Framework: Why Waiting Costs Millions](https://theparticlepost.com/posts/cfo-ai-investment-framework-governance/)
 - [Data AI Platform Comparison 2026: Palantir vs Databricks](https://theparticlepost.com/posts/data-ai-platform-comparison-2026-palantir-databricks-snowflake-fabric/)
 - [AI Credit Review Time: Can It Really Drop 70%?](https://theparticlepost.com/posts/ai-credit-review-time-70-percent/)
 - [AI Washing Legal Risk 2026: FTC & SEC Enforcement](https://theparticlepost.com/posts/ai-washing-legal-risk-2026/)

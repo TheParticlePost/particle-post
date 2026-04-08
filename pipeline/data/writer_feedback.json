@@ -1,21 +1,6 @@
 {
   "notes": [
     {
-      "text": "Add a second STAT: marker or stat-box shortcode. You have strong quantitative claims throughout — the $630B Morgan Stanley figure, the 90% operating cash flow stat from Bank of America, and the 6-7% silicon wafer growth rate — any one of these would add visual diversity and reinforce credibility at a glance without changing word count materially.",
-      "slot": "evening",
-      "date": "2026-04-04T21:11:58.668885+00:00"
-    },
-    {
-      "text": "Confirm your internal link slugs match published Particle Post URLs before this goes live. The anchor text 'enterprise AI ROI analysis' and 'Big Tech $700B AI data center analysis' are well-written, but if those slugs don't resolve, readers hit dead links and SEO equity is lost. Pull the actual slug values from your CMS and hard-code them into the href.",
-      "slot": "evening",
-      "date": "2026-04-04T21:11:58.668885+00:00"
-    },
-    {
-      "text": "Fix the Forrester/Gartner misattribution before this goes live: the '50% of AI job cuts reversed by 2027' forecast is a Gartner prediction, not a Forrester finding. Forrester's verified stat is the 55% employer-regret figure. Mixing the two in a single sentence damages credibility with the CFO/COO audience who will recognize the error. Correct the attribution or separate the two claims clearly.",
-      "slot": "afternoon",
-      "date": "2026-04-05T06:21:10.817267+00:00"
-    },
-    {
       "text": "Trim approximately 150-200 words to land within the 1,800-3,000 MOF word count ceiling. The 'What This Deployment Does NOT Prove' section contains five parallel 'It does not prove...' constructions that are repetitive at this length — condensing those to three tightly worded bullets would preserve analytical rigor while cutting the overage and tightening the reader experience.",
       "slot": "afternoon",
       "date": "2026-04-05T06:21:10.817267+00:00"
@@ -149,6 +134,21 @@
       "text": "The six-criteria scoring table is this article's most defensible and shareable asset, but the methodology behind the 1–5 scores is author-attributed rather than third-party sourced. Add a brief methodology footnote explaining that scores reflect editorial assessment of documented production deployments as of Q1 2026, or anchor at least one score per vendor to a named external source. This protects the publication if a vendor challenges the scores publicly.",
       "slot": "evening",
       "date": "2026-04-07T21:15:41.460926+00:00"
+    },
+    {
+      "text": "Restructure the H1 as a question for TOF compliance. The current title is strong for SEO but violates the TOF format rule. A question-form H1 like 'Does Your CFO AI Investment Framework Have a Governance Gap?' preserves the primary keyword while satisfying the funnel requirement — and often performs better in featured snippets.",
+      "slot": "morning",
+      "date": "2026-04-08T13:05:40.284247+00:00"
+    },
+    {
+      "text": "Trim the FAQ section to bring the total body word count under 1,000 words. The five-question FAQ is thorough, but for TOF the depth is more appropriate for MOF. Consider cutting 2 FAQ pairs and linking to a dedicated resource page, or consolidating the logistics and retail bank scenarios into a single tighter paragraph — both are excellent scenarios but together push the article ~100 words over the TOF ceiling.",
+      "slot": "morning",
+      "date": "2026-04-08T13:05:40.284247+00:00"
+    },
+    {
+      "text": "Manually verify all three sources before publish. The Fortune April 7 2026 URL, Gartner's 74% AI pilot ROI failure stat, and McKinsey's 2.4x governance multiplier are the article's entire evidentiary foundation. If any one of these cannot be confirmed with a live URL or report page, the article's credibility collapses. Add publication dates and report titles to the Gartner and McKinsey citations in the Sources section to strengthen traceability.",
+      "slot": "morning",
+      "date": "2026-04-08T13:05:40.284247+00:00"
     }
   ]
 }
