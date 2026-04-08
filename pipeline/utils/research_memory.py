@@ -93,12 +93,22 @@ def record_article_outcome(
 
     quality = "high" if director_score >= 80 else "medium" if director_score >= 65 else "low"
 
-    # Update the latest matching history entry
+    # Update the latest matching history entry. Try exact title match first
+    # (research-phase title), then fall back to most recent unscored entry of
+    # the matching content_type (since SEO/Editor often rewrites the title).
+    matched = False
     for entry in reversed(memory.get("query_history", [])):
         if entry.get("topic_selected") == topic_title and entry.get("director_score") is None:
             entry["director_score"] = director_score
             entry["quality"] = quality
+            matched = True
             break
+    if not matched:
+        for entry in reversed(memory.get("query_history", [])):
+            if entry.get("content_type") == content_type and entry.get("director_score") is None:
+                entry["director_score"] = director_score
+                entry["quality"] = quality
+                break
 
     # Track successful query patterns
     if quality in ("high", "medium") and queries_used:

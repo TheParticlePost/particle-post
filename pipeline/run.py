@@ -142,11 +142,19 @@ def _sanitize_article(content: str) -> str:
         content = content[:restructured_match.start()].rstrip()
         fixes_applied.append("Stripped [RESTRUCTURED ARTICLE] duplicate block")
 
-    # Also catch a second frontmatter block (---\ntitle:) appearing mid-content
-    frontmatter_blocks = list(re.finditer(r'^---\s*\n', content, re.MULTILINE))
-    if len(frontmatter_blocks) > 2:
-        # Keep only content up to the third --- (start of second frontmatter)
-        content = content[:frontmatter_blocks[2].start()].rstrip()
+    # Also catch a second frontmatter block (---\ntitle:) appearing mid-content.
+    # IMPORTANT: a bare "---" line is also a Markdown horizontal rule, so we
+    # must NOT treat every "---" as a frontmatter delimiter. Only count it as
+    # a frontmatter open if it is immediately followed by a YAML scalar field
+    # (e.g. "title:", "slug:", "date:", "description:").
+    frontmatter_open_re = re.compile(
+        r'^---\s*\n(?:title|slug|date|description|draft|tags|categories|image):',
+        re.MULTILINE,
+    )
+    frontmatter_blocks = list(frontmatter_open_re.finditer(content))
+    if len(frontmatter_blocks) >= 2:
+        # Keep only content up to the second frontmatter open
+        content = content[:frontmatter_blocks[1].start()].rstrip()
         fixes_applied.append("Stripped duplicate frontmatter/article block")
 
     # Catch a second H1 (# Title) appearing after the first article body
@@ -234,8 +242,12 @@ def _correct_verdict(verdict: dict, sanitized_content: str) -> dict:
 
     # Check: are there actually duplicate articles in the formatter output?
     has_restructured = bool(re.search(r'\[RESTRUCTURED\s+ARTICLE\]', sanitized_content, re.IGNORECASE))
-    frontmatter_blocks = list(re.finditer(r'^---\s*$', sanitized_content, re.MULTILINE))
-    has_duplicate_frontmatter = len(frontmatter_blocks) > 2
+    # Only count "---" lines that open a real YAML frontmatter, not horizontal rules
+    frontmatter_blocks = list(re.finditer(
+        r'^---\s*\n(?:title|slug|date|description|draft|tags|categories|image):',
+        sanitized_content, re.MULTILINE,
+    ))
+    has_duplicate_frontmatter = len(frontmatter_blocks) >= 2
     h1_matches = list(re.finditer(r'^# [^\n]+', sanitized_content, re.MULTILINE))
     has_duplicate_h1 = len(h1_matches) > 1
 
