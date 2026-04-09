@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-04-08T21:02:40.327461+00:00",
-  "total_runs": 10,
+  "last_updated": "2026-04-09T21:03:47.251315+00:00",
+  "total_runs": 11,
   "query_history": [
     {
       "date": "2026-04-05",
@@ -101,6 +101,16 @@
       "topic_selected": "AI in Professional Services: The $1.86T Transformation Briefing",
       "director_score": 80,
       "quality": "high"
+    },
+    {
+      "date": "2026-04-09",
+      "slot": "evening",
+      "content_type": "case_study",
+      "queries_used": [],
+      "topics_found": 1,
+      "topic_selected": "Kodiak AI Autonomous Trucking: Midwest Expansion Case Study",
+      "director_score": 97,
+      "quality": "high"
     }
   ],
   "successful_query_patterns": {
@@ -115,7 +125,7 @@
   "domain_coverage": {
     "finance": 2,
     "operations": 0,
-    "supply_chain": 1,
+    "supply_chain": 2,
     "hr": 2,
     "manufacturing": 0,
     "healthcare": 0,

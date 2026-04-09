@@ -5,6 +5,7 @@
 
 ## Posts
 
+- [Autonomous Trucking AI ROI: Kodiak](https://theparticlepost.com/posts/kodiak-ai-autonomous-trucking-midwest-expansion/)
 - [CFO AI Investment Framework: Why Waiting Costs Millions](https://theparticlepost.com/posts/cfo-ai-investment-framework-governance/)
 - [Agentic AI Professional Services: The $1.86T Shift](https://theparticlepost.com/posts/agentic-ai-professional-services-transformation/)
 - [Data AI Platform Comparison 2026: Palantir vs Databricks](https://theparticlepost.com/posts/data-ai-platform-comparison-2026-palantir-databricks-snowflake-fabric/)

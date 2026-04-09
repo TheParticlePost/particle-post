@@ -5,6 +5,7 @@
 
 ## Posts
 
+- [Autonomous Trucking AI ROI: Kodiak](https://theparticlepost.com/posts/kodiak-ai-autonomous-trucking-midwest-expansion/): Autonomous trucking AI cut projected cost per mile to $0.38 vs. $1.92 for human drivers. See how Kodiak AI staged its Midwest expansion and what the ROI data reveals.
 - [CFO AI Investment Framework: Why Waiting Costs Millions](https://theparticlepost.com/posts/cfo-ai-investment-framework-governance/): CFO AI investment framework: 74% of AI pilots never document ROI per Gartner. Learn why finance leaders must govern AI vendor and spend decisions now.
 - [Agentic AI Professional Services: The $1.86T Shift](https://theparticlepost.com/posts/agentic-ai-professional-services-transformation/): Agentic AI professional services firms are compressing 30-50% of engagement hours. Rocketlane
 - [Data AI Platform Comparison 2026: Palantir vs Databricks](https://theparticlepost.com/posts/data-ai-platform-comparison-2026-palantir-databricks-snowflake-fabric/): Data AI platform comparison 2026: benchmark Palantir, Databricks, Snowflake, and Microsoft Fabric across 6 criteria. Palantir grew 54% YoY. Find your match.

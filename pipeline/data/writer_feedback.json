@@ -1,21 +1,6 @@
 {
   "notes": [
     {
-      "text": "TOF articles must stay under 1,000 words — the FAQ section is the culprit here. Since has_faq=true requires the FAQ to render in the body, you need to trim the core article to roughly 650-700 words to leave room for the FAQ pairs. Audit every paragraph for redundancy: the three 'concrete steps' section largely repeats points already made in the answer-first paragraph above it. Consolidate.",
-      "slot": "morning",
-      "date": "2026-04-05T13:06:09.587156+00:00"
-    },
-    {
-      "text": "Replace the picsum.photos placeholder cover image before resubmission. A published article at Particle Post must have a real, licensed image. Also convert the KEY TAKEAWAY from inline text to a proper blockquote or callout shortcode — visual formatting elements like this must render distinctly from body copy to serve their purpose for skimmable executive readers.",
-      "slot": "morning",
-      "date": "2026-04-05T13:06:09.587156+00:00"
-    },
-    {
-      "text": "QA gate failed — fix programmatic issues before retry",
-      "slot": "afternoon",
-      "date": "2026-04-05T16:10:14.475865+00:00"
-    },
-    {
       "text": "RECONCILE THE AI USE-CASE COUNT: You cite '450 AI use cases in production' (attributed to Emerj) in one section and 'more than 500 active AI use cases' (attributed to Chronicle Journal, March 2026) in the closing section. Pick the most current verified figure (500+, per Chronicle Journal March 2026) and use it consistently throughout. Contradictory statistics in the same article undermine credibility with the executive audience this piece targets.",
       "slot": "afternoon",
       "date": "2026-04-05T16:17:14.473571+00:00"
@@ -149,6 +134,21 @@
       "text": "Eliminate the duplicate paragraph in the '$1.86T market' H2 section (the second paragraph restates the first almost verbatim) and consolidate the two internal links to the enterprise readiness framework into one placement. Both edits will tighten the read and remove the assembly-error impression that would undermine credibility with exec readers.",
       "slot": "evening",
       "date": "2026-04-08T21:05:32.098897+00:00"
+    },
+    {
+      "text": "TRIM TO STAY WITHIN MOF WORD COUNT: At roughly 3,100-3,200 words, this article exceeds the 3,000-word MOF ceiling. The sections 'Why These Results Are Frequently Misread' and 'Lessons From the Sunbelt-to-Midwest Transition' contain the most redundant analysis — consolidate or cut approximately 150-200 words from those sections to land cleanly within range and avoid the -20 penalty on future submissions.",
+      "slot": "evening",
+      "date": "2026-04-09T21:09:26.503740+00:00"
+    },
+    {
+      "text": "ELIMINATE ALL EM-DASHES FROM THE BODY: The em-dash ban is absolute at Particle Post. At least two instances appear in the article body (e.g., the $1.54 gap construction and the cost-structure paragraph). Run a find-and-replace for the — character before every submission and rewrite the surrounding sentence to use a colon, comma, or period instead. This is a recurring issue that costs 15 points per audit.",
+      "slot": "evening",
+      "date": "2026-04-09T21:09:26.503740+00:00"
+    },
+    {
+      "text": "UPGRADE THE KEY TAKEAWAY TO A FORMATTED CALLOUT: The KEY TAKEAWAY is rendered as plain inline text, which reduces visual diversity and fails to render as a distinct callout block in the CMS. Wrap it in the correct shortcode (e.g., {{< callout >}}...{{< /callout >}}) to satisfy the blockquote/callout visual diversity requirement and improve scannability for executive readers.",
+      "slot": "evening",
+      "date": "2026-04-09T21:09:26.503740+00:00"
     }
   ]
 }

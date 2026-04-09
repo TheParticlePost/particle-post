@@ -1,6 +1,14 @@
 {
   "posts": [
     {
+      "slug": "kodiak-ai-autonomous-trucking-midwest-expansion",
+      "title": "Autonomous Trucking AI ROI: Kodiak",
+      "funnel_type": "MOF",
+      "content_type": "case_study",
+      "tags": [],
+      "date": "2026-04-09"
+    },
+    {
       "slug": "cfo-ai-investment-framework-governance",
       "title": "CFO AI Investment Framework: Why Waiting Costs Millions",
       "funnel_type": "TOF",
