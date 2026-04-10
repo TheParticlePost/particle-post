@@ -99,7 +99,12 @@ def process_article(
     key: str,
     index: int,
     total: int,
+    verbose: bool = True,
 ) -> dict[str, Any]:
+    def _log(msg: str) -> None:
+        if verbose:
+            print(msg)
+
     text = filepath.read_text(encoding="utf-8")
     try:
         _, fm_text, body = split_frontmatter(text)
@@ -119,18 +124,18 @@ def process_article(
 
     already = row_exists(url, key, slug)
     if already and not force:
-        print(f"  [{index}/{total}] {slug:55.55}  SKIP (already in map)")
+        _log(f"  [{index}/{total}] {slug:55.55}  SKIP (already in map)")
         return {"slug": slug, "status": "skipped"}
 
     if dry_run:
-        print(f"  [{index}/{total}] {slug:55.55}  DRY-RUN title={title[:60]}")
+        _log(f"  [{index}/{total}] {slug:55.55}  DRY-RUN title={title[:60]}")
         return {"slug": slug, "status": "dry-run"}
 
     if already and force:
         if delete_row(url, key, slug):
-            print(f"  [{index}/{total}] {slug:55.55}  (force: deleted existing row)")
+            _log(f"  [{index}/{total}] {slug:55.55}  (force: deleted existing row)")
         else:
-            print(f"  [{index}/{total}] {slug:55.55}  WARN: force delete failed, insert may conflict")
+            _log(f"  [{index}/{total}] {slug:55.55}  WARN: force delete failed, insert may conflict")
 
     # publish_case_study_to_pulse expects the FULL article content (frontmatter + body)
     # so it can extract additional fields via regex.
@@ -145,19 +150,101 @@ def process_article(
     try:
         publish_case_study_to_pulse(text, seo_data, slug)
     except Exception as e:
-        print(f"  [{index}/{total}] {slug:55.55}  EXCEPTION  {e}")
+        _log(f"  [{index}/{total}] {slug:55.55}  EXCEPTION  {e}")
         return {"slug": slug, "status": "exception", "reason": str(e)}
 
     # Verify it actually landed
     if row_exists(url, key, slug):
-        print(f"  [{index}/{total}] {slug:55.55}  OK")
+        _log(f"  [{index}/{total}] {slug:55.55}  OK")
         return {"slug": slug, "status": "ok"}
     else:
-        print(f"  [{index}/{total}] {slug:55.55}  FAILED (row not found after insert)")
+        _log(f"  [{index}/{total}] {slug:55.55}  FAILED (row not found after insert)")
         return {"slug": slug, "status": "failed"}
 
 
+def sync_pulse_map(
+    *,
+    dry_run: bool = False,
+    slug_filter: str | None = None,
+    force: bool = False,
+    verbose: bool = False,
+) -> dict[str, Any]:
+    """Self-heal: ensure every case_study article has a row in pulse_case_studies.
+
+    Designed to be called from pipeline/run.py at the end of every pipeline
+    run AND from pipeline/content_audit_run.py as part of the weekly audit.
+    Cheap (one GET per case_study article) and idempotent — safe to call
+    on every run.
+
+    Returns:
+        {
+            "scanned": int,
+            "skipped": int,        # already in map (the common case)
+            "inserted": int,       # newly inserted this call
+            "inserted_slugs": list[str],
+            "failed": int,
+            "failed_slugs": list[str],
+            "enabled": bool,       # false if SUPABASE env vars missing
+        }
+    """
+    result = {
+        "scanned": 0, "skipped": 0, "inserted": 0,
+        "inserted_slugs": [], "failed": 0, "failed_slugs": [],
+        "enabled": False,
+    }
+
+    url = os.environ.get("SUPABASE_URL") or os.environ.get("NEXT_PUBLIC_SUPABASE_URL", "")
+    key = os.environ.get("SUPABASE_SERVICE_ROLE_KEY", "")
+    if not url or not key:
+        return result  # enabled=False, caller decides whether to warn
+    result["enabled"] = True
+
+    if not POSTS_DIR.exists():
+        return result
+
+    posts = sorted(POSTS_DIR.glob("*.md"))
+    if slug_filter:
+        posts = [p for p in posts if slug_filter in p.name]
+
+    for i, post in enumerate(posts, start=1):
+        try:
+            r = process_article(
+                post,
+                dry_run=dry_run,
+                force=force,
+                url=url, key=key,
+                index=i, total=len(posts),
+                verbose=verbose,
+            )
+        except Exception as e:
+            result["failed"] += 1
+            result["failed_slugs"].append(post.stem)
+            if verbose:
+                print(f"  [{i}/{len(posts)}] {post.name}  EXCEPTION  {e}")
+            continue
+
+        status = r.get("status", "")
+        if status == "not-case-study":
+            continue
+        result["scanned"] += 1
+        if status == "skipped":
+            result["skipped"] += 1
+        elif status == "ok":
+            result["inserted"] += 1
+            result["inserted_slugs"].append(r.get("slug", ""))
+        elif status == "dry-run":
+            # Count dry-run as "would insert" so callers can report it
+            result["inserted"] += 1
+            result["inserted_slugs"].append(r.get("slug", ""))
+        elif status in ("failed", "exception", "error"):
+            result["failed"] += 1
+            result["failed_slugs"].append(r.get("slug", ""))
+
+    return result
+
+
 def main():
+    """CLI entry point. For programmatic use call sync_pulse_map() directly."""
     parser = argparse.ArgumentParser(
         description="Backfill Supabase pulse_case_studies from blog/content/posts/ case_study articles.",
     )

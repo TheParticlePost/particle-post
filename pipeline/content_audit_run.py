@@ -272,6 +272,36 @@ def main() -> None:
 
     _write_coaching_notes(audits)
 
+    # --- AI Pulse map integrity check ---
+    # Every case_study article in blog/content/posts/ should have a row
+    # in Supabase pulse_case_studies. The pipeline already self-heals on
+    # every morning/afternoon/evening run, but a weekly audit catches
+    # drift between runs (rare) and surfaces any stuck failures loudly.
+    print(f"\n  {'='*50}")
+    print(f"  AI PULSE MAP INTEGRITY")
+    print(f"  {'='*50}")
+    try:
+        from pipeline.backfill_pulse_map import sync_pulse_map
+        pulse = sync_pulse_map(verbose=False)
+        if not pulse["enabled"]:
+            print("  [Pulse] SKIP — Supabase env vars not configured")
+        else:
+            print(f"  Scanned      : {pulse['scanned']} case_study article(s)")
+            print(f"  Already synced: {pulse['skipped']}")
+            print(f"  Inserted now  : {pulse['inserted']}")
+            if pulse["inserted_slugs"]:
+                for s in pulse["inserted_slugs"]:
+                    print(f"    + {s}")
+            if pulse["failed"]:
+                print(f"  FAILURES      : {pulse['failed']}")
+                for s in pulse["failed_slugs"]:
+                    print(f"    ! {s}")
+                print(f"  See pipeline/logs/pulse_failures.jsonl for details.")
+            else:
+                print(f"  Status        : all case studies are on the map")
+    except Exception as e:
+        print(f"  [Pulse] ERROR: {e}")
+
     print(f"\n{'='*60}")
     print(f"  CONTENT AUDIT COMPLETE")
     print(f"{'='*60}\n")

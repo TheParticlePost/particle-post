@@ -1605,6 +1605,39 @@ def main() -> None:
                 except Exception as pulse_err:
                     print(f"  [Pulse] Warning: {pulse_err}")
 
+            # Pulse map self-heal: scan every case_study article and insert
+            # any that are missing from pulse_case_studies. Runs on EVERY
+            # pipeline invocation (morning/afternoon/evening), not just
+            # case_study publishes, so a silent failure on one day will
+            # be caught on the next run. Cheap: one GET per case_study
+            # article, idempotent when all rows already exist.
+            if not args.dry_run:
+                try:
+                    from pipeline.backfill_pulse_map import sync_pulse_map
+                    pulse_summary = sync_pulse_map(verbose=False)
+                    if not pulse_summary["enabled"]:
+                        print("  [Pulse Sync] SKIP (Supabase env vars missing)")
+                    elif pulse_summary["inserted"] > 0:
+                        inserted = ", ".join(pulse_summary["inserted_slugs"][:5])
+                        print(
+                            f"  [Pulse Sync] Self-healed {pulse_summary['inserted']} "
+                            f"stragglers: {inserted}"
+                        )
+                    elif pulse_summary["failed"] > 0:
+                        failed = ", ".join(pulse_summary["failed_slugs"][:5])
+                        print(
+                            f"  [Pulse Sync] WARNING: {pulse_summary['failed']} "
+                            f"case_study article(s) still failing: {failed}. "
+                            f"See pipeline/logs/pulse_failures.jsonl"
+                        )
+                    else:
+                        print(
+                            f"  [Pulse Sync] OK ({pulse_summary['scanned']} "
+                            f"case studies, all on map)"
+                        )
+                except Exception as sync_err:
+                    print(f"  [Pulse Sync] Error: {sync_err}")
+
             return  # success
 
         # REJECT path — only production crew retries, research stays locked
