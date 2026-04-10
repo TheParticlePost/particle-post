@@ -111,7 +111,28 @@ _COMPANY_HQ: dict[str, tuple[float, float, str, str]] = {
     "dhl": (50.9375, 6.9603, "DE", "Bonn"),
     "fedex": (35.1495, -90.0490, "US", "Memphis"),
     "ups": (33.7490, -84.3880, "US", "Atlanta"),
+    # Autonomous vehicles / AV / robotics
+    "kodiak": (37.3861, -122.0839, "US", "Mountain View"),
+    "kodiak robotics": (37.3861, -122.0839, "US", "Mountain View"),
+    "waymo": (37.4419, -122.1430, "US", "Mountain View"),
+    "aurora": (37.4443, -122.1598, "US", "Mountain View"),
+    "aurora innovation": (37.4443, -122.1598, "US", "Mountain View"),
+    "cruise": (37.7749, -122.4194, "US", "San Francisco"),
+    "zoox": (37.5486, -121.9886, "US", "Foster City"),
+    "tusimple": (32.8903, -117.2025, "US", "San Diego"),
+    "embark": (37.7749, -122.4194, "US", "San Francisco"),
+    "gatik": (37.4419, -122.1430, "US", "Mountain View"),
+    "nuro": (37.4419, -122.1430, "US", "Mountain View"),
 }
+
+
+def known_companies() -> list[str]:
+    """Return the list of canonical company keys in the lookup table.
+
+    Used by pipeline/utils/case_study_publisher.py to do a slug-based
+    company match before falling back to title regex parsing.
+    """
+    return list(_COMPANY_HQ.keys())
 
 # Country centroid fallbacks (ISO 3166-1 alpha-2 → lat, lng)
 _COUNTRY_CENTROIDS: dict[str, tuple[float, float]] = {
