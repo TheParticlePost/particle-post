@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import GithubSlugger from "github-slugger";
 import { cn } from "@/lib/utils";
 
@@ -40,6 +40,8 @@ function extractHeadings(content: string): TocItem[] {
 export function TableOfContents({ content }: TableOfContentsProps) {
   const [activeId, setActiveId] = useState("");
   const headings = extractHeadings(content);
+  const navRef = useRef<HTMLElement | null>(null);
+  const linkRefs = useRef<Map<string, HTMLAnchorElement>>(new Map());
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -61,10 +63,39 @@ export function TableOfContents({ content }: TableOfContentsProps) {
     return () => observer.disconnect();
   }, [headings]);
 
+  // Keep the active TOC link visible inside the sidebar's own scrollable
+  // area. Without this, the TOC list stays frozen in place while the user
+  // scrolls the article, so the highlighted item slides out of view.
+  useEffect(() => {
+    if (!activeId) return;
+    const nav = navRef.current;
+    const link = linkRefs.current.get(activeId);
+    if (!nav || !link) return;
+
+    const navRect = nav.getBoundingClientRect();
+    const linkRect = link.getBoundingClientRect();
+    const linkTopInNav = linkRect.top - navRect.top + nav.scrollTop;
+    const linkBottomInNav = linkTopInNav + linkRect.height;
+
+    // Keep ~2 items of headroom above and below when auto-scrolling.
+    const padding = 48;
+    if (linkTopInNav < nav.scrollTop + padding) {
+      nav.scrollTo({ top: Math.max(0, linkTopInNav - padding), behavior: "smooth" });
+    } else if (linkBottomInNav > nav.scrollTop + nav.clientHeight - padding) {
+      nav.scrollTo({
+        top: linkBottomInNav - nav.clientHeight + padding,
+        behavior: "smooth",
+      });
+    }
+  }, [activeId]);
+
   if (headings.length === 0) return null;
 
   return (
-    <nav className="hidden xl:block sticky top-24 max-h-[calc(100vh-8rem)] overflow-y-auto scrollbar-hide">
+    <nav
+      ref={navRef}
+      className="hidden xl:block sticky top-24 max-h-[calc(100vh-8rem)] overflow-y-auto scrollbar-hide"
+    >
       <p className="text-body-xs font-semibold uppercase tracking-widest text-text-muted mb-3">
         On this page
       </p>
@@ -73,6 +104,10 @@ export function TableOfContents({ content }: TableOfContentsProps) {
           <li key={heading.id}>
             <a
               href={`#${heading.id}`}
+              ref={(el) => {
+                if (el) linkRefs.current.set(heading.id, el);
+                else linkRefs.current.delete(heading.id);
+              }}
               className={cn(
                 "block py-1 text-body-sm transition-all duration-200 border-l-2 -ml-[2px]",
                 heading.level === 3 ? "pl-6" : "pl-4",

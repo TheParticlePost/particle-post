@@ -21,24 +21,27 @@ export function BeforeAfter({ metric, before, after, source }: BeforeAfterProps)
         {metric}
       </p>
 
-      {/* Two equal columns — no center arrow column. Stacks on mobile. */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      {/* Two equal columns — no center arrow column. Stacks on mobile
+          AND on narrow article-width viewports. `min-w-0` on grid cells
+          prevents long values from forcing the container wider than its
+          parent .prose column. */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {/* Before card */}
-        <div className="rounded-md border border-red-500/40 bg-bg-high p-5">
+        <div className="min-w-0 rounded-md border border-red-500/40 bg-bg-high p-5">
           <p className="text-caption font-mono uppercase tracking-wider text-red-400 mb-2">
             Before
           </p>
-          <p className="font-display text-display-md text-text-primary break-words">
+          <p className="font-display text-display-md text-text-primary break-words hyphens-auto">
             {before}
           </p>
         </div>
 
         {/* After card */}
-        <div className="relative rounded-md border border-green-500/40 bg-bg-high p-5">
+        <div className="relative min-w-0 rounded-md border border-green-500/40 bg-bg-high p-5">
           <p className="text-caption font-mono uppercase tracking-wider text-green-400 mb-2">
             After
           </p>
-          <p className="font-display text-display-md text-text-primary break-words">
+          <p className="font-display text-display-md text-text-primary break-words hyphens-auto pr-14">
             {after}
           </p>
           {deltaPercent !== null && (

@@ -1,5 +1,6 @@
 import { StatBox } from "@/components/mdx/stat-box";
 import { BarChart } from "@/components/mdx/bar-chart";
+import { TimeSeriesChart } from "@/components/mdx/time-series-chart";
 import { ComparisonTable } from "@/components/mdx/comparison-table";
 import { ProcessFlow } from "@/components/mdx/process-flow";
 import { BeforeAfter } from "@/components/mdx/before-after";
@@ -10,6 +11,7 @@ import { PersonaCallout } from "@/components/mdx/persona-callout";
 export const mdxComponents = {
   StatBox,
   BarChart,
+  TimeSeriesChart,
   ComparisonTable,
   ProcessFlow,
   BeforeAfter,

@@ -57,17 +57,19 @@ from pipeline.graphics.templates import (  # noqa: E402
     diagram_timeline,
     chart_bar_horizontal,
 )
-from pipeline.graphics.renderer import render_sync  # noqa: E402
+from pipeline.graphics.renderer import render_sync, intrinsic_svg_size  # noqa: E402
 from pipeline.graphics.uploader import upload_to_supabase  # noqa: E402
 
 
 # Maps the filename suffix in the visual URL to the renderer function
-# and the (width, height) to use when rasterizing.
+# and the default (width, height) to use when rasterizing. Dynamic-height
+# templates (e.g. vertical timeline) use None for height and the
+# backfill reads the SVG's own width/height attributes instead.
 RENDERERS: dict[str, tuple] = {
     "stat_card":           (stat_card, 400, 200),
     "before_after":        (diagram_before_after, 800, 250),
     "process_flow":        (diagram_process_flow, 1000, 150),
-    "timeline":            (diagram_timeline, 1200, 280),
+    "timeline":            (diagram_timeline, 800, None),
     "chart_bar_horizontal": (chart_bar_horizontal, 800, 300),
 }
 
@@ -167,9 +169,10 @@ def process_article(
 
     slug = (fm.get("slug") or filepath.stem).strip()
 
-    # Idempotency
-    if not force and fm.get("visuals_generation") == "v2":
-        print(f"  [{index}/{total}] {slug:55.55}  SKIP (already v2)")
+    # Idempotency — v3 is current. v2 articles will be re-processed so
+    # they pick up the new vertical timeline and other template changes.
+    if not force and fm.get("visuals_generation") == "v3":
+        print(f"  [{index}/{total}] {slug:55.55}  SKIP (already v3)")
         return {"slug": slug, "status": "skipped"}
 
     # Find existing visual references in the body
@@ -210,7 +213,12 @@ def process_article(
             failed.append(f"{vtype} (no data)")
             continue
 
-        _, w, h = RENDERERS[vtype]
+        _, default_w, default_h = RENDERERS[vtype]
+        # For dynamic-height templates, read the intrinsic size from the
+        # SVG so we render exactly what the template produced.
+        intrinsic_w, intrinsic_h = intrinsic_svg_size(svg)
+        w = intrinsic_w or default_w
+        h = intrinsic_h or default_h or 400
         out_path = tmp_dir / f"{slug}-{vtype}.png"
         try:
             render_sync(svg, str(out_path), w, h)
@@ -226,29 +234,26 @@ def process_article(
         else:
             failed.append(f"{vtype} (upload failed)")
 
-    # Mark the article as v2 AND rewrite visual image URLs in the body
-    # with a ?v=v2 query string so Next.js Image fetches fresh and the
-    # new PNGs actually reach the reader (same cache-bust pattern used
-    # for covers).
-    fm["visuals_generation"] = "v2"
+    # Mark the article as v3 AND rewrite visual image URLs in the body
+    # with a fresh ?v=v3 query string so Next.js Image fetches fresh
+    # (bumped from v2 because the timeline template changed shape).
+    fm["visuals_generation"] = "v3"
     new_fm = yaml.safe_dump(
         fm, sort_keys=False, allow_unicode=True, width=4096, default_flow_style=False,
     )
 
-    # Busts any ...visuals/{slug}-{type}.png URL in the body that doesn't
-    # already carry a ?v= parameter. Idempotent.
+    # Replace any visual URL (with or without an existing ?v= query)
+    # with the canonical ?v=v3 version. The regex consumes the full URL
+    # INCLUDING any trailing query string so we don't double-stack.
+    visual_url_re = rf"https://[^\s)]*?/visuals/{re.escape(slug)}-[a-z_]+\.png(?:\?[^\s)]*)?"
+
     def _bust_visual_url(m: re.Match) -> str:
         url = m.group(0)
-        if "?v=" in url:
-            return url
-        sep = "&" if "?" in url else "?"
-        return f"{url}{sep}v=v2"
+        # Strip any existing query string
+        base = url.split("?", 1)[0]
+        return f"{base}?v=v3"
 
-    body = re.sub(
-        rf"https://[^\s)]*?/visuals/{re.escape(slug)}-[a-z_]+\.png",
-        _bust_visual_url,
-        body,
-    )
+    body = re.sub(visual_url_re, _bust_visual_url, body)
 
     filepath.write_text(f"{leading}---\n{new_fm}---{body}", encoding="utf-8")
 

@@ -1,16 +1,24 @@
 interface StatBoxProps {
-  number: string;
+  // The pipeline writes shortcodes with either `number=` or `value=`
+  // (historical drift). Accept both so neither silently drops the stat.
+  number?: string;
+  value?: string;
   label: string;
   source?: string;
 }
 
-export function StatBox({ number, label, source }: StatBoxProps) {
+export function StatBox({ number, value, label, source }: StatBoxProps) {
+  const stat = (number ?? value ?? "").trim();
+  const hasStat = stat.length > 0;
+
   return (
     <aside className="relative my-8 rounded-md bg-bg-high border-l-4 border-accent pl-6 pr-5 py-6">
-      <div className="font-display text-display-lg text-accent tabular-nums leading-none">
-        {number}
-      </div>
-      <p className="mt-3 text-body-md text-text-primary leading-snug">
+      {hasStat && (
+        <div className="font-display text-display-lg text-accent tabular-nums leading-none">
+          {stat}
+        </div>
+      )}
+      <p className={`${hasStat ? "mt-3" : ""} text-body-md text-text-primary leading-snug`}>
         {label}
       </p>
       {source && (

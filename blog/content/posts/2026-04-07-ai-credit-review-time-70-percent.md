@@ -42,7 +42,7 @@ faq_pairs:
 ShowToc: true
 TocOpen: false
 draft: false
-visuals_generation: v2
+visuals_generation: v3
 ---
 
 ## The Most Common Misconception
@@ -57,7 +57,7 @@ The 70% figure is not fabricated. It is incomplete. When Upstart reported its au
 
 Machine learning credit scoring at banks delivers genuine but narrower gains than vendor claims suggest. McKinsey research published in 2024 estimates AI can cut document collection and data extraction time by 50 to 60% on straightforward consumer applications. For commercial lending, a 2024 Oliver Wyman analysis found AI reduced analyst processing time by only 30 to 40% once model validation checkpoints and regulatory documentation requirements were counted.
 
-![Stat Card visualization](https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/visuals/ai-credit-review-time-70-percent-stat_card.png?v=v2)
+![Stat Card visualization](https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/visuals/ai-credit-review-time-70-percent-stat_card.png?v=v3)
 
 
 AI credit underwriting does reduce the mechanical part of review. McKinsey research published in 2024 estimates that AI can cut document collection and data extraction time by 50 to 60% on straightforward consumer applications. That is a genuine, measurable gain.

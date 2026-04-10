@@ -7,10 +7,25 @@ then screenshots the viewport to produce a PNG.
 from __future__ import annotations
 
 import asyncio
+import re
 from pathlib import Path
 
 # Font directory relative to this file: ../../public/fonts
 FONTS_DIR = Path(__file__).resolve().parents[2] / "public" / "fonts"
+
+
+def intrinsic_svg_size(svg_content: str) -> tuple[int | None, int | None]:
+    """Extract width/height attributes from an SVG's opening tag.
+
+    Used so callers can render an SVG at its intrinsic size without
+    hard-coding dimensions (critical for templates with dynamic height
+    like diagram_timeline).
+    """
+    m_w = re.search(r'<svg[^>]*\bwidth="(\d+)"', svg_content)
+    m_h = re.search(r'<svg[^>]*\bheight="(\d+)"', svg_content)
+    w = int(m_w.group(1)) if m_w else None
+    h = int(m_h.group(1)) if m_h else None
+    return w, h
 
 
 async def render_svg_to_png(

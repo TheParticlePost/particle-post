@@ -42,7 +42,7 @@ faq_pairs:
 ShowToc: true
 TocOpen: false
 draft: false
-visuals_generation: v2
+visuals_generation: v3
 ---
 
 Fortune's April 2026 report names a specific deadline risk: finance leaders have a narrowing window to set AI investment frameworks before engineering and operations teams lock in vendor and measurement decisions by default. That window is closing now.
@@ -57,7 +57,7 @@ The assumption breaks down because AI spend does not wait for finance approval. 
 
 CFO-led AI governance produces measurably better ROI outcomes than technology-led approaches. Companies where finance directed AI governance from the start were 2.4 times more likely to report above-expected returns, per McKinsey 2025. Gartner finds 74% of enterprise AI pilots never produce a documented ROI case, a measurement failure finance is positioned to prevent.
 
-![Stat Card visualization](https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/visuals/cfo-ai-investment-framework-governance-stat_card.png?v=v2)
+![Stat Card visualization](https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/visuals/cfo-ai-investment-framework-governance-stat_card.png?v=v3)
 
 
 Companies where finance led AI governance from the start achieved measurably better ROI discipline than those where technology teams drove initial decisions, according to Fortune's April 7, 2026 report. The report warns that CFOs who delay risk ceding "organizational control over AI spend and value measurement to those without P&L accountability."

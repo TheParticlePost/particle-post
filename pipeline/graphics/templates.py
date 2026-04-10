@@ -252,77 +252,82 @@ def diagram_process_flow(steps: list[str], width: int = 1000, height: int = 150)
 {SVG_CLOSE}"""
 
 
-def diagram_timeline(events: list[dict], width: int = 1200, height: int = 280) -> str:
-    """Horizontal timeline — all labels stacked below the line, no
-    alternation, semi-transparent background plate behind each label to
-    prevent collision with the line and adjacent labels.
+def diagram_timeline(events: list[dict], width: int = 800, height: int | None = None) -> str:
+    """VERTICAL timeline — each event gets its own row with the date on
+    the left, a vermillion marker on a central rail, and the full event
+    description wrapping on the right. No truncation. Height scales to
+    the number of events so text is never compressed.
 
-    *events*: list of {"date": str, "event": str}. Capped at 5 events so
-    each label has enough horizontal room to be legible.
+    Layout per row:
+        [  DATE  ] ● ─── [  Full event description, wraps freely  ]
+           left    rail              right column
+
+    *events*: list of {"date": str, "event": str}. Capped at 6.
     """
-    events = events[:5]
+    events = events[:6]
     n = len(events)
+    row_h = 110  # generous vertical room per event
+
     if n == 0:
-        return f"""{_svg_open(width, height)}
-  <rect width="{width}" height="{height}" fill="{RICH_BLACK}"/>
+        h = 120
+        return f"""{_svg_open(width, h)}
+  <rect width="{width}" height="{h}" fill="{RICH_BLACK}"/>
 {SVG_CLOSE}"""
 
-    padding = 40
-    usable = width - 2 * padding
-    # Each event gets an equal horizontal slot so markers + plates never
-    # overlap. Line runs edge-to-edge; markers sit at slot centers.
-    slot_w = usable / n
-    line_y = 110
-    plate_h = 110
+    # Dynamic height: top padding + n rows + bottom padding
+    top_pad = 48
+    bot_pad = 48
+    h = top_pad + n * row_h + bot_pad
+    if height is not None:
+        h = max(h, height)
+
+    # Column geometry
+    date_col_w = 150       # left column for the date
+    rail_x = 180           # x-coordinate of the vertical rail
+    text_col_x = 220       # x where event text starts
+    text_col_w = width - text_col_x - 40  # right padding 40
 
     parts: list[str] = [
-        f'{_svg_open(width, height)}',
-        f'  <rect width="{width}" height="{height}" fill="{RICH_BLACK}"/>',
-        # Main horizontal line
-        f'  <line x1="{padding}" y1="{line_y}" x2="{width - padding}" y2="{line_y}" '
+        f'{_svg_open(width, h)}',
+        f'  <rect width="{width}" height="{h}" fill="{RICH_BLACK}"/>',
+        # Continuous vertical rail (behind markers)
+        f'  <line x1="{rail_x}" y1="{top_pad}" x2="{rail_x}" y2="{h - bot_pad}" '
         f'stroke="{EMBER}" stroke-width="2"/>',
     ]
 
+    # Approx 10 px per char at Sora Bold 18px in Chromium renders
+    max_chars_per_line = max(28, int(text_col_w / 10.2))
+
     for i, ev in enumerate(events):
-        slot_left = padding + i * slot_w
-        cx = int(slot_left + slot_w / 2)
-        plate_w = int(slot_w - 16)
-        plate_x = cx - plate_w // 2
-        plate_y = line_y + 20
+        row_center_y = top_pad + i * row_h + row_h // 2
 
-        date = _e(str(ev.get("date", "")))[:18]
-        event_text = str(ev.get("event", ""))
-        # Calculate max chars per line based on plate width (approx 7.2 px
-        # per char at Sora Bold 14px in practice)
-        max_chars_per_line = max(12, int(plate_w / 7.2))
-        wrapped = _wrap_text(_e(event_text), max_chars=max_chars_per_line)[:3]
+        date = _e(str(ev.get("date", "")))
+        event_text = _e(str(ev.get("event", "")))
 
-        # Marker on the line
+        # Marker on the rail
         parts.append(
-            f'  <circle cx="{cx}" cy="{line_y}" r="8" fill="{VERMILLION}" '
+            f'  <circle cx="{rail_x}" cy="{row_center_y}" r="9" fill="{VERMILLION}" '
             f'stroke="{RICH_BLACK}" stroke-width="3"/>'
         )
 
-        # Label plate below the line
+        # Date (right-aligned in the left column, vertically centered)
         parts.append(
-            f'  <rect x="{plate_x}" y="{plate_y}" width="{plate_w}" height="{plate_h}" '
-            f'rx="4" fill="{ONYX}" fill-opacity="0.94" '
-            f'stroke="{EMBER}" stroke-opacity="0.5" stroke-width="1"/>'
-        )
-
-        # Date — vermillion, Plex Mono, 12px
-        parts.append(
-            f'  <text x="{cx}" y="{plate_y + 22}" text-anchor="middle" '
-            f'font-family="{FONT_MONO}" font-weight="500" font-size="12" '
+            f'  <text x="{rail_x - 22}" y="{row_center_y + 6}" text-anchor="end" '
+            f'font-family="{FONT_MONO}" font-weight="500" font-size="14" '
             f'letter-spacing="0.06em" fill="{VERMILLION}">{date}</text>'
         )
 
-        # Event — Sora Bold, 14px, up to 3 wrapped lines
-        text_y = plate_y + 44
+        # Event text — wrap across up to 3 lines, left-aligned
+        wrapped = _wrap_text(event_text, max_chars=max_chars_per_line)[:3]
+        # Stack the wrapped lines vertically centered on the row center
+        line_h = 24
+        total_text_h = len(wrapped) * line_h
+        first_baseline = row_center_y - total_text_h / 2 + 18
         for j, line in enumerate(wrapped):
+            y = int(first_baseline + j * line_h)
             parts.append(
-                f'  <text x="{cx}" y="{text_y + j * 19}" text-anchor="middle" '
-                f'font-family="{FONT_HEADLINE}" font-weight="700" font-size="14" '
+                f'  <text x="{text_col_x}" y="{y}" '
+                f'font-family="{FONT_HEADLINE}" font-weight="700" font-size="18" '
                 f'fill="{WARM_WHITE}">{line}</text>'
             )
 
