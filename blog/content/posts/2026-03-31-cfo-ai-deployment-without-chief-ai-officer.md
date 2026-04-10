@@ -19,7 +19,7 @@ tags:
 categories:
 - AI Strategy
 cover:
-  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/cfo-ai-deployment-without-chief-ai-officer.png
+  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/cfo-ai-deployment-without-chief-ai-officer.png?v=gemini-v1
   alt: 'HOW-TO: CFO AI Deployment: Skip the Chief AI Officer'
   caption: ''
   generation: gemini-v1
@@ -46,7 +46,7 @@ ShowToc: true
 TocOpen: false
 draft: false
 content_type: how_to
-image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/cfo-ai-deployment-without-chief-ai-officer.png
+image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/cfo-ai-deployment-without-chief-ai-officer.png?v=gemini-v1
 image_alt: 'HOW-TO: CFO AI Deployment: Skip the Chief AI Officer'
 ---
 CFOs can successfully deploy AI without a Chief AI Officer in most enterprise use cases, and the evidence shows they often do it faster and cheaper. Fortune reported in March 2026 that enterprises stalling on AI pilots had built governance structures around a CAIO role most mid-market companies cannot afford to hire. Companies where the CFO led deployment achieved 15 to 30 percent back-office cost reductions within 12 months, without a dedicated AI executive.

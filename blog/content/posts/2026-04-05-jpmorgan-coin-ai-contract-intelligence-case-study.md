@@ -23,13 +23,13 @@ schema_type: Article
 content_type: case_study
 has_faq: true
 cover:
-  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/jpmorgan-coin-ai-contract-intelligence-case-study.png
+  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/jpmorgan-coin-ai-contract-intelligence-case-study.png?v=gemini-v1
   alt: 'CASE STUDY: JPMorgan AI Case Study: COiN Cut Contract Review 80%'
   credit_name: Particle Post
   credit_url: https://theparticlepost.com
   credit_source: ai-generated
   generation: gemini-v1
-image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/jpmorgan-coin-ai-contract-intelligence-case-study.png
+image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/jpmorgan-coin-ai-contract-intelligence-case-study.png?v=gemini-v1
 image_alt: 'CASE STUDY: JPMorgan AI Case Study: COiN Cut Contract Review 80%'
 image_credit_name: Particle Post
 image_credit_url: https://theparticlepost.com

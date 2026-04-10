@@ -21,7 +21,7 @@ categories:
 - Risk & Governance
 - Operations & Finance
 cover:
-  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/agentic-ai-regulatory-gap-fintech.png
+  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/agentic-ai-regulatory-gap-fintech.png?v=gemini-v1
   alt: 'NEWS ANALYSIS: Agentic AI Forces Fintech Into Regulatory Gray Zone'
   caption: ''
   generation: gemini-v1
@@ -36,7 +36,7 @@ TocOpen: false
 draft: false
 content_type: news_analysis
 schema_type: NewsArticle
-image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/agentic-ai-regulatory-gap-fintech.png
+image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/agentic-ai-regulatory-gap-fintech.png?v=gemini-v1
 image_alt: 'NEWS ANALYSIS: Agentic AI Forces Fintech Into Regulatory Gray Zone'
 ---
 

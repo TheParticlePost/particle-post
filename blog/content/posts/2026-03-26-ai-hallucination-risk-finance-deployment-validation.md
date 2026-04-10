@@ -20,7 +20,7 @@ categories:
 - Risk & Governance
 - Implementation
 cover:
-  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-hallucination-risk-finance-deployment-validation.png
+  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-hallucination-risk-finance-deployment-validation.png?v=gemini-v1
   alt: 'NEWS ANALYSIS: AI Risk Management Finance: Stop Hallucinations Before Deployment'
   caption: ''
   generation: gemini-v1
@@ -47,7 +47,7 @@ faq_pairs:
 - q: How often should AI model outputs be monitored after deployment in financial services?
   a: Review a random sample of AI outputs weekly for at least the first 90 days post-deployment. Model behavior drifts as real-world inputs diverge from training data, and ongoing monitoring is the only reliable mechanism to catch accuracy degradation before it reaches a regulator.
 content_type: news_analysis
-image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-hallucination-risk-finance-deployment-validation.png
+image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-hallucination-risk-finance-deployment-validation.png?v=gemini-v1
 image_alt: 'NEWS ANALYSIS: AI Risk Management Finance: Stop Hallucinations Before Deployment'
 ---
 

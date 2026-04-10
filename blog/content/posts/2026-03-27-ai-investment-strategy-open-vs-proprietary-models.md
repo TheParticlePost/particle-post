@@ -20,7 +20,7 @@ categories:
 - AI Strategy
 - Implementation
 cover:
-  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-investment-strategy-open-vs-proprietary-models.png
+  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-investment-strategy-open-vs-proprietary-models.png?v=gemini-v1
   alt: 'TECHNOLOGY PROFILE: AI Investment Strategy: Open vs Proprietary Models ROI'
   caption: ''
   generation: gemini-v1
@@ -47,7 +47,7 @@ ShowToc: true
 TocOpen: false
 draft: false
 content_type: technology_profile
-image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-investment-strategy-open-vs-proprietary-models.png
+image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-investment-strategy-open-vs-proprietary-models.png?v=gemini-v1
 image_alt: 'TECHNOLOGY PROFILE: AI Investment Strategy: Open vs Proprietary Models ROI'
 ---
 

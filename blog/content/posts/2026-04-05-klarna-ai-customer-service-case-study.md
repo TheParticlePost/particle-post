@@ -23,13 +23,13 @@ schema_type: Article
 content_type: case_study
 has_faq: true
 cover:
-  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/klarna-ai-customer-service-case-study.png
+  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/klarna-ai-customer-service-case-study.png?v=gemini-v1
   alt: 'CASE STUDY: Klarna AI Customer Service: What the Real Numbers Show'
   credit_name: Particle Post
   credit_url: https://theparticlepost.com
   credit_source: ai-generated
   generation: gemini-v1
-image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/klarna-ai-customer-service-case-study.png
+image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/klarna-ai-customer-service-case-study.png?v=gemini-v1
 image_alt: 'CASE STUDY: Klarna AI Customer Service: What the Real Numbers Show'
 image_credit_name: Particle Post
 image_credit_url: https://theparticlepost.com

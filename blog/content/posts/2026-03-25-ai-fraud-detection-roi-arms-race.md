@@ -23,7 +23,7 @@ categories:
 - Risk & Governance
 - Risk & Governance
 cover:
-  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-fraud-detection-roi-arms-race.png
+  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-fraud-detection-roi-arms-race.png?v=gemini-v1
   alt: 'DEEP DIVE: The AI Fraud Arms Race: What the Research Shows About Detection ROI, and Where It Breaks'
   caption: ''
   generation: gemini-v1
@@ -50,7 +50,7 @@ ShowToc: true
 TocOpen: false
 draft: false
 content_type: deep_dive
-image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-fraud-detection-roi-arms-race.png
+image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-fraud-detection-roi-arms-race.png?v=gemini-v1
 image_alt: 'DEEP DIVE: The AI Fraud Arms Race: What the Research Shows About Detection ROI, and Where It Breaks'
 ---
 JPMorgan Chase reported blocking over $15 billion in fraud attempts in 2023 using AI-powered detection, then watched its fraud team scramble the following year as criminals deployed the same technology to build attacks those models had never seen. This is not a metaphor. It is the operating reality every CFO and Chief Risk Officer inherits when they sign an AI fraud contract.

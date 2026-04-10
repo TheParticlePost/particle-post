@@ -24,13 +24,13 @@ schema_type: Article
 content_type: case_study
 has_faq: true
 cover:
-  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/walmart-ai-supply-chain-cost-reduction-blueprint.png
+  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/walmart-ai-supply-chain-cost-reduction-blueprint.png?v=gemini-v1
   alt: 'CASE STUDY: Walmart AI Supply Chain: How It Cut Costs 40%'
   credit_name: Particle Post
   credit_url: https://theparticlepost.com
   credit_source: ai-generated
   generation: gemini-v1
-image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/walmart-ai-supply-chain-cost-reduction-blueprint.png
+image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/walmart-ai-supply-chain-cost-reduction-blueprint.png?v=gemini-v1
 image_alt: 'CASE STUDY: Walmart AI Supply Chain: How It Cut Costs 40%'
 image_credit_name: Particle Post
 image_credit_url: https://theparticlepost.com

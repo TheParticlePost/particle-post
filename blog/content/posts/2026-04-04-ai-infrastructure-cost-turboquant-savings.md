@@ -19,7 +19,7 @@ tags:
 categories:
 - AI & Technology
 cover:
-  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-infrastructure-cost-turboquant-savings.png
+  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-infrastructure-cost-turboquant-savings.png?v=gemini-v1
   alt: 'NEWS ANALYSIS: AI Infrastructure Cost: Does TurboQuant Save Money?'
   caption: ''
   generation: gemini-v1
@@ -46,7 +46,7 @@ faq_pairs:
 - q: Is memory the main cost driver in AI infrastructure?
   a: No. Memory is one component alongside compute, networking, power, and cooling. Roughly $180 billion of 2026 hyperscaler spend goes to memory, but total AI infrastructure capex across the five largest providers exceeds $600 billion, per MUFG Americas.
 content_type: news_analysis
-image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-infrastructure-cost-turboquant-savings.png
+image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-infrastructure-cost-turboquant-savings.png?v=gemini-v1
 image_alt: 'NEWS ANALYSIS: AI Infrastructure Cost: Does TurboQuant Save Money?'
 ---
 Google's TurboQuant compresses AI model memory by 6x on H100 GPUs, according to Google Research, and CFOs are treating that number as a capital expenditure fix. It is not. Memory is one line item in a data center stack that also includes compute, networking, power, cooling, and software licensing.

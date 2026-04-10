@@ -20,7 +20,7 @@ tags:
 categories:
 - AI Risk Management
 cover:
-  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/agentic-ai-risk-management-finance-security.png
+  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/agentic-ai-risk-management-finance-security.png?v=gemini-v1
   alt: 'NEWS ANALYSIS: Agentic AI Risk Management Finance: Security Overhaul Now'
   caption: ''
   generation: gemini-v1
@@ -47,7 +47,7 @@ ShowToc: true
 TocOpen: false
 draft: false
 content_type: news_analysis
-image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/agentic-ai-risk-management-finance-security.png
+image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/agentic-ai-risk-management-finance-security.png?v=gemini-v1
 image_alt: 'NEWS ANALYSIS: Agentic AI Risk Management Finance: Security Overhaul Now'
 ---
 

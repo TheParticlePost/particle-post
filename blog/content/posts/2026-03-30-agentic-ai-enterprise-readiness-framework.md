@@ -20,7 +20,7 @@ tags:
 categories:
 - AI Strategy
 cover:
-  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/agentic-ai-enterprise-readiness-framework.png
+  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/agentic-ai-enterprise-readiness-framework.png?v=gemini-v1
   alt: 'HOW-TO: Agentic AI Finance: 5-Phase Enterprise Readiness Framework'
   caption: ''
   generation: gemini-v1
@@ -47,7 +47,7 @@ faq_pairs:
 - q: What regulatory requirements apply to agentic AI in banking?
   a: The FCA, OCC, and ECB each signaled in 2025 and early 2026 that autonomous decisioning systems require explainable audit trails at the individual decision level. Banks without that architecture face examination risk in addition to operational risk.
 content_type: how_to
-image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/agentic-ai-enterprise-readiness-framework.png
+image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/agentic-ai-enterprise-readiness-framework.png?v=gemini-v1
 image_alt: 'HOW-TO: Agentic AI Finance: 5-Phase Enterprise Readiness Framework'
 ---
 Enterprises lag 12 to 18 months behind agentic AI vendor deployment timelines, according to SiliconANGLE research published March 28, 2026. Financial services firms still running manual process automation while competitors deploy autonomous agents are losing measurable ground on cycle time, fraud response, and operating efficiency.

@@ -19,7 +19,7 @@ tags:
 categories:
 - AI in Finance
 cover:
-  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-fraud-detection-roi-arms-race.png
+  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-fraud-detection-roi-arms-race.png?v=gemini-v1
   alt: 'NEWS ANALYSIS: AI Fraud Detection ROI: Real Wins, Rising Threats'
   caption: ''
   generation: gemini-v1
@@ -46,7 +46,7 @@ ShowToc: true
 TocOpen: false
 draft: false
 content_type: news_analysis
-image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-fraud-detection-roi-arms-race.png
+image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-fraud-detection-roi-arms-race.png?v=gemini-v1
 image_alt: 'NEWS ANALYSIS: AI Fraud Detection ROI: Real Wins, Rising Threats'
 ---
 

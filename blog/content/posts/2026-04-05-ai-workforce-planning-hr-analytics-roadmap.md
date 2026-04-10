@@ -23,13 +23,13 @@ schema_type: HowTo
 content_type: how_to
 has_faq: false
 cover:
-  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-workforce-planning-hr-analytics-roadmap.png
+  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-workforce-planning-hr-analytics-roadmap.png?v=gemini-v1
   alt: 'HOW-TO: AI Workforce Planning: 4-Phase HR Analytics Roadmap'
   credit_name: Particle Post
   credit_url: https://theparticlepost.com
   credit_source: ai-generated
   generation: gemini-v1
-image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-workforce-planning-hr-analytics-roadmap.png
+image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-workforce-planning-hr-analytics-roadmap.png?v=gemini-v1
 image_alt: 'HOW-TO: AI Workforce Planning: 4-Phase HR Analytics Roadmap'
 image_credit_name: Particle Post
 image_credit_url: https://theparticlepost.com

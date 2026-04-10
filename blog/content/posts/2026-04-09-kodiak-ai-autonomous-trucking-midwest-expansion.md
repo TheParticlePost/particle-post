@@ -23,13 +23,13 @@ schema_type: Article
 content_type: case_study
 has_faq: true
 cover:
-  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/kodiak-ai-autonomous-trucking-midwest-expansion.png
+  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/kodiak-ai-autonomous-trucking-midwest-expansion.png?v=gemini-v1
   alt: 'CASE STUDY: Autonomous Trucking AI ROI: Kodiak''s Midwest Case Study'
   credit_name: Particle Post
   credit_url: https://theparticlepost.com
   credit_source: ai-generated
   generation: gemini-v1
-image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/kodiak-ai-autonomous-trucking-midwest-expansion.png
+image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/kodiak-ai-autonomous-trucking-midwest-expansion.png?v=gemini-v1
 image_alt: 'CASE STUDY: Autonomous Trucking AI ROI: Kodiak''s Midwest Case Study'
 image_credit_name: Particle Post
 image_credit_url: https://theparticlepost.com

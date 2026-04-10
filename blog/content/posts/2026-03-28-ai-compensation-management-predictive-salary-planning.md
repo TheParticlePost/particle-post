@@ -20,7 +20,7 @@ tags:
 categories:
 - AI in Finance
 cover:
-  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-compensation-management-predictive-salary-planning.png
+  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-compensation-management-predictive-salary-planning.png?v=gemini-v1
   alt: 'NEWS ANALYSIS: AI Compensation Management: What CFOs Must Know in 2026'
   caption: ''
   generation: gemini-v1
@@ -47,7 +47,7 @@ ShowToc: true
 TocOpen: false
 draft: false
 content_type: news_analysis
-image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-compensation-management-predictive-salary-planning.png
+image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-compensation-management-predictive-salary-planning.png?v=gemini-v1
 image_alt: 'NEWS ANALYSIS: AI Compensation Management: What CFOs Must Know in 2026'
 ---
 

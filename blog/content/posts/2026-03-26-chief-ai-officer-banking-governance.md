@@ -20,7 +20,7 @@ categories:
 - AI Strategy
 - Risk & Governance
 cover:
-  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/chief-ai-officer-banking-governance.png
+  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/chief-ai-officer-banking-governance.png?v=gemini-v1
   alt: 'NEWS ANALYSIS: Chief AI Officer: Why Artificial Intelligence Banking Needs One'
   caption: ''
   generation: gemini-v1
@@ -45,7 +45,7 @@ ShowToc: true
 TocOpen: false
 draft: false
 content_type: news_analysis
-image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/chief-ai-officer-banking-governance.png
+image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/chief-ai-officer-banking-governance.png?v=gemini-v1
 image_alt: 'NEWS ANALYSIS: Chief AI Officer: Why Artificial Intelligence Banking Needs One'
 ---
 

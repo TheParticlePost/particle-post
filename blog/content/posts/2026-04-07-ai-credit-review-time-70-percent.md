@@ -23,13 +23,13 @@ schema_type: FAQPage
 content_type: news_analysis
 has_faq: true
 cover:
-  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-credit-review-time-70-percent.png
+  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-credit-review-time-70-percent.png?v=gemini-v1
   alt: 'NEWS ANALYSIS: AI Credit Review Time: Can It Really Drop 70%?'
   credit_name: Particle Post
   credit_url: https://theparticlepost.com
   credit_source: ai-generated
   generation: gemini-v1
-image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-credit-review-time-70-percent.png
+image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-credit-review-time-70-percent.png?v=gemini-v1
 image_alt: 'NEWS ANALYSIS: AI Credit Review Time: Can It Really Drop 70%?'
 image_credit_name: Particle Post
 image_credit_url: https://theparticlepost.com

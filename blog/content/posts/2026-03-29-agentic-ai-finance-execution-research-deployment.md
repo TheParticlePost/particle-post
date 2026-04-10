@@ -19,7 +19,7 @@ tags:
 categories:
 - AI in Finance
 cover:
-  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/agentic-ai-finance-execution-research-deployment.png
+  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/agentic-ai-finance-execution-research-deployment.png?v=gemini-v1
   alt: 'DEEP DIVE: Agentic AI Finance: What the Research Shows About Execution-Driven Systems'
   caption: ''
   generation: gemini-v1
@@ -46,7 +46,7 @@ ShowToc: true
 TocOpen: false
 draft: false
 content_type: deep_dive
-image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/agentic-ai-finance-execution-research-deployment.png
+image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/agentic-ai-finance-execution-research-deployment.png?v=gemini-v1
 image_alt: 'DEEP DIVE: Agentic AI Finance: What the Research Shows About Execution-Driven Systems'
 ---
 

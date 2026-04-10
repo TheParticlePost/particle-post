@@ -20,7 +20,7 @@ categories:
 - AI Strategy
 - Operations & Finance
 cover:
-  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-investment-strategy-meta-restructuring-2026.png
+  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-investment-strategy-meta-restructuring-2026.png?v=gemini-v1
   alt: 'CASE STUDY: AI Investment Strategy: Recalibrate After Meta''s 2026 Cuts'
   caption: ''
   generation: gemini-v1
@@ -47,7 +47,7 @@ ShowToc: true
 TocOpen: false
 draft: false
 content_type: case_study
-image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-investment-strategy-meta-restructuring-2026.png
+image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-investment-strategy-meta-restructuring-2026.png?v=gemini-v1
 image_alt: 'CASE STUDY: AI Investment Strategy: Recalibrate After Meta''s 2026 Cuts'
 ---
 

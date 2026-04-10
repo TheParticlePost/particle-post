@@ -21,7 +21,7 @@ categories:
 - Operations & Finance
 - Operations & Finance
 cover:
-  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-agents-corporate-payments-infrastructure-readiness.png
+  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-agents-corporate-payments-infrastructure-readiness.png?v=gemini-v1
   alt: 'NEWS ANALYSIS: Can AI Agents Actually Handle Your Company''s Money?'
   caption: ''
   generation: gemini-v1
@@ -46,7 +46,7 @@ ShowToc: true
 TocOpen: false
 draft: false
 content_type: news_analysis
-image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-agents-corporate-payments-infrastructure-readiness.png
+image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-agents-corporate-payments-infrastructure-readiness.png?v=gemini-v1
 image_alt: 'NEWS ANALYSIS: Can AI Agents Actually Handle Your Company''s Money?'
 ---
 Visa completed hundreds of AI agent-initiated transactions in 2025 and expects millions of consumers to use autonomous agents for purchases by the 2026 holiday season. That timeline is compelling on paper, but the infrastructure enterprise finance teams actually need is still being built.

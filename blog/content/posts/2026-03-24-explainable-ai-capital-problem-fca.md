@@ -19,7 +19,7 @@ categories:
 - Risk & Governance
 - AI Strategy
 cover:
-  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/explainable-ai-capital-problem-fca.png
+  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/explainable-ai-capital-problem-fca.png?v=gemini-v1
   alt: 'NEWS ANALYSIS: Explainable AI Is a Capital Problem, Not a Technical One, and the FCA Is About to Prove It'
   caption: ''
   generation: gemini-v1
@@ -40,7 +40,7 @@ ShowToc: true
 TocOpen: false
 draft: false
 content_type: news_analysis
-image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/explainable-ai-capital-problem-fca.png
+image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/explainable-ai-capital-problem-fca.png?v=gemini-v1
 image_alt: 'NEWS ANALYSIS: Explainable AI Is a Capital Problem, Not a Technical One, and the FCA Is About to Prove It'
 ---
 Klarna and Monzo now publish detailed model cards before each license renewal. The UK's Financial Conduct Authority launched the Mills Review on January 27, 2026, making clear that explainability is no longer optional; it is the price of operating in retail financial services.

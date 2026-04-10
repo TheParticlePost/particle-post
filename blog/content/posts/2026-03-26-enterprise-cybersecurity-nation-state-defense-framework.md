@@ -21,7 +21,7 @@ categories:
 - Risk & Governance
 - Industry Signals
 cover:
-  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/enterprise-cybersecurity-nation-state-defense-framework.png
+  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/enterprise-cybersecurity-nation-state-defense-framework.png?v=gemini-v1
   alt: 'NEWS ANALYSIS: AI Risk Management Finance: Stop Nation-State Breaches'
   caption: ''
   generation: gemini-v1
@@ -48,7 +48,7 @@ ShowToc: true
 TocOpen: false
 draft: false
 content_type: news_analysis
-image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/enterprise-cybersecurity-nation-state-defense-framework.png
+image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/enterprise-cybersecurity-nation-state-defense-framework.png?v=gemini-v1
 image_alt: 'NEWS ANALYSIS: AI Risk Management Finance: Stop Nation-State Breaches'
 ---
 China's Salt Typhoon operation compromised at least nine US telecommunications carriers in 2024, dwelling inside networks for up to 18 months before detection, according to a joint advisory from the FBI and CISA. The attackers did not break down the door; they walked through gaps every large enterprise has.

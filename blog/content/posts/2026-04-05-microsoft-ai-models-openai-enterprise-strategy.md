@@ -23,13 +23,13 @@ schema_type: FAQPage
 content_type: news_analysis
 has_faq: true
 cover:
-  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/microsoft-ai-models-openai-enterprise-strategy.png
+  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/microsoft-ai-models-openai-enterprise-strategy.png?v=gemini-v1
   alt: 'NEWS ANALYSIS: Microsoft AI Models: Is the OpenAI Era Ending?'
   credit_name: Particle Post
   credit_url: https://theparticlepost.com
   credit_source: ai-generated
   generation: gemini-v1
-image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/microsoft-ai-models-openai-enterprise-strategy.png
+image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/microsoft-ai-models-openai-enterprise-strategy.png?v=gemini-v1
 image_alt: 'NEWS ANALYSIS: Microsoft AI Models: Is the OpenAI Era Ending?'
 image_credit_name: Particle Post
 image_credit_url: https://theparticlepost.com

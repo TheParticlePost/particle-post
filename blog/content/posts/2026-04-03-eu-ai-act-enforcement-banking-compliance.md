@@ -21,7 +21,7 @@ tags:
 categories:
 - AI in Finance
 cover:
-  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/eu-ai-act-enforcement-banking-compliance.png
+  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/eu-ai-act-enforcement-banking-compliance.png?v=gemini-v1
   alt: 'DEEP DIVE: EU AI Act Enforcement: AI Compliance Banking Guide'
   caption: ''
   generation: gemini-v1
@@ -48,7 +48,7 @@ faq_pairs:
 - q: What is the EBA's role in EU AI Act enforcement for banks?
   a: The EBA promotes common supervisory approaches among national competent authorities and provides input to the European AI Office per the EBA Work Programme 2026. National market surveillance authorities hold primary enforcement powers. The EBA coordinates to prevent regulatory arbitrage across member states.
 content_type: deep_dive
-image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/eu-ai-act-enforcement-banking-compliance.png
+image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/eu-ai-act-enforcement-banking-compliance.png?v=gemini-v1
 image_alt: 'DEEP DIVE: EU AI Act Enforcement: AI Compliance Banking Guide'
 ---
 

@@ -23,7 +23,7 @@ categories:
 - Implementation
 - Industry Signals
 cover:
-  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-data-center-energy-costs.png
+  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-data-center-energy-costs.png?v=gemini-v1
   alt: 'NEWS ANALYSIS: Big Tech''s $700B AI Bet Strains Power Grids and Carbon Markets'
   caption: ''
   generation: gemini-v1
@@ -38,7 +38,7 @@ TocOpen: false
 draft: false
 content_type: news_analysis
 schema_type: NewsArticle
-image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-data-center-energy-costs.png
+image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-data-center-energy-costs.png?v=gemini-v1
 image_alt: 'NEWS ANALYSIS: Big Tech''s $700B AI Bet Strains Power Grids and Carbon Markets'
 ---
 

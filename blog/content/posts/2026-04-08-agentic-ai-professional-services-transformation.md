@@ -23,13 +23,13 @@ schema_type: FAQPage
 content_type: industry_briefing
 has_faq: true
 cover:
-  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/agentic-ai-professional-services-transformation.png
+  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/agentic-ai-professional-services-transformation.png?v=gemini-v1
   alt: 'INDUSTRY BRIEFING: Agentic AI Professional Services: The $1.86T Shift'
   credit_name: Particle Post
   credit_url: https://theparticlepost.com
   credit_source: ai-generated
   generation: gemini-v1
-image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/agentic-ai-professional-services-transformation.png
+image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/agentic-ai-professional-services-transformation.png?v=gemini-v1
 image_alt: 'INDUSTRY BRIEFING: Agentic AI Professional Services: The $1.86T Shift'
 image_credit_name: Particle Post
 image_credit_url: https://theparticlepost.com

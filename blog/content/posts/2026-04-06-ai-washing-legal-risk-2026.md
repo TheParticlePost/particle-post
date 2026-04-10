@@ -23,13 +23,13 @@ schema_type: FAQPage
 content_type: news_analysis
 has_faq: true
 cover:
-  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-washing-legal-risk-2026.png
+  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-washing-legal-risk-2026.png?v=gemini-v1
   alt: 'NEWS ANALYSIS: AI Washing Legal Risk 2026: FTC & SEC Enforcement'
   credit_name: Particle Post
   credit_url: https://theparticlepost.com
   credit_source: ai-generated
   generation: gemini-v1
-image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-washing-legal-risk-2026.png
+image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-washing-legal-risk-2026.png?v=gemini-v1
 image_alt: 'NEWS ANALYSIS: AI Washing Legal Risk 2026: FTC & SEC Enforcement'
 image_credit_name: Particle Post
 image_credit_url: https://theparticlepost.com

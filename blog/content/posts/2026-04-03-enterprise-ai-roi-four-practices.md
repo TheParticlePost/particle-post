@@ -19,7 +19,7 @@ tags:
 categories:
 - AI Strategy
 cover:
-  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/enterprise-ai-roi-four-practices.png
+  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/enterprise-ai-roi-four-practices.png?v=gemini-v1
   alt: 'DEEP DIVE: Enterprise AI ROI: 4 Practices That Unlock 55% Returns'
   caption: ''
   generation: gemini-v1
@@ -46,7 +46,7 @@ ShowToc: true
 TocOpen: false
 draft: false
 content_type: deep_dive
-image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/enterprise-ai-roi-four-practices.png
+image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/enterprise-ai-roi-four-practices.png?v=gemini-v1
 image_alt: 'DEEP DIVE: Enterprise AI ROI: 4 Practices That Unlock 55% Returns'
 ---
 

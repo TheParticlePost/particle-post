@@ -23,13 +23,13 @@ schema_type: Article
 content_type: technology_profile
 has_faq: true
 cover:
-  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/data-ai-platform-comparison-2026-palantir-databricks-snowflake-fabric.png
+  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/data-ai-platform-comparison-2026-palantir-databricks-snowflake-fabric.png?v=gemini-v1
   alt: 'TECHNOLOGY PROFILE: Data AI Platform Comparison 2026: Palantir vs Databricks'
   credit_name: Particle Post
   credit_url: https://theparticlepost.com
   credit_source: ai-generated
   generation: gemini-v1
-image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/data-ai-platform-comparison-2026-palantir-databricks-snowflake-fabric.png
+image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/data-ai-platform-comparison-2026-palantir-databricks-snowflake-fabric.png?v=gemini-v1
 image_alt: 'TECHNOLOGY PROFILE: Data AI Platform Comparison 2026: Palantir vs Databricks'
 image_credit_name: Particle Post
 image_credit_url: https://theparticlepost.com
