@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-04-09T21:03:47.251315+00:00",
-  "total_runs": 11,
+  "last_updated": "2026-04-10T21:02:41.226913+00:00",
+  "total_runs": 12,
   "query_history": [
     {
       "date": "2026-04-05",
@@ -111,6 +111,16 @@
       "topic_selected": "Kodiak AI Autonomous Trucking: Midwest Expansion Case Study",
       "director_score": 97,
       "quality": "high"
+    },
+    {
+      "date": "2026-04-10",
+      "slot": "evening",
+      "content_type": "how_to",
+      "queries_used": [],
+      "topics_found": 2,
+      "topic_selected": "How to Scale AI Across Products and Operations: 7-Step Enterprise Playbook",
+      "director_score": 97,
+      "quality": "high"
     }
   ],
   "successful_query_patterns": {
@@ -129,7 +139,7 @@
     "hr": 2,
     "manufacturing": 0,
     "healthcare": 0,
-    "compliance": 2,
+    "compliance": 3,
     "technology": 2,
     "strategy": 1
   },

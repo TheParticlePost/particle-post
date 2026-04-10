@@ -1,21 +1,6 @@
 {
   "notes": [
     {
-      "text": "RECONCILE THE AI USE-CASE COUNT: You cite '450 AI use cases in production' (attributed to Emerj) in one section and 'more than 500 active AI use cases' (attributed to Chronicle Journal, March 2026) in the closing section. Pick the most current verified figure (500+, per Chronicle Journal March 2026) and use it consistently throughout. Contradictory statistics in the same article undermine credibility with the executive audience this piece targets.",
-      "slot": "afternoon",
-      "date": "2026-04-05T16:17:14.473571+00:00"
-    },
-    {
-      "text": "FIX THE STAT MARKER UNIT ERROR: 'STAT: 12,000 | Commercial credit agreements COiN processes per second' is factually wrong — COiN processes 12,000 annual agreements in seconds (total elapsed time), not 12,000 per second. Change the descriptor to 'Commercial credit agreements COiN processes annually, in seconds' to match what Bloomberg and ABA Journal actually reported. A single wrong unit in a visible callout is the kind of error that triggers reader distrust.",
-      "slot": "afternoon",
-      "date": "2026-04-05T16:17:14.473571+00:00"
-    },
-    {
-      "text": "UPGRADE THE KEY TAKEAWAY TO A SHORTCODE: The KEY TAKEAWAY is buried as bold inline text mid-article. For a MOF case study targeting CFOs and COOs, this is the single most important scannable element on the page. Wrap it in the publication's callout shortcode (e.g., {{< callout >}}) so it renders as a visually distinct box. Executives who skim will miss it entirely in its current form, which defeats the purpose of including it.",
-      "slot": "afternoon",
-      "date": "2026-04-05T16:17:14.473571+00:00"
-    },
-    {
       "text": "QA gate failed — fix programmatic issues before retry",
       "slot": "afternoon",
       "date": "2026-04-05T18:53:55.399300+00:00"
@@ -149,6 +134,21 @@
       "text": "UPGRADE THE KEY TAKEAWAY TO A FORMATTED CALLOUT: The KEY TAKEAWAY is rendered as plain inline text, which reduces visual diversity and fails to render as a distinct callout block in the CMS. Wrap it in the correct shortcode (e.g., {{< callout >}}...{{< /callout >}}) to satisfy the blockquote/callout visual diversity requirement and improve scannability for executive readers.",
       "slot": "evening",
       "date": "2026-04-09T21:09:26.503740+00:00"
+    },
+    {
+      "text": "WORD COUNT DISCIPLINE: This article clocks in well above the 2,000-word BOF ceiling. The FAQ section adds ~500 words that duplicate information already covered in the step-by-step body. Since has_faq is set to false in the frontmatter, either remove the FAQ section entirely to bring the count into range, or flip has_faq to true and cut equivalent length from the Caveats or Cost sections to stay under 2,000 words.",
+      "slot": "evening",
+      "date": "2026-04-10T21:09:43.885084+00:00"
+    },
+    {
+      "text": "FRONTMATTER / BODY CONSISTENCY: The YAML has has_faq: false but the article renders a full FAQ section. This will cause schema and template conflicts if your CMS reads that flag to conditionally render FAQ schema markup. Align the flag with what's actually in the body before pushing to production — set has_faq: true if you keep the FAQ.",
+      "slot": "evening",
+      "date": "2026-04-10T21:09:43.885084+00:00"
+    },
+    {
+      "text": "SOURCE VERIFICATION RISK: The Capital One 20% loss reduction lede claim is sourced to investor day materials at a generic IR URL with no specific deck title, date, or slide reference. If a reader or regulator tries to verify this and cannot locate the exact document, it undermines the publication's credibility. Add the specific presentation title and date (e.g., 'Capital One Investor Day, December 2024, slide 34') to the Sources entry and consider adding a direct PDF link if publicly available.",
+      "slot": "evening",
+      "date": "2026-04-10T21:09:43.885084+00:00"
     }
   ]
 }

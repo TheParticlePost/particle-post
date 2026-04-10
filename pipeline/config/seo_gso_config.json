@@ -1,9 +1,9 @@
 {
-  "last_updated": "2026-04-09",
+  "last_updated": "2026-04-10",
   "schema_coverage": {
     "Article": 5,
     "FAQPage": 27,
-    "HowTo": 1,
+    "HowTo": 2,
     "NewsArticle": 0
   },
   "keyword_targets": [
@@ -290,6 +290,14 @@
       "schema_type": "Article",
       "has_faq": true,
       "search_intent": "commercial"
+    },
+    {
+      "date": "2026-04-10",
+      "slug": "machine-learning-credit-scoring-deployment-guide",
+      "primary_keyword": "machine learning credit scoring",
+      "schema_type": "HowTo",
+      "has_faq": false,
+      "search_intent": "transactional"
     }
   ]
 }

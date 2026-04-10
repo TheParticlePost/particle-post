@@ -1,6 +1,14 @@
 {
   "posts": [
     {
+      "slug": "machine-learning-credit-scoring-deployment-guide",
+      "title": "Machine Learning Credit Scoring: 6-Step Deployment Guide",
+      "funnel_type": "BOF",
+      "content_type": "how_to",
+      "tags": [],
+      "date": "2026-04-10"
+    },
+    {
       "slug": "kodiak-ai-autonomous-trucking-midwest-expansion",
       "title": "Autonomous Trucking AI ROI: Kodiak",
       "funnel_type": "MOF",

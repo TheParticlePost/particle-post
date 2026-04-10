@@ -176,6 +176,22 @@
         "Supply Chain AI",
         "ROI Analysis"
       ]
+    },
+    {
+      "slug": "machine-learning-credit-scoring-deployment-guide",
+      "title": "Machine Learning Credit Scoring: 6-Step Deployment Guide",
+      "primary_keyword": "machine learning credit scoring",
+      "funnel_type": "BOF",
+      "content_type": "how_to",
+      "director_score": 97,
+      "published_at": "2026-04-10T21:09:45.453328+00:00",
+      "tags": [
+        "Machine Learning",
+        "Credit Scoring",
+        "AI Risk Models",
+        "Regulatory Compliance",
+        "Alternative Data"
+      ]
     }
   ]
 }

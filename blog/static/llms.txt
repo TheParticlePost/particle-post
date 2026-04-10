@@ -5,6 +5,7 @@
 
 ## Posts
 
+- [Machine Learning Credit Scoring: 6-Step Deployment Guide](https://theparticlepost.com/posts/machine-learning-credit-scoring-deployment-guide/)
 - [Autonomous Trucking AI ROI: Kodiak](https://theparticlepost.com/posts/kodiak-ai-autonomous-trucking-midwest-expansion/)
 - [CFO AI Investment Framework: Why Waiting Costs Millions](https://theparticlepost.com/posts/cfo-ai-investment-framework-governance/)
 - [Agentic AI Professional Services: The $1.86T Shift](https://theparticlepost.com/posts/agentic-ai-professional-services-transformation/)
