@@ -22,18 +22,37 @@ def build_photo_task(agent: Agent, upstream_task: Task) -> Task:
             "   photographer_url: 'https://picsum.photos', source: 'placeholder'\n"
             "5. Pick the best result: landscape orientation preferred, "
             "no visible text burned into the image.\n\n"
+            "Additionally, craft a high-quality cover_image_prompt for an "
+            "AI image generator (Google Gemini 2.5 Flash Image) that will "
+            "produce the actual cover used on the published article. The "
+            "prompt MUST:\n"
+            "- Reflect THIS article's specific subject and angle (not generic).\n"
+            "- Be 2-3 sentences, comma-separated descriptive phrases.\n"
+            "- Describe an editorial photograph (no people's faces).\n"
+            "- Specify dark moody lighting, deep blacks with warm orange / "
+            "amber highlights, wide 16:9 landscape composition, cinematic "
+            "depth of field, premium financial publication aesthetic.\n"
+            "- End with: 'no text, no typography, no logos, no watermarks'.\n"
+            "Example for an article about AI credit underwriting: "
+            "'Editorial photograph of a dimly lit modern bank office at "
+            "night, abstract overlay of glowing data streams flowing across "
+            "loan documents, dark moody lighting with deep blacks and warm "
+            "amber accents, wide 16:9 landscape, cinematic depth of field, "
+            "premium financial publication aesthetic, no text, no "
+            "typography, no logos, no watermarks'.\n\n"
             "Output only valid JSON:\n"
             "{\n"
             '  "image_url": "https://...",\n'
             '  "alt_text": "Descriptive alt text for the image",\n'
             '  "photographer_name": "Name",\n'
             '  "photographer_url": "https://...",\n'
-            '  "source": "pexels", "pixabay", or "placeholder"\n'
+            '  "source": "pexels", "pixabay", or "placeholder",\n'
+            '  "cover_image_prompt": "Editorial photograph of ..."\n'
             "}"
         ),
         expected_output=(
             "A valid JSON object with image_url, alt_text, photographer_name, "
-            "photographer_url, and source."
+            "photographer_url, source, and cover_image_prompt."
         ),
         agent=agent,
         context=[upstream_task],

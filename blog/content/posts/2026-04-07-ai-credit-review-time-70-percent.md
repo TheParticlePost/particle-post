@@ -1,37 +1,50 @@
 ---
-title: "AI Credit Review Time: Can It Really Drop 70%?"
-date: "2026-04-07T13:06:00Z"
-slug: "ai-credit-review-time-70-percent"
-description: "AI credit review time claims of 70% fall short once compliance is added. Oliver Wyman 2024 puts real gains at 25-40%. What lenders must verify before buying."
-keywords: ["AI credit review time", "machine learning credit scoring banks 2026", "AI lending automation compliance", "credit decisioning AI ROI", "agentic AI finance operations", "AI credit underwriting gains"]
-author: "Particle Post Editorial Team"
-tags: ["AI Lending", "Credit Decisioning", "Banking Compliance", "Machine Learning", "Fintech"]
-categories: ["Banking & Lending"]
-schema_type: "FAQPage"
-content_type: "news_analysis"
+title: 'AI Credit Review Time: Can It Really Drop 70%?'
+date: '2026-04-07T13:06:00Z'
+slug: ai-credit-review-time-70-percent
+description: AI credit review time claims of 70% fall short once compliance is added. Oliver Wyman 2024 puts real gains at 25-40%. What lenders must verify before buying.
+keywords:
+- AI credit review time
+- machine learning credit scoring banks 2026
+- AI lending automation compliance
+- credit decisioning AI ROI
+- agentic AI finance operations
+- AI credit underwriting gains
+author: Particle Post Editorial Team
+tags:
+- AI Lending
+- Credit Decisioning
+- Banking Compliance
+- Machine Learning
+- Fintech
+categories:
+- Banking & Lending
+schema_type: FAQPage
+content_type: news_analysis
 has_faq: true
 cover:
-  image: "https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-credit-review-time-70-percent.png"
-  alt: "News Analysis: AI Credit Review Time: Can It Really Drop 70%?"
-  credit_name: "Particle Post"
-  credit_url: "https://theparticlepost.com"
-  credit_source: "generated"
-image: "https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-credit-review-time-70-percent.png"
-image_alt: "News Analysis: AI Credit Review Time: Can It Really Drop 70%?"
-image_credit_name: "Particle Post"
-image_credit_url: "https://theparticlepost.com"
-image_credit_source: "generated"
+  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-credit-review-time-70-percent.png
+  alt: 'NEWS ANALYSIS: AI Credit Review Time: Can It Really Drop 70%?'
+  credit_name: Particle Post
+  credit_url: https://theparticlepost.com
+  credit_source: ai-generated
+  generation: gemini-v1
+image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-credit-review-time-70-percent.png
+image_alt: 'NEWS ANALYSIS: AI Credit Review Time: Can It Really Drop 70%?'
+image_credit_name: Particle Post
+image_credit_url: https://theparticlepost.com
+image_credit_source: ai-generated
 faq_pairs:
-  - question: "Does AI really cut credit review time by 70%?"
-    answer: "AI cuts credit review time by 70% only under narrow conditions: high-volume consumer loans, clean data pipelines, and pilots that exclude compliance steps. At regulated lenders, realistic gains range from 25% to 40% once model validation, adverse action documentation, and exception handling are included, per Oliver Wyman 2024."
-  - question: "What compliance requirements limit AI credit automation gains?"
-    answer: "The CFPB's 2023 circular requires lenders to provide specific reasons for adverse credit decisions. OCC Bulletin 2023-22 requires detailed model documentation. Both mandates force human review layers that vendor pilots typically exclude, shrinking the net efficiency gain below marketed figures."
-  - question: "Is AI credit decisioning safe for commercial loans?"
-    answer: "AI assists but does not safely replace commercial credit analysis at scale. Oliver Wyman 2024 found only 30 to 40% analyst time reduction in mid-market commercial credit. Upstart's 2022 auto loan suspension illustrates how model drift can eliminate efficiency gains entirely during market shifts."
-  - question: "What should lenders demand from AI credit automation vendors?"
-    answer: "Demand a net process time figure inclusive of model validation and exception handling, a reference from a lender under the same regulatory charter, and model risk management documentation satisfying OCC or CFPB standards. Vendors unable to supply these are presenting lab results, not operational benchmarks."
-  - question: "How does agentic AI interact with fair lending compliance requirements?"
-    answer: "Agentic AI can automate adverse action drafting and pre-decisioning data checks but cannot replace fair lending examinations. OCC Bulletin 2023-22 mandates human sign-off for any model used in credit decisions at federally chartered banks, making full automation legally impermissible under current guidance."
+- question: Does AI really cut credit review time by 70%?
+  answer: 'AI cuts credit review time by 70% only under narrow conditions: high-volume consumer loans, clean data pipelines, and pilots that exclude compliance steps. At regulated lenders, realistic gains range from 25% to 40% once model validation, adverse action documentation, and exception handling are included, per Oliver Wyman 2024.'
+- question: What compliance requirements limit AI credit automation gains?
+  answer: The CFPB's 2023 circular requires lenders to provide specific reasons for adverse credit decisions. OCC Bulletin 2023-22 requires detailed model documentation. Both mandates force human review layers that vendor pilots typically exclude, shrinking the net efficiency gain below marketed figures.
+- question: Is AI credit decisioning safe for commercial loans?
+  answer: AI assists but does not safely replace commercial credit analysis at scale. Oliver Wyman 2024 found only 30 to 40% analyst time reduction in mid-market commercial credit. Upstart's 2022 auto loan suspension illustrates how model drift can eliminate efficiency gains entirely during market shifts.
+- question: What should lenders demand from AI credit automation vendors?
+  answer: Demand a net process time figure inclusive of model validation and exception handling, a reference from a lender under the same regulatory charter, and model risk management documentation satisfying OCC or CFPB standards. Vendors unable to supply these are presenting lab results, not operational benchmarks.
+- question: How does agentic AI interact with fair lending compliance requirements?
+  answer: Agentic AI can automate adverse action drafting and pre-decisioning data checks but cannot replace fair lending examinations. OCC Bulletin 2023-22 mandates human sign-off for any model used in credit decisions at federally chartered banks, making full automation legally impermissible under current guidance.
 ShowToc: true
 TocOpen: false
 draft: false

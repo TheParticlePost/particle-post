@@ -1,48 +1,53 @@
 ---
-title: "Agentic AI Finance: What the Research Shows About Execution-Driven Systems"
-date: 2026-03-29T13:01:25Z
-slug: "agentic-ai-finance-execution-research-deployment"
-description: "Agentic AI finance deployments average 9.4 months to go-live, not 90 days. Learn what Oracle, Deloitte, and Gartner data actually prove before committing $1.5M."
+title: 'Agentic AI Finance: What the Research Shows About Execution-Driven Systems'
+date: 2026-03-29 13:01:25+00:00
+slug: agentic-ai-finance-execution-research-deployment
+description: Agentic AI finance deployments average 9.4 months to go-live, not 90 days. Learn what Oracle, Deloitte, and Gartner data actually prove before committing $1.5M.
 keywords:
-  - "agentic AI finance operations"
-  - "agentic AI regulatory compliance fintech"
-  - "execution-driven AI systems"
-  - "AI workflow automation finance"
-  - "enterprise agentic AI deployment"
-author: ""
+- agentic AI finance operations
+- agentic AI regulatory compliance fintech
+- execution-driven AI systems
+- AI workflow automation finance
+- enterprise agentic AI deployment
+author: ''
 tags:
-  - "Agentic AI"
-  - "Finance Operations"
-  - "AI Deployment"
-  - "Enterprise AI"
-  - "Fintech Compliance"
+- Agentic AI
+- Finance Operations
+- AI Deployment
+- Enterprise AI
+- Fintech Compliance
 categories:
-  - "AI in Finance"
+- AI in Finance
 cover:
-  image: "https://cdn.pixabay.com/photo/2016/11/27/21/42/stock-1863880_1280.jpg"
-  alt: "Financial data analysis and technology infrastructure for enterprise automation systems"
-  caption: ""
-image_credit_name: "3844328"
-image_credit_url: "https://pixabay.com/users/3844328-3844328"
-image_credit_source: "pixabay"
-schema_type: "Article"
+  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/agentic-ai-finance-execution-research-deployment.png
+  alt: 'DEEP DIVE: Agentic AI Finance: What the Research Shows About Execution-Driven Systems'
+  caption: ''
+  generation: gemini-v1
+  credit_name: Particle Post
+  credit_url: https://theparticlepost.com
+  credit_source: ai-generated
+image_credit_name: Particle Post
+image_credit_url: https://theparticlepost.com
+image_credit_source: ai-generated
+schema_type: Article
 has_faq: true
 faq_pairs:
-  - q: "What is agentic AI in finance and how does it differ from a standard AI dashboard?"
-    a: "Agentic AI receives a goal, plans steps, calls tools, and completes workflows autonomously without human approval at each stage. A dashboard surfaces recommendations for humans to act on. JPMorgan's COiN platform processes 12,000 credit agreements per second."
-  - q: "How long does agentic AI deployment actually take in a finance organization?"
-    a: "Enterprise agentic AI in finance averages 9.4 months from contract to production go-live per Deloitte's 2024 survey of 300 deployments. Vendors routinely project 90-day timelines. The gap is driven by ERP integration and data remediation."
-  - q: "What are the biggest failure points for agentic AI in financial workflows?"
-    a: "ERP integration complexity (one US manufacturer spent $340,000 on integration before any agent logic was written), poor source data quality (a European retailer's agent hit 58% match rate versus projected 87%), and governance vacuums with no audit trail."
-  - q: "Does agentic AI regulatory compliance in fintech require human oversight?"
-    a: "Yes. The FCA's 2024 AI explainability guidance makes human-in-the-loop a regulatory requirement for credit and lending workflows. The SEC and EU regulators require audit documentation for AI-generated financial decisions."
-  - q: "What transaction volume justifies an agentic AI investment in finance operations?"
-    a: "Documented deployments support a minimum threshold of 5,000 transactions per month in the target workflow. Below that volume, fixed costs of agent infrastructure, integration, and maintenance erode unit economics."
+- q: What is agentic AI in finance and how does it differ from a standard AI dashboard?
+  a: Agentic AI receives a goal, plans steps, calls tools, and completes workflows autonomously without human approval at each stage. A dashboard surfaces recommendations for humans to act on. JPMorgan's COiN platform processes 12,000 credit agreements per second.
+- q: How long does agentic AI deployment actually take in a finance organization?
+  a: Enterprise agentic AI in finance averages 9.4 months from contract to production go-live per Deloitte's 2024 survey of 300 deployments. Vendors routinely project 90-day timelines. The gap is driven by ERP integration and data remediation.
+- q: What are the biggest failure points for agentic AI in financial workflows?
+  a: ERP integration complexity (one US manufacturer spent $340,000 on integration before any agent logic was written), poor source data quality (a European retailer's agent hit 58% match rate versus projected 87%), and governance vacuums with no audit trail.
+- q: Does agentic AI regulatory compliance in fintech require human oversight?
+  a: Yes. The FCA's 2024 AI explainability guidance makes human-in-the-loop a regulatory requirement for credit and lending workflows. The SEC and EU regulators require audit documentation for AI-generated financial decisions.
+- q: What transaction volume justifies an agentic AI investment in finance operations?
+  a: Documented deployments support a minimum threshold of 5,000 transactions per month in the target workflow. Below that volume, fixed costs of agent infrastructure, integration, and maintenance erode unit economics.
 ShowToc: true
 TocOpen: false
 draft: false
-
-content_type: "deep_dive"
+content_type: deep_dive
+image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/agentic-ai-finance-execution-research-deployment.png
+image_alt: 'DEEP DIVE: Agentic AI Finance: What the Research Shows About Execution-Driven Systems'
 ---
 
 JPMorgan Chase's COiN platform processes 12,000 commercial credit agreements per second, a workload that previously consumed 360,000 hours of lawyer time annually. That is not a dashboard delivering insights. That is an AI agent executing work. The gap between those two categories is where most enterprise AI budgets currently sit, unspent or misdirected.

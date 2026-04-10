@@ -1,37 +1,45 @@
 ---
-title: "Big Tech's $700B AI Bet Strains Power Grids and Carbon Markets"
-date: 2026-03-23T21:00:00Z
-slug: "ai-data-center-energy-costs"
-description: "Hyperscalers spending $690B on AI infrastructure strains power grids and carbon markets. How energy constraints reshape ESG finance and utility stocks."
+title: Big Tech's $700B AI Bet Strains Power Grids and Carbon Markets
+date: 2026-03-23 21:00:00+00:00
+slug: ai-data-center-energy-costs
+description: Hyperscalers spending $690B on AI infrastructure strains power grids and carbon markets. How energy constraints reshape ESG finance and utility stocks.
 keywords:
-  - "AI data center energy costs"
-  - "hyperscaler capex spending 2026"
-  - "carbon credits voluntary market"
-  - "ESG linked debt emissions risk"
-  - "grid power constraints infrastructure"
-  - "net-zero pledges carbon removal"
-author: "FinTech Editorial"
+- AI data center energy costs
+- hyperscaler capex spending 2026
+- carbon credits voluntary market
+- ESG linked debt emissions risk
+- grid power constraints infrastructure
+- net-zero pledges carbon removal
+author: FinTech Editorial
 tags:
-  - "Implementation"
-  - "Energy Finance"
-  - "ESG Risk Management"
-  - "Industry Signals"
-  - "Utility Sector"
-  - "Hyperscaler Investment"
-categories: ["Industry Signals", "Implementation", "Industry Signals"]
+- Implementation
+- Energy Finance
+- ESG Risk Management
+- Industry Signals
+- Utility Sector
+- Hyperscaler Investment
+categories:
+- Industry Signals
+- Implementation
+- Industry Signals
 cover:
-  image: "https://images.pexels.com/photos/5480781/pexels-photo-5480781.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200"
-  alt: "Data center power grid infrastructure with electrical systems and energy distribution"
-  caption: ""
-image_credit_name: "Brett Sayles"
-image_credit_url: "https://www.pexels.com/@brett-sayles"
-image_credit_source: "Pexels"
+  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-data-center-energy-costs.png
+  alt: 'NEWS ANALYSIS: Big Tech''s $700B AI Bet Strains Power Grids and Carbon Markets'
+  caption: ''
+  generation: gemini-v1
+  credit_name: Particle Post
+  credit_url: https://theparticlepost.com
+  credit_source: ai-generated
+image_credit_name: Particle Post
+image_credit_url: https://theparticlepost.com
+image_credit_source: ai-generated
 ShowToc: true
 TocOpen: false
 draft: false
-
-content_type: "news_analysis"
-schema_type: "NewsArticle"
+content_type: news_analysis
+schema_type: NewsArticle
+image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-data-center-energy-costs.png
+image_alt: 'NEWS ANALYSIS: Big Tech''s $700B AI Bet Strains Power Grids and Carbon Markets'
 ---
 
 Amazon alone plans to spend $200 billion on capital expenditures this year. That single number explains why power grids, carbon markets, and utility balance sheets are all under simultaneous pressure in 2026.

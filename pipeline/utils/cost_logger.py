@@ -39,6 +39,8 @@ def save_cost_log(
     slot: str,
     attempt: int = 1,
     verdict: str = "",
+    gemini_image_count: int = 0,
+    gemini_cost_usd: float = 0.0,
 ) -> Path:
     """
     Save a cost log entry from a CrewAI UsageMetrics object.
@@ -48,6 +50,8 @@ def save_cost_log(
         slot: Pipeline slot (morning, evening, marketing, security, human-morning, etc.)
         attempt: Pipeline attempt number
         verdict: APPROVE/REJECT/N/A
+        gemini_image_count: Number of Gemini images generated during this run
+        gemini_cost_usd: USD cost estimate for the Gemini calls
     """
     COSTS_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -57,7 +61,8 @@ def save_cost_log(
     successful_requests = getattr(usage, "successful_requests", 0) or 0
     cached_prompt_tokens = getattr(usage, "cached_prompt_tokens", 0) or 0
 
-    estimated_cost = calculate_cost(prompt_tokens, completion_tokens)
+    anthropic_cost = calculate_cost(prompt_tokens, completion_tokens)
+    total_cost = round(anthropic_cost + float(gemini_cost_usd or 0.0), 4)
 
     entry = {
         "timestamp": datetime.now(timezone.utc).isoformat(),
@@ -68,7 +73,13 @@ def save_cost_log(
         "completion_tokens": completion_tokens,
         "total_tokens": total_tokens,
         "successful_requests": successful_requests,
-        "estimated_cost_usd": estimated_cost,
+        # Backwards-compat: existing consumers read estimated_cost_usd as the
+        # Anthropic-only figure. total_cost_usd is the new all-provider total.
+        "estimated_cost_usd": anthropic_cost,
+        "anthropic_cost_usd": anthropic_cost,
+        "gemini_image_count": int(gemini_image_count or 0),
+        "gemini_cost_usd": round(float(gemini_cost_usd or 0.0), 4),
+        "total_cost_usd": total_cost,
         "verdict": verdict,
     }
 
@@ -77,5 +88,13 @@ def save_cost_log(
     filepath = COSTS_DIR / filename
 
     filepath.write_text(json.dumps(entry, indent=2), encoding="utf-8")
-    print(f"  [Cost Logger] Saved cost log: {filename} (${estimated_cost:.4f})")
+    gemini_suffix = (
+        f" + Gemini ${float(gemini_cost_usd):.4f} [{int(gemini_image_count)} img]"
+        if gemini_image_count
+        else ""
+    )
+    print(
+        f"  [Cost Logger] Saved cost log: {filename} "
+        f"(Anthropic ${anthropic_cost:.4f}{gemini_suffix})"
+    )
     return filepath

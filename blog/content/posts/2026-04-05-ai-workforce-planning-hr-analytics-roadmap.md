@@ -1,26 +1,39 @@
 ---
-title: "AI Workforce Planning: 4-Phase HR Analytics Roadmap"
-date: "2026-04-05T21:14:46Z"
-slug: "ai-workforce-planning-hr-analytics-roadmap"
-description: "AI workforce planning cuts attrition 20-35% per SHRM 2026. This 4-phase roadmap gives CHROs and COOs exact steps, costs, and go/no-go criteria to implement AI HR tools."
-keywords: ["AI workforce planning implementation", "HR analytics implementation roadmap", "AI attrition prediction HR", "workforce planning AI tools 2026", "AI HR tools implementation guide", "skills forecasting AI enterprise"]
-author: "Particle Post Editorial Team"
-tags: ["AI Workforce Planning", "HR Analytics", "Attrition Prediction", "HR Technology", "People Analytics"]
-categories: ["HR Technology"]
-schema_type: "HowTo"
-content_type: "how_to"
+title: 'AI Workforce Planning: 4-Phase HR Analytics Roadmap'
+date: '2026-04-05T21:14:46Z'
+slug: ai-workforce-planning-hr-analytics-roadmap
+description: AI workforce planning cuts attrition 20-35% per SHRM 2026. This 4-phase roadmap gives CHROs and COOs exact steps, costs, and go/no-go criteria to implement AI HR tools.
+keywords:
+- AI workforce planning implementation
+- HR analytics implementation roadmap
+- AI attrition prediction HR
+- workforce planning AI tools 2026
+- AI HR tools implementation guide
+- skills forecasting AI enterprise
+author: Particle Post Editorial Team
+tags:
+- AI Workforce Planning
+- HR Analytics
+- Attrition Prediction
+- HR Technology
+- People Analytics
+categories:
+- HR Technology
+schema_type: HowTo
+content_type: how_to
 has_faq: false
 cover:
-  image: "https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-workforce-planning-hr-analytics-roadmap.png"
-  alt: "How To: AI Workforce Planning: 4-Phase HR Analytics Roadmap"
-  credit_name: "Particle Post"
-  credit_url: "https://theparticlepost.com"
-  credit_source: "generated"
-image: "https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-workforce-planning-hr-analytics-roadmap.png"
-image_alt: "How To: AI Workforce Planning: 4-Phase HR Analytics Roadmap"
-image_credit_name: "Particle Post"
-image_credit_url: "https://theparticlepost.com"
-image_credit_source: "generated"
+  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-workforce-planning-hr-analytics-roadmap.png
+  alt: 'HOW-TO: AI Workforce Planning: 4-Phase HR Analytics Roadmap'
+  credit_name: Particle Post
+  credit_url: https://theparticlepost.com
+  credit_source: ai-generated
+  generation: gemini-v1
+image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-workforce-planning-hr-analytics-roadmap.png
+image_alt: 'HOW-TO: AI Workforce Planning: 4-Phase HR Analytics Roadmap'
+image_credit_name: Particle Post
+image_credit_url: https://theparticlepost.com
+image_credit_source: ai-generated
 ShowToc: true
 TocOpen: false
 draft: false

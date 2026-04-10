@@ -1,0 +1,17 @@
+{
+  "title": "Data AI Platform Comparison 2026: Palantir vs Databricks",
+  "slug": "test-comparison",
+  "category": "TECHNOLOGY PROFILE",
+  "date": "2026-04-07",
+  "coverMode": "comparison",
+  "comparisonLeft": {
+    "name": "Palantir",
+    "metric": "Gov + Enterprise",
+    "detail": "Ontology-first"
+  },
+  "comparisonRight": {
+    "name": "Databricks",
+    "metric": "Data + AI Platform",
+    "detail": "Lakehouse-first"
+  }
+}

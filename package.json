@@ -6,9 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "cover:generate": "tsx lib/covers/cli.ts"
   },
   "dependencies": {
+    "@google/genai": "^0.3.0",
     "@supabase/ssr": "^0.9.0",
     "@supabase/supabase-js": "^2.45.0",
     "@vercel/analytics": "^2.0.1",
@@ -40,8 +42,10 @@
     "@types/rss": "^0.0.32",
     "eslint": "^9.0.0",
     "eslint-config-next": "^16.2.1",
+    "playwright": "^1.48.0",
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.13",
+    "tsx": "^4.19.0",
     "typescript": "^5.6.0"
   }
 }

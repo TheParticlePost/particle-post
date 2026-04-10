@@ -1,37 +1,50 @@
 ---
-title: "JPMorgan AI Case Study: COiN Cut Contract Review 80%"
-date: "2026-04-05T16:16:34Z"
-slug: "jpmorgan-coin-ai-contract-intelligence-case-study"
-description: "JPMorgan's COiN platform eliminated 360,000 lawyer hours annually. See the full enterprise AI deployment timeline, real costs, and lessons for CFOs and COOs."
-keywords: ["JPMorgan AI case study", "contract intelligence AI", "enterprise AI deployment", "agentic AI finance operations enterprise", "AI legal document review", "NLP contract review banking"]
-author: "Particle Post Editorial Team"
-tags: ["JPMorgan", "Contract Intelligence", "Enterprise AI", "Legal Technology", "AI ROI"]
-categories: ["AI in Finance"]
-schema_type: "Article"
-content_type: "case_study"
+title: 'JPMorgan AI Case Study: COiN Cut Contract Review 80%'
+date: '2026-04-05T16:16:34Z'
+slug: jpmorgan-coin-ai-contract-intelligence-case-study
+description: JPMorgan's COiN platform eliminated 360,000 lawyer hours annually. See the full enterprise AI deployment timeline, real costs, and lessons for CFOs and COOs.
+keywords:
+- JPMorgan AI case study
+- contract intelligence AI
+- enterprise AI deployment
+- agentic AI finance operations enterprise
+- AI legal document review
+- NLP contract review banking
+author: Particle Post Editorial Team
+tags:
+- JPMorgan
+- Contract Intelligence
+- Enterprise AI
+- Legal Technology
+- AI ROI
+categories:
+- AI in Finance
+schema_type: Article
+content_type: case_study
 has_faq: true
 cover:
-  image: "https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/jpmorgan-coin-ai-contract-intelligence-case-study.png"
-  alt: "Case Study: JPMorgan AI Case Study: COiN Cut Contract Review 80%"
-  credit_name: "Particle Post"
-  credit_url: "https://theparticlepost.com"
-  credit_source: "generated"
-image: "https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/jpmorgan-coin-ai-contract-intelligence-case-study.png"
-image_alt: "Case Study: JPMorgan AI Case Study: COiN Cut Contract Review 80%"
-image_credit_name: "Particle Post"
-image_credit_url: "https://theparticlepost.com"
-image_credit_source: "generated"
+  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/jpmorgan-coin-ai-contract-intelligence-case-study.png
+  alt: 'CASE STUDY: JPMorgan AI Case Study: COiN Cut Contract Review 80%'
+  credit_name: Particle Post
+  credit_url: https://theparticlepost.com
+  credit_source: ai-generated
+  generation: gemini-v1
+image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/jpmorgan-coin-ai-contract-intelligence-case-study.png
+image_alt: 'CASE STUDY: JPMorgan AI Case Study: COiN Cut Contract Review 80%'
+image_credit_name: Particle Post
+image_credit_url: https://theparticlepost.com
+image_credit_source: ai-generated
 faq_pairs:
-  - question: "What is JPMorgan's COiN platform?"
-    answer: "COiN (Contract Intelligence) is an AI platform JPMorgan Chase built in-house using NLP trained on proprietary documents. First reported by Bloomberg in February 2017, it processes 12,000 commercial credit agreements in seconds and eliminated 360,000 hours of annual legal labor."
-  - question: "How long did JPMorgan's COiN implementation take?"
-    answer: "JPMorgan's COiN deployment ran from 2016 through 2017, roughly two years from data preparation through enterprise-scale production. The three phases covered data labeling, model training and pilot, and full commercial banking division rollout. Compressing the timeline increases error rates."
-  - question: "Does COiN replace attorneys at JPMorgan?"
-    answer: "COiN does not replace attorneys. It automates extraction of specific clause data from standardized documents and routes flagged outputs to attorney review queues. JPMorgan redeployed legal capacity toward deal structuring and regulatory response, according to ABA Journal coverage."
-  - question: "What did JPMorgan's COiN platform cost to build?"
-    answer: "JPMorgan has not publicly itemized COiN's cost. Comparable custom NLP contract platforms built in 2016 to 2017 cost between $5 million and $15 million. JPMorgan's total technology budget exceeded $9 billion annually at time of build, per investor disclosures."
-  - question: "Can mid-market companies replicate JPMorgan's COiN results?"
-    answer: "Mid-market organizations can replicate the approach but not the absolute scale. Prerequisites include high document volume, standardized structure, a labeled historical corpus, and a 12 to 24-month runway. Managed tools like Ironclad, Kira Systems, and Luminance reduce build costs significantly."
+- question: What is JPMorgan's COiN platform?
+  answer: COiN (Contract Intelligence) is an AI platform JPMorgan Chase built in-house using NLP trained on proprietary documents. First reported by Bloomberg in February 2017, it processes 12,000 commercial credit agreements in seconds and eliminated 360,000 hours of annual legal labor.
+- question: How long did JPMorgan's COiN implementation take?
+  answer: JPMorgan's COiN deployment ran from 2016 through 2017, roughly two years from data preparation through enterprise-scale production. The three phases covered data labeling, model training and pilot, and full commercial banking division rollout. Compressing the timeline increases error rates.
+- question: Does COiN replace attorneys at JPMorgan?
+  answer: COiN does not replace attorneys. It automates extraction of specific clause data from standardized documents and routes flagged outputs to attorney review queues. JPMorgan redeployed legal capacity toward deal structuring and regulatory response, according to ABA Journal coverage.
+- question: What did JPMorgan's COiN platform cost to build?
+  answer: JPMorgan has not publicly itemized COiN's cost. Comparable custom NLP contract platforms built in 2016 to 2017 cost between $5 million and $15 million. JPMorgan's total technology budget exceeded $9 billion annually at time of build, per investor disclosures.
+- question: Can mid-market companies replicate JPMorgan's COiN results?
+  answer: Mid-market organizations can replicate the approach but not the absolute scale. Prerequisites include high document volume, standardized structure, a labeled historical corpus, and a 12 to 24-month runway. Managed tools like Ironclad, Kira Systems, and Luminance reduce build costs significantly.
 ShowToc: true
 TocOpen: false
 draft: false

@@ -12,6 +12,7 @@ import { PipelineConfigEditor } from "@/components/admin/widgets/pipeline-config
 import { AgentLogs } from "@/components/admin/widgets/agent-logs";
 import { AgentRunDialog } from "@/components/admin/widgets/agent-run-dialog";
 import { HumanPostDialog } from "@/components/admin/widgets/human-post-dialog";
+import { ApiCostsBreakdown } from "@/components/admin/widgets/api-costs-breakdown";
 
 const TABS = [
   { id: "articles", label: "Articles" },
@@ -160,6 +161,10 @@ function ContentPageInner() {
                 </div>
               ))}
             </div>
+          </WidgetCard>
+
+          <WidgetCard title="API Costs (Anthropic + Gemini)">
+            <ApiCostsBreakdown />
           </WidgetCard>
 
           <WidgetCard title="Pipeline Configuration">

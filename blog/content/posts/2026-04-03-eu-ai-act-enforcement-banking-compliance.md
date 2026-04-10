@@ -1,50 +1,55 @@
 ---
-title: "EU AI Act Enforcement: AI Compliance Banking Guide"
-date: 2026-04-03T21:02:43Z
-slug: "eu-ai-act-enforcement-banking-compliance"
-description: "EU AI Act enforcement begins August 2, 2026. Banks face fines up to €15M for non-compliant high-risk AI. 7-step compliance workflow for credit scoring and more."
+title: 'EU AI Act Enforcement: AI Compliance Banking Guide'
+date: 2026-04-03 21:02:43+00:00
+slug: eu-ai-act-enforcement-banking-compliance
+description: EU AI Act enforcement begins August 2, 2026. Banks face fines up to €15M for non-compliant high-risk AI. 7-step compliance workflow for credit scoring and more.
 keywords:
-  - "EU AI Act enforcement banking"
-  - "AI compliance financial services"
-  - "high-risk AI systems Annex III"
-  - "machine learning credit scoring banks"
-  - "EBA regulatory requirements 2026"
-author: ""
+- EU AI Act enforcement banking
+- AI compliance financial services
+- high-risk AI systems Annex III
+- machine learning credit scoring banks
+- EBA regulatory requirements 2026
+author: ''
 tags:
-  - "EU AI Act"
-  - "AI Compliance"
-  - "Banking Regulation"
-  - "EBA"
-  - "Credit Scoring"
-  - "AI Governance"
-  - "Fintech"
+- EU AI Act
+- AI Compliance
+- Banking Regulation
+- EBA
+- Credit Scoring
+- AI Governance
+- Fintech
 categories:
-  - "AI in Finance"
+- AI in Finance
 cover:
-  image: "https://cdn.pixabay.com/photo/2019/04/01/12/24/gdpr-4095257_1920.jpg"
-  alt: "Regulatory compliance documentation and data governance for financial services AI systems"
-  caption: ""
-image_credit_name: "TheDigitalArtist"
-image_credit_url: "https://pixabay.com/users/TheDigitalArtist-202249"
-image_credit_source: "Pixabay"
-schema_type: "Article"
+  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/eu-ai-act-enforcement-banking-compliance.png
+  alt: 'DEEP DIVE: EU AI Act Enforcement: AI Compliance Banking Guide'
+  caption: ''
+  generation: gemini-v1
+  credit_name: Particle Post
+  credit_url: https://theparticlepost.com
+  credit_source: ai-generated
+image_credit_name: Particle Post
+image_credit_url: https://theparticlepost.com
+image_credit_source: ai-generated
+schema_type: Article
 has_faq: true
 ShowToc: true
 TocOpen: false
 draft: false
 faq_pairs:
-  - q: "Is fraud detection high-risk under the EU AI Act?"
-    a: "No. Fraud detection is explicitly carved out under Recital 58 of the EU AI Act because it does not determine individual legal rights or access to services. Banks that over-classify fraud detection waste compliance resources that should target genuinely high-risk systems like credit scoring."
-  - q: "Which banking AI systems are definitively high-risk under Annex III?"
-    a: "Credit scoring and creditworthiness assessment for natural persons are high-risk under Annex III, Category 5(b), per Regulation EU 2024/1689. Insurance risk scoring for individuals also qualifies. Algorithmic trading is excluded from high-risk classification."
-  - q: "What fine does a bank face for non-compliance with high-risk AI requirements?"
-    a: "Non-compliance carries fines up to 15 million euros or 3% of total global annual turnover, whichever is greater, per the EU AI Act. Violations of prohibited AI practices carry penalties up to 35 million euros or 7% of global turnover."
-  - q: "Does the EU AI Act apply to non-EU banks serving EU customers?"
-    a: "Yes. The EU AI Act applies extraterritorially. Any bank or fintech whose AI outputs affect natural persons in the EU must comply regardless of headquarters location, per Regulation EU 2024/1689. US banks with EU operations hold identical obligations to EU-incorporated institutions."
-  - q: "What is the EBA's role in EU AI Act enforcement for banks?"
-    a: "The EBA promotes common supervisory approaches among national competent authorities and provides input to the European AI Office per the EBA Work Programme 2026. National market surveillance authorities hold primary enforcement powers. The EBA coordinates to prevent regulatory arbitrage across member states."
-
-content_type: "deep_dive"
+- q: Is fraud detection high-risk under the EU AI Act?
+  a: No. Fraud detection is explicitly carved out under Recital 58 of the EU AI Act because it does not determine individual legal rights or access to services. Banks that over-classify fraud detection waste compliance resources that should target genuinely high-risk systems like credit scoring.
+- q: Which banking AI systems are definitively high-risk under Annex III?
+  a: Credit scoring and creditworthiness assessment for natural persons are high-risk under Annex III, Category 5(b), per Regulation EU 2024/1689. Insurance risk scoring for individuals also qualifies. Algorithmic trading is excluded from high-risk classification.
+- q: What fine does a bank face for non-compliance with high-risk AI requirements?
+  a: Non-compliance carries fines up to 15 million euros or 3% of total global annual turnover, whichever is greater, per the EU AI Act. Violations of prohibited AI practices carry penalties up to 35 million euros or 7% of global turnover.
+- q: Does the EU AI Act apply to non-EU banks serving EU customers?
+  a: Yes. The EU AI Act applies extraterritorially. Any bank or fintech whose AI outputs affect natural persons in the EU must comply regardless of headquarters location, per Regulation EU 2024/1689. US banks with EU operations hold identical obligations to EU-incorporated institutions.
+- q: What is the EBA's role in EU AI Act enforcement for banks?
+  a: The EBA promotes common supervisory approaches among national competent authorities and provides input to the European AI Office per the EBA Work Programme 2026. National market surveillance authorities hold primary enforcement powers. The EBA coordinates to prevent regulatory arbitrage across member states.
+content_type: deep_dive
+image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/eu-ai-act-enforcement-banking-compliance.png
+image_alt: 'DEEP DIVE: EU AI Act Enforcement: AI Compliance Banking Guide'
 ---
 
 August 2, 2026 is not a suggestion. Any bank or fintech operating in the EU that runs credit scoring, creditworthiness assessment, or AI-driven insurance pricing without a documented conformity assessment faces fines up to 15 million euros or 3% of global annual turnover, whichever is greater, according to the EU AI Act penalty framework. The compliance window is closed. Execution is all that remains.

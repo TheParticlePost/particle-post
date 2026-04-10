@@ -1,35 +1,43 @@
 ---
-title: "AI as Core Fintech Infrastructure: 80% of Companies Go All-In"
-date: 2026-03-21T13:00:00Z
+title: 'AI as Core Fintech Infrastructure: 80% of Companies Go All-In'
+date: 2026-03-21 13:00:00+00:00
 slug: fintech-ai-infrastructure-investment
-description: "80% of financial firms now embed AI into core operations. Discover why AI shifted from feature to essential infrastructure, and what CFOs must budget for in 2026."
+description: 80% of financial firms now embed AI into core operations. Discover why AI shifted from feature to essential infrastructure, and what CFOs must budget for in 2026.
 keywords:
-  - fintech AI infrastructure
-  - generative AI investment financial services
-  - AI fraud detection banking
-  - AI underwriting automation
-  - enterprise AI deployment fintech
-author: ""
+- fintech AI infrastructure
+- generative AI investment financial services
+- AI fraud detection banking
+- AI underwriting automation
+- enterprise AI deployment fintech
+author: ''
 tags:
-  - Generative AI
-  - Financial Services
-  - Digital Transformation
-  - Fraud Detection
-  - Financial Infrastructure
-categories: ["AI Strategy", "Implementation", "Implementation"]
+- Generative AI
+- Financial Services
+- Digital Transformation
+- Fraud Detection
+- Financial Infrastructure
+categories:
+- AI Strategy
+- Implementation
+- Implementation
 cover:
-  image: "https://images.pexels.com/photos/6770610/pexels-photo-6770610.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200"
-  alt: "Stock market trading screen displaying financial growth charts and data"
-  caption: ""
-image_credit_name: "Alesia Kozik"
-image_credit_url: "https://www.pexels.com/@alesiakozik"
-image_credit_source: "Pexels"
+  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/fintech-ai-infrastructure-investment.png
+  alt: 'NEWS ANALYSIS: AI as Core Fintech Infrastructure: 80% of Companies Go All-In'
+  caption: ''
+  generation: gemini-v1
+  credit_name: Particle Post
+  credit_url: https://theparticlepost.com
+  credit_source: ai-generated
+image_credit_name: Particle Post
+image_credit_url: https://theparticlepost.com
+image_credit_source: ai-generated
 ShowToc: true
 TocOpen: false
 draft: false
-
-content_type: "news_analysis"
-schema_type: "NewsArticle"
+content_type: news_analysis
+schema_type: NewsArticle
+image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/fintech-ai-infrastructure-investment.png
+image_alt: 'NEWS ANALYSIS: AI as Core Fintech Infrastructure: 80% of Companies Go All-In'
 ---
 Fintech has stopped debating whether to use AI and started competing on how deeply it runs. Eight in ten financial firms now make moderate-to-large investments in AI, according to Broadridge Financial Solutions, and those that lag are not losing a feature; they are losing the business.
 

@@ -1,31 +1,47 @@
 ---
-title: "Explainable AI Is a Capital Problem, Not a Technical One, and the FCA Is About to Prove It"
-date: 2026-03-24T21:00:00Z
-slug: "explainable-ai-capital-problem-fca"
-description: "The FCA's mandate for explainable AI in financial decision-making forces fintech firms to build interpretability as permanent infrastructure, not as a one-time technical fix. Learn why compliance is reshaping competitive advantage in retail financial services."
-keywords: ["explainable AI fintech", "FCA AI regulation", "interpretability financial services", "AI compliance costs", "regulatory moat fintech"]
-author: "Particle"
-tags: ["Risk & Governance", "Fintech Compliance", "AI Strategy"]
-categories: ["Risk & Governance", "Risk & Governance", "AI Strategy"]
+title: Explainable AI Is a Capital Problem, Not a Technical One, and the FCA Is About to Prove It
+date: 2026-03-24 21:00:00+00:00
+slug: explainable-ai-capital-problem-fca
+description: The FCA's mandate for explainable AI in financial decision-making forces fintech firms to build interpretability as permanent infrastructure, not as a one-time technical fix. Learn why compliance is reshaping competitive advantage in retail financial services.
+keywords:
+- explainable AI fintech
+- FCA AI regulation
+- interpretability financial services
+- AI compliance costs
+- regulatory moat fintech
+author: Particle
+tags:
+- Risk & Governance
+- Fintech Compliance
+- AI Strategy
+categories:
+- Risk & Governance
+- Risk & Governance
+- AI Strategy
 cover:
-  image: "https://images.pexels.com/photos/7561314/pexels-photo-7561314.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200"
-  alt: "Regulatory compliance audit trail and documentation systems"
-  caption: ""
-image_credit_name: "SHVETS production"
-image_credit_url: "https://www.pexels.com/@shvets-production"
-image_credit_source: "Pexels"
-schema_type: "NewsArticle"
+  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/explainable-ai-capital-problem-fca.png
+  alt: 'NEWS ANALYSIS: Explainable AI Is a Capital Problem, Not a Technical One, and the FCA Is About to Prove It'
+  caption: ''
+  generation: gemini-v1
+  credit_name: Particle Post
+  credit_url: https://theparticlepost.com
+  credit_source: ai-generated
+image_credit_name: Particle Post
+image_credit_url: https://theparticlepost.com
+image_credit_source: ai-generated
+schema_type: NewsArticle
 has_faq: true
 faq_pairs:
-  - q: "What does the FCA require for explainable AI in fintech?"
-    a: "The FCA requires firms to demonstrate three compliance layers: a model output, a complete audit trail, and a plain-language consumer explanation. Under Consumer Duty (enforced since July 2023) and CP26/9, both the FCA and the Financial Ombudsman Service must independently verify that automated decisions reflect genuine regulatory obligations."
-  - q: "What is the FCA Mills Review and when will it affect fintech firms?"
-    a: "The Mills Review, launched January 27, 2026 by FCA Executive Director Sheldon Mills, examines AI's long-term impact on retail financial services. The FCA board will receive recommendations in summer 2026, and those recommendations are expected to set interpretability standards for UK retail financial services through the end of the decade."
+- q: What does the FCA require for explainable AI in fintech?
+  a: 'The FCA requires firms to demonstrate three compliance layers: a model output, a complete audit trail, and a plain-language consumer explanation. Under Consumer Duty (enforced since July 2023) and CP26/9, both the FCA and the Financial Ombudsman Service must independently verify that automated decisions reflect genuine regulatory obligations.'
+- q: What is the FCA Mills Review and when will it affect fintech firms?
+  a: The Mills Review, launched January 27, 2026 by FCA Executive Director Sheldon Mills, examines AI's long-term impact on retail financial services. The FCA board will receive recommendations in summer 2026, and those recommendations are expected to set interpretability standards for UK retail financial services through the end of the decade.
 ShowToc: true
 TocOpen: false
 draft: false
-
-content_type: "news_analysis"
+content_type: news_analysis
+image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/explainable-ai-capital-problem-fca.png
+image_alt: 'NEWS ANALYSIS: Explainable AI Is a Capital Problem, Not a Technical One, and the FCA Is About to Prove It'
 ---
 Klarna and Monzo now publish detailed model cards before each license renewal. The UK's Financial Conduct Authority launched the Mills Review on January 27, 2026, making clear that explainability is no longer optional; it is the price of operating in retail financial services.
 

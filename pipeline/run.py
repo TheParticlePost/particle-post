@@ -1138,6 +1138,9 @@ def main() -> None:
 
         # ═══ GRAPHIC GENERATION: branded covers + data visuals ═══
         graphic_data: dict = {}
+        # Accumulate Gemini usage reported by the cover CLI so the cost
+        # logger can include it in this run's final cost record.
+        _gemini_run_usage: dict = {"image_count": 0, "cost_usd": 0.0}
 
         # Import graphics modules (shared by cover + visuals)
         try:
@@ -1146,8 +1149,6 @@ def main() -> None:
                 extract_timeline, select_visuals,
             )
             from pipeline.graphics.templates import (
-                cover_news_analysis, cover_deep_dive, cover_case_study,
-                cover_how_to, cover_technology_profile, cover_industry_briefing,
                 stat_card, diagram_before_after, diagram_process_flow,
                 diagram_timeline, chart_bar_horizontal,
             )
@@ -1170,39 +1171,218 @@ def main() -> None:
             date_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
             slug_for_cover = seo_data.get("slug", "article")
 
-            # --- Cover generation (separate try/except) ---
+            # --- Cover generation via TypeScript (lib/covers/) bridge ---
+            # Default: Mode E (background-image with a Gemini-generated photo).
+            # Fallback: per-content-type Mode A/B/C/D if Mode E fails.
             try:
-                cover_funcs = {
-                    "news_analysis": lambda: cover_news_analysis(title_for_cover, date_str),
-                    "deep_dive": lambda: cover_deep_dive(title_for_cover, date_str),
-                    "case_study": lambda: cover_case_study(
-                        title_for_cover,
-                        _extract_company_for_cover(title_for_cover),
-                        stats[0]["value"] if stats else "",
-                    ),
-                    "how_to": lambda: cover_how_to(title_for_cover, steps[:4]),
-                    "technology_profile": lambda: cover_technology_profile(
-                        title_for_cover, len(comparisons) or 2
-                    ),
-                    "industry_briefing": lambda: cover_industry_briefing(
-                        "AI Industry", date_str, len(stats) or 3
-                    ),
+                import json as _json_cover
+                import subprocess as _subprocess_cover
+                import tempfile as _tempfile_cover
+                from pathlib import Path as _PathCover
+                from pipeline.utils.cover_prompt import build_cover_prompt as _build_cover_prompt
+
+                # Per-content-type category labels (used in both modes)
+                _category_labels = {
+                    "news_analysis":      "NEWS ANALYSIS",
+                    "industry_briefing":  "INDUSTRY BRIEFING",
+                    "deep_dive":          "DEEP DIVE",
+                    "case_study":         "CASE STUDY",
+                    "how_to":             "HOW-TO",
+                    "technology_profile": "TECHNOLOGY PROFILE",
+                }
+                _category = _category_labels.get(content_type, "NEWS ANALYSIS")
+
+                # Per-content-type fallback mode if Mode E fails entirely
+                _fallback_mode_map = {
+                    "news_analysis":      "big-stat",
+                    "industry_briefing":  "big-stat",
+                    "deep_dive":          "headline-hook",
+                    "case_study":         "big-stat",
+                    "how_to":             "framework",
+                    "technology_profile": "comparison",
                 }
 
-                cover_func = cover_funcs.get(content_type, cover_funcs.get("news_analysis"))
-                if cover_func:
-                    cover_svg = cover_func()
-                    cover_path = f"/tmp/cover-{slug_for_cover}.png"
-                    render_sync(cover_svg, cover_path)
-                    cover_url = upload_to_supabase(cover_path, "covers", f"{slug_for_cover}.png")
+                def _distill_hook(t: str) -> str:
+                    """Cheap hook text: take after the last colon, else last clause."""
+                    if ":" in t:
+                        tail = t.split(":")[-1].strip()
+                        if tail:
+                            return tail
+                    return t.strip()
+
+                _categories = seo_data.get("categories", []) or []
+                _primary_category = _categories[0] if _categories else ""
+
+                # Prefer the LLM-crafted prompt from the photo agent;
+                # fall back to the heuristic builder if absent or empty.
+                _llm_prompt = (photo_data.get("cover_image_prompt") or "").strip()
+                _gemini_prompt = _llm_prompt or _build_cover_prompt(
+                    title_for_cover, content_type, _primary_category,
+                )
+                _prompt_source = "llm" if _llm_prompt else "heuristic"
+
+                # Build Mode E config (the default)
+                _mode_e_config = {
+                    "title": title_for_cover,
+                    "slug": slug_for_cover,
+                    "category": _category,
+                    "date": date_str,
+                    "coverMode": "background-image",
+                    "hookText": _distill_hook(title_for_cover),
+                    "geminiPrompt": _gemini_prompt,
+                }
+                if stats:
+                    _mode_e_config["hookStat"] = stats[0].get("value", "")
+
+                def _build_legacy_config(mode: str) -> dict:
+                    """Build a Mode A/B/C/D config as the fallback."""
+                    cfg = {
+                        "title": title_for_cover,
+                        "slug": slug_for_cover,
+                        "category": _category,
+                        "date": date_str,
+                        "coverMode": mode,
+                    }
+                    if mode == "big-stat":
+                        if stats:
+                            cfg["hookStat"] = stats[0].get("value", "")
+                            cfg["hookContext"] = stats[0].get("label", "") or title_for_cover
+                        else:
+                            cfg["coverMode"] = "headline-hook"
+                            cfg["hookText"] = _distill_hook(title_for_cover)
+                    elif mode == "headline-hook":
+                        cfg["hookText"] = _distill_hook(title_for_cover)
+                    elif mode == "comparison":
+                        if comparisons:
+                            _c = comparisons[0]
+                            cfg["comparisonLeft"] = {
+                                "name": _c.get("left_name", "Option A"),
+                                "metric": _c.get("left_metric", ""),
+                                "detail": _c.get("left_detail", ""),
+                            }
+                            cfg["comparisonRight"] = {
+                                "name": _c.get("right_name", "Option B"),
+                                "metric": _c.get("right_metric", ""),
+                                "detail": _c.get("right_detail", ""),
+                            }
+                        else:
+                            cfg["coverMode"] = "headline-hook"
+                            cfg["hookText"] = _distill_hook(title_for_cover)
+                    elif mode == "framework":
+                        _step_labels = [
+                            (s.get("label", s) if isinstance(s, dict) else str(s))
+                            for s in steps[:4]
+                        ]
+                        if len(_step_labels) >= 3:
+                            cfg["frameworkSteps"] = _step_labels
+                            cfg["frameworkName"] = title_for_cover.split(":")[0][:40]
+                        else:
+                            cfg["coverMode"] = "headline-hook"
+                            cfg["hookText"] = _distill_hook(title_for_cover)
+                    return cfg
+
+                _project_root = _PathCover(__file__).resolve().parents[1]
+                _tmp_dir = _PathCover(_tempfile_cover.gettempdir())
+                _tmp_out = _tmp_dir
+                _cli_path = _project_root / "lib" / "covers" / "cli.ts"
+
+                def _run_cover_cli(cfg: dict, tag: str) -> tuple:
+                    """Write config to tmp, shell out to the TS CLI, parse stdout.
+
+                    Returns (success: bool, paths: list[str], gem_imgs: int, gem_cost: float).
+                    """
+                    tmp_cfg = _tmp_dir / f"cover-config-{slug_for_cover}-{tag}.json"
+                    tmp_cfg.write_text(_json_cover.dumps(cfg), encoding="utf-8")
+                    proc = _subprocess_cover.run(
+                        [
+                            "npx", "tsx", str(_cli_path),
+                            "--config", str(tmp_cfg),
+                            "--output", str(_tmp_out),
+                        ],
+                        capture_output=True, text=True, timeout=180,
+                        cwd=str(_project_root),
+                        shell=(os.name == "nt"),
+                    )
+                    # Try to parse a JSON success line from stdout regardless
+                    # of exit code. On Windows, Node sometimes hits a libuv
+                    # assertion during shutdown AFTER the CLI has already
+                    # printed its result JSON and written the PNG to disk.
+                    # We salvage these runs by checking stdout first.
+                    parsed = None
+                    stdout = (proc.stdout or "").strip()
+                    if stdout:
+                        try:
+                            parsed = _json_cover.loads(stdout.splitlines()[-1])
+                        except Exception:
+                            parsed = None
+
+                    if parsed and isinstance(parsed.get("paths"), list) and parsed["paths"]:
+                        if proc.returncode != 0:
+                            print(f"  [GRAPHICS] {tag} (Node cleanup crashed but image was generated)")
+                        gem = parsed.get("geminiUsage") or {}
+                        return (
+                            True,
+                            parsed.get("paths", []),
+                            int(gem.get("imageCount", 0) or 0),
+                            float(gem.get("estimatedCostUsd", 0.0) or 0.0),
+                        )
+
+                    if proc.returncode != 0:
+                        err = (proc.stderr or "").strip().splitlines()[-1] if proc.stderr else ""
+                        print(f"  [GRAPHICS] {tag} CLI failed: {err[:240]}")
+                        return (False, [], 0, 0.0)
+
+                    print(f"  [GRAPHICS] {tag} stdout had no parseable JSON")
+                    return (False, [], 0, 0.0)
+
+                # Attempt 1: Mode E (background-image + Gemini)
+                print(
+                    f"  [GRAPHICS] Cover attempt: Mode E "
+                    f"(prompt={_prompt_source})"
+                )
+                _ok, _cover_paths, _gem_imgs, _gem_cost = _run_cover_cli(
+                    _mode_e_config, "modeE",
+                )
+                _used_mode = "background-image"
+
+                # Attempt 2: per-content-type fallback if Mode E failed
+                if not _ok:
+                    _fallback_mode = _fallback_mode_map.get(content_type, "headline-hook")
+                    print(f"  [GRAPHICS] Falling back to {_fallback_mode}")
+                    _legacy_cfg = _build_legacy_config(_fallback_mode)
+                    _ok, _cover_paths, _gem_imgs2, _gem_cost2 = _run_cover_cli(
+                        _legacy_cfg, "fallback",
+                    )
+                    _used_mode = _legacy_cfg["coverMode"]
+                    _gem_imgs += _gem_imgs2
+                    _gem_cost += _gem_cost2
+
+                if _gem_imgs > 0:
+                    _gemini_run_usage["image_count"] += _gem_imgs
+                    _gemini_run_usage["cost_usd"] += _gem_cost
+                    print(
+                        f"  [GRAPHICS] Gemini: +{_gem_imgs} image(s), "
+                        f"+${_gem_cost:.4f}"
+                    )
+
+                if _ok and _cover_paths:
+                    cover_path = _cover_paths[0]
+                    cover_url = upload_to_supabase(
+                        cover_path, "covers", f"{slug_for_cover}.png",
+                    )
                     if cover_url:
                         graphic_data["cover"] = {
                             "url": cover_url,
-                            "alt": f"{content_type.replace('_', ' ').title()}: {title_for_cover}",
+                            "alt": f"{_category}: {title_for_cover}",
+                            "generation": (
+                                "gemini-v1" if _used_mode == "background-image" else "fallback-v1"
+                            ),
                         }
-                        print(f"  [GRAPHICS] Cover generated: {cover_url}")
+                        print(f"  [GRAPHICS] Cover generated ({_used_mode}): {cover_url}")
                     else:
                         print(f"  [GRAPHICS] Cover rendered but upload failed")
+                else:
+                    print(f"  [GRAPHICS] Cover generation failed (no fallback succeeded)")
             except Exception as cover_err:
                 print(f"  [GRAPHICS] Cover generation failed: {cover_err}")
 
@@ -1352,10 +1532,18 @@ def main() -> None:
         issues   = verdict.get("issues", [])
         coaching = verdict.get("coaching_notes", [])
 
-        # Log API cost (combine research + production + director tokens)
+        # Log API cost (combine research + production + director tokens,
+        # plus any Gemini image generation from the cover step)
         try:
             from pipeline.utils.cost_logger import save_cost_log
-            save_cost_log(result.token_usage, args.slot, attempt, decision)
+            save_cost_log(
+                result.token_usage,
+                args.slot,
+                attempt,
+                decision,
+                gemini_image_count=_gemini_run_usage.get("image_count", 0),
+                gemini_cost_usd=_gemini_run_usage.get("cost_usd", 0.0),
+            )
         except Exception as cost_err:
             print(f"  [Cost Logger] Warning: {cost_err}")
 

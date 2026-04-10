@@ -1,48 +1,56 @@
 ---
-title: "Oracle Fusion Agentic Apps vs Zalos: Which Fits Your Stack"
-date: 2026-03-25T19:18:23Z
-slug: "agentic-ai-finance-operations-oracle-zalos"
-description: "Oracle launched 22 Fusion Agentic Apps on March 24, 2026. Zalos raised $3.6M the same day. CFOs: here's which autonomous finance path fits your ERP stack."
+title: 'Oracle Fusion Agentic Apps vs Zalos: Which Fits Your Stack'
+date: 2026-03-25 19:18:23+00:00
+slug: agentic-ai-finance-operations-oracle-zalos
+description: 'Oracle launched 22 Fusion Agentic Apps on March 24, 2026. Zalos raised $3.6M the same day. CFOs: here''s which autonomous finance path fits your ERP stack.'
 keywords:
-  - "Oracle Fusion agentic applications vs Zalos"
-  - "agentic AI finance deployment"
-  - "ERP automation without migration"
-  - "screen-trained finance agents"
-  - "enterprise finance workflow automation"
-  - "Oracle Action Unit pricing"
-author: ""
+- Oracle Fusion agentic applications vs Zalos
+- agentic AI finance deployment
+- ERP automation without migration
+- screen-trained finance agents
+- enterprise finance workflow automation
+- Oracle Action Unit pricing
+author: ''
 tags:
-  - "AI Strategy"
-  - "Oracle"
-  - "Implementation"
-  - "Operations & Finance"
-  - "Operations & Finance"
-categories: ["Implementation", "AI Strategy", "Implementation"]
+- AI Strategy
+- Oracle
+- Implementation
+- Operations & Finance
+- Operations & Finance
+categories:
+- Implementation
+- AI Strategy
+- Implementation
 cover:
-  image: "https://images.pexels.com/photos/5717797/pexels-photo-5717797.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200"
-  alt: "Professional analyzing financial data and workflow automation on computer dashboard"
-  caption: ""
-image_credit_name: "www.kaboompics.com"
-image_credit_url: "https://www.pexels.com/@karola-g"
-image_credit_source: "Pexels"
-schema_type: "Article"
+  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/agentic-ai-finance-operations-oracle-zalos.png
+  alt: 'TECHNOLOGY PROFILE: Oracle Fusion Agentic Apps vs Zalos: Which Fits Your Stack'
+  caption: ''
+  generation: gemini-v1
+  credit_name: Particle Post
+  credit_url: https://theparticlepost.com
+  credit_source: ai-generated
+image_credit_name: Particle Post
+image_credit_url: https://theparticlepost.com
+image_credit_source: ai-generated
+schema_type: Article
 has_faq: true
 faq_pairs:
-  - q: "Do Oracle's Fusion Agentic Applications work if I'm not already on Oracle Cloud?"
-    a: "No. Oracle's 22 Fusion Agentic Applications require Oracle Fusion Cloud as the underlying platform. Organizations running SAP, NetSuite, Sage, or any on-premise ERP must complete a full platform migration (costing $800,000 to $30-plus million) before accessing any agentic feature."
-  - q: "How does Zalos train its agents without API access to my ERP?"
-    a: "Zalos uses screen recordings of human finance workflows as training input. A staff accountant records a task and the platform converts that recording into an executable agent that replicates the same sequence at machine speed, logging in with credentials like a human user."
-  - q: "What happens to Zalos-trained agents if the ERP vendor updates its interface?"
-    a: "Screen-trained agents are brittle when UI changes occur; a NetSuite or Sage interface update can break a trained workflow. As of March 2026, Zalos has not publicly disclosed how its platform detects and recovers from interface changes at enterprise scale."
-  - q: "What is Oracle's Action Unit pricing model for agentic applications?"
-    a: "Oracle prices agentic application consumption in Action Units, each worth approximately one cent, replacing the per-user SaaS seat model. Organizations pay for autonomous work executed rather than licensed users. Real-world cost data from early adopters is expected in Q3 2026."
-  - q: "Which agentic finance approach is better for a $500M company running a mixed ERP stack?"
-    a: "For mid-market companies running mixed stacks (NetSuite, SAP, and separate banking platforms), Zalos is the more practical near-term option. It avoids a multi-million-dollar migration and deploys in weeks. Oracle only becomes viable if the organization is already planning ERP consolidation onto Fusion Cloud."
+- q: Do Oracle's Fusion Agentic Applications work if I'm not already on Oracle Cloud?
+  a: No. Oracle's 22 Fusion Agentic Applications require Oracle Fusion Cloud as the underlying platform. Organizations running SAP, NetSuite, Sage, or any on-premise ERP must complete a full platform migration (costing $800,000 to $30-plus million) before accessing any agentic feature.
+- q: How does Zalos train its agents without API access to my ERP?
+  a: Zalos uses screen recordings of human finance workflows as training input. A staff accountant records a task and the platform converts that recording into an executable agent that replicates the same sequence at machine speed, logging in with credentials like a human user.
+- q: What happens to Zalos-trained agents if the ERP vendor updates its interface?
+  a: Screen-trained agents are brittle when UI changes occur; a NetSuite or Sage interface update can break a trained workflow. As of March 2026, Zalos has not publicly disclosed how its platform detects and recovers from interface changes at enterprise scale.
+- q: What is Oracle's Action Unit pricing model for agentic applications?
+  a: Oracle prices agentic application consumption in Action Units, each worth approximately one cent, replacing the per-user SaaS seat model. Organizations pay for autonomous work executed rather than licensed users. Real-world cost data from early adopters is expected in Q3 2026.
+- q: Which agentic finance approach is better for a $500M company running a mixed ERP stack?
+  a: For mid-market companies running mixed stacks (NetSuite, SAP, and separate banking platforms), Zalos is the more practical near-term option. It avoids a multi-million-dollar migration and deploys in weeks. Oracle only becomes viable if the organization is already planning ERP consolidation onto Fusion Cloud.
 ShowToc: true
 TocOpen: false
 draft: false
-
-content_type: "technology_profile"
+content_type: technology_profile
+image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/agentic-ai-finance-operations-oracle-zalos.png
+image_alt: 'TECHNOLOGY PROFILE: Oracle Fusion Agentic Apps vs Zalos: Which Fits Your Stack'
 ---
 Oracle launched 22 Fusion Agentic Applications on March 24, 2026, betting that enterprises already running its cloud ERP will activate autonomous finance workflows without replacing anything. That same day, San Francisco startup Zalos closed a $3.6M seed round to do the opposite: send screen-trained agents into whatever ERP you already own, no migration required.
 

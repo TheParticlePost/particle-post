@@ -1,49 +1,54 @@
 ---
-title: "Agentic AI Risk Management Finance: Security Overhaul Now"
-date: 2026-03-28T21:01:26Z
-slug: "agentic-ai-risk-management-finance-security"
-description: "Agentic AI risk in finance is immediate: RSAC 2026 exposed 3 critical governance gaps. Cisco, Oracle, and Microsoft warn enterprises to act now before regulators do."
+title: 'Agentic AI Risk Management Finance: Security Overhaul Now'
+date: 2026-03-28 21:01:26+00:00
+slug: agentic-ai-risk-management-finance-security
+description: 'Agentic AI risk in finance is immediate: RSAC 2026 exposed 3 critical governance gaps. Cisco, Oracle, and Microsoft warn enterprises to act now before regulators do.'
 keywords:
-  - "agentic AI risk management finance"
-  - "agentic AI regulatory compliance fintech"
-  - "AI agent governance enterprise"
-  - "zero-trust architecture AI agents"
-  - "non-human identity security"
-  - "autonomous agent controls banking"
-author: ""
+- agentic AI risk management finance
+- agentic AI regulatory compliance fintech
+- AI agent governance enterprise
+- zero-trust architecture AI agents
+- non-human identity security
+- autonomous agent controls banking
+author: ''
 tags:
-  - "Agentic AI"
-  - "AI Security"
-  - "Zero-Trust"
-  - "Enterprise Risk"
-  - "RSAC 2026"
+- Agentic AI
+- AI Security
+- Zero-Trust
+- Enterprise Risk
+- RSAC 2026
 categories:
-  - "AI Risk Management"
+- AI Risk Management
 cover:
-  image: "https://cdn.pixabay.com/photo/2019/11/08/10/34/cyber-4610993_1280.jpg"
-  alt: "Abstract digital cybersecurity network with interconnected nodes and data flows representing enterprise security infrastructure"
-  caption: ""
-image_credit_name: "TheDigitalArtist"
-image_credit_url: "https://pixabay.com/users/TheDigitalArtist-202249"
-image_credit_source: "Pixabay"
-schema_type: "NewsArticle"
+  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/agentic-ai-risk-management-finance-security.png
+  alt: 'NEWS ANALYSIS: Agentic AI Risk Management Finance: Security Overhaul Now'
+  caption: ''
+  generation: gemini-v1
+  credit_name: Particle Post
+  credit_url: https://theparticlepost.com
+  credit_source: ai-generated
+image_credit_name: Particle Post
+image_credit_url: https://theparticlepost.com
+image_credit_source: ai-generated
+schema_type: NewsArticle
 has_faq: true
 faq_pairs:
-  - q: "What is agentic AI security and why does it matter for finance?"
-    a: "Agentic AI security governs identity controls, data access scoping, and zero-trust architecture for autonomous agents. In finance, agents execute transactions and modify records on the firm's behalf, creating direct regulatory liability under GLBA and BSA when controls fail."
-  - q: "How does agentic AI regulatory compliance in fintech differ from traditional software compliance?"
-    a: "Traditional software compliance governs static, human-triggered actions. Agentic AI acts autonomously, so firms own every agent action under existing law without human sign-off. RSAC 2026 coverage described this as 'the agentic wild west,' with agents proliferating faster than security teams can track."
-  - q: "What are the three critical governance gaps in enterprise AI agent deployments?"
-    a: "RSAC 2026 identified three gaps: agent identity with over-permissioned credentials and no rotation policy; data layer protection where agents access out-of-scope records; and zero-trust architecture that was built for human users, not dynamic non-human workloads."
-  - q: "Can a prompt injection attack compromise a financial institution's AI agent?"
-    a: "Yes. Stack Overflow documented prompt injection as a live production attack vector in March 2026. Malicious text in an uploaded document can redirect an agent to transmit customer PII externally. The firm legally owns the breach even without human authorization."
-  - q: "Which vendors announced AI agent security tools at RSAC 2026?"
-    a: "Cisco, Oracle, and Microsoft each announced agent-hardening tools at RSAC 2026. Cisco's framework specifically addresses agent-to-agent authentication, providing a zero-trust reference architecture for multi-agent workflows in enterprise financial systems."
+- q: What is agentic AI security and why does it matter for finance?
+  a: Agentic AI security governs identity controls, data access scoping, and zero-trust architecture for autonomous agents. In finance, agents execute transactions and modify records on the firm's behalf, creating direct regulatory liability under GLBA and BSA when controls fail.
+- q: How does agentic AI regulatory compliance in fintech differ from traditional software compliance?
+  a: Traditional software compliance governs static, human-triggered actions. Agentic AI acts autonomously, so firms own every agent action under existing law without human sign-off. RSAC 2026 coverage described this as 'the agentic wild west,' with agents proliferating faster than security teams can track.
+- q: What are the three critical governance gaps in enterprise AI agent deployments?
+  a: 'RSAC 2026 identified three gaps: agent identity with over-permissioned credentials and no rotation policy; data layer protection where agents access out-of-scope records; and zero-trust architecture that was built for human users, not dynamic non-human workloads.'
+- q: Can a prompt injection attack compromise a financial institution's AI agent?
+  a: Yes. Stack Overflow documented prompt injection as a live production attack vector in March 2026. Malicious text in an uploaded document can redirect an agent to transmit customer PII externally. The firm legally owns the breach even without human authorization.
+- q: Which vendors announced AI agent security tools at RSAC 2026?
+  a: Cisco, Oracle, and Microsoft each announced agent-hardening tools at RSAC 2026. Cisco's framework specifically addresses agent-to-agent authentication, providing a zero-trust reference architecture for multi-agent workflows in enterprise financial systems.
 ShowToc: true
 TocOpen: false
 draft: false
-
-content_type: "news_analysis"
+content_type: news_analysis
+image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/agentic-ai-risk-management-finance-security.png
+image_alt: 'NEWS ANALYSIS: Agentic AI Risk Management Finance: Security Overhaul Now'
 ---
 
 Cisco's security researchers told RSAC 2026 attendees something board members did not want to hear: autonomous AI agents are already operating inside enterprise networks with weaker identity controls than a junior contractor. The security debt is not theoretical. It is compounding daily.

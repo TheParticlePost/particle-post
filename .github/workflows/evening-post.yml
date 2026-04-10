@@ -48,8 +48,19 @@ jobs:
       - name: Install Python dependencies
         run: pip install -r requirements.txt
 
+      - name: Set up Node.js (for lib/covers/ TS cover generator)
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install Node dependencies
+        run: npm ci
+
       - name: Install Playwright for graphics rendering
-        run: python -m playwright install chromium --with-deps
+        run: |
+          python -m playwright install chromium --with-deps
+          npx playwright install chromium
 
       - name: Run evening pipeline
         env:
@@ -60,6 +71,7 @@ jobs:
           PIXABAY_API_KEY: ${{ secrets.PIXABAY_KEY }}
           UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
           INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           SUPABASE_URL: https://uzgywmjexciknmpbebqs.supabase.co
           NEXT_PUBLIC_SUPABASE_URL: https://uzgywmjexciknmpbebqs.supabase.co
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
