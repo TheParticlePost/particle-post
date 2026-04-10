@@ -26,12 +26,6 @@ cover:
   alt: 'TECHNOLOGY PROFILE: Oracle Fusion Agentic Apps vs Zalos: Which Fits Your Stack'
   caption: ''
   generation: gemini-v1
-  credit_name: Particle Post
-  credit_url: https://theparticlepost.com
-  credit_source: ai-generated
-image_credit_name: Particle Post
-image_credit_url: https://theparticlepost.com
-image_credit_source: ai-generated
 schema_type: Article
 has_faq: true
 faq_pairs:
@@ -51,6 +45,7 @@ draft: false
 content_type: technology_profile
 image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/agentic-ai-finance-operations-oracle-zalos.png?v=gemini-v1
 image_alt: 'TECHNOLOGY PROFILE: Oracle Fusion Agentic Apps vs Zalos: Which Fits Your Stack'
+visuals_generation: v2
 ---
 Oracle launched 22 Fusion Agentic Applications on March 24, 2026, betting that enterprises already running its cloud ERP will activate autonomous finance workflows without replacing anything. That same day, San Francisco startup Zalos closed a $3.6M seed round to do the opposite: send screen-trained agents into whatever ERP you already own, no migration required.
 

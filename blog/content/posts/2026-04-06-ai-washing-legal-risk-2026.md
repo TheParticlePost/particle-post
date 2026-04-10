@@ -25,15 +25,9 @@ has_faq: true
 cover:
   image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-washing-legal-risk-2026.png?v=gemini-v1
   alt: 'NEWS ANALYSIS: AI Washing Legal Risk 2026: FTC & SEC Enforcement'
-  credit_name: Particle Post
-  credit_url: https://theparticlepost.com
-  credit_source: ai-generated
   generation: gemini-v1
 image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-washing-legal-risk-2026.png?v=gemini-v1
 image_alt: 'NEWS ANALYSIS: AI Washing Legal Risk 2026: FTC & SEC Enforcement'
-image_credit_name: Particle Post
-image_credit_url: https://theparticlepost.com
-image_credit_source: ai-generated
 faq_pairs:
 - question: What is AI washing and why is it a legal risk in 2026?
   answer: AI washing means making unsubstantiated claims about a product's AI capabilities in marketing, investor, or sales materials. The FTC, SEC, and EU regulators now treat these claims as potential consumer deception, securities fraud, or both, as confirmed by the DoNotPay settlement and SEC's 2024 actions against Delphia and Global Predictions.
@@ -48,6 +42,7 @@ faq_pairs:
 ShowToc: true
 TocOpen: false
 draft: false
+visuals_generation: v2
 ---
 
 Does AI Washing Put Your Company at Legal Risk in 2026?
@@ -58,7 +53,7 @@ The FTC charged DoNotPay in 2024 with deceptive AI claims, extracting a $193,000
 
 AI washing means making unsubstantiated or exaggerated claims about a product's AI capabilities in marketing, investor, or sales materials. In 2026, this is no longer a brand problem: the FTC, SEC, and EU regulators treat these claims as potential consumer deception, securities fraud, or investor manipulation simultaneously, each carrying its own enforcement track and penalty schedule.
 
-![Stat Card visualization](https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/visuals/ai-washing-legal-risk-2026-stat_card.png)
+![Stat Card visualization](https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/visuals/ai-washing-legal-risk-2026-stat_card.png?v=v2)
 
 
 Most executives assume AI washing is a marketing problem, something for the brand team to manage. They picture a slapped wrist, a corrected webpage, and a short press cycle. The legal reality in 2026 is different.

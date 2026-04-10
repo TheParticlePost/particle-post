@@ -23,12 +23,6 @@ cover:
   alt: 'NEWS ANALYSIS: AI Fraud Detection ROI: Real Wins, Rising Threats'
   caption: ''
   generation: gemini-v1
-  credit_name: Particle Post
-  credit_url: https://theparticlepost.com
-  credit_source: ai-generated
-image_credit_name: Particle Post
-image_credit_url: https://theparticlepost.com
-image_credit_source: ai-generated
 schema_type: NewsArticle
 has_faq: true
 faq_pairs:
@@ -48,6 +42,7 @@ draft: false
 content_type: news_analysis
 image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-fraud-detection-roi-arms-race.png?v=gemini-v1
 image_alt: 'NEWS ANALYSIS: AI Fraud Detection ROI: Real Wins, Rising Threats'
+visuals_generation: v2
 ---
 
 ## The Myth That Gets CFOs in Trouble

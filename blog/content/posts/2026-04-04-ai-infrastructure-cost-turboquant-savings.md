@@ -23,12 +23,6 @@ cover:
   alt: 'NEWS ANALYSIS: AI Infrastructure Cost: Does TurboQuant Save Money?'
   caption: ''
   generation: gemini-v1
-  credit_name: Particle Post
-  credit_url: https://theparticlepost.com
-  credit_source: ai-generated
-image_credit_name: Particle Post
-image_credit_url: https://theparticlepost.com
-image_credit_source: ai-generated
 schema_type: NewsArticle
 has_faq: true
 ShowToc: true
@@ -48,6 +42,7 @@ faq_pairs:
 content_type: news_analysis
 image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-infrastructure-cost-turboquant-savings.png?v=gemini-v1
 image_alt: 'NEWS ANALYSIS: AI Infrastructure Cost: Does TurboQuant Save Money?'
+visuals_generation: v2
 ---
 Google's TurboQuant compresses AI model memory by 6x on H100 GPUs, according to Google Research, and CFOs are treating that number as a capital expenditure fix. It is not. Memory is one line item in a data center stack that also includes compute, networking, power, cooling, and software licensing.
 

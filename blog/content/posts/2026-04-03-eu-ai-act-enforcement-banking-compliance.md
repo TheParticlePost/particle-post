@@ -25,12 +25,6 @@ cover:
   alt: 'DEEP DIVE: EU AI Act Enforcement: AI Compliance Banking Guide'
   caption: ''
   generation: gemini-v1
-  credit_name: Particle Post
-  credit_url: https://theparticlepost.com
-  credit_source: ai-generated
-image_credit_name: Particle Post
-image_credit_url: https://theparticlepost.com
-image_credit_source: ai-generated
 schema_type: Article
 has_faq: true
 ShowToc: true
@@ -50,6 +44,7 @@ faq_pairs:
 content_type: deep_dive
 image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/eu-ai-act-enforcement-banking-compliance.png?v=gemini-v1
 image_alt: 'DEEP DIVE: EU AI Act Enforcement: AI Compliance Banking Guide'
+visuals_generation: v2
 ---
 
 August 2, 2026 is not a suggestion. Any bank or fintech operating in the EU that runs credit scoring, creditworthiness assessment, or AI-driven insurance pricing without a documented conformity assessment faces fines up to 15 million euros or 3% of global annual turnover, whichever is greater, according to the EU AI Act penalty framework. The compliance window is closed. Execution is all that remains.

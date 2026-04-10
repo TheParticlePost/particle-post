@@ -25,12 +25,6 @@ cover:
   alt: 'NEWS ANALYSIS: Agentic AI Forces Fintech Into Regulatory Gray Zone'
   caption: ''
   generation: gemini-v1
-  credit_name: Particle Post
-  credit_url: https://theparticlepost.com
-  credit_source: ai-generated
-image_credit_name: Particle Post
-image_credit_url: https://theparticlepost.com
-image_credit_source: ai-generated
 ShowToc: true
 TocOpen: false
 draft: false
@@ -38,6 +32,7 @@ content_type: news_analysis
 schema_type: NewsArticle
 image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/agentic-ai-regulatory-gap-fintech.png?v=gemini-v1
 image_alt: 'NEWS ANALYSIS: Agentic AI Forces Fintech Into Regulatory Gray Zone'
+visuals_generation: v2
 ---
 
 JPMorgan Chase now runs AI agents that autonomously execute segments of intraday trading strategies, and no regulator has yet defined who is liable when one of those agents misfires. That accountability gap sits at the center of a slow-motion compliance crisis spreading across global financial services.

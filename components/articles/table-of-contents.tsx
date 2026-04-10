@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import GithubSlugger from "github-slugger";
 import { cn } from "@/lib/utils";
 
 interface TocItem {
@@ -14,17 +15,22 @@ interface TableOfContentsProps {
 }
 
 function extractHeadings(content: string): TocItem[] {
+  // Match the exact same algorithm rehype-slug uses server-side:
+  // github-slugger keeps a counter so duplicate headings get "-1", "-2" suffixes.
   const headingRegex = /^(#{2,3})\s+(.+)$/gm;
+  const slugger = new GithubSlugger();
   const items: TocItem[] = [];
   let match: RegExpExecArray | null;
 
   while ((match = headingRegex.exec(content)) !== null) {
     const level = match[1].length;
-    const text = match[2].trim();
-    const id = text
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/(^-|-$)/g, "");
+    // Strip markdown bold/italic/code syntax from heading text
+    const text = match[2]
+      .trim()
+      .replace(/\*\*(.*?)\*\*/g, "$1")
+      .replace(/\*(.*?)\*/g, "$1")
+      .replace(/`(.*?)`/g, "$1");
+    const id = slugger.slug(text);
     items.push({ id, text, level });
   }
 

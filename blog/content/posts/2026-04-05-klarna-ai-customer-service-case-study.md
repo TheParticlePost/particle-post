@@ -25,15 +25,9 @@ has_faq: true
 cover:
   image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/klarna-ai-customer-service-case-study.png?v=gemini-v1
   alt: 'CASE STUDY: Klarna AI Customer Service: What the Real Numbers Show'
-  credit_name: Particle Post
-  credit_url: https://theparticlepost.com
-  credit_source: ai-generated
   generation: gemini-v1
 image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/klarna-ai-customer-service-case-study.png?v=gemini-v1
 image_alt: 'CASE STUDY: Klarna AI Customer Service: What the Real Numbers Show'
-image_credit_name: Particle Post
-image_credit_url: https://theparticlepost.com
-image_credit_source: ai-generated
 faq_pairs:
 - question: Did Klarna's AI actually replace 700 jobs?
   answer: Klarna cut its workforce from roughly 7,000 to 3,500 employees between 2022 and 2024. The AI handled volume equivalent to 700 agents in month one, but by September 2025 Klarna was reassigning internal staff to cover support gaps, indicating full replacement did not hold.
@@ -48,6 +42,7 @@ faq_pairs:
 ShowToc: true
 TocOpen: false
 draft: false
+visuals_generation: v2
 ---
 
 How Klarna Cut 700 Support Jobs With AI and What the Real Numbers Show

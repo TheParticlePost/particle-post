@@ -25,15 +25,9 @@ has_faq: true
 cover:
   image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/kodiak-ai-autonomous-trucking-midwest-expansion.png?v=gemini-v1
   alt: 'CASE STUDY: Autonomous Trucking AI ROI: Kodiak''s Midwest Case Study'
-  credit_name: Particle Post
-  credit_url: https://theparticlepost.com
-  credit_source: ai-generated
   generation: gemini-v1
 image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/kodiak-ai-autonomous-trucking-midwest-expansion.png?v=gemini-v1
 image_alt: 'CASE STUDY: Autonomous Trucking AI ROI: Kodiak''s Midwest Case Study'
-image_credit_name: Particle Post
-image_credit_url: https://theparticlepost.com
-image_credit_source: ai-generated
 faq_pairs:
 - question: What is Kodiak AI's autonomous trucking expansion strategy?
   answer: 'Kodiak AI uses a staged, corridor-by-corridor model: validate on existing commercial lanes, run supervised demonstrations in new geographies, then open commercial onboarding. Its April 2026 Ohio and Indiana demonstrations built on Sunbelt commercial operations with Werner Enterprises.'
@@ -48,6 +42,7 @@ faq_pairs:
 ShowToc: true
 TocOpen: false
 draft: false
+visuals_generation: v2
 ---
 
 Kodiak AI ran its autonomous trucks on Ohio and Indiana highways in April 2026, marking the company's first documented move beyond its Sunbelt operating corridor. The expansion followed a deliberate, criteria-driven readiness framework that logistics executives can study and replicate.
@@ -56,7 +51,7 @@ Kodiak AI ran its autonomous trucks on Ohio and Indiana highways in April 2026, 
 
 Autonomous trucking AI performance does not transfer automatically between geographic corridors. Kodiak's Sunbelt record, built on Interstate 10 and Interstate 45 connecting Texas, Louisiana, and Florida, established a strong safety baseline but could not predict performance in Midwest conditions. Weather variance, aging infrastructure, and complex interchange patterns near Columbus and Indianapolis each required separate operational validation before carrier partners would commit Midwest freight volumes.
 
-![Timeline visualization](https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/visuals/kodiak-ai-autonomous-trucking-midwest-expansion-timeline.png)
+![Timeline visualization](https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/visuals/kodiak-ai-autonomous-trucking-midwest-expansion-timeline.png?v=v2)
 
 
 Kodiak spent its formative operating years on those southern corridors. They offered predictable weather, lower traffic complexity, and regulatory environments that early autonomous vehicle operators deliberately chose. According to Kodiak's April 2026 GlobeNewswire release, the company completed commercial freight hauls across the Sunbelt with a safety record strong enough to trigger the Midwest evaluation.
@@ -97,7 +92,7 @@ Phase three is the commercial onboarding pipeline now under way. Kodiak has not 
 
 Operations directors should resist reading Kodiak's April 2026 announcement as proof of commercial scale in the Midwest. The demonstration phase generates safety and reliability data. It does not yet generate confirmed revenue or carrier volume commitments on Ohio and Indiana lanes.
 
-![Before After visualization](https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/visuals/kodiak-ai-autonomous-trucking-midwest-expansion-before_after.png)
+![Before After visualization](https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/visuals/kodiak-ai-autonomous-trucking-midwest-expansion-before_after.png?v=v2)
 
 
 The results do show operational confidence. Kodiak's autonomy stack completed the Midwest demonstrations without safety incidents requiring intervention, according to the April 2026 GlobeNewswire release. Insurance underwriters and carrier procurement teams use incident-free demonstration miles as a primary criterion for awarding commercial contracts.

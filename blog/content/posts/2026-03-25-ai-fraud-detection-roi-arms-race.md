@@ -27,12 +27,6 @@ cover:
   alt: 'DEEP DIVE: The AI Fraud Arms Race: What the Research Shows About Detection ROI, and Where It Breaks'
   caption: ''
   generation: gemini-v1
-  credit_name: Particle Post
-  credit_url: https://theparticlepost.com
-  credit_source: ai-generated
-image_credit_name: Particle Post
-image_credit_url: https://theparticlepost.com
-image_credit_source: ai-generated
 schema_type: Article
 has_faq: true
 faq_pairs:
@@ -52,6 +46,7 @@ draft: false
 content_type: deep_dive
 image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-fraud-detection-roi-arms-race.png?v=gemini-v1
 image_alt: 'DEEP DIVE: The AI Fraud Arms Race: What the Research Shows About Detection ROI, and Where It Breaks'
+visuals_generation: v2
 ---
 JPMorgan Chase reported blocking over $15 billion in fraud attempts in 2023 using AI-powered detection, then watched its fraud team scramble the following year as criminals deployed the same technology to build attacks those models had never seen. This is not a metaphor. It is the operating reality every CFO and Chief Risk Officer inherits when they sign an AI fraud contract.
 

@@ -25,12 +25,6 @@ cover:
   alt: 'NEWS ANALYSIS: Can AI Agents Actually Handle Your Company''s Money?'
   caption: ''
   generation: gemini-v1
-  credit_name: Particle Post
-  credit_url: https://theparticlepost.com
-  credit_source: ai-generated
-image_credit_name: Particle Post
-image_credit_url: https://theparticlepost.com
-image_credit_source: ai-generated
 schema_type: NewsArticle
 has_faq: true
 faq_pairs:
@@ -48,6 +42,7 @@ draft: false
 content_type: news_analysis
 image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-agents-corporate-payments-infrastructure-readiness.png?v=gemini-v1
 image_alt: 'NEWS ANALYSIS: Can AI Agents Actually Handle Your Company''s Money?'
+visuals_generation: v2
 ---
 Visa completed hundreds of AI agent-initiated transactions in 2025 and expects millions of consumers to use autonomous agents for purchases by the 2026 holiday season. That timeline is compelling on paper, but the infrastructure enterprise finance teams actually need is still being built.
 

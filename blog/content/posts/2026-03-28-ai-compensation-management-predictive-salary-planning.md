@@ -24,12 +24,6 @@ cover:
   alt: 'NEWS ANALYSIS: AI Compensation Management: What CFOs Must Know in 2026'
   caption: ''
   generation: gemini-v1
-  credit_name: Particle Post
-  credit_url: https://theparticlepost.com
-  credit_source: ai-generated
-image_credit_name: Particle Post
-image_credit_url: https://theparticlepost.com
-image_credit_source: ai-generated
 schema_type: NewsArticle
 has_faq: true
 faq_pairs:
@@ -49,6 +43,7 @@ draft: false
 content_type: news_analysis
 image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-compensation-management-predictive-salary-planning.png?v=gemini-v1
 image_alt: 'NEWS ANALYSIS: AI Compensation Management: What CFOs Must Know in 2026'
+visuals_generation: v2
 ---
 
 Decusoft launched Compose Insights in March 2026 with a specific promise: cut the time HR leaders spend on compensation planning by using predictive modeling on live workforce data. The question CFOs should ask is not whether AI can analyze salary data. It is whether their HR teams can actually use it without introducing new compliance and fairness risks.

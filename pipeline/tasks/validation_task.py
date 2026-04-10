@@ -35,8 +35,12 @@ def build_validation_task(
             "Apply the following checklist. Start at 100 and deduct points for each failure.\n\n"
 
             "1. WORD COUNT — Count words in the article body only (exclude YAML frontmatter). "
-            "Check the funnel_type: {funnel_type}\n"
-            "   TOF: minimum 600, maximum 1000 words | MOF: minimum 1800, maximum 3000 words | BOF: minimum 1200, maximum 2000 words\n"
+            "Check the funnel_type AND the content_type (look for 'content_type:' in frontmatter):\n"
+            "   TOF: minimum 600, maximum 1000 words\n"
+            "   MOF (default): minimum 1800, maximum 3000 words\n"
+            "   BOF (default): minimum 1200, maximum 2000 words\n"
+            "   case_study (overrides MOF/BOF): minimum 1500, maximum 2500 words\n"
+            "   deep_dive (overrides MOF): minimum 2500, maximum 4000 words\n"
             "   Penalty if below minimum OR above maximum: -20 points\n"
             "   ALSO CHECK: The formatter must output exactly ONE version of the article. "
             "If you see duplicate content (two versions stacked), that is an automatic -20.\n\n"
@@ -103,7 +107,26 @@ def build_validation_task(
             "    - At least 1 stat-box shortcode or STAT: marker\n"
             "    - At least 1 blockquote callout\n"
             "    For MOF/BOF (funnel_type: {funnel_type}): require at least 2 stat-boxes.\n"
+            "    For case_study / deep_dive: require at least 3 stat-boxes.\n"
             "    Penalty for missing visual elements: −5 points\n\n"
+
+            "16. LIMITATIONS SECTION (case_study + deep_dive only) — Check content_type. "
+            "If 'case_study' or 'deep_dive', the article MUST contain one of: "
+            "'## Limitations', '## What the Data Doesn't Show', '## Caveats', "
+            "'### Limitations', '### What We Don't Know'.\n"
+            "    Penalty if missing for case_study/deep_dive: −15 points\n\n"
+
+            "17. CITATION DENSITY (case_study + deep_dive only) — Scan each paragraph "
+            "that contains a percentage, dollar amount, or numeric claim. Each such "
+            "paragraph must include a citation phrase within 2 sentences of the number "
+            "(publication name, institution, filing type, or URL).\n"
+            "    Penalty: −10 points if more than 2 numeric claims are orphaned\n\n"
+
+            "18. PRIMARY SOURCE USAGE (case_study + deep_dive only) — Check the article "
+            "body for references to primary sources: '10-K', '10-Q', '8-K', 'SEC EDGAR', "
+            "'annual report', 'earnings call', 'investor relations', 'IR page', 'FY2024', "
+            "'FY2025', 'FY2026', 'fiscal year', 'proxy statement', or explicit filing dates.\n"
+            "    Penalty: −10 points if zero primary-source references in a case_study or deep_dive\n\n"
 
             "DECISION RULE: If final score ≥ 65 → APPROVE. If below 65 → REJECT.\n\n"
 

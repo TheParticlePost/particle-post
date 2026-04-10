@@ -25,15 +25,9 @@ has_faq: true
 cover:
   image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/agentic-ai-professional-services-transformation.png?v=gemini-v1
   alt: 'INDUSTRY BRIEFING: Agentic AI Professional Services: The $1.86T Shift'
-  credit_name: Particle Post
-  credit_url: https://theparticlepost.com
-  credit_source: ai-generated
   generation: gemini-v1
 image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/agentic-ai-professional-services-transformation.png?v=gemini-v1
 image_alt: 'INDUSTRY BRIEFING: Agentic AI Professional Services: The $1.86T Shift'
-image_credit_name: Particle Post
-image_credit_url: https://theparticlepost.com
-image_credit_source: ai-generated
 faq_pairs:
 - question: What is agentic AI in professional services?
   answer: Agentic AI in professional services autonomously executes multi-step workflows including research, documentation, and compliance checking without a human prompt at each step. Firms like Rocketlane, Trail of Bits, and Firstsource have deployed agentic models to replace manually staffed delivery processes.
@@ -48,6 +42,7 @@ faq_pairs:
 ShowToc: true
 TocOpen: false
 draft: false
+visuals_generation: v2
 ---
 
 ## The Most Common Misconception About AI and Professional Services

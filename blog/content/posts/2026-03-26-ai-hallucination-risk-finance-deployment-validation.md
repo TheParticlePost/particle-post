@@ -24,12 +24,6 @@ cover:
   alt: 'NEWS ANALYSIS: AI Risk Management Finance: Stop Hallucinations Before Deployment'
   caption: ''
   generation: gemini-v1
-  credit_name: Particle Post
-  credit_url: https://theparticlepost.com
-  credit_source: ai-generated
-image_credit_name: Particle Post
-image_credit_url: https://theparticlepost.com
-image_credit_source: ai-generated
 schema_type: NewsArticle
 has_faq: true
 ShowToc: true
@@ -49,6 +43,7 @@ faq_pairs:
 content_type: news_analysis
 image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-hallucination-risk-finance-deployment-validation.png?v=gemini-v1
 image_alt: 'NEWS ANALYSIS: AI Risk Management Finance: Stop Hallucinations Before Deployment'
+visuals_generation: v2
 ---
 
 ## The Most Common Misconception About AI Risk Management in Finance

@@ -27,12 +27,6 @@ cover:
   alt: 'NEWS ANALYSIS: Big Tech''s $700B AI Bet Strains Power Grids and Carbon Markets'
   caption: ''
   generation: gemini-v1
-  credit_name: Particle Post
-  credit_url: https://theparticlepost.com
-  credit_source: ai-generated
-image_credit_name: Particle Post
-image_credit_url: https://theparticlepost.com
-image_credit_source: ai-generated
 ShowToc: true
 TocOpen: false
 draft: false
@@ -40,6 +34,7 @@ content_type: news_analysis
 schema_type: NewsArticle
 image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-data-center-energy-costs.png?v=gemini-v1
 image_alt: 'NEWS ANALYSIS: Big Tech''s $700B AI Bet Strains Power Grids and Carbon Markets'
+visuals_generation: v2
 ---
 
 Amazon alone plans to spend $200 billion on capital expenditures this year. That single number explains why power grids, carbon markets, and utility balance sheets are all under simultaneous pressure in 2026.

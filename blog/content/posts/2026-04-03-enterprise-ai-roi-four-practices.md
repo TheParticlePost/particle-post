@@ -23,12 +23,6 @@ cover:
   alt: 'DEEP DIVE: Enterprise AI ROI: 4 Practices That Unlock 55% Returns'
   caption: ''
   generation: gemini-v1
-  credit_name: Particle Post
-  credit_url: https://theparticlepost.com
-  credit_source: ai-generated
-image_credit_name: Particle Post
-image_credit_url: https://theparticlepost.com
-image_credit_source: ai-generated
 schema_type: Article
 has_faq: true
 faq_pairs:
@@ -48,6 +42,7 @@ draft: false
 content_type: deep_dive
 image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/enterprise-ai-roi-four-practices.png?v=gemini-v1
 image_alt: 'DEEP DIVE: Enterprise AI ROI: 4 Practices That Unlock 55% Returns'
+visuals_generation: v2
 ---
 
 MIT's Project NANDA analyzed more than 300 publicly disclosed AI deployments and found that 95% of enterprise AI pilots produced no measurable P&L impact. A specific cluster of product development teams following four documented practices reported median generative AI returns of 55%, according to the IBM Institute for Business Value. The gap between those two populations is not random. It is structural, repeatable, and diagnosable before you spend another dollar.

@@ -49,9 +49,11 @@ def assemble_article(
     if graphic_data and graphic_data.get("cover", {}).get("url"):
         image_url = graphic_data["cover"]["url"]
         image_alt = graphic_data["cover"].get("alt", "")
-        photographer_name = "Particle Post"
-        photographer_url = "https://theparticlepost.com"
-        image_source = "generated"
+        # Don't credit generated covers — no "Photo via ai-generated" line.
+        # ImageCredit component returns null when all three are empty.
+        photographer_name = ""
+        photographer_url = ""
+        image_source = ""
     else:
         image_url = photo_data.get("image_url", "")
         image_alt = photo_data.get("alt_text", "")

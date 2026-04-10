@@ -24,12 +24,6 @@ cover:
   alt: 'HOW-TO: AI Agent Governance Framework: 5-Step Control Plan'
   caption: ''
   generation: gemini-v1
-  credit_name: Particle Post
-  credit_url: https://theparticlepost.com
-  credit_source: ai-generated
-image_credit_name: Particle Post
-image_credit_url: https://theparticlepost.com
-image_credit_source: ai-generated
 schema_type: HowTo
 has_faq: true
 faq_pairs:
@@ -49,6 +43,7 @@ draft: false
 content_type: how_to
 image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-agent-governance-framework-5-steps.png?v=gemini-v1
 image_alt: 'HOW-TO: AI Agent Governance Framework: 5-Step Control Plan'
+visuals_generation: v2
 ---
 Only 23% of organizations have a formal AI agent governance strategy, according to AI Thinker Lab. The other 77% are running autonomous software in production while improvising the rules in real time.
 

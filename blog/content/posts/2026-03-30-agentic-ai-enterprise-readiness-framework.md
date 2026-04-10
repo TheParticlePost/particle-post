@@ -24,12 +24,6 @@ cover:
   alt: 'HOW-TO: Agentic AI Finance: 5-Phase Enterprise Readiness Framework'
   caption: ''
   generation: gemini-v1
-  credit_name: Particle Post
-  credit_url: https://theparticlepost.com
-  credit_source: ai-generated
-image_credit_name: Particle Post
-image_credit_url: https://theparticlepost.com
-image_credit_source: ai-generated
 schema_type: HowTo
 has_faq: true
 ShowToc: true
@@ -49,6 +43,7 @@ faq_pairs:
 content_type: how_to
 image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/agentic-ai-enterprise-readiness-framework.png?v=gemini-v1
 image_alt: 'HOW-TO: Agentic AI Finance: 5-Phase Enterprise Readiness Framework'
+visuals_generation: v2
 ---
 Enterprises lag 12 to 18 months behind agentic AI vendor deployment timelines, according to SiliconANGLE research published March 28, 2026. Financial services firms still running manual process automation while competitors deploy autonomous agents are losing measurable ground on cycle time, fraud response, and operating efficiency.
 

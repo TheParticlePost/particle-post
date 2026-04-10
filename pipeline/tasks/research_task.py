@@ -36,32 +36,45 @@ SEARCH_STRATEGIES: dict[str, dict] = {
     },
     "deep_dive": {
         "base_queries": (
-            "1. Use tavily_search with 'AI research study findings 2026' to find academic/industry research.\n"
-            "2. Use tavily_search with 'McKinsey Deloitte Gartner AI report 2026' to find analyst research.\n"
-            "3. Use tavily_search with 'AI enterprise adoption failure lessons' to find contrarian angles.\n"
-            "4. Use tavily_search with 'AI workforce productivity data' to find quantified impacts.\n"
-            "5. Use google_trends to check for trending AI topics suitable for deep-dive analysis.\n"
-            "6. Synthesize findings into a structured briefing.\n"
+            "1. Use tavily_search with 'AI research study findings 2026 sample size' to find quantified academic/industry research.\n"
+            "2. Use tavily_search with 'McKinsey Deloitte Gartner AI report 2026 methodology' to find analyst research with limitations stated.\n"
+            "3. Use tavily_search with 'AI enterprise adoption failure lessons counter-narrative' to find contrarian angles.\n"
+            "4. Use tavily_search with 'AI workforce productivity data primary source' to find measurable impacts.\n"
+            "5. If any named US public company surfaces, also tavily_search 'site:sec.gov 10-K {company}' and 'site:ir.{company}.com quarterly report'.\n"
+            "6. Use google_trends to check for trending AI topics suitable for deep-dive analysis.\n"
+            "7. Synthesize findings into a structured briefing.\n"
         ),
         "guidance": (
             "Find topics with DEPTH: studies with sample sizes, multi-year data, "
             "or surprising counter-narratives. The best deep dives challenge conventional wisdom. "
-            "Look for research that executives are misusing or misinterpreting."
+            "Look for research that executives are misusing or misinterpreting. "
+            "For every cited study name the institution, year, and sample size. "
+            "For every cited company prefer primary sources (10-K, 10-Q, earnings transcripts, IR pages) "
+            "over third-party summaries. This article is written to a doctorate-level rigor standard: "
+            "no orphaned numbers, every claim has a citable source, limitations are acknowledged."
         ),
     },
     "case_study": {
         "base_queries": (
-            "1. Use tavily_search with 'company deployed AI results ROI 2026' to find deployment outcomes.\n"
-            "2. Use tavily_search with 'AI implementation case study timeline cost savings' to find real deployments.\n"
+            "1. Use tavily_search with 'company deployed AI results ROI 2026 10-K quarterly report' to find deployment outcomes with primary sourcing.\n"
+            "2. Use tavily_search with 'AI implementation case study timeline cost savings earnings call' to find disclosed numbers.\n"
             "3. Use tavily_search with 'enterprise AI pilot production deployment lessons' to find practical stories.\n"
             "4. Use newsapi_fetch with query 'artificial intelligence deployment results' to find recent announcements.\n"
-            "5. Synthesize findings into a structured briefing.\n"
+            "5. If the subject company is US-listed, also tavily_search 'site:sec.gov 10-K {company} annual report' to surface the filing.\n"
+            "6. If the subject company is non-US or private, also tavily_search 'site:ir.{company}.com' and 'site:{company}.com investors annual report' to find IR disclosures.\n"
+            "7. Synthesize findings into a structured briefing.\n"
         ),
         "guidance": (
-            "Find SPECIFIC COMPANIES with MEASURABLE OUTCOMES. The ideal case study has: "
-            "company name, industry, timeline, investment amount, technology used, "
-            "and before/after metrics. Earnings calls, press releases, and vendor blogs "
-            "are good sources. Look beyond finance: logistics, manufacturing, HR deployments."
+            "Find SPECIFIC COMPANIES with MEASURABLE OUTCOMES cited from PRIMARY sources. "
+            "Ideal case study has: company name, ticker (if public), industry, timeline, "
+            "investment amount, technology stack, and before/after metrics with fiscal year + "
+            "filing date citations. Prefer 10-K / 10-Q / earnings transcripts / IR pages over "
+            "Bloomberg or Forbes summaries. Press releases are acceptable secondary sources. "
+            "This article is written to a doctorate-level rigor standard: every quantitative claim "
+            "is traceable to a named document and date. Look beyond finance: logistics, "
+            "manufacturing, HR deployments. If the topic references a US-listed company, the "
+            "pipeline will automatically attach its last-3-years 10-K financials — use those "
+            "figures in the briefing's `key_data` section and the writer will cite them verbatim."
         ),
     },
     "how_to": {

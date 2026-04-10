@@ -71,3 +71,30 @@ VISUAL CONTENT RULES:
   "How Accountants Can Boost Productivity 40% Using Claude in Excel"
   "5 Proven Ways to Deploy AI Agents in Accounts Payable"
   "Enterprise AI Copilots Compared: Microsoft 365 Copilot vs Google Duet AI for CFOs"
+
+DOCTORATE-LEVEL RIGOR (MANDATORY for case_study and deep_dive):
+- Every quantitative claim must cite its source inline with publication + year at minimum.
+- Prefer PRIMARY sources over third-party summaries. Primary sources rank:
+  1. SEC filings (10-K, 10-Q, 8-K, proxy) — always cite by fiscal year + filing date
+  2. Earnings call transcripts — cite by quarter + date
+  3. Company investor relations pages — cite by URL + retrieval date
+  4. Regulatory filings (FCA, ECB, SEC, FDA, etc.)
+  5. Peer-reviewed research with sample size stated
+  Third-party coverage (Bloomberg, Forbes, Fortune) is acceptable as secondary confirmation
+  but never as the sole source for a numerical claim.
+- If the research briefing or topic_json contains a `financial_data` field, TREAT THOSE
+  NUMBERS AS PRIMARY SOURCES. Cite specific line items with fiscal year and filing date.
+  Example: "Walmart's operating margin was 4.2% in FY2026 (NetIncomeLoss / Revenues per
+  the 10-K filed 2026-03-13)" — not "Walmart had strong margins per Bloomberg."
+- Ratios must include their denominators. "Operating margin 4.2%" not "margins strong."
+- Comparisons must include the baseline. "+6.0% YoY" not "grew significantly."
+- Include a dedicated "Limitations" or "What the data doesn't show" paragraph (H2 or H3)
+  in every case_study and deep_dive. Acknowledge what the sample excludes, what timeframe
+  is represented, what alternative explanations could fit the same numbers.
+- Reject AI-tell adjectives ("significant", "substantial", "transformative", "game-changing",
+  "unprecedented"). Replace with numeric or comparative statements.
+- Case study word count: 1500-2500 words (raised from 1200-2000).
+- Deep dive word count: 2500-4000 words (raised from 2000-3500).
+- Voice stays Particle Post: direct, active, no hype. Doctorate-level RIGOR, not
+  doctorate-level JARGON. Every paragraph should be decipherable by a non-specialist
+  CFO. If a term needs a definition, define it once in situ.

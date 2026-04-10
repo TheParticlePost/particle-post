@@ -25,15 +25,9 @@ has_faq: true
 cover:
   image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/microsoft-ai-models-openai-enterprise-strategy.png?v=gemini-v1
   alt: 'NEWS ANALYSIS: Microsoft AI Models: Is the OpenAI Era Ending?'
-  credit_name: Particle Post
-  credit_url: https://theparticlepost.com
-  credit_source: ai-generated
   generation: gemini-v1
 image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/microsoft-ai-models-openai-enterprise-strategy.png?v=gemini-v1
 image_alt: 'NEWS ANALYSIS: Microsoft AI Models: Is the OpenAI Era Ending?'
-image_credit_name: Particle Post
-image_credit_url: https://theparticlepost.com
-image_credit_source: ai-generated
 faq_pairs:
 - question: Does the Microsoft MAI launch mean enterprises should drop OpenAI?
   answer: No. MAI models cover speech, voice, and image tasks but do not replace GPT-4 class LLMs for contract analysis, code generation, or financial modeling. Enterprises should benchmark MAI for specific modalities while keeping their core LLM stack intact.
@@ -48,6 +42,7 @@ faq_pairs:
 ShowToc: true
 TocOpen: false
 draft: false
+visuals_generation: v2
 ---
 
 ## The Most Common Misconception

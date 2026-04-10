@@ -26,15 +26,9 @@ has_faq: true
 cover:
   image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/walmart-ai-supply-chain-cost-reduction-blueprint.png?v=gemini-v1
   alt: 'CASE STUDY: Walmart AI Supply Chain: How It Cut Costs 40%'
-  credit_name: Particle Post
-  credit_url: https://theparticlepost.com
-  credit_source: ai-generated
   generation: gemini-v1
 image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/walmart-ai-supply-chain-cost-reduction-blueprint.png?v=gemini-v1
 image_alt: 'CASE STUDY: Walmart AI Supply Chain: How It Cut Costs 40%'
-image_credit_name: Particle Post
-image_credit_url: https://theparticlepost.com
-image_credit_source: ai-generated
 faq_pairs:
 - question: How did Walmart cut supply chain costs with AI?
   answer: 'Walmart used four AI systems over four years: ML route optimization (30M miles eliminated), Self-Healing Inventory ($55M saved), Pactum AI supplier negotiation (3% savings, 68% success rate), and fulfillment robotics (40% delivery cost reduction), per Walmart corporate disclosures and Bloomberg.'
@@ -49,6 +43,7 @@ faq_pairs:
 ShowToc: true
 TocOpen: false
 draft: false
+visuals_generation: v2
 ---
 
 Walmart eliminated 30 million unnecessary driving miles, saved $55M through automated inventory correction, and cut net delivery cost per order by roughly 40% over three consecutive quarters, according to company earnings disclosures. The retailer built this result through a decade-long, phased AI program across demand forecasting, route optimization, supplier negotiation, and fulfillment automation, and the architecture is now replicable.

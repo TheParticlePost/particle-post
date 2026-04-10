@@ -23,12 +23,6 @@ cover:
   alt: 'HOW-TO: AI Accounts Payable Automation: 6-Week Deployment Playbook'
   caption: ''
   generation: gemini-v1
-  credit_name: Particle Post
-  credit_url: https://theparticlepost.com
-  credit_source: ai-generated
-image_credit_name: Particle Post
-image_credit_url: https://theparticlepost.com
-image_credit_source: ai-generated
 schema_type: HowTo
 has_faq: true
 faq_pairs:
@@ -48,6 +42,7 @@ draft: false
 content_type: how_to
 image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-accounts-payable-automation-deployment-playbook.png?v=gemini-v1
 image_alt: 'HOW-TO: AI Accounts Payable Automation: 6-Week Deployment Playbook'
+visuals_generation: v2
 ---
 
 A mid-sized manufacturer running 8,000 invoices per month cut its cost per invoice from $14.20 to $3.10 in 11 weeks, but only after its first vendor integration failed and cost four weeks of rework. That failure was preventable, and this playbook shows finance leads and COOs exactly how to avoid it.

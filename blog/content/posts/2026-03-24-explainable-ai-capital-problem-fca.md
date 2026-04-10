@@ -23,12 +23,6 @@ cover:
   alt: 'NEWS ANALYSIS: Explainable AI Is a Capital Problem, Not a Technical One, and the FCA Is About to Prove It'
   caption: ''
   generation: gemini-v1
-  credit_name: Particle Post
-  credit_url: https://theparticlepost.com
-  credit_source: ai-generated
-image_credit_name: Particle Post
-image_credit_url: https://theparticlepost.com
-image_credit_source: ai-generated
 schema_type: NewsArticle
 has_faq: true
 faq_pairs:
@@ -42,6 +36,7 @@ draft: false
 content_type: news_analysis
 image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/explainable-ai-capital-problem-fca.png?v=gemini-v1
 image_alt: 'NEWS ANALYSIS: Explainable AI Is a Capital Problem, Not a Technical One, and the FCA Is About to Prove It'
+visuals_generation: v2
 ---
 Klarna and Monzo now publish detailed model cards before each license renewal. The UK's Financial Conduct Authority launched the Mills Review on January 27, 2026, making clear that explainability is no longer optional; it is the price of operating in retail financial services.
 

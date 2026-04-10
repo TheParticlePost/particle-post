@@ -252,51 +252,79 @@ def diagram_process_flow(steps: list[str], width: int = 1000, height: int = 150)
 {SVG_CLOSE}"""
 
 
-def diagram_timeline(events: list[dict], width: int = 1000, height: int = 180) -> str:
-    """Horizontal timeline with alternating above/below labels.
+def diagram_timeline(events: list[dict], width: int = 1200, height: int = 280) -> str:
+    """Horizontal timeline — all labels stacked below the line, no
+    alternation, semi-transparent background plate behind each label to
+    prevent collision with the line and adjacent labels.
 
-    *events*: list of {"date": str, "event": str}
+    *events*: list of {"date": str, "event": str}. Capped at 5 events so
+    each label has enough horizontal room to be legible.
     """
+    events = events[:5]
     n = len(events)
     if n == 0:
         return f"""{_svg_open(width, height)}
   <rect width="{width}" height="{height}" fill="{RICH_BLACK}"/>
 {SVG_CLOSE}"""
 
-    padding = 80
+    padding = 40
     usable = width - 2 * padding
-    spacing = usable / max(n - 1, 1) if n > 1 else 0
-    line_y = height // 2
+    # Each event gets an equal horizontal slot so markers + plates never
+    # overlap. Line runs edge-to-edge; markers sit at slot centers.
+    slot_w = usable / n
+    line_y = 110
+    plate_h = 110
 
     parts: list[str] = [
         f'{_svg_open(width, height)}',
         f'  <rect width="{width}" height="{height}" fill="{RICH_BLACK}"/>',
         # Main horizontal line
         f'  <line x1="{padding}" y1="{line_y}" x2="{width - padding}" y2="{line_y}" '
-        f'stroke="{EMBER}" stroke-width="1"/>',
+        f'stroke="{EMBER}" stroke-width="2"/>',
     ]
 
     for i, ev in enumerate(events):
-        cx = padding + int(i * spacing) if n > 1 else width // 2
-        parts.append(
-            f'  <circle cx="{cx}" cy="{line_y}" r="5" fill="{VERMILLION}"/>'
-        )
-        above = i % 2 == 0
-        date_y = line_y - 20 if above else line_y + 32
-        event_y = line_y - 36 if above else line_y + 48
-        if not above:
-            date_y, event_y = line_y + 20, line_y + 36
+        slot_left = padding + i * slot_w
+        cx = int(slot_left + slot_w / 2)
+        plate_w = int(slot_w - 16)
+        plate_x = cx - plate_w // 2
+        plate_y = line_y + 20
 
+        date = _e(str(ev.get("date", "")))[:18]
+        event_text = str(ev.get("event", ""))
+        # Calculate max chars per line based on plate width (approx 7.2 px
+        # per char at Sora Bold 14px in practice)
+        max_chars_per_line = max(12, int(plate_w / 7.2))
+        wrapped = _wrap_text(_e(event_text), max_chars=max_chars_per_line)[:3]
+
+        # Marker on the line
         parts.append(
-            f'  <text x="{cx}" y="{date_y}" text-anchor="middle" '
-            f'font-family="{FONT_MONO}" font-weight="400" font-size="10" '
-            f'fill="{DRIFT}">{_e(str(ev.get("date", "")))}</text>'
+            f'  <circle cx="{cx}" cy="{line_y}" r="8" fill="{VERMILLION}" '
+            f'stroke="{RICH_BLACK}" stroke-width="3"/>'
         )
+
+        # Label plate below the line
         parts.append(
-            f'  <text x="{cx}" y="{event_y}" text-anchor="middle" '
-            f'font-family="{FONT_BODY}" font-weight="400" font-size="11" '
-            f'fill="{CREAM}">{_e(str(ev.get("event", ""))[:30])}</text>'
+            f'  <rect x="{plate_x}" y="{plate_y}" width="{plate_w}" height="{plate_h}" '
+            f'rx="4" fill="{ONYX}" fill-opacity="0.94" '
+            f'stroke="{EMBER}" stroke-opacity="0.5" stroke-width="1"/>'
         )
+
+        # Date — vermillion, Plex Mono, 12px
+        parts.append(
+            f'  <text x="{cx}" y="{plate_y + 22}" text-anchor="middle" '
+            f'font-family="{FONT_MONO}" font-weight="500" font-size="12" '
+            f'letter-spacing="0.06em" fill="{VERMILLION}">{date}</text>'
+        )
+
+        # Event — Sora Bold, 14px, up to 3 wrapped lines
+        text_y = plate_y + 44
+        for j, line in enumerate(wrapped):
+            parts.append(
+                f'  <text x="{cx}" y="{text_y + j * 19}" text-anchor="middle" '
+                f'font-family="{FONT_HEADLINE}" font-weight="700" font-size="14" '
+                f'fill="{WARM_WHITE}">{line}</text>'
+            )
 
     parts.append(SVG_CLOSE)
     return "\n".join(parts)

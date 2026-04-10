@@ -23,12 +23,6 @@ cover:
   alt: 'DEEP DIVE: Agentic AI Finance: What the Research Shows About Execution-Driven Systems'
   caption: ''
   generation: gemini-v1
-  credit_name: Particle Post
-  credit_url: https://theparticlepost.com
-  credit_source: ai-generated
-image_credit_name: Particle Post
-image_credit_url: https://theparticlepost.com
-image_credit_source: ai-generated
 schema_type: Article
 has_faq: true
 faq_pairs:
@@ -48,6 +42,7 @@ draft: false
 content_type: deep_dive
 image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/agentic-ai-finance-execution-research-deployment.png?v=gemini-v1
 image_alt: 'DEEP DIVE: Agentic AI Finance: What the Research Shows About Execution-Driven Systems'
+visuals_generation: v2
 ---
 
 JPMorgan Chase's COiN platform processes 12,000 commercial credit agreements per second, a workload that previously consumed 360,000 hours of lawyer time annually. That is not a dashboard delivering insights. That is an AI agent executing work. The gap between those two categories is where most enterprise AI budgets currently sit, unspent or misdirected.

@@ -25,15 +25,9 @@ has_faq: true
 cover:
   image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/cfo-ai-investment-framework-governance.png?v=gemini-v1
   alt: 'NEWS ANALYSIS: CFO AI Investment Framework: Why Waiting Costs Millions'
-  credit_name: Particle Post
-  credit_url: https://theparticlepost.com
-  credit_source: ai-generated
   generation: gemini-v1
 image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/cfo-ai-investment-framework-governance.png?v=gemini-v1
 image_alt: 'NEWS ANALYSIS: CFO AI Investment Framework: Why Waiting Costs Millions'
-image_credit_name: Particle Post
-image_credit_url: https://theparticlepost.com
-image_credit_source: ai-generated
 faq_pairs:
 - question: What is a CFO AI investment framework?
   answer: A CFO AI investment framework is a set of financial criteria, vendor selection standards, and ROI measurement requirements established before AI pilots begin. It defines success metrics, spend thresholds, contract terms, and audit requirements to prevent technology teams from making unaccountable vendor and architecture decisions.
@@ -48,6 +42,7 @@ faq_pairs:
 ShowToc: true
 TocOpen: false
 draft: false
+visuals_generation: v2
 ---
 
 Fortune's April 2026 report names a specific deadline risk: finance leaders have a narrowing window to set AI investment frameworks before engineering and operations teams lock in vendor and measurement decisions by default. That window is closing now.
@@ -62,7 +57,7 @@ The assumption breaks down because AI spend does not wait for finance approval. 
 
 CFO-led AI governance produces measurably better ROI outcomes than technology-led approaches. Companies where finance directed AI governance from the start were 2.4 times more likely to report above-expected returns, per McKinsey 2025. Gartner finds 74% of enterprise AI pilots never produce a documented ROI case, a measurement failure finance is positioned to prevent.
 
-![Stat Card visualization](https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/visuals/cfo-ai-investment-framework-governance-stat_card.png)
+![Stat Card visualization](https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/visuals/cfo-ai-investment-framework-governance-stat_card.png?v=v2)
 
 
 Companies where finance led AI governance from the start achieved measurably better ROI discipline than those where technology teams drove initial decisions, according to Fortune's April 7, 2026 report. The report warns that CFOs who delay risk ceding "organizational control over AI spend and value measurement to those without P&L accountability."

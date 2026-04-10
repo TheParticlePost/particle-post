@@ -24,12 +24,6 @@ cover:
   alt: 'TECHNOLOGY PROFILE: AI Investment Strategy: Open vs Proprietary Models ROI'
   caption: ''
   generation: gemini-v1
-  credit_name: Particle Post
-  credit_url: https://theparticlepost.com
-  credit_source: ai-generated
-image_credit_name: Particle Post
-image_credit_url: https://theparticlepost.com
-image_credit_source: ai-generated
 schema_type: Article
 has_faq: true
 faq_pairs:
@@ -49,6 +43,7 @@ draft: false
 content_type: technology_profile
 image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-investment-strategy-open-vs-proprietary-models.png?v=gemini-v1
 image_alt: 'TECHNOLOGY PROFILE: AI Investment Strategy: Open vs Proprietary Models ROI'
+visuals_generation: v2
 ---
 
 The wrong AI model choice costs enterprises between $2M and $8M in remediation, retraining, and migration expenses within the first 18 months, according to Fortune's March 2026 analysis of enterprise AI deployment data. Finance leaders who frame this as a technology decision are already behind. It is a capital allocation decision, and the math is not close in every scenario.

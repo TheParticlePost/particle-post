@@ -24,12 +24,6 @@ cover:
   alt: 'HOW-TO: Agentic AI Accounts Payable: 60-80% ROI Implementation Playbook'
   caption: ''
   generation: gemini-v1
-  credit_name: Particle Post
-  credit_url: https://theparticlepost.com
-  credit_source: ai-generated
-image_credit_name: Particle Post
-image_credit_url: https://theparticlepost.com
-image_credit_source: ai-generated
 schema_type: HowTo
 has_faq: true
 faq_pairs:
@@ -49,6 +43,7 @@ draft: false
 content_type: how_to
 image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/agentic-ap-automation-roi-implementation-playbook.png?v=gemini-v1
 image_alt: 'HOW-TO: Agentic AI Accounts Payable: 60-80% ROI Implementation Playbook'
+visuals_generation: v2
 ---
 Finance teams that deploy agentic AI in accounts payable are cutting cost-per-invoice from $12.88 to $2.78, according to Aberdeen Group benchmarks. That gap is wide enough to repay a mid-market implementation in under six months.
 

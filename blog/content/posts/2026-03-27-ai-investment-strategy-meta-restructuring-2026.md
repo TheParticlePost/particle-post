@@ -24,12 +24,6 @@ cover:
   alt: 'CASE STUDY: AI Investment Strategy: Recalibrate After Meta''s 2026 Cuts'
   caption: ''
   generation: gemini-v1
-  credit_name: Particle Post
-  credit_url: https://theparticlepost.com
-  credit_source: ai-generated
-image_credit_name: Particle Post
-image_credit_url: https://theparticlepost.com
-image_credit_source: ai-generated
 schema_type: Article
 has_faq: true
 faq_pairs:
@@ -49,6 +43,7 @@ draft: false
 content_type: case_study
 image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-investment-strategy-meta-restructuring-2026.png?v=gemini-v1
 image_alt: 'CASE STUDY: AI Investment Strategy: Recalibrate After Meta''s 2026 Cuts'
+visuals_generation: v2
 ---
 
 Meta cut hundreds of roles across multiple divisions in March 2026, according to SiliconAngle, concentrating reductions in teams that support legacy infrastructure, mid-level management, and non-core AI functions. For enterprise leaders who have benchmarked their own AI programs against Big Tech spending patterns, this is not a cautionary tale. It is a targeting signal.

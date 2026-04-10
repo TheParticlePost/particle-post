@@ -1081,6 +1081,62 @@ def main() -> None:
         else:
             print(f"  [DIVERSITY GATE] PASSED: {reason}")
 
+    # ═══ FINANCIAL DEPTH: SEC EDGAR brief for case_study / deep_dive ═══
+    # For US public companies, pull authoritative 10-K data and append it
+    # to the topic_json so the writer can cite specific line items instead
+    # of vague "per Bloomberg" references.
+    financial_brief = ""
+    if content_type in ("case_study", "deep_dive"):
+        try:
+            from pipeline.tools.sec_edgar_tool import (
+                company_financial_brief,
+                resolve_ticker,
+            )
+
+            # Extract candidate company names from the topic title + summary
+            _title = (topic_data.get("title", "") if isinstance(topic_data, dict) else "")
+            _summary = (topic_data.get("summary", "") if isinstance(topic_data, dict) else "")
+            _haystack = f"{_title} {_summary}"
+
+            # Try each capitalized 1-3 word phrase against the SEC cache
+            import re as _re_sec
+            _candidates = _re_sec.findall(
+                r"\b([A-Z][A-Za-z0-9&.]+(?:\s+[A-Z][A-Za-z0-9&.]+){0,2})\b",
+                _haystack,
+            )
+            _seen = set()
+            _ordered_candidates = []
+            for _c in _candidates:
+                _ck = _c.lower()
+                if _ck not in _seen:
+                    _seen.add(_ck)
+                    _ordered_candidates.append(_c)
+
+            _resolved = None
+            for _cand in _ordered_candidates[:8]:
+                _r = resolve_ticker(_cand)
+                if _r:
+                    _resolved = _r
+                    break
+
+            if _resolved:
+                print(f"  [SEC] Resolved '{_resolved['name']}' ({_resolved['ticker']}, CIK {_resolved['cik']})")
+                _found, _brief = company_financial_brief(_resolved["name"])
+                if _found:
+                    financial_brief = _brief
+                    print(f"  [SEC] Financial brief attached ({len(_brief)} chars)")
+                else:
+                    print(f"  [SEC] No usable metrics: {_brief}")
+            else:
+                print("  [SEC] No US public company matched — writer will use Tavily/IR fallback only")
+        except Exception as sec_err:
+            print(f"  [SEC] Error (non-fatal): {sec_err}")
+
+    # If we got an SEC brief, inject it into the topic_json so the writer sees it.
+    if financial_brief and isinstance(topic_data, dict):
+        topic_data["financial_data"] = financial_brief
+        topic_json = json.dumps(topic_data)
+
     # ═══ PHASE 2: PRODUCTION (retried on rejection) ═══
     rejection_feedback = ""
     last_verdict: dict = {}

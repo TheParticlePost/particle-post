@@ -24,12 +24,6 @@ cover:
   alt: 'HOW-TO: AI Agent Governance Framework for Enterprise Deployment 2026'
   caption: ''
   generation: gemini-v1
-  credit_name: Particle Post
-  credit_url: https://theparticlepost.com
-  credit_source: ai-generated
-image_credit_name: Particle Post
-image_credit_url: https://theparticlepost.com
-image_credit_source: ai-generated
 schema_type: HowTo
 has_faq: true
 faq_pairs:
@@ -49,6 +43,7 @@ draft: false
 content_type: how_to
 image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-agent-governance-framework-enterprise-2026.png?v=gemini-v1
 image_alt: 'HOW-TO: AI Agent Governance Framework for Enterprise Deployment 2026'
+visuals_generation: v2
 ---
 More than half of deployed enterprise AI agents operate without consistent security oversight or logging, according to Beam AI research. That gap is not a technology problem. It is a governance failure waiting to trigger a compliance event.
 

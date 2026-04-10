@@ -24,12 +24,6 @@ cover:
   alt: 'NEWS ANALYSIS: Agentic AI Risk Management Finance: Security Overhaul Now'
   caption: ''
   generation: gemini-v1
-  credit_name: Particle Post
-  credit_url: https://theparticlepost.com
-  credit_source: ai-generated
-image_credit_name: Particle Post
-image_credit_url: https://theparticlepost.com
-image_credit_source: ai-generated
 schema_type: NewsArticle
 has_faq: true
 faq_pairs:
@@ -49,6 +43,7 @@ draft: false
 content_type: news_analysis
 image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/agentic-ai-risk-management-finance-security.png?v=gemini-v1
 image_alt: 'NEWS ANALYSIS: Agentic AI Risk Management Finance: Security Overhaul Now'
+visuals_generation: v2
 ---
 
 Cisco's security researchers told RSAC 2026 attendees something board members did not want to hear: autonomous AI agents are already operating inside enterprise networks with weaker identity controls than a junior contractor. The security debt is not theoretical. It is compounding daily.

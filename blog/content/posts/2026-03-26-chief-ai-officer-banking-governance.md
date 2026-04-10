@@ -24,12 +24,6 @@ cover:
   alt: 'NEWS ANALYSIS: Chief AI Officer: Why Artificial Intelligence Banking Needs One'
   caption: ''
   generation: gemini-v1
-  credit_name: Particle Post
-  credit_url: https://theparticlepost.com
-  credit_source: ai-generated
-image_credit_name: Particle Post
-image_credit_url: https://theparticlepost.com
-image_credit_source: ai-generated
 schema_type: NewsArticle
 has_faq: true
 faq_pairs:
@@ -47,6 +41,7 @@ draft: false
 content_type: news_analysis
 image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/chief-ai-officer-banking-governance.png?v=gemini-v1
 image_alt: 'NEWS ANALYSIS: Chief AI Officer: Why Artificial Intelligence Banking Needs One'
+visuals_generation: v2
 ---
 
 HSBC appointed its first Chief AI Officer in early 2025, making it one of the largest banks in the world to formalize AI governance at the C-suite level. If your institution still routes AI decisions through the CTO's office, you are already behind.

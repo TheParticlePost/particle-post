@@ -25,15 +25,9 @@ has_faq: true
 cover:
   image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/data-ai-platform-comparison-2026-palantir-databricks-snowflake-fabric.png?v=gemini-v1
   alt: 'TECHNOLOGY PROFILE: Data AI Platform Comparison 2026: Palantir vs Databricks'
-  credit_name: Particle Post
-  credit_url: https://theparticlepost.com
-  credit_source: ai-generated
   generation: gemini-v1
 image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/data-ai-platform-comparison-2026-palantir-databricks-snowflake-fabric.png?v=gemini-v1
 image_alt: 'TECHNOLOGY PROFILE: Data AI Platform Comparison 2026: Palantir vs Databricks'
-image_credit_name: Particle Post
-image_credit_url: https://theparticlepost.com
-image_credit_source: ai-generated
 faq_pairs:
 - question: Which data AI platform is best for regulated industries in 2026?
   answer: Palantir AIP is the strongest choice for regulated industries in 2026. Its Ontology-based architecture makes AI decisions auditable at the object level, satisfying EU AI Act Article 13 and US NIST AI RMF requirements with less custom configuration than any competing platform.
@@ -48,6 +42,7 @@ faq_pairs:
 ShowToc: true
 TocOpen: false
 draft: false
+visuals_generation: v2
 ---
 
 Palantir's stock rose 340% in 2024, Databricks closed a $15.3B funding round, Snowflake replaced its CEO, and Microsoft embedded AI into every layer of Fabric. All four platforms now claim to be the operating system for enterprise AI, and your architecture decision will outlast your current vendor's pitch cycle.

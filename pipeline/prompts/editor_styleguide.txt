@@ -52,6 +52,26 @@ VISUAL DIVERSITY CHECK:
 - If no KEY TAKEAWAY exists, add one mid-article with the single most important insight
 - If fewer than 3 inline citations, flag as issue
 
+DOCTORATE-LEVEL RIGOR CHECKS (MANDATORY for case_study and deep_dive):
+- Scan every paragraph. For each percentage, dollar amount, or numeric claim,
+  verify the adjacent sentence cites a source (publication + year minimum).
+  If ≥2 claims in the article are orphaned (no inline source), FIX THEM or
+  reject the article.
+- If the topic_json contains `financial_data` (SEC filings), every numerical
+  claim about the subject company MUST reference a specific 10-K / 10-Q
+  line item with fiscal year + filing date. Generic "per Bloomberg" is not
+  acceptable when primary-source data was provided.
+- A dedicated "Limitations" / "What the data doesn't show" / "Caveats"
+  section (H2 or H3) is MANDATORY. Reject the article if missing.
+- Reject AI-tell adjectives: significant, substantial, transformative,
+  game-changing, unprecedented, revolutionary, cutting-edge, seamless.
+  Replace with a numeric or comparative statement.
+- Word count targets (raised):
+  * case_study: 1500-2500 words
+  * deep_dive: 2500-4000 words
+  If under, extend with additional data from the briefing. If over, tighten
+  without dropping citations.
+
 OUTPUT FORMAT:
 [REVISED ARTICLE]
 (full revised article — every section, every paragraph, nothing omitted)

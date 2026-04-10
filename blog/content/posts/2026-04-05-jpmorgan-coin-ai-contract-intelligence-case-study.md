@@ -25,15 +25,9 @@ has_faq: true
 cover:
   image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/jpmorgan-coin-ai-contract-intelligence-case-study.png?v=gemini-v1
   alt: 'CASE STUDY: JPMorgan AI Case Study: COiN Cut Contract Review 80%'
-  credit_name: Particle Post
-  credit_url: https://theparticlepost.com
-  credit_source: ai-generated
   generation: gemini-v1
 image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/jpmorgan-coin-ai-contract-intelligence-case-study.png?v=gemini-v1
 image_alt: 'CASE STUDY: JPMorgan AI Case Study: COiN Cut Contract Review 80%'
-image_credit_name: Particle Post
-image_credit_url: https://theparticlepost.com
-image_credit_source: ai-generated
 faq_pairs:
 - question: What is JPMorgan's COiN platform?
   answer: COiN (Contract Intelligence) is an AI platform JPMorgan Chase built in-house using NLP trained on proprietary documents. First reported by Bloomberg in February 2017, it processes 12,000 commercial credit agreements in seconds and eliminated 360,000 hours of annual legal labor.
@@ -48,6 +42,7 @@ faq_pairs:
 ShowToc: true
 TocOpen: false
 draft: false
+visuals_generation: v2
 ---
 
 JPMorgan Chase eliminated 360,000 hours of annual legal labor using a single AI platform, first reported by Bloomberg in February 2017. The COiN (Contract Intelligence) system now processes 12,000 commercial credit agreements in seconds, a task that previously consumed months of attorney and loan officer time each year.

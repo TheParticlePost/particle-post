@@ -195,11 +195,11 @@ def update_frontmatter_in_place(
     Updates:
       - cover.alt          → "{Category Label}: {Title}"
       - cover.generation   → "gemini-v1"
-      - cover.credit_name  → "Particle Post"
-      - cover.credit_url   → "https://theparticlepost.com"
-      - cover.credit_source → "ai-generated"
-      - top-level image_credit_source → "ai-generated"
       - top-level image    → cover_url (kept in sync for OG-image consistency)
+
+    Deliberately does NOT set credit_source / image_credit_source. The
+    ImageCredit component renders nothing when both photographer and
+    source are empty, so AI-generated covers show no credit line.
 
     Preserves all other frontmatter fields. Body is untouched.
     """
@@ -216,16 +216,16 @@ def update_frontmatter_in_place(
     cover["image"] = cover_url
     cover["alt"] = f"{category_label}: {title}"
     cover["generation"] = "gemini-v1"
-    cover["credit_name"] = "Particle Post"
-    cover["credit_url"] = "https://theparticlepost.com"
-    cover["credit_source"] = "ai-generated"
+    # Scrub any legacy "ai-generated" credits from the cover block
+    for stale in ("credit_name", "credit_url", "credit_source"):
+        cover.pop(stale, None)
     fm["cover"] = cover
 
     fm["image"] = cover_url
     fm["image_alt"] = f"{category_label}: {title}"
-    fm["image_credit_name"] = "Particle Post"
-    fm["image_credit_url"] = "https://theparticlepost.com"
-    fm["image_credit_source"] = "ai-generated"
+    # Scrub any legacy "ai-generated" top-level credit fields
+    for stale in ("image_credit_name", "image_credit_url", "image_credit_source"):
+        fm.pop(stale, None)
 
     new_fm = yaml.safe_dump(
         fm, sort_keys=False, allow_unicode=True, width=4096, default_flow_style=False,

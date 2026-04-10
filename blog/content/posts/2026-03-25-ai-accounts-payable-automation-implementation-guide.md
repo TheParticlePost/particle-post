@@ -26,12 +26,6 @@ cover:
   alt: 'HOW-TO: AI Accounts Payable Automation: 7-Step Implementation Guide'
   caption: ''
   generation: gemini-v1
-  credit_name: Particle Post
-  credit_url: https://theparticlepost.com
-  credit_source: ai-generated
-image_credit_name: Particle Post
-image_credit_url: https://theparticlepost.com
-image_credit_source: ai-generated
 schema_type: HowTo
 has_faq: true
 faq_pairs:
@@ -51,6 +45,7 @@ draft: false
 content_type: how_to
 image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-accounts-payable-automation-implementation-guide.png?v=gemini-v1
 image_alt: 'HOW-TO: AI Accounts Payable Automation: 7-Step Implementation Guide'
+visuals_generation: v2
 ---
 Ramp launched its Agents for AP platform in October 2025, promising to process, approve, and pay invoices in as few as three clicks. Finance teams deploying similar agentic AP systems are cutting per-invoice costs from a manual average of $15 or more to below $2, according to Medius benchmarking data.
 

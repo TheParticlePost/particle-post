@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import rehypeSlug from "rehype-slug";
 import { getPostBySlug, getAllSlugs, getRelatedPosts } from "@/lib/content";
 import { convertHugoShortcodes } from "@/lib/remark-hugo-shortcodes";
 import { mdxComponents } from "@/components/mdx/mdx-components";
@@ -55,9 +56,9 @@ export default async function PostPage({ params }: PageProps) {
       {/* 3px vermillion progress bar */}
       <ScrollProgress />
 
-      <article className="px-4 sm:px-6 py-8">
-        {/* Header — centered, max 680px */}
-        <header className="max-w-[680px] mx-auto mb-8">
+      <article className="px-3 sm:px-4 py-8">
+        {/* Header — centered, max 760px */}
+        <header className="max-w-[760px] mx-auto mb-8">
           {/* Category overline */}
           <div className="flex items-center gap-2 mb-4">
             {post.categories.slice(0, 2).map((cat) => (
@@ -84,16 +85,16 @@ export default async function PostPage({ params }: PageProps) {
           <div className="mt-6 border-b border-border-ghost" />
         </header>
 
-        {/* Cover Image — centered, wider than body */}
+        {/* Cover Image — centered, matches body width */}
         {post.coverImage && (
-          <div className="max-w-[680px] mx-auto mb-10">
+          <div className="max-w-[760px] mx-auto mb-10">
             <div className="relative aspect-[2/1] rounded-lg overflow-hidden">
               <Image
                 src={post.coverImage.url}
                 alt={post.coverImage.alt || post.title}
                 fill
                 priority
-                sizes="(max-width: 768px) 100vw, 680px"
+                sizes="(max-width: 768px) 100vw, 760px"
                 className="object-cover"
               />
             </div>
@@ -115,12 +116,17 @@ export default async function PostPage({ params }: PageProps) {
             </div>
           </aside>
 
-          {/* CENTER — Article body, 680px */}
-          <div className="flex-1 min-w-0 max-w-[680px]">
+          {/* CENTER — Article body, 760px */}
+          <div className="flex-1 min-w-0 max-w-[760px]">
             <div className="prose">
               <MDXRemote
                 source={convertHugoShortcodes(post.content, !!(post.faq_pairs && post.faq_pairs.length > 0))}
                 components={mdxComponents}
+                options={{
+                  mdxOptions: {
+                    rehypePlugins: [rehypeSlug],
+                  },
+                }}
               />
             </div>
 
@@ -140,7 +146,7 @@ export default async function PostPage({ params }: PageProps) {
         </div>
 
         {/* Newsletter CTA */}
-        <div className="max-w-[680px] mx-auto">
+        <div className="max-w-[760px] mx-auto">
           <NewsletterCta />
         </div>
 

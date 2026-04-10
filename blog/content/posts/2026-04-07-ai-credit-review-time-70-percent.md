@@ -25,15 +25,9 @@ has_faq: true
 cover:
   image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-credit-review-time-70-percent.png?v=gemini-v1
   alt: 'NEWS ANALYSIS: AI Credit Review Time: Can It Really Drop 70%?'
-  credit_name: Particle Post
-  credit_url: https://theparticlepost.com
-  credit_source: ai-generated
   generation: gemini-v1
 image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/ai-credit-review-time-70-percent.png?v=gemini-v1
 image_alt: 'NEWS ANALYSIS: AI Credit Review Time: Can It Really Drop 70%?'
-image_credit_name: Particle Post
-image_credit_url: https://theparticlepost.com
-image_credit_source: ai-generated
 faq_pairs:
 - question: Does AI really cut credit review time by 70%?
   answer: 'AI cuts credit review time by 70% only under narrow conditions: high-volume consumer loans, clean data pipelines, and pilots that exclude compliance steps. At regulated lenders, realistic gains range from 25% to 40% once model validation, adverse action documentation, and exception handling are included, per Oliver Wyman 2024.'
@@ -48,6 +42,7 @@ faq_pairs:
 ShowToc: true
 TocOpen: false
 draft: false
+visuals_generation: v2
 ---
 
 ## The Most Common Misconception
@@ -62,7 +57,7 @@ The 70% figure is not fabricated. It is incomplete. When Upstart reported its au
 
 Machine learning credit scoring at banks delivers genuine but narrower gains than vendor claims suggest. McKinsey research published in 2024 estimates AI can cut document collection and data extraction time by 50 to 60% on straightforward consumer applications. For commercial lending, a 2024 Oliver Wyman analysis found AI reduced analyst processing time by only 30 to 40% once model validation checkpoints and regulatory documentation requirements were counted.
 
-![Stat Card visualization](https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/visuals/ai-credit-review-time-70-percent-stat_card.png)
+![Stat Card visualization](https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/visuals/ai-credit-review-time-70-percent-stat_card.png?v=v2)
 
 
 AI credit underwriting does reduce the mechanical part of review. McKinsey research published in 2024 estimates that AI can cut document collection and data extraction time by 50 to 60% on straightforward consumer applications. That is a genuine, measurable gain.
