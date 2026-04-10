@@ -1,37 +1,50 @@
 ---
-title: "CFO AI Investment Framework: Why Waiting Costs Millions"
-date: "2026-04-08T13:04:52Z"
-slug: "cfo-ai-investment-framework-governance"
-description: "CFO AI investment framework: 74% of AI pilots never document ROI per Gartner. Learn why finance leaders must govern AI vendor and spend decisions now."
-keywords: ["CFO AI investment framework", "enterprise AI governance", "AI ROI measurement", "CFO AI strategy 2026", "agentic AI finance operations enterprise", "AI vendor selection criteria"]
-author: "Particle Post Editorial Team"
-tags: ["CFO Strategy", "AI Governance", "Enterprise AI", "AI ROI", "Finance Leadership"]
-categories: ["AI Strategy"]
-schema_type: "FAQPage"
-content_type: "news_analysis"
+title: 'CFO AI Investment Framework: Why Waiting Costs Millions'
+date: '2026-04-08T13:04:52Z'
+slug: cfo-ai-investment-framework-governance
+description: 'CFO AI investment framework: 74% of AI pilots never document ROI per Gartner. Learn why finance leaders must govern AI vendor and spend decisions now.'
+keywords:
+- CFO AI investment framework
+- enterprise AI governance
+- AI ROI measurement
+- CFO AI strategy 2026
+- agentic AI finance operations enterprise
+- AI vendor selection criteria
+author: Particle Post Editorial Team
+tags:
+- CFO Strategy
+- AI Governance
+- Enterprise AI
+- AI ROI
+- Finance Leadership
+categories:
+- AI Strategy
+schema_type: FAQPage
+content_type: news_analysis
 has_faq: true
 cover:
-  image: "https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/cfo-ai-investment-framework-governance.png"
-  alt: "News Analysis: CFO AI Investment Framework: Why Waiting Costs Millions"
-  credit_name: "Particle Post"
-  credit_url: "https://theparticlepost.com"
-  credit_source: "generated"
-image: "https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/cfo-ai-investment-framework-governance.png"
-image_alt: "News Analysis: CFO AI Investment Framework: Why Waiting Costs Millions"
-image_credit_name: "Particle Post"
-image_credit_url: "https://theparticlepost.com"
-image_credit_source: "generated"
+  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/cfo-ai-investment-framework-governance.png
+  alt: 'NEWS ANALYSIS: CFO AI Investment Framework: Why Waiting Costs Millions'
+  credit_name: Particle Post
+  credit_url: https://theparticlepost.com
+  credit_source: ai-generated
+  generation: gemini-v1
+image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/cfo-ai-investment-framework-governance.png
+image_alt: 'NEWS ANALYSIS: CFO AI Investment Framework: Why Waiting Costs Millions'
+image_credit_name: Particle Post
+image_credit_url: https://theparticlepost.com
+image_credit_source: ai-generated
 faq_pairs:
-  - question: "What is a CFO AI investment framework?"
-    answer: "A CFO AI investment framework is a set of financial criteria, vendor selection standards, and ROI measurement requirements established before AI pilots begin. It defines success metrics, spend thresholds, contract terms, and audit requirements to prevent technology teams from making unaccountable vendor and architecture decisions."
-  - question: "When should a CFO get involved in AI strategy?"
-    answer: "Before any vendor contracts are signed or pilots begin. McKinsey 2025 found companies with formal governance frameworks in place from the start were 2.4 times more likely to report above-expected AI returns. Waiting until pilots conclude leaves finance auditing decisions it had no hand in shaping."
-  - question: "Why do so many enterprise AI pilots fail to show ROI?"
-    answer: "Gartner reports 74% of enterprise AI pilots never produce a documented ROI case. Baseline metrics, target outcomes, and measurement timelines are not defined before launch. Finance absence from early planning means no accountability structure exists to make ROI measurement possible."
-  - question: "What spend threshold should trigger an AI ROI contract?"
-    answer: "A threshold of $50,000 in combined license, implementation, and internal labor costs is a practical starting point. Any AI initiative at or above that level should require a baseline metric, target metric, measurement timeline, and a kill clause before work begins."
-  - question: "How does agentic AI change CFO governance requirements?"
-    answer: "Agentic AI systems act autonomously across procurement, invoicing, and operations workflows, accelerating vendor lock-in faster than traditional software. CFOs must define data portability rights and audit trail requirements before deployment, as autonomous systems embed into core processes within weeks."
+- question: What is a CFO AI investment framework?
+  answer: A CFO AI investment framework is a set of financial criteria, vendor selection standards, and ROI measurement requirements established before AI pilots begin. It defines success metrics, spend thresholds, contract terms, and audit requirements to prevent technology teams from making unaccountable vendor and architecture decisions.
+- question: When should a CFO get involved in AI strategy?
+  answer: Before any vendor contracts are signed or pilots begin. McKinsey 2025 found companies with formal governance frameworks in place from the start were 2.4 times more likely to report above-expected AI returns. Waiting until pilots conclude leaves finance auditing decisions it had no hand in shaping.
+- question: Why do so many enterprise AI pilots fail to show ROI?
+  answer: Gartner reports 74% of enterprise AI pilots never produce a documented ROI case. Baseline metrics, target outcomes, and measurement timelines are not defined before launch. Finance absence from early planning means no accountability structure exists to make ROI measurement possible.
+- question: What spend threshold should trigger an AI ROI contract?
+  answer: A threshold of $50,000 in combined license, implementation, and internal labor costs is a practical starting point. Any AI initiative at or above that level should require a baseline metric, target metric, measurement timeline, and a kill clause before work begins.
+- question: How does agentic AI change CFO governance requirements?
+  answer: Agentic AI systems act autonomously across procurement, invoicing, and operations workflows, accelerating vendor lock-in faster than traditional software. CFOs must define data portability rights and audit trail requirements before deployment, as autonomous systems embed into core processes within weeks.
 ShowToc: true
 TocOpen: false
 draft: false

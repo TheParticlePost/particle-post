@@ -1,37 +1,50 @@
 ---
-title: "Autonomous Trucking AI ROI: Kodiak's Midwest Case Study"
-date: "2026-04-09T21:08:54Z"
-slug: "kodiak-ai-autonomous-trucking-midwest-expansion"
-description: "Autonomous trucking AI cut projected cost per mile to $0.38 vs. $1.92 for human drivers. See how Kodiak AI staged its Midwest expansion and what the ROI data reveals."
-keywords: ["autonomous trucking AI ROI", "autonomous fleet management ROI", "AI logistics case study", "Kodiak AI expansion", "autonomous trucking cost per mile", "AI fleet technology deployment"]
-author: "Particle Post Editorial Team"
-tags: ["Autonomous Trucking", "AI Logistics", "Fleet Management", "Supply Chain AI", "ROI Analysis"]
-categories: ["AI in Operations"]
-schema_type: "Article"
-content_type: "case_study"
+title: 'Autonomous Trucking AI ROI: Kodiak''s Midwest Case Study'
+date: '2026-04-09T21:08:54Z'
+slug: kodiak-ai-autonomous-trucking-midwest-expansion
+description: Autonomous trucking AI cut projected cost per mile to $0.38 vs. $1.92 for human drivers. See how Kodiak AI staged its Midwest expansion and what the ROI data reveals.
+keywords:
+- autonomous trucking AI ROI
+- autonomous fleet management ROI
+- AI logistics case study
+- Kodiak AI expansion
+- autonomous trucking cost per mile
+- AI fleet technology deployment
+author: Particle Post Editorial Team
+tags:
+- Autonomous Trucking
+- AI Logistics
+- Fleet Management
+- Supply Chain AI
+- ROI Analysis
+categories:
+- AI in Operations
+schema_type: Article
+content_type: case_study
 has_faq: true
 cover:
-  image: "https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/kodiak-ai-autonomous-trucking-midwest-expansion.png"
-  alt: "Case Study: Autonomous Trucking AI ROI: Kodiak's Midwest Case Study"
-  credit_name: "Particle Post"
-  credit_url: "https://theparticlepost.com"
-  credit_source: "generated"
-image: "https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/kodiak-ai-autonomous-trucking-midwest-expansion.png"
-image_alt: "Case Study: Autonomous Trucking AI ROI: Kodiak's Midwest Case Study"
-image_credit_name: "Particle Post"
-image_credit_url: "https://theparticlepost.com"
-image_credit_source: "generated"
+  image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/kodiak-ai-autonomous-trucking-midwest-expansion.png
+  alt: 'CASE STUDY: Autonomous Trucking AI ROI: Kodiak''s Midwest Case Study'
+  credit_name: Particle Post
+  credit_url: https://theparticlepost.com
+  credit_source: ai-generated
+  generation: gemini-v1
+image: https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/covers/kodiak-ai-autonomous-trucking-midwest-expansion.png
+image_alt: 'CASE STUDY: Autonomous Trucking AI ROI: Kodiak''s Midwest Case Study'
+image_credit_name: Particle Post
+image_credit_url: https://theparticlepost.com
+image_credit_source: ai-generated
 faq_pairs:
-  - question: "What is Kodiak AI's autonomous trucking expansion strategy?"
-    answer: "Kodiak AI uses a staged, corridor-by-corridor model: validate on existing commercial lanes, run supervised demonstrations in new geographies, then open commercial onboarding. Its April 2026 Ohio and Indiana demonstrations built on Sunbelt commercial operations with Werner Enterprises."
-  - question: "How much can autonomous trucking AI reduce fleet operating costs per mile?"
-    answer: "Morgan Stanley Research (2025) estimates autonomous long-haul trucks at scale could achieve $0.38 per mile versus $1.92 for human-driven trucks per ATRI 2024, an 80% reduction contingent on amortizing hundreds of millions in technology development costs."
-  - question: "What are the biggest risks in autonomous fleet management deployment on new corridors?"
-    answer: "The three primary risks are weather-related performance gaps, insurance underwriting gaps in states without finalized AV endorsements, and TMS integration costs vendors exclude from ROI models. Budget six to twelve months for a supervised demonstration phase before committing commercial freight volumes."
-  - question: "Why does carrier contract renewal matter more than new autonomous trucking pilot signings?"
-    answer: "A pilot signals willingness to test. A renewal signals the technology met reliability thresholds in commercial operation. Werner Enterprises' Kodiak partnership continuation is therefore stronger evidence of readiness than any new pilot announcement."
-  - question: "Is autonomous trucking ready for enterprise deployment in 2026?"
-    answer: "Ready for staged commercial pilots on long-haul interstate corridors in permissive AV states, not for fleet-wide replacement. Safety drivers remain in all Kodiak Midwest runs as of April 2026. Neither Ohio nor Indiana has published a fixed driverless clearance timeline."
+- question: What is Kodiak AI's autonomous trucking expansion strategy?
+  answer: 'Kodiak AI uses a staged, corridor-by-corridor model: validate on existing commercial lanes, run supervised demonstrations in new geographies, then open commercial onboarding. Its April 2026 Ohio and Indiana demonstrations built on Sunbelt commercial operations with Werner Enterprises.'
+- question: How much can autonomous trucking AI reduce fleet operating costs per mile?
+  answer: Morgan Stanley Research (2025) estimates autonomous long-haul trucks at scale could achieve $0.38 per mile versus $1.92 for human-driven trucks per ATRI 2024, an 80% reduction contingent on amortizing hundreds of millions in technology development costs.
+- question: What are the biggest risks in autonomous fleet management deployment on new corridors?
+  answer: The three primary risks are weather-related performance gaps, insurance underwriting gaps in states without finalized AV endorsements, and TMS integration costs vendors exclude from ROI models. Budget six to twelve months for a supervised demonstration phase before committing commercial freight volumes.
+- question: Why does carrier contract renewal matter more than new autonomous trucking pilot signings?
+  answer: A pilot signals willingness to test. A renewal signals the technology met reliability thresholds in commercial operation. Werner Enterprises' Kodiak partnership continuation is therefore stronger evidence of readiness than any new pilot announcement.
+- question: Is autonomous trucking ready for enterprise deployment in 2026?
+  answer: Ready for staged commercial pilots on long-haul interstate corridors in permissive AV states, not for fleet-wide replacement. Safety drivers remain in all Kodiak Midwest runs as of April 2026. Neither Ohio nor Indiana has published a fixed driverless clearance timeline.
 ShowToc: true
 TocOpen: false
 draft: false
