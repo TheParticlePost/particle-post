@@ -190,15 +190,6 @@
       "created": "2026-03-25"
     },
     {
-      "id": "UI-024",
-      "component": "footer-heading-hierarchy",
-      "description": "Footer h4 headings should be h3 to fix h2→h3 progression; Navigate heading changed successfully to h3, but Legal heading still h4 due to template formatting quirk",
-      "priority": "high",
-      "status": "pending",
-      "source": "audit",
-      "created": "2026-03-26"
-    },
-    {
       "id": "UI-025",
       "component": "stat-box-dark-mode",
       "description": "Verify stat-box tertiary background contrast against dark theme background (#0D1117); ensure --tertiary (#21262D) provides sufficient visual distinction",
@@ -215,6 +206,33 @@
       "status": "pending",
       "source": "audit",
       "created": "2026-03-26"
+    },
+    {
+      "id": "UI-027",
+      "component": "footer-responsive",
+      "description": "Footer grid layout may not stack properly on tablet (768px); footer-links may need flex-wrap adjustment for 2 column layout at smaller widths",
+      "priority": "medium",
+      "status": "pending",
+      "source": "audit",
+      "created": "2026-04-11"
+    },
+    {
+      "id": "UI-028",
+      "component": "post-card-category-pill",
+      "description": "Category pill in card header uses text-overflow: ellipsis but may not handle very long category names gracefully on mobile; consider max-width percentage or line-clamp",
+      "priority": "low",
+      "status": "pending",
+      "source": "audit",
+      "created": "2026-04-11"
+    },
+    {
+      "id": "UI-029",
+      "component": "hero-stats-mobile",
+      "description": "Hero stats strip in home info uses flex with separators; on very small screens (320px) may wrap awkwardly; test min-width constraints",
+      "priority": "low",
+      "status": "pending",
+      "source": "audit",
+      "created": "2026-04-11"
     }
   ],
   "completed": [
@@ -237,6 +255,16 @@
       "source": "audit",
       "created": "2026-03-25",
       "completed_date": "2026-03-25"
+    },
+    {
+      "id": "UI-024",
+      "component": "footer-heading-hierarchy",
+      "description": "Footer h4 headings should be h3 to fix h2→h3 progression; Navigate heading changed successfully to h3, but Legal heading still h4 due to template formatting quirk",
+      "priority": "high",
+      "status": "completed",
+      "source": "audit",
+      "created": "2026-03-26",
+      "completed_date": "2026-04-11"
     }
   ]
 }
