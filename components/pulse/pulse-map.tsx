@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, memo } from "react";
+import { useState, useMemo, memo } from "react";
 import {
   ComposableMap,
   Geographies,
@@ -13,12 +13,72 @@ import type { AdoptionData, CaseStudy } from "@/lib/pulse/types";
 
 const GEO_URL = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
 
+/**
+ * Two-or-more case studies in roughly the same place (within ~2° lat/lng)
+ * render as a single dot on a world map because pixel resolution at that
+ * scale can't distinguish them. Meta (Menlo Park) and Kodiak (Mountain
+ * View) are ~11km apart — less than one map pixel.
+ *
+ * This helper groups markers by a coarse geographic bucket and, for any
+ * bucket with 2+ members, spreads them in a small circle around their
+ * shared centroid so every case study gets a visible, clickable dot.
+ *
+ * The offset is applied to the coordinate array — the underlying data is
+ * not mutated. `cs.lng` and `cs.lat` stay accurate for any downstream
+ * consumer that needs the real company location.
+ */
+function spreadOverlappingMarkers(
+  studies: CaseStudy[],
+): Array<CaseStudy & { displayCoords: [number, number] }> {
+  const BUCKET_DEG = 2;      // group if within this many degrees
+  const SPREAD_RADIUS = 1.5; // offset distance from centroid, in degrees
+
+  const buckets = new Map<string, CaseStudy[]>();
+  for (const cs of studies) {
+    const key = `${Math.round(cs.lat / BUCKET_DEG)}:${Math.round(cs.lng / BUCKET_DEG)}`;
+    const arr = buckets.get(key) ?? [];
+    arr.push(cs);
+    buckets.set(key, arr);
+  }
+
+  const out: Array<CaseStudy & { displayCoords: [number, number] }> = [];
+  for (const group of buckets.values()) {
+    if (group.length === 1) {
+      const cs = group[0];
+      out.push({ ...cs, displayCoords: [cs.lng, cs.lat] });
+      continue;
+    }
+
+    // 2+ markers in this bucket → spread around the centroid in a circle
+    const cx = group.reduce((s, cs) => s + cs.lng, 0) / group.length;
+    const cy = group.reduce((s, cs) => s + cs.lat, 0) / group.length;
+    // Sort deterministically so the same company is always at the same
+    // offset slot across renders (prevents flicker during hot reloads).
+    const sorted = [...group].sort((a, b) => a.company.localeCompare(b.company));
+    sorted.forEach((cs, i) => {
+      const angle = (2 * Math.PI * i) / sorted.length;
+      out.push({
+        ...cs,
+        displayCoords: [
+          cx + SPREAD_RADIUS * Math.cos(angle),
+          cy + SPREAD_RADIUS * Math.sin(angle),
+        ],
+      });
+    });
+  }
+  return out;
+}
+
 interface PulseMapProps {
   adoptionData: AdoptionData[];
   caseStudies: CaseStudy[];
 }
 
 function PulseMapInner({ adoptionData, caseStudies }: PulseMapProps) {
+  const spreadCaseStudies = useMemo(
+    () => spreadOverlappingMarkers(caseStudies),
+    [caseStudies],
+  );
   const [tooltip, setTooltip] = useState<{
     content: string;
     x: number;
@@ -89,9 +149,11 @@ function PulseMapInner({ adoptionData, caseStudies }: PulseMapProps) {
             }
           </Geographies>
 
-          {/* Case study markers */}
-          {caseStudies.map((cs) => (
-            <Marker key={cs.id || cs.company} coordinates={[cs.lng, cs.lat]}>
+          {/* Case study markers — coordinates may be offset from cs.lng/cs.lat
+              if another case study is in roughly the same place (see
+              spreadOverlappingMarkers). */}
+          {spreadCaseStudies.map((cs) => (
+            <Marker key={cs.id || cs.company} coordinates={cs.displayCoords}>
               <circle
                 r={cs.featured ? 5 : 3.5}
                 fill="var(--accent)"
