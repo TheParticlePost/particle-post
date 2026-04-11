@@ -61,12 +61,12 @@ function PulseMapInner({ adoptionData, caseStudies }: PulseMapProps) {
                     key={geo.rsmKey}
                     geography={geo}
                     fill={fillColor}
-                    stroke="var(--border-solid)"
-                    strokeWidth={0.4}
+                    stroke="var(--map-border)"
+                    strokeWidth={0.6}
                     style={{
                       default: { outline: "none" },
                       hover: {
-                        fill: data ? "var(--accent)" : "var(--bg-bright)",
+                        fill: data ? "var(--accent)" : "var(--map-border)",
                         outline: "none",
                         cursor: data ? "pointer" : "default",
                       },
@@ -116,18 +116,23 @@ function PulseMapInner({ adoptionData, caseStudies }: PulseMapProps) {
         </ZoomableGroup>
       </ComposableMap>
 
-      {/* Legend */}
-      <div className="flex items-center gap-6 mt-4 justify-center">
+      {/* Legend — opacity values must match adoptionToOpacity() in
+          lib/pulse/color-scale.ts. */}
+      <div className="flex items-center gap-6 mt-4 justify-center flex-wrap">
         <div className="flex items-center gap-2">
-          <div className="w-3 h-3 rounded-sm" style={{ background: "rgba(232,85,46,0.08)" }} />
+          <div className="w-3 h-3 rounded-sm border border-border-ghost" style={{ background: "var(--map-land)" }} />
+          <span className="font-mono text-caption text-text-muted">No data</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <div className="w-3 h-3 rounded-sm" style={{ background: "rgba(232,85,46,0.18)" }} />
           <span className="font-mono text-caption text-text-muted">0–20%</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-3 h-3 rounded-sm" style={{ background: "rgba(232,85,46,0.30)" }} />
+          <div className="w-3 h-3 rounded-sm" style={{ background: "rgba(232,85,46,0.45)" }} />
           <span className="font-mono text-caption text-text-muted">40–60%</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-3 h-3 rounded-sm" style={{ background: "rgba(232,85,46,0.70)" }} />
+          <div className="w-3 h-3 rounded-sm" style={{ background: "rgba(232,85,46,0.78)" }} />
           <span className="font-mono text-caption text-text-muted">80–100%</span>
         </div>
         <div className="flex items-center gap-2">

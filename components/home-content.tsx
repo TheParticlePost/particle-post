@@ -10,6 +10,7 @@ import { FadeUp } from "@/components/effects/fade-up";
 import { formatDateShort } from "@/lib/utils";
 import type { PostMeta } from "@/lib/types";
 import { SUBSCRIBER_COUNT_THRESHOLD } from "@/lib/constants";
+import { getAuthorBySlug, getAuthorForContentType } from "@/lib/authors";
 
 interface HomeContentProps {
   latestPost: PostMeta | null;
@@ -145,7 +146,23 @@ export function HomeContent({
                     <div className="flex items-center gap-6">
                       <DataText>{featuredDeepDive.readingTime} min read</DataText>
                       <DataText>
-                        By {featuredDeepDive.author || "Particle Post"}
+                        By{" "}
+                        {(() => {
+                          // Look up the display name from the author registry
+                          // instead of rendering the raw slug. Falls back to the
+                          // content_type → curator mapping for legacy articles,
+                          // then to "Particle Post" as a last resort.
+                          const author =
+                            (featuredDeepDive.author
+                              ? getAuthorBySlug(featuredDeepDive.author)
+                              : undefined) ??
+                            (featuredDeepDive.content_type
+                              ? getAuthorForContentType(
+                                  featuredDeepDive.content_type,
+                                )
+                              : undefined);
+                          return author?.name ?? "Particle Post";
+                        })()}
                       </DataText>
                     </div>
                   </div>

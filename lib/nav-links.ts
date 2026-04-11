@@ -4,7 +4,7 @@
  */
 
 export const SITE_NAV_LINKS = [
-  { href: "/", label: "Briefings" },
+  { href: "/", label: "Home" },
   { href: "/categories/", label: "Deep Dives" },
   { href: "/pulse/", label: "AI Pulse" },
   { href: "/specialists/", label: "Specialists" },

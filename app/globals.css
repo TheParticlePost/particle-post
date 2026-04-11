@@ -42,6 +42,14 @@
     --code-bg: #F0EBE5;
     --scrollbar-track: #EDE8E2;
     --scrollbar-thumb: #D6CFC8;
+
+    /* Pulse map — needs explicit contrast against the cream page bg.
+       `--border-solid` (#D6CFC8) and `--bg-high` (#F0EBE5) are too close
+       to the page background to register as country outlines / landmasses
+       on a world map at small scale. */
+    --map-land: #DDD6CC;
+    --map-border: #9E9389;
+    --map-low-adoption-fill: rgba(232, 85, 46, 0.18);
   }
 
   /* Dark theme — The Kinetic Ledger (DESIGN.md canonical) */
@@ -81,6 +89,11 @@
     --code-bg: #282828;
     --scrollbar-track: #141414;
     --scrollbar-thumb: #333333;
+
+    /* Pulse map — dark theme values. Must contrast with the dark page bg. */
+    --map-land: #2A2726;
+    --map-border: #5A4F48;
+    --map-low-adoption-fill: rgba(232, 85, 46, 0.12);
   }
 }
 

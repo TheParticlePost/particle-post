@@ -3,33 +3,67 @@ import { HomeContent } from "@/components/home-content";
 import { getSubscriberCount } from "@/lib/subscribers/count";
 import type { Post, PostMeta } from "@/lib/types";
 
-// Revalidate every 4 hours so hero rotates between deploys
-export const revalidate = 14400;
+// Revalidate hourly as a safety net. Vercel rebuilds on every push
+// from the pipeline anyway, so ISR here just catches any data that
+// changes outside of a deploy (e.g. the subscriber count).
+export const revalidate = 3600;
 
 function toMeta(post: { content: string } & PostMeta): PostMeta {
   const { content, ...meta } = post;
   return meta;
 }
 
-function selectHero(posts: Post[]): Post | null {
-  if (posts.length === 0) return null;
+/**
+ * Pick the recommended "Deep Dive" card shown at the bottom of the home
+ * page. Not the arbitrary longest-reading-time article — an editorial
+ * recommendation.
+ *
+ * Priority:
+ *   1. An explicit `featured: true` article in frontmatter. This is the
+ *      editor's hand-picked "you should read this." Prefer deep_dive /
+ *      case_study content types when multiple are flagged.
+ *   2. Most recent deep_dive or case_study (substantive long-form, our
+ *      strongest content).
+ *   3. Any article, newest first (fallback so the section never stays
+ *      empty on a site with few posts).
+ *
+ * Excludes the hero (newest post) so the same article never appears in
+ * two spots.
+ */
+function selectRecommendation(
+  allPosts: Post[],
+  heroSlug: string | undefined,
+): Post | null {
+  const candidates = allPosts.filter((p) => p.slug !== heroSlug);
+  if (candidates.length === 0) return null;
 
-  // Priority 1: most recent post with featured: true
-  const featured = posts.slice(0, 10).find((p) => p.featured);
-  if (featured) return featured;
+  const LONG_FORM: Array<string | undefined> = ["deep_dive", "case_study"];
 
-  // Priority 2: time-based rotation through top 5 posts (cycles every 4 hours)
-  const pool = Math.min(5, posts.length);
-  const rotationIndex = Math.floor(Date.now() / (4 * 60 * 60 * 1000)) % pool;
-  return posts[rotationIndex];
+  // 1. Explicit featured flag, prefer long-form
+  const featuredLongForm = candidates.find(
+    (p) => p.featured && LONG_FORM.includes(p.content_type),
+  );
+  if (featuredLongForm) return featuredLongForm;
+  const featuredAny = candidates.find((p) => p.featured);
+  if (featuredAny) return featuredAny;
+
+  // 2. Most recent long-form (posts already sorted desc by date)
+  const recentLongForm = candidates.find((p) =>
+    LONG_FORM.includes(p.content_type),
+  );
+  if (recentLongForm) return recentLongForm;
+
+  // 3. Fallback: newest article that isn't the hero
+  return candidates[0];
 }
 
 export default async function HomePage() {
   const allPosts = getAllPosts();
   const subscriberCount = await getSubscriberCount();
 
-  // Hero: featured override or time-based rotation
-  const heroPost = selectHero(allPosts);
+  // Hero = newest post, always. getAllPosts() returns posts sorted by
+  // date descending, so posts[0] is the latest publish.
+  const heroPost: Post | null = allPosts[0] ?? null;
   const latestPost = heroPost ? toMeta(heroPost) : null;
 
   // Recent posts (first 8 excluding hero)
@@ -38,16 +72,9 @@ export default async function HomePage() {
     .slice(0, 8)
     .map(toMeta);
 
-  // Featured deep dive — longest article, prefer different category from hero
-  const deepDiveCandidates = allPosts
-    .filter((p) => p.slug !== heroPost?.slug)
-    .sort((a, b) => b.readingTime - a.readingTime);
-  const heroCategory = heroPost?.categories[0];
-  const diverseDeepDive = heroCategory
-    ? deepDiveCandidates.find((p) => p.categories[0] !== heroCategory)
-    : null;
-  const deepDive = diverseDeepDive || deepDiveCandidates[0] || null;
-  const featuredDeepDive = deepDive ? toMeta(deepDive) : null;
+  // Featured Deep Dive = curated recommendation (see selectRecommendation).
+  const recommendation = selectRecommendation(allPosts, heroPost?.slug);
+  const featuredDeepDive = recommendation ? toMeta(recommendation) : null;
 
   // Trending — 3 recent posts not used elsewhere
   const usedSlugs = new Set([
