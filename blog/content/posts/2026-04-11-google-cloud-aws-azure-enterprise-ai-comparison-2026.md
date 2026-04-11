@@ -121,7 +121,6 @@ Lock-in risk is the dimension most platform evaluations minimize and most enterp
 
 ![Chart Bar Horizontal visualization](https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/visuals/google-cloud-aws-azure-enterprise-ai-comparison-2026-chart_bar_horizontal.png)
 
-
 Azure's lock-in risk is highest for Microsoft-stack organizations. When AI capability embeds into Microsoft 365 Copilot, Dynamics, and GitHub Copilot, migration to another platform requires re-implementing workflows across every product, not just swapping an API endpoint. That integration depth is Azure's competitive moat, but it is also a switching cost that compounds over time.
 
 AWS Bedrock's model-agnostic approach is the strongest architectural choice for enterprises that want to preserve optionality. Because Bedrock supports multiple foundation model providers through a consistent API, enterprises can switch underlying models without changing application code. The risk with AWS is SageMaker's complexity: the platform's breadth makes it powerful for data science teams but operationally expensive for organizations without dedicated MLOps staff.

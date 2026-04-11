@@ -40,7 +40,7 @@ What technology they selected. Why (over alternatives they considered). Key tech
 Timeline with milestones. Team composition. Phases. Budget range (if available). What surprised them during deployment.
 
 ### 5. The Results
-Before/after metrics (MANDATORY). Named KPIs with specific numbers. Time-to-value. Unexpected benefits or side effects.
+Named KPIs with specific numbers. Time-to-value. Unexpected benefits or side effects. Present the before-state and after-state numbers as prose ("metric X went from Y to Z") or inside a {{< bar-chart >}} — do NOT use a {{< before-after >}} card, that component is deprecated and will cause QA gate rejection.
 
 ### 6. What They'd Do Differently
 Lessons learned. Mistakes made. What they underestimated. This section MUST exist, no case study is complete without honest reflection.
@@ -49,10 +49,11 @@ Lessons learned. Mistakes made. What they underestimated. This section MUST exis
 3-5 bullet points targeted at the persona who would replicate this.
 
 ## Visual Requirements
-- **Before/After card:** MANDATORY (the core data point)
+- **Bar chart:** MANDATORY (the core data point — present before-state and after-state as adjacent bars, not a Before/After card)
 - **Timeline:** MANDATORY (implementation phases)
 - **Stat-boxes:** Minimum 2 (outcome metrics)
 - **Cover image:** Generated SVG, case_study template (hero metric displayed)
+- **Before/After card:** BANNED — the `{{< before-after >}}` component is deprecated. Use a bar chart with two bars instead.
 
 ## Source Rules
 - If based on secondary sources (press releases, earnings calls), explicitly state: "Based on [Company]'s Q2 2026 earnings call and public press releases."

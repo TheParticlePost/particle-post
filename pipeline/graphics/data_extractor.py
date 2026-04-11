@@ -239,21 +239,10 @@ def select_visuals(
 
     if content_type == "case_study":
         # Target: 4-6 visuals. Every hook the extractor finds becomes a visual.
-        if comparisons:
-            ba = next((c for c in comparisons if c.get("type") == "before_after"), None)
-            if ba:
-                visuals.append({
-                    "type": "before_after",
-                    "insert_after_heading": "Results",
-                    "data": {
-                        "before_label": "Before",
-                        "before_value": ba["before"],
-                        "after_label": "After",
-                        "after_value": ba["after"],
-                        "metric": "",
-                        "source": "",
-                    },
-                })
+        # NB: before_after spec emission has been deliberately removed — the
+        # {{< before-after >}} component is banned (see writer_backstory.txt
+        # BEFORE / AFTER CARD section). Present before/after as either a
+        # {{< bar-chart >}} with two bars or plain prose.
 
         chart = _bar_chart(stats[:6], "Key metrics", "Results")
         if chart:
@@ -339,21 +328,8 @@ def select_visuals(
         chart = _bar_chart(stats[:5], "Vendor landscape", "Vendor Landscape")
         if chart:
             visuals.append(chart)
-        if comparisons:
-            ba = next((c for c in comparisons if c.get("type") == "before_after"), None)
-            if ba:
-                visuals.append({
-                    "type": "before_after",
-                    "insert_after_heading": "Comparison",
-                    "data": {
-                        "before_label": "Option A",
-                        "before_value": ba["before"],
-                        "after_label": "Option B",
-                        "after_value": ba["after"],
-                        "metric": "",
-                        "source": "",
-                    },
-                })
+        # NB: before_after spec emission removed. Use a bar-chart with two
+        # bars (option A vs option B) for vendor comparisons instead.
 
     return visuals
 

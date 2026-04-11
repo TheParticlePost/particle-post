@@ -58,7 +58,6 @@ The assumption breaks down because AI spend does not wait for finance approval. 
 
 CFO-led AI governance produces measurably better ROI outcomes than technology-led approaches. Companies where finance directed AI governance from the start were 2.4 times more likely to report above-expected returns, per McKinsey 2025. Gartner finds 74% of enterprise AI pilots never produce a documented ROI case, a measurement failure finance is positioned to prevent.
 
-
 Companies where finance led AI governance from the start achieved measurably better ROI discipline than those where technology teams drove initial decisions, according to Fortune's April 7, 2026 report. The report warns that CFOs who delay risk ceding "organizational control over AI spend and value measurement to those without P&L accountability."
 
 {{< stat-box value="74%" label="Share of enterprise AI pilots that never produce a documented ROI case" source="Gartner" >}}

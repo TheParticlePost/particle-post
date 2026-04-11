@@ -51,7 +51,6 @@ Enterprise AI vendor due diligence requires contractual audit rights, independen
 
 {{< stat-box value="30%" label="Share of enterprises that conduct substantive AI vendor audits before signing multi-year contracts" source="MIT Sloan Management Review, 2024" >}}
 
-
 Responsible AI programs at major vendors rarely receive independent audits from buyers. A 2024 survey by MIT Sloan Management Review found fewer than 30% of enterprises conduct substantive AI vendor audits before signing multi-year contracts. Most rely on vendor-supplied documentation: model cards, safety whitepapers, and terms of service.
 
 The problem is structural. Vendors have commercial incentives to disclose selectively. Anthropic's decision to withhold the dangerous model was, by its own standards, the correct call. Buyers, however, learned about it through a press report timed near an IPO filing, not through any contractual disclosure mechanism. That is the gap enterprise buyers must close.

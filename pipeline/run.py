@@ -1270,7 +1270,11 @@ def main() -> None:
                 # now emit {{< stat-box >}} shortcodes directly (see the
                 # visuals loop below), bypassing the PNG render path so
                 # they render via the theme-adaptive React component.
-                diagram_before_after, diagram_process_flow,
+                # diagram_before_after deliberately NOT imported either —
+                # the before-after component is banned (low signal-to-noise,
+                # text clipping). See writer_backstory.txt BEFORE / AFTER
+                # CARD section + qa_gate.py check 19.
+                diagram_process_flow,
                 diagram_timeline, chart_bar_horizontal,
             )
             from pipeline.graphics.renderer import render_sync
@@ -1540,13 +1544,18 @@ def main() -> None:
                         print(f"  [GRAPHICS] Visual generated: stat_card (shortcode)")
                         continue
 
+                    # before_after: REFUSED. The component is banned; any
+                    # spec that somehow still reaches here (e.g. from an
+                    # old data_extractor branch) is dropped with a log
+                    # note so the pipeline doesn't silently skip a visual.
                     if vtype == "before_after":
-                        svg = diagram_before_after(
-                            vdata["before_label"], vdata["before_value"],
-                            vdata["after_label"], vdata["after_value"],
-                            vdata.get("metric", ""), vdata.get("source", ""),
+                        print(
+                            f"  [GRAPHICS] Skipping deprecated before_after visual "
+                            f"(component is banned — see writer_backstory.txt)"
                         )
-                    elif vtype == "process_flow":
+                        continue
+
+                    if vtype == "process_flow":
                         svg = diagram_process_flow(vdata["steps"])
                         w, h = 1000, 150
                     elif vtype == "timeline":

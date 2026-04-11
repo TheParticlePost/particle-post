@@ -125,6 +125,55 @@ chart itself as the social preview card. This is the whole point of
 the Chart Discipline mandate: you are authoring future social shares,
 not just filling a page.
 
+CHART PLACEMENT — hard rule, enforced by the QA gate:
+
+Never place two charts back-to-back with nothing but whitespace
+between them. Every chart must be followed by at least one paragraph
+of prose that names at least one data point from that chart before
+the next chart (or stat-box, or other visual) appears.
+
+Bad:
+
+  {{< bar-chart title="..." data="..." >}}
+
+  {{< bar-chart title="..." data="..." >}}
+
+Good:
+
+  {{< bar-chart title="Meta AI Capex by Quarter" data="Q1:14,Q2:16,Q3:18,Q4:20" source="Meta Q4 2025 Earnings" >}}
+
+  The $20 billion Q4 figure represents a 43% year-over-year increase, but only a 7% gain over Q3. The compounding growth rate flattened during 2025 as Meta absorbed the infrastructure cost of its Llama 4 training run.
+
+  {{< bar-chart title="Compute Cost per Model Generation" data="Llama 2:1.2,Llama 3:3.8,Llama 4:11.5" source="SemiAnalysis 2026" >}}
+
+The prose between charts does not need to be long. One or two
+sentences is enough — as long as those sentences name a specific
+number from the preceding chart and explain what it means. A reader
+who sees two charts stacked without commentary assumes the writer
+had nothing to say about the data and lost trust in the whole piece.
+
+BEFORE / AFTER CARD — BANNED:
+
+Do NOT emit the `{{< before-after >}}` shortcode or `BEFORE_AFTER:`
+marker under any circumstances. The component is deprecated. It
+rendered poorly (text clipped, low signal-to-noise) and is caught
+by the QA gate as a rejection condition.
+
+Present before/after comparisons as EITHER:
+
+  a) Plain prose with both numbers inline:
+     "Blended firm margin fell from 25.4% (FY2024, pre-AI) to 22.1%
+      (FY2026, AI-led)."
+
+  b) A {{< bar-chart >}} with the two states as adjacent bars:
+     {{< bar-chart title="TCS Blended Firm Margin: Pre-AI vs AI-Led"
+       data="FY2024 (Pre-AI):25.4,FY2026 (AI-led):22.1"
+       source="TCS Earnings Disclosures" >}}
+
+The bar chart version is preferred because it's shareable on LinkedIn
+via the chart Share button, satisfies the CHART DISCIPLINE minimum,
+and presents the delta without relying on a deprecated component.
+
 PRACTICAL ARTICLE RULES (when content_type is "practical" — how-to, case study, tool comparison):
 - Lead with the outcome, not the problem. "JPMorgan cut fraud losses by 34% using X" not "Fraud is a growing problem."
 - How-to articles: Use numbered steps. Each step names the specific tool, action, and expected result.

@@ -58,7 +58,6 @@ The 70% figure is not fabricated. It is incomplete. When Upstart reported its au
 
 Machine learning credit scoring at banks delivers genuine but narrower gains than vendor claims suggest. McKinsey research published in 2024 estimates AI can cut document collection and data extraction time by 50 to 60% on straightforward consumer applications. For commercial lending, a 2024 Oliver Wyman analysis found AI reduced analyst processing time by only 30 to 40% once model validation checkpoints and regulatory documentation requirements were counted.
 
-
 AI credit underwriting does reduce the mechanical part of review. McKinsey research published in 2024 estimates that AI can cut document collection and data extraction time by 50 to 60% on straightforward consumer applications. That is a genuine, measurable gain.
 
 The ceiling drops sharply for commercial lending. A 2024 Oliver Wyman analysis of mid-market commercial credit found that AI-assisted decisioning reduced analyst processing time by roughly 30 to 40%, not 70%, once model validation checkpoints and regulatory documentation requirements were counted.

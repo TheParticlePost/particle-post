@@ -59,7 +59,6 @@ A named model risk officer is not optional under SS1/23 or the OCC's SR 11-7 gui
 
 ![Process Flow visualization](https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/visuals/machine-learning-credit-scoring-deployment-guide-process_flow.png)
 
-
 **Why it matters:** A model built for approval decisioning uses a binary default flag as its target. A model built for line assignment optimizes expected revenue per account. Mixing the two produces a model that does neither well.
 
 **Watch for:** Scope creep from product teams who want the model to handle collections propensity simultaneously. Refuse it. Sequence products instead.

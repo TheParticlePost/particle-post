@@ -322,6 +322,67 @@ def validate(
             f"reader would want to save and share."
         )
 
+    # ── 18. Consecutive charts forbidden ────────────────────────────────
+    # Two visual blocks (chart or stat-box) with nothing but whitespace
+    # between them produce the "wall of charts" UX that tanks reader
+    # trust. Every chart must be followed by at least one paragraph of
+    # prose that names a data point from that chart before the next
+    # visual appears. See writer_backstory.txt CHART PLACEMENT for the
+    # full rule.
+    visual_block_re = re.compile(
+        r"\{\{<\s*(?:bar-chart|time-series-chart|stat-box)\b[^>]*>\}\}",
+        re.DOTALL,
+    )
+    visual_matches = list(visual_block_re.finditer(body))
+    consecutive_pairs = 0
+    for i in range(len(visual_matches) - 1):
+        end_of_first = visual_matches[i].end()
+        start_of_second = visual_matches[i + 1].start()
+        gap = body[end_of_first:start_of_second]
+        # "Prose" = at least 120 characters of non-whitespace, non-markdown
+        # content. Tighter than "any text" to catch cases where the writer
+        # inserts a single short caption and calls it commentary.
+        gap_text = re.sub(r"\s+", " ", gap).strip()
+        if len(gap_text) < 120:
+            consecutive_pairs += 1
+    if consecutive_pairs > 0:
+        penalty = min(consecutive_pairs * 8, 20)
+        score -= penalty
+        issues.append(
+            f"{consecutive_pairs} back-to-back visual block(s) with fewer "
+            f"than 120 characters of prose between them. Every chart or "
+            f"stat-box must be followed by at least one paragraph of "
+            f"narrative that names a data point from it. See writer "
+            f"backstory CHART PLACEMENT rule."
+        )
+
+    # ── 19. Before/after component banned ───────────────────────────────
+    # The {{< before-after >}} shortcode and the auto-generated
+    # ![Before After visualization](...) PNG image tag both render as
+    # low-quality text-clipped cards. The component is deprecated; use a
+    # bar-chart with two bars or prose instead. See writer_backstory.txt
+    # BEFORE / AFTER CARD — BANNED section.
+    before_after_shortcode = len(
+        re.findall(r"\{\{<\s*before-after\b", body)
+    )
+    before_after_image = len(
+        re.findall(
+            r"!\[[^\]]*\]\([^)]*/visuals/[^)]*-before_after\.png",
+            body,
+        )
+    )
+    before_after_total = before_after_shortcode + before_after_image
+    if before_after_total > 0:
+        score -= 15
+        issues.append(
+            f"{before_after_total} deprecated before-after reference(s) "
+            f"found ({before_after_shortcode} shortcode(s), "
+            f"{before_after_image} image tag(s)). The before-after "
+            f"component is banned. Replace with a {{{{< bar-chart >}}}} "
+            f"containing two bars (before state, after state) or with "
+            f"plain prose naming both numbers inline."
+        )
+
     # Clamp score
     score = max(score, 0)
     passed = score >= 65

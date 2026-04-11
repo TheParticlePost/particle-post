@@ -67,33 +67,21 @@ KEY TAKEAWAY: TCS's AI revenue is growing inside a shrinking total, which means 
 
 ## How Does TCS Enterprise AI Transformation Compare to Rival IT Services Firms?
 
-TCS generated $2.3 billion in AI-driven revenue in FY2026, according to TCS earnings disclosures. Accenture led comparable peers at an estimated $4.1 billion, while Infosys reached approximately $1.1 billion, HCLTech approximately $0.9 billion, and Wipro approximately $0.7 billion, according to company earnings disclosures compiled by the Economic Times in 2026. TCS's position as second among global IT peers confirms its AI pivot is competitive, even as Accenture's consulting-led model holds a structural speed advantage in contract renegotiation.
-
-![Process Flow visualization](https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/visuals/tcs-ai-strategy-revenue-enterprise-transformation-process_flow.png)
-
+TCS generated $2.3 billion in AI-driven revenue in FY2026, according to TCS earnings disclosures. Accenture led comparable peers at an estimated $4.1 billion, while Infosys reached approximately $1.1 billion, HCLTech approximately $0.9 billion, and Wipro approximately $0.7 billion, according to company earnings disclosures compiled by the Economic Times in 2026. TCS's position as second among global IT peers confirms its AI pivot is competitive, even as Accenture's consulting-led model holds a structural speed advantage in contract renegotiation. At $29 billion in total FY2026 revenue, the $2.3 billion AI-led line represents roughly 8% of TCS's top-line — a meaningful beachhead, not a completed transition.
 
 The gap between TCS and Accenture reflects differences in client mix, geographic concentration, and the speed at which each firm shifted contract structures toward outcome-based pricing. TCS's client base skews toward multi-decade relationships with large industrial and banking clients, which creates stronger contract renegotiation leverage but slower adoption velocity than Accenture's consulting-led entry model.
 
-{{< stat-box value="8%" label="AI revenue as share of TCS total FY2026 revenue" source="TCS Q4 FY2026 Earnings, LiveMint" >}}
-
 {{< bar-chart id="chart-2" title="Top IT Firms: Estimated AI Services Revenue FY2026 (USD Billions)" data="TCS:2.3,Accenture:4.1,Infosys:1.1,Wipro:0.7,HCLTech:0.9" source="Company Earnings Disclosures, Economic Times 2026" >}}
+
+The $2.3 billion figure for TCS is not a one-quarter spike. TCS's AI-driven revenue was approximately $0.4 billion in FY2024 and $1.1 billion in FY2025 before reaching $2.3 billion in FY2026, according to TCS earnings disclosures compiled by the Economic Times. That is a 5.75x expansion over two fiscal years, compounding at roughly 140% year-over-year, and it is the main reason TCS has become the reference case for large IT services firms pivoting toward AI-led managed services.
 
 {{< time-series-chart id="chart-3" title="TCS AI Revenue Growth Trajectory (FY2024-FY2026)" data="FY2024:0.4,FY2025:1.1,FY2026:2.3" x-label="Fiscal Year" y-label="AI Revenue" y-unit="$B" source="TCS Earnings Disclosures, Economic Times" >}}
 
-{{< bar-chart id="chart-4" title="TCS AI Revenue as Share of Total Revenue: FY2024-FY2026" data="FY2024:1.4,FY2025:3.8,FY2026:8.0" x-label="Fiscal Year" y-label="AI Revenue Share (%)" y-unit="%" source="TCS Earnings Disclosures, Economic Times; Particle Post estimates" >}}
+The trajectory matters more than the current run-rate. At 140% year-over-year, TCS's AI line is still compounding faster than any legacy services line it has displaced, which means the 8% share of total FY2026 revenue will roughly double by FY2028 on the current curve — assuming client reallocation continues and the broader IT services market does not compress.
 
 ## Why These Results Are Frequently Misread
 
 The most common misreading of TCS's AI revenue figure is treating it as proof that an AI services strategy can deliver net revenue growth quickly. It cannot, at this scale. TCS's overall FY2026 revenue declined for the first time since listing, according to LiveMint. The $2.3 billion AI line did not compensate for contraction in the legacy base.
-
-{{< stat-box value="55%" label="See our analysis of [enterprise AI ROI…" source="" >}}
-
-
-![Chart Bar Horizontal visualization](https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/visuals/tcs-ai-strategy-revenue-enterprise-transformation-chart_bar_horizontal.png)
-
-
-![Before After visualization](https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/visuals/tcs-ai-strategy-revenue-enterprise-transformation-before_after.png)
-
 
 A second misuse pattern is citing TCS's pivot as evidence that large IT firms are safe to outsource full AI transformation to. That conclusion is wrong. TCS built its AI revenue partly by creating proprietary tooling, retraining hundreds of thousands of employees in AI-adjacent skills, and renegotiating long-term client contracts. Clients that handed TCS a passive "run our AI transformation" mandate without co-developing the operating model did not capture proportionate value. The firms that gained the most treated TCS as an implementation partner with governance sitting in-house.
 

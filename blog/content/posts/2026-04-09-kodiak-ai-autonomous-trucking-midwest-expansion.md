@@ -54,7 +54,6 @@ Autonomous trucking AI performance does not transfer automatically between geogr
 
 ![Timeline visualization](https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/visuals/kodiak-ai-autonomous-trucking-midwest-expansion-timeline.png?v=v3)
 
-
 Kodiak spent its formative operating years on those southern corridors. They offered predictable weather, lower traffic complexity, and regulatory environments that early autonomous vehicle operators deliberately chose. According to Kodiak's April 2026 GlobeNewswire release, the company completed commercial freight hauls across the Sunbelt with a safety record strong enough to trigger the Midwest evaluation.
 
 The challenge was geographic transferability, not technological confidence. The Sunbelt corridor differs from Midwest interstates in three material ways: seasonal weather variance, heavier construction zone density on aging infrastructure, and more complex interchange patterns near major freight hubs like Columbus and Indianapolis. Kodiak's operational team had to prove its autonomy stack handled these variables before carrier partners would commit Midwest freight volumes.
@@ -92,9 +91,6 @@ Phase three is the commercial onboarding pipeline now under way. Kodiak has not 
 ## What the Early Results Actually Show
 
 Operations directors should resist reading Kodiak's April 2026 announcement as proof of commercial scale in the Midwest. The demonstration phase generates safety and reliability data. It does not yet generate confirmed revenue or carrier volume commitments on Ohio and Indiana lanes.
-
-![Before After visualization](https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/visuals/kodiak-ai-autonomous-trucking-midwest-expansion-before_after.png?v=v3)
-
 
 The results do show operational confidence. Kodiak's autonomy stack completed the Midwest demonstrations without safety incidents requiring intervention, according to the April 2026 GlobeNewswire release. Insurance underwriters and carrier procurement teams use incident-free demonstration miles as a primary criterion for awarding commercial contracts.
 
