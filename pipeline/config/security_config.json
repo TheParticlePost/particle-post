@@ -41,7 +41,7 @@
     "dependency_cvss_high": 7.0,
     "dependency_cvss_medium": 4.0
   },
-  "last_scan": "2026-03-26",
+  "last_scan": "2026-04-11",
   "scan_history": [
     {
       "date": "2026-03-25",
@@ -65,6 +65,14 @@
       "high": 6,
       "medium": 0,
       "low": 1,
+      "auto_fixed": 0
+    },
+    {
+      "date": "2026-04-11",
+      "critical": 0,
+      "high": 1,
+      "medium": 7,
+      "low": 11,
       "auto_fixed": 0
     }
   ]

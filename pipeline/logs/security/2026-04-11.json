@@ -1,0 +1,231 @@
+{
+  "date": "2026-04-11",
+  "scan_duration_seconds": 33.1,
+  "summary": {
+    "critical": 0,
+    "high": 1,
+    "medium": 7,
+    "low": 11,
+    "auto_fixed": 0
+  },
+  "findings": [
+    {
+      "severity": "HIGH",
+      "category": "dependency",
+      "title": "uv 0.9.30 has vulnerability GHSA-pjjw-68hj-v9mw",
+      "detail": "## Impact  Wheel RECORD entries can contain relative paths that traverse outside of the wheel’s installation prefix. In versions 0.11.5 and earlier of uv, these wheels were not rejected on installation and the RECORD was respected without validation on uninstall.  uv uses the RECORD to determine fil. Fix available: 0.11.6",
+      "file_path": "requirements.txt",
+      "line_number": 0,
+      "auto_fixable": false,
+      "fix_prompt": "Update uv from 0.9.30 to 0.11.6 in requirements.txt to fix GHSA-pjjw-68hj-v9mw. Then run: pip install -r requirements.txt && python -m pipeline.run --slot morning --dry-run",
+      "fixed": false
+    },
+    {
+      "severity": "LOW",
+      "category": "workflow",
+      "title": "Missing timeout-minutes in morning-post.yml job 'guard'",
+      "detail": "Without a timeout, a hung workflow can consume Actions minutes indefinitely.",
+      "file_path": ".github/workflows/morning-post.yml",
+      "line_number": 0,
+      "auto_fixable": false,
+      "fix_prompt": "In .github/workflows/morning-post.yml, add 'timeout-minutes: 30' to job 'guard'.",
+      "fixed": false
+    },
+    {
+      "severity": "LOW",
+      "category": "workflow",
+      "title": "Missing timeout-minutes in content-audit.yml job 'guard'",
+      "detail": "Without a timeout, a hung workflow can consume Actions minutes indefinitely.",
+      "file_path": ".github/workflows/content-audit.yml",
+      "line_number": 0,
+      "auto_fixable": false,
+      "fix_prompt": "In .github/workflows/content-audit.yml, add 'timeout-minutes: 30' to job 'guard'.",
+      "fixed": false
+    },
+    {
+      "severity": "LOW",
+      "category": "workflow",
+      "title": "Missing timeout-minutes in security-audit.yml job 'guard'",
+      "detail": "Without a timeout, a hung workflow can consume Actions minutes indefinitely.",
+      "file_path": ".github/workflows/security-audit.yml",
+      "line_number": 0,
+      "auto_fixable": false,
+      "fix_prompt": "In .github/workflows/security-audit.yml, add 'timeout-minutes: 30' to job 'guard'.",
+      "fixed": false
+    },
+    {
+      "severity": "LOW",
+      "category": "workflow",
+      "title": "Missing timeout-minutes in marketing-director.yml job 'guard'",
+      "detail": "Without a timeout, a hung workflow can consume Actions minutes indefinitely.",
+      "file_path": ".github/workflows/marketing-director.yml",
+      "line_number": 0,
+      "auto_fixable": false,
+      "fix_prompt": "In .github/workflows/marketing-director.yml, add 'timeout-minutes: 30' to job 'guard'.",
+      "fixed": false
+    },
+    {
+      "severity": "LOW",
+      "category": "workflow",
+      "title": "Missing timeout-minutes in security-report.yml job 'guard'",
+      "detail": "Without a timeout, a hung workflow can consume Actions minutes indefinitely.",
+      "file_path": ".github/workflows/security-report.yml",
+      "line_number": 0,
+      "auto_fixable": false,
+      "fix_prompt": "In .github/workflows/security-report.yml, add 'timeout-minutes: 30' to job 'guard'.",
+      "fixed": false
+    },
+    {
+      "severity": "LOW",
+      "category": "workflow",
+      "title": "Missing timeout-minutes in ui-proactive.yml job 'guard'",
+      "detail": "Without a timeout, a hung workflow can consume Actions minutes indefinitely.",
+      "file_path": ".github/workflows/ui-proactive.yml",
+      "line_number": 0,
+      "auto_fixable": false,
+      "fix_prompt": "In .github/workflows/ui-proactive.yml, add 'timeout-minutes: 30' to job 'guard'.",
+      "fixed": false
+    },
+    {
+      "severity": "LOW",
+      "category": "workflow",
+      "title": "Missing timeout-minutes in evening-post.yml job 'guard'",
+      "detail": "Without a timeout, a hung workflow can consume Actions minutes indefinitely.",
+      "file_path": ".github/workflows/evening-post.yml",
+      "line_number": 0,
+      "auto_fixable": false,
+      "fix_prompt": "In .github/workflows/evening-post.yml, add 'timeout-minutes: 30' to job 'guard'.",
+      "fixed": false
+    },
+    {
+      "severity": "LOW",
+      "category": "workflow",
+      "title": "Missing timeout-minutes in afternoon-post.yml job 'guard'",
+      "detail": "Without a timeout, a hung workflow can consume Actions minutes indefinitely.",
+      "file_path": ".github/workflows/afternoon-post.yml",
+      "line_number": 0,
+      "auto_fixable": false,
+      "fix_prompt": "In .github/workflows/afternoon-post.yml, add 'timeout-minutes: 30' to job 'guard'.",
+      "fixed": false
+    },
+    {
+      "severity": "LOW",
+      "category": "workflow",
+      "title": "Missing timeout-minutes in pulse-refresh.yml job 'guard'",
+      "detail": "Without a timeout, a hung workflow can consume Actions minutes indefinitely.",
+      "file_path": ".github/workflows/pulse-refresh.yml",
+      "line_number": 0,
+      "auto_fixable": false,
+      "fix_prompt": "In .github/workflows/pulse-refresh.yml, add 'timeout-minutes: 30' to job 'guard'.",
+      "fixed": false
+    },
+    {
+      "severity": "LOW",
+      "category": "workflow",
+      "title": "Missing timeout-minutes in ui-designer.yml job 'guard'",
+      "detail": "Without a timeout, a hung workflow can consume Actions minutes indefinitely.",
+      "file_path": ".github/workflows/ui-designer.yml",
+      "line_number": 0,
+      "auto_fixable": false,
+      "fix_prompt": "In .github/workflows/ui-designer.yml, add 'timeout-minutes: 30' to job 'guard'.",
+      "fixed": false
+    },
+    {
+      "severity": "LOW",
+      "category": "workflow",
+      "title": "Missing timeout-minutes in weekly-report.yml job 'guard'",
+      "detail": "Without a timeout, a hung workflow can consume Actions minutes indefinitely.",
+      "file_path": ".github/workflows/weekly-report.yml",
+      "line_number": 0,
+      "auto_fixable": false,
+      "fix_prompt": "In .github/workflows/weekly-report.yml, add 'timeout-minutes: 30' to job 'guard'.",
+      "fixed": false
+    },
+    {
+      "severity": "MEDIUM",
+      "category": "content",
+      "title": "Broken internal link in 2026-04-08-cfo-ai-investment-framework-governance.md",
+      "detail": "Link to '/posts/enterprise-ai-roi-practices' (text: 'enterprise AI ROI practices that unlock ') points to non-existent article.",
+      "file_path": "blog/content/posts/2026-04-08-cfo-ai-investment-framework-governance.md",
+      "line_number": 0,
+      "auto_fixable": false,
+      "fix_prompt": "In blog/content/posts/2026-04-08-cfo-ai-investment-framework-governance.md, the internal link to '/posts/enterprise-ai-roi-practices' is broken. Either remove the link or update it to point to an existing article. Run: python -m pipeline.modify_run --fix-links blog/content/posts/2026-04-08-cfo-ai-investment-framework-governance.md",
+      "fixed": false
+    },
+    {
+      "severity": "MEDIUM",
+      "category": "content",
+      "title": "Broken internal link in 2026-04-08-cfo-ai-investment-framework-governance.md",
+      "detail": "Link to '/posts/agentic-ai-finance-readiness' (text: 'agentic AI finance readiness') points to non-existent article.",
+      "file_path": "blog/content/posts/2026-04-08-cfo-ai-investment-framework-governance.md",
+      "line_number": 0,
+      "auto_fixable": false,
+      "fix_prompt": "In blog/content/posts/2026-04-08-cfo-ai-investment-framework-governance.md, the internal link to '/posts/agentic-ai-finance-readiness' is broken. Either remove the link or update it to point to an existing article. Run: python -m pipeline.modify_run --fix-links blog/content/posts/2026-04-08-cfo-ai-investment-framework-governance.md",
+      "fixed": false
+    },
+    {
+      "severity": "MEDIUM",
+      "category": "content",
+      "title": "Broken internal link in 2026-04-05-ai-workforce-planning-hr-analytics-roadmap.md",
+      "detail": "Link to '/posts/enterprise-ai-roi-practices' (text: 'enterprise AI ROI') points to non-existent article.",
+      "file_path": "blog/content/posts/2026-04-05-ai-workforce-planning-hr-analytics-roadmap.md",
+      "line_number": 0,
+      "auto_fixable": false,
+      "fix_prompt": "In blog/content/posts/2026-04-05-ai-workforce-planning-hr-analytics-roadmap.md, the internal link to '/posts/enterprise-ai-roi-practices' is broken. Either remove the link or update it to point to an existing article. Run: python -m pipeline.modify_run --fix-links blog/content/posts/2026-04-05-ai-workforce-planning-hr-analytics-roadmap.md",
+      "fixed": false
+    },
+    {
+      "severity": "MEDIUM",
+      "category": "content",
+      "title": "Broken internal link in 2026-04-05-ai-workforce-planning-hr-analytics-roadmap.md",
+      "detail": "Link to '/posts/eu-ai-act-enforcement-regulated-industries' (text: 'analysis of EU AI Act enforcement in reg') points to non-existent article.",
+      "file_path": "blog/content/posts/2026-04-05-ai-workforce-planning-hr-analytics-roadmap.md",
+      "line_number": 0,
+      "auto_fixable": false,
+      "fix_prompt": "In blog/content/posts/2026-04-05-ai-workforce-planning-hr-analytics-roadmap.md, the internal link to '/posts/eu-ai-act-enforcement-regulated-industries' is broken. Either remove the link or update it to point to an existing article. Run: python -m pipeline.modify_run --fix-links blog/content/posts/2026-04-05-ai-workforce-planning-hr-analytics-roadmap.md",
+      "fixed": false
+    },
+    {
+      "severity": "MEDIUM",
+      "category": "content",
+      "title": "Broken internal link in 2026-04-05-ai-workforce-planning-hr-analytics-roadmap.md",
+      "detail": "Link to '/posts/eu-ai-act-enforcement-regulated-industries' (text: 'compliance guide on EU AI Act enforcemen') points to non-existent article.",
+      "file_path": "blog/content/posts/2026-04-05-ai-workforce-planning-hr-analytics-roadmap.md",
+      "line_number": 0,
+      "auto_fixable": false,
+      "fix_prompt": "In blog/content/posts/2026-04-05-ai-workforce-planning-hr-analytics-roadmap.md, the internal link to '/posts/eu-ai-act-enforcement-regulated-industries' is broken. Either remove the link or update it to point to an existing article. Run: python -m pipeline.modify_run --fix-links blog/content/posts/2026-04-05-ai-workforce-planning-hr-analytics-roadmap.md",
+      "fixed": false
+    },
+    {
+      "severity": "MEDIUM",
+      "category": "content",
+      "title": "Broken internal link in 2026-04-05-ai-workforce-planning-hr-analytics-roadmap.md",
+      "detail": "Link to '/posts/enterprise-ai-roi-practices' (text: 'enterprise AI ROI and the four practices') points to non-existent article.",
+      "file_path": "blog/content/posts/2026-04-05-ai-workforce-planning-hr-analytics-roadmap.md",
+      "line_number": 0,
+      "auto_fixable": false,
+      "fix_prompt": "In blog/content/posts/2026-04-05-ai-workforce-planning-hr-analytics-roadmap.md, the internal link to '/posts/enterprise-ai-roi-practices' is broken. Either remove the link or update it to point to an existing article. Run: python -m pipeline.modify_run --fix-links blog/content/posts/2026-04-05-ai-workforce-planning-hr-analytics-roadmap.md",
+      "fixed": false
+    },
+    {
+      "severity": "MEDIUM",
+      "category": "key_rotation",
+      "title": "UNSPLASH_ACCESS_KEY approaching rotation deadline (91 days old)",
+      "detail": "Last rotated: 2026-01-10. Warning threshold: 90 days.",
+      "file_path": "pipeline/config/security_config.json",
+      "line_number": 0,
+      "auto_fixable": false,
+      "fix_prompt": "Consider rotating UNSPLASH_ACCESS_KEY soon. It was last rotated 91 days ago. After rotation, update key_rotation_dates.UNSPLASH_ACCESS_KEY in security_config.json.",
+      "fixed": false
+    }
+  ],
+  "scans_completed": [
+    "dependency",
+    "code",
+    "secret",
+    "workflow",
+    "config",
+    "content",
+    "key_rotation"
+  ]
+}
