@@ -119,12 +119,62 @@ def assemble_article(
     # 7. Convert visual markers to Hugo shortcodes
     body = _convert_visual_markers(body)
 
+    # 7b. Assign stable IDs to every chart shortcode so the LinkedIn/X
+    #     share button on each chart can build a unique share URL (and
+    #     the dynamic OG image route can find the right chart by id at
+    #     crawl time).
+    body = _assign_chart_ids(body)
+
     # 8. Ensure FAQ section exists if has_faq and faq_pairs
     if has_faq and faq_pairs and not _has_faq_section(body):
         body = _append_faq_section(body, faq_pairs)
 
     # 7. Combine
     return f"{frontmatter}\n\n{body.strip()}\n"
+
+
+# Matches a bar-chart or time-series-chart Hugo shortcode opening tag.
+# Captures the shortcode name so we can preserve it and the attributes
+# tail so we can rebuild with an injected id attribute.
+_CHART_SHORTCODE_RE = re.compile(
+    r"\{\{<\s*(bar-chart|time-series-chart)\b([^>]*?)\s*>\}\}",
+    re.DOTALL,
+)
+# Detect an existing id="..." attribute inside a shortcode's attribute
+# string so re-runs of the assembler are idempotent.
+_EXISTING_CHART_ID_RE = re.compile(r'\bid\s*=\s*"[^"]*"')
+
+
+def _assign_chart_ids(body: str) -> str:
+    """Inject a stable `id="chart-N"` attribute into every bar-chart and
+    time-series-chart shortcode in the article body.
+
+    Numbering is 1-indexed across both shortcode types combined, in the
+    order they appear in the body. A chart that already has an explicit
+    id (e.g., from a re-run of the assembler on the same body) keeps its
+    existing id so downstream share URLs stay stable across re-renders.
+
+    The id is what the dynamic OG image route and the client-side share
+    button read to identify which chart on the page is being shared.
+    """
+    counter = {"n": 0}
+
+    def _rewrite(match: "re.Match[str]") -> str:
+        counter["n"] += 1
+        name = match.group(1)
+        attrs = match.group(2) or ""
+
+        # Idempotency: keep any existing id attribute verbatim.
+        if _EXISTING_CHART_ID_RE.search(attrs):
+            return match.group(0)
+
+        new_id = f"chart-{counter['n']}"
+        # Insert id as the first attribute after the shortcode name so
+        # it's easy to spot in diffs.
+        new_attrs = f' id="{new_id}"{attrs}' if attrs else f' id="{new_id}"'
+        return "{{< " + name + new_attrs + " >}}"
+
+    return _CHART_SHORTCODE_RE.sub(_rewrite, body)
 
 
 def _extract_executive_summary(body: str) -> tuple[str, str | None]:
