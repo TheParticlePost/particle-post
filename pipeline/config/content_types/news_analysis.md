@@ -1,9 +1,19 @@
 # News Analysis — Content Type Specification
 
+## ⚠️ WORD COUNT IS A HARD CEILING
+
+This is news_analysis. **600-1,000 words. NOT a target — a ceiling.**
+
+If your draft exceeds 1,000 words, you are writing the wrong format. Cut sources. Cut digressions. Cut the second example. Cut the historical context paragraph. Do not exceed.
+
+The audience expects a 4-minute morning briefing, not a 12-minute deep dive. A CFO reads this over their first coffee or not at all. If you write 1,300 words, the article gets saved for later — and "later" usually means never.
+
+If the topic genuinely needs more space, it is not a news_analysis. Promote it to deep_dive (2,500-4,000 words) or case_study (2,000-3,000 words) instead. Match the format to the content, not the other way around.
+
 ## Identity
 - **Funnel position:** Top of Funnel (awareness, traffic acquisition)
 - **Schema type:** NewsArticle
-- **Word count:** 600-1,000 words
+- **Word count:** 600-1,000 words (HARD CEILING — see warning above)
 - **Reading time:** 3-5 minutes
 - **Publishing frequency:** Daily (every morning slot)
 - **Purpose:** Today's/yesterday's breaking AI developments with clear business implications

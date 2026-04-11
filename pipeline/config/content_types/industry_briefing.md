@@ -1,9 +1,17 @@
 # Industry Briefing — Content Type Specification
 
+## ⚠️ WORD COUNT IS A HARD CEILING
+
+This is industry_briefing. **800-1,200 words. NOT a target — a ceiling.**
+
+If your draft exceeds 1,200 words, you are writing the wrong format. This is a weekly sector roundup, not a deep analysis of a single topic. Three to four developments, one paragraph each, with a brief "what to watch" closer. That's the entire format.
+
+If a single development needs more space than a paragraph, it is not an industry_briefing item — it is its own news_analysis or deep_dive. Pull it out.
+
 ## Identity
 - **Funnel position:** Top of Funnel (awareness, industry-specific traffic)
 - **Schema type:** NewsArticle
-- **Word count:** 800-1,200 words
+- **Word count:** 800-1,200 words (HARD CEILING — see warning above)
 - **Reading time:** 4-6 minutes
 - **Publishing frequency:** 1x/week (Wednesday evening)
 - **Purpose:** Sector-specific AI intelligence roundup for industry operators
