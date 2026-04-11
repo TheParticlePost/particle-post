@@ -85,6 +85,46 @@ VISUAL DIVERSITY (include in every article):
 - For MOF/BOF articles: include at least 2 stat-box opportunities.
 - Place stat-boxes near the data they reference, not all bunched together.
 
+CHART DISCIPLINE — MANDATORY, not optional:
+Every article MUST contain at least one shareable data chart. Charts are
+the highest-leverage unit of content in a research publication: they
+compress a comparison or a trend into a single image that a reader can
+screenshot, save, and share on LinkedIn. A finance executive remembers
+charts; they do not remember paragraphs. Your job is to make at least
+one chart per article worth remembering.
+
+Minimums by content_type (the QA gate enforces these — under-count
+articles get rejected):
+
+  news_analysis        >= 1 chart
+  industry_briefing    >= 1 chart
+  how_to               >= 2 charts
+  technology_profile   >= 2 charts
+  deep_dive            >= 3 charts
+  case_study           >= 3 charts
+
+Use {{< bar-chart >}} for discrete-category comparisons (vendors, budget
+allocations, ROI by industry, adoption by country) and {{< time-series-chart >}}
+for time-based trends (revenue by year, adoption over quarters,
+deployment timelines).
+
+Chart format reminders:
+
+  {{< bar-chart title="AI Budget Allocation 2026" data="Infrastructure:65,Headcount:12,Licensing:15,R&D:8" source="Meta Q4 2025 Earnings" >}}
+
+  {{< time-series-chart title="Enterprise AI Spend Trajectory" data="2021:68,2022:92,2023:125,2024:167,2025:210,2026:268" x-label="Year" y-label="USD Billions" y-unit="$B" source="Stanford HAI AI Index 2026" >}}
+
+Both shortcodes accept the label:value CSV format shown above. NEVER
+put JSON inside the data attribute — the backslash-escaped quotes
+break the MDX parser (see the prior sanitizer fix for the ML credit
+scoring article).
+
+Every chart gets a Share button on the published page that lets
+readers post it to LinkedIn or X. The share link will surface the
+chart itself as the social preview card. This is the whole point of
+the Chart Discipline mandate: you are authoring future social shares,
+not just filling a page.
+
 PRACTICAL ARTICLE RULES (when content_type is "practical" — how-to, case study, tool comparison):
 - Lead with the outcome, not the problem. "JPMorgan cut fraud losses by 34% using X" not "Fraud is a growing problem."
 - How-to articles: Use numbered steps. Each step names the specific tool, action, and expected result.

@@ -27,6 +27,22 @@ WORD_COUNT_RANGES: dict[str, tuple[int, int]] = {
     "BOF": (1200, 2000),
 }
 
+# Minimum shareable data charts per content_type. The writer pipeline is
+# expected to emit {{< bar-chart >}} or {{< time-series-chart >}}
+# shortcodes; each chart gets a LinkedIn/X share button on the published
+# page with a dynamic OG image showing the chart itself. See
+# pipeline/prompts/writer_backstory.txt "CHART DISCIPLINE" section.
+#
+# Content types not listed default to 1 (the TOF minimum).
+CHART_MIN_PER_CONTENT_TYPE: dict[str, int] = {
+    "news_analysis": 1,
+    "industry_briefing": 1,
+    "how_to": 2,
+    "technology_profile": 2,
+    "deep_dive": 3,
+    "case_study": 3,
+}
+
 SOURCE_PATTERNS: list[str] = [
     r"according to",
     r"\bper\b [A-Z]",
@@ -278,6 +294,33 @@ def validate(
                 "Vague lede — first paragraph has no specific company, person, "
                 "dollar amount, percentage, or date"
             )
+
+    # ── 17. Shareable chart count per content_type ──────────────────────
+    # Count {{< bar-chart >}} and {{< time-series-chart >}} shortcodes in
+    # the body. Each chart gets a LinkedIn/X share button + dynamic OG
+    # image on the published page, so the article's "shareable surface
+    # area" is directly proportional to chart count. A chart-free article
+    # is a social-sharing dead end.
+    chart_count = len(
+        re.findall(
+            r"\{\{<\s*(?:bar-chart|time-series-chart)\b",
+            body,
+        )
+    )
+    chart_min = CHART_MIN_PER_CONTENT_TYPE.get(content_type, 1)
+    if chart_count < chart_min:
+        # Penalty scales with the deficit, capped at 20 so a chart-free
+        # deep_dive (needs 3) doesn't alone kill the whole QA score.
+        deficit = chart_min - chart_count
+        penalty = min(deficit * 7, 20)
+        score -= penalty
+        issues.append(
+            f"Only {chart_count} shareable chart(s) found "
+            f"(bar-chart + time-series-chart) — {content_type} needs "
+            f"at least {chart_min}. Add {{{{< bar-chart >}}}} or "
+            f"{{{{< time-series-chart >}}}} shortcodes with data the "
+            f"reader would want to save and share."
+        )
 
     # Clamp score
     score = max(score, 0)
