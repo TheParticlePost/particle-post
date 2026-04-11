@@ -21,7 +21,7 @@ export function SidebarRelated({ articles }: SidebarRelatedProps) {
             aria-label={article.title}
             className="block editorial-stripe pl-4 py-2 hover:border-l-accent transition-colors duration-[180ms] ease-kinetic group"
           >
-            <p className="text-body-sm text-text-primary font-medium leading-snug group-hover:text-accent transition-colors duration-[180ms]">
+            <p className="text-body-sm text-text-primary font-medium leading-snug group-hover:text-accent transition-colors duration-[180ms] line-clamp-3">
               {article.title}
             </p>
             <div className="flex items-center gap-2 mt-1">

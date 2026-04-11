@@ -176,15 +176,30 @@ function LoginFormInner() {
   );
 }
 
+/**
+ * Skeleton placeholder shown while LoginFormInner hydrates. Three pulsing
+ * grey bars sized to match the real form (email, password, button) so the
+ * page doesn't visibly reflow when the form takes over. Aria-hidden so
+ * screen readers don't announce the skeleton as content.
+ */
+function LoginFormSkeleton() {
+  return (
+    <div
+      aria-hidden
+      className="bg-bg-container border border-border-ghost rounded-lg w-full p-8 space-y-4"
+    >
+      <div className="h-4 w-24 rounded bg-bg-deep animate-pulse" />
+      <div className="h-10 w-full rounded bg-bg-deep animate-pulse" />
+      <div className="h-4 w-20 rounded bg-bg-deep animate-pulse mt-6" />
+      <div className="h-10 w-full rounded bg-bg-deep animate-pulse" />
+      <div className="h-10 w-full rounded bg-bg-deep animate-pulse mt-6" />
+    </div>
+  );
+}
+
 export function LoginForm() {
   return (
-    <Suspense
-      fallback={
-        <div className="bg-bg-container border border-border-ghost rounded-lg w-full p-8 text-center">
-          <p className="text-body-sm text-text-secondary">Loading...</p>
-        </div>
-      }
-    >
+    <Suspense fallback={<LoginFormSkeleton />}>
       <LoginFormInner />
     </Suspense>
   );
