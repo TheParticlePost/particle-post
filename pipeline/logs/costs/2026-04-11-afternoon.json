@@ -1,0 +1,16 @@
+{
+  "timestamp": "2026-04-11T18:11:20.305853+00:00",
+  "slot": "afternoon",
+  "attempt": 1,
+  "prompt_tokens": 76493,
+  "cached_prompt_tokens": 0,
+  "completion_tokens": 15348,
+  "total_tokens": 91841,
+  "successful_requests": 9,
+  "estimated_cost_usd": 0.2911,
+  "anthropic_cost_usd": 0.2911,
+  "gemini_image_count": 1,
+  "gemini_cost_usd": 0.039,
+  "total_cost_usd": 0.3301,
+  "verdict": "APPROVE"
+}
