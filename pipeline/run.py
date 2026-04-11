@@ -209,12 +209,73 @@ def _sanitize_article(content: str) -> str:
         content = re.sub(r'\s*(?<!\-)--(?!\-)\s*', ', ', content)
         fixes_applied.append(f"Replaced {double_hyphen_count} double-hyphen(s)")
 
+    # 4. Fix Hugo shortcode attributes containing backslash-escaped double quotes.
+    #    The writer LLM occasionally emits JSON inside a shortcode `data="..."`
+    #    attribute, with escapes like `data="[{\"x\":\"Step 1\"}]"`. Those
+    #    backslashes are invalid in JSX/MDX attribute syntax and next-mdx-remote
+    #    refuses to parse them, which breaks the entire Vercel build for the
+    #    offending post (and the home page, since it prerenders every post).
+    #    Convert any affected attribute to single-quoted form and strip the
+    #    backslashes — both Hugo's shortcode parser and the remark-to-JSX
+    #    converter accept single-quoted attribute values.
+    content, shortcode_fix_count = _fix_shortcode_escapes(content)
+    if shortcode_fix_count > 0:
+        fixes_applied.append(
+            f"Fixed {shortcode_fix_count} shortcode(s) with backslash-escaped quotes"
+        )
+
     if fixes_applied:
         print(f"\n  [SANITIZER] {'; '.join(fixes_applied)}")
     else:
         print(f"\n  [SANITIZER] Article clean, no fixes needed.")
 
     return content
+
+
+# Matches a full Hugo shortcode block `{{< name attr1="..." attr2="..." >}}`.
+# The attrs group (group 2) is greedy-but-bounded: any character except `>`,
+# which is safe because `>` cannot legitimately appear inside an attribute
+# value in our shortcode conventions.
+_SHORTCODE_RE = re.compile(r'\{\{<\s*([\w-]+)((?:\s+[^>]*?)?)\s*>\}\}', re.DOTALL)
+# C-string-style attr matcher: handles backslash-escaped quotes correctly by
+# matching either (a) any non-quote non-backslash char, or (b) backslash + any.
+_ATTR_RE = re.compile(r'([\w-]+)="((?:[^"\\]|\\.)*)"')
+
+
+def _fix_shortcode_escapes(body: str) -> tuple[str, int]:
+    """Rewrite shortcode attributes containing `\\\"` so MDX can parse them.
+
+    Only touches shortcodes whose attribute list contains at least one
+    backslash-escaped double quote. For each affected attribute, strips the
+    backslashes and wraps the value in single quotes. Other attributes in
+    the same shortcode are left byte-identical.
+    """
+    fix_count = 0
+
+    def _rewrite(match: "re.Match[str]") -> str:
+        nonlocal fix_count
+        name = match.group(1)
+        attrs = match.group(2)
+        if '\\"' not in attrs:
+            return match.group(0)
+
+        def _swap(attr_match: "re.Match[str]") -> str:
+            attr_name = attr_match.group(1)
+            raw = attr_match.group(2)
+            if '\\"' not in raw:
+                return attr_match.group(0)
+            cleaned = raw.replace('\\"', '"')
+            # Single-quoted JSX attributes cannot contain unescaped `'`.
+            # Replace any literal single quotes with the HTML entity.
+            cleaned = cleaned.replace("'", "&apos;")
+            return f"{attr_name}='{cleaned}'"
+
+        fixed_attrs = _ATTR_RE.sub(_swap, attrs).strip()
+        fix_count += 1
+        return "{{< " + name + " " + fixed_attrs + " >}}"
+
+    new_body = _SHORTCODE_RE.sub(_rewrite, body)
+    return new_body, fix_count
 
 
 # ──────────────────────────────────────────────────────────────────────────────

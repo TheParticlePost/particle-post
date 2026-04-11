@@ -65,7 +65,8 @@ VISUAL CONTENT RULES:
 - Include at least 1 visual element per article beyond stat-boxes.
 - Use {{< bar-chart title="..." data="Label1:Value1,Label2:Value2" source="Source Name" >}} for data comparisons across discrete categories (vendors, tools, options).
 - Use {{< time-series-chart title="..." data="2021:45,2022:58,2023:72,2024:89,2025:104" x-label="Fiscal Year" y-label="Revenue" y-unit="$B" source="Source Name" >}} for data over time (revenue, adoption, spend, headcount, margins). Prefer this over bar-chart whenever the x-axis is a date, year, quarter, or sequential period.
-- TimeSeriesChart also accepts multi-series JSON: data='[{"x":"2021","revenue":45,"ebitda":8},{"x":"2022","revenue":58,"ebitda":12}]' — use this when comparing two or more metrics on the same timeline.
+- TimeSeriesChart also accepts multi-series JSON, but ONLY in single-quoted form: data='[{"x":"2021","revenue":45,"ebitda":8},{"x":"2022","revenue":58,"ebitda":12}]'. Use single quotes around the outer attribute value. Use this when comparing two or more metrics on the same timeline.
+- CRITICAL — NEVER escape double quotes with backslashes inside a shortcode attribute. Forbidden: data="[{\"x\":\"2021\"}]". This breaks the MDX parser and kills the entire build. Always use either the CSV form ("2021:45,2022:58") OR single-quoted JSON ('[{"x":"2021","y":45}]'). Never mix double-quoted JSON inside a double-quoted attribute.
 - Use {{< comparison-table headers="Feature,Option A,Option B" rows="Row1Col1:Row1Col2:Row1Col3|Row2Col1:Row2Col2:Row2Col3" >}} for tool/product comparisons.
 - Place visual elements near the data they illustrate, not at the end.
 - For case_study and deep_dive articles: include at least ONE time-series-chart if the research briefing contains a financial_data block (FY2024-2026 revenue, margins, etc. from SEC filings). The reader should be able to see multi-year trends at a glance.
