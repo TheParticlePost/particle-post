@@ -28,6 +28,7 @@ import type { Metadata } from "next";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
+  searchParams: Promise<{ chart?: string }>;
 }
 
 export async function generateStaticParams() {
@@ -35,11 +36,18 @@ export async function generateStaticParams() {
   return slugs.map((slug) => ({ slug }));
 }
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+  searchParams,
+}: PageProps): Promise<Metadata> {
   const { slug } = await params;
+  const { chart } = await searchParams;
   const post = getPostBySlug(slug);
   if (!post) return {};
-  return generatePostMetadata(post);
+  // When a social crawler fetches the URL with ?chart=<id>, swap the
+  // default OG image to a dynamic per-chart preview. Readers clicking
+  // the Share button on a chart will land everyone on that variant.
+  return generatePostMetadata(post, chart ?? null);
 }
 
 export default async function PostPage({ params }: PageProps) {
