@@ -108,7 +108,12 @@ def build_seo_gso_task(agent: Agent, editing_task: Task) -> Task:
             "- internal_link_targets must use slugs from the post_index — use [] if no relevant matches\n"
             f"- meta_title MUST contain at least one primary SEO keyword: "
             f"{_load_keyword_targets()}. This is MANDATORY.\n"
-            "- meta_title must be under 70 characters\n"
+            "- meta_title MUST be 30-60 characters. Count before returning. "
+            "If your first draft is over 60, rewrite it — do not submit over-length titles.\n"
+            "- meta_description MUST be 120-155 characters. Count before returning. "
+            "Under 120 is as bad as over 155 — both fail the QA gate.\n"
+            "- categories MUST contain at least one non-empty string (e.g. 'AI in Finance', "
+            "'Enterprise AI', 'AI Strategy'). Empty categories fail the QA gate.\n"
             "- NEVER use em-dash characters (--) anywhere in the restructured article. Replace with commas, colons, or periods.\n"
             "- Output ONLY the [RESTRUCTURED ARTICLE] block then immediately the JSON -- no other text\n\n"
 
@@ -116,7 +121,12 @@ def build_seo_gso_task(agent: Agent, editing_task: Task) -> Task:
             "[RESTRUCTURED ARTICLE]\n"
             "(full restructured article — all sections, all paragraphs)\n"
             "[END RESTRUCTURED ARTICLE]\n"
-            '{"primary_keyword": "...", ... }'
+            '{"primary_keyword": "...", ... }\n\n'
+
+            "PREVIOUS REJECTION FEEDBACK (blank on first run — fix ALL listed issues if present, "
+            "especially any meta_title / meta_description / categories / word count violations "
+            "that are your responsibility):\n"
+            "{rejection_feedback}"
         ),
         expected_output=(
             "A [RESTRUCTURED ARTICLE]...[END RESTRUCTURED ARTICLE] block containing the full "

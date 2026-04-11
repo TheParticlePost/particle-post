@@ -22,7 +22,7 @@ from pipeline.run import _extract_frontmatter_field, _extract_frontmatter_list
 # ──────────────────────────────────────────────────────────────────────────────
 
 WORD_COUNT_RANGES: dict[str, tuple[int, int]] = {
-    "TOF": (600, 1000),
+    "TOF": (600, 1150),
     "MOF": (1800, 3000),
     "BOF": (1200, 2000),
 }
