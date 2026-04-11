@@ -1,14 +1,50 @@
 name: UI Proactive Audit
 
 on:
-  # Scheduling handled by cron-job.org + Cloudflare Worker (3x/day: 15:00, 19:00, 23:00 UTC)
+  # Primary trigger: native GitHub cron 3x daily at 15:00, 19:00, 23:00 UTC
+  # (11am, 3pm, 7pm ET during DST — 1h earlier during standard time).
+  # Fallback triggers (Cloudflare Worker, cron-job.org) are de-duplicated by
+  # the `guard` job below — 3h window is < the 4h spacing between slots,
+  # so legitimate thrice-daily runs still fire, but any extra dispatch
+  # within 3h of the last successful run is a no-op.
+  schedule:
+    - cron: "0 15,19,23 * * *"
   workflow_dispatch: {}   # manual trigger for testing
 
 permissions:
   contents: write
+  actions: read     # required for the guard job's `gh run list` lookup
 
 jobs:
+  guard:
+    runs-on: ubuntu-latest
+    outputs:
+      proceed: ${{ steps.check.outputs.proceed }}
+    steps:
+      - name: Skip if a recent successful run exists
+        id: check
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          WINDOW_HOURS=3
+          CUTOFF=$(date -u -d "${WINDOW_HOURS} hours ago" +%Y-%m-%dT%H:%M:%SZ)
+          RECENT=$(gh run list \
+            --repo "${{ github.repository }}" \
+            --workflow "${{ github.workflow }}" \
+            --status success \
+            --created ">${CUTOFF}" \
+            --json databaseId \
+            --jq "map(select(.databaseId != ${{ github.run_id }})) | length")
+          if [ "${RECENT:-0}" -gt 0 ]; then
+            echo "proceed=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Skipping — ${RECENT} successful run(s) in the last ${WINDOW_HOURS}h"
+          else
+            echo "proceed=true" >> "$GITHUB_OUTPUT"
+          fi
+
   audit:
+    needs: guard
+    if: needs.guard.outputs.proceed == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     env:

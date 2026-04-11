@@ -1,16 +1,56 @@
 name: Marketing Director (noon ET)
 
 on:
-  # Cron scheduling handled by cron-job.org (job ID 7411449, 16:00 UTC daily)
-  # GitHub Actions built-in schedule removed to prevent double-triggers
+  # Primary trigger: native GitHub cron at 16:00 UTC daily (noon ET during DST,
+  # 11 AM ET during standard time — accept the 1h winter drift).
+  # Fallback triggers (Cloudflare Worker, cron-job.org) are de-duplicated by
+  # the `guard` job below — any invocation within 20h of the last successful
+  # run short-circuits before any real work happens, so double-triggering is
+  # impossible regardless of how many schedulers fire.
+  schedule:
+    - cron: "0 16 * * *"
   workflow_dispatch: {}    # manual trigger for testing
 
 permissions:
   contents: write
   id-token: write   # required for Workload Identity Federation
+  actions: read     # required for the guard job's `gh run list` lookup
 
 jobs:
+  guard:
+    runs-on: ubuntu-latest
+    outputs:
+      proceed: ${{ steps.check.outputs.proceed }}
+    steps:
+      - name: Skip if a recent successful run exists
+        id: check
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # Prevent double-triggers between GitHub cron and external dispatchers
+          # (Cloudflare Worker, cron-job.org). If this workflow already has a
+          # successful run in the last 20h, this invocation becomes a no-op.
+          # Manual workflow_dispatch invocations still proceed because the guard
+          # excludes the current run ID from the count.
+          WINDOW_HOURS=20
+          CUTOFF=$(date -u -d "${WINDOW_HOURS} hours ago" +%Y-%m-%dT%H:%M:%SZ)
+          RECENT=$(gh run list \
+            --repo "${{ github.repository }}" \
+            --workflow "${{ github.workflow }}" \
+            --status success \
+            --created ">${CUTOFF}" \
+            --json databaseId \
+            --jq "map(select(.databaseId != ${{ github.run_id }})) | length")
+          if [ "${RECENT:-0}" -gt 0 ]; then
+            echo "proceed=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Skipping — ${RECENT} successful run(s) in the last ${WINDOW_HOURS}h"
+          else
+            echo "proceed=true" >> "$GITHUB_OUTPUT"
+          fi
+
   analyze:
+    needs: guard
+    if: needs.guard.outputs.proceed == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 25
     env:

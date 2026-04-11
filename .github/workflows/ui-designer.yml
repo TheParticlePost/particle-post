@@ -1,15 +1,48 @@
-name: UI Designer — Directive Mode (1pm ET)
+name: UI Designer — Directive Mode (2pm ET)
 
 on:
-  # Scheduling handled by cron-job.org + Cloudflare Worker (18:00 UTC daily)
-  # GitHub Actions built-in schedule removed to prevent double-triggers
+  # Primary trigger: native GitHub cron at 18:00 UTC daily (2pm ET during DST,
+  # 1 PM ET during standard time — accept the 1h winter drift).
+  # Fallback triggers (Cloudflare Worker, cron-job.org) are de-duplicated by
+  # the `guard` job below — double-triggers cannot produce double-runs.
+  schedule:
+    - cron: "0 18 * * *"
   workflow_dispatch: {}    # manual trigger for testing
 
 permissions:
   contents: write
+  actions: read     # required for the guard job's `gh run list` lookup
 
 jobs:
+  guard:
+    runs-on: ubuntu-latest
+    outputs:
+      proceed: ${{ steps.check.outputs.proceed }}
+    steps:
+      - name: Skip if a recent successful run exists
+        id: check
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          WINDOW_HOURS=20
+          CUTOFF=$(date -u -d "${WINDOW_HOURS} hours ago" +%Y-%m-%dT%H:%M:%SZ)
+          RECENT=$(gh run list \
+            --repo "${{ github.repository }}" \
+            --workflow "${{ github.workflow }}" \
+            --status success \
+            --created ">${CUTOFF}" \
+            --json databaseId \
+            --jq "map(select(.databaseId != ${{ github.run_id }})) | length")
+          if [ "${RECENT:-0}" -gt 0 ]; then
+            echo "proceed=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Skipping — ${RECENT} successful run(s) in the last ${WINDOW_HOURS}h"
+          else
+            echo "proceed=true" >> "$GITHUB_OUTPUT"
+          fi
+
   design:
+    needs: guard
+    if: needs.guard.outputs.proceed == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 20
     env:
