@@ -233,6 +233,33 @@
       "status": "pending",
       "source": "audit",
       "created": "2026-04-11"
+    },
+    {
+      "id": "UI-030",
+      "component": "post-card-category-pill",
+      "description": "Category pills on post cards may truncate on very narrow mobile screens (320px); consider dynamic font-size reduction or hide pill entirely below 320px threshold",
+      "priority": "low",
+      "status": "pending",
+      "source": "audit",
+      "created": "2026-04-11"
+    },
+    {
+      "id": "UI-031",
+      "component": "footer-responsive",
+      "description": "Footer links layout at 768px could benefit from grid-based organization instead of flex wrapping; current implementation causes footer columns to stack too aggressively on tablets",
+      "priority": "medium",
+      "status": "pending",
+      "source": "audit",
+      "created": "2026-04-11"
+    },
+    {
+      "id": "UI-032",
+      "component": "hero-stats-mobile",
+      "description": "Hero stats strip (.hero-stats) wrapping on mobile results in awkward line breaks; consider stack-vertically layout below 640px or use flex-column with proper spacing",
+      "priority": "medium",
+      "status": "pending",
+      "source": "audit",
+      "created": "2026-04-11"
     }
   ],
   "completed": [
