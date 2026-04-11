@@ -2,12 +2,20 @@ import type { Metadata } from "next";
 import { OverlineLabel } from "@/components/ui/overline-label";
 import { SubscribeForm } from "@/components/newsletter/subscribe-form";
 import { SubscribeParticles } from "@/components/effects/subscribe-particles";
+import { getSubscriberCount } from "@/lib/subscribers/count";
+import { SUBSCRIBER_COUNT_THRESHOLD } from "@/lib/constants";
 
-export const metadata: Metadata = {
-  title: "Subscribe",
-  description:
-    "Twice-daily AI briefings on strategy, operations, and the decisions that matter. Free, in your inbox before markets open.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const count = await getSubscriberCount();
+  const audience =
+    count >= SUBSCRIBER_COUNT_THRESHOLD
+      ? `${count.toLocaleString()}+ leaders read`
+      : "Leaders read";
+  return {
+    title: "Subscribe",
+    description: `${audience} The Particle Post before markets open. Free, twice daily — strategy, operations, and the decisions that matter.`,
+  };
+}
 
 export default function SubscribePage() {
   return (

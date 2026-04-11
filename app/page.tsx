@@ -1,5 +1,6 @@
 import { getAllPosts } from "@/lib/content";
 import { HomeContent } from "@/components/home-content";
+import { getSubscriberCount } from "@/lib/subscribers/count";
 import type { Post, PostMeta } from "@/lib/types";
 
 // Revalidate every 4 hours so hero rotates between deploys
@@ -23,8 +24,9 @@ function selectHero(posts: Post[]): Post | null {
   return posts[rotationIndex];
 }
 
-export default function HomePage() {
+export default async function HomePage() {
   const allPosts = getAllPosts();
+  const subscriberCount = await getSubscriberCount();
 
   // Hero: featured override or time-based rotation
   const heroPost = selectHero(allPosts);
@@ -64,6 +66,7 @@ export default function HomePage() {
       recentPosts={recentPosts}
       featuredDeepDive={featuredDeepDive}
       trendingPosts={trendingPosts}
+      subscriberCount={subscriberCount}
     />
   );
 }

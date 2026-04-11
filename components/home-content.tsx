@@ -9,12 +9,19 @@ import { SubscribeForm } from "@/components/newsletter/subscribe-form";
 import { FadeUp } from "@/components/effects/fade-up";
 import { formatDateShort } from "@/lib/utils";
 import type { PostMeta } from "@/lib/types";
+import { SUBSCRIBER_COUNT_THRESHOLD } from "@/lib/constants";
 
 interface HomeContentProps {
   latestPost: PostMeta | null;
   recentPosts: PostMeta[];
   featuredDeepDive: PostMeta | null;
   trendingPosts: PostMeta[];
+  /**
+   * Live count from Supabase, fetched server-side and passed in.
+   * Below SUBSCRIBER_COUNT_THRESHOLD we hide the count entirely — false
+   * specificity hurts trust more than absence.
+   */
+  subscriberCount: number;
 }
 
 const AI_TICKER = [
@@ -30,7 +37,9 @@ export function HomeContent({
   recentPosts,
   featuredDeepDive,
   trendingPosts,
+  subscriberCount,
 }: HomeContentProps) {
+  const showCount = subscriberCount >= SUBSCRIBER_COUNT_THRESHOLD;
   return (
     <div>
       {/* ═══ SECTION 1: HERO — bg-base ═══ */}
@@ -69,7 +78,9 @@ export function HomeContent({
             </div>
 
             <DataText as="p" className="uppercase tracking-widest text-text-muted text-caption">
-              Join 12,000+ leaders. Free. Twice daily.
+              {showCount
+                ? `Join ${subscriberCount.toLocaleString()}+ leaders. Free. Twice daily.`
+                : "Free. Twice daily."}
             </DataText>
           </FadeUp>
         </div>
