@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { createClient } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/button";
+import { getAuthRedirectUrl } from "@/lib/site-url";
 import { cn } from "@/lib/utils";
 
 const inputStyles = cn(
@@ -50,7 +51,7 @@ function LoginFormInner() {
     const { error } = await supabase.auth.signInWithOAuth({
       provider,
       options: {
-        redirectTo: window.location.origin + "/auth/callback",
+        redirectTo: getAuthRedirectUrl("/auth/callback"),
       },
     });
 

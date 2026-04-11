@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/button";
+import { getAuthRedirectUrl } from "@/lib/site-url";
 import { cn } from "@/lib/utils";
 
 const inputStyles = cn(
@@ -26,7 +27,10 @@ export function ForgotPasswordForm() {
 
     const supabase = createClient();
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: window.location.origin + "/reset-password",
+      // Always redirect to the canonical site URL — the reset link is
+      // emailed, so localhost origins would break for the recipient.
+      // See lib/site-url.ts.
+      redirectTo: getAuthRedirectUrl("/reset-password"),
     });
 
     if (error) {

@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/button";
 import { validatePassword } from "@/lib/validate-password";
+import { getAuthRedirectUrl } from "@/lib/site-url";
 import { cn } from "@/lib/utils";
 
 const inputStyles = cn(
@@ -43,7 +44,12 @@ export function SignupForm() {
       password,
       options: {
         data: { full_name: fullName },
-        emailRedirectTo: window.location.origin + "/auth/callback",
+        // Use the canonical production URL for the callback so that
+        // confirmation emails sent from localhost dev still land on the
+        // live site (not http://localhost:3000 which obviously breaks
+        // for the recipient). In local dev you can override via
+        // NEXT_PUBLIC_SITE_URL in .env.local — see lib/site-url.ts.
+        emailRedirectTo: getAuthRedirectUrl("/auth/callback"),
       },
     });
 
