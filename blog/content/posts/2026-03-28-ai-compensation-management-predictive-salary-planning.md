@@ -93,7 +93,7 @@ For companies evaluating vendor tools, Decusoft's Compose Insights competes dire
 
 For a broader view of how agentic AI is reshaping finance and HR operations simultaneously, [Agentic AI Forces Fintech Into Regulatory Gray Zone](/posts/2026-03-23-agentic-ai-regulatory-gap-fintech/) covers the regulatory exposure CFOs need to understand before expanding AI scope into workforce systems.
 
-{{< bar-chart title="Minimum Data Requirements for AI Compensation Tools" data="Clean Comp History (3+ yrs):85,Standardized Job Architecture:90,HRIS-Performance Link:75,Market Benchmark Integration:65" source="Decusoft / Gartner" >}}
+{{< bar-chart id="chart-1" title="Minimum Data Requirements for AI Compensation Tools" data="Clean Comp History (3+ yrs):85,Standardized Job Architecture:90,HRIS-Performance Link:75,Market Benchmark Integration:65" source="Decusoft / Gartner" >}}
 
 ## Verdict: Which AI Compensation Management Platforms Earn a Serious Look?
 

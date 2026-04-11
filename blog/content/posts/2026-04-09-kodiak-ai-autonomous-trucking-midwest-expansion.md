@@ -87,7 +87,7 @@ Phase two was the supervised demonstration series documented in the April 2026 r
 
 Phase three is the commercial onboarding pipeline now under way. Kodiak has not publicly specified which carrier partners are activating Midwest freight lanes, but the demonstration runs served as proof of concept for those conversations.
 
-{{< bar-chart title="Autonomous vs. Human-Driven Trucking: Cost Per Mile Comparison" data="Human-Driven (ATRI 2024):1.92,Autonomous at Scale (Morgan Stanley):0.38,Autonomous Current Phase:0.91" source="ATRI 2024, Morgan Stanley Research 2025" >}}
+{{< bar-chart id="chart-1" title="Autonomous vs. Human-Driven Trucking: Cost Per Mile Comparison" data="Human-Driven (ATRI 2024):1.92,Autonomous at Scale (Morgan Stanley):0.38,Autonomous Current Phase:0.91" source="ATRI 2024, Morgan Stanley Research 2025" >}}
 
 ## What the Early Results Actually Show
 

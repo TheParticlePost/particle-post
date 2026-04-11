@@ -130,7 +130,7 @@ For CFOs evaluating AI support investments, the Klarna case illustrates a specif
 
 For CTOs and technology leaders, the Klarna deployment highlights the training distribution problem. A model that performs well at launch on the most common query types will face a progressively harder query distribution over time, as easy queries resolve faster and the residual mix skews toward complexity. Retraining cadence, edge-case monitoring, and escalation fallback infrastructure are prerequisites for sustainable operation, not optional additions. Governance frameworks for AI agents in enterprise settings, including escalation design, are covered in our AI agent governance framework.
 
-{{< bar-chart title="Klarna AI Support: Key Metrics Before and After Full Deployment" data="Resolution Time (mins, Before):11,Resolution Time (mins, After):2,Repeat Inquiries Reduction (%):25,CSAT Drop (%):22,Workforce Reduction (%):50" source="Klarna press release Feb 2024; Forbes 2025" >}}
+{{< bar-chart id="chart-1" title="Klarna AI Support: Key Metrics Before and After Full Deployment" data="Resolution Time (mins, Before):11,Resolution Time (mins, After):2,Repeat Inquiries Reduction (%):25,CSAT Drop (%):22,Workforce Reduction (%):50" source="Klarna press release Feb 2024; Forbes 2025" >}}
 
 ## What Klarna Would Do Differently
 

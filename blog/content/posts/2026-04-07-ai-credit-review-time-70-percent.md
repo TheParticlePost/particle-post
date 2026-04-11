@@ -65,7 +65,7 @@ The ceiling drops sharply for commercial lending. A 2024 Oliver Wyman analysis o
 
 Regulatory guidance from the CFPB requires lenders to produce specific, accurate reasons for any adverse credit decision, according to the bureau's 2023 circular on algorithmic decision-making. That requirement alone forces a human review layer onto every borderline decision that a model cannot confidently explain.
 
-{{< bar-chart title="Claimed vs. Realized AI Credit Review Time Savings" data="Vendor Pilot Claims:70,Consumer Lending (McKinsey):55,Commercial Lending (Oliver Wyman):35,Full Compliance-Inclusive Process:25" source="McKinsey 2024, Oliver Wyman 2024, CFPB 2023" >}}
+{{< bar-chart id="chart-1" title="Claimed vs. Realized AI Credit Review Time Savings" data="Vendor Pilot Claims:70,Consumer Lending (McKinsey):55,Commercial Lending (Oliver Wyman):35,Full Compliance-Inclusive Process:25" source="McKinsey 2024, Oliver Wyman 2024, CFPB 2023" >}}
 
 KEY TAKEAWAY: The 70% efficiency claim holds only for clean, low-complexity consumer applications. For commercial credit or any file requiring explainability documentation, realistic gains land between 25% and 40% once compliance overhead is included.
 

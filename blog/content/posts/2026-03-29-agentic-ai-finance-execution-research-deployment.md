@@ -118,7 +118,7 @@ For treasury teams, agentic AI offers genuine value in cash positioning and paym
 
 For compliance teams, the central question is liability assignment. Agentic systems blur the line between tool and decision-maker. When a compliance workflow flags a transaction, routes it for review, and closes it based on a predefined rule set, the compliance officer who designed that rule set carries the liability, even if they never saw the individual transaction. Legal teams in financial services are only beginning to work through the implications. Organizations deploying agentic compliance workflows without explicit legal review of liability assignment are creating exposure that no ROI calculation currently captures.
 
-{{< bar-chart title="Agentic AI Deployment Timeline vs. Vendor Projection" data="Vendor-Projected Timeline (months):3,Actual Avg. Finance Deployment (months):9.4,Data Remediation Phase (months):2.8,Integration Work (months):3.1" source="Deloitte AI Implementation Survey 2024; Gartner Case Studies 2025" >}}
+{{< bar-chart id="chart-1" title="Agentic AI Deployment Timeline vs. Vendor Projection" data="Vendor-Projected Timeline (months):3,Actual Avg. Finance Deployment (months):9.4,Data Remediation Phase (months):2.8,Integration Work (months):3.1" source="Deloitte AI Implementation Survey 2024; Gartner Case Studies 2025" >}}
 
 ## When Agentic AI Works in Finance and When It Does Not
 

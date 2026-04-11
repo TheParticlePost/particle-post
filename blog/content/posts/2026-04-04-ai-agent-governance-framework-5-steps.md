@@ -90,7 +90,7 @@ Both failures share the same root cause: treating governance as an organizationa
 
 **Step 5: Deploy a centralized observability platform.** Databricks Unity Catalog provides governance for data, models, and agent interactions in a single control plane, tracking model access, usage, and policy enforcement across all agent workloads, according to Lovelytics' State of AI Agents 2026 report. For teams not on Databricks, Datadog and ServiceNow released comparable agent monitoring capabilities in 2026.
 
-{{< bar-chart title="Enterprise AI Agent Governance Gap 2026" data="Have formal governance strategy:23%,Have live monitoring and guardrails:24%,AI initiatives without formal approval:52%,Agents with full security approval:14%" source="Cisco AI Readiness Index 2025, WitnessAI, Accelirate" >}}
+{{< bar-chart id="chart-1" title="Enterprise AI Agent Governance Gap 2026" data="Have formal governance strategy:23%,Have live monitoring and guardrails:24%,AI initiatives without formal approval:52%,Agents with full security approval:14%" source="Cisco AI Readiness Index 2025, WitnessAI, Accelirate" >}}
 
 For the deeper strategic case on deploying AI agents without a dedicated executive role, read [CFO AI Deployment: Skip the Chief AI Officer](/posts/cfo-ai-deployment-without-chief-ai-officer/). For a comprehensive framework on enterprise agent readiness across all five phases, see the [Agentic AI Finance: 5-Phase Enterprise Readiness Framework](/posts/agentic-ai-enterprise-readiness-framework/).
 

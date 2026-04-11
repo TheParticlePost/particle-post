@@ -72,7 +72,7 @@ A financial services firm that deploys agentic AI across accounts payable, fraud
 
 > **Key Takeaway:** The enterprise agentic AI problem is not a technology problem. It is a readiness sequencing problem. Companies that skip infrastructure and governance phases before piloting autonomous agents fail at scaling, not at proof of concept.
 
-{{< bar-chart title="Enterprise Agentic AI Phase Completion Rates" data="Infrastructure:38,Governance:29,Pilot Design:61,Scaling:18,Measurement:12" source="SiliconANGLE, March 2026 (estimated from adoption gap analysis)" >}}
+{{< bar-chart id="chart-1" title="Enterprise Agentic AI Phase Completion Rates" data="Infrastructure:38,Governance:29,Pilot Design:61,Scaling:18,Measurement:12" source="SiliconANGLE, March 2026 (estimated from adoption gap analysis)" >}}
 
 ## Why the AI Readiness Framework Research Gets Misread
 

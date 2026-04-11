@@ -84,7 +84,7 @@ Phase 3 extended COiN to enterprise scale across JPMorgan's commercial banking d
 
 The bank's total technology budget at the time of COiN's build exceeded $9 billion annually, according to JPMorgan investor disclosures. COiN's specific development cost has not been publicly itemized, but estimates from comparable NLP contract platforms built in 2016 to 2017 put custom enterprise deployments in the $5 million to $15 million range for initial build and integration.
 
-{{< bar-chart title="JPMorgan Technology Budget Growth" data="2017:9B,2023:15B,2024:17B,2026 (projected):19.8B" source="JPMorgan Chase Investor Disclosures / AI-News" >}}
+{{< bar-chart id="chart-1" title="JPMorgan Technology Budget Growth" data="2017:9B,2023:15B,2024:17B,2026 (projected):19.8B" source="JPMorgan Chase Investor Disclosures / AI-News" >}}
 
 KEY TAKEAWAY: COiN's measurable success came from three decisions made before the model trained: defining a narrow scope (extraction only, not judgment), using proprietary training data, and preserving human validation at the decision layer. Organizations that skip any of these report lower accuracy and higher rollback rates.
 

@@ -89,7 +89,7 @@ STAT: $55M | Savings from Self-Healing Inventory AI system | Walmart / Investing
 
 KEY TAKEAWAY: Walmart's 40% delivery cost reduction did not come from a single AI tool. It came from sequencing four separate AI programs, each with its own KPI, over roughly four years. COOs who expect a single vendor deployment to replicate this outcome will be disappointed.
 
-{{< bar-chart title="Walmart AI Supply Chain Results by Domain" data="Route Miles Saved (millions):30,Delivery Cost Reduction (%):40,Shipping Cost Reduction (%):30,Self-Healing Inventory Savings ($M):55,Supplier Negotiation Success Rate (%):68" source="Walmart Corporate Disclosures, Bloomberg, PYMNTS 2023-2024" >}}
+{{< bar-chart id="chart-1" title="Walmart AI Supply Chain Results by Domain" data="Route Miles Saved (millions):30,Delivery Cost Reduction (%):40,Shipping Cost Reduction (%):30,Self-Healing Inventory Savings ($M):55,Supplier Negotiation Success Rate (%):68" source="Walmart Corporate Disclosures, Bloomberg, PYMNTS 2023-2024" >}}
 
 ## How Does AI Inventory Management Cut Costs in Large-Scale Retail Operations?
 

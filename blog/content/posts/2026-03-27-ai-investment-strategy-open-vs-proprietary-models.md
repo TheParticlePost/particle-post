@@ -73,7 +73,7 @@ The crossover point sits at roughly 30 to 40 million tokens per month for most e
 
 Fortune's March 2026 CTO survey found that AI ROI is not uniform across deployment types, with infrastructure-heavy deployments showing 40% lower returns in year one compared to API-based deployments, primarily due to setup time and staffing costs. That drag inverts by year two.
 
-{{< bar-chart title="Annual AI Model Cost: API vs Self-Hosted at Scale" data="GPT-4o API (50M tokens/month):750000,Claude 3.5 Sonnet API (50M tokens/month):620000,Llama 3 70B Self-Hosted (50M tokens/month):380000,Mistral 7B Self-Hosted (50M tokens/month):290000" source="OpenAI/Anthropic published pricing; AWS infrastructure estimates, 2026" >}}
+{{< bar-chart id="chart-1" title="Annual AI Model Cost: API vs Self-Hosted at Scale" data="GPT-4o API (50M tokens/month):750000,Claude 3.5 Sonnet API (50M tokens/month):620000,Llama 3 70B Self-Hosted (50M tokens/month):380000,Mistral 7B Self-Hosted (50M tokens/month):290000" source="OpenAI/Anthropic published pricing; AWS infrastructure estimates, 2026" >}}
 
 ## How Is AI Changing Investment Banking Organizational Structures in 2026?
 

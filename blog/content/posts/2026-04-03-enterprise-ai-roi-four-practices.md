@@ -124,7 +124,7 @@ For product development functions, the IBM findings apply most directly. The 55%
 
 For compliance functions, the risk runs inverse to the opportunity. AI in compliance can reduce manual review hours substantially. JPMorgan's COiN platform demonstrated this at scale, processing 12,000 commercial credit agreements in seconds compared to 360,000 hours of annual lawyer time under the manual process. Compliance functions operating under FCA, SEC, or Basel III frameworks face explainability requirements that most current LLM deployments do not satisfy natively. Deploying AI in compliance without a parallel investment in model documentation and audit trails does not reduce regulatory risk. It creates a new category of it. For context on how explainability requirements translate into capital exposure, see our analysis of [AI hallucination risk in finance deployment and validation](/posts/ai-hallucination-risk-finance-deployment-validation/).
 
-{{< bar-chart title="Enterprise AI ROI Distribution: Leaders vs. Laggards" data="Formal ROI Framework:55,Ad Hoc Approach:5.9,CEOs Reporting Zero ROI:56" source="IBM Institute for Business Value / PwC 29th Global CEO Survey 2026" >}}
+{{< bar-chart id="chart-1" title="Enterprise AI ROI Distribution: Leaders vs. Laggards" data="Formal ROI Framework:55,Ad Hoc Approach:5.9,CEOs Reporting Zero ROI:56" source="IBM Institute for Business Value / PwC 29th Global CEO Survey 2026" >}}
 
 ## The Evidence Supports a Specific, Conditional Conclusion
 

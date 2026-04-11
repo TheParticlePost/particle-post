@@ -51,7 +51,7 @@ A named model risk officer is not optional under SS1/23 or the OCC's SR 11-7 gui
 
 ## Step-by-Step Implementation
 
-{{< time-series-chart title="ML Credit Model Deployment Timeline (Weeks)" data="Step 1:2,Step 2:6,Step 3:4,Step 4:6,Step 5:3,Step 6:4" x-label="Step" y-label="Elapsed Weeks" y-unit="wks" source="Particle Post editorial estimate" >}}
+{{< time-series-chart id="chart-1" title="ML Credit Model Deployment Timeline (Weeks)" data="Step 1:2,Step 2:6,Step 3:4,Step 4:6,Step 5:3,Step 6:4" x-label="Step" y-label="Elapsed Weeks" y-unit="wks" source="Particle Post editorial estimate" >}}
 
 ### Step 1: Define the Decisioning Scope
 

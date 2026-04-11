@@ -99,7 +99,7 @@ Artificial intelligence risk management in finance requires treating vendor and 
 
 JPMorgan, Citigroup, and HSBC each maintain formal AI vendor risk registers as part of their model risk management frameworks, according to guidance published by the Office of the Comptroller of the Currency. Smaller institutions and non-bank enterprises can apply the same logic with lighter tooling. The key output is a ranked list of AI dependencies by disruption cost, updated at least quarterly. The OCC's model risk management bulletin explicitly requires institutions to assess third-party model dependencies. A vendor restructuring that affects model versioning or API continuity creates a direct compliance event for regulated institutions.
 
-{{< bar-chart title="AI Budget Allocation: Infrastructure vs. Headcount (Post-Restructuring Benchmark)" data="Infrastructure/Compute:65,Model Licensing:15,Headcount:12,Exploratory R&D:8" source="Meta Q4 2025 Earnings; SiliconAngle March 2026" >}}
+{{< bar-chart id="chart-1" title="AI Budget Allocation: Infrastructure vs. Headcount (Post-Restructuring Benchmark)" data="Infrastructure/Compute:65,Model Licensing:15,Headcount:12,Exploratory R&D:8" source="Meta Q4 2025 Earnings; SiliconAngle March 2026" >}}
 
 ## Four Ways This Approach Fails
 

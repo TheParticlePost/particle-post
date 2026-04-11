@@ -110,7 +110,7 @@ Palantir and Databricks tie on ML and AI maturity at the top of the scoring rang
 
 **Regulated-Industry Fit:** Palantir scores highest, followed by Databricks. Snowflake and Microsoft Fabric require third-party governance tooling to satisfy enterprise-scale audit requirements in regulated sectors.
 
-{{< bar-chart title="Platform Scores by Criteria (1-5 Scale)" data="Palantir:4.17,Databricks:4.17,Snowflake:3.33,Microsoft Fabric:3.67" source="Author scoring framework, April 2026" >}}
+{{< bar-chart id="chart-1" title="Platform Scores by Criteria (1-5 Scale)" data="Palantir:4.17,Databricks:4.17,Snowflake:3.33,Microsoft Fabric:3.67" source="Author scoring framework, April 2026" >}}
 
 ## Can Agentic AI Finance Operations Enterprise Platforms Meet Regulatory Compliance at Scale?
 
