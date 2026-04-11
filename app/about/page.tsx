@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import { OverlineLabel } from "@/components/ui/overline-label";
 import { DataText } from "@/components/ui/data-text";
 import { FadeUp } from "@/components/effects/fade-up";
+import { TAGLINE_LONG } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "About",
-  description:
-    "Particle Post helps business leaders implement AI. Twice-daily briefings on strategy, operations, and the decisions that matter.",
+  description: TAGLINE_LONG,
 };
 
 export default function AboutPage() {

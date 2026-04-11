@@ -8,6 +8,7 @@ import { GoogleAnalytics } from "@/components/analytics/google-analytics";
 import { CookieConsent } from "@/components/analytics/cookie-consent";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { TAGLINE_LONG } from "@/lib/constants";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -15,8 +16,7 @@ export const metadata: Metadata = {
     default: "Particle Post | AI Briefings for Business Leaders",
     template: "%s | Particle Post",
   },
-  description:
-    "Twice-daily AI briefings for business leaders. Implementation strategies, operational decisions, and what actually works — delivered before markets open.",
+  description: TAGLINE_LONG,
   metadataBase: new URL("https://theparticlepost.com"),
   icons: {
     icon: [
@@ -33,8 +33,7 @@ export const metadata: Metadata = {
     url: "https://theparticlepost.com",
     siteName: "Particle Post",
     title: "Particle Post",
-    description:
-      "Twice-daily AI briefings for business leaders. Implementation strategies, operational decisions, and what actually works.",
+    description: TAGLINE_LONG,
     images: [{ url: "/og-image.svg", width: 1200, height: 630 }],
   },
   twitter: {

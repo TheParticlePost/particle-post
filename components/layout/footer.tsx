@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { FooterSubscribe } from "@/components/newsletter/footer-subscribe";
 import { FOOTER_NAV_LINKS, LEGAL_LINKS } from "@/lib/nav-links";
+import { TAGLINE_LONG, TAGLINE_SHORT } from "@/lib/constants";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -21,8 +22,7 @@ export function Footer() {
               </span>
             </div>
             <p className="text-body-sm text-text-secondary max-w-xs">
-              Particle Post helps business leaders implement AI. Twice-daily
-              briefings on strategy, operations, and the decisions that matter.
+              {TAGLINE_LONG}
             </p>
           </div>
 
@@ -72,7 +72,7 @@ export function Footer() {
             &copy; {year} Particle Post. All rights reserved.
           </p>
           <p className="font-mono text-caption text-text-muted">
-            Research-grade intelligence. Delivered daily.
+            {TAGLINE_SHORT}
           </p>
         </div>
       </div>

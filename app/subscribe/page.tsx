@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { OverlineLabel } from "@/components/ui/overline-label";
 import { SubscribeForm } from "@/components/newsletter/subscribe-form";
 import { SubscribeParticles } from "@/components/effects/subscribe-particles";
@@ -7,23 +6,15 @@ import { SubscribeParticles } from "@/components/effects/subscribe-particles";
 export const metadata: Metadata = {
   title: "Subscribe",
   description:
-    "The AI briefing 12,000 leaders read before markets open. Free, twice daily.",
+    "Twice-daily AI briefings on strategy, operations, and the decisions that matter. Free, in your inbox before markets open.",
 };
 
 export default function SubscribePage() {
   return (
     <div className="min-h-screen">
-      {/* Minimal nav — logo only */}
-      <nav className="h-16 flex items-center px-6 max-w-container mx-auto">
-        <Link href="/" className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-accent" />
-          <span className="font-display text-lg font-bold uppercase tracking-[-0.02em] text-accent">
-            Particle Post
-          </span>
-        </Link>
-      </nav>
-
-      {/* Hero — centered (exception to left-align rule) */}
+      {/* Hero — centered (exception to left-align rule)
+          NOTE: the global Navbar and Footer come from app/layout.tsx — do not
+          add a local nav block here, it would stack above the global one. */}
       <section className="relative min-h-[80vh] flex items-center justify-center px-4 sm:px-6 overflow-hidden">
         <SubscribeParticles />
         <div className="text-center max-w-2xl mx-auto relative z-10">
