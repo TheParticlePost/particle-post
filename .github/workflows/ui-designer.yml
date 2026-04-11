@@ -1,10 +1,9 @@
 name: UI Designer — Directive Mode (2pm ET)
 
 on:
-  # Primary trigger: native GitHub cron at 18:00 UTC daily (2pm ET during DST,
-  # 1 PM ET during standard time — accept the 1h winter drift).
-  # Fallback triggers (Cloudflare Worker, cron-job.org) are de-duplicated by
-  # the `guard` job below — double-triggers cannot produce double-runs.
+  # Native GitHub cron at 18:00 UTC daily (2pm ET during DST, 1 PM ET
+  # during standard time — accept the 1h winter drift).
+  # The `guard` job below de-duplicates double-triggers within a 20h window.
   schedule:
     - cron: "0 18 * * *"
   workflow_dispatch: {}    # manual trigger for testing
@@ -24,6 +23,11 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "proceed=true" >> "$GITHUB_OUTPUT"
+            echo "::notice::Manual dispatch — bypassing recent-run guard"
+            exit 0
+          fi
           WINDOW_HOURS=20
           CUTOFF=$(date -u -d "${WINDOW_HOURS} hours ago" +%Y-%m-%dT%H:%M:%SZ)
           RECENT=$(gh run list \

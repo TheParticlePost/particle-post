@@ -1,12 +1,10 @@
 name: Marketing Director (noon ET)
 
 on:
-  # Primary trigger: native GitHub cron at 16:00 UTC daily (noon ET during DST,
-  # 11 AM ET during standard time — accept the 1h winter drift).
-  # Fallback triggers (Cloudflare Worker, cron-job.org) are de-duplicated by
-  # the `guard` job below — any invocation within 20h of the last successful
-  # run short-circuits before any real work happens, so double-triggering is
-  # impossible regardless of how many schedulers fire.
+  # Native GitHub cron at 16:00 UTC daily (noon ET during DST, 11 AM ET
+  # during standard time — accept the 1h winter drift).
+  # The `guard` job below de-duplicates double-triggers within a 20h window,
+  # so adding any other dispatcher in the future is safe.
   schedule:
     - cron: "0 16 * * *"
   workflow_dispatch: {}    # manual trigger for testing
@@ -27,11 +25,16 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          # Prevent double-triggers between GitHub cron and external dispatchers
-          # (Cloudflare Worker, cron-job.org). If this workflow already has a
-          # successful run in the last 20h, this invocation becomes a no-op.
-          # Manual workflow_dispatch invocations still proceed because the guard
-          # excludes the current run ID from the count.
+          # Manual workflow_dispatch invocations always proceed — never block
+          # a human from re-running a workflow on demand.
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "proceed=true" >> "$GITHUB_OUTPUT"
+            echo "::notice::Manual dispatch — bypassing recent-run guard"
+            exit 0
+          fi
+          # Schedule trigger: skip if a recent successful run already covered
+          # this slot. Window is sized smaller than the natural cadence so
+          # legitimate runs always fire, but extra dispatches are no-ops.
           WINDOW_HOURS=20
           CUTOFF=$(date -u -d "${WINDOW_HOURS} hours ago" +%Y-%m-%dT%H:%M:%SZ)
           RECENT=$(gh run list \

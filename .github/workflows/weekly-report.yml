@@ -1,15 +1,52 @@
 name: Weekly Report (Friday 8pm ET)
 
 on:
-  # Cron scheduling handled by cron-job.org (job ID 7411451, Saturday 00:00 UTC)
-  # GitHub Actions built-in schedule removed to prevent double-triggers
+  # Native GitHub cron Saturday 00:00 UTC (Friday 8 PM ET during DST,
+  # Friday 7 PM ET during standard time — accept the 1h winter drift).
+  # The `guard` job below de-duplicates with a 6d window.
+  schedule:
+    - cron: "0 0 * * 6"
   workflow_dispatch:        # manual trigger for testing
 
 permissions:
   contents: write
+  actions: read     # required for the guard job's `gh run list` lookup
 
 jobs:
+  guard:
+    runs-on: ubuntu-latest
+    outputs:
+      proceed: ${{ steps.check.outputs.proceed }}
+    steps:
+      - name: Skip if a recent successful run exists
+        id: check
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "proceed=true" >> "$GITHUB_OUTPUT"
+            echo "::notice::Manual dispatch — bypassing recent-run guard"
+            exit 0
+          fi
+          WINDOW_HOURS=144
+          CUTOFF=$(date -u -d "${WINDOW_HOURS} hours ago" +%Y-%m-%dT%H:%M:%SZ)
+          RECENT=$(gh run list \
+            --repo "${{ github.repository }}" \
+            --workflow "${{ github.workflow }}" \
+            --status success \
+            --created ">${CUTOFF}" \
+            --json databaseId \
+            --jq "map(select(.databaseId != ${{ github.run_id }})) | length")
+          if [ "${RECENT:-0}" -gt 0 ]; then
+            echo "proceed=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Skipping — ${RECENT} successful run(s) in the last ${WINDOW_HOURS}h"
+          else
+            echo "proceed=true" >> "$GITHUB_OUTPUT"
+          fi
+
   report:
+    needs: guard
+    if: needs.guard.outputs.proceed == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:

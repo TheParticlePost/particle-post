@@ -1,9 +1,9 @@
 name: Content Quality Audit (Monday 10am ET)
 
 on:
-  # Primary trigger: native GitHub cron Monday 14:00 UTC
-  # (10am ET during DST, 9am ET during standard time — accept 1h winter drift).
-  # Fallback triggers de-duplicated by the guard job below — 6d window.
+  # Native GitHub cron Monday 14:00 UTC (10am ET during DST, 9am ET during
+  # standard time — accept 1h winter drift). The guard job below
+  # de-duplicates with a 6d window.
   schedule:
     - cron: "0 14 * * 1"
   workflow_dispatch: {}   # manual trigger for testing
@@ -23,6 +23,11 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "proceed=true" >> "$GITHUB_OUTPUT"
+            echo "::notice::Manual dispatch — bypassing recent-run guard"
+            exit 0
+          fi
           # 6-day window — this is a weekly workflow, so any successful run
           # in the last 144h means the Monday slot is already covered.
           WINDOW_HOURS=144

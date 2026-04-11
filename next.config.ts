@@ -54,7 +54,7 @@ const nextConfig: NextConfig = {
   webpack: (config) => {
     config.watchOptions = {
       ...config.watchOptions,
-      ignored: ["**/pipeline/**", "**/cloudflare-worker/**", "**/TODO/**"],
+      ignored: ["**/pipeline/**", "**/TODO/**"],
     };
     return config;
   },

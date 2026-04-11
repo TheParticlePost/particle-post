@@ -1,12 +1,11 @@
 name: UI Proactive Audit
 
 on:
-  # Primary trigger: native GitHub cron 3x daily at 15:00, 19:00, 23:00 UTC
+  # Native GitHub cron 3x daily at 15:00, 19:00, 23:00 UTC
   # (11am, 3pm, 7pm ET during DST — 1h earlier during standard time).
-  # Fallback triggers (Cloudflare Worker, cron-job.org) are de-duplicated by
-  # the `guard` job below — 3h window is < the 4h spacing between slots,
-  # so legitimate thrice-daily runs still fire, but any extra dispatch
-  # within 3h of the last successful run is a no-op.
+  # The `guard` job below de-duplicates with a 3h window — smaller than the
+  # 4h spacing between slots, so legitimate thrice-daily runs always fire,
+  # but any extra dispatch within 3h of the last successful run is a no-op.
   schedule:
     - cron: "0 15,19,23 * * *"
   workflow_dispatch: {}   # manual trigger for testing
@@ -26,6 +25,11 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "proceed=true" >> "$GITHUB_OUTPUT"
+            echo "::notice::Manual dispatch — bypassing recent-run guard"
+            exit 0
+          fi
           WINDOW_HOURS=3
           CUTOFF=$(date -u -d "${WINDOW_HOURS} hours ago" +%Y-%m-%dT%H:%M:%SZ)
           RECENT=$(gh run list \
