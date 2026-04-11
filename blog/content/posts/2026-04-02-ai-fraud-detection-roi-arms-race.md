@@ -3,6 +3,7 @@ title: 'AI Fraud Detection ROI: Real Wins, Rising Threats'
 date: 2026-04-02 13:04:26+00:00
 slug: ai-fraud-detection-roi-arms-race
 description: 'AI fraud detection delivers proven ROI: JPMorgan saved $1.5B, HSBC cut false positives 60%. But Deloitte warns losses hit $40B by 2027. What CFOs must do now.'
+executive_summary: "AI fraud detection delivers proven ROI today, with JPMorgan Chase saving $1.5 billion and reducing false positives by 50 percent, but fraudsters now wield identical tools. Deloitte projects US banking fraud losses will triple to $40 billion by 2027 as criminals deploy deepfakes and synthetic identities at scale. CFOs must treat model retraining as recurring operational expense, not capital project, and shift focus from false positives to false negatives. Quarterly model performance reviews against live fraud data are essential, as static 2023 deployments now carry false security by 2026."
 keywords:
 - AI fraud detection ROI
 - banking fraud prevention AI

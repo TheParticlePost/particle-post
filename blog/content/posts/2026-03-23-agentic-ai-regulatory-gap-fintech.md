@@ -3,6 +3,7 @@ title: Agentic AI Forces Fintech Into Regulatory Gray Zone
 date: 2026-03-23 13:00:00+00:00
 slug: agentic-ai-regulatory-gap-fintech
 description: Fintech firms deploy autonomous AI faster than regulators can enforce. Discover the accountability vacuum, cross-border enforcement gaps, and hidden liability risks.
+executive_summary: "JPMorgan and other financial institutions are deploying autonomous AI agents that execute trades and approve loans without human oversight, but no regulator has defined who is liable when these systems fail. According to FinRegLab, venture funding for agentic AI has surged over 18 months while regulators remain in information-gathering mode, creating a compliance vacuum. Firms face retroactive enforcement risk once rules catch up, plus immediate civil exposure from customers who can argue no human reviewed decisions that harmed them. Executives should document human-review touchpoints even where operationally unnecessary and monitor CFPB algorithmic underwriting guidance and EU AI Act enforcement beginning in 2026."
 keywords:
 - agentic AI
 - fintech regulation

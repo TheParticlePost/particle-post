@@ -3,6 +3,7 @@ title: Big Tech's $700B AI Bet Strains Power Grids and Carbon Markets
 date: 2026-03-23 21:00:00+00:00
 slug: ai-data-center-energy-costs
 description: Hyperscalers spending $690B on AI infrastructure strains power grids and carbon markets. How energy constraints reshape ESG finance and utility stocks.
+executive_summary: "Big Tech's $690 billion capital expenditure surge in 2026, led by Amazon's $200 billion alone, is creating severe power grid shortages that will peak in 2027-2028, forcing hyperscalers to acquire energy assets directly rather than wait years in utility interconnection queues. Data center electricity consumption will double to at least 325 terawatt-hours by 2028, driving half of all U.S. energy demand growth. CFOs should review ESG-linked debt covenants immediately, as AI-driven emissions are outpacing renewable buildouts and creating execution risk on net-zero triggers that weren't priced into sustainability-linked bonds issued recently."
 keywords:
 - AI data center energy costs
 - hyperscaler capex spending 2026

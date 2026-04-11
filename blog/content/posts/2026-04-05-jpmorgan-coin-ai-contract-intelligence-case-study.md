@@ -3,6 +3,7 @@ title: 'JPMorgan AI Case Study: COiN Cut Contract Review 80%'
 date: '2026-04-05T16:16:34Z'
 slug: jpmorgan-coin-ai-contract-intelligence-case-study
 description: JPMorgan's COiN platform eliminated 360,000 lawyer hours annually. See the full enterprise AI deployment timeline, real costs, and lessons for CFOs and COOs.
+executive_summary: "JPMorgan Chase eliminated 360,000 hours of annual legal labor using its COiN AI platform to process commercial credit agreements, but the real lesson is not about replacement. The bank succeeded by scoping AI narrowly to extraction only, training models on proprietary documents rather than using generic tools, preserving human validation for decisions, and following a multi-year phased rollout through 2016-2017 that cannot be compressed. Executives attempting shortcuts consistently report higher error rates and lower adoption, making COiN a case study in deliberate governance and change management rather than rapid automation."
 keywords:
 - JPMorgan AI case study
 - contract intelligence AI

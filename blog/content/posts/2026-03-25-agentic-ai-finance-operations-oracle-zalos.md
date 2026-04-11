@@ -3,6 +3,7 @@ title: 'Oracle Fusion Agentic Apps vs Zalos: Which Fits Your Stack'
 date: 2026-03-25 19:18:23+00:00
 slug: agentic-ai-finance-operations-oracle-zalos
 description: 'Oracle launched 22 Fusion Agentic Apps on March 24, 2026. Zalos raised $3.6M the same day. CFOs: here''s which autonomous finance path fits your ERP stack.'
+executive_summary: "Oracle launched 22 agentic finance applications on March 24, 2026, offering near-zero incremental cost for existing Fusion Cloud customers but requiring a multi-million-dollar platform migration for everyone else. San Francisco startup Zalos closed a $3.6M seed round the same day with screen-trained agents that operate any existing ERP without migration or APIs, attracting personal investment from FedEx's CFO. These solutions target entirely different buyers: Oracle serves large enterprises already committed to its cloud suite, while Zalos addresses midmarket firms running fragmented legacy stacks who cannot justify ripping out functional systems for AI features alone."
 keywords:
 - Oracle Fusion agentic applications vs Zalos
 - agentic AI finance deployment

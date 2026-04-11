@@ -3,6 +3,7 @@ title: "Machine Learning Credit Scoring: 6-Step Deployment Guide"
 date: "2026-04-10T21:09:16Z"
 slug: "machine-learning-credit-scoring-deployment-guide"
 description: "Machine learning credit scoring deployment in 6 steps. Capital One cut losses 20% replacing FICO models. Covers FCA/PRA compliance, bias testing, and cost estimates."
+executive_summary: "Capital One replaced 60% of its FICO-based decisioning with machine learning models and cut credit losses by 20% within 18 months. Deploying ML credit scoring requires four non-negotiables: three to five years of loan performance data covering at least 100,000 cycles, unified data infrastructure, a defined regulatory perimeter, and a named model risk officer. The six-step process spans 25 weeks and includes scoping the decision type, engineering alternative data that can score 28 million additional US consumers with no credit file, training gradient boosting models with out-of-time validation, and conducting disparate impact testing before production deployment."
 keywords: ["machine learning credit scoring", "AI credit risk model deployment", "alternative data credit scoring", "explainable AI banking regulation FCA", "ML credit model champion-challenger", "FICO replacement machine learning"]
 author: "alex-park"
 tags: ["Machine Learning", "Credit Scoring", "AI Risk Models", "Regulatory Compliance", "Alternative Data"]

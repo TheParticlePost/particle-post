@@ -3,6 +3,7 @@ title: 'AI Credit Review Time: Can It Really Drop 70%?'
 date: '2026-04-07T13:06:00Z'
 slug: ai-credit-review-time-70-percent
 description: AI credit review time claims of 70% fall short once compliance is added. Oliver Wyman 2024 puts real gains at 25-40%. What lenders must verify before buying.
+executive_summary: "Vendor claims of 70% reductions in AI credit review time are accurate only for isolated pilot scenarios, not real-world operations that include compliance, model validation, and exception handling. McKinsey research shows AI cuts consumer loan processing by 50 to 60%, while commercial lending sees only 30 to 40% gains once regulatory documentation is included. Upstart's 91% automated decisioning rate excluded appeals, audits, and monitoring logs that surround every decision. Executives should budget for realistic efficiency gains of 25 to 40% in compliance-inclusive environments and ensure contracts account for mandatory human review layers required by CFPB and OCC guidance."
 keywords:
 - AI credit review time
 - machine learning credit scoring banks 2026

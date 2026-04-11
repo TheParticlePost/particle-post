@@ -3,6 +3,7 @@ title: 'The AI Fraud Arms Race: What the Research Shows About Detection ROI, and
 date: 2026-03-25 13:00:00+00:00
 slug: ai-fraud-detection-roi-arms-race
 description: AI fraud detection saves banks millions, but AI-enabled fraud surged 1,210% since 2023. Here's what the research proves, and where it breaks down.
+executive_summary: "JPMorgan Chase blocked over $15 billion in fraud using AI in 2023, yet AI-enabled fraud surged 1,210% by 2025 as criminals weaponized the same technology. Research confirms AI fraud detection delivers strong ROI against known attack patterns, with some institutions saving over $5 million in two years, but every study tests against historical data, not live adversarial conditions. Models trained on 2023 threats cannot detect 2025 attacks they have never seen, and detection rates mean little when attack volume grows faster than prevention capability. CFOs must budget for continuous model retraining and recognize that static ROI projections become obsolete as threat environments evolve."
 keywords:
 - AI fraud detection ROI
 - synthetic identity fraud detection

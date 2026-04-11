@@ -3,6 +3,7 @@ title: 'Agentic AI Risk Management Finance: Security Overhaul Now'
 date: 2026-03-28 21:01:26+00:00
 slug: agentic-ai-risk-management-finance-security
 description: 'Agentic AI risk in finance is immediate: RSAC 2026 exposed 3 critical governance gaps. Cisco, Oracle, and Microsoft warn enterprises to act now before regulators do.'
+executive_summary: "Autonomous AI agents now operate inside enterprise networks with weaker identity controls than junior contractors, creating compounding security debt that existing frameworks cannot address, according to Cisco researchers at RSAC 2026. Three critical governance gaps demand immediate action: agents use service-account credentials with broad permissions and no rotation, query data stores without row-level isolation, and bypass zero-trust architectures designed for human users. In financial services, every agent action is legally attributable to the firm under GLBA and BSA, even without human authorization, creating direct regulatory liability. Security leaders must implement agent-specific identity lifecycles, data access scopes, and non-human zero-trust controls now, not as roadmap items."
 keywords:
 - agentic AI risk management finance
 - agentic AI regulatory compliance fintech

@@ -3,6 +3,7 @@ title: 'AI Investment Strategy: Open vs Proprietary Models ROI'
 date: 2026-03-27 13:01:48+00:00
 slug: ai-investment-strategy-open-vs-proprietary-models
 description: Wrong AI model choice costs $2M-$8M in 18 months. Our CFO framework compares GPT-4o vs Llama 3 on cost, compliance, and ROI for finance operations.
+executive_summary: "Fortune's March 2026 analysis shows enterprises waste $2M to $8M on wrong AI model choices within 18 months, yet the decision hinges on a clear cost crossover. Proprietary APIs like GPT-4o cost less below 30 to 40 million tokens monthly but become expensive at scale, with one bank spending $750,000 annually at 50 million tokens. Open-source models like Llama 3 cost 45 to 60 percent less above that threshold but require significant engineering teams. CFOs should calculate their token volume, assess engineering capacity, and factor data residency requirements before committing capital."
 keywords:
 - AI investment strategy open source vs proprietary
 - enterprise AI cost optimization

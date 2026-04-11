@@ -3,6 +3,7 @@ title: Explainable AI Is a Capital Problem, Not a Technical One, and the FCA Is 
 date: 2026-03-24 21:00:00+00:00
 slug: explainable-ai-capital-problem-fca
 description: The FCA's mandate for explainable AI in financial decision-making forces fintech firms to build interpretability as permanent infrastructure, not as a one-time technical fix. Learn why compliance is reshaping competitive advantage in retail financial services.
+executive_summary: "The FCA's Mills Review and CP26/9 framework have made explainable AI a capital expense, not a technical checkbox, requiring three distinct compliance layers: model output, audit trail, and plain-language consumer explanation. CEPS estimates a compliant Quality Management System costs €193,000–€330,000 to establish plus €71,400 annually, excluding legal review. Both AI-first startups lacking governance infrastructure and incumbents with legacy systems face structural failure during regulatory audits. CFOs must immediately map AI decisions to Consumer Duty outcomes, audit redress architecture separately from models, and budget explicitly for ongoing legal and compliance infrastructure before summer 2026 recommendations arrive."
 keywords:
 - explainable AI fintech
 - FCA AI regulation

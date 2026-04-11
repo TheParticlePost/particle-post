@@ -3,6 +3,7 @@ title: 'AI Agent Governance Framework: 5-Step Control Plan'
 date: 2026-04-04 13:03:38+00:00
 slug: ai-agent-governance-framework-5-steps
 description: AI agent governance framework in 5 steps. Only 24% of firms have live agent controls. Deploy kill switches, purpose binding, and observability without a CAO.
+executive_summary: "Only 23% of organizations have formal AI agent governance despite 79% planning to run agents by 2026, according to AI Thinker Lab and Accelirate research. Most executives wrongly believe they need a Chief AI Officer or ethics board before deploying agents safely, causing either paralysis or unchecked shadow deployments. Governance is actually four technical controls any ops team can implement now: purpose binding to limit agent scope, kill switches for emergency stops, network isolation, and centralized observability. Start by inventorying all running agents, then deploy these engineering controls immediately rather than waiting months for executive committees that govern nothing while shadow AI proliferates."
 keywords:
 - AI agent governance framework
 - agent containment controls

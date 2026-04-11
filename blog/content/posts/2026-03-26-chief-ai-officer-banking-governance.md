@@ -3,6 +3,7 @@ title: 'Chief AI Officer: Why Artificial Intelligence Banking Needs One'
 date: 2026-03-26 15:07:05+00:00
 slug: chief-ai-officer-banking-governance
 description: HSBC named its first Chief AI Officer in 2025. Banks with C-suite AI ownership are 2.5x more likely to see revenue gains. Is your institution already behind?
+executive_summary: "HSBC's appointment of a Chief AI Officer signals that major banks can no longer route AI governance through the CTO without creating structural conflicts between deployment speed and regulatory accountability. McKinsey found firms with C-suite AI ownership are 2.5 times more likely to report revenue gains than those with director-level oversight. Banks above $50 billion deploying AI across multiple business functions should audit who has authority to stop risky AI deployments and establish a dedicated executive with cross-functional authority and board reporting before regulators mandate named accountability trails."
 keywords:
 - Chief AI Officer banking
 - banking AI governance

@@ -3,6 +3,7 @@ title: 'AI Risk Management Finance: Stop Nation-State Breaches'
 date: 2026-03-26 13:41:01+00:00
 slug: enterprise-cybersecurity-nation-state-defense-framework
 description: Nation-state actors dwelled 18 months inside US telecoms undetected. IBM data shows zero-trust cuts breach costs $1.76M. Here is your 5-step defense framework.
+executive_summary: "China's Salt Typhoon operation compromised at least nine US telecom carriers for up to 18 months undetected, exposing a critical gap: enterprises average 194 days to identify breaches according to IBM's 2024 report, yet deploying more security tools correlates with slower detection, not faster. Nation-state actors exploit governance failures like misconfigured access controls, unmonitored lateral movement, and alert fatigue rather than technology gaps. CFOs should immediately audit privileged access credentials, segment networks around high-value data, and adopt zero-trust architecture, which IBM found reduces breach costs by $1.76 million on average, applying the same AI risk management disciplines already required for financial models."
 keywords:
 - enterprise cybersecurity framework
 - nation-state breach defense

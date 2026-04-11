@@ -3,6 +3,7 @@ title: 'AI Accounts Payable Automation: 7-Step Implementation Guide'
 date: 2026-03-25 21:01:31+00:00
 slug: ai-accounts-payable-automation-implementation-guide
 description: AI AP automation cuts per-invoice costs from $15 to under $2. Follow this 7-step roadmap for CFOs deploying agentic AP agents without common failures.
+executive_summary: "Finance teams deploying AI-driven accounts payable automation are cutting per-invoice costs from over $15 to below $2, according to Medius benchmarking data, but success depends entirely on pre-launch preparation. Before go-live, CFOs must ensure vendor master data is deduplicated, ERP integration is documented at the field level, approval hierarchies are current and loaded into the system, and a named owner with defined SLAs manages exceptions. Skip any of these four preconditions and the first 90 days will generate more exceptions than manual processing, collapsing adoption and ROI."
 keywords:
 - AI accounts payable automation
 - agentic AP automation implementation

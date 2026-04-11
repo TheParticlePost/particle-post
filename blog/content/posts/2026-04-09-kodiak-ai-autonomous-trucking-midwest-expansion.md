@@ -3,6 +3,7 @@ title: 'Autonomous Trucking AI ROI: Kodiak''s Midwest Case Study'
 date: '2026-04-09T21:08:54Z'
 slug: kodiak-ai-autonomous-trucking-midwest-expansion
 description: Autonomous trucking AI cut projected cost per mile to $0.38 vs. $1.92 for human drivers. See how Kodiak AI staged its Midwest expansion and what the ROI data reveals.
+executive_summary: "Kodiak's staged Midwest expansion demonstrates that autonomous trucking AI performance does not transfer automatically between geographic corridors, requiring separate validation for weather, infrastructure, and traffic complexity before commercial deployment. The company ran supervised demonstrations across Ohio and Indiana highways before pursuing carrier commitments, prioritizing operational credibility over rapid revenue growth. With 70 percent of US long-haul freight moving through these states and a potential cost advantage of $1.54 per mile at scale versus human-driven trucks, Kodiak's three-phase, 18-month risk-staged approach provides logistics executives a replicable playbook for evaluating autonomous freight partnerships in new regions."
 keywords:
 - autonomous trucking AI ROI
 - autonomous fleet management ROI

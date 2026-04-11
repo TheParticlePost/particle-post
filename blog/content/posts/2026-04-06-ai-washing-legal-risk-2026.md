@@ -3,6 +3,7 @@ title: 'AI Washing Legal Risk 2026: FTC & SEC Enforcement'
 date: '2026-04-06T13:07:15Z'
 slug: ai-washing-legal-risk-2026
 description: AI washing exposes companies to FTC fines, SEC fraud charges, and EU AI Act penalties up to 3% of global revenue. Learn the 3 steps executives must take now.
+executive_summary: "The FTC and SEC have escalated AI washing from a branding issue to active enforcement, extracting $400,000 in combined penalties from two investment advisers in March 2024 for false AI marketing claims, according to the U.S. Securities and Exchange Commission. Companies face simultaneous regulatory exposure from consumer deception, securities fraud, and EU AI Act violations, with fines reaching 3 percent of global revenue. Executives must immediately audit all external AI claims, assign legal ownership of an AI claims registry, and document substantiation before publication, as repeating unverified vendor claims transfers full liability to your company."
 keywords:
 - AI washing legal risk 2026
 - FTC AI enforcement 2026

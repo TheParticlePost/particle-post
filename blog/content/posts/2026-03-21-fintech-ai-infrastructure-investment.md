@@ -3,6 +3,7 @@ title: 'AI as Core Fintech Infrastructure: 80% of Companies Go All-In'
 date: 2026-03-21 13:00:00+00:00
 slug: fintech-ai-infrastructure-investment
 description: 80% of financial firms now embed AI into core operations. Discover why AI shifted from feature to essential infrastructure, and what CFOs must budget for in 2026.
+executive_summary: "Eighty percent of financial firms now make moderate-to-large AI investments, with generative AI spending jumping from $11.5 billion in 2024 to $37 billion in 2025 according to Menlo Ventures. AI has moved beyond pilot programs into core infrastructure including fraud detection, underwriting, and back-office operations. Upstart automated 91% of loans with zero human involvement while Allica Bank blocks over £1 million weekly in fraudulent applications. CFOs should recognize this as infrastructure build-out, not R&D experimentation, because firms delaying deployment will face structurally higher loss rates and unit economics that cannot compete with AI-native rivals by 2026."
 keywords:
 - fintech AI infrastructure
 - generative AI investment financial services

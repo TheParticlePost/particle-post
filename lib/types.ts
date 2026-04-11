@@ -27,7 +27,7 @@ export interface PostMeta {
   schema_type?: string;
   keywords?: string[];
   /**
-   * Stable author slug from lib/authors.ts (e.g. "william-hayes"). The
+   * Stable author slug from lib/authors.ts (e.g. "william-morin"). The
    * Server Component looks up the full Author profile from the registry
    * to render the byline link. Backfilled across all articles via
    * pipeline/scripts/backfill_authors.py.
@@ -41,6 +41,14 @@ export interface PostMeta {
    * when the explicit `author` field is missing.
    */
   content_type?: string;
+  /**
+   * 50-75 word "In brief" summary rendered above the cover image. Mandatory
+   * for articles published after 2026-04-11; backfilled for older articles
+   * via pipeline/scripts/backfill_executive_summaries.py. The article page
+   * conditionally renders <ExecutiveSummary> only if this field is present
+   * so legacy articles still render cleanly.
+   */
+  executive_summary?: string;
 }
 
 export interface Post extends PostMeta {

@@ -82,6 +82,14 @@ def assemble_article(
     has_faq = seo_data.get("has_faq", False)
     faq_pairs = seo_data.get("faq_questions", [])
 
+    # 4b. Extract executive summary from the body if the writer emitted an
+    #     EXECUTIVE_SUMMARY: marker. Falls back to seo_data.executive_summary
+    #     if the SEO/GSO task surfaced one. Empty if neither is present —
+    #     legacy backfill script can fill it in for already-published articles.
+    body, executive_summary = _extract_executive_summary(body)
+    if not executive_summary:
+        executive_summary = seo_data.get("executive_summary") or None
+
     frontmatter = build_frontmatter(
         title=title,
         slug=slug,
@@ -98,6 +106,7 @@ def assemble_article(
         content_type=content_type,
         has_faq=has_faq,
         faq_pairs=faq_pairs,
+        executive_summary=executive_summary,
     )
 
     # 5. Clean up the body
@@ -116,6 +125,44 @@ def assemble_article(
 
     # 7. Combine
     return f"{frontmatter}\n\n{body.strip()}\n"
+
+
+def _extract_executive_summary(body: str) -> tuple[str, str | None]:
+    """Pull an EXECUTIVE_SUMMARY: marker out of the article body.
+
+    The writer agent emits the summary as a single-paragraph marker right
+    after the title. We pull it into the frontmatter and strip it from the
+    body so it doesn't double-render alongside the <ExecutiveSummary>
+    component on the article page.
+
+    Marker format (one of):
+        EXECUTIVE_SUMMARY: <50-75 word paragraph in plain text>
+        EXECUTIVE_SUMMARY:
+        <50-75 word paragraph>
+
+    Returns (body_without_marker, summary_text or None).
+    """
+    if not body:
+        return body, None
+
+    # Pattern 1: same-line marker
+    m = re.search(
+        r'^EXECUTIVE_SUMMARY:\s*(.+?)(?:\n\n|\Z)',
+        body,
+        re.MULTILINE | re.DOTALL,
+    )
+    if not m:
+        return body, None
+
+    summary = m.group(1).strip()
+    # Collapse internal newlines so a multi-line marker becomes a single
+    # paragraph for the frontmatter field.
+    summary = re.sub(r'\s+', ' ', summary)
+
+    # Strip the marker from the body. Replace with empty so the body keeps
+    # its overall structure (the body cleanup pass handles double newlines).
+    new_body = body[: m.start()] + body[m.end() :]
+    return new_body.strip(), summary
 
 
 def _extract_revised_article(editing_output: str) -> str:

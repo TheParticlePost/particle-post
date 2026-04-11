@@ -3,6 +3,7 @@ title: 'AI Investment Strategy: Recalibrate After Meta''s 2026 Cuts'
 date: 2026-03-27 21:01:39+00:00
 slug: ai-investment-strategy-meta-restructuring-2026
 description: Meta cut hundreds of roles while keeping $60B+ in AI infrastructure spend. Here's how enterprise leaders should recalibrate their AI investment strategy in 90 days.
+executive_summary: "Meta's March 2026 restructuring cut hundreds of roles in legacy infrastructure and mid-level management while maintaining over $60 billion in AI capital expenditure, signaling that compute investment is non-negotiable but human coordination layers are expendable. Enterprise leaders should immediately separate infrastructure from headcount budgets, audit vendor dependencies against Big Tech attrition, and open targeted hiring for displaced AI talent within the next 60 to 90 days before competing firms absorb the available pool, while mapping their own org charts against Meta's published ROI priorities."
 keywords:
 - AI investment strategy 2026
 - enterprise AI restructuring

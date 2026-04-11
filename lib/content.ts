@@ -51,6 +51,10 @@ function parsePost(filename: string): Post | null {
     author: data.author || undefined,
     featured: data.featured === true,
     content_type: typeof data.content_type === "string" ? data.content_type : undefined,
+    executive_summary:
+      typeof data.executive_summary === "string" && data.executive_summary.trim()
+        ? data.executive_summary.trim()
+        : undefined,
     content,
   };
 

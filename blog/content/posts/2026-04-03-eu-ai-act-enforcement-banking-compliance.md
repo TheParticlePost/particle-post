@@ -3,6 +3,7 @@ title: 'EU AI Act Enforcement: AI Compliance Banking Guide'
 date: 2026-04-03 21:02:43+00:00
 slug: eu-ai-act-enforcement-banking-compliance
 description: EU AI Act enforcement begins August 2, 2026. Banks face fines up to €15M for non-compliant high-risk AI. 7-step compliance workflow for credit scoring and more.
+executive_summary: "The EU AI Act's August 2, 2026 deadline imposes fines up to 15 million euros or 3% of global annual turnover on banks operating credit scoring or AI-driven insurance pricing without documented conformity assessments. Credit scoring for individuals qualifies as high-risk under Annex III, Category 5(b), requiring seven-step compliance including system classification, conformity assessments, technical documentation, logging infrastructure, human oversight procedures, and EU database registration. Banks must complete this workflow immediately, designate a single compliance owner with deployment authority, and ensure vendor contracts explicitly assign AI Act responsibility since deployers retain liability even for third-party models."
 keywords:
 - EU AI Act enforcement banking
 - AI compliance financial services

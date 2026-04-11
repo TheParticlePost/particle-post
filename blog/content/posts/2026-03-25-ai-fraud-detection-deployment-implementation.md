@@ -3,6 +3,7 @@ title: 'How to Deploy AI Fraud Detection: 5 Implementation Pitfalls and Go/No-Go
 date: 2026-03-25 13:00:00+00:00
 slug: ai-fraud-detection-deployment-implementation
 description: Step-by-step implementation guide for deploying AI fraud detection systems in banking and fintech. Covers model selection, data integration, threshold calibration, and operational handoff with explicit go/no-go criteria before production rollout.
+executive_summary: "Visa blocked over $40 billion in fraud annually with AI, but took nearly a decade to build the infrastructure. Most banks rushing deployment in 12 months fail due to inadequate data pipelines, model drift, and regulatory rejection of black-box systems. Before launching, secure 18-24 months of clean labeled transaction data, real-time sub-second scoring infrastructure, compliance involvement from day one, a dedicated model risk team with rollback authority, and executive agreement on false positive tolerance. Run AI in parallel with legacy rules for 60-90 days, calibrate thresholds on your specific customer mix, and build auditable explainability into every decision to satisfy OCC requirements."
 keywords:
 - AI fraud detection implementation
 - banking fraud detection deployment

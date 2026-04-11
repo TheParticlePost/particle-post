@@ -3,6 +3,7 @@ title: 'Agentic AI Accounts Payable: 60-80% ROI Implementation Playbook'
 date: 2026-04-01 13:11:04+00:00
 slug: agentic-ap-automation-roi-implementation-playbook
 description: Agentic AI in accounts payable cuts cost-per-invoice from $12.88 to $2.78. Step-by-step ROI formula, Basware vs Ramp vs Automation Anywhere comparison, and deployment checklist.
+executive_summary: "Finance teams deploying agentic AI in accounts payable are slashing cost-per-invoice from $12.88 to $2.78, a 78% reduction that delivers 60-80% ROI within six months for mid-market implementations, according to Aberdeen Group and APQC 2025 benchmarks. The technology automates invoice processing, fraud detection, and compliance checking while compressing cycle times from 17.4 days to 3.1 days. Finance directors should calculate ROI using current invoice volume multiplied by the $10.10 cost gap, subtract implementation costs of $50,000 to $150,000, and prioritize clean ERP master data before deployment to capture realistic first-year savings of 40-60% of the theoretical maximum."
 keywords:
 - agentic AI accounts payable
 - AP automation ROI

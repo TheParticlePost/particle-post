@@ -42,11 +42,18 @@ def build_frontmatter(
     content_type: str = "news_analysis",
     has_faq: bool = False,
     faq_pairs: list[dict] | None = None,
+    executive_summary: str | None = None,
 ) -> str:
     """Build a YAML frontmatter block for a Hugo/Next.js post.
 
     If `author` isn't explicitly passed, the curator slug is selected
     deterministically by content_type via author_for_content_type().
+
+    If `executive_summary` is passed, it's emitted as a YAML field that the
+    Next.js article page reads via lib/content.ts and renders above the
+    cover image via the <ExecutiveSummary> component. Required for new
+    articles per the writer pipeline; absent on legacy articles until
+    backfilled by pipeline/scripts/backfill_executive_summaries.py.
     """
     if not author:
         author = author_for_content_type(content_type)
@@ -68,6 +75,11 @@ def build_frontmatter(
         f'content_type: "{content_type}"',
         f"has_faq: {'true' if has_faq else 'false'}",
     ]
+
+    if executive_summary:
+        # Emit on a single line; YAML escapes any embedded double-quotes.
+        cleaned = _escape(executive_summary.strip())
+        lines.append(f'executive_summary: "{cleaned}"')
 
     # Cover image as nested YAML block (Next.js format)
     if image_url:

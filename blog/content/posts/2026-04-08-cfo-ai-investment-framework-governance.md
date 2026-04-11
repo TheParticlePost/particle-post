@@ -3,6 +3,7 @@ title: 'CFO AI Investment Framework: Why Waiting Costs Millions'
 date: '2026-04-08T13:04:52Z'
 slug: cfo-ai-investment-framework-governance
 description: 'CFO AI investment framework: 74% of AI pilots never document ROI per Gartner. Learn why finance leaders must govern AI vendor and spend decisions now.'
+executive_summary: "CFOs who delay establishing AI investment frameworks risk losing control over millions in vendor lock-in and unmeasured spending, as engineering and operations teams make irreversible procurement decisions under existing budgets. McKinsey finds companies with CFO-led AI governance from the start were 2.4 times more likely to report above-expected returns, while Gartner reports 74% of enterprise AI pilots never produce documented ROI cases. Finance leaders should immediately establish vendor selection criteria focused on contract flexibility and data portability, require pre-pilot ROI contracts with baseline metrics and kill clauses for initiatives above $50,000, and audit existing AI spend across the organization before the next budget cycle closes."
 keywords:
 - CFO AI investment framework
 - enterprise AI governance

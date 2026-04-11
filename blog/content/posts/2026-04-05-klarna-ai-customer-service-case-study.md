@@ -3,6 +3,7 @@ title: 'Klarna AI Customer Service: What the Real Numbers Show'
 date: '2026-04-05T06:20:39Z'
 slug: klarna-ai-customer-service-case-study
 description: Klarna's AI handled 2.3M chats in month one and saved $40M, then satisfaction dropped 22%. The full case study CFOs and COOs must read before cutting headcount.
+executive_summary: "Klarna's AI customer service assistant initially handled 2.3 million conversations monthly and promised $40 million in annual savings by replacing 700 agents, but the model collapsed within a year as customer satisfaction dropped 22 percent. The AI excelled at high-volume simple queries but failed on complex or emotionally charged issues, forcing the CEO to reassign engineers and marketers to support roles by September 2025. Executives considering similar deployments must measure both efficiency gains and quality degradation, particularly satisfaction-sensitive churn and revenue impact from frustrated high-value customers, not just labor cost avoidance and resolution speed."
 keywords:
 - Klarna AI customer service automation
 - AI customer service case study 2024

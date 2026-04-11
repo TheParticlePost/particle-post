@@ -3,6 +3,7 @@ title: 'AI Accounts Payable Automation: 6-Week Deployment Playbook'
 date: 2026-04-01 21:02:04+00:00
 slug: ai-accounts-payable-automation-deployment-playbook
 description: AI accounts payable automation cuts cost per invoice from $14 to $3. This 6-week deployment playbook gives finance leaders go/no-go gates to avoid stalled pilots.
+executive_summary: "A mid-sized manufacturer slashed invoice processing costs from $14.20 to $3.10 in 11 weeks using AI automation, but only after a failed vendor integration cost four weeks of rework. Five preconditions prevent such failures: clean baseline metrics, structured ERP data, a documented approval matrix, a dedicated integration owner, and confirmed data residency controls. The six-week deployment playbook starts with PO-backed invoices only, requires vendors to process your 20 most complex invoices before contract signing, and budgets 10 days for ERP integration, not the five vendors typically advertise. Finance leaders should audit vendor master data and document approval hierarchies before touching any platform."
 keywords:
 - AI accounts payable automation
 - invoice processing AI agents

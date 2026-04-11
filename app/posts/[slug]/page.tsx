@@ -11,6 +11,7 @@ import { OverlineLabel } from "@/components/ui/overline-label";
 import { DataText } from "@/components/ui/data-text";
 import { ReadingTime } from "@/components/articles/reading-time";
 import { ImageCredit } from "@/components/articles/image-credit";
+import { ExecutiveSummary } from "@/components/articles/executive-summary";
 import { TableOfContents } from "@/components/articles/table-of-contents";
 import { FaqSection } from "@/components/articles/faq-section";
 import { RelatedArticles } from "@/components/articles/related-articles";
@@ -109,6 +110,12 @@ export default async function PostPage({ params }: PageProps) {
           {/* Ghost border divider */}
           <div className="mt-6 border-b border-border-ghost" />
         </header>
+
+        {/* Executive summary — 50-75 word "In brief" above the cover image.
+            Conditional so legacy articles without the field render cleanly. */}
+        {post.executive_summary && (
+          <ExecutiveSummary summary={post.executive_summary} />
+        )}
 
         {/* Cover Image — centered, matches body width */}
         {post.coverImage && (
