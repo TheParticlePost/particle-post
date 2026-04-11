@@ -214,20 +214,19 @@ export default function PrivacyPage() {
           </li>
         </ul>
 
-        <h2>8. Automated processing and AI-generated content</h2>
+        <h2>8. Editorial standards and automated processing</h2>
         <p>
-          Particle Post articles are produced via an AI-assisted editorial
-          pipeline with human oversight. Our curators set direction, review
-          every published piece, and own the editorial standards. The
-          pipeline accelerates research and drafting; humans make the calls
-          on what ships.
+          Our editorial team uses modern research and writing tools,
+          including AI assistants, to accelerate the work of our curators.
+          Every article is reviewed and signed off by a named curator before
+          publication. Editorial direction, sourcing standards, and final
+          publication decisions are made by our human editorial team.
         </p>
         <p>
-          We do <strong>not</strong> make automated decisions about
-          individual users. We do not score, profile, or target you with
-          personalised ads. The AI is used exclusively for content
-          production, never for decisions that affect you legally or
-          significantly.
+          Importantly, we do <strong>not</strong> make automated decisions
+          about individual users. We do not score, profile, or target you
+          with personalised ads. The tools we use serve our curators, not
+          your data.
         </p>
 
         <h2>9. Children&rsquo;s data</h2>
