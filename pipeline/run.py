@@ -1513,10 +1513,30 @@ def main() -> None:
                     svg = ""
                     w, h = 800, 250
 
+                    # stat_card: short-circuit the SVG→PNG render path.
+                    # Emit as a {{< stat-box >}} shortcode instead so it
+                    # renders via the theme-adaptive React component
+                    # (components/mdx/stat-box.tsx). Baked-in PNGs cannot
+                    # adapt to the light/dark page theme.
                     if vtype == "stat_card":
-                        svg = stat_card(vdata["number"], vdata["label"], vdata.get("source", ""))
-                        w, h = 400, 200
-                    elif vtype == "before_after":
+                        def _esc(s: str) -> str:
+                            return (s or "").replace('"', '\\"')
+                        shortcode = (
+                            '{{< stat-box '
+                            f'value="{_esc(vdata["number"])}" '
+                            f'label="{_esc(vdata["label"])}" '
+                            f'source="{_esc(vdata.get("source", ""))}" '
+                            '>}}'
+                        )
+                        visuals.append({
+                            "type": vtype,
+                            "shortcode": shortcode,
+                            "insert_after_heading": spec.get("insert_after_heading", ""),
+                        })
+                        print(f"  [GRAPHICS] Visual generated: stat_card (shortcode)")
+                        continue
+
+                    if vtype == "before_after":
                         svg = diagram_before_after(
                             vdata["before_label"], vdata["before_value"],
                             vdata["after_label"], vdata["after_value"],

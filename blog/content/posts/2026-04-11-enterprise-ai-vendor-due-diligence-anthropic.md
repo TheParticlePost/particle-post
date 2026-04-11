@@ -49,7 +49,7 @@ That assumption deserves a second look. According to Fortune, Anthropic confirme
 
 Enterprise AI vendor due diligence requires contractual audit rights, independent third-party model assessments, and documented disclosure obligations, not reliance on vendor-supplied safety branding. A 2024 MIT Sloan Management Review survey found fewer than 30% of enterprises conduct substantive AI vendor audits before signing multi-year contracts, leaving most organizations exposed to undisclosed model risks.
 
-![Stat Card visualization](https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/visuals/enterprise-ai-vendor-due-diligence-anthropic-stat_card.png)
+{{< stat-box value="30%" label="Share of enterprises that conduct substantive AI vendor audits before signing multi-year contracts" source="MIT Sloan Management Review, 2024" >}}
 
 
 Responsible AI programs at major vendors rarely receive independent audits from buyers. A 2024 survey by MIT Sloan Management Review found fewer than 30% of enterprises conduct substantive AI vendor audits before signing multi-year contracts. Most rely on vendor-supplied documentation: model cards, safety whitepapers, and terms of service.

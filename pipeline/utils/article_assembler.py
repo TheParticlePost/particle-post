@@ -247,7 +247,16 @@ def _append_faq_section(body: str, faq_pairs: list[dict]) -> str:
 
 
 def _insert_visuals(body: str, visuals: list[dict]) -> str:
-    """Insert generated visual images after specified headings.
+    """Insert generated visuals after specified headings.
+
+    Each visual is one of two forms:
+      - Image:     {type, url, alt, insert_after_heading}
+                    → inserted as `![alt](url)` markdown
+      - Shortcode: {type, shortcode, insert_after_heading}
+                    → inserted verbatim (shortcode text, e.g. {{< stat-box ... >}})
+
+    stat_card visuals are always the shortcode form so they render via
+    the theme-adaptive React StatBox component instead of a baked-in PNG.
 
     Uses fuzzy heading matching (50% word overlap) so "The Results" matches
     headings like "What the Initial Results Showed" or "Results and Impact".
@@ -256,7 +265,8 @@ def _insert_visuals(body: str, visuals: list[dict]) -> str:
         target = visual.get("insert_after_heading", "")
         url = visual.get("url", "")
         alt = visual.get("alt", "")
-        if not target or not url:
+        shortcode = visual.get("shortcode", "")
+        if not target or (not url and not shortcode):
             continue
 
         # Fuzzy match: find the H2 heading with best word overlap
@@ -274,13 +284,16 @@ def _insert_visuals(body: str, visuals: list[dict]) -> str:
                 best_match = m
 
         if best_match:
-            # Insert image after the heading + first paragraph
+            # Insert after the heading + first paragraph
             insert_pos = best_match.end()
             para_end = body.find("\n\n", insert_pos)
             if para_end > 0:
                 insert_pos = para_end
-            img_tag = f"\n\n![{alt}]({url})\n"
-            body = body[:insert_pos] + img_tag + body[insert_pos:]
+            if shortcode:
+                insertion = f"\n\n{shortcode}\n"
+            else:
+                insertion = f"\n\n![{alt}]({url})\n"
+            body = body[:insert_pos] + insertion + body[insert_pos:]
 
     return body
 

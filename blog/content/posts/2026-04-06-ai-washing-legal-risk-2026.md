@@ -54,8 +54,6 @@ The FTC charged DoNotPay in 2024 with deceptive AI claims, extracting a $193,000
 
 AI washing means making unsubstantiated or exaggerated claims about a product's AI capabilities in marketing, investor, or sales materials. In 2026, this is no longer a brand problem: the FTC, SEC, and EU regulators treat these claims as potential consumer deception, securities fraud, or investor manipulation simultaneously, each carrying its own enforcement track and penalty schedule.
 
-![Stat Card visualization](https://uzgywmjexciknmpbebqs.supabase.co/storage/v1/object/public/visuals/ai-washing-legal-risk-2026-stat_card.png?v=v3)
-
 
 Most executives assume AI washing is a marketing problem, something for the brand team to manage. They picture a slapped wrist, a corrected webpage, and a short press cycle. The legal reality in 2026 is different.
 
