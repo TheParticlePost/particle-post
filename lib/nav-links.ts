@@ -14,6 +14,8 @@ export const SITE_NAV_LINKS = [
 export const FOOTER_NAV_LINKS = [
   ...SITE_NAV_LINKS,
   { href: "/about/", label: "About" },
+  { href: "/authors/", label: "Editorial Team" },
+  { href: "/contact/", label: "Contact" },
   { href: "/subscribe/", label: "Subscribe" },
 ];
 
