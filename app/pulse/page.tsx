@@ -15,7 +15,7 @@ import {
 export const metadata: Metadata = {
   title: "AI Pulse | Intelligence Dashboard",
   description:
-    "Real-time intelligence on global AI adoption, industry ROI, and implementation signals. Powered by data from McKinsey, Stanford HAI, and enterprise case studies.",
+    "Snapshot intelligence on global AI adoption, industry ROI, and implementation signals. Powered by data from McKinsey, Stanford HAI, and enterprise case studies. Refreshed weekly.",
 };
 
 export const revalidate = 3600;
@@ -26,7 +26,10 @@ export default async function PulsePage() {
   return (
     <div>
       {/* 1. Hero — KPI Callouts */}
-      <PulseHero snapshot={data.snapshot} />
+      <PulseHero
+        snapshot={data.snapshot}
+        lastUpdated={data.meta.lastUpdated}
+      />
 
       {/* 2. Global Map — Adoption heatmap + case study dots */}
       <PulseSection overline="Global Coverage" title="AI Adoption by Country" bg="low" delay={0.05}>

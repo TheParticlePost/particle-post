@@ -1,14 +1,29 @@
 import { DataCallout } from "@/components/charts/data-callout";
+import { DataText } from "@/components/ui/data-text";
 import { FadeUp } from "@/components/effects/fade-up";
 import { OverlineLabel } from "@/components/ui/overline-label";
 import type { SnapshotRow } from "@/lib/pulse/types";
 
 interface PulseHeroProps {
   snapshot: SnapshotRow[];
+  /** ISO timestamp from getPulseDashboard().meta.lastUpdated */
+  lastUpdated?: string;
 }
 
-export function PulseHero({ snapshot }: PulseHeroProps) {
+function formatRefreshDate(iso?: string): string {
+  if (!iso) return "recently";
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return "recently";
+  return d.toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
+}
+
+export function PulseHero({ snapshot, lastUpdated }: PulseHeroProps) {
   const topMetrics = snapshot.slice(0, 4);
+  const refreshLabel = formatRefreshDate(lastUpdated);
 
   return (
     <section className="bg-bg-base py-20 sm:py-24 px-4 sm:px-6">
@@ -18,11 +33,14 @@ export function PulseHero({ snapshot }: PulseHeroProps) {
           <h1 className="font-display text-display-hero text-text-primary mb-4 max-w-3xl">
             AI Pulse
           </h1>
-          <p className="text-body-lg text-text-secondary mb-12 max-w-2xl">
-            Real-time intelligence on global AI adoption, industry ROI, and
+          <p className="text-body-lg text-text-secondary mb-4 max-w-2xl">
+            Snapshot intelligence on global AI adoption, industry ROI, and
             implementation signals — backed by data from McKinsey, Stanford HAI,
             and enterprise case studies.
           </p>
+          <DataText className="mb-12 block uppercase tracking-widest text-caption text-text-muted">
+            Refreshed {refreshLabel} · Updated weekly
+          </DataText>
         </FadeUp>
 
         <FadeUp delay={0.05}>
