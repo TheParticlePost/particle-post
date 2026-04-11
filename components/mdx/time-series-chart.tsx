@@ -11,8 +11,13 @@ import {
   ReferenceLine,
   Legend,
 } from "recharts";
+import { ChartShareButton } from "@/components/mdx/chart-share-button";
 
 interface TimeSeriesChartProps {
+  /** Stable chart identifier injected by the article assembler. See
+   *  pipeline/utils/article_assembler.py:_assign_chart_ids. Optional — if
+   *  absent, no share button renders. */
+  id?: string;
   title?: string;
   // Accepts either:
   //   JSON:  [{"x":"2021","y":45},...]  or  [{"x":"2021","series-a":45,"series-b":30},...]
@@ -98,6 +103,7 @@ function formatValue(v: number, unit: string | undefined): string {
 }
 
 export function TimeSeriesChart({
+  id,
   title,
   data,
   xLabel,
@@ -115,12 +121,20 @@ export function TimeSeriesChart({
     : keys;
 
   return (
-    <figure className="my-8 rounded-md border border-border-ghost bg-bg-high p-5 not-prose">
-      {title && (
-        <h4 className="font-display text-display-sm text-text-primary mb-4 leading-snug">
-          {title}
-        </h4>
-      )}
+    <figure
+      id={id}
+      className="my-8 rounded-md border border-border-ghost bg-bg-high p-5 not-prose scroll-mt-20"
+    >
+      <div className="flex items-start justify-between gap-4 mb-4">
+        {title ? (
+          <h4 className="font-display text-display-sm text-text-primary leading-snug flex-1 min-w-0">
+            {title}
+          </h4>
+        ) : (
+          <div className="flex-1" />
+        )}
+        {id && <ChartShareButton chartId={id} title={title} />}
+      </div>
 
       <div style={{ width: "100%", height: 340 }}>
         <ResponsiveContainer width="100%" height="100%">

@@ -10,8 +10,13 @@ import {
   ResponsiveContainer,
   LabelList,
 } from "recharts";
+import { ChartShareButton } from "@/components/mdx/chart-share-button";
 
 interface BarChartProps {
+  /** Stable chart identifier injected by the article assembler
+   *  (e.g. "chart-1"). Used by the LinkedIn/X share button to build a
+   *  per-chart share URL. Optional — if absent, no share button renders. */
+  id?: string;
   title?: string;
   // Accepts either:
   //   JSON:  [{"label":"A","value":50}, ...]
@@ -72,7 +77,7 @@ const TICK_COLOR = "var(--text-muted)";
 const GRID_COLOR = "var(--border-ghost)";
 const ACCENT = "var(--accent)";
 
-export function BarChart({ title, data, source, xLabel, yLabel }: BarChartProps) {
+export function BarChart({ id, title, data, source, xLabel, yLabel }: BarChartProps) {
   const parsed = parseData(data);
   if (parsed.length === 0) return null;
 
@@ -80,12 +85,20 @@ export function BarChart({ title, data, source, xLabel, yLabel }: BarChartProps)
   const height = Math.max(260, parsed.length * 44 + 80);
 
   return (
-    <figure className="my-8 rounded-md border border-border-ghost bg-bg-high p-5 not-prose">
-      {title && (
-        <h4 className="font-display text-display-sm text-text-primary mb-4 leading-snug">
-          {title}
-        </h4>
-      )}
+    <figure
+      id={id}
+      className="my-8 rounded-md border border-border-ghost bg-bg-high p-5 not-prose scroll-mt-20"
+    >
+      <div className="flex items-start justify-between gap-4 mb-4">
+        {title ? (
+          <h4 className="font-display text-display-sm text-text-primary leading-snug flex-1 min-w-0">
+            {title}
+          </h4>
+        ) : (
+          <div className="flex-1" />
+        )}
+        {id && <ChartShareButton chartId={id} title={title} />}
+      </div>
 
       <div style={{ width: "100%", height }}>
         <ResponsiveContainer width="100%" height="100%">
