@@ -1266,7 +1266,11 @@ def main() -> None:
                 extract_timeline, select_visuals,
             )
             from pipeline.graphics.templates import (
-                stat_card, diagram_before_after, diagram_process_flow,
+                # stat_card deliberately NOT imported — stat_card visuals
+                # now emit {{< stat-box >}} shortcodes directly (see the
+                # visuals loop below), bypassing the PNG render path so
+                # they render via the theme-adaptive React component.
+                diagram_before_after, diagram_process_flow,
                 diagram_timeline, chart_bar_horizontal,
             )
             from pipeline.graphics.renderer import render_sync

@@ -51,7 +51,10 @@ from pipeline.graphics.data_extractor import (  # noqa: E402
     extract_timeline,
 )
 from pipeline.graphics.templates import (  # noqa: E402
-    stat_card,
+    # stat_card deliberately NOT imported — stat_card visuals now render
+    # via the theme-adaptive React component. See process_article() below:
+    # any existing ![...](stat_card.png) reference is rewritten to a
+    # {{< stat-box >}} shortcode on the next backfill pass.
     diagram_before_after,
     diagram_process_flow,
     diagram_timeline,
@@ -65,8 +68,10 @@ from pipeline.graphics.uploader import upload_to_supabase  # noqa: E402
 # and the default (width, height) to use when rasterizing. Dynamic-height
 # templates (e.g. vertical timeline) use None for height and the
 # backfill reads the SVG's own width/height attributes instead.
+#
+# stat_card is intentionally absent — see process_article() for the
+# PNG → shortcode rewrite path.
 RENDERERS: dict[str, tuple] = {
-    "stat_card":           (stat_card, 400, 200),
     "before_after":        (diagram_before_after, 800, 250),
     "process_flow":        (diagram_process_flow, 1000, 150),
     "timeline":            (diagram_timeline, 800, None),
@@ -93,6 +98,54 @@ def find_visual_refs(body: str, slug: str) -> list[str]:
     return sorted(set(re.findall(pattern, body)))
 
 
+def _esc_shortcode_attr(value: str) -> str:
+    """Escape a string for safe insertion as a Hugo shortcode attribute
+    value. Hugo uses double-quoted attrs, so internal quotes must be
+    escaped. Collapse internal newlines to spaces so the shortcode fits
+    on one line."""
+    cleaned = (value or "").strip().replace("\n", " ").replace("\r", "")
+    cleaned = cleaned.replace('"', '\\"')
+    return cleaned
+
+
+def stat_card_shortcode_from_stats(stats: list[dict]) -> str | None:
+    """Produce a {{< stat-box >}} shortcode from the first significant stat.
+    Returns None if no usable stat is present."""
+    if not stats:
+        return None
+    s = stats[0]
+    value = (s.get("value") or "").strip()
+    if not value:
+        return None
+    label_src = s.get("sentence") or s.get("context", "")
+    label = _esc_shortcode_attr(label_src[:140])
+    return (
+        '{{< stat-box '
+        f'value="{_esc_shortcode_attr(value)}" '
+        f'label="{label}" '
+        'source="" '
+        '>}}'
+    )
+
+
+def replace_stat_card_png_with_shortcode(body: str, slug: str, stats: list[dict]) -> str:
+    """Remove any `![...](.../visuals/{slug}-stat_card.png...)` markdown
+    image tag and replace it with a {{< stat-box >}} shortcode built from
+    the first article statistic. If no stat is extractable, just delete
+    the image tag (the accompanying body prose already carries the stat).
+    """
+    pattern = rf"!\[[^\]]*\]\(https?://[^\s)]*?/visuals/{re.escape(slug)}-stat_card\.png(?:\?[^\s)]*)?\)"
+    if not re.search(pattern, body):
+        return body
+
+    shortcode = stat_card_shortcode_from_stats(stats) or ""
+    # Replace each hit. If shortcode is empty, delete the image (and the
+    # preceding blank line pattern collapses naturally via the assembler's
+    # cleanup pass at next article build).
+    replacement = shortcode if shortcode else ""
+    return re.sub(pattern, replacement, body)
+
+
 def regenerate_visual(
     visual_type: str,
     stats: list[dict],
@@ -103,15 +156,10 @@ def regenerate_visual(
     """Call the right renderer with data re-extracted from the article body.
 
     Returns the generated SVG string, or None if there isn't enough data.
+    Note: stat_card is intentionally NOT handled here — it's converted to a
+    {{< stat-box >}} shortcode in process_article() instead, via
+    stat_card_shortcode_from_stats().
     """
-    if visual_type == "stat_card":
-        if not stats:
-            return None
-        s = stats[0]
-        label_src = s.get("sentence") or s.get("context", "")
-        label = label_src.strip().replace("\n", " ")[:60]
-        return stat_card(s["value"], label, "")
-
     if visual_type == "before_after":
         ba = next((c for c in comparisons if c.get("type") == "before_after"), None)
         if not ba:
@@ -203,7 +251,18 @@ def process_article(
 
     regenerated: list[str] = []
     failed: list[str] = []
+
+    # stat_card has its own path: rewrite the PNG image tag in the body
+    # to a {{< stat-box >}} shortcode so it renders via the theme-adaptive
+    # React component. The PNG in Supabase is left in place (no backfill
+    # deletion) but no longer referenced from the article.
+    if "stat_card" in visual_types:
+        body = replace_stat_card_png_with_shortcode(body, slug, stats)
+        regenerated.append("stat_card (→ shortcode)")
+
     for vtype in visual_types:
+        if vtype == "stat_card":
+            continue  # handled above
         if vtype not in RENDERERS:
             failed.append(f"{vtype} (unknown type)")
             continue
