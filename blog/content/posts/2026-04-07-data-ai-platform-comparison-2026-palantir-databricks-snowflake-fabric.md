@@ -10,7 +10,7 @@ keywords:
 - agentic AI finance operations enterprise
 - enterprise AI infrastructure 2026
 - data platform vendor selection
-author: Particle Post Editorial Team
+author: "alex-park"
 tags:
 - data AI platform comparison
 - Palantir vs Databricks

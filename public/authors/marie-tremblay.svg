@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="gM" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E1E1E"/>
+      <stop offset="100%" stop-color="#1A2A24"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" fill="url(#gM)"/>
+  <g fill="#E8552E">
+    <circle cx="32" cy="100" r="2"/>
+    <circle cx="48" cy="100" r="2"/>
+    <circle cx="64" cy="100" r="2"/>
+    <circle cx="152" cy="100" r="2"/>
+    <circle cx="168" cy="100" r="2"/>
+  </g>
+  <text x="100" y="115" font-family="Sora, sans-serif" font-size="64" font-weight="700"
+        fill="#F5F0EB" text-anchor="middle" letter-spacing="-2">MT</text>
+</svg>

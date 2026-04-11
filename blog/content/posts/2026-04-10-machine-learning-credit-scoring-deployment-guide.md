@@ -4,7 +4,7 @@ date: "2026-04-10T21:09:16Z"
 slug: "machine-learning-credit-scoring-deployment-guide"
 description: "Machine learning credit scoring deployment in 6 steps. Capital One cut losses 20% replacing FICO models. Covers FCA/PRA compliance, bias testing, and cost estimates."
 keywords: ["machine learning credit scoring", "AI credit risk model deployment", "alternative data credit scoring", "explainable AI banking regulation FCA", "ML credit model champion-challenger", "FICO replacement machine learning"]
-author: "Particle Post Editorial Team"
+author: "alex-park"
 tags: ["Machine Learning", "Credit Scoring", "AI Risk Models", "Regulatory Compliance", "Alternative Data"]
 categories: ["AI in Finance"]
 schema_type: "HowTo"

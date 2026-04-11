@@ -11,7 +11,7 @@ keywords:
 - fraud detection automation
 - banking AI compliance
 - AI arms race fraud prevention
-author: ''
+author: "marie-tremblay"
 tags:
 - AI Fraud Detection
 - Risk & Governance

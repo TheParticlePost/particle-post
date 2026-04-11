@@ -9,7 +9,7 @@ keywords:
 - machine learning financial services
 - agentic AI regulatory compliance fintech
 - how AI is changing investment banking
-author: ''
+author: "alex-park"
 tags:
 - AI Strategy
 - Enterprise AI

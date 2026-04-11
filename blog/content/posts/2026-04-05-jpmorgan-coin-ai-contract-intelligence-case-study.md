@@ -10,7 +10,7 @@ keywords:
 - agentic AI finance operations enterprise
 - AI legal document review
 - NLP contract review banking
-author: Particle Post Editorial Team
+author: "marie-tremblay"
 tags:
 - JPMorgan
 - Contract Intelligence

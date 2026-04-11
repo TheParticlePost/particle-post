@@ -10,7 +10,7 @@ keywords:
 - AP workflow automation deployment
 - vendor master data management
 - accounts payable AI agents
-author: ''
+author: "alex-park"
 tags:
 - Accounts Payable
 - Operations & Finance

@@ -9,7 +9,7 @@ keywords:
 - CFO AI vendor evaluation
 - enterprise cost reduction AI
 - operational efficiency automation CFO
-author: ''
+author: "alex-park"
 tags:
 - CFO
 - AI in Finance

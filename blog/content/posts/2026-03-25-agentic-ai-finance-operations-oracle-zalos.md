@@ -10,7 +10,7 @@ keywords:
 - screen-trained finance agents
 - enterprise finance workflow automation
 - Oracle Action Unit pricing
-author: ''
+author: "alex-park"
 tags:
 - AI Strategy
 - Oracle

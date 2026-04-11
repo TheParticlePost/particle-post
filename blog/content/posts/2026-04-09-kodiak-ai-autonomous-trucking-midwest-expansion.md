@@ -10,7 +10,7 @@ keywords:
 - Kodiak AI expansion
 - autonomous trucking cost per mile
 - AI fleet technology deployment
-author: Particle Post Editorial Team
+author: "marie-tremblay"
 tags:
 - Autonomous Trucking
 - AI Logistics

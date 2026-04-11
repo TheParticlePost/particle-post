@@ -10,7 +10,7 @@ keywords:
 - agentic AI finance operations enterprise
 - supply chain cost reduction AI
 - AI route optimization retail
-author: Particle Post Editorial Team
+author: "marie-tremblay"
 tags:
 - Walmart
 - Supply Chain AI

@@ -11,7 +11,7 @@ keywords:
 - fintech risk management
 - AI governance framework
 - model drift monitoring
-author: Editorial Team
+author: "alex-park"
 tags:
 - AI Fraud Detection
 - Banking Risk Management

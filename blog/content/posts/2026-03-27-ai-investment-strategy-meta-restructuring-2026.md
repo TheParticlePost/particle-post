@@ -9,7 +9,7 @@ keywords:
 - artificial intelligence risk management finance
 - Meta layoffs AI strategy
 - AI roadmap recalibration
-author: ''
+author: "marie-tremblay"
 tags:
 - AI Strategy
 - Enterprise AI

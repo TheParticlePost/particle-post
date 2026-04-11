@@ -9,7 +9,7 @@ keywords:
 - autonomous decision-making
 - regulatory arbitrage
 - compliance risk
-author: Editorial Team
+author: "william-hayes"
 tags:
 - Operations & Finance
 - Regulatory Compliance

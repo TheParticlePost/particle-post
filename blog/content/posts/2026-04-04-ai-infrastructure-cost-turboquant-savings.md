@@ -9,7 +9,7 @@ keywords:
 - LLM inference bottleneck
 - AI CAPEX optimization
 - data center efficiency AI
-author: ''
+author: "william-hayes"
 tags:
 - AI Infrastructure
 - CAPEX Optimization

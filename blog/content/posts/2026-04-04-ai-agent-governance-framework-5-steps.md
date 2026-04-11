@@ -10,7 +10,7 @@ keywords:
 - purpose binding agentic AI
 - shadow AI prevention
 - enterprise AI risk management
-author: ''
+author: "alex-park"
 tags:
 - AI Governance
 - Agentic AI

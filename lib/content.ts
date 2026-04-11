@@ -48,8 +48,9 @@ function parsePost(filename: string): Post | null {
       : undefined,
     schema_type: data.schema_type || "Article",
     keywords: Array.isArray(data.keywords) ? data.keywords : [],
-    author: data.author || "Particle Post",
+    author: data.author || undefined,
     featured: data.featured === true,
+    content_type: typeof data.content_type === "string" ? data.content_type : undefined,
     content,
   };
 

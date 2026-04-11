@@ -9,7 +9,7 @@ keywords:
 - AI governance best practices
 - AI adoption framework
 - AI value realization
-author: ''
+author: "marie-tremblay"
 tags:
 - Enterprise AI
 - AI ROI

@@ -10,7 +10,7 @@ keywords:
 - SEC AI fraud penalties
 - EU AI Act compliance banking
 - AI regulatory liability executives
-author: Particle Post Editorial Team
+author: "william-hayes"
 tags:
 - AI Washing
 - FTC Enforcement

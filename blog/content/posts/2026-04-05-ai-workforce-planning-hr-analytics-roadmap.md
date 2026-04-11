@@ -10,7 +10,7 @@ keywords:
 - workforce planning AI tools 2026
 - AI HR tools implementation guide
 - skills forecasting AI enterprise
-author: Particle Post Editorial Team
+author: "alex-park"
 tags:
 - AI Workforce Planning
 - HR Analytics

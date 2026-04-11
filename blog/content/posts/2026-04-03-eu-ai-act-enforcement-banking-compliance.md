@@ -9,7 +9,7 @@ keywords:
 - high-risk AI systems Annex III
 - machine learning credit scoring banks
 - EBA regulatory requirements 2026
-author: ''
+author: "marie-tremblay"
 tags:
 - EU AI Act
 - AI Compliance

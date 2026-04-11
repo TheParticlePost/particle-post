@@ -9,7 +9,7 @@ keywords:
 - false positive reduction banks
 - AI arms race fraud
 - financial crime detection 2026
-author: ''
+author: "william-hayes"
 tags:
 - AI Fraud Detection
 - Banking Security

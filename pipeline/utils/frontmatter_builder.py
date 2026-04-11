@@ -1,6 +1,30 @@
 from pipeline.utils.date_helpers import utc_now_iso
 
 
+# Maps content_type to the curator slug from lib/authors.ts.
+# Mirrors lib/authors.ts:AUTHORS[*].defaultFor — keep these in sync. If you
+# add a new content_type or curator, update both files plus
+# pipeline/scripts/backfill_authors.py.
+_CONTENT_TYPE_TO_AUTHOR_SLUG: dict[str, str] = {
+    "news_analysis": "william-hayes",
+    "industry_briefing": "william-hayes",
+    "deep_dive": "marie-tremblay",
+    "case_study": "marie-tremblay",
+    "how_to": "alex-park",
+    "technology_profile": "alex-park",
+}
+_DEFAULT_AUTHOR_SLUG = "william-hayes"
+
+
+def author_for_content_type(content_type: str | None) -> str:
+    """Return the curator slug for a content_type. Mirrors getAuthorForContentType
+    in lib/authors.ts so future articles get the same byline the live site
+    expects."""
+    if content_type is None:
+        return _DEFAULT_AUTHOR_SLUG
+    return _CONTENT_TYPE_TO_AUTHOR_SLUG.get(content_type, _DEFAULT_AUTHOR_SLUG)
+
+
 def build_frontmatter(
     title: str,
     slug: str,
@@ -13,13 +37,19 @@ def build_frontmatter(
     image_credit_name: str,
     image_credit_url: str,
     image_credit_source: str,
-    author: str = "Particle Post Editorial Team",
+    author: str | None = None,
     schema_type: str = "Article",
     content_type: str = "news_analysis",
     has_faq: bool = False,
     faq_pairs: list[dict] | None = None,
 ) -> str:
-    """Build a YAML frontmatter block for a Hugo/Next.js post."""
+    """Build a YAML frontmatter block for a Hugo/Next.js post.
+
+    If `author` isn't explicitly passed, the curator slug is selected
+    deterministically by content_type via author_for_content_type().
+    """
+    if not author:
+        author = author_for_content_type(content_type)
 
     def _yaml_list(items: list[str]) -> str:
         return "[" + ", ".join(f'"{i}"' for i in items) + "]"

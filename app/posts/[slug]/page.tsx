@@ -1,8 +1,10 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import rehypeSlug from "rehype-slug";
 import { getPostBySlug, getAllSlugs, getRelatedPosts } from "@/lib/content";
+import { getAuthorBySlug, getAuthorForContentType } from "@/lib/authors";
 import { convertHugoShortcodes } from "@/lib/remark-hugo-shortcodes";
 import { mdxComponents } from "@/components/mdx/mdx-components";
 import { OverlineLabel } from "@/components/ui/overline-label";
@@ -71,15 +73,38 @@ export default async function PostPage({ params }: PageProps) {
             {post.title}
           </h1>
 
-          {/* Meta line — IBM Plex Mono */}
-          <div className="flex flex-wrap items-center gap-3">
-            {post.author && (
-              <DataText>By {post.author}</DataText>
-            )}
-            <DataText as="time">{formatDate(post.date)}</DataText>
-            <DataText className="text-text-muted">&middot;</DataText>
-            <ReadingTime minutes={post.readingTime} />
-          </div>
+          {/* Meta line — IBM Plex Mono.
+              Author lookup: prefer explicit `author` slug from frontmatter,
+              fall back to deterministic content_type → curator mapping. If
+              the slug doesn't match a known curator, render the raw string
+              unlinked (graceful degrade for legacy bylines). */}
+          {(() => {
+            const explicit = post.author ? getAuthorBySlug(post.author) : undefined;
+            const fallback = !explicit && post.content_type
+              ? getAuthorForContentType(post.content_type)
+              : undefined;
+            const author = explicit ?? fallback;
+            return (
+              <div className="flex flex-wrap items-center gap-3">
+                {author ? (
+                  <DataText>
+                    By{" "}
+                    <Link
+                      href={`/authors/${author.slug}/`}
+                      className="text-text-primary hover:text-accent transition-colors duration-[180ms] ease-kinetic"
+                    >
+                      {author.name}
+                    </Link>
+                  </DataText>
+                ) : post.author ? (
+                  <DataText>By {post.author}</DataText>
+                ) : null}
+                <DataText as="time">{formatDate(post.date)}</DataText>
+                <DataText className="text-text-muted">&middot;</DataText>
+                <ReadingTime minutes={post.readingTime} />
+              </div>
+            );
+          })()}
 
           {/* Ghost border divider */}
           <div className="mt-6 border-b border-border-ghost" />

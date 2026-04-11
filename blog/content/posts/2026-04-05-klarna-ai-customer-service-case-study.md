@@ -10,7 +10,7 @@ keywords:
 - AI support automation ROI
 - agentic AI finance operations enterprise
 - AI replace customer service agents
-author: Particle Post Editorial Team
+author: "marie-tremblay"
 tags:
 - Klarna
 - AI Automation

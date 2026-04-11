@@ -10,7 +10,7 @@ keywords:
 - autonomous agent deployment
 - agentic AI regulatory compliance fintech
 - machine learning credit scoring banks
-author: ''
+author: "alex-park"
 tags:
 - Agentic AI
 - Enterprise AI

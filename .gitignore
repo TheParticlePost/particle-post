@@ -13,8 +13,11 @@ dist/
 build/
 .pytest_cache/
 
-# Hugo build output
-public/
+# Hugo build output (Hugo writes into blog/public/, NOT the Next.js root
+# public/ — Next.js uses public/ for tracked static assets like fonts,
+# logos, author avatars. Do not gitignore the Next.js public/ directory.)
+blog/public/
+blog/resources/
 resources/
 .hugo_build.lock
 

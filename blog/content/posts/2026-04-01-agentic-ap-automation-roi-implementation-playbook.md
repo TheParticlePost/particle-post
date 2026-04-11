@@ -9,7 +9,7 @@ keywords:
 - invoice automation implementation
 - agentic AI finance
 - AI fraud detection invoicing
-author: Particle Post Editorial Team
+author: "alex-park"
 tags:
 - Agentic AI
 - Accounts Payable

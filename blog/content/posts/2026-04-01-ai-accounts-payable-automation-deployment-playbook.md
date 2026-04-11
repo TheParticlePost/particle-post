@@ -9,7 +9,7 @@ keywords:
 - AP automation deployment guide
 - three-way matching automation
 - AP cycle time reduction
-author: ''
+author: "alex-park"
 tags:
 - Accounts Payable
 - AI Automation

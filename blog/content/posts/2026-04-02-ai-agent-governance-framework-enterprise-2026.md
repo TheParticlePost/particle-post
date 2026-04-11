@@ -10,7 +10,7 @@ keywords:
 - AI risk management finance
 - autonomous AI system accountability
 - agent approval workflows
-author: ''
+author: "alex-park"
 tags:
 - AI Governance
 - Agentic AI

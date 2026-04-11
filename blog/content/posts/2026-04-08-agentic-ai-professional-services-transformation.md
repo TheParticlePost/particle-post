@@ -10,7 +10,7 @@ keywords:
 - AI audit tools 2026
 - BPO AI transformation
 - agentic AI consulting firms
-author: Particle Post Editorial Team
+author: "william-hayes"
 tags:
 - Agentic AI
 - Professional Services

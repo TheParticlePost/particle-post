@@ -9,7 +9,7 @@ keywords:
 - execution-driven AI systems
 - AI workflow automation finance
 - enterprise agentic AI deployment
-author: ''
+author: "marie-tremblay"
 tags:
 - Agentic AI
 - Finance Operations
