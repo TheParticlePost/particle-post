@@ -46,6 +46,13 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  // Google Search Console verification — set GOOGLE_SITE_VERIFICATION in
+  // Vercel env vars after registering the property in GSC. Falls back to
+  // undefined (no meta tag) if not set, so local dev / preview deployments
+  // don't trip on a missing env var.
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION || undefined,
+  },
 };
 
 export default function RootLayout({
