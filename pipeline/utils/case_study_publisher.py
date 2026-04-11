@@ -222,6 +222,11 @@ _BRAND_OVERRIDES = {
     "exxonmobil": "ExxonMobil",
     "totalenergies": "TotalEnergies",
     "tusimple": "TuSimple",
+    "tcs": "TCS",
+    "tata consultancy services": "Tata Consultancy Services",
+    "tata consultancy": "Tata Consultancy Services",
+    "hcltech": "HCLTech",
+    "hcl technologies": "HCLTech",
 }
 
 

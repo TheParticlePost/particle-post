@@ -129,10 +129,10 @@ export default function AboutPage() {
           <p className="text-body-md text-text-secondary">
             For press inquiries, partnerships, or feedback:{" "}
             <a
-              href="mailto:hello@theparticlepost.com"
+              href="mailto:contact@theparticlepost.com"
               className="text-accent hover:text-accent-hover transition-colors"
             >
-              hello@theparticlepost.com
+              contact@theparticlepost.com
             </a>
           </p>
         </section>

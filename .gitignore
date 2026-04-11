@@ -12,6 +12,7 @@ env/
 dist/
 build/
 .pytest_cache/
+.cache/
 
 # Hugo build output (Hugo writes into blog/public/, NOT the Next.js root
 # public/ — Next.js uses public/ for tracked static assets like fonts,

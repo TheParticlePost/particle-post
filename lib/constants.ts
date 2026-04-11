@@ -34,4 +34,4 @@ export const SUBSCRIBER_COUNT_THRESHOLD = 800;
 
 // ─── Brand contact ───────────────────────────────────────────────────────────
 
-export const CONTACT_EMAIL = "hello@theparticlepost.com";
+export const CONTACT_EMAIL = "contact@theparticlepost.com";

@@ -4,11 +4,17 @@ Geocoder — resolves company names to lat/lng coordinates for the Pulse map.
 Strategy:
 1. Check built-in lookup table of major company HQs
 2. Fuzzy-match against known companies (case-insensitive, partial match)
-3. Fall back to country centroid if country_code hint is provided
-4. Last resort: return None (caller should handle gracefully)
+3. Tavily web search + Claude extraction fallback (cached on disk)
+4. Fall back to country centroid if country_code hint is provided
+5. Last resort: return None (caller should handle gracefully)
 """
 
 from __future__ import annotations
+
+import json
+import os
+import re
+from pathlib import Path
 
 # Major company HQ coordinates (city-level precision)
 # Format: { "company_lower": (lat, lng, country_code, city) }
@@ -123,6 +129,18 @@ _COMPANY_HQ: dict[str, tuple[float, float, str, str]] = {
     "embark": (37.7749, -122.4194, "US", "San Francisco"),
     "gatik": (37.4419, -122.1430, "US", "Mountain View"),
     "nuro": (37.4419, -122.1430, "US", "Mountain View"),
+    # IT Services / Global System Integrators
+    "tcs": (19.0760, 72.8777, "IN", "Mumbai"),
+    "tata consultancy services": (19.0760, 72.8777, "IN", "Mumbai"),
+    "tata consultancy": (19.0760, 72.8777, "IN", "Mumbai"),
+    "infosys": (12.9716, 77.5946, "IN", "Bangalore"),
+    "wipro": (12.9716, 77.5946, "IN", "Bangalore"),
+    "hcltech": (28.5355, 77.3910, "IN", "Noida"),
+    "hcl technologies": (28.5355, 77.3910, "IN", "Noida"),
+    "accenture": (53.3498, -6.2603, "IE", "Dublin"),
+    "cognizant": (40.9029, -74.3482, "US", "Teaneck"),
+    "capgemini": (48.8566, 2.3522, "FR", "Paris"),
+    "deloitte": (40.7128, -74.006, "US", "New York"),
 }
 
 
@@ -153,12 +171,171 @@ _COUNTRY_CENTROIDS: dict[str, tuple[float, float]] = {
 }
 
 
+# --- Tavily + Claude fallback -----------------------------------------------
+#
+# When a company isn't in the static table, we ask Tavily where it's
+# headquartered and use Claude (haiku) to extract city/country/lat/lng as
+# structured JSON. Results are persisted to a local JSON cache so we only
+# hit the external APIs once per company — across the whole pipeline,
+# including backfills. Negative lookups are also cached (as `null`) so we
+# don't re-query obscure / unresolvable names.
+
+_CACHE_PATH = Path(__file__).resolve().parents[2] / ".cache" / "geocoder_cache.json"
+
+
+def _load_cache() -> dict:
+    try:
+        if _CACHE_PATH.exists():
+            return json.loads(_CACHE_PATH.read_text(encoding="utf-8"))
+    except Exception:
+        pass
+    return {}
+
+
+def _save_cache(cache: dict) -> None:
+    try:
+        _CACHE_PATH.parent.mkdir(parents=True, exist_ok=True)
+        _CACHE_PATH.write_text(
+            json.dumps(cache, ensure_ascii=False, indent=2), encoding="utf-8",
+        )
+    except Exception:
+        pass
+
+
+def _tavily_geocode(company: str) -> dict | None:
+    """Use Tavily web search + Claude JSON extraction to resolve a company
+    HQ we don't have in the static table. Results are cached to disk.
+
+    Returns a geocode dict on success, None on any failure (missing API
+    keys, network error, unparseable response, obscure company, etc.).
+    """
+    if not company:
+        return None
+
+    key = company.strip().lower()
+    if not key:
+        return None
+
+    cache = _load_cache()
+    if key in cache:
+        # cached hit (positive or negative)
+        return cache[key]  # may be None
+
+    tavily_key = os.environ.get("TAVILY_API_KEY")
+    anthropic_key = os.environ.get("ANTHROPIC_API_KEY")
+    if not tavily_key or not anthropic_key:
+        return None
+
+    # 1. Ask Tavily for the HQ location
+    try:
+        from tavily import TavilyClient  # type: ignore
+
+        client = TavilyClient(api_key=tavily_key)
+        resp = client.search(
+            query=(
+                f"Where is {company} headquartered? What city and country "
+                f"is its global headquarters / siège social located in?"
+            ),
+            search_depth="advanced",
+            max_results=5,
+            include_answer=True,
+        )
+    except Exception as e:
+        print(f"[geocoder] Tavily error for '{company}': {e}")
+        return None
+
+    context_parts: list[str] = []
+    if resp.get("answer"):
+        context_parts.append(resp["answer"])
+    for r in (resp.get("results") or [])[:3]:
+        snippet = (r.get("content") or "")[:600]
+        if snippet:
+            context_parts.append(snippet)
+    context = "\n\n".join(context_parts).strip()
+
+    if not context:
+        cache[key] = None
+        _save_cache(cache)
+        return None
+
+    # 2. Hand the context to Claude haiku for structured extraction
+    try:
+        import anthropic  # type: ignore
+
+        a = anthropic.Anthropic(api_key=anthropic_key)
+        msg = a.messages.create(
+            model="claude-haiku-4-5",
+            max_tokens=300,
+            system=(
+                "You extract a company's global headquarters location from "
+                "the provided web-search context. Respond with compact JSON "
+                "on a single line, no prose, no markdown fences.\n\n"
+                "On success:\n"
+                '{"city":"San Francisco","country_code":"US","lat":37.7749,"lng":-122.4194}\n\n'
+                "If the context doesn't identify a single HQ city with high "
+                "confidence (e.g. only mentions a country, or multiple "
+                "disputed HQs), respond with:\n"
+                '{"error":"reason"}\n\n'
+                "Coordinates must be city-level (4 decimal places is fine). "
+                "country_code must be ISO 3166-1 alpha-2 (two uppercase letters)."
+            ),
+            messages=[{
+                "role": "user",
+                "content": f"Company: {company}\n\nContext:\n{context[:4000]}",
+            }],
+        )
+        raw = (msg.content[0].text or "").strip()
+        # Strip possible markdown fences just in case
+        raw = re.sub(r"^```(?:json)?\s*|\s*```$", "", raw, flags=re.MULTILINE).strip()
+        data = json.loads(raw)
+    except Exception as e:
+        print(f"[geocoder] Claude extraction failed for '{company}': {e}")
+        cache[key] = None
+        _save_cache(cache)
+        return None
+
+    if not isinstance(data, dict) or "error" in data or "lat" not in data or "lng" not in data:
+        cache[key] = None
+        _save_cache(cache)
+        return None
+
+    try:
+        result = {
+            "company": company,
+            "country_code": (data.get("country_code") or "").upper()[:2],
+            "lat": float(data["lat"]),
+            "lng": float(data["lng"]),
+            "city": (data.get("city") or "").strip(),
+        }
+    except (TypeError, ValueError):
+        cache[key] = None
+        _save_cache(cache)
+        return None
+
+    cache[key] = result
+    _save_cache(cache)
+    print(
+        f"[geocoder] Tavily+Claude resolved '{company}' → "
+        f"{result['city']}, {result['country_code']} "
+        f"({result['lat']:.4f}, {result['lng']:.4f})"
+    )
+    return result
+
+
 def geocode_company(
     company: str,
     country_code: str | None = None,
+    *,
+    allow_tavily: bool = True,
 ) -> dict | None:
     """
     Resolve a company name to geographic coordinates.
+
+    Order of resolution:
+      1. Exact match in the static _COMPANY_HQ table
+      2. Fuzzy contains-match against static table keys
+      3. Tavily web search + Claude JSON extraction (cached on disk)
+      4. Country centroid fallback (if caller hinted a country_code)
 
     Returns dict with: company, country_code, lat, lng, city
     Returns None if no match found.
@@ -178,7 +355,14 @@ def geocode_company(
         if key in name or name in key:
             return {"company": company, "country_code": cc, "lat": lat, "lng": lng, "city": city}
 
-    # 3. Country centroid fallback
+    # 3. Tavily + Claude fallback (cached). Can be disabled by caller
+    #    when running tests or in offline mode.
+    if allow_tavily:
+        hit = _tavily_geocode(company)
+        if hit:
+            return hit
+
+    # 4. Country centroid fallback
     if country_code and country_code.upper() in _COUNTRY_CENTROIDS:
         lat, lng = _COUNTRY_CENTROIDS[country_code.upper()]
         return {"company": company, "country_code": country_code.upper(), "lat": lat, "lng": lng, "city": ""}
