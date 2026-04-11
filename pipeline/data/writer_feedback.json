@@ -1,21 +1,6 @@
 {
   "notes": [
     {
-      "text": "QA gate failed — fix programmatic issues before retry",
-      "slot": "afternoon",
-      "date": "2026-04-05T18:53:55.399300+00:00"
-    },
-    {
-      "text": "Tighten primary source attribution on the $55M figure: the article cites 'Investing.com citing company data' but Walmart's own July 2025 corporate newsroom post (already listed as Source #4) is the primary record. Replace the Investing.com attribution inline with 'according to Walmart's July 2025 global supply chain announcement' — this removes one degree of indirection and strengthens credibility with executive readers who will click through.",
-      "slot": "afternoon",
-      "date": "2026-04-05T19:00:35.291150+00:00"
-    },
-    {
-      "text": "Clarify the Pactum metrics timeline to pre-empt reader skepticism: the original HBR-documented Walmart pilot (2022) reported a 64% agreement rate and 1.5% average savings. The article uses the higher program-level figures from Pactum's client page (68% / 3%). Add a single parenthetical — e.g., '(across the full program; the initial 2022 pilot reported 64% and 1.5%, per Harvard Business Review)' — so sophisticated COO readers don't flag the discrepancy as an error.",
-      "slot": "afternoon",
-      "date": "2026-04-05T19:00:35.291150+00:00"
-    },
-    {
       "text": "Add at least one blockquote callout (a pull-quote from CFO Rainey or CEO McMillon) to satisfy MOF visual diversity standards more robustly. The CFO's Q3 FY2025 earnings language — 'That translates into lower shipping costs' — or the 'obvious benefits for per-unit delivery cost' line already in the article body are ready-made candidates. This closes the minor visual element gap and increases on-page engagement for the executive audience.",
       "slot": "afternoon",
       "date": "2026-04-05T19:00:35.291150+00:00"
@@ -149,6 +134,21 @@
       "text": "SOURCE VERIFICATION RISK: The Capital One 20% loss reduction lede claim is sourced to investor day materials at a generic IR URL with no specific deck title, date, or slide reference. If a reader or regulator tries to verify this and cannot locate the exact document, it undermines the publication's credibility. Add the specific presentation title and date (e.g., 'Capital One Investor Day, December 2024, slide 34') to the Sources entry and consider adding a direct PDF link if publicly available.",
       "slot": "evening",
       "date": "2026-04-10T21:09:43.885084+00:00"
+    },
+    {
+      "text": "CRITICAL — Trim to TOF word count AND convert H1 to a question: This article is filing as TOF but runs ~1,450-1,500 words — nearly 50% over the 1,000-word ceiling. Cut the two scenario paragraphs under 'Where Vendor Branding Breaks Down' and condense the Verdict. Simultaneously, rewrite the title as a question, e.g., 'Is Enterprise AI Vendor Due Diligence Keeping Up With Anthropic's IPO Risk?' — TOF H1-as-question is a non-negotiable funnel rule.",
+      "slot": "morning",
+      "date": "2026-04-11T13:05:22.696637+00:00"
+    },
+    {
+      "text": "FIX THE DUPLICATE STAT AND CITE THE MIT SLOAN SOURCE DIRECTLY: The '30% of enterprises' claim appears twice in back-to-back paragraphs — this reads like a paste error and will undermine reader trust. Remove the duplicate. Also, the MIT Sloan citation links to the homepage (sloanreview.mit.edu) rather than the specific survey article. Locate the direct URL for the 2024 AI Governance Survey and update the Sources section with the precise link and article title.",
+      "slot": "morning",
+      "date": "2026-04-11T13:05:22.696637+00:00"
+    },
+    {
+      "text": "UPGRADE THE KEY TAKEAWAY TO A PROPER BLOCKQUOTE AND ADD A SECOND VISUAL ELEMENT: The KEY TAKEAWAY is buried as plain prose. Wrap it in a markdown blockquote (> KEY TAKEAWAY: ...) so the formatter renders it as a visual callout. For a news_analysis piece, consider adding a second stat-box — the EU AI Act August 2024 enforcement date or the '3 contract clauses' framing would both work well as a visual anchor mid-article.",
+      "slot": "morning",
+      "date": "2026-04-11T13:05:22.696637+00:00"
     }
   ]
 }

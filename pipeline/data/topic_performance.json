@@ -192,6 +192,22 @@
         "Regulatory Compliance",
         "Alternative Data"
       ]
+    },
+    {
+      "slug": "enterprise-ai-vendor-due-diligence-anthropic",
+      "title": "Enterprise AI Vendor Due Diligence: Anthropic IPO",
+      "primary_keyword": "enterprise AI vendor due diligence",
+      "funnel_type": "TOF",
+      "content_type": "news_analysis",
+      "director_score": 75,
+      "published_at": "2026-04-11T13:05:24.606256+00:00",
+      "tags": [
+        "Anthropic",
+        "AI Procurement",
+        "AI Governance",
+        "Enterprise AI",
+        "Vendor Risk"
+      ]
     }
   ]
 }

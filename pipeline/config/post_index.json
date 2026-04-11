@@ -1,6 +1,14 @@
 {
   "posts": [
     {
+      "slug": "enterprise-ai-vendor-due-diligence-anthropic",
+      "title": "Enterprise AI Vendor Due Diligence: Anthropic IPO",
+      "funnel_type": "TOF",
+      "content_type": "news_analysis",
+      "tags": [],
+      "date": "2026-04-11"
+    },
+    {
       "slug": "machine-learning-credit-scoring-deployment-guide",
       "title": "Machine Learning Credit Scoring: 6-Step Deployment Guide",
       "funnel_type": "BOF",

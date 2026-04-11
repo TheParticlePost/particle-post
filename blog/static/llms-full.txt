@@ -5,6 +5,7 @@
 
 ## Posts
 
+- [Enterprise AI Vendor Due Diligence: Anthropic IPO](https://theparticlepost.com/posts/enterprise-ai-vendor-due-diligence-anthropic/): Enterprise AI vendor due diligence gaps exposed by Anthropic
 - [Machine Learning Credit Scoring: 6-Step Deployment Guide](https://theparticlepost.com/posts/machine-learning-credit-scoring-deployment-guide/): Machine learning credit scoring deployment in 6 steps. Capital One cut losses 20% replacing FICO models. Covers FCA/PRA compliance, bias testing, and cost estimates.
 - [Autonomous Trucking AI ROI: Kodiak](https://theparticlepost.com/posts/kodiak-ai-autonomous-trucking-midwest-expansion/): Autonomous trucking AI cut projected cost per mile to $0.38 vs. $1.92 for human drivers. See how Kodiak AI staged its Midwest expansion and what the ROI data reveals.
 - [CFO AI Investment Framework: Why Waiting Costs Millions](https://theparticlepost.com/posts/cfo-ai-investment-framework-governance/): CFO AI investment framework: 74% of AI pilots never document ROI per Gartner. Learn why finance leaders must govern AI vendor and spend decisions now.
