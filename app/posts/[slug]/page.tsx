@@ -19,6 +19,7 @@ import { ScrollProgress } from "@/components/effects/scroll-progress";
 import { SidebarRelated } from "@/components/articles/sidebar-related";
 import { MarketSnapshot } from "@/components/articles/market-snapshot";
 import { NewsletterCta } from "@/components/newsletter/newsletter-cta";
+import { InlineNewsletterCta } from "@/components/newsletter/inline-newsletter-cta";
 import { JsonLd } from "@/components/seo/json-ld";
 import { generateArticleJsonLd, generateFaqJsonLd } from "@/lib/structured-data";
 import { formatDate } from "@/lib/utils";
@@ -138,6 +139,12 @@ export default async function PostPage({ params }: PageProps) {
             />
           </div>
         )}
+
+        {/* Above-the-fold inline newsletter CTA — sits between the cover
+            image and the article body so a busy executive sees a
+            conversion path before scrolling into the prose. Visually
+            distinct from the full NewsletterCta below the article. */}
+        <InlineNewsletterCta />
 
         {/* 3-column layout: Left sidebar (ToC) | Content | Right sidebar (Related + Pulse) */}
         <div className="max-w-[1200px] mx-auto flex gap-8">
