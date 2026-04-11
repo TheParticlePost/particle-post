@@ -51,14 +51,15 @@ from pipeline.graphics.data_extractor import (  # noqa: E402
     extract_timeline,
 )
 from pipeline.graphics.templates import (  # noqa: E402
-    # stat_card deliberately NOT imported — stat_card visuals now render
-    # via the theme-adaptive React component. See process_article() below:
-    # any existing ![...](stat_card.png) reference is rewritten to a
-    # {{< stat-box >}} shortcode on the next backfill pass.
-    diagram_before_after,
+    # stat_card, diagram_before_after, and chart_bar_horizontal are
+    # deliberately NOT imported — all three visual types are banned as
+    # auto-extracted paths. See process_article() below: any existing
+    # ![...](stat_card.png|before_after.png|chart_bar_horizontal.png)
+    # reference is rewritten to a {{< stat-box >}} shortcode (stat_card)
+    # or stripped entirely (before_after, chart_bar_horizontal) on the
+    # next backfill pass.
     diagram_process_flow,
     diagram_timeline,
-    chart_bar_horizontal,
 )
 from pipeline.graphics.renderer import render_sync, intrinsic_svg_size  # noqa: E402
 from pipeline.graphics.uploader import upload_to_supabase  # noqa: E402
@@ -69,13 +70,14 @@ from pipeline.graphics.uploader import upload_to_supabase  # noqa: E402
 # templates (e.g. vertical timeline) use None for height and the
 # backfill reads the SVG's own width/height attributes instead.
 #
-# stat_card is intentionally absent — see process_article() for the
-# PNG → shortcode rewrite path.
+# stat_card, before_after, and chart_bar_horizontal are intentionally
+# absent — all three are banned as auto-extracted paths. stat_card is
+# rewritten to a {{< stat-box >}} shortcode in process_article();
+# before_after and chart_bar_horizontal PNG image tags are stripped
+# outright because their auto-extracted data is unusable.
 RENDERERS: dict[str, tuple] = {
-    "before_after":        (diagram_before_after, 800, 250),
     "process_flow":        (diagram_process_flow, 1000, 150),
     "timeline":            (diagram_timeline, 800, None),
-    "chart_bar_horizontal": (chart_bar_horizontal, 800, 300),
 }
 
 
@@ -156,20 +158,15 @@ def regenerate_visual(
     """Call the right renderer with data re-extracted from the article body.
 
     Returns the generated SVG string, or None if there isn't enough data.
-    Note: stat_card is intentionally NOT handled here — it's converted to a
-    {{< stat-box >}} shortcode in process_article() instead, via
-    stat_card_shortcode_from_stats().
-    """
-    if visual_type == "before_after":
-        ba = next((c for c in comparisons if c.get("type") == "before_after"), None)
-        if not ba:
-            return None
-        return diagram_before_after(
-            "Before", ba["before"],
-            "After", ba["after"],
-            metric="", source="",
-        )
 
+    Note on banned visual types (stat_card, before_after, chart_bar_horizontal):
+    these are intentionally NOT handled here. stat_card is rewritten to a
+    {{< stat-box >}} shortcode in process_article() via
+    stat_card_shortcode_from_stats(). before_after and
+    chart_bar_horizontal image tags are stripped outright in
+    process_article() because their auto-extracted data is unusable
+    (sentence-fragment labels, mixed units, STAT: marker leakage).
+    """
     if visual_type == "process_flow":
         if not steps:
             return None
@@ -179,20 +176,6 @@ def regenerate_visual(
         if not timeline:
             return None
         return diagram_timeline(timeline[:5])
-
-    if visual_type == "chart_bar_horizontal":
-        if len(stats) < 3:
-            return None
-        from pipeline.graphics.data_extractor import _parse_number
-        data = [
-            {"label": s.get("sentence", "")[:24] or s.get("value", "")[:24],
-             "value": _parse_number(s["value"])}
-            for s in stats[:6]
-            if _parse_number(s["value"]) > 0
-        ]
-        if len(data) < 3:
-            return None
-        return chart_bar_horizontal(data, title="Key metrics", source="")
 
     return None
 
@@ -260,8 +243,25 @@ def process_article(
         body = replace_stat_card_png_with_shortcode(body, slug, stats)
         regenerated.append("stat_card (→ shortcode)")
 
+    # before_after and chart_bar_horizontal: banned auto-extracted types.
+    # Strip the `![...](...-before_after.png)` and
+    # `![...](...-chart_bar_horizontal.png)` image tags from the body
+    # with no replacement. Any real before/after or vendor comparison
+    # must come from the writer as an explicit {{< bar-chart >}}.
+    for banned_type in ("before_after", "chart_bar_horizontal"):
+        if banned_type in visual_types:
+            pattern = (
+                rf"!\[[^\]]*\]\(https?://[^\s)]*?/visuals/"
+                rf"{re.escape(slug)}-{banned_type}\.png"
+                rf"(?:\?[^\s)]*)?\)\s*"
+            )
+            new_body = re.sub(pattern, "", body)
+            if new_body != body:
+                body = new_body
+                regenerated.append(f"{banned_type} (stripped)")
+
     for vtype in visual_types:
-        if vtype == "stat_card":
+        if vtype in ("stat_card", "before_after", "chart_bar_horizontal"):
             continue  # handled above
         if vtype not in RENDERERS:
             failed.append(f"{vtype} (unknown type)")

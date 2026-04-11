@@ -188,21 +188,30 @@ def _assign_chart_ids(body: str) -> str:
 
 
 def _strip_banned_visuals(body: str) -> str:
-    """Remove every trace of the banned before-after component from the body.
+    """Remove every trace of the banned auto-extracted visuals from the body.
 
-    The {{< before-after >}} component is deprecated (see
-    writer_backstory.txt BEFORE / AFTER CARD — BANNED section). Any
-    reference in the writer output is stripped rather than passed
-    through to the published article.
+    Two visual types are banned entirely:
 
-    Three cases are handled:
-      1. {{< before-after ... >}} Hugo shortcode — delete the entire tag.
-      2. ![Before After visualization](...-before_after.png) markdown
-         image tag — leftover from the old data_extractor path that
-         generated PNGs. Delete the entire image tag.
-      3. Raw `BEFORE_AFTER: foo | Before: x | After: y | Source: z` text
-         marker the writer might still emit out of habit. Delete the
-         entire marker line.
+      1. {{< before-after >}} and its auto-generated PNG
+         (BEFORE / AFTER CARD — see writer_backstory.txt).
+
+      2. Auto-extracted chart_bar_horizontal PNGs. The data_extractor's
+         _bar_chart() used to scan article prose for stats, grab the
+         first 24 chars of surrounding sentences as "labels", and
+         rasterize the result. Output was garbage: sentence-fragment
+         labels, raw STAT: markers leaking into labels, mixed units
+         and scales on one axis, duplicate labels. Any real bar chart
+         must come from the writer as an explicit
+         {{< bar-chart >}} shortcode with curated data.
+
+    Five patterns handled:
+      - {{< before-after ... >}} Hugo shortcode
+      - ![Before After visualization](...-before_after.png) image tag
+      - Raw `BEFORE_AFTER: ...` text marker line
+      - ![Chart Bar Horizontal visualization](...-chart_bar_horizontal.png)
+        image tag
+      - Any other `![...](...-before_after.png)` or
+        `![...](...-chart_bar_horizontal.png)` variant
 
     Collapses any resulting triple-blank-line from deletions back to
     a double-blank so the article markdown stays clean.
@@ -210,7 +219,7 @@ def _strip_banned_visuals(body: str) -> str:
     if not body:
         return body
 
-    # Case 1: Hugo shortcode
+    # Case 1: before-after Hugo shortcode
     body = re.sub(
         r'\{\{<\s*before-after\b[^>]*?>\}\}\s*',
         '',
@@ -218,14 +227,14 @@ def _strip_banned_visuals(body: str) -> str:
         flags=re.DOTALL,
     )
 
-    # Case 2: generated PNG image tag
+    # Case 2 + 4: generated PNG image tag (before_after + chart_bar_horizontal)
     body = re.sub(
-        r'!\[[^\]]*\]\([^)]*/visuals/[^)]*-before_after\.png(?:\?[^)]*)?\)\s*',
+        r'!\[[^\]]*\]\([^)]*/visuals/[^)]*-(?:before_after|chart_bar_horizontal)\.png(?:\?[^)]*)?\)\s*',
         '',
         body,
     )
 
-    # Case 3: raw marker line
+    # Case 3: raw BEFORE_AFTER marker line
     body = re.sub(
         r'^BEFORE_AFTER:.*$\n?',
         '',

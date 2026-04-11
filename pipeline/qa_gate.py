@@ -356,12 +356,19 @@ def validate(
             f"backstory CHART PLACEMENT rule."
         )
 
-    # ── 19. Before/after component banned ───────────────────────────────
-    # The {{< before-after >}} shortcode and the auto-generated
-    # ![Before After visualization](...) PNG image tag both render as
-    # low-quality text-clipped cards. The component is deprecated; use a
-    # bar-chart with two bars or prose instead. See writer_backstory.txt
-    # BEFORE / AFTER CARD — BANNED section.
+    # ── 19. Banned auto-extracted visuals ───────────────────────────────
+    # Three patterns get rejected with one combined check:
+    #   - {{< before-after >}} shortcode
+    #   - ![...](...-before_after.png) image tag
+    #   - ![...](...-chart_bar_horizontal.png) image tag
+    #
+    # The before-after component renders as low-quality text-clipped
+    # cards. The chart_bar_horizontal auto-extraction produces garbage:
+    # sentence-fragment labels, raw STAT: markers leaking into labels,
+    # mixed units and scales on one axis. Both are replaced by
+    # writer-authored {{< bar-chart >}} shortcodes with curated data.
+    # See writer_backstory.txt BEFORE / AFTER CARD section and
+    # data_extractor.py _bar_chart removal comment.
     before_after_shortcode = len(
         re.findall(r"\{\{<\s*before-after\b", body)
     )
@@ -371,16 +378,33 @@ def validate(
             body,
         )
     )
-    before_after_total = before_after_shortcode + before_after_image
-    if before_after_total > 0:
+    chart_bar_horizontal_image = len(
+        re.findall(
+            r"!\[[^\]]*\]\([^)]*/visuals/[^)]*-chart_bar_horizontal\.png",
+            body,
+        )
+    )
+    banned_visual_total = (
+        before_after_shortcode + before_after_image + chart_bar_horizontal_image
+    )
+    if banned_visual_total > 0:
         score -= 15
+        parts = []
+        if before_after_shortcode:
+            parts.append(f"{before_after_shortcode} before-after shortcode(s)")
+        if before_after_image:
+            parts.append(f"{before_after_image} before_after image tag(s)")
+        if chart_bar_horizontal_image:
+            parts.append(
+                f"{chart_bar_horizontal_image} chart_bar_horizontal image tag(s)"
+            )
         issues.append(
-            f"{before_after_total} deprecated before-after reference(s) "
-            f"found ({before_after_shortcode} shortcode(s), "
-            f"{before_after_image} image tag(s)). The before-after "
-            f"component is banned. Replace with a {{{{< bar-chart >}}}} "
-            f"containing two bars (before state, after state) or with "
-            f"plain prose naming both numbers inline."
+            f"{banned_visual_total} deprecated auto-extracted visual(s) "
+            f"found: {', '.join(parts)}. Both the before-after component "
+            f"AND the auto-generated chart_bar_horizontal PNG are banned. "
+            f"Replace with writer-authored {{{{< bar-chart >}}}} shortcodes "
+            f"using curated label:value CSV data, or drop the visual and "
+            f"use plain prose."
         )
 
     # Clamp score

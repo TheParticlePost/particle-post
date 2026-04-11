@@ -1274,8 +1274,13 @@ def main() -> None:
                 # the before-after component is banned (low signal-to-noise,
                 # text clipping). See writer_backstory.txt BEFORE / AFTER
                 # CARD section + qa_gate.py check 19.
+                # chart_bar_horizontal ALSO deliberately NOT imported —
+                # the auto-extracted horizontal bar chart produced garbage
+                # labels (sentence fragments, raw STAT: markers, mixed
+                # units). Charts must come from the writer as explicit
+                # {{< bar-chart >}} shortcodes with curated data.
                 diagram_process_flow,
-                diagram_timeline, chart_bar_horizontal,
+                diagram_timeline,
             )
             from pipeline.graphics.renderer import render_sync
             from pipeline.graphics.uploader import upload_to_supabase
@@ -1544,14 +1549,14 @@ def main() -> None:
                         print(f"  [GRAPHICS] Visual generated: stat_card (shortcode)")
                         continue
 
-                    # before_after: REFUSED. The component is banned; any
-                    # spec that somehow still reaches here (e.g. from an
-                    # old data_extractor branch) is dropped with a log
-                    # note so the pipeline doesn't silently skip a visual.
-                    if vtype == "before_after":
+                    # before_after and chart_bar_horizontal: REFUSED. Both
+                    # auto-extracted visuals are banned (see notes in the
+                    # templates import block above). Any spec that somehow
+                    # still reaches here is dropped cleanly.
+                    if vtype in ("before_after", "chart_bar_horizontal"):
                         print(
-                            f"  [GRAPHICS] Skipping deprecated before_after visual "
-                            f"(component is banned — see writer_backstory.txt)"
+                            f"  [GRAPHICS] Skipping deprecated {vtype} visual "
+                            f"(auto-extraction is banned — see writer_backstory.txt)"
                         )
                         continue
 
@@ -1561,11 +1566,6 @@ def main() -> None:
                     elif vtype == "timeline":
                         svg = diagram_timeline(vdata["events"])
                         w, h = 1000, 180
-                    elif vtype == "chart_bar_horizontal":
-                        svg = chart_bar_horizontal(
-                            vdata["data"], vdata.get("title", ""), vdata.get("source", ""),
-                        )
-                        w, h = 800, 300
 
                     if svg:
                         vpath = f"/tmp/visual-{slug_for_cover}-{vtype}.png"

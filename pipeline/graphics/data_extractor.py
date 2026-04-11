@@ -222,32 +222,26 @@ def select_visuals(
             },
         }
 
-    def _bar_chart(source_stats: list[dict], title: str, heading: str) -> dict | None:
-        data = [
-            {"label": _label_from_context(s.get("sentence") or s.get("context", ""), 24),
-             "value": _parse_number(s["value"])}
-            for s in source_stats
-            if _parse_number(s["value"]) > 0
-        ]
-        if len(data) < 3:
-            return None
-        return {
-            "type": "chart_bar_horizontal",
-            "insert_after_heading": heading,
-            "data": {"data": data[:6], "title": title, "source": ""},
-        }
+    # NB: the _bar_chart() auto-extractor has been REMOVED. It used to
+    # scan the article body for any stats it could find, grab the first
+    # 24 chars of each surrounding sentence as a "label", and rasterize
+    # the result as a ![Chart Bar Horizontal visualization](...) PNG.
+    #
+    # In practice this produced garbage charts with:
+    #   - sentence-fragment labels ("Alphabet's board...", "For enter...")
+    #   - raw `STAT:` markers leaking into labels when the writer's stat
+    #     marker happened to overlap a regex hit
+    #   - mixed units and scales on one axis (43% next to $75B)
+    #   - duplicate labels with wildly different values
+    #   - a generic "Vendor landscape" title that described nothing
+    #
+    # The writer already emits real {{< bar-chart >}} shortcodes with
+    # curated labels, values, and sources. The auto-extractor was a
+    # parallel bad path producing noise alongside the real charts. Same
+    # structural problem as stat_card and before_after (both previously
+    # banned). Ban chart_bar_horizontal the same way.
 
     if content_type == "case_study":
-        # Target: 4-6 visuals. Every hook the extractor finds becomes a visual.
-        # NB: before_after spec emission has been deliberately removed — the
-        # {{< before-after >}} component is banned (see writer_backstory.txt
-        # BEFORE / AFTER CARD section). Present before/after as either a
-        # {{< bar-chart >}} with two bars or plain prose.
-
-        chart = _bar_chart(stats[:6], "Key metrics", "Results")
-        if chart:
-            visuals.append(chart)
-
         # Up to 3 stat cards placed at meaningful sections
         stat_headings = ["Financial impact", "Results", "Implementation"]
         for i, stat in enumerate(stats[:3]):
@@ -268,11 +262,6 @@ def select_visuals(
             })
 
     elif content_type == "deep_dive":
-        # Target: 4-6 visuals. Research-heavy presentation.
-        chart = _bar_chart(stats[:6], "Research findings", "Research")
-        if chart:
-            visuals.append(chart)
-
         stat_headings = ["Research", "Implications", "Findings", "Analysis"]
         for i, stat in enumerate(stats[:4]):
             visuals.append(_stat_card(stat, stat_headings[i % len(stat_headings)]))
@@ -303,14 +292,8 @@ def select_visuals(
                     "source": "",
                 },
             })
-        chart = _bar_chart(stats[:4], "By the numbers", "Context")
-        if chart:
-            visuals.append(chart)
 
     elif content_type == "industry_briefing":
-        chart = _bar_chart(stats[:5], "Industry signals", "Overview")
-        if chart:
-            visuals.append(chart)
         for i, stat in enumerate(stats[:2]):
             visuals.append(_stat_card(stat, ["Overview", "Outlook"][i]))
 
@@ -325,11 +308,11 @@ def select_visuals(
             visuals.append(_stat_card(stats[0], "Outcome"))
 
     elif content_type == "technology_profile":
-        chart = _bar_chart(stats[:5], "Vendor landscape", "Vendor Landscape")
-        if chart:
-            visuals.append(chart)
-        # NB: before_after spec emission removed. Use a bar-chart with two
-        # bars (option A vs option B) for vendor comparisons instead.
+        # NB: chart_bar_horizontal auto-extraction removed here. Any real
+        # vendor-landscape chart must come from the writer as an explicit
+        # {{< bar-chart >}} shortcode with curated labels. before_after
+        # spec emission is also removed — use a two-bar bar-chart instead.
+        pass
 
     return visuals
 
