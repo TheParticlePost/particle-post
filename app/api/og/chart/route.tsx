@@ -18,10 +18,14 @@ import { getPostBySlug } from "@/lib/content";
  * The image is 1200x630 (LinkedIn's recommended size, also works for
  * Twitter / X summary cards). Rendered via next/og's Satori engine,
  * which supports a subset of CSS (flexbox yes, grid no, SVG paths no).
- * Cached at the edge for 1 hour with SWR.
+ * Cached at the CDN for 1 hour with SWR (see the Cache-Control header
+ * on the ImageResponse). Runs on the Node.js runtime (not edge)
+ * because lib/content.ts uses `fs.readFileSync` + `process.cwd()` to
+ * load article markdown from blog/content/posts/, which is a Node
+ * API that's not available in the Edge Runtime. The ImageResponse
+ * SWR cache makes the runtime difference effectively invisible to
+ * LinkedIn/X crawlers after the first render.
  */
-
-export const runtime = "edge";
 
 const WIDTH = 1200;
 const HEIGHT = 630;
