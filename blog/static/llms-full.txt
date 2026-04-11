@@ -5,6 +5,7 @@
 
 ## Posts
 
+- [TCS AI Strategy: How a $29B Firm Built $2.3B AI Revenue](https://theparticlepost.com/posts/tcs-ai-strategy-revenue-enterprise-transformation/): TCS generated $2.3B in AI-driven revenue in FY2026 while total revenue fell. Here is what enterprise COOs and CFOs must know about the pivot model.
 - [Enterprise AI Platform Comparison: Google Cloud vs AWS vs Azure 2026](https://theparticlepost.com/posts/google-cloud-aws-azure-enterprise-ai-comparison-2026/): Compare Google Cloud, AWS, and Azure for enterprise AI in 2026. Alphabet committed $75B CapEx. See pricing, compliance, and lock-in risk scores for CIOs.
 - [Enterprise AI Vendor Due Diligence: Anthropic IPO](https://theparticlepost.com/posts/enterprise-ai-vendor-due-diligence-anthropic/): Enterprise AI vendor due diligence gaps exposed by Anthropic
 - [Machine Learning Credit Scoring: 6-Step Deployment Guide](https://theparticlepost.com/posts/machine-learning-credit-scoring-deployment-guide/): Machine learning credit scoring deployment in 6 steps. Capital One cut losses 20% replacing FICO models. Covers FCA/PRA compliance, bias testing, and cost estimates.

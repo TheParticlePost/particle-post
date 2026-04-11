@@ -5,6 +5,7 @@
 
 ## Posts
 
+- [TCS AI Strategy: How a $29B Firm Built $2.3B AI Revenue](https://theparticlepost.com/posts/tcs-ai-strategy-revenue-enterprise-transformation/)
 - [Enterprise AI Platform Comparison: Google Cloud vs AWS vs Azure 2026](https://theparticlepost.com/posts/google-cloud-aws-azure-enterprise-ai-comparison-2026/)
 - [Enterprise AI Vendor Due Diligence: Anthropic IPO](https://theparticlepost.com/posts/enterprise-ai-vendor-due-diligence-anthropic/)
 - [Machine Learning Credit Scoring: 6-Step Deployment Guide](https://theparticlepost.com/posts/machine-learning-credit-scoring-deployment-guide/)

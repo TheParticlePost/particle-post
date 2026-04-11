@@ -1,26 +1,6 @@
 {
   "notes": [
     {
-      "text": "Fix the has_faq frontmatter flag: The YAML says 'has_faq: false' but the article contains a full, well-written FAQ section. Change this to 'has_faq: true' before publication. This controls whether the HowTo/FAQ schema markup renders in search results — with it set to false, you are leaving rich result eligibility on the table for every FAQ entry, which is a significant SEO loss for a BOF piece targeting high-intent search queries.",
-      "slot": "evening",
-      "date": "2026-04-05T21:15:23.761783+00:00"
-    },
-    {
-      "text": "Strengthen the SHRM 20-35% attrition reduction citation with a direct quote or page reference: The claim 'AI workforce planning cuts voluntary attrition by 20 to 35%, according to SHRM's 2026 State of AI in HR Report' is the article's anchor stat in both the lede and the second STAT: marker, but publicly available SHRM excerpts do not surface this exact range. Add a page number, quote the finding verbatim, or supplement with a second corroborating source (e.g., Visier or McKinsey) so the claim is bulletproof against editorial challenge or reader scrutiny.",
-      "slot": "evening",
-      "date": "2026-04-05T21:15:23.761783+00:00"
-    },
-    {
-      "text": "TRIM TO TOF RANGE: The article body runs approximately 50-100 words over the 1,000-word TOF ceiling. Cut the 'Three Steps That Close Most of the Exposure' section by condensing each bullet to one tight sentence, or fold it into the preceding H2. This section reads like the start of a MOF piece and is the primary reason the count is over.",
-      "slot": "morning",
-      "date": "2026-04-06T13:07:50.188652+00:00"
-    },
-    {
-      "text": "ADD AN EXPLICIT VERDICT SECTION: TOF compliance requires a labeled 'Clear Verdict' or '## Verdict' H2. Right now the closing paragraphs do the work but won't satisfy checklist item 8 or the TOF structural requirement. Add a 2-3 sentence verdict H2 before the internal links — something like '## Is AI Washing a Legal Risk Worth Prioritizing Now?' — and answer it in a single direct paragraph.",
-      "slot": "morning",
-      "date": "2026-04-06T13:07:50.188652+00:00"
-    },
-    {
       "text": "CITE OR CUT THE WSJ REFERENCE: The inline citation 'according to reporting by The Wall Street Journal' is the only claim in the article without a corresponding URL in the Sources section. Either add the specific WSJ article URL to the Sources list or rephrase the claim to cite a documentable primary source (e.g., SEC enforcement docket). Unsourced WSJ references create liability for the publication if the characterization is disputed.",
       "slot": "morning",
       "date": "2026-04-06T13:07:50.188652+00:00"
@@ -149,6 +129,26 @@
       "text": "The 'What to Watch Over the Next 12 Months' section is useful but currently forward-looking without any signposting of source basis. Add one attributed analyst forecast (e.g., Gartner, IDC, or a hyperscaler IR statement) to anchor the Gemini 2.0 Ultra and Bedrock agent orchestration predictions — this will prevent the section from reading as speculative editorial opinion in a publication that positions itself on sourced intelligence.",
       "slot": "afternoon",
       "date": "2026-04-11T18:11:20.306303+00:00"
+    },
+    {
+      "text": "QA gate failed — fix programmatic issues before retry",
+      "slot": "evening",
+      "date": "2026-04-11T21:08:27.347151+00:00"
+    },
+    {
+      "text": "Trim to fit the case_study word count ceiling of 2500 words. The 'Three Lessons TCS Would Apply Earlier' and 'What This Means for COOs, CFOs, and CTOs' sections overlap significantly with 'Key Takeaways.' Consolidate those three sections into one tight executive-facing section of 300-400 words. This will bring the piece within spec without losing analytical depth.",
+      "slot": "evening",
+      "date": "2026-04-11T21:14:52.068231+00:00"
+    },
+    {
+      "text": "Fix the broken stat-box immediately before publication — the shortcode with value='55%', an empty source, and a label fragment ('See our analysis of [enterprise AI ROI…') will either render broken HTML or strip entirely in production. Replace it with a properly formed shortcode tied to the internal link you intend to reference, or remove it and let the inline paragraph carry the link.",
+      "slot": "evening",
+      "date": "2026-04-11T21:14:52.068231+00:00"
+    },
+    {
+      "text": "Strengthen the answer-first paragraph under the first H2 ('What This Analysis Actually Examines'). Currently it reads as a methodology disclaimer, not a direct answer. MOF case studies benefit from a one-sentence verdict even in framing sections — something like: 'This analysis finds that TCS's $2.3B AI revenue line was built through three structural shifts: agentic delivery replacing FTE-based contracts, pre-engagement data remediation, and outcome-based repricing — none of which are replicable through passive outsourcing.' That anchors the reader immediately.'",
+      "slot": "evening",
+      "date": "2026-04-11T21:14:52.068231+00:00"
     }
   ]
 }

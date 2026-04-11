@@ -1,7 +1,7 @@
 {
   "last_updated": "2026-04-11",
   "schema_coverage": {
-    "Article": 6,
+    "Article": 7,
     "FAQPage": 28,
     "HowTo": 2,
     "NewsArticle": 0
@@ -311,6 +311,14 @@
       "date": "2026-04-11",
       "slug": "google-cloud-aws-azure-enterprise-ai-comparison-2026",
       "primary_keyword": "enterprise AI cloud platform comparison",
+      "schema_type": "Article",
+      "has_faq": true,
+      "search_intent": "commercial"
+    },
+    {
+      "date": "2026-04-11",
+      "slug": "tcs-ai-strategy-revenue-enterprise-transformation",
+      "primary_keyword": "TCS AI strategy",
       "schema_type": "Article",
       "has_faq": true,
       "search_intent": "commercial"
