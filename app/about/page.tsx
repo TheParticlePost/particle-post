@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { OverlineLabel } from "@/components/ui/overline-label";
 import { DataText } from "@/components/ui/data-text";
 import { FadeUp } from "@/components/effects/fade-up";
@@ -73,6 +74,47 @@ export default function AboutPage() {
             deploying AI — not just observing it. Many read in a second language,
             so we write with clarity as a first principle: short sentences, active
             voice, concrete examples.
+          </p>
+        </section>
+      </FadeUp>
+
+      {/* How We Work */}
+      <FadeUp delay={0.125}>
+        <section className="mt-16">
+          <OverlineLabel className="mb-4 block">How We Work</OverlineLabel>
+          <h2 className="font-display text-display-lg text-text-primary mb-6">
+            A small editorial team. Three desks.
+          </h2>
+          <p className="text-body-md text-text-secondary mb-4 max-w-prose">
+            Particle Post is curated by a small editorial team.{" "}
+            <Link
+              href="/authors/william-morin/"
+              className="text-text-primary hover:text-accent transition-colors"
+            >
+              <strong>William Morin</strong>
+            </Link>{" "}
+            sets editorial direction and edits the morning briefings.{" "}
+            <Link
+              href="/authors/marie-tremblay/"
+              className="text-text-primary hover:text-accent transition-colors"
+            >
+              <strong>Marie Tremblay</strong>
+            </Link>{" "}
+            leads research for our weekly deep dives and case studies.{" "}
+            <Link
+              href="/authors/alex-park/"
+              className="text-text-primary hover:text-accent transition-colors"
+            >
+              <strong>Alex Park</strong>
+            </Link>{" "}
+            runs the implementation desk for our how-to guides and technology
+            profiles.
+          </p>
+          <p className="text-body-md text-text-secondary mb-4 max-w-prose">
+            Our curators use modern research and writing tools to keep up with
+            the volume of AI news and case studies our audience needs. Every
+            published piece is reviewed and signed off by the curator named on
+            the byline.
           </p>
         </section>
       </FadeUp>

@@ -9,7 +9,7 @@ keywords:
 - fintech infrastructure readiness
 - AI-initiated commerce
 - payment modernization
-author: "william-hayes"
+author: "william-morin"
 tags:
 - AI
 - Operations & Finance

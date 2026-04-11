@@ -36,11 +36,11 @@ export type Author = {
 
 export const AUTHORS: Author[] = [
   {
-    slug: "william-hayes",
-    name: "William Hayes",
+    slug: "william-morin",
+    name: "William Morin",
     role: "Editor-in-Chief",
-    bio: "William founded Particle Post to help business leaders cut through AI hype with research-grade analysis. Former operator and investor focused on enterprise AI implementation.",
-    avatar: "/authors/william-hayes.svg",
+    bio: "William sets editorial direction for Particle Post, focused on how AI changes enterprise operations and the decisions executives need to make about it. He edits the morning briefings and oversees the newsroom.",
+    avatar: "/authors/william-morin.svg",
     expertise: ["AI Strategy", "Enterprise Implementation", "Operations"],
     email: "william@theparticlepost.com",
     defaultFor: ["news_analysis", "industry_briefing"],

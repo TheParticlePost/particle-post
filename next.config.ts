@@ -37,6 +37,15 @@ const nextConfig: NextConfig = {
       destination: "/feed.xml/",
       permanent: true,
     },
+    {
+      // The /authors/william-hayes/ URL was live in production from
+      // commit 20d2f26 (the author registry rollout). After the curator
+      // rename to William Morin, preserve any inbound links / cached
+      // search results with a permanent redirect.
+      source: "/authors/william-hayes/",
+      destination: "/authors/william-morin/",
+      permanent: true,
+    },
   ],
   images: {
     remotePatterns: [

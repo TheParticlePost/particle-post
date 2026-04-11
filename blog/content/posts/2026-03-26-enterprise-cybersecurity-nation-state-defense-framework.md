@@ -10,7 +10,7 @@ keywords:
 - zero-trust architecture enterprise
 - threat detection implementation
 - NIST Cybersecurity Framework 2.0
-author: "william-hayes"
+author: "william-morin"
 tags:
 - Cybersecurity
 - Risk & Governance

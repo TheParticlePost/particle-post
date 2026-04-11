@@ -6,14 +6,14 @@ from pipeline.utils.date_helpers import utc_now_iso
 # add a new content_type or curator, update both files plus
 # pipeline/scripts/backfill_authors.py.
 _CONTENT_TYPE_TO_AUTHOR_SLUG: dict[str, str] = {
-    "news_analysis": "william-hayes",
-    "industry_briefing": "william-hayes",
+    "news_analysis": "william-morin",
+    "industry_briefing": "william-morin",
     "deep_dive": "marie-tremblay",
     "case_study": "marie-tremblay",
     "how_to": "alex-park",
     "technology_profile": "alex-park",
 }
-_DEFAULT_AUTHOR_SLUG = "william-hayes"
+_DEFAULT_AUTHOR_SLUG = "william-morin"
 
 
 def author_for_content_type(content_type: str | None) -> str:

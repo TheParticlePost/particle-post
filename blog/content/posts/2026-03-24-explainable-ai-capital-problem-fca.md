@@ -9,7 +9,7 @@ keywords:
 - interpretability financial services
 - AI compliance costs
 - regulatory moat fintech
-author: "william-hayes"
+author: "william-morin"
 tags:
 - Risk & Governance
 - Fintech Compliance

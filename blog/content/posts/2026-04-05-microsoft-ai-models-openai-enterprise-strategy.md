@@ -10,7 +10,7 @@ keywords:
 - MAI models vs OpenAI
 - Azure Foundry enterprise AI
 - agentic AI finance operations enterprise
-author: "william-hayes"
+author: "william-morin"
 tags:
 - Microsoft
 - OpenAI

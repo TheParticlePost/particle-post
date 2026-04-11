@@ -4,6 +4,64 @@ A running log of architectural changes that touch the runtime / scheduler / depl
 
 ---
 
+## 2026-04-11 — Editorial framing reset + curator rename
+
+### What changed
+
+After a deep audit (v2) flagged a tension between the named curator personas (William Hayes / Marie Tremblay / Alex Park, all shipped in commit `20d2f26`) and the privacy policy section 8 from commit `21c9387` which explicitly disclosed an "AI-assisted editorial pipeline," we reset the editorial framing to position Particle Post as a small human editorial team that uses AI assistants as research and writing tools.
+
+Two parts:
+
+1. **Privacy section 8 softened** (commit `6332904`)
+   - Heading: "Automated processing and AI-generated content" → "Editorial standards and automated processing"
+   - Body now describes "modern research and writing tools, including AI assistants" used by named curators rather than an AI pipeline shipping articles autonomously
+   - The GDPR Article 13(2)(f) and Article 22 disclosure ("we do not make automated decisions about individual users") is preserved unchanged — that's a legal requirement and is unrelated to how content is produced
+
+2. **William Hayes → William Morin rename** (this commit)
+   - `lib/authors.ts` slug, name, and avatar path
+   - Avatar SVG renamed `public/authors/william-hayes.svg` → `william-morin.svg`, monogram letterform updated WH → WM
+   - 17 article frontmatter entries re-pointed via re-running `pipeline/scripts/backfill_authors.py` after updating `CONTENT_TYPE_TO_AUTHOR`
+   - `pipeline/utils/frontmatter_builder.py:_CONTENT_TYPE_TO_AUTHOR_SLUG` updated so future articles emit the new slug
+   - `next.config.ts` 301 redirect from `/authors/william-hayes/` → `/authors/william-morin/` to preserve any inbound links / search index entries that may have been picked up since commit `20d2f26`
+   - `app/about/page.tsx` "How we work" section added describing the three curators by name with links to their author pages
+
+### Why
+
+The user's positioning intent is to present Particle Post as a small human-curated publication. The placeholder name "William Hayes" was a fictional surname; "William Morin" is the curator's real surname. The two other curator names (Marie Tremblay, Alex Park) are also intended as real people once the user finalises the editorial team — if/when that happens, the same A4-A6 rename pattern from `.claude/plans/atomic-doodling-valley.md` applies.
+
+### Audit v2 stale findings (no work done — already correct in production)
+
+The audit also flagged the following as broken. All were verified live during Phase 1 of audit v2 planning and require no work:
+
+- `/about/` serves Hugo (FALSE — production serves the Next.js page; the Hugo `public/about/index.html` is local-only and gitignored)
+- `/subscribe/` has different navbar with "Markets" link (FALSE — uses global Navbar; "Markets" doesn't exist in any source file)
+- `/categories/` has stale navbar (FALSE — uses global root layout)
+- Three different category systems (FALSE — single `lib/utils.ts:CATEGORIES` constant with 5 entries)
+- Four different navbars (FALSE — one public Navbar; the others are intentional role-isolated dashboards)
+- `robots.txt` blocks crawlers (FALSE — `Allow: /` with auth-page disallows only)
+- `<meta name="robots" content="noindex">` global (FALSE — `index, follow`)
+- `X-Robots-Tag: noindex` HTTP header (FALSE — never set)
+- Sitemap missing (FALSE — `app/sitemap.ts` exists, dynamically generated)
+- Article pages are CSR (FALSE — Server Component with `generateStaticParams` SSG)
+- JSON-LD missing (FALSE — `Article`, `NewsArticle`, `HowTo`, `FAQPage`, `BreadcrumbList` all in `lib/structured-data.ts`)
+- Canonical URL missing (FALSE — set in `lib/metadata.ts:generatePostMetadata`)
+- OG / Twitter cards missing (FALSE — same)
+- Login is "Loading..." shell (FALSE — skeleton in commit `697bcc5`)
+- Pulse "Real-time" claim (FALSE — replaced commit `0a014bc`)
+- Privacy 150 words (FALSE — 1700 words after commit `21c9387`)
+- Specialists empty marketplace (FALSE — admin-gated commit `04ada6f`)
+- Cookie consent banner missing (FALSE — `components/analytics/cookie-consent.tsx` already shipped)
+
+If a future audit flags any of these again, point at this entry first.
+
+### Out of scope (user actions, not code)
+
+- Google Search Console verification env var (`GOOGLE_SITE_VERIFICATION` in Vercel) — without it, the meta tag the codebase expects is never emitted, and Google can't index the site. Single biggest unblock for the audit's "zero search visibility" finding.
+- Brand-name SEO conflict ("Particle" dominated by particle.news, particle.io) — strategic decision, not a code change
+- Replace placeholder curator names (Marie Tremblay, Alex Park) with real people if desired
+
+---
+
 ## 2026-04-10 — Removed Cloudflare Worker dispatcher, native GitHub cron everywhere
 
 ### What changed

@@ -30,8 +30,8 @@ import yaml  # type: ignore
 
 # Mirrors lib/authors.ts:AUTHORS[*].defaultFor
 CONTENT_TYPE_TO_AUTHOR: dict[str, str] = {
-    "news_analysis": "william-hayes",
-    "industry_briefing": "william-hayes",
+    "news_analysis": "william-morin",
+    "industry_briefing": "william-morin",
     "deep_dive": "marie-tremblay",
     "case_study": "marie-tremblay",
     "how_to": "alex-park",
@@ -39,7 +39,7 @@ CONTENT_TYPE_TO_AUTHOR: dict[str, str] = {
 }
 
 # Default fallback when content_type is missing or unrecognised
-DEFAULT_AUTHOR = "william-hayes"
+DEFAULT_AUTHOR = "william-morin"
 
 POSTS_DIR = Path(__file__).resolve().parents[2] / "blog" / "content" / "posts"
 

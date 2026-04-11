@@ -10,7 +10,7 @@ keywords:
 - zero-trust architecture AI agents
 - non-human identity security
 - autonomous agent controls banking
-author: "william-hayes"
+author: "william-morin"
 tags:
 - Agentic AI
 - AI Security

@@ -10,7 +10,7 @@ keywords:
 - CFO AI strategy 2026
 - agentic AI finance operations enterprise
 - AI vendor selection criteria
-author: "william-hayes"
+author: "william-morin"
 tags:
 - CFO Strategy
 - AI Governance

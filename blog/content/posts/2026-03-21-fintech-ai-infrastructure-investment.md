@@ -9,7 +9,7 @@ keywords:
 - AI fraud detection banking
 - AI underwriting automation
 - enterprise AI deployment fintech
-author: "william-hayes"
+author: "william-morin"
 tags:
 - Generative AI
 - Financial Services

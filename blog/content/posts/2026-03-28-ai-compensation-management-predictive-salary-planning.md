@@ -10,7 +10,7 @@ keywords:
 - HR analytics tools finance
 - AI fairness in compensation
 - machine learning financial services HR
-author: "william-hayes"
+author: "william-morin"
 tags:
 - AI in Finance
 - Compensation Management

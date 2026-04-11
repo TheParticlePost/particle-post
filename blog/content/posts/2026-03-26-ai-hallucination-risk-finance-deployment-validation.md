@@ -9,7 +9,7 @@ keywords:
 - AI compliance deployment banking
 - enterprise AI model validation
 - AI accuracy testing finance
-author: "william-hayes"
+author: "william-morin"
 tags:
 - AI Risk
 - Hallucination Detection

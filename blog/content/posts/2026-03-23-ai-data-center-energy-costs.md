@@ -10,7 +10,7 @@ keywords:
 - ESG linked debt emissions risk
 - grid power constraints infrastructure
 - net-zero pledges carbon removal
-author: "william-hayes"
+author: "william-morin"
 tags:
 - Implementation
 - Energy Finance

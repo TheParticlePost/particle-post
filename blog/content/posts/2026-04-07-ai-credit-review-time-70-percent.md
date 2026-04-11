@@ -10,7 +10,7 @@ keywords:
 - credit decisioning AI ROI
 - agentic AI finance operations
 - AI credit underwriting gains
-author: "william-hayes"
+author: "william-morin"
 tags:
 - AI Lending
 - Credit Decisioning

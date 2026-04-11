@@ -9,7 +9,7 @@ keywords:
 - HSBC AI strategy
 - AI risk management finance
 - artificial intelligence banking leadership
-author: "william-hayes"
+author: "william-morin"
 tags:
 - AI Governance
 - Banking
