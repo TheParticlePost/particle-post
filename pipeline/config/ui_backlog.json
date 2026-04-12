@@ -260,6 +260,33 @@
       "status": "pending",
       "source": "audit",
       "created": "2026-04-11"
+    },
+    {
+      "id": "UI-033",
+      "component": "visual-tools-unavailable",
+      "description": "Playwright/Hugo dev server not running on localhost:1314 — unable to perform visual inspection. Recommend starting Hugo dev server for future audits to enable screenshot, image, link, layout, and accessibility checks.",
+      "priority": "critical",
+      "status": "pending",
+      "source": "audit",
+      "created": "2026-04-12"
+    },
+    {
+      "id": "UI-034",
+      "component": "hero-badge-animation",
+      "description": "hero-badge-dot pulse animation uses @keyframes pp-pulse — consider adding will-change: opacity and backface-visibility: hidden for better performance on mobile devices",
+      "priority": "low",
+      "status": "pending",
+      "source": "audit",
+      "created": "2026-04-12"
+    },
+    {
+      "id": "UI-035",
+      "component": "footer-responsive-layout",
+      "description": "Footer grid switches to 1 column at 768px, but .footer-links gap changes from 3rem to 2rem flex-wrap. At smaller screens (375px), footer link text may wrap awkwardly — consider testing readability and line-breaking behavior",
+      "priority": "medium",
+      "status": "pending",
+      "source": "audit",
+      "created": "2026-04-12"
     }
   ],
   "completed": [
